@@ -4,7 +4,7 @@ import {BrowserRouter, Link, Route} from 'react-router-dom'
 
 const {Provider, Consumer} = React.createContext('url');
 
-
+// Header that goes at the top of the app
 const Logo = () => (
     <div id="sttv-logo">
       <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png"
@@ -12,6 +12,7 @@ const Logo = () => (
     </div>
     )
 
+// Class that controls the state and rendered components of the app
 class App extends React.Component {
   constructor(){
     super()
@@ -39,6 +40,7 @@ class App extends React.Component {
                       stage: items.intro})
       })
     }
+    this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
     this.Dashboard = this.Dashboard.bind(this)
     this.Orders = this.Orders.bind(this)
     this.Feedback = this.Feedback.bind(this)
@@ -49,12 +51,13 @@ class App extends React.Component {
     this.Courses = this.Courses.bind(this)
     this.courseRefresh = this.courseRefresh.bind(this)
     this.logout = this.logout.bind(this)
-    this.renderVids = this.renderVids.bind(this)
+    this.setUpVids = this.setUpVids.bind(this)
     this.updateStage = this.updateStage.bind(this)
     this.makeStage = this.makeStage.bind(this)
-    this.renderSections = this.renderSections.bind(this)
+    this.setUpSections = this.setUpSections.bind(this)
   }
 
+  // Renders the dashboard page
   Dashboard() {
     return(<div>Welcome to the Dashboard</div>)
   }
@@ -62,7 +65,6 @@ class App extends React.Component {
   Orders() {
     return (<div>Welcome to the Orders Page</div>)
   }
-
 
   Feedback() {
       return (
@@ -166,6 +168,7 @@ class App extends React.Component {
     )
   }
 
+  // Clears localstorage and calls the API; triggers a re-render with this.setState
   courseRefresh() {
       if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')){
         localStorage.removeItem('course_data')
@@ -183,25 +186,26 @@ class App extends React.Component {
       console.log('This hasn\'t been set up yet')
     }
 
+  // Wrapper for the stage and the recursive rendering function
   Courses() {
     return(
       <div>
         {this.makeStage()}
-        {this.renderSections(this.state.courseData.sections, '/courses')}
+        {this.setUpSections(this.state.courseData.sections, '/courses')}
       </div>)
   }
 
-  renderVids(vids, linkTo) {
+  // Links and routes for individual videos
+  setUpVids(vids, linkTo) {
         let videos = []
         for (let vid in vids){
           let vid = vids[vid]
           let link = linkTo + '/' + vid.slug
+          let thumb = this.state.courseData.thumbUrls.plain.replace('||ID||', vid.thumb)
           videos.push(
             <div key={vid.slug}>
               <Link to={link} onClick={() => this.updateStage(vid.ID)}> {vid.name}
-              <Consumer >
-                {url => <img src={url.plain.replace('||ID||', vid.thumb)}/>}
-              </Consumer>
+                <img src={thumb}/>
               <div path={link} />
              </Link>
             </div>
@@ -210,27 +214,32 @@ class App extends React.Component {
         return( videos )
       }
 
+    // Updates the contents of the video stage, triggering a re-render
     updateStage(id) {
       id = String(id)
       this.setState({'stage' : id})
     }
 
+    // Makes the video stage
     makeStage() {
       if (this.state.stage == 0) {
         return ('This video will become available when you purchase the full course')
       }
       else {
+        let link = this.vimeoLink.replace('||ID||', this.state.stage)
         return (
           <iframe className="sttv-course-player"
             key='stage'
-            src={'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)}
+            src={link}
             width="192" height="108" frameBorder="0" title="Intro" webkitallowfullscreen=""
             allowFullScreen=""></iframe>
         )
       }
     }
 
-    renderSections(sections, topLink) {
+    // Function that recursively generates the routes and links for sections
+    // until it gets to a video folder
+    setUpSections(sections, topLink) {
       let renderedSections = []
       for (let section in sections){
         if (section !== 'type'){
@@ -245,15 +254,15 @@ class App extends React.Component {
           let route
           if ('subsec' in sections[section]) {
             route = <Route path={link}
-              render={() => this.renderSections(sections[section].subsec, link)}/>
+              render={() => this.setUpSections(sections[section].subsec, link)}/>
           }
           else if ('subjects' in sections[section]) {
             route = <Route path={link}
-              render={() => this.renderSections(sections[section].subjects, link)}/>
+              render={() => this.setUpSections(sections[section].subjects, link)}/>
           }
           else if ('videos' in sections[section]) {
             route = <Route path={link}
-              render={() => this.renderVids(sections[section].videos, link)}/>
+              render={() => this.setUpVids(sections[section].videos, link)}/>
           }
           let click
           if ('intro' in sections[section]) {
@@ -270,6 +279,8 @@ class App extends React.Component {
       return( renderedSections )
     }
 
+  // Calls the menu and the page components; menu has the links that these routes
+  // pick up on, which determines whether or not they are rendered
   render() {
   return (
     <BrowserRouter>
@@ -278,18 +289,19 @@ class App extends React.Component {
           <Logo/>
         </Link>
           <this.Menu/>
-          <Provider value={this.state.courseData.thumbUrls}>
-            <Route path="/dashboard" component={this.Dashboard}/>
-            <Route path="/courses" component={this.Courses}/>
-            <Route path="/orders" component={this.Orders}/>
-            <Route path="/feedback" component={this.Feedback}/>
-            <Route path="/review" component={this.Review}/>
-            <Route path="/downloads" component={this.Downloads}/>
-            <Route path="/help" component={this.Help}/>
-          </Provider>
+          <Route path="/dashboard" component={this.Dashboard}/>
+          <Route path="/courses" component={this.Courses}/>
+          <Route path="/orders" component={this.Orders}/>
+          <Route path="/feedback" component={this.Feedback}/>
+          <Route path="/review" component={this.Review}/>
+          <Route path="/downloads" component={this.Downloads}/>
+          <Route path="/help" component={this.Help}/>
       </div>
     </BrowserRouter>
   )}
 }
 
-export default App;
+// Export the whole thing
+ReactDOM.render(
+    <App />,
+  document.getElementById("app"));
