@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enlightenedpie/courses.git"
+    "url": "git+https://github.com/supertutortv/courses.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/enlightenedpie/courses/issues"
   },
-  "homepage": "https://github.com/enlightenedpie/courses#readme",
+  "homepage": "https://github.com/supertutortv/courses.git#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

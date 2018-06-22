@@ -2,98 +2,100 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route} from 'react-router-dom'
 
-const {Provider, Consumer} = React.createContext('url');
-
 // Header that goes at the top of the app
 const Logo = () => (
-    <div id="sttv-logo">
-      <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png"
-      alt="SupertutorTV"/>
-    </div>
+      <div id="sttv-logo">
+        <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png"
+        alt="SupertutorTV"/>
+      </div>
     )
 
 // Class that controls the state and rendered components of the app
 class App extends React.Component {
-  constructor(){
-    super()
-    const courseString = localStorage.getItem('course_data')
-    // This keeps the components from erroring before they can be re-rendered with proper data
-    this.state = {
-      courseData : {},
-      stage : ''
-    }
-    try {
-      var courseData = JSON.parse(courseString)
-      if (courseData.lastFetched + 86400 < Date.now()) {
-        this.state = {
-          courseData: courseData,
-          stage : courseData.intro
+  constructor() {
+      super()
+      this.state = {courseData : {},
+                    stage: '',
+                    user : '',
+                    pw : '',
+                    auth : ''}
+      const authString = localStorage.getItem('auth')
+      try {
+        var auth = JSON.parse(authString)
+        this.state.auth = auth
         }
-      }
+      catch (e) {
+        void(0)
+        }
+      const courseString = localStorage.getItem('course_data')
+      try {
+        var courseData = JSON.parse(courseString)
+        this.state.courseData = courseData
+        }
+      catch (e) {
+        void(0)
+        }
+      this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
+      this.Dashboard = this.Dashboard.bind(this)
+      this.Orders = this.Orders.bind(this)
+      this.Feedback = this.Feedback.bind(this)
+      this.Review = this.Review.bind(this)
+      this.Downloads = this.Downloads.bind(this)
+      this.Help = this.Help.bind(this)
+      this.Menu = this.Menu.bind(this)
+      this.Courses = this.Courses.bind(this)
+      this.courseRefresh = this.courseRefresh.bind(this)
+      this.logout = this.logout.bind(this)
+      this.setUpVids = this.setUpVids.bind(this)
+      this.updateStage = this.updateStage.bind(this)
+      this.makeStage = this.makeStage.bind(this)
+      this.setUpSections = this.setUpSections.bind(this)
+      this.Login = this.Login.bind(this)
+      this.getCourses = this.getCourses.bind(this)
+      this.handleChange = this.handleChange.bind(this)
     }
-    catch (e) {
-      fetch('https://api.supertutortv.com/json/courses/8')
-      .then( result => result.json())
-      .then( items => {
-        localStorage.setItem('course_data', JSON.stringify(items))
-        this.setState({courseData : items,
-                      stage: items.intro})
-      })
-    }
-    this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
-    this.Dashboard = this.Dashboard.bind(this)
-    this.Orders = this.Orders.bind(this)
-    this.Feedback = this.Feedback.bind(this)
-    this.Review = this.Review.bind(this)
-    this.Downloads = this.Downloads.bind(this)
-    this.Help = this.Help.bind(this)
-    this.Menu = this.Menu.bind(this)
-    this.Courses = this.Courses.bind(this)
-    this.courseRefresh = this.courseRefresh.bind(this)
-    this.logout = this.logout.bind(this)
-    this.setUpVids = this.setUpVids.bind(this)
-    this.updateStage = this.updateStage.bind(this)
-    this.makeStage = this.makeStage.bind(this)
-    this.setUpSections = this.setUpSections.bind(this)
-  }
 
   // Renders the dashboard page
   Dashboard() {
-    return(<div>Welcome to the Dashboard</div>)
-  }
+    return (
+      <div>Welcome to the Dashboard</div>
+      )
+    }
 
   Orders() {
-    return (<div>Welcome to the Orders Page</div>)
-  }
+    return (
+      <div>Welcome to the Orders Page</div>
+      )
+    }
 
   Feedback() {
       return (
-      <div id="course-feedback">
-        <h2 className="header center-align">Feedback</h2>
-        <div className="col s12 center-align">
-          <p>
-            Drop us a line if you catch any mistakes, have suggestions for new
-            content, or would just like to let us know how we're helping you get a
-            better score! If you'd like to rate us so future students can see what
-            you think of the course, you can do that <Link to='/review'>here</Link>.
-            (By the way, this is just between us... no one else will see
-            your feedback but the fine folks here at SupertutorTV.)
-         </p>
-       </div>
-      <div className="col s12" id="feedback-post-form">
-        <div className="overlay"></div>
-        <textarea placeholder="Enter your feedback here." id="feedback-content">
-        </textarea>
-        <div className="feedback-submit-container center-align">
-          <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
-            <strong>Post Feedback</strong>
-          </a>
+        <div id="course-feedback">
+          <h2 className="header center-align">Feedback</h2>
+          <div className="col s12 center-align">
+            <p>
+              Drop us a line if you catch any mistakes, have suggestions for new
+              content, or would just like to let us know how we're helping you get a
+              better score! If you'd like to rate us so future students can see what
+              you think of the course, you can do that <Link to='/review'>here</Link>.
+              (By the way, this is just between us... no one else will see
+              your feedback but the fine folks here at SupertutorTV.)
+           </p>
+         </div>
+        <div className="col s12" id="feedback-post-form">
+          <div className="overlay"></div>
+          <textarea placeholder="Enter your feedback here." id="feedback-content">
+          </textarea>
+          <div className="feedback-submit-container center-align">
+            <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
+              <strong>Post Feedback</strong>
+            </a>
+          </div>
         </div>
+          <div id="feedback-container"></div>
       </div>
-        <div id="feedback-container"></div>
-    </div>
-    )
-  }
+      )
+    }
 
   Review() {
     return (
@@ -132,6 +134,12 @@ class App extends React.Component {
       )
     }
 
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value
+      });
+    }
+
   Downloads() {
       return (
         <div>Welcome to the Downloads Page</div>
@@ -145,7 +153,7 @@ class App extends React.Component {
     }
 
   Menu() {
-    return(
+    return (
       <div id="menu">
         <Link to="/dashboard" className='menu-item'>Dashboard</Link>
       <br/>
@@ -165,40 +173,90 @@ class App extends React.Component {
       <br/>
         <a onClick={this.logout} className='menu-item'>Logout</a>
       </div>
-    )
-  }
+      )
+    }
 
   // Clears localstorage and calls the API; triggers a re-render with this.setState
   courseRefresh() {
-      if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')){
+      if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
         localStorage.removeItem('course_data')
-        fetch('https://api.supertutortv.com/json/courses/8')
-        .then( result => result.json())
-        .then( items => {
-          localStorage.setItem('course_data', JSON.stringify(items))
-          this.setState({courseData : items,
-                        stage: items.intro})
-        })
+        this.getCourses()
       }
     }
 
-  logout(){
-      console.log('This hasn\'t been set up yet')
+  getCourses() {
+    fetch('https://api.supertutortv.com/json/courses/8')
+    .then( result => result.json())
+    .then( items => {
+      localStorage.setItem('course_data', JSON.stringify(items))
+      this.setState({courseData : items,
+                    stage: items.intro})
+                  })
+    }
+
+  logout() {
+      localStorage.removeItem('auth')
+      this.setState({auth : '',
+                     user : '',
+                     pw : ''})
+    }
+
+  Login() {
+    return (
+      <div id="sttv_login_form" type="POST">
+  		<p className="message"></p>
+  		<div className="row">
+  			<div className="input-field s12">
+  				<input type="text" name="user" id="sttv_user" minLength="4" value={this.state.user} onChange={this.handleChange}/>
+  				<label data-error="Must be at least 4 characters" data-success="Good job!">Username</label>
+  			</div>
+  			<div className="input-field s12">
+  				<input type="password" name="pw" id="sttv_pass" value={this.state.pw} onChange={this.handleChange}/>
+  				<label className="">Password</label>
+  			</div>
+  		</div>
+  		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.getAuth()}>Login</button>
+      </div>
+    )}
+
+  // This is a placeholder and will likely stay that way; real authentication
+  // should take place through the main supertutortv login page
+  getAuth() {
+    // fetch('SOME ENDPOINT', {
+    // method: 'POST',
+    // headers: {
+    //   'Accept': 'application/json',
+    //   'Content-Type': 'application/json',
+    // },
+    // body: JSON.stringify({
+    //   user: this.state.user,
+    //   pw: this.state.pw,
+    //   })
+    // })
+    // .then( result => result.json())
+    // .then( items => {try {
+    //   localStorage.setItem('auth', JSON.stringify(items))
+    //   this.setState({auth : items})
+    // }
+    // catch (e) {
+    //   console.log('There was an error authenticating your login')
+    // }})
+    this.setState({auth : 'Seems right to me'})
     }
 
   // Wrapper for the stage and the recursive rendering function
   Courses() {
-    return(
+    return (
       <div>
         {this.makeStage()}
         {this.setUpSections(this.state.courseData.sections, '/courses')}
       </div>)
-  }
+    }
 
   // Links and routes for individual videos
   setUpVids(vids, linkTo) {
         let videos = []
-        for (let vid in vids){
+        for (let vid in vids) {
           let vid = vids[vid]
           let link = linkTo + '/' + vid.slug
           let thumb = this.state.courseData.thumbUrls.plain.replace('||ID||', vid.thumb)
@@ -211,97 +269,118 @@ class App extends React.Component {
             </div>
           )
             }
-        return( videos )
-      }
+        return ( videos )
+    }
 
-    // Updates the contents of the video stage, triggering a re-render
-    updateStage(id) {
+  // Updates the contents of the video stage, triggering a re-render
+  updateStage(id) {
       id = String(id)
       this.setState({'stage' : id})
     }
 
-    // Makes the video stage
-    makeStage() {
-      if (this.state.stage == 0) {
-        return ('This video will become available when you purchase the full course')
-      }
-      else {
-        let link = this.vimeoLink.replace('||ID||', this.state.stage)
-        return (
-          <iframe className="sttv-course-player"
-            key='stage'
-            src={link}
-            width="192" height="108" frameBorder="0" title="Intro" webkitallowfullscreen=""
-            allowFullScreen=""></iframe>
+  // Makes the video stage
+  makeStage() {
+    if (this.state.stage == 0) {
+      return ('This video will become available when you purchase the full course')
+    }
+    else {
+      let link = this.vimeoLink.replace('||ID||', this.state.stage)
+      return (
+        <iframe className="sttv-course-player"
+          key='stage'
+          src={link}
+          width="192" height="108" frameBorder="0" title="Intro" webkitallowfullscreen=""
+          allowFullScreen=""></iframe>
         )
       }
     }
 
-    // Function that recursively generates the routes and links for sections
-    // until it gets to a video folder
-    setUpSections(sections, topLink) {
-      let renderedSections = []
-      for (let section in sections){
-        if (section !== 'type'){
-          let name
-          if ('name' in sections[section]){
-            name = sections[section].name
-          }
-          else if ('title' in sections[section]){
-            name = sections[section].title
-          }
-          let link = topLink + '/' + section
-          let route
-          if ('subsec' in sections[section]) {
-            route = <Route path={link}
-              render={() => this.setUpSections(sections[section].subsec, link)}/>
-          }
-          else if ('subjects' in sections[section]) {
-            route = <Route path={link}
-              render={() => this.setUpSections(sections[section].subjects, link)}/>
-          }
-          else if ('videos' in sections[section]) {
-            route = <Route path={link}
-              render={() => this.setUpVids(sections[section].videos, link)}/>
-          }
-          let click
-          if ('intro' in sections[section]) {
-            click = () => this.updateStage(sections[section].intro)
-          }
-          renderedSections.push(
-            <div key={section}>
-              <Link to={link} onClick={click}> {name} </Link>
-              {route}
-            </div>
+  // Function that recursively generates the routes and links for sections
+  // until it gets to a video folder
+  setUpSections(sections, topLink) {
+    let renderedSections = []
+    for (let section in sections) {
+      if (section !== 'type') {
+        let name
+        if ('name' in sections[section]) {
+          name = sections[section].name
+        }
+        else if ('title' in sections[section]) {
+          name = sections[section].title
+        }
+        let link = topLink + '/' + section
+        let route
+        let render
+        if ('subsec' in sections[section]) {
+          route = <Route path={link}
+          render={() => this.setUpSections(sections[section].subsec, link)}/>
+        }
+        else if ('subjects' in sections[section]) {
+          route = <Route path={link}
+          render={() => this.setUpSections(sections[section].subjects, link)}/>
+        }
+        else if ('videos' in sections[section]) {
+          route = <Route path={link}
+          render={() => this.setUpVids(sections[section].videos, link)}/>
+        }
+        let click
+        if ('intro' in sections[section]) {
+          click = () => this.updateStage(sections[section].intro)
+        }
+        renderedSections.push(
+          <div key={section}>
+            <Link to={link} onClick={click} render={render}> {name} </Link>
+            {route}
+          </div>
           )
+        }
       }
-    }
-      return( renderedSections )
+      return ( renderedSections )
     }
 
   // Calls the menu and the page components; menu has the links that these routes
   // pick up on, which determines whether or not they are rendered
   render() {
-  return (
-    <BrowserRouter>
-      <div>
-        <Link to="/">
-          <Logo/>
-        </Link>
-          <this.Menu/>
-          <Route path="/dashboard" component={this.Dashboard}/>
-          <Route path="/courses" component={this.Courses}/>
-          <Route path="/orders" component={this.Orders}/>
-          <Route path="/feedback" component={this.Feedback}/>
-          <Route path="/review" component={this.Review}/>
-          <Route path="/downloads" component={this.Downloads}/>
-          <Route path="/help" component={this.Help}/>
-      </div>
-    </BrowserRouter>
-  )}
-}
+    if (this.state !== null && this.state.auth) {
+      if ( this.state.courseData !== null) {
+        return (
+          <BrowserRouter>
+            <div>
+              <Link to="/">
+                <Logo/>
+              </Link>
+                <this.Menu/>
+                <Route path="/dashboard" component={this.Dashboard}/>
+                <Route path="/courses" component={this.Courses}/>
+                <Route path="/orders" component={this.Orders}/>
+                <Route path="/feedback" component={this.Feedback}/>
+                <Route path="/review" component={this.Review}/>
+                <Route path="/downloads" component={this.Downloads}/>
+                <Route path="/help" component={this.Help}/>
+            </div>
+          </BrowserRouter>
+        )}
+      else {
+        this.getCourses()
+        return
+      }
+    }
+    else {
+      // Eventually, this should redirect to www.supertutortv.com
+      return (
+        <BrowserRouter>
+          <div>
+            <Link to="/">
+              <Logo/>
+            </Link>
+            <this.Login />
+          </div>
+        </BrowserRouter>
+        )}
+      }
+    }
 
 // Export the whole thing
-ReactDOM.render(
+ReactDOM.render (
     <App />,
   document.getElementById("app"));
