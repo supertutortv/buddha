@@ -1,6 +1,6 @@
 html body {
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.9);
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.75);
   background-color: #f1f1f1;
   width: 100vw;
   height: 100vh; }
@@ -16,10 +16,11 @@ html body {
   margin-left: 3em; }
 
 #sidebar {
+  font-size: 24px;
   display: block;
   position: fixed;
   overflow: hidden;
   width: 3em;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.75);
   color: rgba(255, 255, 255, 0.85); }
