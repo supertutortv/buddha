@@ -1,11 +1,12 @@
 html body {
-  font-size: 16px;
+  font-size: 24px;
   color: rgba(0, 0, 0, 0.75);
   background-color: #f1f1f1;
   width: 100vw;
   height: 100vh; }
 
 #app {
+  font-size: 16px;
   display: block;
   position: fixed;
   top: 0;
@@ -16,7 +17,6 @@ html body {
   margin-left: 3em; }
 
 #sidebar {
-  font-size: 24px;
   display: block;
   position: fixed;
   overflow: hidden;
