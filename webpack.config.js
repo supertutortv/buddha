@@ -37,9 +37,9 @@ module.exports = {
       disable: false,
       allChunks: true
     }),
-    new HtmlWebpackPlugin({
+    /* new HtmlWebpackPlugin({
       template: 'web/index.html',
       inject : false
-    })
+    }) */
   ]
 };
