@@ -38,18 +38,18 @@ html body {
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.75);
   color: rgba(255, 255, 255, 0.85); }
+  #st-sidebar a, #st-sidebar a:hover, #st-sidebar a:active, #st-sidebar a:visited {
+    color: inherit;
+    text-decoration: none; }
   #st-sidebar .st-app-link {
     display: block;
     cursor: pointer;
     width: 100%;
-    padding: 1em;
+    padding: .5em 1em;
     opacity: .5;
     transition: opacity .25 ease-in-out; }
     #st-sidebar .st-app-link:hover {
       opacity: 1; }
-    #st-sidebar .st-app-link.divider {
-      padding-top: 0px;
-      padding-top: 0px; }
     #st-sidebar .st-app-link.logout {
       position: absolute;
       bottom: 0;

@@ -8,20 +8,20 @@
     background-color: $notblack
     color: rgba(255,255,255,.85)
 
+    a, a:hover, a:active, a:visited
+        color: inherit
+        text-decoration: none
+
     .st-app-link
         display: block
         cursor: pointer
         width: 100%
-        padding: 1em
+        padding: .5em 1em
         opacity: .5
         transition: opacity .25 ease-in-out
 
         &:hover
             opacity: 1
-
-        &.divider
-            padding-top: 0px
-            padding-top: 0px
 
         &.logout
             position: absolute
