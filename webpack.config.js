@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'web/app.html',
+      template: 'web/index.html',
       inject : false
     })
   ]
