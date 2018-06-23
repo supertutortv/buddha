@@ -56,7 +56,8 @@ html body {
     #st-sidebar .st-app-link.divider {
       cursor: default;
       padding-top: 0px;
-      padding-bottom: 0px; }
+      padding-bottom: 0px;
+      transition: none; }
     #st-sidebar .st-app-link.logout {
       position: absolute;
       bottom: 0;
