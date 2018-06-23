@@ -53,6 +53,10 @@ html body {
     transition: opacity .25s ease-in-out; }
     #st-sidebar .st-app-link:hover {
       opacity: .85; }
+    #st-sidebar .st-app-link.divider {
+      cursor: default;
+      padding-top: 0px;
+      padding-bottom: 0px; }
     #st-sidebar .st-app-link.logout {
       position: absolute;
       bottom: 0;
