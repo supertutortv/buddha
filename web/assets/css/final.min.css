@@ -47,9 +47,12 @@ html body {
     width: 100%;
     padding: .5em 1em;
     opacity: .5;
-    transition: opacity .25 ease-in-out; }
+    -webkit-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -o-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out; }
     #st-sidebar .st-app-link:hover {
-      opacity: 1; }
+      opacity: .85; }
     #st-sidebar .st-app-link.logout {
       position: absolute;
       bottom: 0;
