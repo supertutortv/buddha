@@ -5,7 +5,7 @@ html body {
   width: 100vw;
   height: 100vh; }
 
-#app {
+#st-app {
   display: block;
   position: fixed;
   top: 0;
@@ -13,20 +13,45 @@ html body {
   bottom: 0;
   left: 0;
   overflow: hidden;
-  margin-left: 3em;
-  padding-left: 1em;
+  padding-left: 3em;
   background-image: url("/assets/img/bgpattern-1.jpg");
   background-size: cover;
-  background-position: center; }
-  #app #inner {
+  background-position: center;
+  color: rgba(255, 255, 255, 0.85); }
+  #st-app header {
+    color: rgba(0, 0, 0, 0.75);
+    background-color: #f1f1f1;
+    width: 100%;
+    min-height: 3em;
+    padding: 1em 0; }
+  #st-app #st-app-inner {
     font-size: 16px;
-    display: block; }
+    display: block;
+    padding-left: 1em; }
 
-#sidebar {
+#st-sidebar {
   display: block;
   position: fixed;
   overflow: hidden;
   width: 3em;
   height: 100%;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.75);
   color: rgba(255, 255, 255, 0.85); }
+  #st-sidebar .st-app-link {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    padding: 1em;
+    opacity: .5;
+    transition: opacity .25 ease-in-out; }
+    #st-sidebar .st-app-link:hover {
+      opacity: 1; }
+    #st-sidebar .st-app-link.divider {
+      padding-top: 0px;
+      padding-top: 0px; }
+    #st-sidebar .st-app-link.logout {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0; }

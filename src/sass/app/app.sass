@@ -1,4 +1,4 @@
-#app
+#st-app
     display: block
     position: fixed
     top: 0
@@ -6,12 +6,20 @@
     bottom: 0
     left: 0
     overflow: hidden
-    margin-left: 3em
-    padding-left: 1em
+    padding-left: $sidebarw
     background-image: url('/assets/img/bgpattern-1.jpg')
     background-size: cover
     background-position: center
+    color: rgba(255,255,255,.85)
 
-    #inner
+    header
+        color: $notblack
+        background-color: $notwhite
+        width: 100%
+        min-height: 3em
+        padding: 1em 0
+
+    #st-app-inner
         font-size: 16px
         display: block
+        padding-left: 1em

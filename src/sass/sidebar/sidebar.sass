@@ -1,8 +1,30 @@
-#sidebar
+#st-sidebar
     display: block
     position: fixed
     overflow: hidden
     width: $sidebarw
     height: 100%
+    z-index: 999
     background-color: $notblack
     color: rgba(255,255,255,.85)
+
+    .st-app-link
+        display: block
+        cursor: pointer
+        width: 100%
+        padding: 1em
+        opacity: .5
+        transition: opacity .25 ease-in-out
+
+        &:hover
+            opacity: 1
+
+        &.divider
+            padding-top: 0px
+            padding-top: 0px
+
+        &.logout
+            position: absolute
+            bottom: 0
+            left: 0
+            right: 0
