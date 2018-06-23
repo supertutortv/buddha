@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
 
 module.exports = {
-  entry: ['./src/index.js','./src/sass/main.sass'],
+  entry: ['./src/sass/main.sass','./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'web'),
     filename: './assets/js/main.js',
@@ -12,7 +12,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' },
       { test: /\.sass$/,
         use: ExtractTextPlugin.extract([
           {
@@ -25,19 +24,22 @@ module.exports = {
               }
           }
         ])
-      }
+      },
+      { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' }
     ]
   },
   devServer: {
     historyApiFallback: true,
   },
   plugins: [
+    new ExtractTextPlugin({ 
+      filename: './assets/css/final.min.css',
+      disable: false,
+      allChunks: true
+    }),
     new HtmlWebpackPlugin({
       template: 'web/index.html',
       inject : false
-    }),
-    new ExtractTextPlugin({ 
-      filename: './assets/css/final.min.css'
     })
   ]
 };
