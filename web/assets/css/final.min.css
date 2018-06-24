@@ -29,6 +29,8 @@ html body {
     #st-app header #st-header-inner {
       height: 100%;
       font-size: 16px; }
+      #st-app header #st-header-inner > div {
+        float: left; }
       #st-app header #st-header-inner #st-header-branding {
         height: 100%; }
         #st-app header #st-header-inner #st-header-branding img {
@@ -36,6 +38,7 @@ html body {
           height: 100%;
           width: auto; }
       #st-app header #st-header-inner #st-header-view-title {
+        padding-left: 1em;
         font-size: 1.5em;
         font-weight: bold;
         text-transform: uppercase; }
