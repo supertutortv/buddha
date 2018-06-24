@@ -43,3 +43,38 @@
         position: relative
         font-size: $realEM
         padding: 2em
+
+        a.st-video-card
+            display: inline-block
+            position: relative
+            width: 10em
+
+            &:hover .st-video-remover
+                opacity: 1
+
+            a.st-video-remover
+                position: absolute
+                display: block
+                font-size: $blockEM
+                width: 1em
+                height: 1em
+                top: 0
+                right: 0
+                opacity: 0
+                -webkit-transition: opacity .25s ease-in-out
+                -moz-transition: opacity .25s ease-in-out
+                -o-transition: opacity .25s ease-in-out
+                transition: opacity .25s ease-in-out
+
+            img
+                display: block
+                width: 100%
+                height: auto
+                border-radius: 6px
+
+            span.st-video-card-title
+                display: block
+                width: 100%
+                text-align: center
+                padding: .25em
+

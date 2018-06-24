@@ -7,6 +7,8 @@ html body {
   box-sizing: border-box; }
   html body div {
     display: block; }
+  html body a {
+    cursor: pointer; }
 
 #st-app {
   position: fixed;
@@ -46,6 +48,35 @@ html body {
     position: relative;
     font-size: 16px;
     padding: 2em; }
+    #st-app #st-app-inner a.st-video-card {
+      display: inline-block;
+      position: relative;
+      width: 10em; }
+      #st-app #st-app-inner a.st-video-card:hover .st-video-remover {
+        opacity: 1; }
+      #st-app #st-app-inner a.st-video-card a.st-video-remover {
+        position: absolute;
+        display: block;
+        font-size: 24px;
+        width: 1em;
+        height: 1em;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        -webkit-transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -o-transition: opacity .25s ease-in-out;
+        transition: opacity .25s ease-in-out; }
+      #st-app #st-app-inner a.st-video-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px; }
+      #st-app #st-app-inner a.st-video-card span.st-video-card-title {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: .25em; }
 
 #st-sidebar {
   position: fixed;
@@ -61,7 +92,6 @@ html body {
     text-decoration: none; }
   #st-sidebar a.st-app-link {
     display: block;
-    cursor: pointer;
     width: 100%;
     padding: .5em 1em;
     opacity: .5;
