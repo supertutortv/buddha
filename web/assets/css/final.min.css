@@ -48,15 +48,16 @@ html body {
     position: relative;
     font-size: 16px;
     padding: 2em; }
-    #st-app #st-app-inner a.st-video-card {
+    #st-app #st-app-inner .st-video-card {
       display: block;
       position: relative;
-      width: 10em; }
-      #st-app #st-app-inner a.st-video-card:hover > div > .st-video-remover {
+      width: 10em;
+      cursor: pointer; }
+      #st-app #st-app-inner .st-video-card:hover > div > .st-video-remover {
         opacity: 1; }
-      #st-app #st-app-inner a.st-video-card > div {
+      #st-app #st-app-inner .st-video-card > div {
         width: 100%; }
-        #st-app #st-app-inner a.st-video-card > div a.st-video-remover {
+        #st-app #st-app-inner .st-video-card > div a.st-video-remover {
           position: absolute;
           display: block;
           z-index: 999;
@@ -71,11 +72,11 @@ html body {
           -moz-transition: opacity .25s ease-in-out;
           -o-transition: opacity .25s ease-in-out;
           transition: opacity .25s ease-in-out; }
-        #st-app #st-app-inner a.st-video-card > div img {
+        #st-app #st-app-inner .st-video-card > div img {
           width: 100%;
           height: auto;
           border-radius: 6px; }
-      #st-app #st-app-inner a.st-video-card span.st-video-card-title {
+      #st-app #st-app-inner .st-video-card span.st-video-card-title {
         display: block;
         width: 100%;
         text-align: center;
