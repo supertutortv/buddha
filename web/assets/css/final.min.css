@@ -53,6 +53,7 @@ html body {
   width: 3em;
   height: 100%;
   z-index: 999;
+  padding-top: 3em;
   background-color: rgba(0, 0, 0, 0.75);
   color: rgba(255, 255, 255, 0.85); }
   #st-sidebar a, #st-sidebar a:hover, #st-sidebar a:active, #st-sidebar a:visited {
@@ -68,9 +69,9 @@ html body {
     -moz-transition: opacity .25s ease-in-out;
     -o-transition: opacity .25s ease-in-out;
     transition: opacity .25s ease-in-out; }
-    #st-sidebar a.st-app-link:not(.st-divider):hover {
+    #st-sidebar a.st-app-link:not(.divider):hover {
       opacity: .85; }
-    #st-sidebar a.st-app-link.st-divider {
+    #st-sidebar a.st-app-link.divider {
       cursor: default;
       padding-top: 0px;
       padding-bottom: 0px; }
