@@ -71,7 +71,9 @@ html body {
     #st-sidebar a.st-app-link:not(.st-divider):hover {
       opacity: .85; }
     #st-sidebar a.st-app-link.st-divider {
-      cursor: default; }
+      cursor: default;
+      padding-top: 0px;
+      padding-bottom: 0px; }
     #st-sidebar a.st-app-link.logout {
       position: absolute;
       bottom: 0;
