@@ -23,7 +23,7 @@ html body {
     color: rgba(0, 0, 0, 0.75);
     background-color: #f1f1f1;
     width: 100%;
-    min-height: 3em;
+    max-height: 3em;
     padding: 1em 0 1em 2em; }
     #st-app header #st-header-branding {
       height: 100%;
