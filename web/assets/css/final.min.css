@@ -35,11 +35,14 @@ html body {
           display: block;
           height: 100%;
           width: auto; }
-      #st-app header #st-header-inner #st-view-title {
-        font-size: 1.5em; }
+      #st-app header #st-header-inner #st-header-view-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase; }
   #st-app #st-app-inner {
+    position: relative;
     font-size: 16px;
-    padding-left: 1em; }
+    padding: 2em; }
 
 #st-sidebar {
   position: fixed;
