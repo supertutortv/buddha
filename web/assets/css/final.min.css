@@ -68,12 +68,10 @@ html body {
     -moz-transition: opacity .25s ease-in-out;
     -o-transition: opacity .25s ease-in-out;
     transition: opacity .25s ease-in-out; }
-    #st-sidebar a.st-app-link:not(.divider):hover {
+    #st-sidebar a.st-app-link:not(.st-divider):hover {
       opacity: .85; }
-    #st-sidebar a.st-app-link.divider {
-      cursor: default;
-      padding-top: 0px;
-      padding-bottom: 0px; }
+    #st-sidebar a.st-app-link.st-divider {
+      cursor: default; }
     #st-sidebar a.st-app-link.logout {
       position: absolute;
       bottom: 0;
