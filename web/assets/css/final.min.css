@@ -19,11 +19,19 @@ html body {
   background-position: center;
   color: rgba(255, 255, 255, 0.85); }
   #st-app header {
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.75);
     background-color: #f1f1f1;
     width: 100%;
     min-height: 3em;
-    padding: 1em 0; }
+    padding: 1em 0 1em 2em; }
+    #st-app header #st-header-branding {
+      height: 100%;
+      padding: .5em 0; }
+      #st-app header #st-header-branding img {
+        display: block;
+        height: 100%;
+        width: auto; }
   #st-app #st-app-inner {
     font-size: 16px;
     display: block;
