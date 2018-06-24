@@ -18,7 +18,7 @@ html body {
   left: 0;
   overflow: hidden;
   padding-left: 3em;
-  background-image: url("/assets/img/bgpattern-1.jpg");
+  background-image: url("/assets/img/bgpattern-2.jpg");
   background-size: cover;
   background-position: center;
   color: rgba(255, 255, 255, 0.85); }
@@ -51,7 +51,7 @@ html body {
     #st-app #st-app-inner .st-video-card {
       display: block;
       position: relative;
-      width: 10em;
+      width: 16em;
       cursor: pointer; }
       #st-app #st-app-inner .st-video-card:hover > div > .st-video-remover {
         opacity: 1; }
