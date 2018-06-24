@@ -23,9 +23,11 @@ html body {
     color: rgba(0, 0, 0, 0.75);
     background-color: #f1f1f1;
     width: 100%;
-    max-height: 3em;
-    padding: 1em 0 1em 2em; }
+    height: 3em;
+    padding: 1em 0 1em 2em;
+    display: block; }
     #st-app header #st-header-branding {
+      display: block;
       height: 100%;
       padding: .5em 0; }
       #st-app header #st-header-branding img {
