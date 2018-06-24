@@ -49,29 +49,32 @@ html body {
     font-size: 16px;
     padding: 2em; }
     #st-app #st-app-inner a.st-video-card {
-      display: inline-block;
+      display: block;
       position: relative;
       width: 10em; }
-      #st-app #st-app-inner a.st-video-card:hover .st-video-remover {
+      #st-app #st-app-inner a.st-video-card:hover > div > .st-video-remover {
         opacity: 1; }
-      #st-app #st-app-inner a.st-video-card a.st-video-remover {
-        position: absolute;
-        display: block;
-        font-size: 24px;
-        width: 1em;
-        height: 1em;
-        top: 0;
-        right: 0;
-        opacity: 0;
-        -webkit-transition: opacity .25s ease-in-out;
-        -moz-transition: opacity .25s ease-in-out;
-        -o-transition: opacity .25s ease-in-out;
-        transition: opacity .25s ease-in-out; }
-      #st-app #st-app-inner a.st-video-card img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border-radius: 6px; }
+      #st-app #st-app-inner a.st-video-card > div {
+        width: 100%; }
+        #st-app #st-app-inner a.st-video-card > div a.st-video-remover {
+          position: absolute;
+          display: block;
+          z-index: 999;
+          font-size: 24px;
+          color: #f1f1f1;
+          width: 1em;
+          height: 1em;
+          top: 0;
+          right: 0;
+          opacity: 0;
+          -webkit-transition: opacity .25s ease-in-out;
+          -moz-transition: opacity .25s ease-in-out;
+          -o-transition: opacity .25s ease-in-out;
+          transition: opacity .25s ease-in-out; }
+        #st-app #st-app-inner a.st-video-card > div img {
+          width: 100%;
+          height: auto;
+          border-radius: 6px; }
       #st-app #st-app-inner a.st-video-card span.st-video-card-title {
         display: block;
         width: 100%;
