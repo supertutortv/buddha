@@ -79,3 +79,6 @@ html body {
       bottom: 0;
       left: 0;
       right: 0; }
+    #st-sidebar a.st-app-link i {
+      font-size: 1em;
+      line-height: 0; }
