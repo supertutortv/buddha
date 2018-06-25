@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route} from 'react-router-dom'
+import {cookie} from 'react-cookie'
 
 // Header that goes at the top of the app
 const Logo = () => (
@@ -15,18 +16,14 @@ class App extends React.Component {
   constructor() {
       super()
       this.state = {courseData : {},
+                    user : {},
                     stage: '',
                     user : '',
                     pw : '',
-                    auth : ''}
-      const authString = localStorage.getItem('auth')
-      try {
-        var auth = JSON.parse(authString)
-        this.state.auth = auth
-        }
-      catch (e) {
-        void(0)
-        }
+                    auth : false}
+      const authString = document.cookie
+      console.log(authString)
+      this.state.auth = (authString !== null)
       const courseString = localStorage.getItem('course_data')
       try {
         var courseData = JSON.parse(courseString)
@@ -194,11 +191,16 @@ class App extends React.Component {
                   })
     }
 
-  logout() {
-      localStorage.removeItem('auth')
-      this.setState({auth : '',
-                     user : '',
-                     pw : ''})
+    logout() {
+      fetch('https://api.supertutortv.com/json/auth/logout', {
+      method: 'POST'})
+      .then( result => result.json())
+      .then( items => {
+        if (items.code == 'logged_out') {
+          this.setState({auth : false})
+          window.location.replace(items.data.redirect)
+         }
+      })
     }
 
   Login() {
@@ -222,26 +224,26 @@ class App extends React.Component {
   // This is a placeholder and will likely stay that way; real authentication
   // should take place through the main supertutortv login page
   getAuth() {
-    // fetch('SOME ENDPOINT', {
-    // method: 'POST',
-    // headers: {
-    //   'Accept': 'application/json',
-    //   'Content-Type': 'application/json',
-    // },
-    // body: JSON.stringify({
-    //   user: this.state.user,
-    //   pw: this.state.pw,
-    //   })
-    // })
-    // .then( result => result.json())
-    // .then( items => {try {
-    //   localStorage.setItem('auth', JSON.stringify(items))
-    //   this.setState({auth : items})
-    // }
-    // catch (e) {
-    //   console.log('There was an error authenticating your login')
-    // }})
-    this.setState({auth : 'Seems right to me'})
+    fetch('https://api.supertutortv.com/json/auth/login', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization' : 'Basic ' + btoa(this.state.user +  ':' + this.state.pw)}
+    })
+    .then( result => result.json())
+    .then( items => {try {
+      console.log(items)
+      if (items.code == 'login_success') {
+        this.setState({auth : true,
+                        user : '',
+                        pw : ''})
+       }
+    }
+    catch (e) {
+      console.log('There was an error authenticating your login')
+    }})
     }
 
   // Wrapper for the stage and the recursive rendering function
@@ -286,11 +288,7 @@ class App extends React.Component {
     else {
       let link = this.vimeoLink.replace('||ID||', this.state.stage)
       return (
-        <iframe className="sttv-course-player"
-          key='stage'
-          src={link}
-          width="192" height="108" frameBorder="0" title="Intro" webkitallowfullscreen=""
-          allowFullScreen=""></iframe>
+        <Vimeo videoId={this.state.stage}/>
         )
       }
     }
@@ -341,7 +339,7 @@ class App extends React.Component {
   // Calls the menu and the page components; menu has the links that these routes
   // pick up on, which determines whether or not they are rendered
   render() {
-    if (this.state !== null && this.state.auth) {
+    if (true) {
       if ( this.state.courseData !== null) {
         return (
           <BrowserRouter>
