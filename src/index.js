@@ -47,7 +47,7 @@ class App extends React.Component {
       this.updateStage = this.updateStage.bind(this)
       this.makeStage = this.makeStage.bind(this)
       this.setUpSections = this.setUpSections.bind(this)
-      this.Login = this.Login.bind(this)
+      this.LoginForm = this.LoginForm.bind(this)
       this.getCourses = this.getCourses.bind(this)
       this.handleChange = this.handleChange.bind(this)
     }
@@ -191,19 +191,7 @@ class App extends React.Component {
                   })
     }
 
-    logout() {
-      fetch('https://api.supertutortv.com/json/auth/logout', {
-      method: 'POST'})
-      .then( result => result.json())
-      .then( items => {
-        if (items.code == 'logged_out') {
-          this.setState({auth : false})
-          window.location.replace(items.data.redirect)
-         }
-      })
-    }
-
-  Login() {
+  LoginForm() {
     return (
       <div id="sttv_login_form" type="POST">
   		<p className="message"></p>
@@ -217,13 +205,13 @@ class App extends React.Component {
   				<label className="">Password</label>
   			</div>
   		</div>
-  		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.getAuth()}>Login</button>
+  		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.login()}>Login</button>
       </div>
     )}
 
   // This is a placeholder and will likely stay that way; real authentication
   // should take place through the main supertutortv login page
-  getAuth() {
+  login() {
     fetch('https://api.supertutortv.com/json/auth/login', {
     method: 'POST',
     credentials: 'include',
@@ -243,7 +231,20 @@ class App extends React.Component {
     }
     catch (e) {
       console.log('There was an error authenticating your login')
-    }})
+        }
+      })
+    }
+
+  logout() {
+    fetch('https://api.supertutortv.com/json/auth/logout', {
+    method: 'POST'})
+    .then( result => result.json())
+    .then( items => {
+      if (items.code == 'logged_out') {
+        this.setState({auth : false})
+        window.location.replace(items.data.redirect)
+         }
+      })
     }
 
   // Wrapper for the stage and the recursive rendering function
@@ -271,7 +272,7 @@ class App extends React.Component {
             </div>
           )
             }
-        return ( videos )
+      return ( videos )
     }
 
   // Updates the contents of the video stage, triggering a re-render
@@ -288,7 +289,11 @@ class App extends React.Component {
     else {
       let link = this.vimeoLink.replace('||ID||', this.state.stage)
       return (
-        <Vimeo videoId={this.state.stage}/>
+        <iframe className="sttv-course-player"
+        key='stage'
+        src={link}
+        width="192" height="108" frameBorder="0" title="Intro" webkitallowfullscreen=""
+        allowFullScreen=""></iframe>
         )
       }
     }
@@ -339,6 +344,7 @@ class App extends React.Component {
   // Calls the menu and the page components; menu has the links that these routes
   // pick up on, which determines whether or not they are rendered
   render() {
+    // This will eventually determine whether or not the user is logged in
     if (true) {
       if ( this.state.courseData !== null) {
         return (
@@ -371,7 +377,7 @@ class App extends React.Component {
             <Link to="/">
               <Logo/>
             </Link>
-            <this.Login />
+            <this.LoginForm />
           </div>
         </BrowserRouter>
         )}
