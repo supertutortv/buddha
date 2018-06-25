@@ -21,8 +21,8 @@ class App extends React.Component {
                     user : '',
                     pw : '',
                     auth : false}
+      // This will be updated when the site is no longer locally hosted
       const authString = document.cookie
-      console.log(authString)
       this.state.auth = (authString !== null)
       const courseString = localStorage.getItem('course_data')
       try {
