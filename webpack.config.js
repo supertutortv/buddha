@@ -32,13 +32,13 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new ExtractTextPlugin({ 
+    new ExtractTextPlugin({
       filename: './assets/css/final.min.css',
       disable: false,
       allChunks: true
     }),
     new HtmlWebpackPlugin({
-      template: 'web/index.html',
+      template: 'web/app.html',
       inject : false
     })
   ]

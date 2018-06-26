@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route} from 'react-router-dom'
+import {Icon} from 'react-materialize'
+import styled from 'styled-components'
+
+const StyledLink = styled(Link)`
+    color: white;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
+
 
 // Header that goes at the top of the app
 const Logo = () => (
-      <div id="sttv-logo">
-        <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png"
-        alt="SupertutorTV"/>
-      </div>
+        <header>
+            <div id="st-header-inner">
+              <div id="st-header-branding">
+                <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png" alt="SupertutorTV"/>
+              </div>
+              <div id="st-header-view-title">The Best ACT Prep Course Ever</div>
+            </div>
+        </header>
     )
 
 // Class that controls the state and rendered components of the app
@@ -18,7 +33,8 @@ class App extends React.Component {
                     stage: '',
                     user : '',
                     pw : '',
-                    auth : ''}
+                    auth : '',
+                    page : 'home'}
       const authString = localStorage.getItem('auth')
       try {
         var auth = JSON.parse(authString)
@@ -37,7 +53,7 @@ class App extends React.Component {
         }
       this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
       this.Dashboard = this.Dashboard.bind(this)
-      this.Orders = this.Orders.bind(this)
+      this.History = this.History.bind(this)
       this.Feedback = this.Feedback.bind(this)
       this.Review = this.Review.bind(this)
       this.Downloads = this.Downloads.bind(this)
@@ -62,9 +78,9 @@ class App extends React.Component {
       )
     }
 
-  Orders() {
+  History() {
     return (
-      <div>Welcome to the Orders Page</div>
+      <div>Welcome to the History Page</div>
       )
     }
 
@@ -77,7 +93,7 @@ class App extends React.Component {
               Drop us a line if you catch any mistakes, have suggestions for new
               content, or would just like to let us know how we're helping you get a
               better score! If you'd like to rate us so future students can see what
-              you think of the course, you can do that <Link to='/review'>here</Link>.
+              you think of the course, you can do that <StyledLink to='/review' onClick={() => this.setState({page : 'review'})} >here</StyledLink>.
               (By the way, this is just between us... no one else will see
               your feedback but the fine folks here at SupertutorTV.)
            </p>
@@ -108,11 +124,11 @@ class App extends React.Component {
       	<section className="rating-widget">
       	  <div className="rating-stars center-align">
       		<ul id="stars">
-      			<i className="mi material-icons">star</i>
-      			<i className="mi material-icons">star</i>
-      			<i className="mi material-icons">star</i>
-      			<i className="mi material-icons">star</i>
-      			<i className="mi material-icons">star</i>
+      			<Icon>star</Icon>
+            <Icon>star</Icon>
+            <Icon>star</Icon>
+            <Icon>star</Icon>
+            <Icon>star</Icon>
       		</ul>
       	  </div>
       	  <div className="message-box">
@@ -120,7 +136,7 @@ class App extends React.Component {
       	  </div>
       	</section>
       	<p className="center-align">
-          <small>Not to be confused with <Link to='/feedback'>feedback</Link>,
+          <small>Not to be confused with <StyledLink to='/feedback' onClick={() => this.setState({page : 'feedback'})} >feedback</StyledLink>,
           which is where you can make suggestions on improving the course or where
           you can report any issues.
           </small>
@@ -146,6 +162,12 @@ class App extends React.Component {
       )
     }
 
+  Bookmarks() {
+    return (
+      <div>Welcome to the Bookmarks Page</div>
+    )
+  }
+
   Help() {
       return (
         <div>Welcome to the Help Page</div>
@@ -154,25 +176,20 @@ class App extends React.Component {
 
   Menu() {
     return (
-      <div id="menu">
-        <Link to="/dashboard" className='menu-item'>Dashboard</Link>
-      <br/>
-        <Link to="/courses" className='menu-item'>Courses</Link>
-      <br/>
-        <Link to="/orders" className='menu-item'>Orders</Link>
-      <br/>
-        <Link to="/feedback" className='menu-item'>Feedback</Link>
-      <br/>
-        <Link to="/review" className='menu-item'>Review</Link>
-      <br/>
-        <Link to="/downloads" className='menu-item'>Downloads</Link>
-      <br/>
-        <Link to="/help" className='menu-item'>Help</Link>
-      <br/>
-        <a onClick={this.courseRefresh} className='menu-item'>Refresh Courses</a>
-      <br/>
-        <a onClick={this.logout} className='menu-item'>Logout</a>
-      </div>
+      <section id="st-sidebar">
+        <StyledLink to="/dashboard" className="st-app-link dashboard" title="Dashboard" onClick={() => this.setState({page : 'dashboard'})} ><Icon>person</Icon></StyledLink>
+        <StyledLink to="/courses" className="st-app-link my-courses" title="Courses" onClick={() => this.setState({page : 'courses'})} ><Icon>apps</Icon></StyledLink>
+        <StyledLink to="/downloads" className="st-app-link downloads" title="Downloads" onClick={() => this.setState({page : 'downloads'})} ><Icon>cloud_download</Icon></StyledLink>
+        <StyledLink to="/history" className="st-app-link history" title="Orders" onClick={() => this.setState({page : 'history'})} ><Icon>schedule</Icon></StyledLink>
+        <StyledLink to="/bookmarks" className="st-app-link bookmarked" title="Bookmarks" onClick={() => this.setState({page : 'bookmarks'})} ><Icon>bookmark</Icon></StyledLink>
+        <StyledLink to="/search" className="st-app-link search" title="Searh" onClick={() => this.setState({page : 'search'})} ><Icon>search</Icon></StyledLink>
+        <a className="st-app-link divider">&nbsp;</a>
+        <StyledLink to="/review" className="st-app-link rate-course" title="Review" onClick={() => this.setState({page : 'review'})} ><i className="material-icons">rate_review</i></StyledLink>
+        <StyledLink to="/feedback" className="st-app-link feedback" title="Feedback" onClick={() => this.setState({page : 'feedback'})} ><i className="material-icons">send</i></StyledLink>
+        <StyledLink to="/help" className="st-app-link help" title="Help" onClick={() => this.setState({page : 'help'})} ><i className="material-icons">help</i></StyledLink>
+        <a onClick={this.courseRefresh} className="st-app-link update" title="Refresh"><i className="material-icons">refresh</i></a>
+        <a onClick={this.logout} className="st-app-link logout" title="Logout"><i className="material-icons">exit_to_app</i></a>
+      </section>
       )
     }
 
@@ -255,27 +272,41 @@ class App extends React.Component {
 
   // Links and routes for individual videos
   setUpVids(vids, linkTo) {
-        let videos = []
-        for (let vid in vids) {
-          let vid = vids[vid]
-          let link = linkTo + '/' + vid.slug
-          let thumb = this.state.courseData.thumbUrls.plain.replace('||ID||', vid.thumb)
-          videos.push(
-            <div key={vid.slug}>
-              <Link to={link} onClick={() => this.updateStage(vid.ID)}> {vid.name}
-                <img src={thumb}/>
-              <div path={link} />
-             </Link>
+    let videos = []
+    for (let vid in vids) {
+      let vid = vids[vid]
+      let link = linkTo + '/' + vid.slug
+      let thumb = this.state.courseData.thumbUrls.plain.replace('||ID||', vid.thumb)
+      let ref = linkTo.slice(1).replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ').concat(' >')
+      let button
+      if (this.state.page == 'bookmarks') {
+        button = <a className="st-video-remover" onClick={() => console.log('remove this video from my bookmarks!')} ><i className="material-icons">highlight_off</i></a>
+      }
+      else if (this.state.page == 'history') {
+        button = <a className="st-video-remover" onClick={() => console.log('remove this video from my history!')} ><i className="material-icons">highlight_off</i></a>
+      }
+      videos.push(
+        <div key={vid.slug} className="st-video-card">
+          <StyledLink to={link} onClick={() => this.updateStage(vid.ID)}>
+            <div className="st-video-card">
+              <div>
+                  {button}
+                  <img src={thumb} className="z-depth-3"/>
+              </div>
+              <span className="st-video-card-title"> {ref} {vid.name}</span>
             </div>
-          )
-            }
-        return ( videos )
+          <div path={link} />
+         </StyledLink>
+        </div>
+        )
+      }
+    return ( videos )
     }
 
   // Updates the contents of the video stage, triggering a re-render
   updateStage(id) {
-      id = String(id)
-      this.setState({'stage' : id})
+    id = String(id)
+    this.setState({'stage' : id})
     }
 
   // Makes the video stage
@@ -321,7 +352,10 @@ class App extends React.Component {
         }
         else if ('videos' in sections[section]) {
           route = <Route path={link}
-          render={() => this.setUpVids(sections[section].videos, link)}/>
+          render={() => (
+            <div id='video-wrapper'>
+              {this.setUpVids(sections[section].videos, link)}
+            </div>)}/>
         }
         let click
         if ('intro' in sections[section]) {
@@ -329,7 +363,7 @@ class App extends React.Component {
         }
         renderedSections.push(
           <div key={section}>
-            <Link to={link} onClick={click} render={render}> {name} </Link>
+            <StyledLink to={link} onClick={click} render={render}> {name} </StyledLink>
             {route}
           </div>
           )
@@ -341,22 +375,27 @@ class App extends React.Component {
   // Calls the menu and the page components; menu has the links that these routes
   // pick up on, which determines whether or not they are rendered
   render() {
-    if (this.state !== null && this.state.auth) {
+    if (true) {
       if ( this.state.courseData !== null) {
         return (
           <BrowserRouter>
             <div>
-              <Link to="/">
-                <Logo/>
-              </Link>
                 <this.Menu/>
-                <Route path="/dashboard" component={this.Dashboard}/>
-                <Route path="/courses" component={this.Courses}/>
-                <Route path="/orders" component={this.Orders}/>
-                <Route path="/feedback" component={this.Feedback}/>
-                <Route path="/review" component={this.Review}/>
-                <Route path="/downloads" component={this.Downloads}/>
-                <Route path="/help" component={this.Help}/>
+                <section id="st-app">
+                  <StyledLink to="/" onClick={() => this.setState({page : 'home'})} >
+                    <Logo />
+                  </StyledLink>
+                  <section id="st-app-inner">
+                    <Route className="st-link" path="/dashboard" component={this.Dashboard}/>
+                    <Route className="st-link" path="/courses" component={this.Courses}/>
+                    <Route className="st-link" path="/history" component={this.History}/>
+                    <Route className="st-link" path="/feedback" component={this.Feedback}/>
+                    <Route className="st-link" path="/bookmarks" component={this.Bookmarks}/>
+                    <Route className="st-link" path="/review" component={this.Review}/>
+                    <Route className="st-link" path="/downloads" component={this.Downloads}/>
+                    <Route className="st-link" path="/help" component={this.Help}/>
+                  </section>
+                </section>
             </div>
           </BrowserRouter>
         )}
@@ -368,14 +407,15 @@ class App extends React.Component {
     else {
       // Eventually, this should redirect to www.supertutortv.com
       return (
-        <BrowserRouter>
-          <div>
-            <Link to="/">
-              <Logo/>
-            </Link>
-            <this.Login />
-          </div>
-        </BrowserRouter>
+        <section id="st-app">
+          <BrowserRouter>
+            <div>
+              <StyledLink to="/" onClick={() => this.setState({page : 'home'})} >
+              </StyledLink>
+              <this.Login />
+            </div>
+          </BrowserRouter>
+        </section>
         )}
       }
     }
