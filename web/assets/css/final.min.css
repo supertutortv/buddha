@@ -1,5 +1,8 @@
 html body {
+  margin-left: 0;
+  margin-top: 0;
   font-size: 24px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   color: rgba(0, 0, 0, 0.75);
   background-color: #f1f1f1;
   width: 100vw;
@@ -18,14 +21,17 @@ html body {
   left: 0;
   overflow: hidden;
   padding-left: 3em;
-  background-image: url("/assets/img/bgpattern-2.jpg");
+  background-image: url("http://courses.supertutortv.com/assets/img/bgpattern-2.jpg");
   background-size: cover;
   background-position: center;
   color: rgba(255, 255, 255, 0.85); }
+  #st-app a {
+    color: white; }
+    #st-app a:focus, #st-app a:hover, #st-app a:visited, #st-app a:link, #st-app a:active {
+      text-decoration: none; }
   #st-app header {
     color: rgba(0, 0, 0, 0.75);
     background-color: #f1f1f1;
-    width: 100%;
     height: 3em;
     padding: .75em 0 .75em 1em; }
     #st-app header #st-header-inner {
@@ -48,11 +54,24 @@ html body {
     position: relative;
     font-size: 16px;
     padding: 2em; }
+    #st-app #st-app-inner #sttv-course-player {
+      margin: auto; }
+    #st-app #st-app-inner #video-wrapper {
+      opacity: 100%;
+      width: 20em;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: 6.75em;
+      background-color: rgba(0, 0, 0, 0.75);
+      overflow-x: hidden;
+      padding-top: 20px; }
     #st-app #st-app-inner .st-video-card {
-      display: block;
       position: relative;
+      padding-bottom: 5%;
       width: 16em;
-      cursor: pointer; }
+      cursor: pointer;
+      margin: auto; }
       #st-app #st-app-inner .st-video-card:hover > div > .st-video-remover {
         opacity: 1; }
       #st-app #st-app-inner .st-video-card > div {
@@ -110,7 +129,7 @@ html body {
       padding-top: 0px;
       padding-bottom: 0px; }
     #st-sidebar a.st-app-link.logout {
-      position: absolute;
+      position: relative;
       bottom: 0;
       left: 0;
       right: 0; }

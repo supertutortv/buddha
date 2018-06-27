@@ -1,3 +1,5 @@
+$videowidth: 20em
+
 #st-app
     position: fixed
     top: 0
@@ -6,16 +8,20 @@
     left: 0
     overflow: hidden
     padding-left: $sidebarw
-    background-image: url('/assets/img/bgpattern-2.jpg')
+    background-image: url('http://courses.supertutortv.com/assets/img/bgpattern-1.jpg')
     background-size: cover
     background-position: center
     color: rgba(255,255,255,.85)
 
+    a
+      color: white
+      &:focus, &:hover, &:visited, &:link, &:active
+        text-decoration: none
+
     header
         color: $notblack
         background-color: $notwhite
-        width: 100%
-        height: $sidebarw
+        height: $sidebarw/2
         padding: .75em 0 .75em 1em
 
         #st-header-inner
@@ -32,7 +38,7 @@
                     display: block
                     height: 100%
                     width: auto
-            
+
             #st-header-view-title
                 padding-left: 1em
                 font-size: 1.5em
@@ -44,11 +50,26 @@
         font-size: $realEM
         padding: 2em
 
+        #sttv-course-player
+          margin: auto
+
+        #video-wrapper
+              opacity: 100%
+              width: $videowidth
+              position: fixed
+              bottom: 0
+              right: 0
+              top: $sidebarw*(3/2)
+              background-color: $notblack
+              overflow-x: hidden
+              padding-top: 20px
+
         .st-video-card
-            display: block
             position: relative
+            padding-bottom: 5%
             width: 16em
             cursor: pointer
+            margin: auto
 
             &:hover > div > .st-video-remover
                 opacity: 1
@@ -82,4 +103,3 @@
                 width: 100%
                 text-align: center
                 padding: .25em
-
