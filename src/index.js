@@ -2,18 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
 import {Icon} from 'react-materialize'
-
-// Header that goes at the top of the app
-const Logo = () => (
-        <header>
-            <div id="st-header-inner">
-              <div id="st-header-branding">
-                <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png" alt="SupertutorTV"/>
-              </div>
-              <div id="st-header-view-title">The Best ACT Prep Course Ever</div>
-            </div>
-        </header>
-    )
+import PropTypes from 'prop-types'
 
 const cleanup = (string) => (
   string.replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ')
@@ -24,7 +13,8 @@ class App extends React.Component {
   constructor() {
       super()
       this.verifyToken = this.verifyToken.bind(this)
-      this.state = {courses : {},
+      this.state = {courses : null,
+                    currentCourse: 'the-best-act-prep-course-ever',
                     stage: '-1',
                     user : '',
                     pw : '',
@@ -44,12 +34,12 @@ class App extends React.Component {
         void(0)
       }
       try {
-        const courses = JSON.parse(localStorage.getItem('course_data'))
-        if (courses !== null){
-          this.state.courses = courses
+        const data = JSON.parse(localStorage.getItem('data'))
+        if (data !== null){
+          this.state.courses = data.courses
+          this.state.user = data.user
         }
-        else{
-          this.state.loading = true
+        else {
           this.state.token = ''
           this.state.auth = false
         }
@@ -58,8 +48,10 @@ class App extends React.Component {
         void(0)
       }
       this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
+      this.Header = this.Header.bind(this)
       this.Dashboard = this.Dashboard.bind(this)
       this.History = this.History.bind(this)
+      this.Bookmarks = this.Bookmarks.bind(this)
       this.Feedback = this.Feedback.bind(this)
       this.Review = this.Review.bind(this)
       this.Downloads = this.Downloads.bind(this)
@@ -73,9 +65,33 @@ class App extends React.Component {
       this.makeStage = this.makeStage.bind(this)
       this.setUpSections = this.setUpSections.bind(this)
       this.Login = this.Login.bind(this)
-      this.getCourses = this.getCourses.bind(this)
+      this.getData = this.getData.bind(this)
       this.handleChange = this.handleChange.bind(this)
+      this.getVideoByUrl = this.getVideoByUrl.bind(this)
     }
+
+
+  // Header that goes at the top of the app
+  Header() {
+    const base = window.location.href.split('/').filter(String).splice(2)
+    let title
+    switch (base[0]) {
+      case 'courses':
+        title = this.state.currentCourse.replace(/-/g, ' ')
+        break
+      default:
+        title = cleanup(base.join('/'))
+      }
+    return (
+      <header>
+          <div id="st-header-inner">
+            <div id="st-header-branding">
+              <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png" alt="SupertutorTV"/>
+            </div>
+            <div id="st-header-view-title">{title}</div>
+          </div>
+      </header>
+    )}
 
   // Renders the dashboard page
   Dashboard() {
@@ -85,10 +101,46 @@ class App extends React.Component {
     }
 
   History() {
-    return (
-      <div>Welcome to the History Page</div>
+    // Should be able to run setUpVids on this when the data is real
+    let history = []
+    for (let item in this.state.user.history) {
+      history.push(
+        <div key={item}>
+          {String((this.getVideoByUrl(this.state.user.history[item].data.url)))}
+        </div>
       )
     }
+    return (
+      <div>Your History:
+      {history}
+      </div>
+      )
+    }
+
+  getVideoByUrl(url) {
+    const lookup = url.split('/').filter(String)
+    let obj = this.state.courses
+    while (true) {
+      if (lookup == []){
+        return obj
+      }
+      else if (lookup[0] in obj) {
+        obj = obj[lookup.shift()]
+      }
+      else if ('sections' in obj) {
+        obj = obj['sections']
+      }
+      else if ('subsec' in obj) {
+        obj = obj['subsec']
+      }
+      else if ('videos' in obj) {
+        obj = obj['videos']
+      }
+      else {
+        return obj
+      }
+    }
+  }
 
   Feedback() {
       return (
@@ -169,10 +221,31 @@ class App extends React.Component {
     }
 
   Bookmarks() {
+    let bookmarks = []
+    for (let item in this.state.user.bookmarks) {
+      let url = this.state.user.bookmarks[item].data.url
+      let vid = this.getVideoByUrl(url)
+      let thumb = this.state.courses[this.state.currentCourse].thumbUrls.plain.replace('||ID||', vid.thumb)
+      bookmarks.push(
+        <div key={vid.slug} className="st-video-card">
+          <Link to={url} onClick={() => this.updateStage(vid.ID)}>
+            <div className="st-video-card">
+              <div>
+                  <div className="st-video-remover" onClick={() => console.log('remove this video!')} ><i className="material-icons">highlight_off</i></div>
+                  <img src={thumb} className="z-depth-3"/>
+              </div>
+              <span className="st-video-card-title"> {cleanup(url.slice(1))} </span>
+            </div>
+          </Link>
+        </div>
+      )
+    }
     return (
-      <div>Welcome to the Bookmarks Page</div>
-    )
-  }
+      <div>Your Bookmarks:
+        {bookmarks}
+      </div>
+      )
+    }
 
   Help() {
       return (
@@ -202,12 +275,13 @@ class App extends React.Component {
   // Clears localstorage and calls the API; triggers a re-render with this.setState
   courseRefresh() {
       if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
-        localStorage.removeItem('course_data')
-        this.getCourses()
+        localStorage.removeItem('data')
+        this.getData()
       }
     }
 
-  getCourses() {
+  getData() {
+    this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/courses/data', {
       headers: {
         'Authorization': 'Bearer ' + this.state.token,
@@ -216,24 +290,31 @@ class App extends React.Component {
       })
     .then( result => result.json())
     .catch(error => {
-      console.log(error)})
+      console.log(error)
+      this.setState({
+        loading: false,
+        flag: 'Error getting course data'
+      })})
     .then( items => {
-      if (items.code == 'user_course_data_success'){
-      localStorage.setItem('course_data', JSON.stringify(items.data.courses))
-      this.setState({courses : items.data.courses, loading: false})
-      }
-    })
+      localStorage.setItem('sttv_data', JSON.stringify(items.data))
+      this.setState({
+        courses : items.data.courses,
+        loading: false,
+        user : items.data.user
+       })
+      })
   }
 
   logout() {
       localStorage.removeItem('sttv_token')
-      localStorage.removeItem('course_data')
-      this.setState({token : '',
-                     user : '',
+      localStorage.removeItem('data')
+      this.setState({auth : false,
                      courses : {},
-                     pw : '',
                      flag : 'You have successfully logged out',
-                     auth : false})
+                     pw : '',
+                     token : '',
+                     user : ''
+                   })
   }
 
   // This is a placeholder and will likely stay that way; real authentication
@@ -278,25 +359,40 @@ class App extends React.Component {
       headers: {
         'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json',
-      }
+        }
       })
       .then( result => result.json())
       .catch(error => {
         console.log(error)
         localStorage.removeItem('sttv_token')
-        this.setState({token: '', course_data: {}, auth: false, flag: 'Unauthorized login request', loading: false})})
+        this.setState({
+          auth: false,
+          data: {},
+          flag: 'Your session has expired. Please log in again.',
+          loading: false,
+          token: ''
+        })
+      })
       .then( items => {
         if (items.code == 'rate_limit_exceeded'){
-          this.setState({'flag': 'Too many login attempts. Please try again later', auth: false, loading: false})
+          this.setState({
+            auth: false,
+            flag: 'Unauthorized login request. This may be due to a high volume of requests from your location.',
+            loading: false
+          })
         }
         else if (items.code != 'token_verified') {
-          localStorage.removeItem('course_data')
+          localStorage.removeItem('data')
           localStorage.removeItem('sttv_token')
-          this.setState({auth: false, course_data: {}, loading: false})
+          this.setState({
+            auth: false,
+            data: {},
+            loading: false
+          })
         }
         else {
-          this.setState({token: token, auth: true})
-          this.getCourses()
+          this.setState({auth: true, token: items.token})
+          this.getData()
         }
       })
     }
@@ -321,47 +417,36 @@ class App extends React.Component {
 
   // Wrapper for the stage and the recursive rendering function
   Courses() {
-    const courses = [<Route exact path='/courses' component={() => <h3>Your Courses:</h3>} key='your_courses'></Route>]
-    for (let course in this.state.courses) {
-      let link = '/courses/' + course
-      courses.push(
-        <div key={course}>
-          <Route exact path={'/courses/'} component={() => <Link to={link}>{cleanup(course)}</Link>}>
-          </Route>
-          <Route path={'/courses/' + course} component={() => <h3>{cleanup(course)}</h3>}>
-          </Route>
-          <Route path={link} render={() => this.setUpSections(this.state.courses[course].sections, link, this.state.courses[course].thumbUrls.plain, false)} />
-        </div>
-        )
-      }
+    if (this.state.courses == null && this.state.auth & !this.state.flag){
+      console.log(this.state.courses)
+      // This is currently dangerous
+      this.getData()
+    }
+    let link = '/courses/' + this.state.currentCourse
     return (
       <div>
         {this.makeStage()}
-        {courses}
+        {this.setUpSections(this.state.courses[this.state.currentCourse].sections, link, this.state.courses[this.state.currentCourse].thumbUrls.plain, 0)}
       </div>)
     }
 
   // Links and routes for individual videos
-  setUpVids(vids, linkTo, thumbUrl, deletable) {
+  setUpVids(vids, linkTo, thumbUrl) {
     let videos = []
     for (let vid in vids) {
-      let vid = vids[vid]
-      let link = linkTo + '/' + vid.slug
-      let thumb = thumbUrl.replace('||ID||', vid.thumb)
+      let video = vids[vid]
+      console.log(video)
+      let link = linkTo + '/' + video.slug
+      let thumb = thumbUrl.replace('||ID||', video.thumb)
       let ref = cleanup(linkTo.slice(1)).concat(' >')
-      let button
-      if (deletable){
-        button = <a className="st-video-remover" onClick={() => console.log('remove this video!')} ><i className="material-icons">highlight_off</i></a>
-      }
       videos.push(
-        <div key={vid.slug} className="st-video-card">
-          <Link to={link} onClick={() => this.updateStage(vid.ID)}>
+        <div key={video.slug} className="st-video-card">
+          <Link to={link} onClick={() => this.updateStage(video.ID)}>
             <div className="st-video-card">
               <div>
-                  {button}
                   <img src={thumb} className="z-depth-3"/>
               </div>
-              <span className="st-video-card-title"> {ref} {vid.name}</span>
+              <span className="st-video-card-title"> {ref} {video.name}</span>
             </div>
           </Link>
           <div path={link} />
@@ -399,7 +484,7 @@ class App extends React.Component {
 
   // Function that recursively generates the routes and links for sections
   // until it gets to a video folder
-  setUpSections(sections, topLink, thumb, spacing, deletable) {
+  setUpSections(sections, topLink, thumb, spacing) {
     let renderedSections = []
     for (let section in sections) {
       if (section !== 'type') {
@@ -414,18 +499,21 @@ class App extends React.Component {
         let route
         let render
         if ('subsec' in sections[section]) {
-          route = <Route path={link}
-          render={() => this.setUpSections(sections[section].subsec, link,  thumb, spacing+1, deletable)}/>
+          route =
+          <div>
+            <Route path={link} />
+            {this.setUpSections(sections[section].subsec, link,  thumb, spacing+1)}
+          </div>
         }
         else if ('subjects' in sections[section]) {
           route = <Route path={link}
-          render={() => this.setUpSections(sections[section].subjects, link, thumb, spacing+1, deletable)}/>
+          render={() => this.setUpSections(sections[section].subjects, link, thumb, spacing+1)}/>
         }
         else if ('videos' in sections[section]) {
           route = <Route path={link}
           render={() => (
             <div id='video-wrapper'>
-              {this.setUpVids(sections[section].videos, link, thumb, deletable)}
+              {this.setUpVids(sections[section].videos, link, thumb)}
             </div>)}/>
         }
         let click
@@ -452,9 +540,7 @@ class App extends React.Component {
           <div>
               <this.Menu/>
               <section id="st-app">
-                <Link to="/dashboard" >
-                  <Logo />
-                </Link>
+                <Route path="/" component={this.Header}/>
                 <section id="st-app-inner">
                   <Switch>
                     <Route className="st-link" path="/dashboard" component={this.Dashboard}/>
