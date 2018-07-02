@@ -37,19 +37,31 @@ class App extends React.Component {
                     auth : false}
       try {
         const token = JSON.parse(localStorage.getItem('sttv_token'))
-        if (token !== null){
+        if (token !== null) {
           this.state.loading = true
           this.verifyToken(JSON.parse(localStorage.getItem('sttv_token')))
         }
       }
-      catch (e) {
+      catch ( e ) {
         void(0)
       }
       try {
-        const data = JSON.parse(localStorage.getItem('sttv_data'))
-        if (data !== null) {
+        const data = JSON.parse( localStorage.getItem( 'sttv_data' ) )
+        if ( data !== null ) {
           this.state.courseData = data.courses
           this.state.userData = data.user
+          // Dummy data until the endpoint is set up. Requires page reload after
+          // fresh request.
+          this.state.userData.personal = {
+            'firstName' : 'Arthur',
+            'lastName' : 'Dent'
+          }
+          this.state.userData.settings = {
+            'autoplay' : false,
+            'darkMode' : false,
+            'defaultCourse': 'the-best-act-prep-course-ever'
+          }
+          this.state.currentCourse = this.state.userData.settings.defaultCourse
           this.state.stage = String(data.courses[this.state.currentCourse].intro)
         }
         else {
@@ -60,7 +72,6 @@ class App extends React.Component {
       catch (e) {
         void(0)
       }
-      console.log(this.state)
       this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
       this.Header = this.Header.bind(this)
       this.Dashboard = this.Dashboard.bind(this)
@@ -81,13 +92,41 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this)
       this.getVideoByUrl = this.getVideoByUrl.bind(this)
       this.Search = this.Search.bind(this)
+      this.updateSettings = this.updateSettings.bind(this)
     }
+
+  updateSettings(setting) {
+    console.log('updating settings')
+    this.setState({loading: true})
+    fetch('https://api.supertutortv.com/v2/courses/data/settings', {
+      method : 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + this.state.token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(setting)
+      })
+    .then(response => this.handleResponse(response))
+    .then( items => {
+      if (items !== null) {
+        localStorage.setItem('sttv_data', JSON.stringify(items.data))
+        this.setState(setting)
+        this.setState({loading : false})
+       }
+      })
+    .catch(error => {
+      console.log(error)
+      this.setState({
+        loading: false,
+        flag : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
+      })})
+  }
 
 
   // Header that goes at the top of the app
   Header() {
     const base = window.location.href.split('/').filter(String).splice(2)
-    return (
+    return(
       <header>
           <div id="st-header-inner">
             <div id="st-header-branding">
@@ -112,8 +151,50 @@ class App extends React.Component {
 
   // Renders the dashboard page
   Dashboard() {
-    return (
-      <div>Welcome to the Dashboard</div>
+    let greeting
+    if (this.state.userData.personal.firstName !== null) {
+      greeting = <h3> Welcome to the Dashboard, {this.state.userData.personal.firstName} </h3>
+    }
+    else {
+      greeting = <h3> We're having trouble fetching your SupertutorTV profile. Try refreshing the course data, or,
+      if the problem persists, contact a STTV technician.</h3>
+    }
+    let courses = []
+    for (let course in this.state.courseData) {
+      courses.push(
+        <div>
+          {cleanup(course)}
+          <input key={course} type='checkbox' value={course} disabled={this.state.currentCourse===course}
+            selected={this.state.currentCourse === course}
+            onClick={() => this.updateSettings({currentCourse : course})}></input>
+        </div>
+
+      )
+    }
+    return(
+        <div>
+          {greeting}
+          <div>
+            Settings:
+            <div>
+              Your courses:
+              {courses}
+            </div>
+            <div>
+              Dark Mode:
+              <input type='checkbox' label='Dark Mode' selected={this.state.userData.settings.darkMode}
+                onClick={() => this.updateSettings({darkMode: !this.state.userData.settings.darkMode})}>
+              </input>
+            </div>
+            <div>
+              Autoplay:
+              <input type='checkbox' selected={this.state.userData.settings.autoPlay}
+                onClick={() => this.updateSettings({autoPlay: !this.state.userData.settings.autoPlay})}>
+              </input>
+            </div>
+            {this.state.flag}
+          </div>
+        </div>
       )
     }
 
@@ -138,7 +219,7 @@ class App extends React.Component {
         </div>
       )
     }
-    return (
+    return(
       <div className='video-grid'>
         {vids}
       </div>
@@ -150,7 +231,6 @@ class App extends React.Component {
       for (let item in this.state.userData.bookmarks) {
         let url = this.state.userData.bookmarks[item].data.url
         let vid = this.getVideoByUrl(url)
-        console.log(vid)
         let thumb = this.state.courseData[this.state.currentCourse].thumbUrls.plain.replace('||ID||', vid.thumb)
         bookmarks.push(
           <div key={vid.slug} className="video-in-grid">
@@ -166,7 +246,7 @@ class App extends React.Component {
           </div>
         )
       }
-      return (
+      return(
         <div className="video-grid">
           {bookmarks}
         </div>
@@ -177,8 +257,8 @@ class App extends React.Component {
     const lookup = url.split('/').filter(String)
     let obj = this.state.courseData
     while (true) {
-      if (lookup == []){
-        return obj
+      if (lookup == []) {
+        return(obj)
       }
       else if (lookup[0] in obj) {
         obj = obj[lookup.shift()]
@@ -196,13 +276,13 @@ class App extends React.Component {
         obj = obj['subjects']
       }
       else {
-        return obj
+        return( obj )
       }
     }
   }
 
   Feedback() {
-      return (
+      return(
         <div id="course-feedback">
           <h2 className="header center-align">Feedback</h2>
           <div className="col s12 center-align">
@@ -231,7 +311,7 @@ class App extends React.Component {
     }
 
   Review() {
-    return (
+    return(
       <div id="ratings-modal-wrapper">
       	<header className="header center-align">
       		<h2>Rate this course</h2>
@@ -274,19 +354,19 @@ class App extends React.Component {
     }
 
   Downloads() {
-      return (
+      return(
         <div>Welcome to the Downloads Page</div>
       )
     }
 
   Help() {
-      return (
+      return(
         <div>Welcome to the Help Page</div>
       )
     }
 
   Menu() {
-    return (
+    return(
       <section id="st-sidebar">
         <Link to="/dashboard" className="st-app-link dashboard" title="Dashboard" ><Icon>person</Icon></Link>
         <Link to={this.state.currentCourse} className="st-app-link my-courses" title="Courses"  onClick={() => this.updateStage(this.state.courseData[this.state.currentCourse].intro)} ><Icon>apps</Icon></Link>
@@ -314,10 +394,10 @@ class App extends React.Component {
 
   handleResponse(response) {
     if (response.ok) {
-      return response.json()
+      return(response.json())
     }
     else {
-      if (response.status == 403){
+      if (response.status == 403) {
         this.setState({
           auth: false,
           loading: false,
@@ -326,7 +406,7 @@ class App extends React.Component {
           password : ''
         })
       }
-      else if (response.status == 429){
+      else if (response.status == 429) {
         this.setState({
           auth: false,
           loading: false,
@@ -390,7 +470,7 @@ class App extends React.Component {
       })
     .then(response => this.handleResponse(response))
     .then( items => {
-      if (items !== null){
+      if (items !== null) {
         localStorage.setItem('sttv_data', JSON.stringify(items.data))
         this.setState({
           courseData : items.data.courses,
@@ -398,13 +478,14 @@ class App extends React.Component {
           userData : items.data.user,
           stage : items.data.courses[this.state.currentCourse].intro
          })
-       }
-      })
+      }
+      console.log(this.state)
+    })
     .catch(error => {
       console.log(error)
       this.setState({
         loading: false,
-        flag : 'There was an error fetching your course data. You can check your network connection and try again, refresh your courses, or simply accept your fate. We\'d really prefer not to get any emails about this.'
+        flag : 'There was an error fetching your course data. Please check your network connection and try again.'
       })})
   }
 
@@ -435,10 +516,10 @@ class App extends React.Component {
     })
     .then( response => this.handleResponse(response))
     .then( items => {
-      if (items !== null){
-        if (items.code == 'login_success'){
+      if (items !== null) {
+        if (items.code == 'login_success') {
           localStorage.setItem('sttv_token', JSON.stringify(items.token))
-          this.setState({token : items.token, loading: false, auth: true, username: '', password : ''})
+          this.setState({token : items.token, auth: true, username: '', password : ''})
           this.getData()
         }
         else {
@@ -469,12 +550,14 @@ class App extends React.Component {
       })
       .then( response => this.handleResponse(response))
       .then( items => {
-        if ( items !== null ){
-          this.setState({auth: true, token: items.token})
+        if ( items !== null) {
+          this.setState({auth: true, token: items.token, loading: false})
+        }
+        if (this.state.courseData == null) {
+          this.getData()
         }
       })
       .catch(error => {
-        console.log(error)
         this.setState({
           flag: 'Unable to authenticate your session. Please check your network connection and try again.',
           loading: false
@@ -483,7 +566,7 @@ class App extends React.Component {
     }
 
   Login() {
-    return (
+    return(
       <div id="sttv_login_form" type="POST">
   		<p className="message"></p>
   		<div className="row">
@@ -497,25 +580,22 @@ class App extends React.Component {
   			</div>
   		</div>
   		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.getToken()}>Login</button>
-      </div>
-    )}
+      </div> )}
 
   // Wrapper for the stage and the recursive rendering function
   Courses() {
-    console.log(this.state)
     let link = '/' + this.state.currentCourse
     let course = this.state.courseData[this.state.currentCourse]
-    return (
+    return(
       <div>
         {this.makeStage(course.intro)}
         {this.setUpSections(course.sections, link, course.thumbUrls.plain, 0)}
-      </div>)
+      </div> )
     }
 
     // Function that recursively generates the routes and links for sections
     // until it gets to a video folder
     setUpSections(sections, topLink, thumb, spacing) {
-      console.log(topLink)
       let renderedSections = []
       for (let section in sections) {
         if (section !== 'type') {
@@ -556,7 +636,7 @@ class App extends React.Component {
             )
           }
         }
-        return ( renderedSections )
+        return renderedSections
       }
 
   // Links and routes for individual videos
@@ -581,7 +661,7 @@ class App extends React.Component {
         </div>
         )
       }
-    return ( videos )
+    return videos
     }
 
   // Updates the contents of the video stage, triggering a re-render
@@ -594,7 +674,7 @@ class App extends React.Component {
   makeStage() {
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courseData[this.state.currentCourse].intro
     const link = this.vimeoLink.replace('||ID||', this.state.stage)
-    return (
+    return(
       <div>
         <iframe className="sttv-course-player"
           key='stage'
@@ -609,18 +689,36 @@ class App extends React.Component {
   // Calls the menu and the page components; menu has the links that these routes
   // pick up on, which determines whether or not they are rendered
   render() {
-    if (this.state.auth) {
+    if (this.state.loading) {
+      return 'Loading'
+    }
+    else if (!this.state.auth) {
+      const message = <span>{this.state.flag}</span>
+      return(
+        <section id="st-app">
+          <BrowserRouter>
+            <div>
+              <Switch>
+                <Route path="/login" component={this.Login}/>
+                <Redirect push to="/login"/>
+              </Switch>
+              {message}
+            </div>
+          </BrowserRouter>
+        </section>
+      )}
+    else {
       let courses = []
-      for (let course in this.state.courseData){
+      for (let course in this.state.courseData) {
         courses.push(
           <Route key={course} className="st-link" path={'/' + course} component={this.Courses}/>
         )
       }
       let search
-      if (this.state.search){
+      if (this.state.search) {
         search = <this.Search />
       }
-      return (
+      return(
         <BrowserRouter>
           <div>
               <this.Menu/>
@@ -646,24 +744,6 @@ class App extends React.Component {
           </div>
         </BrowserRouter>
       )}
-    else if (!this.state.loading) {
-      const message = <span>{this.state.flag}</span>
-      return (
-        <section id="st-app">
-          <BrowserRouter>
-            <div>
-              <Switch>
-                <Route path="/login" component={this.Login}/>
-                <Redirect push to="/login"/>
-              </Switch>
-              {message}
-            </div>
-          </BrowserRouter>
-        </section>
-      )}
-    else {
-      return ('Loading')
-    }
       }
     }
 
