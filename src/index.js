@@ -367,7 +367,7 @@ class App extends React.Component {
     return(
       <section id="st-sidebar">
         <Link to="/dashboard" className="st-app-link dashboard" title="Dashboard" ><Icon>person</Icon></Link>
-        <Link to={this.state.currentCourse} className="st-app-link my-courses" title="Courses"  onClick={() => this.updateStage(this.state.courseData[this.state.currentCourse].intro)} ><Icon>apps</Icon></Link>
+        <Link to={'/' + this.state.currentCourse} className="st-app-link my-courses" title="Courses"  onClick={() => this.updateStage(this.state.courseData[this.state.currentCourse].intro)} ><Icon>apps</Icon></Link>
         <Link to="/downloads" className="st-app-link downloads" title="Downloads" ><Icon>cloud_download</Icon></Link>
         <Link to="/history" className="st-app-link history" title="Orders" ><Icon>schedule</Icon></Link>
         <Link to="/bookmarks" className="st-app-link bookmarked" title="Bookmarks" ><Icon>bookmark</Icon></Link>
@@ -538,7 +538,6 @@ class App extends React.Component {
     })
   }
 
-
     verifyToken(token) {
       fetch('https://api.supertutortv.com/v2/auth/token/verify', {
       method: 'POST',
@@ -670,6 +669,15 @@ class App extends React.Component {
 
   // Makes the video stage
   makeStage() {
+    if (this.state.stage == -1) {
+      return(
+        <div>
+          <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
+              <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
+          </div>
+          <h3>{cleanup(window.location.href.split('/').filter(String).splice(2).join('/'))}</h3>
+        </div>
+      )}
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courseData[this.state.currentCourse].intro
     const link = this.vimeoLink.replace('||ID||', this.state.stage)
     return(
