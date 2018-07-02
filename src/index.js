@@ -28,6 +28,8 @@ class App extends React.Component {
                     currentCourse: 'the-best-act-prep-course-ever',
                     username : '',
                     password : '',
+                    darkMode : true,
+                    autoPlay : true,
                     token : '',
                     query: '',
                     flag : '',
@@ -46,7 +48,7 @@ class App extends React.Component {
         void(0)
       }
       try {
-        const data = JSON.parse( localStorage.getItem( 'sttv_data' ) )
+        const data = JSON.parse(localStorage.getItem('sttv_data'))
         if ( data !== null ) {
           this.state.courseData = data.courses
           this.state.userData = data.user
@@ -56,12 +58,6 @@ class App extends React.Component {
             'firstName' : 'Arthur',
             'lastName' : 'Dent'
           }
-          this.state.userData.settings = {
-            'autoplay' : false,
-            'darkMode' : false,
-            'defaultCourse': 'the-best-act-prep-course-ever'
-          }
-          this.state.currentCourse = this.state.userData.settings.defaultCourse
           this.state.stage = String(data.courses[this.state.currentCourse].intro)
         }
         else {
@@ -92,14 +88,14 @@ class App extends React.Component {
       this.handleChange = this.handleChange.bind(this)
       this.getVideoByUrl = this.getVideoByUrl.bind(this)
       this.Search = this.Search.bind(this)
-      this.updateSettings = this.updateSettings.bind(this)
+      this.settingsHandler = this.settingsHandler.bind(this)
     }
 
-  updateSettings(setting) {
-    console.log('updating settings')
-    this.setState({loading: true})
+  settingsHandler( {target} ) {
+    const setting = {[target.name]: target.checked}
     fetch('https://api.supertutortv.com/v2/courses/data/settings', {
       method : 'PUT',
+      accept: 'application/vnd.sttv.app+json',
       headers: {
         'Authorization': 'Bearer ' + this.state.token,
         'Content-Type': 'application/json'
@@ -109,9 +105,7 @@ class App extends React.Component {
     .then(response => this.handleResponse(response))
     .then( items => {
       if (items !== null) {
-        localStorage.setItem('sttv_data', JSON.stringify(items.data))
-        this.setState(setting)
-        this.setState({loading : false})
+      this.setState(setting)
        }
       })
     .catch(error => {
@@ -162,11 +156,11 @@ class App extends React.Component {
     let courses = []
     for (let course in this.state.courseData) {
       courses.push(
-        <div>
+        <div key={course}>
           {cleanup(course)}
-          <input key={course} type='checkbox' value={course} disabled={this.state.currentCourse===course}
-            selected={this.state.currentCourse === course}
-            onClick={() => this.updateSettings({currentCourse : course})}></input>
+          <input type='checkbox' name='currentCourse' value={course} disabled={this.state.currentCourse===course}
+            checked={this.state.currentCourse === course}
+            onClick={this.settingsHandler}></input>
         </div>
 
       )
@@ -175,21 +169,25 @@ class App extends React.Component {
         <div>
           {greeting}
           <div>
-            Settings:
+            <h1>
+              Settings:
+            </h1>
             <div>
               Your courses:
               {courses}
             </div>
+            <br/>
             <div>
               Dark Mode:
-              <input type='checkbox' label='Dark Mode' selected={this.state.userData.settings.darkMode}
-                onClick={() => this.updateSettings({darkMode: !this.state.userData.settings.darkMode})}>
+              <input type='checkbox' label='Dark Mode' name='darkMode' checked={this.state.darkMode}
+                onChange={this.settingsHandler}>
               </input>
             </div>
+            <br/>
             <div>
               Autoplay:
-              <input type='checkbox' selected={this.state.userData.settings.autoPlay}
-                onClick={() => this.updateSettings({autoPlay: !this.state.userData.settings.autoPlay})}>
+              <input type='checkbox' label='Autoplay' name='autoPlay' checked={this.state.autoPlay}
+                onChange={this.settingsHandler}>
               </input>
             </div>
             {this.state.flag}
@@ -350,7 +348,7 @@ class App extends React.Component {
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value
-      });
+      })
     }
 
   Downloads() {
@@ -505,6 +503,7 @@ class App extends React.Component {
     this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/auth/token', {
     method: 'POST',
+    accept: 'application/vnd.sttv.app+json',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -543,6 +542,7 @@ class App extends React.Component {
     verifyToken(token) {
       fetch('https://api.supertutortv.com/v2/auth/token/verify', {
       method: 'POST',
+      accept: 'application/vnd.sttv.app+json',
       headers: {
         'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json',
@@ -551,10 +551,8 @@ class App extends React.Component {
       .then( response => this.handleResponse(response))
       .then( items => {
         if ( items !== null) {
-          this.setState({auth: true, token: items.token, loading: false})
-        }
-        if (this.state.courseData == null) {
-          this.getData()
+          this.setState({auth: true, token: token, loading: false})
+          console.log(this.state)
         }
       })
       .catch(error => {
