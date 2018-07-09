@@ -17,8 +17,8 @@ const Four04 = () => (
 
 // Class that controls the state and rendered components of the app
 class App extends React.Component {
-  constructor() {
-      super()
+  constructor(props) {
+      super(props)
       this.verifyToken = this.verifyToken.bind(this)
       this.getData = this.getData.bind(this)
       this.Login = this.Login.bind(this)
@@ -81,15 +81,28 @@ class App extends React.Component {
       this.Courses = this.Courses.bind(this)
       this.courseRefresh = this.courseRefresh.bind(this)
       this.logout = this.logout.bind(this)
-      this.setUpVids = this.setUpVids.bind(this)
+      this.Videos = this.Videos.bind(this)
       this.updateStage = this.updateStage.bind(this)
       this.makeStage = this.makeStage.bind(this)
-      this.setUpSections = this.setUpSections.bind(this)
+      this.Section = this.Section.bind(this)
       this.handleChange = this.handleChange.bind(this)
       this.getVideoByUrl = this.getVideoByUrl.bind(this)
       this.Search = this.Search.bind(this)
       this.settingsHandler = this.settingsHandler.bind(this)
     }
+
+  componentDidUpdate(nextProps, nextState) {
+    const nextParent = this.props.location.pathname.split('/').filter(String)
+    nextParent.pop()
+    const newDir = this.getVideoByUrl(nextParent.join('/'))
+    let thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
+    if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection !== nextState.vids){
+      this.setState({vids : newDir.collection, vidLink: nextProps.location.pathname, thumb: thumb})
+    }
+    else if (nextState.vids == null && this.state.courseData.history != null) {
+      this.setState({vids: this.state.courseData.history, thumb: thumb})
+    }
+  }
 
   settingsHandler( {target} ) {
     const setting = {[target.name]: target.checked}
@@ -118,8 +131,8 @@ class App extends React.Component {
 
 
   // Header that goes at the top of the app
-  Header() {
-    const base = window.location.href.split('/').filter(String).splice(2)
+  Header(props) {
+    const base = props.location.pathname.split('/').filter(String)
     return(
       <header>
           <div id="st-header-inner">
@@ -144,7 +157,7 @@ class App extends React.Component {
     )}
 
   // Renders the dashboard page
-  Dashboard() {
+  Dashboard(props) {
     let greeting
     if (this.state.userData.personal.firstName !== null) {
       greeting = <h3> Welcome to the Dashboard, {this.state.userData.personal.firstName} </h3>
@@ -196,17 +209,16 @@ class App extends React.Component {
       )
     }
 
-  History() {
+  History(props) {
     let vids = []
     const history = this.state.userData.history
-    const thumbURL = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
     for (let item in history) {
       let url = history[item].data.url
       let vid = this.getVideoByUrl(url)
-      let thumb = thumbURL.replace('||ID||', vid.thumb)
+      let thumb = this.state.thumb.replace('||ID||', vid.thumb)
       vids.push(
         <div key={vid.slug} className="video-in-grid">
-          <Link to={url} onClick={() => this.updateStage(vid.id)}>
+          <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
             <div >
               <div>
                   <img className="grid-thumb" src={thumb} className="z-depth-3"/>
@@ -224,33 +236,32 @@ class App extends React.Component {
       )
     }
 
-    Bookmarks() {
-      let bookmarks = []
-      for (let item in this.state.userData.bookmarks) {
-        let url = this.state.userData.bookmarks[item].data.url
-        let vid = this.getVideoByUrl(url)
-        console.log(vid)
-        let thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain.replace('||ID||', vid.thumb)
-        bookmarks.push(
-          <div key={vid.slug} className="video-in-grid">
-            <Link to={url} onClick={() => this.updateStage(vid.id)}>
-              <div >
-                <div>
-                    <div className="st-video-remover" onClick={() => console.log('remove this video from history!')} ><i className="material-icons">highlight_off</i></div>
-                    <img className="grid-thumb" src={thumb} className="z-depth-3"/>
-                </div>
-                <span className="video-grid-title"> {cleanup(url.slice(1))} </span>
+  Bookmarks(props) {
+    let bookmarks = []
+    for (let item in this.state.userData.bookmarks) {
+      let url = this.state.userData.bookmarks[item].data.url
+      let vid = this.getVideoByUrl(url)
+      let thumb = this.state.thumb.replace('||ID||', vid.thumb)
+      bookmarks.push(
+        <div key={vid.slug} className="video-in-grid">
+          <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
+            <div >
+              <div>
+                  <div className="st-video-remover" onClick={() => console.log('remove this video from history!')} ><i className="material-icons">highlight_off</i></div>
+                  <img className="grid-thumb" src={thumb} className="z-depth-3"/>
               </div>
-            </Link>
-          </div>
-        )
-      }
-      return(
-        <div className="video-grid">
-          {bookmarks}
+              <span className="video-grid-title"> {cleanup(url.slice(1))} </span>
+            </div>
+          </Link>
         </div>
-        )
-      }
+      )
+    }
+    return(
+      <div className="video-grid">
+        {bookmarks}
+      </div>
+      )
+    }
 
   getVideoByUrl(url) {
     const lookup = url.split('/').filter(String)
@@ -271,7 +282,7 @@ class App extends React.Component {
     }
   }
 
-  Feedback() {
+  Feedback(props) {
       return(
         <div id="course-feedback">
           <h2 className="header center-align">Feedback</h2>
@@ -300,7 +311,7 @@ class App extends React.Component {
       )
     }
 
-  Review() {
+  Review(props) {
     return(
       <div id="ratings-modal-wrapper">
       	<header className="header center-align">
@@ -343,20 +354,20 @@ class App extends React.Component {
       })
     }
 
-  Downloads() {
+  Downloads(props) {
       return(
         <div>Welcome to the Downloads Page</div>
       )
     }
 
-  Help() {
+  Help(props) {
       return(
         <div>Welcome to the Help Page</div>
       )
     }
 
-  Menu() {
-    const root = window.location.href.split('/').filter(String).splice(2, 1).join('/')
+  Menu(props) {
+    const root = props.location.pathname.split('/').filter(String)[0]
     return(
       <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}}>
         <Link to="/dashboard" className={root == "dashboard" && !this.state.search ? "st-link-active" : "st-app-link"} title="Dashboard" ><Icon>person</Icon></Link>
@@ -418,7 +429,7 @@ class App extends React.Component {
       for (let item in results) {
         let url = results[item].data.url
         let vid = this.getVideoByUrl(url)
-        let thumb = thumbURL.replace('||ID||', vid.thumb)
+        let thumb = this.state.thumb.replace('||ID||', vid.thumb)
       vids.push(
         <div key={vid.slug}>
           <Link to={url} onClick={() => this.updateStage(vid.id)}>
@@ -571,73 +582,88 @@ class App extends React.Component {
       </div> )}
 
   // Wrapper for the stage and the recursive rendering function
-  Courses() {
+  Courses(props) {
     let link = '/' + this.state.currentCourse
     let course = this.state.courseData[this.state.currentCourse]
     return(
       <div>
-        {this.makeStage(course.intro)}
+        {this.makeStage(props.location.pathname)}
         <div className="sttv-sections">
-          {this.setUpSections(course.collection, link, course.data.thumbUrls.plain, 0)}
+          <this.Section collection={course.collection} link={link} spacing={0}/>
         </div>
-      </div> )
+        <div id="video-wrapper">
+          <this.Videos vids={this.state.vids} link={this.state.vidLink} />
+        </div>
+      </div>)
     }
 
     // Function that recursively generates the routes and links for collections
     // until it gets to a video folder
-    setUpSections(collection, topLink, thumb, spacing) {
-      let renderedSections = []
-      for (let section in collection) {
-        let currentSection = collection[section]
-        const name = currentSection.data.name
-        let link = topLink + '/' + section
-        let route
-        let render
-        if (currentSection.data.type == 'collection') {
-          route = <Route path={link}
-            render={() => this.setUpSections(currentSection.collection, link,  thumb, spacing+1)}/>
-        }
-        else {
-          route = <Route path={link}
-          render={() => (
-            <div id='video-wrapper'>
-              {this.setUpVids(currentSection.collection, link, thumb)}
-            </div>)}/>
-        }
-        let click
+  Section(props) {
+    const collection = props.collection
+    const topLink = props.link
+    const spacing = props.spacing
+    let renderedSections = []
+    for (let section in collection) {
+      let currentSection = collection[section]
+      const name = currentSection.data.name
+      let link = topLink + '/' + section
+      let route
+      let click
+      if (currentSection.data.type == 'collection') {
+        let nextCollection = currentSection.collection
+        let nextSpacing = spacing + 1
+        route = <Route path={link} render={() => <this.Section
+          collection={nextCollection} link={link}
+          spacing={nextSpacing} />} />
         if ("intro" in currentSection.data) {
           click = () => this.updateStage(String(currentSection.data.intro))
         }
-        renderedSections.push(
-          <div key={section} style={{paddingLeft: 10*spacing}}>
-            <Link to={link} onClick={click} render={render}> {name} </Link>
-            {route}
-          </div>
-          )
-        }
-        return renderedSections
+      }
+      else {
+        let vids = currentSection.collection
+        click = () => this.setState({vids: vids, vidLink : link})
       }
 
+      renderedSections.push(
+        <div key={section} style={{paddingLeft: 10*spacing}}>
+          <Link to={link} onClick={click}> {name} </Link>
+          {route}
+        </div>
+        )
+      }
+      return renderedSections
+    }
+
   // Links and routes for individual videos
-  setUpVids(vids, linkTo, thumbUrl) {
+  Videos(props) {
     let videos = []
+    const vids = props.vids
+    const topLink = props.link
     for (let vid in vids) {
       let video = vids[vid]
-      let link = linkTo + '/' + video.slug
-      let thumb = thumbUrl.replace('||ID||', video.thumb)
-      let ref = cleanup(linkTo.slice(1)).concat(' >')
+      let link
+      if ('url' in video) {
+        link = video.url
+      }
+      else {
+        link = topLink + '/' + video.slug
+      }
+      let thumb = this.state.thumb.replace('||ID||', video.thumb)
+      console.log(thumb)
+      let ref = cleanup(link.slice(1)).concat(' >')
       videos.push(
-        <div key={video.slug} className="st-video-card">
-          <Link to={link} onClick={() => this.updateStage(video.id)}>
+        <Route path={topLink} key={video.slug} className="st-video-card">
+          <Link to={link} onClick={() => this.updateStage(video.ID)}>
             <div className="st-video-card">
               <div>
                   <img className="st-thumb" src={thumb}/>
               </div>
               <span className="st-video-card-title"> {video.name}</span>
             </div>
+            <div path={link} />
           </Link>
-          <div path={link} />
-        </div>
+        </Route>
         )
       }
     return videos
@@ -650,26 +676,24 @@ class App extends React.Component {
     }
 
   // Makes the video stage
-  makeStage() {
+  makeStage(location) {
+    let frame
     if (this.state.stage == "0") {
-      return(
-        <div>
-          <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
+          frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
               <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
           </div>
-          <h3>{cleanup(window.location.href.split('/').filter(String).splice(2).join('/'))}</h3>
-        </div>
-      )}
+    }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courseData[this.state.currentCourse].intro
     const link = this.vimeoLink.replace('||ID||', this.state.stage)
+    frame = <iframe className="sttv-course-player"
+      key='stage'
+      src={link}
+      width="946" height="594" frameBorder="" title="Intro" webkitallowfullscreen="tr"
+      allowFullScreen=""></iframe>
     return(
       <div>
-        <iframe className="sttv-course-player"
-          key='stage'
-          src={link}
-          width="946" height="594" frameBorder="" title="Intro" webkitallowfullscreen="tr"
-          allowFullScreen=""></iframe>
-        <h3>{cleanup(window.location.href.split('/').filter(String).splice(3).join('/'))}</h3>
+          {frame}
+          <h3>{cleanup(location.split('/').filter(String).splice(1).join(' > '))}</h3>
       </div>
       )
     }
@@ -684,15 +708,11 @@ class App extends React.Component {
       const message = <span>{this.state.flag}</span>
       return(
         <section id="st-app">
-          <BrowserRouter>
-            <div>
               <Switch>
                 <Route path="/login" component={this.Login}/>
                 <Redirect push to="/login"/>
               </Switch>
               {message}
-            </div>
-          </BrowserRouter>
         </section>
       )}
     else {
@@ -707,9 +727,8 @@ class App extends React.Component {
         search = <this.Search />
       }
       return(
-        <BrowserRouter>
           <div>
-              <this.Menu/>
+              <Route path="/" component={this.Menu}/>
               <section id="st-app">
                 <Route path="/" component={this.Header}/>
                 <section id="st-app-inner">
@@ -730,12 +749,13 @@ class App extends React.Component {
                 </section>
               </section>
           </div>
-        </BrowserRouter>
       )}
       }
-    }
+  }
 
 // Export the whole thing
 ReactDOM.render (
-    <App />,
+  <BrowserRouter>
+      <Route path="/" component={App} />
+  </BrowserRouter>,
   document.getElementById("app"));
