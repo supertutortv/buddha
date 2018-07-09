@@ -30,6 +30,7 @@ class App extends React.Component {
                     password : '',
                     darkMode : false,
                     autoPlay : false,
+                    nav : true,
                     token : '',
                     query: '',
                     flag : '',
@@ -52,13 +53,15 @@ class App extends React.Component {
         if ( data !== null ) {
           this.state.courseData = data.courses
           this.state.userData = data.user
+          this.state.thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
+          this.state.stage = this.state.courseData[this.state.currentCourse].data.intro
+          console.log(this.state.stage)
           // Dummy data until the endpoint is set up. Requires page reload after
           // fresh request.
           this.state.userData.personal = {
             'firstName' : 'Arthur',
             'lastName' : 'Dent'
           }
-          this.state.stage = String(data.courses[this.state.currentCourse].intro)
         }
         else {
           this.state.token = ''
@@ -78,7 +81,7 @@ class App extends React.Component {
       this.Downloads = this.Downloads.bind(this)
       this.Help = this.Help.bind(this)
       this.Menu = this.Menu.bind(this)
-      this.Courses = this.Courses.bind(this)
+      this.Course = this.Course.bind(this)
       this.courseRefresh = this.courseRefresh.bind(this)
       this.logout = this.logout.bind(this)
       this.Videos = this.Videos.bind(this)
@@ -89,6 +92,8 @@ class App extends React.Component {
       this.getVideoByUrl = this.getVideoByUrl.bind(this)
       this.Search = this.Search.bind(this)
       this.settingsHandler = this.settingsHandler.bind(this)
+      this.searchCourse = this.searchCourse.bind(this)
+      this.CourseNav = this.CourseNav.bind(this)
     }
 
   componentDidUpdate(nextProps, nextState) {
@@ -212,10 +217,11 @@ class App extends React.Component {
   History(props) {
     let vids = []
     const history = this.state.userData.history
+    const thumbURL = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
     for (let item in history) {
       let url = history[item].data.url
       let vid = this.getVideoByUrl(url)
-      let thumb = this.state.thumb.replace('||ID||', vid.thumb)
+      let thumb = thumbURL.replace('||ID||', vid.thumb)
       vids.push(
         <div key={vid.slug} className="video-in-grid">
           <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
@@ -241,7 +247,7 @@ class App extends React.Component {
     for (let item in this.state.userData.bookmarks) {
       let url = this.state.userData.bookmarks[item].data.url
       let vid = this.getVideoByUrl(url)
-      let thumb = this.state.thumb.replace('||ID||', vid.thumb)
+      let thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain.replace('||ID||', vid.thumb)
       bookmarks.push(
         <div key={vid.slug} className="video-in-grid">
           <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
@@ -371,15 +377,15 @@ class App extends React.Component {
     return(
       <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}}>
         <Link to="/dashboard" className={root == "dashboard" && !this.state.search ? "st-link-active" : "st-app-link"} title="Dashboard" ><Icon>person</Icon></Link>
-        <Link to={'/' + this.state.currentCourse} className={root in this.state.courseData && !this.state.search ? "st-link-active" : "st-app-link"} title="Courses"  onClick={() => this.updateStage(this.state.courseData[this.state.currentCourse].data.intro)} ><Icon>apps</Icon></Link>
-        <Link to="/downloads" className={root == "downloads" && !this.state.search ? "st-link-active" : "st-app-link"} title="Downloads" ><Icon>cloud_download</Icon></Link>
-        <Link to="/history" className={root == "history" && !this.state.search ? "st-link-active" : "st-app-link"} title="Orders" ><Icon>schedule</Icon></Link>
-        <Link to="/bookmarks" className={root == "bookmarks" && !this.state.search ? "st-link-active" : "st-app-link"} title="Bookmarks" ><Icon>bookmark</Icon></Link>
+        <a className={root in this.state.courseData && !this.state.search ? "st-link-active" : "st-app-link"} title="Course"  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
+        <Link to="/downloads" className={root == "downloads" && !this.state.search ? "st-link-active" : "st-app-link"} title="Downloads" onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
+        <Link to="/history" className={root == "history" && !this.state.search ? "st-link-active" : "st-app-link"} title="Orders" onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
+        <Link to="/bookmarks" className={root == "bookmarks" && !this.state.search ? "st-link-active" : "st-app-link"} title="Bookmarks" onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
         <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? "st-link-active" : "st-app-link"} title="Search" ><Icon>search</Icon></a>
         <a className="st-app-link">&nbsp;</a>
-        <Link to="/review" className={root == "review" && !this.state.search ? "st-link-active" : "st-app-link"} title="Review" ><i className="material-icons">rate_review</i></Link>
-        <Link to="/feedback" className={root == "feedback" && !this.state.search ? "st-link-active" : "st-app-link"} title="Feedback" ><i className="material-icons">send</i></Link>
-        <Link to="/help" className={root == "help" && !this.state.search ? "st-link-active" : "st-app-link"} title="Help" ><i className="material-icons">help</i></Link>
+        <Link to="/review" className={root == "review" && !this.state.search ? "st-link-active" : "st-app-link"} title="Review" onClick={() => this.setState({nav: false})} ><i className="material-icons">rate_review</i></Link>
+        <Link to="/feedback" className={root == "feedback" && !this.state.search ? "st-link-active" : "st-app-link"} title="Feedback" onClick={() => this.setState({nav: false})} ><i className="material-icons">send</i></Link>
+        <Link to="/help" className={root == "help" && !this.state.search ? "st-link-active" : "st-app-link"} title="Help" onClick={() => this.setState({nav: false})} ><i className="material-icons">help</i></Link>
         <a onClick={this.courseRefresh} className="st-app-link" title="Refresh"><i className="material-icons">refresh</i></a>
         <a onClick={this.logout} className="st-app-link" title="Logout"><i className="material-icons">exit_to_app</i></a>
       </section>
@@ -421,32 +427,54 @@ class App extends React.Component {
     }
   }
 
+  searchCourse(query, object, path) {
+    const results = []
+    if (!query || !object || query.length < 3) {
+      return []
+    }
+    else {
+      for (let i in object) {
+        let newPath = path + '/' + i
+        if (object[i].data && object[i].data.name.toLowerCase().includes(query)) {
+          results.push(newPath)
+        }
+        else if ('name' in object[i] && object[i].name.toLowerCase().includes(query)) {
+          results.push(newPath)
+        }
+        else {
+          const subresult = this.searchCourse(query, object[i].collection, newPath)
+          for (let result in subresult) {
+            results.push(subresult[result])
+          }
+        }
+      }
+    }
+    return results
+  }
+
   Search() {
-    let vids
+    let links = []
     try {
-      vids = []
-      results = this.getVideoByUrl(this.state.query)
+      console.log(this.state.currentCourse)
+      const results = this.searchCourse(this.state.query, this.state.courseData[this.state.currentCourse].collection, this.state.currentCourse)
+      console.log(results)
       for (let item in results) {
-        let url = results[item].data.url
-        let vid = this.getVideoByUrl(url)
-        let thumb = this.state.thumb.replace('||ID||', vid.thumb)
-      vids.push(
-        <div key={vid.slug}>
-          <Link to={url} onClick={() => this.updateStage(vid.id)}>
-            <div >
-              <div>
-                  <img src={thumb} className="z-depth-3"/>
-              </div>
-              <span> {cleanup(url.slice(1))} </span>
-            </div>
+      links.push(
+        <div className="search-result">
+          <Link to={'/' + results[item]} onClick={() => this.setState({search : false})}>
+            {cleanup(results[item])}
           </Link>
+          <br/>
         </div>
+
         )
       }
     }
     catch (e) {
-      vids = 'No results found.'
+      links = 'Type more than three characters to search this course.'
+      console.log(e)
     }
+    console.log(links)
     return(
       <div className="sttv-modal">
         <div className="sttv-search">
@@ -455,7 +483,7 @@ class App extends React.Component {
           <input className="sttv-searchbox" autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}>
           </input>
           <div className="sttv-search-results">
-            {vids}
+            {links}
           </div>
         </div>
       </div>
@@ -582,14 +610,12 @@ class App extends React.Component {
       </div> )}
 
   // Wrapper for the stage and the recursive rendering function
-  Courses(props) {
+  Course(props) {
     let link = '/' + this.state.currentCourse
-    let course = this.state.courseData[this.state.currentCourse]
     return(
-      <div>
-        {this.makeStage(props.location.pathname)}
-        <div className="sttv-sections">
-          <this.Section collection={course.collection} link={link} spacing={0}/>
+      <div >
+        <div>
+          {this.makeStage(props.location.pathname)}
         </div>
         <div id="video-wrapper">
           <this.Videos vids={this.state.vids} link={this.state.vidLink} />
@@ -597,11 +623,22 @@ class App extends React.Component {
       </div>)
     }
 
+  CourseNav(props) {
+    let course = this.state.courseData[this.state.currentCourse]
+    let link = '/' + this.state.currentCourse
+    return(
+      <div id="sttv-sections">
+        {this.state.nav && <this.Section collection={course.collection}
+          link={link} thumb={course.data.thumbUrls.plain} spacing={0} />}
+    </div>)
+  }
+
     // Function that recursively generates the routes and links for collections
     // until it gets to a video folder
   Section(props) {
     const collection = props.collection
     const topLink = props.link
+    const thumb = props.thumb
     const spacing = props.spacing
     let renderedSections = []
     for (let section in collection) {
@@ -614,7 +651,7 @@ class App extends React.Component {
         let nextCollection = currentSection.collection
         let nextSpacing = spacing + 1
         route = <Route path={link} render={() => <this.Section
-          collection={nextCollection} link={link}
+          collection={nextCollection} link={link} thumb={thumb}
           spacing={nextSpacing} />} />
         if ("intro" in currentSection.data) {
           click = () => this.updateStage(String(currentSection.data.intro))
@@ -622,7 +659,7 @@ class App extends React.Component {
       }
       else {
         let vids = currentSection.collection
-        click = () => this.setState({vids: vids, vidLink : link})
+        click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb})
       }
 
       renderedSections.push(
@@ -650,7 +687,6 @@ class App extends React.Component {
         link = topLink + '/' + video.slug
       }
       let thumb = this.state.thumb.replace('||ID||', video.thumb)
-      console.log(thumb)
       let ref = cleanup(link.slice(1)).concat(' >')
       videos.push(
         <Route path={topLink} key={video.slug} className="st-video-card">
@@ -719,7 +755,7 @@ class App extends React.Component {
       let courses = []
       for (let course in this.state.courseData) {
         courses.push(
-          <Route key={course} className="st-link" path={'/' + course} component={this.Courses}/>
+          <Route key={course} className="st-link" path={'/' + course} component={this.Course}/>
         )
       }
       let search
@@ -732,6 +768,7 @@ class App extends React.Component {
               <section id="st-app">
                 <Route path="/" component={this.Header}/>
                 <section id="st-app-inner">
+                  <this.CourseNav />
                   {courses}
                   {search}
                   <Switch>

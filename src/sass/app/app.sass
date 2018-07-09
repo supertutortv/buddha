@@ -53,7 +53,14 @@ $videowidth: 20em
         padding: 2em
 
         #sttv-sections
-            width: 1px
+            opacity: 10%
+            position: fixed
+            left: $sidebarw*(3/2)
+            top: $sidebarw*(3/2)
+            background-color: $notblack
+            overflow-x: hidden
+            padding-top: 20px
+            z-index : 1
 
         .sttv-modal
             position: fixed
@@ -91,6 +98,11 @@ $videowidth: 20em
                 cursor: pointer
 
             .sttv-search-results
+              top: 5%
+              bottom: 5%
+              overflow: scroll
+
+            .search-result
               padding-top: 5%
 
         .video-grid
