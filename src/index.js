@@ -23,14 +23,13 @@ class App extends React.Component {
       this.getData = this.getData.bind(this)
       this.Login = this.Login.bind(this)
       this.handleResponse = this.handleResponse.bind(this)
-      this.state = {courseData : null,
-                    userData: null,
-                    currentCourse: 'the-best-act-prep-course-ever',
+      this.state = {courses : null,
+                    currentCourse: '',
                     username : '',
                     password : '',
                     darkMode : false,
                     autoPlay : false,
-                    nav : true,
+                    nav : false,
                     token : '',
                     query: '',
                     flag : '',
@@ -45,30 +44,7 @@ class App extends React.Component {
           this.verifyToken(JSON.parse(localStorage.getItem('sttv_token')))
         }
       }
-      catch ( e ) {
-        void(0)
-      }
-      try {
-        const data = JSON.parse(localStorage.getItem('sttv_data'))
-        if ( data !== null ) {
-          this.state.courseData = data.courses
-          this.state.userData = data.user
-          this.state.thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
-          this.state.stage = this.state.courseData[this.state.currentCourse].data.intro
-          console.log(this.state.stage)
-          // Dummy data until the endpoint is set up. Requires page reload after
-          // fresh request.
-          this.state.userData.personal = {
-            'firstName' : 'Arthur',
-            'lastName' : 'Dent'
-          }
-        }
-        else {
-          this.state.token = ''
-          this.state.auth = false
-        }
-      }
-      catch (e) {
+      catch (error) {
         void(0)
       }
       this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
@@ -86,45 +62,78 @@ class App extends React.Component {
       this.logout = this.logout.bind(this)
       this.Videos = this.Videos.bind(this)
       this.updateStage = this.updateStage.bind(this)
-      this.makeStage = this.makeStage.bind(this)
+      this.Stage = this.Stage.bind(this)
       this.Section = this.Section.bind(this)
       this.handleChange = this.handleChange.bind(this)
       this.getVideoByUrl = this.getVideoByUrl.bind(this)
       this.Search = this.Search.bind(this)
-      this.settingsHandler = this.settingsHandler.bind(this)
+      this.genericHandler = this.genericHandler.bind(this)
       this.searchCourse = this.searchCourse.bind(this)
       this.CourseNav = this.CourseNav.bind(this)
+      this.updateUserObj = this.updateUserObj.bind(this)
     }
 
   componentDidUpdate(nextProps, nextState) {
-    const nextParent = this.props.location.pathname.split('/').filter(String)
-    nextParent.pop()
-    const newDir = this.getVideoByUrl(nextParent.join('/'))
-    let thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
-    if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection !== nextState.vids){
-      this.setState({vids : newDir.collection, vidLink: nextProps.location.pathname, thumb: thumb})
+      if (this.state.auth) {
+        try {
+          const nextParent = this.props.location.pathname.split('/').filter(String)
+          nextParent.pop()
+          const newDir = this.getVideoByUrl(nextParent.join('/'))
+          let thumb = this.state.courses[this.state.currentCourse].data.thumbUrls.plain
+          if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids){
+            this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), thumb: thumb})
+          }
+          else if (nextState.vids == null && this.state.courses.history != null) {
+            this.setState({vids: this.state.courses.history, thumb: thumb})
+          }
+        }
+        catch (error) {
+          this.getData()
+        }
+      }
     }
-    else if (nextState.vids == null && this.state.courseData.history != null) {
-      this.setState({vids: this.state.courseData.history, thumb: thumb})
+
+  genericHandler ( path, {target} ) {
+    const helper = function(path, obj, {target}) {
+      if (path.length > 0) {
+        let key = path.shift()
+        obj[key] = helper(path, obj[key], {target})
+      }
+      else {
+        if (target.type == "checkbox") {
+          obj[target.name] = target.checked
+        }
+        else {
+          obj[target.name] = target.value
+        }
+      }
+      return obj
     }
+    this.setState({user : helper(path, this.state.user, {target})})
   }
 
-  settingsHandler( {target} ) {
-    const setting = {[target.name]: target.checked}
-    fetch('https://api.supertutortv.com/v2/courses/data/settings', {
+  updateUserObj (key) {
+    this.setState({loading: true})
+    const setting = this.state.key
+    fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
       method : 'PUT',
       accept: 'application/vnd.sttv.app+json',
       headers: {
         'Authorization': 'Bearer ' + this.state.token,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(setting)
+      body: JSON.stringify(this.state.user[key])
       })
     .then(response => this.handleResponse(response))
     .then( items => {
       if (items !== null) {
-      this.setState(setting)
-       }
+        const user_obj = this.state.user
+        user_obj[key] = items.data[key]
+        this.setState({user : user_obj, loading: false})
+        const courseData = JSON.parse(localStorage.getItem('sttv_data'))
+        courseData.user = this.state.user
+        localStorage.setItem('sttv_data', JSON.stringify(courseData))
+      }
       })
     .catch(error => {
       console.log(error)
@@ -163,16 +172,8 @@ class App extends React.Component {
 
   // Renders the dashboard page
   Dashboard(props) {
-    let greeting
-    if (this.state.userData.personal.firstName !== null) {
-      greeting = <h3> Welcome to the Dashboard, {this.state.userData.personal.firstName} </h3>
-    }
-    else {
-      greeting = <h3> We're having trouble fetching your SupertutorTV profile. Try refreshing the course data, or,
-      if the problem persists, contact a STTV technician.</h3>
-    }
     let courses = []
-    for (let course in this.state.courseData) {
+    for (let course in this.state.courses) {
       courses.push(
         <div key={course}>
           {cleanup(course)}
@@ -185,7 +186,7 @@ class App extends React.Component {
     }
     return(
         <div>
-          {greeting}
+          <h3> Welcome to the Dashboard, {this.state.user.userdata.firstname} </h3>
           <div>
             <h1>
               Settings:
@@ -197,18 +198,44 @@ class App extends React.Component {
             <br/>
             <div>
               Dark Mode:
-              <input type='checkbox' label='Dark Mode' name='darkMode' checked={this.state.darkMode}
-                onChange={this.settingsHandler}>
+              <input type='checkbox' label='Dark Mode' name="dark_mode" checked={this.state.dark_mode}
+                onChange={(event) => this.genericHandler(['settings'], event)}>
               </input>
             </div>
             <br/>
             <div>
               Autoplay:
-              <input type='checkbox' label='Autoplay' name='autoPlay' checked={this.state.autoPlay}
-                onChange={this.settingsHandler}>
+              <input type='checkbox' label='Autoplay' name='autoplay' checked={this.state.autoplay}
+                onChange={(event) => this.genericHandler(['settings'], event)}>
               </input>
             </div>
-            {this.state.flag}
+            <button type="button" onClick={() => this.updateUserObj('settings')}>Update Settings</button>
+            <div>
+              <h1>Your Information:</h1>
+              <div>
+                First Name:
+                <input type='text' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
+              </div>
+              <div>
+                Last Name:
+                <input type='text' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
+              </div>
+              <div>
+                Address:
+                <input type='text' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <input type='text' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <input type='text' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <input type='text' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <input type='text' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              </div>
+              <button type="button" onClick={() => this.updateUserObj('userdata')}>Update Information</button>
+            </div>
+            <br/>
+            <div>
+              Your Orders:
+              <br/>
+              {this.state.user.userdata.orders}
+            </div>
           </div>
         </div>
       )
@@ -216,14 +243,15 @@ class App extends React.Component {
 
   History(props) {
     let vids = []
-    const history = this.state.userData.history
-    const thumbURL = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain
+    let index = 0
+    const history = this.state.user.history
+    const thumbURL = this.state.thumb
     for (let item in history) {
       let url = history[item].data.url
       let vid = this.getVideoByUrl(url)
       let thumb = thumbURL.replace('||ID||', vid.thumb)
       vids.push(
-        <div key={vid.slug} className="video-in-grid">
+        <div key={index} className="video-in-grid">
           <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
             <div >
               <div>
@@ -234,6 +262,7 @@ class App extends React.Component {
           </Link>
         </div>
       )
+      index++
     }
     return(
       <div className='video-grid'>
@@ -244,10 +273,11 @@ class App extends React.Component {
 
   Bookmarks(props) {
     let bookmarks = []
-    for (let item in this.state.userData.bookmarks) {
-      let url = this.state.userData.bookmarks[item].data.url
+    const thumbURL = this.state.thumb
+    for (let item in this.state.user.bookmarks) {
+      let url = this.state.user.bookmarks[item].data.url
       let vid = this.getVideoByUrl(url)
-      let thumb = this.state.courseData[this.state.currentCourse].data.thumbUrls.plain.replace('||ID||', vid.thumb)
+      let thumb = thumbURL.replace('||ID||', vid.thumb)
       bookmarks.push(
         <div key={vid.slug} className="video-in-grid">
           <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
@@ -271,7 +301,7 @@ class App extends React.Component {
 
   getVideoByUrl(url) {
     const lookup = url.split('/').filter(String)
-    let obj = this.state.courseData
+    let obj = this.state.courses
     while (true) {
       if (lookup[0] == null) {
         return(obj)
@@ -377,7 +407,7 @@ class App extends React.Component {
     return(
       <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}}>
         <Link to="/dashboard" className={root == "dashboard" && !this.state.search ? "st-link-active" : "st-app-link"} title="Dashboard" ><Icon>person</Icon></Link>
-        <a className={root in this.state.courseData && !this.state.search ? "st-link-active" : "st-app-link"} title="Course"  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
+        <a className={root in this.state.courses && !this.state.search ? "st-link-active" : "st-app-link"} title="Course"  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
         <Link to="/downloads" className={root == "downloads" && !this.state.search ? "st-link-active" : "st-app-link"} title="Downloads" onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
         <Link to="/history" className={root == "history" && !this.state.search ? "st-link-active" : "st-app-link"} title="Orders" onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
         <Link to="/bookmarks" className={root == "bookmarks" && !this.state.search ? "st-link-active" : "st-app-link"} title="Bookmarks" onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
@@ -454,27 +484,25 @@ class App extends React.Component {
 
   Search() {
     let links = []
+    let index = 0
     try {
-      console.log(this.state.currentCourse)
-      const results = this.searchCourse(this.state.query, this.state.courseData[this.state.currentCourse].collection, this.state.currentCourse)
-      console.log(results)
+      const results = this.searchCourse(this.state.query, this.state.courses[this.state.currentCourse].collection, this.state.currentCourse)
       for (let item in results) {
       links.push(
-        <div className="search-result">
+        <li className="search-result" key={index}>
           <Link to={'/' + results[item]} onClick={() => this.setState({search : false})}>
             {cleanup(results[item])}
           </Link>
           <br/>
-        </div>
-
+        </li>
         )
+        index++
       }
     }
-    catch (e) {
+    catch (error) {
       links = 'Type more than three characters to search this course.'
-      console.log(e)
+      console.log(error)
     }
-    console.log(links)
     return(
       <div className="sttv-modal">
         <div className="sttv-search">
@@ -491,31 +519,51 @@ class App extends React.Component {
   }
 
   getData() {
-    this.setState({loading: true})
-    fetch('https://api.supertutortv.com/v2/courses/data', {
-      headers: {
-        'Authorization': 'Bearer ' + this.state.token,
-        'Content-Type': 'application/json'
-      }
-      })
-    .then(response => this.handleResponse(response))
-    .then( items => {
-      if (items !== null) {
-        localStorage.setItem('sttv_data', JSON.stringify(items.data))
-        this.setState({
-          courseData : items.data.courses,
-          loading: false,
-          userData : items.data.user,
-          stage : items.data.courses[this.state.currentCourse].intro
-         })
-      }
-    })
-    .catch(error => {
-      console.log(error)
+    const data = JSON.parse(localStorage.getItem('sttv_data'))
+    if (data !== null) {
+      const current = data.user.settings.default_course
       this.setState({
-        loading: false,
-        flag : 'There was an error fetching your course data. Please check your network connection and try again.'
-      })})
+        courses: data.courses,
+        user: data.user,
+        currentCourse: current,
+        thumb: data.courses[current].data.thumbUrls.plain,
+        stage: data.courses[current].data.intro,
+        vids: data.user.history,
+        loading: false
+      })
+    }
+    else {
+      fetch('https://api.supertutortv.com/v2/courses/data', {
+        headers: {
+          'Authorization': 'Bearer ' + this.state.token,
+          'Content-Type': 'application/json'
+        }
+        })
+      .then(response => this.handleResponse(response))
+      .then( items => {
+        if (items !== null) {
+          localStorage.setItem('sttv_data', JSON.stringify(items.data))
+          const currentCourse = items.data.user.settings.default_course
+          const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
+          const stage = items.data.courses[currentCourse].data.intro
+          this.setState({
+            courses : items.data.courses,
+            user: items.data.user,
+            currentCourse: items.data.user.settings.default_course,
+            thumb: thumb,
+            stage: stage,
+            vids: items.data.user.history,
+            loading: false
+           })
+        }
+      })
+      .catch(error => {
+        console.log(error)
+        this.setState({
+          loading: false,
+          flag : 'There was an error fetching your course data. Please check your network connection and try again.'
+        })})
+    }
   }
 
   logout() {
@@ -549,7 +597,7 @@ class App extends React.Component {
       if (items !== null) {
         if (items.code == 'login_success') {
           localStorage.setItem('sttv_token', JSON.stringify(items.token))
-          this.setState({token : items.token, auth: true, username: '', password : ''})
+          this.setState({token : items.token, auth: true, username: '', password : '', flag: ''})
           this.getData()
         }
         else {
@@ -560,7 +608,7 @@ class App extends React.Component {
         }
       }
       })
-    .catch( error => {
+    .catch(error => {
       console.log(error)
       this.setState({
         loading: false,
@@ -580,8 +628,12 @@ class App extends React.Component {
       })
       .then( response => this.handleResponse(response))
       .then( items => {
-        if ( items !== null) {
-          this.setState({auth: true, token: token, loading: false})
+        if (items) {
+          this.setState({auth: true, token: token})
+          this.getData()
+        }
+        else {
+          this.setState({auth: false, token: ''})
         }
       })
       .catch(error => {
@@ -615,7 +667,7 @@ class App extends React.Component {
     return(
       <div >
         <div>
-          {this.makeStage(props.location.pathname)}
+          <this.Stage location={props.location.pathname}/>
         </div>
         <div id="video-wrapper">
           <this.Videos vids={this.state.vids} link={this.state.vidLink} />
@@ -624,7 +676,7 @@ class App extends React.Component {
     }
 
   CourseNav(props) {
-    let course = this.state.courseData[this.state.currentCourse]
+    let course = this.state.courses[this.state.currentCourse]
     let link = '/' + this.state.currentCourse
     return(
       <div id="sttv-sections">
@@ -674,22 +726,23 @@ class App extends React.Component {
 
   // Links and routes for individual videos
   Videos(props) {
+    let key = 0
     let videos = []
     const vids = props.vids
-    const topLink = props.link
     for (let vid in vids) {
       let video = vids[vid]
       let link
-      if ('url' in video) {
-        link = video.url
+      if ('data' in video) {
+        link = video.data.url
+        video = this.getVideoByUrl(video.data.url)
       }
       else {
-        link = topLink + '/' + video.slug
+        link = props.link + '/' + video.slug
       }
       let thumb = this.state.thumb.replace('||ID||', video.thumb)
       let ref = cleanup(link.slice(1)).concat(' >')
       videos.push(
-        <Route path={topLink} key={video.slug} className="st-video-card">
+        <Route path={link} key={key} className="st-video-card">
           <Link to={link} onClick={() => this.updateStage(video.ID)}>
             <div className="st-video-card">
               <div>
@@ -701,6 +754,7 @@ class App extends React.Component {
           </Link>
         </Route>
         )
+        key++
       }
     return videos
     }
@@ -711,15 +765,16 @@ class App extends React.Component {
     this.setState({'stage' : id})
     }
 
-  // Makes the video stage
-  makeStage(location) {
+  // The video stage
+  Stage(props) {
+    const location = props.location
     let frame
     if (this.state.stage == "0") {
           frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
               <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
           </div>
     }
-    const stage = (this.state.stage !== null) ? this.state.stage : this.state.courseData[this.state.currentCourse].intro
+    const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = this.vimeoLink.replace('||ID||', this.state.stage)
     frame = <iframe className="sttv-course-player"
       key='stage'
@@ -753,7 +808,7 @@ class App extends React.Component {
       )}
     else {
       let courses = []
-      for (let course in this.state.courseData) {
+      for (let course in this.state.courses) {
         courses.push(
           <Route key={course} className="st-link" path={'/' + course} component={this.Course}/>
         )

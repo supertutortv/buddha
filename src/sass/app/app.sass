@@ -8,7 +8,7 @@ $videowidth: 20em
     left: 0
     overflow: hidden
     padding-left: $sidebarw
-    background-image: url('https://courses.supertutortv.com/assets/img/bgpattern-2.jpg')
+    background-image: url('https://freebackgroundshd.com/wp-content/uploads/2016/04/Simple-Dark-Blue-Free-HD-Background-970x475.jpg')
     background-size: cover
     background-position: center
     color: rgba(255,255,255,.85)
@@ -46,21 +46,20 @@ $videowidth: 20em
                 text-transform: uppercase
 
     #st-app-inner
-        overflow: auto
+        overflow: hidden
         position: relative
         font-size: $realEM
         height: 80%
         padding: 2em
 
         #sttv-sections
-            opacity: 10%
+            opacity: 2
             position: fixed
             left: $sidebarw*(3/2)
             top: $sidebarw*(3/2)
-            background-color: $notblack
+            background-color: black
             overflow-x: hidden
             padding-top: 20px
-            z-index : 1
 
         .sttv-modal
             position: fixed
@@ -79,7 +78,7 @@ $videowidth: 20em
                 left: 50%
                 transform: translate(-50%, -100%)
                 margin: auto
-                width: 30%
+                width: 50%
                 height: 30%
 
             .sttv-searchbox
@@ -89,7 +88,6 @@ $videowidth: 20em
                 border-radius: 5px
                 border: 0
 
-
                 &:focus, &:hover
                   outline: none
 
@@ -98,9 +96,11 @@ $videowidth: 20em
                 cursor: pointer
 
             .sttv-search-results
-              top: 5%
               bottom: 5%
               overflow: scroll
+              list-style-type: none
+              text-align: center
+              height: 80%
 
             .search-result
               padding-top: 5%
