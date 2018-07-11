@@ -213,21 +213,21 @@ class App extends React.Component {
               <small>(click to edit)</small>
               <div>
                 First Name
-                <input type='text' className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
+                <input type='text' autoComplete="off" className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
               </div><div>
                 Last Name
-                <input type='text' className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
+                <input type='text' autoComplete="off" className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
               </div><div>
                 <br/>
-                Line 1 <input type='text' className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                Line 1 <input type='text' autoComplete="off" className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
                 <br/>
-                Line 2 <input type='text' className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                Line 2 <input type='text' autoComplete="off" className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
                 <br/>
-                City <input type='text' className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                City <input type='text' autoComplete="off" className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
                 <br/>
-                State <input type='text' className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                State <input type='text' autoComplete="off" className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
                 <br/>
-                Zip <input type='text' className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                Zip <input type='text' autoComplete="off" className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
               </div>
               <br/>
               <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
