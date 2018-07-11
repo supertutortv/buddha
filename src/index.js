@@ -4,11 +4,12 @@ import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
 import {Icon} from 'react-materialize'
 import PropTypes from 'prop-types'
 
+// Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's into II's. Keeps 'vs' lowercase.
 const cleanup = (string) => (
-  // Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's into II's. Keeps 'vs' lowercase.
   string.replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ').replace(/i(?=(i|\b))/g, 'I').replace('Vs', 'vs')
 )
 
+// Basic component for unmatched routes
 const Four04 = () => (
   <h3>
     We couldn't find that page!
@@ -73,7 +74,7 @@ class App extends React.Component {
     this.Videos = this.Videos.bind(this)
   }
 
-  // Makes sure the correct thumbnails and relevant videos are displayed
+  // Makes sure the correct thumbnails and relevant videos are displayed.
   componentDidUpdate(nextProps, nextState) {
     if (this.state.auth) {
       try {
@@ -94,9 +95,9 @@ class App extends React.Component {
     }
   }
 
-  // Handles changes to the user object
+  // Handles changes to the user object's state, used in the Dashboard
   genericHandler ( path, {target} ) {
-    // Handles changes to nested objects
+    // Recursive function that for updating nested objects
     const helper = function(path, obj, {target}) {
       if (path.length > 0) {
         let key = path.shift()
@@ -115,7 +116,8 @@ class App extends React.Component {
     this.setState({user : helper(path, this.state.user, {target})})
   }
 
-  // Updates the user object locally and remotely
+  // Updates the remote user object and then uses the response from the server
+  // to update the state and the localStorage object
   updateUserObj (key) {
     this.setState({loading: true})
     const setting = this.state.key
@@ -148,8 +150,7 @@ class App extends React.Component {
     })
   }
 
-
-  // Header that goes at the top of the app
+  // Header that goes at the top of the app; contains routes to display the page title
   Header(props) {
     const base = props.location.pathname.split('/').filter(String)
     return(
@@ -249,7 +250,7 @@ class App extends React.Component {
     )
   }
 
-  // History component
+  // History component. Contains a grid of videos which is currently static
   History(props) {
     let vids = []
     let index = 0
@@ -280,6 +281,8 @@ class App extends React.Component {
     )
   }
 
+  // Deletes a bookmark from the remote object; uses the server's response to
+  // delete the bookmark from the state and the localStorage object
   deleteBookmark(id) {
     this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/courses/data', {
@@ -314,7 +317,8 @@ class App extends React.Component {
     })
   }
 
-  // Bookmarks component
+  // Bookmarks component. Contains a grid of videos which can be removed from
+  // the local and remote objects by deleteBookmark
   Bookmarks(props) {
     let bookmarks = []
     const thumbURL = this.state.thumb
@@ -354,7 +358,8 @@ class App extends React.Component {
     )
   }
 
-  // The name says it all here
+  // The name says it all here. Used throughout the app for accessing data from
+  // the course object without passing resources around
   getResourceByUrl(url) {
     const lookup = url.split('/').filter(String)
     let obj = this.state.courses
@@ -374,7 +379,7 @@ class App extends React.Component {
     }
   }
 
-  // Feedback component; needs styling
+  // Feedback component; needs styling and backend support
   Feedback(props) {
     return(
       <div id="course-feedback">
@@ -404,7 +409,7 @@ class App extends React.Component {
     )
   }
 
-  // Review component; needs styling
+  // Review component; also needs styling and backend support
   Review(props) {
     return(
       <div id="ratings-modal-wrapper">
@@ -442,7 +447,7 @@ class App extends React.Component {
     )
   }
 
-    // Handles changes to first-level state attributes
+  // Handles changes to first-level state attributes; used throughout
   handleChange({target}) {
   this.setState({
     [target.name]: target.value
@@ -463,7 +468,8 @@ class App extends React.Component {
     )
   }
 
-  // Menu component
+  // Menu component. Contains links which render different components and become
+  // highlighted when they are activated.
   Menu(props) {
     const root = props.location.pathname.split('/').filter(String)[0]
     return(
@@ -484,7 +490,8 @@ class App extends React.Component {
     )
   }
 
-  // Clears localstorage and calls the API; triggers a re-render with this.setState
+  // Clears the course data in localstorage and fetches new data from the API;
+  // updates the state and re-renders if necessary
   courseRefresh() {
     if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
       localStorage.removeItem('sttv_data')
@@ -492,7 +499,7 @@ class App extends React.Component {
     }
   }
 
-  // Generic response handler for authentication
+  // Generic response handler for interacting with the sttv API
   handleResponse(response) {
     if (response.ok) {
       return(response.json())
@@ -520,7 +527,7 @@ class App extends React.Component {
     }
   }
 
-  // Searches the course structure and returns links
+  // Searches the course structure and returns links, used by the Search component
   searchCourse(query, object, path) {
     const results = []
     if (!query || !object || query.length < 3) {
@@ -546,7 +553,8 @@ class App extends React.Component {
     return results
   }
 
-  // Search component
+  // Search component; opens a modal over the rest of the course and calls the
+  // searchCourse whenever the textbox is updated.
   Search() {
     let links = []
     let index = 0
@@ -611,6 +619,8 @@ class App extends React.Component {
           const currentCourse = items.data.user.settings.default_course
           const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
           const stage = items.data.courses[currentCourse].data.intro
+          // This is basically a rewrite of the first part of getData, but
+          // it needs to be done asynchronously so there's no easy way to refactor
           this.setState({
             courses : items.data.courses,
             user: items.data.user,
@@ -632,7 +642,8 @@ class App extends React.Component {
     }
   }
 
-  // Destroy the old token and user/course info
+  // Destroy the old token and user/course info; this causes an automatic
+  // redirect to the login page.
   logout() {
       localStorage.removeItem('sttv_token')
       localStorage.removeItem('sttv_data')
@@ -646,7 +657,8 @@ class App extends React.Component {
      })
   }
 
-  // Get a token for a user on login
+  // Get a token for a user on login; clears localStorage and fetches a new
+  // cours object
   getToken() {
     this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/auth/token', {
@@ -688,7 +700,8 @@ class App extends React.Component {
     })
   }
 
-  // Verify an issued token
+  // Verify an issued token; get data from localstorage if it exists or from
+  // the API if not
   verifyToken(token) {
     fetch('https://api.supertutortv.com/v2/auth/token/verify', {
     method: 'POST',
@@ -717,7 +730,7 @@ class App extends React.Component {
     })
   }
 
-  // Login component
+  // Login component; tries to get a token from the API with the login information
   Login() {
     return(
       <div id="sttv_login_form" type="POST">
@@ -737,7 +750,7 @@ class App extends React.Component {
     )
   }
 
-  // Wrapper for the stage and the recursive rendering function
+  // Wrapper for the stage and the right sidebar
   Course(props) {
     let link = '/' + this.state.currentCourse
     return(
@@ -802,6 +815,8 @@ class App extends React.Component {
       return renderedSections
     }
 
+  // Creates a bookmark by calling the API; uses the response to update the
+  // state and the localStorage object
   createBookmark(url) {
     this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
@@ -832,21 +847,8 @@ class App extends React.Component {
     })
   }
 
-  makeRequest(location, method, body) {
-    this.setState({loading : true})
-    fetch(location, {
-      accept: 'application/vnd.sttv.app+json',
-      method: method,
-      headers: {
-        'Authorization': 'Bearer ' + this.state.token,
-        'Content-Type': 'application/json'
-      },
-      body : JSON.stringify(body)
-    })
-    .then( response => this.handleResponse(response))
-  }
-
-  // Links and routes for individual videos
+  // Generates links and thumbnails for an array of videos; used in the
+  // right sidebar of the Courses component
   Videos(props) {
     let key = 0
     let videos = []
@@ -887,7 +889,8 @@ class App extends React.Component {
     this.setState({'stage' : id})
     }
 
-  // The video stage component
+  // The video stage component; generates an iframe based on this.state.stage
+  // and generates a label for the video as well as a bookmark button
   Stage(props) {
     const vid = this.getResourceByUrl(props.location)
     const location = props.location.split('/').filter(String).splice(1)
@@ -914,8 +917,8 @@ class App extends React.Component {
             <a className="st-video-bookmarker" onClick={() => this.createBookmark(location)} ><i className="material-icons">bookmark</i></a>
           </div>
       </div>
-      )
-    }
+    )
+  }
 
   // Calls the Menu and various page components; Menu has the links
   // corresponding to these routes.
@@ -975,7 +978,7 @@ class App extends React.Component {
     }
   }
 
-// Export the whole thing
+// Export the whole thing inside of a router
 ReactDOM.render (
   <BrowserRouter>
       <Route path="/" component={App} />
