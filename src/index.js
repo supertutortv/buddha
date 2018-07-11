@@ -889,12 +889,15 @@ class App extends React.Component {
 
   // The video stage component
   Stage(props) {
-    const location = props.location
+    const vid = this.getResourceByUrl(props.location)
+    const location = props.location.split('/').filter(String).splice(1)
+    location.pop()
+    const label = cleanup(location.join(' > ')) + ' > ' + vid.name
     let frame
     if (this.state.stage == "0") {
-          frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
-              <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
-          </div>
+      frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
+          <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
+      </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
@@ -907,7 +910,7 @@ class App extends React.Component {
       <div>
           {frame}
           <div>
-            <h3>{cleanup(location.split('/').filter(String).splice(1).join(' > '))}</h3>
+            <h3>{label}</h3>
             <a className="st-video-bookmarker" onClick={() => this.createBookmark(location)} ><i className="material-icons">bookmark</i></a>
           </div>
       </div>
