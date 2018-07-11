@@ -18,81 +18,81 @@ const Four04 = () => (
 // Class that controls the state and rendered components of the app
 class App extends React.Component {
   constructor(props) {
-      super(props)
-      this.verifyToken = this.verifyToken.bind(this)
-      this.getData = this.getData.bind(this)
-      this.Login = this.Login.bind(this)
-      this.handleResponse = this.handleResponse.bind(this)
-      this.state = {courses : null,
-                    currentCourse: '',
-                    username : '',
-                    password : '',
-                    darkMode : false,
-                    autoPlay : false,
-                    nav : false,
-                    token : '',
-                    query: '',
-                    flag : '',
-                    thumb : '',
-                    search : false,
-                    loading : false,
-                    auth : false}
-      try {
-        const token = JSON.parse(localStorage.getItem('sttv_token'))
-        if (token !== null) {
-          this.state.loading = true
-          this.verifyToken(JSON.parse(localStorage.getItem('sttv_token')))
-        }
+    super(props)
+    this.verifyToken = this.verifyToken.bind(this)
+    this.getData = this.getData.bind(this)
+    this.Login = this.Login.bind(this)
+    this.handleResponse = this.handleResponse.bind(this)
+    this.state = {courses : null,
+                  currentCourse: '',
+                  username : '',
+                  password : '',
+                  darkMode : false,
+                  autoPlay : false,
+                  nav : false,
+                  token : '',
+                  query: '',
+                  flag : '',
+                  thumb : '',
+                  search : false,
+                  loading : false,
+                  auth : false}
+    try {
+      const token = JSON.parse(localStorage.getItem('sttv_token'))
+      if (token !== null) {
+        this.state.loading = true
+        this.verifyToken(JSON.parse(localStorage.getItem('sttv_token')))
       }
-      catch (error) {
-        void(0)
-      }
-      this.vimeoLink = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'
-      this.Header = this.Header.bind(this)
-      this.Dashboard = this.Dashboard.bind(this)
-      this.History = this.History.bind(this)
-      this.Bookmarks = this.Bookmarks.bind(this)
-      this.Feedback = this.Feedback.bind(this)
-      this.Review = this.Review.bind(this)
-      this.Downloads = this.Downloads.bind(this)
-      this.Help = this.Help.bind(this)
-      this.Menu = this.Menu.bind(this)
-      this.Course = this.Course.bind(this)
-      this.courseRefresh = this.courseRefresh.bind(this)
-      this.logout = this.logout.bind(this)
-      this.Videos = this.Videos.bind(this)
-      this.updateStage = this.updateStage.bind(this)
-      this.Stage = this.Stage.bind(this)
-      this.Section = this.Section.bind(this)
-      this.handleChange = this.handleChange.bind(this)
-      this.getResourceByUrl = this.getResourceByUrl.bind(this)
-      this.Search = this.Search.bind(this)
-      this.genericHandler = this.genericHandler.bind(this)
-      this.searchCourse = this.searchCourse.bind(this)
-      this.CourseNav = this.CourseNav.bind(this)
-      this.updateUserObj = this.updateUserObj.bind(this)
     }
+    catch (error) {
+      void(0)
+    }
+    // Bind all components and bound methods
+    this.Bookmarks = this.Bookmarks.bind(this)
+    this.Course = this.Course.bind(this)
+    this.CourseNav = this.CourseNav.bind(this)
+    this.courseRefresh = this.courseRefresh.bind(this)
+    this.Dashboard = this.Dashboard.bind(this)
+    this.Downloads = this.Downloads.bind(this)
+    this.Feedback = this.Feedback.bind(this)
+    this.genericHandler = this.genericHandler.bind(this)
+    this.getResourceByUrl = this.getResourceByUrl.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.Header = this.Header.bind(this)
+    this.Help = this.Help.bind(this)
+    this.History = this.History.bind(this)
+    this.logout = this.logout.bind(this)
+    this.Menu = this.Menu.bind(this)
+    this.Review = this.Review.bind(this)
+    this.Search = this.Search.bind(this)
+    this.searchCourse = this.searchCourse.bind(this)
+    this.Section = this.Section.bind(this)
+    this.Stage = this.Stage.bind(this)
+    this.updateStage = this.updateStage.bind(this)
+    this.updateUserObj = this.updateUserObj.bind(this)
+    this.Videos = this.Videos.bind(this)
+  }
 
   // Makes sure the correct thumbnails and relevant videos are displayed
   componentDidUpdate(nextProps, nextState) {
-      if (this.state.auth) {
-        try {
-          const nextParent = this.props.location.pathname.split('/').filter(String)
-          nextParent.pop()
-          const newDir = this.getResourceByUrl(nextParent.join('/'))
-          let thumb = this.state.courses[this.state.currentCourse].data.thumbUrls.plain
-          if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids){
-            this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), thumb: thumb})
-          }
-          else if (nextState.vids == null && this.state.courses.history != null) {
-            this.setState({vids: this.state.courses.history, thumb: thumb})
-          }
+    if (this.state.auth) {
+      try {
+        const nextParent = this.props.location.pathname.split('/').filter(String)
+        nextParent.pop()
+        const newDir = this.getResourceByUrl(nextParent.join('/'))
+        let thumb = this.state.courses[this.state.currentCourse].data.thumbUrls.plain
+        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids){
+          this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), thumb: thumb})
         }
-        catch (error) {
-          this.getData()
+        else if (nextState.vids == null && this.state.courses.history != null) {
+          this.setState({vids: this.state.courses.history, thumb: thumb})
         }
       }
+      catch (error) {
+        this.getData()
+      }
     }
+  }
 
   // Handles changes to the user object
   genericHandler ( path, {target} ) {
@@ -127,7 +127,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.user[key])
-      })
+    })
     .then(response => this.handleResponse(response))
     .then( items => {
       if (items !== null) {
@@ -138,13 +138,14 @@ class App extends React.Component {
         courseData.user = this.state.user
         localStorage.setItem('sttv_data', JSON.stringify(courseData))
       }
-      })
+    })
     .catch(error => {
       console.log(error)
       this.setState({
         loading: false,
         flag : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
-      })})
+      })
+    })
   }
 
 
@@ -172,7 +173,8 @@ class App extends React.Component {
             </div>
           </div>
       </header>
-    )}
+    )
+  }
 
   // Dashboard component. Could use a little styling.
   Dashboard(props) {
@@ -185,60 +187,67 @@ class App extends React.Component {
             checked={this.state.currentCourse === course}
             onClick={this.settingsHandler}></input>
         </div>
-
       )
     }
     return(
+      <div>
+        <h3>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h3>
         <div>
-          <h3>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h3>
+          <h2>Settings:</h2>
           <div>
-            <h2>Settings:</h2>
+            Your courses
+            {courses}
+          </div>
+          <br/>
+          <div>
+            Dark Mode
+            <input type='checkbox' label='Dark Mode' name="dark_mode" checked={this.state.dark_mode}
+              onChange={(event) => this.genericHandler(['settings'], event)}>
+            </input>
+          </div>
+          <br/>
+          <div>
+            Autoplay
+            <input type='checkbox' label='Autoplay' name='autoplay' checked={this.state.autoplay}
+              onChange={(event) => this.genericHandler(['settings'], event)}>
+            </input>
+          </div>
+          <br/>
+          <a onClick={() => this.updateUserObj('settings')}><strong>Update Settings </strong><Icon>cloud_upload</Icon></a>
+          <div>
+            <h2>Your Information:</h2>
+            <small>(click to edit)</small>
             <div>
-              Your courses
-              {courses}
-            </div><br/><div>
-              Dark Mode
-              <input type='checkbox' label='Dark Mode' name="dark_mode" checked={this.state.dark_mode}
-                onChange={(event) => this.genericHandler(['settings'], event)}>
-              </input>
-            </div><br/><div>
-              Autoplay
-              <input type='checkbox' label='Autoplay' name='autoplay' checked={this.state.autoplay}
-                onChange={(event) => this.genericHandler(['settings'], event)}>
-              </input>
-            </div><br/>
-            <a onClick={() => this.updateUserObj('settings')}><strong>Update Settings </strong><Icon>cloud_upload</Icon></a>
-            <div>
-              <h2>Your Information:</h2>
-              <small>(click to edit)</small>
-              <div>
-                First Name
-                <input type='text' autoComplete="off" className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
-              </div><div>
-                Last Name
-                <input type='text' autoComplete="off" className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
-              </div><div>
-                <br/>
-                Line 1 <input type='text' autoComplete="off" className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br/>
-                Line 2 <input type='text' autoComplete="off" className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br/>
-                City <input type='text' autoComplete="off" className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br/>
-                State <input type='text' autoComplete="off" className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br/>
-                Zip <input type='text' autoComplete="off" className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-              </div>
-              <br/>
-              <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
-            </div><div>
-              <h2>Your Orders:</h2>
-              {this.state.user.userdata.orders}
+              First Name
+              <input type='text' autoComplete="off" className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
             </div>
+            <div>
+              Last Name
+              <input type='text' autoComplete="off" className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
+            </div>
+            <div>
+              <br/>
+              Line 1 <input type='text' autoComplete="off" className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              <br/>
+              Line 2 <input type='text' autoComplete="off" className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              <br/>
+              City <input type='text' autoComplete="off" className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              <br/>
+              State <input type='text' autoComplete="off" className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              <br/>
+              Zip <input type='text' autoComplete="off" className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+            </div>
+            <br/>
+            <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
+          </div>
+          <div>
+            <h2>Your Orders:</h2>
+            {this.state.user.userdata.orders}
           </div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 
   // History component
   History(props) {
@@ -268,8 +277,8 @@ class App extends React.Component {
       <div className='video-grid'>
         {vids}
       </div>
-      )
-    }
+    )
+  }
 
   deleteBookmark(id) {
     this.setState({loading: true})
@@ -302,7 +311,7 @@ class App extends React.Component {
       else {
         this.setState({loading: false, flag: "Could not remove that bookmark. Please try again later."})
       }
-      })
+    })
   }
 
   // Bookmarks component
@@ -342,8 +351,8 @@ class App extends React.Component {
       <div className="video-grid">
         {bookmarks}
       </div>
-      )
-    }
+    )
+  }
 
   // The name says it all here
   getResourceByUrl(url) {
@@ -367,33 +376,33 @@ class App extends React.Component {
 
   // Feedback component; needs styling
   Feedback(props) {
-      return(
-        <div id="course-feedback">
-          <h2 className="header center-align">Feedback</h2>
-          <div className="col s12 center-align">
-            <p>
-              Drop us a line if you catch any mistakes, have suggestions for new
-              content, or would just like to let us know how we're helping you get a
-              better score! If you'd like to rate us so future students can see what
-              you think of the course, you can do that <Link to='/review' style={{text: 'bold'}} >here</Link>.
-              (By the way, this is just between us... no one else will see
-              your feedback but the fine folks here at SupertutorTV.)
-           </p>
-         </div>
-        <div className="col s12" id="feedback-post-form">
-          <div className="overlay"></div>
-          <textarea placeholder="Enter your feedback here." id="feedback-content">
-          </textarea>
-          <div className="feedback-submit-container center-align">
-            <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
-              <strong>Post Feedback</strong>
-            </a>
-          </div>
+    return(
+      <div id="course-feedback">
+        <h2 className="header center-align">Feedback</h2>
+        <div className="col s12 center-align">
+          <p>
+            Drop us a line if you catch any mistakes, have suggestions for new
+            content, or would just like to let us know how we're helping you get a
+            better score! If you'd like to rate us so future students can see what
+            you think of the course, you can do that <Link to='/review' style={{text: 'bold'}} >here</Link>.
+            (By the way, this is just between us... no one else will see
+            your feedback but the fine folks here at SupertutorTV.)
+         </p>
+       </div>
+      <div className="col s12" id="feedback-post-form">
+        <div className="overlay"></div>
+        <textarea placeholder="Enter your feedback here." id="feedback-content">
+        </textarea>
+        <div className="feedback-submit-container center-align">
+          <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
+            <strong>Post Feedback</strong>
+          </a>
         </div>
-          <div id="feedback-container"></div>
       </div>
-      )
-    }
+        <div id="feedback-container"></div>
+    </div>
+    )
+  }
 
   // Review component; needs styling
   Review(props) {
@@ -430,29 +439,29 @@ class App extends React.Component {
           </a>
         </div>
       </div>
-      )
-    }
+    )
+  }
 
-    // Placeholder
-  handleChange({ target }) {
-    this.setState({
-      [target.name]: target.value
-      })
-    }
+    // Handles changes to first-level state attributes
+  handleChange({target}) {
+  this.setState({
+    [target.name]: target.value
+    })
+  }
 
   // Placeholder
   Downloads(props) {
-      return(
-        <div>Welcome to the Downloads Page</div>
-      )
-    }
+    return(
+      <div>Welcome to the Downloads Page</div>
+    )
+  }
 
   // Placeholder
   Help(props) {
-      return(
-        <div>Welcome to the Help Page</div>
-      )
-    }
+    return(
+      <div>Welcome to the Help Page</div>
+    )
+  }
 
   // Menu component
   Menu(props) {
@@ -472,16 +481,16 @@ class App extends React.Component {
         <a onClick={this.courseRefresh} className="st-app-link" title="Refresh"><i className="material-icons">refresh</i></a>
         <a onClick={this.logout} className="st-app-link" title="Logout"><i className="material-icons">exit_to_app</i></a>
       </section>
-      )
-    }
+    )
+  }
 
   // Clears localstorage and calls the API; triggers a re-render with this.setState
   courseRefresh() {
-      if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
-        localStorage.removeItem('sttv_data')
-        this.getData()
-      }
+    if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
+      localStorage.removeItem('sttv_data')
+      this.getData()
     }
+  }
 
   // Generic response handler for authentication
   handleResponse(response) {
@@ -594,9 +603,9 @@ class App extends React.Component {
           'Authorization': 'Bearer ' + this.state.token,
           'Content-Type': 'application/json'
         }
-        })
+      })
       .then(response => this.handleResponse(response))
-      .then( items => {
+      .then(items => {
         if (items !== null) {
           localStorage.setItem('sttv_data', JSON.stringify(items.data))
           const currentCourse = items.data.user.settings.default_course
@@ -610,7 +619,7 @@ class App extends React.Component {
             stage: stage,
             vids: items.data.user.history,
             loading: false
-           })
+         })
         }
       })
       .catch(error => {
@@ -618,7 +627,8 @@ class App extends React.Component {
         this.setState({
           loading: false,
           flag : 'There was an error fetching your course data. Please check your network connection and try again.'
-        })})
+        })
+      })
     }
   }
 
@@ -626,13 +636,14 @@ class App extends React.Component {
   logout() {
       localStorage.removeItem('sttv_token')
       localStorage.removeItem('sttv_data')
-      this.setState({auth : false,
-                     courses : {},
-                     flag : 'You have successfully logged out.',
-                     password : '',
-                     token : '',
-                     username : ''
-                   })
+      this.setState({
+        auth : false,
+        courses : {},
+        flag : 'You have successfully logged out.',
+        password : '',
+        token : '',
+        username : ''
+     })
   }
 
   // Get a token for a user on login
@@ -663,10 +674,11 @@ class App extends React.Component {
           this.setState({
             flag: 'Incorrect username or password',
             auth: false,
-            loading: false})
+            loading: false
+          })
         }
       }
-      })
+    })
     .catch(error => {
       console.log(error)
       this.setState({
@@ -721,7 +733,9 @@ class App extends React.Component {
   			</div>
   		</div>
   		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.getToken()}>Login</button>
-      </div> )}
+      </div>
+    )
+  }
 
   // Wrapper for the stage and the recursive rendering function
   Course(props) {
@@ -734,8 +748,9 @@ class App extends React.Component {
         <div id="video-wrapper">
           <this.Videos vids={this.state.vids} link={this.state.vidLink} />
         </div>
-      </div>)
-    }
+      </div>
+    )
+  }
 
   // The Course tree navigation popup
   CourseNav(props) {
@@ -745,7 +760,8 @@ class App extends React.Component {
       <div id="sttv-sections">
         {this.state.nav && <this.Section collection={course.collection}
           link={link} thumb={course.data.thumbUrls.plain} spacing={0} />}
-    </div>)
+    </div>
+    )
   }
 
   // Component that recursively generates the routes and links for collections
@@ -776,7 +792,6 @@ class App extends React.Component {
         let vids = currentSection.collection
         click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb})
       }
-
       renderedSections.push(
         <div key={section} style={{paddingLeft: 10*spacing}}>
           <Link to={link} onClick={click}> {name} </Link>
@@ -798,7 +813,7 @@ class App extends React.Component {
     },
     body: JSON.stringify({
         url: url
-      })
+        })
     })
     .then( response => this.handleResponse(response))
     .then( items => {
@@ -814,7 +829,7 @@ class App extends React.Component {
       else {
         this.setState({loading: false, flag: "Could not remove that bookmark. Please try again later."})
       }
-      })
+    })
   }
 
   makeRequest(location, method, body) {
@@ -882,7 +897,7 @@ class App extends React.Component {
           </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
-    const link = this.vimeoLink.replace('||ID||', this.state.stage)
+    const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
     frame = <iframe className="sttv-course-player"
       key='stage'
       src={link}
@@ -915,7 +930,8 @@ class App extends React.Component {
               </Switch>
               {message}
         </section>
-      )}
+      )
+    }
     else {
       let courses = []
       for (let course in this.state.courses) {
@@ -951,8 +967,9 @@ class App extends React.Component {
                 </section>
               </section>
           </div>
-      )}
+        )
       }
+    }
   }
 
 // Export the whole thing
