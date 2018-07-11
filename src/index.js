@@ -190,58 +190,49 @@ class App extends React.Component {
     }
     return(
         <div>
-          <h3> Welcome to the Dashboard, {this.state.user.userdata.firstname} </h3>
+          <h3>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h3>
           <div>
-            <h1>
-              Settings:
-            </h1>
+            <h2>Settings:</h2>
             <div>
-              Your courses:
+              Your courses
               {courses}
-            </div>
-            <br/>
-            <div>
-              Dark Mode:
+            </div><br/><div>
+              Dark Mode
               <input type='checkbox' label='Dark Mode' name="dark_mode" checked={this.state.dark_mode}
                 onChange={(event) => this.genericHandler(['settings'], event)}>
               </input>
-            </div>
-            <br/>
-            <div>
-              Autoplay:
+            </div><br/><div>
+              Autoplay
               <input type='checkbox' label='Autoplay' name='autoplay' checked={this.state.autoplay}
                 onChange={(event) => this.genericHandler(['settings'], event)}>
               </input>
-            </div>
-            <button type="button" onClick={() => this.updateUserObj('settings')}>Update Settings</button>
+            </div><br/>
+            <a onClick={() => this.updateUserObj('settings')}><strong>Update Settings </strong><Icon>cloud_upload</Icon></a>
             <div>
-              <h1>Your Information:</h1>
+              <h2>Your Information:</h2>
+              <small>(click to edit)</small>
               <div>
-                First Name:
+                First Name
                 <input type='text' className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
-              </div>
-              <div>
-                Last Name:
+              </div><div>
+                Last Name
                 <input type='text' className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
+              </div><div>
+                <br/>
+                Line 1 <input type='text' className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <br/>
+                Line 2 <input type='text' className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <br/>
+                City <input type='text' className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <br/>
+                State <input type='text' className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+                <br/>
+                Zip <input type='text' className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
               </div>
-              <div>
-                Address:
-                <br />
-                Line 1: <input type='text' className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br />
-                Line 2: <input type='text' className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br />
-                City: <input type='text' className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br />
-                State: <input type='text' className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-                <br />
-                Zip: <input type='text' className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
-              </div>
-              <button type="button" onClick={() => this.updateUserObj('userdata')}>Update Information</button>
-            </div>
-            <div>
-              <h1>Your Orders:</h1>
               <br/>
+              <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
+            </div><div>
+              <h2>Your Orders:</h2>
               {this.state.user.userdata.orders}
             </div>
           </div>
@@ -408,11 +399,11 @@ class App extends React.Component {
   Review(props) {
     return(
       <div id="ratings-modal-wrapper">
-      	<header className="header center-align">
+      	<div className="header center-align">
       		<h2>Rate this course</h2>
       	  <p>Rate us and leave a review so<b> others </b>
           can see how this course has helped you!</p>
-      	</header>
+      	</div>
       	<section className="rating-widget">
       	  <div className="rating-stars center-align">
       		<ul id="stars">
@@ -467,7 +458,7 @@ class App extends React.Component {
   Menu(props) {
     const root = props.location.pathname.split('/').filter(String)[0]
     return(
-      <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}}>
+      <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}} >
         <Link to="/dashboard" className={root == "dashboard" && !this.state.search ? "st-link-active" : "st-app-link"} title="Dashboard" ><Icon>person</Icon></Link>
         <a className={root in this.state.courses && !this.state.search ? "st-link-active" : "st-app-link"} title="Course"  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
         <Link to="/downloads" className={root == "downloads" && !this.state.search ? "st-link-active" : "st-app-link"} title="Downloads" onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
@@ -555,7 +546,7 @@ class App extends React.Component {
       for (let item in results) {
       links.push(
         <li className="search-result" key={index}>
-          <Link to={'/' + results[item]} onClick={() => this.setState({search : false})}>
+          <Link to={'/' + results[item]} onClick={() => this.setState({search : false, nav: true})}>
             {cleanup(results[item])}
           </Link>
           <br/>
@@ -569,15 +560,14 @@ class App extends React.Component {
       console.log(error)
     }
     return(
-      <div className="sttv-modal">
-        <div className="sttv-search">
-          <div onClick={() => this.setState({search: false})} className='search-exit'><i className="material-icons">close</i></div>
+      <div className="sttv-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
+        <div className="sttv-search" onClick={(e) => e.stopPropagation()} >
           <h3>Searching: {cleanup(this.state.currentCourse)}</h3>
           <input className="sttv-searchbox" autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}>
           </input>
-          <div className="sttv-search-results">
+          <ul className="sttv-search-results">
             {links}
-          </div>
+          </ul>
         </div>
       </div>
     )
@@ -666,6 +656,7 @@ class App extends React.Component {
         if (items.code == 'login_success') {
           localStorage.setItem('sttv_token', JSON.stringify(items.token))
           this.setState({token : items.token, auth: true, username: '', password : '', flag: ''})
+          localStorage.removeItem('sttv_data')
           this.getData()
         }
         else {
@@ -707,6 +698,7 @@ class App extends React.Component {
     })
     .catch(error => {
       this.setState({
+        auth: false,
         flag: 'Unable to authenticate your session. Please check your network connection and try again.',
         loading: false
       })
