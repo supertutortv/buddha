@@ -893,9 +893,15 @@ class App extends React.Component {
   // and generates a label for the video as well as a bookmark button
   Stage(props) {
     const vid = this.getResourceByUrl(props.location)
-    const location = props.location.split('/').filter(String).splice(1)
-    location.pop()
-    const label = cleanup(location.join(' > ')) + ' > ' + vid.name
+    let label
+    if (vid.data) {
+      label = cleanup(props.location.split('/').filter(String).splice(1).join('/'))
+    }
+    else {
+      const location = props.location.split('/').filter(String).splice(1)
+      location.pop()
+      label = cleanup(location.join(' > ')) + ' > ' + vid.name
+    }
     let frame
     if (this.state.stage == "0") {
       frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
@@ -914,7 +920,7 @@ class App extends React.Component {
           {frame}
           <div>
             <h3>{label}</h3>
-            <a className="st-video-bookmarker" onClick={() => this.createBookmark(location)} ><i className="material-icons">bookmark</i></a>
+            <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)} ><i className="material-icons">bookmark</i></a>
           </div>
       </div>
     )
