@@ -1,12 +1,12 @@
 $videowidth: 20em
 
 #st-app
+    overflow: auto
     position: fixed
     top: 0
     right: 0
     bottom: 0
     left: 0
-    overflow: hidden
     padding-left: $sidebarw
     background-image: url('http://informationcommunicationtechnology.com/wp-content/uploads/2018/06/Subtle-Dark-Background.jpg')
     background-size: cover
@@ -46,11 +46,17 @@ $videowidth: 20em
                 text-transform: uppercase
 
     #st-app-inner
-        overflow: auto
         position: relative
         font-size: $realEM
         height: 80%
         padding: 2em
+
+        .st-video-bookmarker
+            float: right
+            padding-right: $videowidth
+
+        .st-video-label
+            width: 946
 
         .info-input
             background-color: transparent
@@ -66,7 +72,6 @@ $videowidth: 20em
             left: $sidebarw*(3/2)
             top: $sidebarw*(3/2)
             background-color: black
-            overflow-x: hidden
             padding-top: 20px
 
         .sttv-modal
@@ -107,7 +112,6 @@ $videowidth: 20em
 
             .sttv-search-results
               bottom: 5%
-              overflow: scroll
               list-style-type: none
               text-align: center
               height: 80%

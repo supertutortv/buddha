@@ -919,8 +919,7 @@ class App extends React.Component {
       <div>
           {frame}
           <div>
-            <h3>{label}</h3>
-            <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)} ><i className="material-icons">bookmark</i></a>
+            <h3 className="st-video-label">{label} <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)} ><i className="material-icons">bookmark</i></a></h3>
           </div>
       </div>
     )
