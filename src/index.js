@@ -106,7 +106,7 @@ class App extends React.Component {
         obj[key] = helper(path, obj[key], {target})
       }
       else {
-        if (target.type == "checkbox") {
+        if (target.type == 'checkbox') {
           obj[target.name] = target.checked
         }
         else {
@@ -163,15 +163,16 @@ class App extends React.Component {
             </div>
             <div id="st-header-view-title">
               <Switch>
-                <Route className="st-link" path={'/' + this.state.currentCourse} component={() => (cleanup(this.state.currentCourse))}/>
-                <Route className="st-link" path="/dashboard" component={() => ("Dashboard")}/>
-                <Route className="st-link" path="/history" component={() => ("History")}/>
-                <Route className="st-link" path="/feedback" component={() => ("Feedback")}/>
-                <Route className="st-link" path="/bookmarks" component={() => ("Bookmarks")}/>
-                <Route className="st-link" path="/review" component={() => ("Review")}/>
-                <Route className="st-link" path="/downloads" component={() => ("Downloads")}/>
-                <Route className="st-link" path="/help" component={() => ("Help")}/>
-                <Route path="/*" exact component={() => ("Oops")}/>
+                <Route className='st-link' path={'/' + this.state.currentCourse} component={() => (cleanup(this.state.currentCourse))}/>
+                <Route className='st-link' path='/dashboard' component={() => "Dashboard"}/>
+                <Route className='st-link' path='/history' component={() => "History"}/>
+                <Route className='st-link' path='/feedback' component={() => "Feedback"}/>
+                <Route className='st-link' path='/bookmarks' component={() => "Bookmarks"}/>
+                <Route className='st-link' path='/review' component={() => "Review"}/>
+                <Route className='st-link' path='/downloads' component={() => "Downloads"}/>
+                <Route className='st-link' path='/help' component={() => "Help"}/>
+                <Route className='st-link' path='/all-your-base-are-belong-to-us' component={() => "You have no chance to survive make your time"} />
+                <Route path="/*" exact component={() => "Oops"}/>
               </Switch>
             </div>
           </div>
@@ -204,14 +205,14 @@ class App extends React.Component {
           <br/>
           <div>
             Dark Mode
-            <input type='checkbox' label='Dark Mode' name="dark_mode" checked={this.state.dark_mode}
+            <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.dark_mode}
               onChange={(event) => this.genericHandler(['settings'], event)}>
             </input>
           </div>
           <br/>
           <div>
             Autoplay
-            <input type='checkbox' label='Autoplay' name='autoplay' checked={this.state.autoplay}
+            <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.autoplay}
               onChange={(event) => this.genericHandler(['settings'], event)}>
             </input>
           </div>
@@ -222,23 +223,23 @@ class App extends React.Component {
             <small>(click to edit)</small>
             <div>
               First Name
-              <input type='text' autoComplete="off" className='info-input' name='firstname' value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(['userdata'], event)}/>
+              <input type="text" autoComplete="off" className="info-input" name="firstname" value={this.state.user.userdata.firstname} onChange={(event) => this.genericHandler(["userdata"], event)}/>
             </div>
             <div>
               Last Name
-              <input type='text' autoComplete="off" className='info-input' name='lastname' value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(['userdata'], event)} />
+              <input type="text" autoComplete="off" className="info-input" name="lastname" value={this.state.user.userdata.lastname} onChange={(event) => this.genericHandler(["userdata"], event)} />
             </div>
             <div>
               <br/>
-              Line 1 <input type='text' autoComplete="off" className='info-input' name='line1' value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              Line 1 <input type="text" autoComplete="off" className="info-input" name="line1" value={this.state.user.userdata.address.line1} onChange={(event) => this.genericHandler(["userdata", "address"], event)} />
               <br/>
-              Line 2 <input type='text' autoComplete="off" className='info-input' name='line2' value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              Line 2 <input type="text" autoComplete="off" className="info-input" name="line2" value={this.state.user.userdata.address.line2} onChange={(event) => this.genericHandler(["userdata", "address"], event)} />
               <br/>
-              City <input type='text' autoComplete="off" className='info-input' name='city' value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              City <input type="text" autoComplete="off" className="info-input" name="city" value={this.state.user.userdata.address.city} onChange={(event) => this.genericHandler(["userdata", "address"], event)} />
               <br/>
-              State <input type='text' autoComplete="off" className='info-input' name='state' value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              State <input type="text" autoComplete="off" className="info-input" name="state" value={this.state.user.userdata.address.state} onChange={(event) => this.genericHandler(["userdata", "address"], event)} />
               <br/>
-              Zip <input type='text' autoComplete="off" className='info-input' name='zip' value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(['userdata', 'address'], event)} />
+              Zip <input type="text" autoComplete="off" className="info-input" name="zip" value={this.state.user.userdata.address.zip} onChange={(event) => this.genericHandler(["userdata", "address"], event)} />
             </div>
             <br/>
             <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
@@ -277,7 +278,7 @@ class App extends React.Component {
       index++
     }
     return(
-      <div className='video-grid'>
+      <div className="video-grid">
         {vids}
       </div>
     )
@@ -314,7 +315,7 @@ class App extends React.Component {
         this.setState({loading: false, user: user})
       }
       else {
-        this.setState({loading: false, flag: "Could not remove that bookmark. Please try again later."})
+        this.setState({loading: false, flag: 'Could not remove that bookmark. Please try again later.'})
       }
     })
   }
@@ -398,10 +399,10 @@ class App extends React.Component {
        </div>
       <div className="col s12" id="feedback-post-form">
         <div className="overlay"></div>
-        <textarea placeholder="Enter your feedback here." className='sttv-textarea'>
+        <textarea placeholder="Enter your feedback here." className="sttv-textarea">
         </textarea>
         <div className="feedback-submit-container center-align">
-          <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
+          <a className="feedback-submit-button btn" onClick={() => console.log("This will submit feedback")}>
             <strong>Post Feedback</strong>
           </a>
         </div>
@@ -444,7 +445,7 @@ class App extends React.Component {
           </small>
         </p>
       	<div className="ratings-submit-container center-align">
-          <a className="ratings-submit-button btn" onClick={() => console.log('This will submit the review')}>
+          <a className="ratings-submit-button btn" onClick={() => console.log("This will submit the review")}>
             <strong>Post Your Review</strong>
           </a>
         </div>
@@ -478,19 +479,19 @@ class App extends React.Component {
   Menu(props) {
     const root = props.location.pathname.split('/').filter(String)[0]
     return(
-      <section id="st-sidebar" style={this.state.search ? {'pointerEvents' : 'none'} : {'pointerEvents': 'auto'}} >
-        <Link to="/dashboard" className={root == "dashboard" && !this.state.search ? "st-link-active" : "st-app-link"} title="Dashboard" ><Icon>person</Icon></Link>
-        <a className={root in this.state.courses && !this.state.search ? "st-link-active" : "st-app-link"} title="Course"  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
-        <Link to="/downloads" className={root == "downloads" && !this.state.search ? "st-link-active" : "st-app-link"} title="Downloads" onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
-        <Link to="/history" className={root == "history" && !this.state.search ? "st-link-active" : "st-app-link"} title="Orders" onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
-        <Link to="/bookmarks" className={root == "bookmarks" && !this.state.search ? "st-link-active" : "st-app-link"} title="Bookmarks" onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
-        <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? "st-link-active" : "st-app-link"} title="Search" ><Icon>search</Icon></a>
-        <a className="st-app-link">&nbsp;</a>
-        <Link to="/review" className={root == "review" && !this.state.search ? "st-link-active" : "st-app-link"} title="Review" onClick={() => this.setState({nav: false})} ><i className="material-icons">rate_review</i></Link>
-        <Link to="/feedback" className={root == "feedback" && !this.state.search ? "st-link-active" : "st-app-link"} title="Feedback" onClick={() => this.setState({nav: false})} ><i className="material-icons">send</i></Link>
-        <Link to="/help" className={root == "help" && !this.state.search ? "st-link-active" : "st-app-link"} title="Help" onClick={() => this.setState({nav: false})} ><i className="material-icons">help</i></Link>
-        <a onClick={this.courseRefresh} className="st-app-link" title="Refresh"><i className="material-icons">refresh</i></a>
-        <a onClick={this.logout} className="st-app-link" title="Logout"><i className="material-icons">exit_to_app</i></a>
+      <section id="st-sidebar" style={this.state.search ? {pointerEvents : 'none'} : {pointerEvents: 'auto'}} >
+        <Link to="/dashboard" className={root == 'dashboard' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Dashboard' ><Icon>person</Icon></Link>
+        <a className={root in this.state.courses && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Course'  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
+        <Link to='/downloads' className={root == 'downloads' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Downloads' onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
+        <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Orders' onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
+        <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
+        <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>
+        <a className='st-app-link'>&nbsp;</a>
+        <Link to='/review' className={root == 'review' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Review' onClick={() => this.setState({nav: false})} ><i className='material-icons'>rate_review</i></Link>
+        <Link to='/feedback' className={root == 'feedback' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Feedback' onClick={() => this.setState({nav: false})} ><i className='material-icons'>send</i></Link>
+        <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' onClick={() => this.setState({nav: false})} ><i className='material-icons'>help</i></Link>
+        <a onClick={this.courseRefresh} className='st-app-link' title='Refresh'><i className='material-icons'>refresh</i></a>
+        <a onClick={this.logout} className='st-app-link' title='Logout'><i className='material-icons'>exit_to_app</i></a>
       </section>
     )
   }
@@ -498,7 +499,7 @@ class App extends React.Component {
   // Clears the course data in localstorage and fetches new data from the API;
   // updates the state and re-renders if necessary
   courseRefresh() {
-    if (confirm('Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?')) {
+    if (confirm("Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?")) {
       localStorage.removeItem('sttv_data')
       this.getData()
     }
@@ -802,7 +803,7 @@ class App extends React.Component {
         route = <Route path={link} render={() => <this.Section
           collection={nextCollection} link={link} thumb={thumb}
           spacing={nextSpacing} />} />
-        if ("intro" in currentSection.data) {
+        if ('intro' in currentSection.data) {
           click = () => this.updateStage(String(currentSection.data.intro))
         }
       }
@@ -847,7 +848,7 @@ class App extends React.Component {
         this.setState({loading: false, user: user})
       }
       else {
-        this.setState({loading: false, flag: "Could not remove that bookmark. Please try again later."})
+        this.setState({loading: false, flag: 'Could not remove that bookmark. Please try again later.'})
       }
     })
   }
@@ -908,24 +909,24 @@ class App extends React.Component {
       label = cleanup(location.join(' > ')) + ' > ' + vid.name
     }
     let frame
-    if (this.state.stage == "0") {
-      frame = <div className="sttv-course-player" style={{width:"946px", height:"594px", "background-color" : "black"}} frameBorder="" title="Intro" webkitallowfullscreen="tr">
+    if (this.state.stage == '0') {
+      frame = <div className='sttv-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
           <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
       </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
-    frame = <iframe className="sttv-course-player"
+    frame = <iframe className='sttv-course-player'
       key='stage'
       src={link}
-      width="946" height="594" frameBorder="" title="Intro" webkitallowfullscreen="tr"
-      allowFullScreen=""></iframe>
+      width='946' height='594' frameBorder='' title='Intro' webkitallowfullscreen='tr'
+      allowFullScreen=''></iframe>
     return(
       <div>
           {frame}
           <div>
-            <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)}><i className="material-icons">bookmark</i></a>
-            <h3 className="st-video-label">{label} </h3>
+            <a className='st-video-bookmarker' onClick={() => this.createBookmark(this.props.location)}><i className='material-icons'>bookmark</i></a>
+            <h3 className='st-video-label'>{label} </h3>
           </div>
       </div>
     )
@@ -942,8 +943,8 @@ class App extends React.Component {
       return(
         <section id="st-app">
               <Switch>
-                <Route path="/login" component={this.Login}/>
-                <Redirect push to="/login"/>
+                <Route path='/login' component={this.Login}/>
+                <Redirect push to='/login'/>
               </Switch>
               {message}
         </section>
@@ -953,7 +954,7 @@ class App extends React.Component {
       let courses = []
       for (let course in this.state.courses) {
         courses.push(
-          <Route key={course} className="st-link" path={'/' + course} component={this.Course}/>
+          <Route key={course} className='st-link' path={'/' + course} component={this.Course}/>
         )
       }
       let search
@@ -962,23 +963,24 @@ class App extends React.Component {
       }
       return(
           <div>
-              <Route path="/" component={this.Menu}/>
+              <Route path='/' component={this.Menu}/>
               <section id="st-app">
-                <Route path="/" component={this.Header}/>
+                <Route path='/' component={this.Header}/>
                 <section id="st-app-inner">
                   <this.CourseNav />
                   {courses}
                   {search}
                   <Switch>
-                    <Route className="st-link" path="/dashboard" component={this.Dashboard}/>
-                    <Route className="st-link" path={'/' + this.state.currentCourse}/>
-                    <Route className="st-link" path="/history" component={this.History}/>
-                    <Route className="st-link" path="/feedback" component={this.Feedback}/>
-                    <Route className="st-link" path="/bookmarks" component={this.Bookmarks}/>
-                    <Route className="st-link" path="/review" component={this.Review}/>
-                    <Route className="st-link" path="/downloads" component={this.Downloads}/>
-                    <Route className="st-link" path="/help" component={this.Help}/>
-                    <Route path="/(login|)" exact component={() => <Redirect to="/dashboard"/>}/>
+                    <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
+                    <Route className='st-link' path={'/' + this.state.currentCourse}/>
+                    <Route className='st-link' path='/history' component={this.History}/>
+                    <Route className='st-link' path='/feedback' component={this.Feedback}/>
+                    <Route className='st-link' path='/bookmarks' component={this.Bookmarks}/>
+                    <Route className='st-link' path='/review' component={this.Review}/>
+                    <Route className='st-link' path='/downloads' component={this.Downloads}/>
+                    <Route className='st-link' path='/help' component={this.Help}/>
+                    <Route path='/(login|)' exact component={() => <Redirect to='/dashboard'/>}/>
+                    <Route path='/all-your-base-are-belong-to-us' component={AllYourBase} />
                     <Route path="/*" exact component={() => <Four04 />}/>
                   </Switch>
                 </section>
@@ -989,9 +991,13 @@ class App extends React.Component {
     }
   }
 
+const AllYourBase = () => (
+  <img style={{height:'100%', width:'100%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
+)
+
 // Export the whole thing inside of a router
 ReactDOM.render (
   <BrowserRouter>
-      <Route path="/" component={App} />
+      <Route path='/' component={App} />
   </BrowserRouter>,
   document.getElementById("app"));
