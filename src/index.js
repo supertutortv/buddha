@@ -32,6 +32,8 @@ class App extends React.Component {
                   autoPlay : false,
                   nav : false,
                   token : '',
+                  ratingLocked: false,
+                  rating: 0,
                   query: '',
                   flag : '',
                   thumb : '',
@@ -396,7 +398,7 @@ class App extends React.Component {
        </div>
       <div className="col s12" id="feedback-post-form">
         <div className="overlay"></div>
-        <textarea placeholder="Enter your feedback here." id="feedback-content">
+        <textarea placeholder="Enter your feedback here." className='sttv-textarea'>
         </textarea>
         <div className="feedback-submit-container center-align">
           <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
@@ -412,7 +414,7 @@ class App extends React.Component {
   // Review component; also needs styling and backend support
   Review(props) {
     return(
-      <div id="ratings-modal-wrapper">
+      <div id="ratings-modal-wrapper" onClick={() => this.setState({ratingLock: 0, rating: 0})}>
       	<div className="header center-align">
       		<h2>Rate this course</h2>
       	  <p>Rate us and leave a review so<b> others </b>
@@ -420,16 +422,14 @@ class App extends React.Component {
       	</div>
       	<section className="rating-widget">
       	  <div className="rating-stars center-align">
-      		<ul id="stars">
-      			<Icon>star</Icon>
-            <Icon>star</Icon>
-            <Icon>star</Icon>
-            <Icon>star</Icon>
-            <Icon>star</Icon>
-      		</ul>
+      			<a className={this.state.ratingLock > 0 ? 'star-active-lock' : this.state.rating > 0 ? 'star-active' : 'star'} onMouseEnter={() => this.setState({rating:1})} onMouseOut={() => this.setState({rating:0})} onClick={(e) => {this.setState({ratingLock:1}); e.stopPropagation()}}><Icon>star</Icon></a>
+            <a className={this.state.ratingLock > 1 ? 'star-active-lock' : this.state.rating > 1 ? 'star-active' : 'star'} onMouseEnter={() => this.setState({rating:2})} onMouseOut={() => this.setState({rating:0})} onClick={(e) => {this.setState({ratingLock:2}); e.stopPropagation()}}><Icon>star</Icon></a>
+            <a className={this.state.ratingLock > 2 ? 'star-active-lock' : this.state.rating > 2 ? 'star-active' : 'star'} onMouseEnter={() => this.setState({rating:3})} onMouseOut={() => this.setState({rating:0})} onClick={(e) => {this.setState({ratingLock:3}); e.stopPropagation()}}><Icon>star</Icon></a>
+            <a className={this.state.ratingLock > 3 ? 'star-active-lock' : this.state.rating > 3 ? 'star-active' : 'star'} onMouseEnter={() => this.setState({rating:4})} onMouseOut={() => this.setState({rating:0})} onClick={(e) => {this.setState({ratingLock:4}); e.stopPropagation()}}><Icon>star</Icon></a>
+            <a className={this.state.ratingLock > 4 ? 'star-active-lock' : this.state.rating > 4 ? 'star-active' : 'star'} onMouseEnter={() => this.setState({rating:5})} onMouseOut={() => this.setState({rating:0})} onClick={(e) => {this.setState({ratingLock:5}); e.stopPropagation()}}><Icon>star</Icon></a>
       	  </div>
-      	  <div className="message-box">
-      		<textarea placeholder="Enter your review here." id="review-content"></textarea>
+      	  <div className="message-box" onClick={(e) => e.stopPropagation()}>
+      		<textarea placeholder="Enter your review here." className="sttv-textarea"></textarea>
       	  </div>
       	</section>
       	<p className="center-align">
@@ -754,8 +754,8 @@ class App extends React.Component {
   Course(props) {
     let link = '/' + this.state.currentCourse
     return(
-      <div >
-        <div>
+      <div>
+        <div className="st-stage">
           <this.Stage location={props.location.pathname}/>
         </div>
         <div id="video-wrapper">
@@ -919,7 +919,8 @@ class App extends React.Component {
       <div>
           {frame}
           <div>
-            <h3 className="st-video-label">{label} <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)} ><i className="material-icons">bookmark</i></a></h3>
+            <a className="st-video-bookmarker" onClick={() => this.createBookmark(this.props.location)}><i className="material-icons">bookmark</i></a>
+            <h3 className="st-video-label">{label} </h3>
           </div>
       </div>
     )
