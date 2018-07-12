@@ -280,10 +280,8 @@ class App extends React.Component {
   }
 
   getBookmarkId(url){
-    console.log(url)
     for (let index in this.state.user.bookmarks) {
       let bookmark = this.state.user.bookmarks[index]
-      console.log(bookmark)
       if (bookmark.data.url == url) {
         return bookmark.id
       }
@@ -308,7 +306,6 @@ class App extends React.Component {
     .then( response => this.handleResponse(response))
     .then( items => {
       if (items !== null) {
-        console.log(items)
         let user = this.state.user
         for (let item in user.bookmarks) {
           if (user.bookmarks[item].id == items.data[0].id) {
@@ -594,7 +591,6 @@ class App extends React.Component {
     }
     catch (error) {
       links = 'Type more than three characters to search this course.'
-      console.log(error)
     }
     return(
       <div className="sttv-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
