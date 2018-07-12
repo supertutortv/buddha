@@ -79,15 +79,18 @@ class App extends React.Component {
         if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids) {
           this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), message: ''})
         }
-        if (newDir && newDir.data && newDir.data.type == 'collection' && downloads != nextState.downloads) {
+        if (newDownloads && newDownloads.data && newDownloads.data.type == 'collection' && downloads != nextState.downloads) {
           this.setState({downloads: downloads, message: ''})
         }
-        // else if (this.state.vids && this.state.user.history != null) {
-        //   this.setState({vids: this.state.user.history, thumb: thumb})
-        // }
+        if (this.state.stage == null && newDownloads && newDownloads.data) {
+          this.setState({stage: newDownloads.data.intro})
+        }
+        else if (!this.state.vids && this.state.user.history != null) {
+          console.log(this.state.vids)
+          this.setState({vids: this.state.user.history, thumb: thumb})
+        }
       }
       catch (error) {
-        console.log(error)
         if (this.state.message != errorMessage) {
           this.setState({message: errorMessage})
         }
@@ -141,7 +144,6 @@ class App extends React.Component {
       }
     })
     .catch(error => {
-      console.log(error)
       this.setState({
         loading: false,
         message : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
@@ -259,9 +261,13 @@ class App extends React.Component {
       let url = history[item].data.url
       let vid = this.getResourceByUrl(url)
       let thumb = thumbURL.replace('||ID||', vid.thumb)
+      let click
+      if (vid.id) {
+        click = () => this.updateStage(String(vid.id))
+      }
       vids.push(
         <div key={index} className="video-in-grid">
-          <Link to={url} onClick={() => this.updateStage(String(vid.id))}>
+          <Link to={url} onClick={click}>
             <div >
               <div>
                   <img className="grid-thumb" src={thumb} className="z-depth-3"/>
@@ -324,7 +330,6 @@ class App extends React.Component {
       }
     })
     .catch(error => {
-      console.log(error)
       this.getData()
     })
   }
@@ -357,10 +362,14 @@ class App extends React.Component {
         if (vid.name) {
           title += ' > ' + vid.name
         }
+        let click
+        if (vid.id) {
+          click = () => this.updateStage(String(vid.id))
+        }
         bookmarks.push(
           <div key={mark.id} className="video-in-grid">
             <a className="st-video-remover" onClick={() => this.deleteBookmark(mark.id)} ><Icon>highlight_off</Icon></a>
-            <Link to={url} onClick={() => this.updateStage(String(id))}>
+            <Link to={url} onClick={click}>
               <div >
                 <div>
                     <img className="grid-thumb" src={thumb} className="z-depth-3"/>
@@ -658,7 +667,6 @@ class App extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error)
         this.setState({
           loading: false,
           message : 'There was an error fetching your course data. Please check your network connection and try again.'
@@ -717,7 +725,6 @@ class App extends React.Component {
       }
     })
     .catch(error => {
-      console.log(error)
       this.setState({
         loading: false,
         message: 'Unable to log you in. Please check your network connection and try again.'
