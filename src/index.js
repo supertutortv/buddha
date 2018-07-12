@@ -68,23 +68,26 @@ class App extends React.Component {
     const errorMessage = 'There was an error with your course data. You may wish to try refreshing from the menu.'
     if (this.state.auth) {
       try {
-        const nextParent = this.props.location.pathname.split('/').filter(String)
+        let nextParent = this.props.location.pathname.split('/').filter(String)
+        const newDownloads = this.getResourceByUrl(nextParent.slice(0, 2).join('/'))
+        nextParent.pop()
         const newDir = this.getResourceByUrl(nextParent.join('/'))
-        let thumb = this.state.courses[this.state.currentCourse].data.thumbUrls.plain
+        let downloads = []
+        if (newDownloads && 'files' in newDownloads) {
+          downloads = newDownloads.files
+        }
         if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids) {
-          this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), thumb: thumb})
+          this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), message: ''})
         }
-        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'collection' && newDir.files && newDir.files != nextState.downloads) {
-          this.setState({downloads: newDir.files, downloadSection: nextParent.join('/')})
+        if (newDir && newDir.data && newDir.data.type == 'collection' && downloads != nextState.downloads) {
+          this.setState({downloads: downloads, message: ''})
         }
-        else if (nextState.vids == null && this.state.courses.history != null) {
-          this.setState({vids: this.state.user.history, thumb: thumb})
-        }
-        if (nextState.message && this.state.message == nextState.message) {
-          this.setState({message: ''})
-        }
+        // else if (this.state.vids && this.state.user.history != null) {
+        //   this.setState({vids: this.state.user.history, thumb: thumb})
+        // }
       }
       catch (error) {
+        console.log(error)
         if (this.state.message != errorMessage) {
           this.setState({message: errorMessage})
         }
@@ -116,7 +119,6 @@ class App extends React.Component {
   // Updates the remote user object and then uses the response from the server
   // to update the state and the localStorage object
   updateUserObj (key) {
-    this.setState({loading: true})
     const setting = this.state.key
     fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
       method : 'PUT',
@@ -199,14 +201,14 @@ class App extends React.Component {
           <br/>
           <div>
             Dark Mode
-            <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.dark_mode}
+            <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.user.settings.dark_mode}
               onChange={(event) => this.genericHandler(['settings'], event)}>
             </input>
           </div>
           <br/>
           <div>
             Autoplay
-            <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.autoplay}
+            <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.user.settings.autoplay}
               onChange={(event) => this.genericHandler(['settings'], event)}>
             </input>
           </div>
@@ -242,7 +244,6 @@ class App extends React.Component {
             <h2>Your Orders:</h2>
             {this.state.user.userdata.orders}
           </div>
-          {this.state.message}
         </div>
       </div>
     )
@@ -349,6 +350,13 @@ class App extends React.Component {
           thumb = vid.thumb
         }
         thumb = thumbURL.replace('||ID||', thumb)
+        vid = this.getResourceByUrl(url)
+        const titleBase = url.slice(1).split('/')
+        titleBase.pop()
+        let title = cleanup(titleBase.join('/'))
+        if (vid.name) {
+          title += ' > ' + vid.name
+        }
         bookmarks.push(
           <div key={mark.id} className="video-in-grid">
             <a className="st-video-remover" onClick={() => this.deleteBookmark(mark.id)} ><Icon>highlight_off</Icon></a>
@@ -357,7 +365,7 @@ class App extends React.Component {
                 <div>
                     <img className="grid-thumb" src={thumb} className="z-depth-3"/>
                 </div>
-                <span className="video-grid-title"> {cleanup(url.slice(1))} </span>
+                <span className="video-grid-title"> {title} </span>
               </div>
             </Link>
           </div>
@@ -369,8 +377,7 @@ class App extends React.Component {
     }
     return(
       <div className="video-grid">
-        {this.state.message}
-        {bookmarks}
+        {bookmarks.reverse()}
       </div>
     )
   }
@@ -426,7 +433,6 @@ class App extends React.Component {
           </a>
         </div>
       </div>
-      {this.state.message}
     </div>
     )
   }
@@ -466,7 +472,6 @@ class App extends React.Component {
           <a className="ratings-submit-button btn" onClick={() => console.log("This will submit the review")}>
             <strong>Submit Your Review</strong>
           </a>
-          {this.state.message}
         </div>
       </div>
     )
@@ -497,7 +502,7 @@ class App extends React.Component {
         <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Orders' onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
         <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
         <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>
-        <a className='st-app-link'>&nbsp;</a>
+        <a className='st-app-link divider'>&nbsp;</a>
         <Link to='/review' className={root == 'review' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Review' onClick={() => this.setState({nav: false})} ><Icon>rate_review</Icon></Link>
         <Link to='/feedback' className={root == 'feedback' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Feedback' onClick={() => this.setState({nav: false})} ><Icon>send</Icon></Link>
         <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' onClick={() => this.setState({nav: false})}><Icon>help</Icon></Link>
@@ -942,10 +947,14 @@ class App extends React.Component {
       allowFullScreen=''></iframe>
     let bookmark
     if (this.state.bookmarkedIds.includes(props.location)) {
-      bookmark = <button title='Remove Bookmark' onClick={() => this.deleteBookmark(this.getBookmarkId(this.props.location.pathname))}><Icon>bookmark</Icon></button>
+      bookmark = <a title='Remove Bookmark' onClick={() => this.deleteBookmark(this.getBookmarkId(this.props.location.pathname))}><Icon>bookmark</Icon></a>
     }
     else {
-      bookmark = <button title='Bookmark' onClick={() => this.createBookmark(this.props.location.pathname)}><Icon>bookmark_border</Icon></button>
+      bookmark = <a title='Bookmark' onClick={() => this.createBookmark(this.props.location.pathname)}><Icon>bookmark_border</Icon></a>
+    }
+    let downloads
+    if (this.state.downloads != null && this.state.downloads.length > 0) {
+      downloads = <a title='Files' onClick={() => this.setState({downloadModal : true})} ><Icon>folder</Icon></a>
 
     }
     return(
@@ -954,11 +963,10 @@ class App extends React.Component {
           {frame}
           <div>
             <div className='st-video-bookmarker'>
-              <button title='Files' onClick={() => this.setState({downloadModal : true})} disabled={this.state.downloads == null || this.state.downloads.length == 0}><Icon>folder</Icon></button>
+              {downloads}
               {bookmark}
             </div>
             <h3 className='st-video-label'>{label} </h3>
-            {this.state.message}
           </div>
       </div>
     )
