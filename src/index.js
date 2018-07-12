@@ -24,21 +24,7 @@ class App extends React.Component {
     this.getData = this.getData.bind(this)
     this.Login = this.Login.bind(this)
     this.handleResponse = this.handleResponse.bind(this)
-    this.state = {courses : null,
-                  currentCourse: '',
-                  username : '',
-                  password : '',
-                  darkMode : false,
-                  autoPlay : false,
-                  nav : false,
-                  token : '',
-                  ratingLocked: false,
-                  rating: 0,
-                  query: '',
-                  flag : '',
-                  thumb : '',
-                  search : false,
-                  loading : false,
+    this.state = {loading : false,
                   auth : false}
     try {
       const token = JSON.parse(localStorage.getItem('sttv_token'))
@@ -74,25 +60,34 @@ class App extends React.Component {
     this.updateStage = this.updateStage.bind(this)
     this.updateUserObj = this.updateUserObj.bind(this)
     this.Videos = this.Videos.bind(this)
+    this.getBookmarkId = this.getBookmarkId.bind(this)
   }
 
-  // Makes sure the correct thumbnails and relevant videos are displayed.
+  // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
+    const errorMessage = 'There was an error with your course data. You may wish to try refreshing from the menu.'
     if (this.state.auth) {
       try {
         const nextParent = this.props.location.pathname.split('/').filter(String)
-        nextParent.pop()
         const newDir = this.getResourceByUrl(nextParent.join('/'))
         let thumb = this.state.courses[this.state.currentCourse].data.thumbUrls.plain
-        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids){
+        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids) {
           this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), thumb: thumb})
         }
+        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'collection' && newDir.files && newDir.files != nextState.downloads) {
+          this.setState({downloads: newDir.files, downloadSection: nextParent.join('/')})
+        }
         else if (nextState.vids == null && this.state.courses.history != null) {
-          this.setState({vids: this.state.courses.history, thumb: thumb})
+          this.setState({vids: this.state.user.history, thumb: thumb})
+        }
+        if (nextState.message && this.state.message == nextState.message) {
+          this.setState({message: ''})
         }
       }
       catch (error) {
-        this.getData()
+        if (this.state.message != errorMessage) {
+          this.setState({message: errorMessage})
+        }
       }
     }
   }
@@ -147,7 +142,7 @@ class App extends React.Component {
       console.log(error)
       this.setState({
         loading: false,
-        flag : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
+        message : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
       })
     })
   }
@@ -169,7 +164,6 @@ class App extends React.Component {
                 <Route className='st-link' path='/feedback' component={() => "Feedback"}/>
                 <Route className='st-link' path='/bookmarks' component={() => "Bookmarks"}/>
                 <Route className='st-link' path='/review' component={() => "Review"}/>
-                <Route className='st-link' path='/downloads' component={() => "Downloads"}/>
                 <Route className='st-link' path='/help' component={() => "Help"}/>
                 <Route className='st-link' path='/all-your-base-are-belong-to-us' component={() => "You have no chance to survive make your time"} />
                 <Route path="/*" exact component={() => "Oops"}/>
@@ -248,6 +242,7 @@ class App extends React.Component {
             <h2>Your Orders:</h2>
             {this.state.user.userdata.orders}
           </div>
+          {this.state.message}
         </div>
       </div>
     )
@@ -265,7 +260,7 @@ class App extends React.Component {
       let thumb = thumbURL.replace('||ID||', vid.thumb)
       vids.push(
         <div key={index} className="video-in-grid">
-          <Link to={url} onClick={() => this.updateStage(String(vid.ID))}>
+          <Link to={url} onClick={() => this.updateStage(String(vid.id))}>
             <div >
               <div>
                   <img className="grid-thumb" src={thumb} className="z-depth-3"/>
@@ -284,10 +279,21 @@ class App extends React.Component {
     )
   }
 
+  getBookmarkId(url){
+    console.log(url)
+    for (let index in this.state.user.bookmarks) {
+      let bookmark = this.state.user.bookmarks[index]
+      console.log(bookmark)
+      if (bookmark.data.url == url) {
+        return bookmark.id
+      }
+    }
+    return null
+  }
+
   // Deletes a bookmark from the remote object; uses the server's response to
   // delete the bookmark from the state and the localStorage object
   deleteBookmark(id) {
-    this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/courses/data', {
     method: 'DELETE',
     accept: 'application/vnd.sttv.app+json',
@@ -301,8 +307,8 @@ class App extends React.Component {
     })
     .then( response => this.handleResponse(response))
     .then( items => {
-      console.log(items.data[0].id)
       if (items !== null) {
+        console.log(items)
         let user = this.state.user
         for (let item in user.bookmarks) {
           if (user.bookmarks[item].id == items.data[0].id) {
@@ -312,11 +318,16 @@ class App extends React.Component {
         const course_data = JSON.parse(localStorage.getItem('sttv_data'))
         course_data.user = user
         localStorage.setItem('sttv_data', JSON.stringify(course_data))
-        this.setState({loading: false, user: user})
+        const bookmarkedIds = user.bookmarks.map(a => a.data.url)
+        this.setState({loading: false, user: user, bookmarkedIds: bookmarkedIds})
       }
       else {
-        this.setState({loading: false, flag: 'Could not remove that bookmark. Please try again later.'})
+        this.setState({loading: false, auth: true, message: 'Could not remove that bookmark. Please try again later.'})
       }
+    })
+    .catch(error => {
+      console.log(error)
+      this.getData()
     })
   }
 
@@ -326,36 +337,42 @@ class App extends React.Component {
     let bookmarks = []
     const thumbURL = this.state.thumb
     for (let item in this.state.user.bookmarks) {
-      let mark = this.state.user.bookmarks[item]
-      let url = this.state.user.bookmarks[item].data.url
-      let vid = this.getResourceByUrl(url)
-      let id
-      let thumb
-      if (vid.data && vid.data.type == 'collection') {
-        id = vid.data.intro
-        thumb = id
-      }
-      else {
-        id = vid.ID
-        thumb = vid.thumb
-      }
-      thumb = thumbURL.replace('||ID||', thumb)
-      bookmarks.push(
-        <div key={mark.id} className="video-in-grid">
-          <a className="st-video-remover" onClick={() => this.deleteBookmark(mark.id)} ><i className="material-icons">highlight_off</i></a>
-          <Link to={url} onClick={() => this.updateStage(String(id))}>
-            <div >
-              <div>
-                  <img className="grid-thumb" src={thumb} className="z-depth-3"/>
+      try {
+        let mark = this.state.user.bookmarks[item]
+        let url = this.state.user.bookmarks[item].data.url
+        let vid = this.getResourceByUrl(url)
+        let id
+        let thumb
+        if (vid.data && vid.data.type == 'collection') {
+          id = vid.data.intro
+          thumb = id
+        }
+        else {
+          id = vid.id
+          thumb = vid.thumb
+        }
+        thumb = thumbURL.replace('||ID||', thumb)
+        bookmarks.push(
+          <div key={mark.id} className="video-in-grid">
+            <a className="st-video-remover" onClick={() => this.deleteBookmark(mark.id)} ><Icon>highlight_off</Icon></a>
+            <Link to={url} onClick={() => this.updateStage(String(id))}>
+              <div >
+                <div>
+                    <img className="grid-thumb" src={thumb} className="z-depth-3"/>
+                </div>
+                <span className="video-grid-title"> {cleanup(url.slice(1))} </span>
               </div>
-              <span className="video-grid-title"> {cleanup(url.slice(1))} </span>
-            </div>
-          </Link>
-        </div>
-      )
+            </Link>
+          </div>
+        )
+      }
+      catch (e) {
+        void(0)
+      }
     }
     return(
       <div className="video-grid">
+        {this.state.message}
         {bookmarks}
       </div>
     )
@@ -364,21 +381,26 @@ class App extends React.Component {
   // The name says it all here. Used throughout the app for accessing data from
   // the course object without passing resources around
   getResourceByUrl(url) {
-    const lookup = url.split('/').filter(String)
-    let obj = this.state.courses
-    while (true) {
-      if (lookup[0] == null) {
-        return(obj)
+    try {
+      const lookup = url.split('/').filter(String)
+      let obj = this.state.courses
+      while (true) {
+        if (lookup[0] == null) {
+          return(obj)
+        }
+        else if ('collection' in obj) {
+          obj = obj.collection
+        }
+        else if (lookup[0] in obj) {
+          obj = obj[lookup.shift()]
+        }
+        else {
+          return(obj)
+        }
       }
-      else if ('collection' in obj) {
-        obj = obj.collection
-      }
-      else if (lookup[0] in obj) {
-        obj = obj[lookup.shift()]
-      }
-      else {
-        return(obj)
-      }
+    }
+    catch (e) {
+      return null
     }
   }
 
@@ -389,8 +411,8 @@ class App extends React.Component {
         <h2 className="header center-align">Feedback</h2>
         <div className="col s12 center-align">
           <p>
-            Drop us a line if you catch any mistakes, have suggestions for new
-            content, or would just like to let us know how we're helping you get a
+            Drop us a line if you catch any mistakes, have any suggestions,
+            or would just like to let us know how we're helping you get a
             better score! If you'd like to rate us so future students can see what
             you think of the course, you can do that <Link to='/review' style={{text: 'bold'}} >here</Link>.
             (By the way, this is just between us... no one else will see
@@ -399,15 +421,15 @@ class App extends React.Component {
        </div>
       <div className="col s12" id="feedback-post-form">
         <div className="overlay"></div>
-        <textarea placeholder="Enter your feedback here." className="sttv-textarea">
+        <textarea placeholder="Enter your feedback here." className="sttv-textarea"  name="feedback" value={this.state.feedback} onChange={this.handleChange}>
         </textarea>
         <div className="feedback-submit-container center-align">
-          <a className="feedback-submit-button btn" onClick={() => console.log("This will submit feedback")}>
-            <strong>Post Feedback</strong>
+          <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
+            <strong>Submit Feedback</strong>
           </a>
         </div>
       </div>
-        <div id="feedback-container"></div>
+      {this.state.message}
     </div>
     )
   }
@@ -435,19 +457,19 @@ class App extends React.Component {
               onClick={(e) => {this.setState({ratingLock:5}); e.stopPropagation()}}><Icon>star</Icon></a>
       	  </div>
       	  <div className="message-box" onClick={(e) => e.stopPropagation()}>
-      		<textarea placeholder="Enter your review here." className="sttv-textarea"></textarea>
+      		<textarea placeholder="Enter your review here." className="sttv-textarea" name="review" value={this.state.review} onChange={this.handleChange}></textarea>
       	  </div>
       	</section>
       	<p className="center-align">
           <small>Not to be confused with <Link to='/feedback' >feedback</Link>,
-          which is where you can make suggestions on improving the course or where
-          you can report any issues.
+          which is where you can report any issues or make suggestions to improve the course.
           </small>
         </p>
       	<div className="ratings-submit-container center-align">
           <a className="ratings-submit-button btn" onClick={() => console.log("This will submit the review")}>
-            <strong>Post Your Review</strong>
+            <strong>Submit Your Review</strong>
           </a>
+          {this.state.message}
         </div>
       </div>
     )
@@ -458,13 +480,6 @@ class App extends React.Component {
   this.setState({
     [target.name]: target.value
     })
-  }
-
-  // Placeholder
-  Downloads(props) {
-    return(
-      <div>Welcome to the Downloads Page</div>
-    )
   }
 
   // Placeholder
@@ -482,16 +497,15 @@ class App extends React.Component {
       <section id="st-sidebar" style={this.state.search ? {pointerEvents : 'none'} : {pointerEvents: 'auto'}} >
         <Link to="/dashboard" className={root == 'dashboard' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Dashboard' ><Icon>person</Icon></Link>
         <a className={root in this.state.courses && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Course'  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
-        <Link to='/downloads' className={root == 'downloads' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Downloads' onClick={() => this.setState({nav: false})} ><Icon>cloud_download</Icon></Link>
         <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Orders' onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
         <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
         <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>
         <a className='st-app-link'>&nbsp;</a>
-        <Link to='/review' className={root == 'review' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Review' onClick={() => this.setState({nav: false})} ><i className='material-icons'>rate_review</i></Link>
-        <Link to='/feedback' className={root == 'feedback' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Feedback' onClick={() => this.setState({nav: false})} ><i className='material-icons'>send</i></Link>
-        <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' onClick={() => this.setState({nav: false})} ><i className='material-icons'>help</i></Link>
-        <a onClick={this.courseRefresh} className='st-app-link' title='Refresh'><i className='material-icons'>refresh</i></a>
-        <a onClick={this.logout} className='st-app-link' title='Logout'><i className='material-icons'>exit_to_app</i></a>
+        <Link to='/review' className={root == 'review' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Review' onClick={() => this.setState({nav: false})} ><Icon>rate_review</Icon></Link>
+        <Link to='/feedback' className={root == 'feedback' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Feedback' onClick={() => this.setState({nav: false})} ><Icon>send</Icon></Link>
+        <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' onClick={() => this.setState({nav: false})}><Icon>help</Icon></Link>
+        <a onClick={this.courseRefresh} className='st-app-link' title='Refresh'><Icon>refresh</Icon></a>
+        <a onClick={this.logout} className='st-app-link' title='Logout'><Icon>exit_to_app</Icon></a>
       </section>
     )
   }
@@ -515,7 +529,7 @@ class App extends React.Component {
         this.setState({
           auth: false,
           loading: false,
-          flag: 'Your session has expired.',
+          message: 'Your session has expired.',
           username : '',
           password : ''
         })
@@ -524,7 +538,7 @@ class App extends React.Component {
         this.setState({
           auth: false,
           loading: false,
-          flag: 'Too many requests from this location. Please try again later.',
+          message: 'Too many requests from this location. Please try again later.',
           username : '',
           password : ''
         })
@@ -601,8 +615,10 @@ class App extends React.Component {
     const data = JSON.parse(localStorage.getItem('sttv_data'))
     if (data !== null) {
       const current = data.user.settings.default_course
+      const bookmarkedIds = data.user.bookmarks.map(a => a.data.url)
       this.setState({
         courses: data.courses,
+        bookmarkedIds: bookmarkedIds,
         user: data.user,
         currentCourse: current,
         thumb: data.courses[current].data.thumbUrls.plain,
@@ -625,11 +641,13 @@ class App extends React.Component {
           const currentCourse = items.data.user.settings.default_course
           const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
           const stage = items.data.courses[currentCourse].data.intro
+          const bookmarkedIds = items.data.user.bookmarks.map(a => a.data.url)
           // This is basically a rewrite of the first part of getData, but
           // it needs to be done asynchronously so there's no easy way to refactor
           this.setState({
             courses : items.data.courses,
             user: items.data.user,
+            bookmarkedIds: bookmarkedIds,
             currentCourse: items.data.user.settings.default_course,
             thumb: thumb,
             stage: stage,
@@ -642,7 +660,7 @@ class App extends React.Component {
         console.log(error)
         this.setState({
           loading: false,
-          flag : 'There was an error fetching your course data. Please check your network connection and try again.'
+          message : 'There was an error fetching your course data. Please check your network connection and try again.'
         })
       })
     }
@@ -656,7 +674,7 @@ class App extends React.Component {
       this.setState({
         auth : false,
         courses : {},
-        flag : 'You have successfully logged out.',
+        message : 'You have successfully logged out.',
         password : '',
         token : '',
         username : ''
@@ -684,13 +702,13 @@ class App extends React.Component {
       if (items !== null) {
         if (items.code == 'login_success') {
           localStorage.setItem('sttv_token', JSON.stringify(items.token))
-          this.setState({token : items.token, auth: true, username: '', password : '', flag: ''})
+          this.setState({token : items.token, auth: true, username: '', password : '', message: ''})
           localStorage.removeItem('sttv_data')
           this.getData()
         }
         else {
           this.setState({
-            flag: 'Incorrect username or password',
+            message: 'Incorrect username or password',
             auth: false,
             loading: false
           })
@@ -701,7 +719,7 @@ class App extends React.Component {
       console.log(error)
       this.setState({
         loading: false,
-        flag: 'Unable to log you in. Please check your network connection and try again.'
+        message: 'Unable to log you in. Please check your network connection and try again.'
       })
     })
   }
@@ -730,7 +748,7 @@ class App extends React.Component {
     .catch(error => {
       this.setState({
         auth: false,
-        flag: 'Unable to authenticate your session. Please check your network connection and try again.',
+        message: 'Unable to authenticate your session. Please check your network connection and try again.',
         loading: false
       })
     })
@@ -739,19 +757,22 @@ class App extends React.Component {
   // Login component; tries to get a token from the API with the login information
   Login() {
     return(
-      <div id="sttv_login_form" type="POST">
-  		<p className="message"></p>
-  		<div className="row">
-  			<div className="input-field s12">
-  				<input type="text" name="username" id="sttv_user" minLength="4" value={this.state.username} onChange={this.handleChange}/>
-  				<label data-error="Must be at least 4 characters" data-success="Good job!">Username</label>
-  			</div>
-  			<div className="input-field s12">
-  				<input type="password" name="password" id="sttv_pass" value={this.state.password} onChange={this.handleChange}/>
-  				<label className="">Password</label>
-  			</div>
-  		</div>
-  		<button type="submit" className="z-depth-1" id="login-btn" onClick={() => this.getToken()}>Login</button>
+      <div>
+        <div id="sttv_login_form">
+        <p className="message"></p>
+        <div className="row">
+          <div className="input-field s12">
+            <input type="text" name="username" id="sttv_user" minLength="4" value={this.state.username} onChange={this.handleChange}/>
+            <label data-error="Must be at least 4 characters" data-success="Good job!">Username</label>
+          </div>
+          <div className="input-field s12">
+            <input type="password" name="password" id="sttv_pass" value={this.state.password} onChange={this.handleChange}/>
+            <label>Password</label>
+          </div>
+        </div>
+        <button className="z-depth-1" id="login-btn" onClick={() => this.getToken()}>Login</button>
+        </div>
+        {this.state.message}
       </div>
     )
   }
@@ -824,7 +845,6 @@ class App extends React.Component {
   // Creates a bookmark by calling the API; uses the response to update the
   // state and the localStorage object
   createBookmark(url) {
-    this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
     method: 'PUT',
     accept: 'application/vnd.sttv.app+json',
@@ -838,18 +858,21 @@ class App extends React.Component {
     })
     .then( response => this.handleResponse(response))
     .then( items => {
-      console.log(items)
       if (items !== null) {
         let user = this.state.user
         user.bookmarks.push(items.data)
         const course_data = JSON.parse(localStorage.getItem('sttv_data'))
         course_data.user = user
         localStorage.setItem('sttv_data', JSON.stringify(course_data))
-        this.setState({loading: false, user: user})
+        const bookmarkedIds = user.bookmarks.map(a => a.data.url)
+        this.setState({loading: false, user: user, bookmarkedIds: bookmarkedIds})
       }
       else {
-        this.setState({loading: false, flag: 'Could not remove that bookmark. Please try again later.'})
+        this.setState({loading: false, message: 'Could not remove that bookmark. Please try again later.'})
       }
+    })
+    .catch(error => {
+      this.getData()
     })
   }
 
@@ -873,7 +896,7 @@ class App extends React.Component {
       let ref = cleanup(link.slice(1)).concat(' >')
       videos.push(
         <Route path={link} key={key} className="st-video-card">
-          <Link to={link} onClick={() => this.updateStage(video.ID)}>
+          <Link to={link} onClick={() => this.updateStage(video.id)}>
             <div className="st-video-card">
               <div>
                   <img className="st-thumb" src={thumb}/>
@@ -921,13 +944,56 @@ class App extends React.Component {
       src={link}
       width='946' height='594' frameBorder='' title='Intro' webkitallowfullscreen='tr'
       allowFullScreen=''></iframe>
+    let bookmark
+    if (this.state.bookmarkedIds.includes(props.location)) {
+      bookmark = <button title='Remove Bookmark' onClick={() => this.deleteBookmark(this.getBookmarkId(this.props.location.pathname))}><Icon>bookmark</Icon></button>
+    }
+    else {
+      bookmark = <button title='Bookmark' onClick={() => this.createBookmark(this.props.location.pathname)}><Icon>bookmark_border</Icon></button>
+
+    }
     return(
       <div>
+          {this.state.downloadModal && <this.Downloads />}
           {frame}
           <div>
-            <a className='st-video-bookmarker' onClick={() => this.createBookmark(this.props.location)}><i className='material-icons'>bookmark</i></a>
+            <div className='st-video-bookmarker'>
+              <button title='Files' onClick={() => this.setState({downloadModal : true})} disabled={this.state.downloads == null || this.state.downloads.length == 0}><Icon>folder</Icon></button>
+              {bookmark}
+            </div>
             <h3 className='st-video-label'>{label} </h3>
+            {this.state.message}
           </div>
+      </div>
+    )
+  }
+
+  Downloads(props) {
+    let index = 0
+    let files = []
+    for (let item in this.state.downloads) {
+      let download = this.state.downloads[item]
+      let file = download.file.split('/').filter(String)
+      let res = file[2]
+      let section = file[1]
+      let test = file[0]
+      files.push(
+        <li key={index}>
+          <a className='download-link' href={'https://api.supertutortv.com/course-dl.php?' + 'res=' + res + '&section=' + section + '&test=' + test + '&hash=' + download.hash}>
+            {download.name}
+          </a>
+        </li>
+      )
+      index++
+    }
+    return (
+      <div className="sttv-modal" onClick={() => this.setState({downloadModal: false})}>
+        <div className="sttv-downloads" onClick={(e) => e.stopPropagation()} >
+          <h3>Downloads:</h3>
+          <ul>
+            {files}
+          </ul>
+        </div>
       </div>
     )
   }
@@ -939,14 +1005,12 @@ class App extends React.Component {
       return 'Loading'
     }
     else if (!this.state.auth) {
-      const message = <span>{this.state.flag}</span>
       return(
         <section id="st-app">
               <Switch>
                 <Route path='/login' component={this.Login}/>
                 <Redirect push to='/login'/>
               </Switch>
-              {message}
         </section>
       )
     }
@@ -977,7 +1041,6 @@ class App extends React.Component {
                     <Route className='st-link' path='/feedback' component={this.Feedback}/>
                     <Route className='st-link' path='/bookmarks' component={this.Bookmarks}/>
                     <Route className='st-link' path='/review' component={this.Review}/>
-                    <Route className='st-link' path='/downloads' component={this.Downloads}/>
                     <Route className='st-link' path='/help' component={this.Help}/>
                     <Route path='/(login|)' exact component={() => <Redirect to='/dashboard'/>}/>
                     <Route path='/all-your-base-are-belong-to-us' component={AllYourBase} />
