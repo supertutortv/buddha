@@ -701,10 +701,10 @@ class App extends React.Component {
     .then( items => {
       if (items !== null) {
         if (items.code == 'login_success') {
-          this.setState({auth: true, username: '', password : '', message: ''})
+          //this.setState({auth: true, username: '', password : '', message: ''})
           localStorage.removeItem('sttv_data')
-          //window.reload()
-          this.getData()
+          window.location.reload()
+          //this.getData()
         }
         else {
           this.setState({
