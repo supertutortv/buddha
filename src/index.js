@@ -122,7 +122,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
       method : 'PUT',
       accept: 'application/vnd.sttv.app+json',
-      credentials: 'same-origin',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -297,7 +297,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data', {
     method: 'DELETE',
     accept: 'application/vnd.sttv.app+json',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -634,7 +634,7 @@ class App extends React.Component {
     }
     else {
       fetch('https://api.supertutortv.com/v2/courses/data', {
-        credentials: 'same-origin',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -687,7 +687,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/auth/token', {
     method: 'POST',
     accept: 'application/vnd.sttv.app+json',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -703,6 +703,7 @@ class App extends React.Component {
         if (items.code == 'login_success') {
           this.setState({auth: true, username: '', password : '', message: ''})
           localStorage.removeItem('sttv_data')
+          window.reload()
           this.getData()
         }
         else {
@@ -726,7 +727,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/auth/token/verify', {
     method: 'POST',
     accept: 'application/vnd.sttv.app+json',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       }
@@ -843,7 +844,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
     method: 'PUT',
     accept: 'application/vnd.sttv.app+json',
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
