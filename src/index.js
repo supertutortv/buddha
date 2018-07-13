@@ -346,7 +346,7 @@ class App extends React.Component {
         let vid = this.getResourceByUrl(url)
         let id
         let thumb
-        if (vid.data && vid.data.type == 'collection') {
+        if (vid && vid.data && vid.data.type == 'collection') {
           id = vid.data.intro
           thumb = id
         }
@@ -357,10 +357,13 @@ class App extends React.Component {
         thumb = thumbURL.replace('||ID||', thumb)
         vid = this.getResourceByUrl(url)
         const titleBase = url.slice(1).split('/')
-        titleBase.pop()
-        let title = cleanup(titleBase.join('/'))
+        let title
         if (vid.name) {
-          title += ' > ' + vid.name
+          titleBase.pop()
+          title = cleanup(titleBase.join('/')) + ' > ' + vid.name
+        }
+        else {
+          title = cleanup(titleBase.join('/'))
         }
         let click
         if (vid.id) {
@@ -853,6 +856,7 @@ class App extends React.Component {
   // Creates a bookmark by calling the API; uses the response to update the
   // state and the localStorage object
   createBookmark(url) {
+    console.log(url)
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
     method: 'PUT',
     accept: 'application/vnd.sttv.app+json',
