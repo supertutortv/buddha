@@ -703,7 +703,7 @@ class App extends React.Component {
         if (items.code == 'login_success') {
           this.setState({auth: true, username: '', password : '', message: ''})
           localStorage.removeItem('sttv_data')
-          window.reload()
+          //window.reload()
           this.getData()
         }
         else {
