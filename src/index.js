@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.verifyToken()
+    this.verifyToken()
   }
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
@@ -532,14 +532,7 @@ class App extends React.Component {
       return(response.json())
     }
     else {
-      if (response.status == 403) {
-        this.setState({
-          auth: false,
-          message: 'Your session has expired.',
-          username : '',
-          password : ''
-        })
-      }
+      console.log(response.json())
       if (response.status == 403) {
         this.setState({
           auth: false,
@@ -691,8 +684,8 @@ class App extends React.Component {
   getToken() {
     fetch('https://api.supertutortv.com/v2/auth/token', {
     method: 'POST',
-    credentials: 'same-origin',
     accept: 'application/vnd.sttv.app+json',
+    withCredentials: true,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -737,7 +730,7 @@ class App extends React.Component {
     })
     .then( response => this.handleResponse(response))
     .then( items => {
-      if (items) {
+      if (items == true) {
         this.setState({auth: true})
         this.getData()
       }
