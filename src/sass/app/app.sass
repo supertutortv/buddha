@@ -93,63 +93,66 @@ $videowidth: 20em
           color: #ed812e
 
         .st-video-bookmarker
-            float: right
-            padding-right: $videowidth + 2.5em
+          float: right
+          padding-right: $videowidth + 2.5em
 
         .st-video-label
-            width: 946
+          width: 946
 
         .info-input
-            background-color: transparent
-            border: 0px solid white
-            color: white
-            padding-left: 10px
-            font-size: large
-            outline: none
+          background-color: transparent
+          border: 0px solid white
+          color: white
+          padding-left: 10px
+          font-size: large
+          outline: none
 
         #sttv-sections
-            opacity: 2
-            position: fixed
-            left: $sidebarw*(3/2)
-            top: $sidebarw*(3/2)
-            background-color: black
-            padding-top: 20px
+          opacity: 2
+          position: fixed
+          left: $sidebarw*(3/2)
+          top: $sidebarw*(3/2)
+          background-color: black
+          padding-top: 20px
+
+        .download-inactive
+          color: grey
 
         .sttv-modal
-            position: fixed
-            z-index: 1
-            left: 0
-            top: 0
-            width: 100%
-            height: 100%
-            background-color: rgb(0,0,0)
-            background-color: rgba(0,0,0,0.8)
-            z-index: 1
+          position: fixed
+          z-index: 1
+          left: 0
+          top: 0
+          width: 100%
+          height: 100%
+          background-color: rgb(0,0,0)
+          background-color: rgba(0,0,0,0.8)
+          z-index: 1
 
-            .sttv-search
-                position: absolute
-                text-align: center
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -100%)
-                margin: auto
-                width: 50%
-                height: 30%
-                z-index: 999
+          .sttv-search
+            position: absolute
+            text-align: center
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -100%)
+            margin: auto
+            width: 50%
+            height: 30%
+            z-index: 999
 
             .sttv-searchbox
-                width: 80%
-                height: 15%
-                font-size: large
-                border-radius: 5px
-                border: 0
+              width: 80%
+              height: 15%
+              font-size: large
+              border-radius: 5px
+              border: 0
 
-                &:focus, &:hover
-                  outline: none
+              &:focus, &:hover
+                outline: none
 
             .search-exit
-                float: right
-                cursor: pointer
+              float: right
+              cursor: pointer
 
             .sttv-search-results
               bottom: 5%
@@ -161,71 +164,71 @@ $videowidth: 20em
               padding-top: 5%
 
         .video-grid
-            float: left
-            padding-bottom: 20%
+          float: left
+          padding-bottom: 20%
 
-            .grid-thumb
-              width: 24%
+          .grid-thumb
+            width: 24%
 
-            .video-in-grid
-              display: inline-block
-              margin: auto
-              width: 24%
+          .video-in-grid
+            display: inline-block
+            margin: auto
+            width: 24%
 
             .video-grid-title
-                text-align: center
-                float: inherit
+              text-align: center
+              float: inherit
 
         #sttv-course-player
           margin: auto
 
         #video-wrapper
-              opacity: 100%
-              width: $videowidth
-              position: fixed
-              bottom: 0
-              right: 0
-              top: $sidebarw*(3/2)
-              background-color: $notblack
-              overflow-x: hidden
-              padding-top: 20px
+          opacity: 100%
+          width: $videowidth
+          position: fixed
+          bottom: 0
+          right: 0
+          top: $sidebarw*(3/2)
+          background-color: $notblack
+          overflow-x: hidden
+          padding-top: 20px
 
         .st-video-card
-            position: relative
-            padding-bottom: 5%
-            width: 16em
-            cursor: pointer
-            margin: auto
+          position: relative
+          padding-bottom: 5%
+          width: 16em
+          cursor: pointer
+          margin: auto
 
-            &:hover > div > .st-video-remover
-                opacity: 1
+          &:hover > div > .st-video-remover
+            opacity: 1
 
-            &>div
+          &>div
+            width: 100%
+
+            a.st-video-remover
+              position: absolute
+              display: block
+              z-index: 999
+              font-size: $blockEM
+              color: $notwhite
+              width: 1em
+              height: 1em
+              top: 0
+              right: 0
+              opacity: 0
+              -webkit-transition: opacity .25s ease-in-out
+              -moz-transition: opacity .25s ease-in-out
+              -o-transition: opacity .25s ease-in-out
+              transition: opacity .25s ease-in-out
+
+              img
                 width: 100%
+                height: auto
+                border-radius: 4px
 
-                a.st-video-remover
-                    position: absolute
-                    display: block
-                    z-index: 999
-                    font-size: $blockEM
-                    color: $notwhite
-                    width: 1em
-                    height: 1em
-                    top: 0
-                    right: 0
-                    opacity: 0
-                    -webkit-transition: opacity .25s ease-in-out
-                    -moz-transition: opacity .25s ease-in-out
-                    -o-transition: opacity .25s ease-in-out
-                    transition: opacity .25s ease-in-out
-
-                img
-                    width: 100%
-                    height: auto
-                    border-radius: 4px
-
-            span.st-video-card-title
-                display: block
-                width: 100%
-                text-align: center
-                padding: .25em
+          span.st-video-card-title
+            display: block
+            width: 100%
+            text-align: center
+            padding: .25em

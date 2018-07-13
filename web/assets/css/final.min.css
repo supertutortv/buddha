@@ -15,14 +15,14 @@ html body {
     cursor: pointer; }
 
 #st-app {
+  overflow: auto;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
   padding-left: 3em;
-  background-image: url("https://courses.supertutortv.com/assets/img/bgpattern-2.jpg");
+  background-image: url("http://informationcommunicationtechnology.com/wp-content/uploads/2018/06/Subtle-Dark-Background.jpg");
   background-size: cover;
   background-position: center;
   color: rgba(255, 255, 255, 0.85); }
@@ -52,11 +52,66 @@ html body {
         font-weight: bold;
         text-transform: uppercase; }
   #st-app #st-app-inner {
-    overflow: auto;
     position: relative;
     font-size: 16px;
     height: 80%;
     padding: 2em; }
+    #st-app #st-app-inner .sttv-downloads {
+      color: black;
+      background-color: lightGrey;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      width: 50%;
+      height: 50%;
+      border-radius: 5px;
+      word-wrap: break-word;
+      -moz-column-count: 4;
+      -moz-column-gap: 20px;
+      -webkit-column-count: 4;
+      -webkit-column-gap: 20px;
+      column-count: 4;
+      column-gap: 20px; }
+      #st-app #st-app-inner .sttv-downloads .download-link {
+        color: black; }
+    #st-app #st-app-inner .sttv-textarea {
+      border: 0px solid white;
+      width: 400px;
+      max-width: 400px;
+      height: 100px;
+      margin-top: 1%;
+      outline: none;
+      border-radius: 2px; }
+    #st-app #st-app-inner #ratings-modal-wrapper {
+      height: 100%;
+      width: 100%; }
+    #st-app #st-app-inner .star-active {
+      color: #e8c825; }
+    #st-app #st-app-inner .star-active-lock {
+      color: #ed812e; }
+    #st-app #st-app-inner .st-video-bookmarker {
+      float: right;
+      padding-right: 22.5em; }
+    #st-app #st-app-inner .st-video-label {
+      width: 946; }
+    #st-app #st-app-inner .info-input {
+      background-color: transparent;
+      border: 0px solid white;
+      color: white;
+      padding-left: 10px;
+      font-size: large;
+      outline: none; }
+    #st-app #st-app-inner #sttv-sections {
+      opacity: 2;
+      position: fixed;
+      left: 4.5em;
+      top: 4.5em;
+      background-color: black;
+      padding-top: 20px; }
+    #st-app #st-app-inner .download-inactive {
+      color: grey; }
     #st-app #st-app-inner .sttv-modal {
       position: fixed;
       z-index: 1;
@@ -65,19 +120,36 @@ html body {
       width: 100%;
       height: 100%;
       background-color: black;
-      background-color: rgba(0, 0, 0, 0.8); }
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1; }
       #st-app #st-app-inner .sttv-modal .sttv-search {
         position: absolute;
         text-align: center;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -25%);
+        transform: translate(-50%, -100%);
         margin: auto;
-        width: 30%;
-        height: 30%; }
-      #st-app #st-app-inner .sttv-modal .search-exit {
-        float: right;
-        cursor: pointer; }
+        width: 50%;
+        height: 30%;
+        z-index: 999; }
+        #st-app #st-app-inner .sttv-modal .sttv-search .sttv-searchbox {
+          width: 80%;
+          height: 15%;
+          font-size: large;
+          border-radius: 5px;
+          border: 0; }
+          #st-app #st-app-inner .sttv-modal .sttv-search .sttv-searchbox:focus, #st-app #st-app-inner .sttv-modal .sttv-search .sttv-searchbox:hover {
+            outline: none; }
+        #st-app #st-app-inner .sttv-modal .sttv-search .search-exit {
+          float: right;
+          cursor: pointer; }
+        #st-app #st-app-inner .sttv-modal .sttv-search .sttv-search-results {
+          bottom: 5%;
+          list-style-type: none;
+          text-align: center;
+          height: 80%; }
+        #st-app #st-app-inner .sttv-modal .sttv-search .search-result {
+          padding-top: 5%; }
     #st-app #st-app-inner .video-grid {
       float: left;
       padding-bottom: 20%; }
@@ -87,9 +159,9 @@ html body {
         display: inline-block;
         margin: auto;
         width: 24%; }
-      #st-app #st-app-inner .video-grid .video-grid-title {
-        text-align: center;
-        float: inherit; }
+        #st-app #st-app-inner .video-grid .video-in-grid .video-grid-title {
+          text-align: center;
+          float: inherit; }
     #st-app #st-app-inner #sttv-course-player {
       margin: auto; }
     #st-app #st-app-inner #video-wrapper {
@@ -127,10 +199,10 @@ html body {
           -moz-transition: opacity .25s ease-in-out;
           -o-transition: opacity .25s ease-in-out;
           transition: opacity .25s ease-in-out; }
-        #st-app #st-app-inner .st-video-card > div img {
-          width: 100%;
-          height: auto;
-          border-radius: 4px; }
+          #st-app #st-app-inner .st-video-card > div a.st-video-remover img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px; }
       #st-app #st-app-inner .st-video-card span.st-video-card-title {
         display: block;
         width: 100%;
@@ -145,10 +217,24 @@ html body {
   z-index: 999;
   padding-top: 3em;
   background-color: rgba(0, 0, 0, 0.75);
-  color: rgba(255, 255, 255, 0.85); }
+  color: rgba(255, 255, 255, 0.85);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   #st-sidebar a, #st-sidebar a:hover, #st-sidebar a:active, #st-sidebar a:visited {
     color: inherit;
     text-decoration: none; }
+  #st-sidebar a.st-link-active {
+    display: block;
+    width: 100%;
+    padding: .5em 1em;
+    opacity: 1;
+    font-size: 1em; }
+    #st-sidebar a.st-link-active i {
+      line-height: 0; }
   #st-sidebar a.st-app-link {
     display: block;
     width: 100%;

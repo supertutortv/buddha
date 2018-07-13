@@ -24,17 +24,10 @@ class App extends React.Component {
     this.getData = this.getData.bind(this)
     this.Login = this.Login.bind(this)
     this.handleResponse = this.handleResponse.bind(this)
-    this.state = {loading : false,
-                  auth : false}
-    try {
-      const token = JSON.parse(localStorage.getItem('sttv_token'))
-      if (token !== null) {
-        this.state.loading = true
-        this.verifyToken(JSON.parse(localStorage.getItem('sttv_token')))
-      }
-    }
-    catch (error) {
-      void(0)
+    this.state = {
+      auth : false,
+      username: '',
+      password: ''
     }
     // Bind all components and bound methods
     this.Bookmarks = this.Bookmarks.bind(this)
@@ -63,6 +56,10 @@ class App extends React.Component {
     this.getBookmarkId = this.getBookmarkId.bind(this)
   }
 
+  componentDidMount() {
+    // this.verifyToken()
+  }
+
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
     const errorMessage = 'There was an error with your course data. You may wish to try refreshing from the menu.'
@@ -86,7 +83,6 @@ class App extends React.Component {
           this.setState({stage: newDownloads.data.intro})
         }
         else if (!this.state.vids && this.state.user.history != null) {
-          console.log(this.state.vids)
           this.setState({vids: this.state.user.history, thumb: thumb})
         }
       }
@@ -127,7 +123,6 @@ class App extends React.Component {
       method : 'PUT',
       accept: 'application/vnd.sttv.app+json',
       headers: {
-        'Authorization': 'Bearer ' + this.state.token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.user[key])
@@ -137,7 +132,7 @@ class App extends React.Component {
       if (items !== null) {
         const user_obj = this.state.user
         user_obj[key] = items.data[key]
-        this.setState({user : user_obj, loading: false})
+        this.setState({user : user_obj})
         const courseData = JSON.parse(localStorage.getItem('sttv_data'))
         courseData.user = this.state.user
         localStorage.setItem('sttv_data', JSON.stringify(courseData))
@@ -145,7 +140,6 @@ class App extends React.Component {
     })
     .catch(error => {
       this.setState({
-        loading: false,
         message : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
       })
     })
@@ -303,7 +297,6 @@ class App extends React.Component {
     method: 'DELETE',
     accept: 'application/vnd.sttv.app+json',
     headers: {
-      'Authorization': 'Bearer ' + this.state.token,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -323,10 +316,10 @@ class App extends React.Component {
         course_data.user = user
         localStorage.setItem('sttv_data', JSON.stringify(course_data))
         const bookmarkedIds = user.bookmarks.map(a => a.data.url)
-        this.setState({loading: false, user: user, bookmarkedIds: bookmarkedIds})
+        this.setState({user: user, bookmarkedIds: bookmarkedIds})
       }
       else {
-        this.setState({loading: false, auth: true, message: 'Could not remove that bookmark. Please try again later.'})
+        this.setState({message: 'Could not remove that bookmark. Please try again later.'})
       }
     })
     .catch(error => {
@@ -542,7 +535,14 @@ class App extends React.Component {
       if (response.status == 403) {
         this.setState({
           auth: false,
-          loading: false,
+          message: 'Your session has expired.',
+          username : '',
+          password : ''
+        })
+      }
+      if (response.status == 403) {
+        this.setState({
+          auth: false,
           message: 'Your session has expired.',
           username : '',
           password : ''
@@ -551,7 +551,6 @@ class App extends React.Component {
       else if (response.status == 429) {
         this.setState({
           auth: false,
-          loading: false,
           message: 'Too many requests from this location. Please try again later.',
           username : '',
           password : ''
@@ -637,13 +636,11 @@ class App extends React.Component {
         thumb: data.courses[current].data.thumbUrls.plain,
         stage: data.courses[current].data.intro,
         vids: data.user.history,
-        loading: false
       })
     }
     else {
       fetch('https://api.supertutortv.com/v2/courses/data', {
         headers: {
-          'Authorization': 'Bearer ' + this.state.token,
           'Content-Type': 'application/json'
         }
       })
@@ -665,13 +662,11 @@ class App extends React.Component {
             thumb: thumb,
             stage: stage,
             vids: items.data.user.history,
-            loading: false
          })
         }
       })
       .catch(error => {
         this.setState({
-          loading: false,
           message : 'There was an error fetching your course data. Please check your network connection and try again.'
         })
       })
@@ -681,24 +676,22 @@ class App extends React.Component {
   // Destroy the old token and user/course info; this causes an automatic
   // redirect to the login page.
   logout() {
-      localStorage.removeItem('sttv_token')
       localStorage.removeItem('sttv_data')
       this.setState({
         auth : false,
         courses : {},
         message : 'You have successfully logged out.',
         password : '',
-        token : '',
         username : ''
      })
   }
 
   // Get a token for a user on login; clears localStorage and fetches a new
-  // cours object
+  // course object
   getToken() {
-    this.setState({loading: true})
     fetch('https://api.supertutortv.com/v2/auth/token', {
     method: 'POST',
+    credentials: 'same-origin',
     accept: 'application/vnd.sttv.app+json',
     headers: {
       'Accept': 'application/json',
@@ -713,8 +706,7 @@ class App extends React.Component {
     .then( items => {
       if (items !== null) {
         if (items.code == 'login_success') {
-          localStorage.setItem('sttv_token', JSON.stringify(items.token))
-          this.setState({token : items.token, auth: true, username: '', password : '', message: ''})
+          this.setState({auth: true, username: '', password : '', message: ''})
           localStorage.removeItem('sttv_data')
           this.getData()
         }
@@ -722,14 +714,12 @@ class App extends React.Component {
           this.setState({
             message: 'Incorrect username or password',
             auth: false,
-            loading: false
           })
         }
       }
     })
     .catch(error => {
       this.setState({
-        loading: false,
         message: 'Unable to log you in. Please check your network connection and try again.'
       })
     })
@@ -737,30 +727,28 @@ class App extends React.Component {
 
   // Verify an issued token; get data from localstorage if it exists or from
   // the API if not
-  verifyToken(token) {
+  verifyToken() {
     fetch('https://api.supertutortv.com/v2/auth/token/verify', {
     method: 'POST',
     accept: 'application/vnd.sttv.app+json',
     headers: {
-      'Authorization': 'Bearer ' + token,
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
       }
     })
     .then( response => this.handleResponse(response))
     .then( items => {
       if (items) {
-        this.setState({auth: true, token: token})
+        this.setState({auth: true})
         this.getData()
       }
       else {
-        this.setState({auth: false, token: ''})
+        this.setState({auth: false})
       }
     })
     .catch(error => {
       this.setState({
         auth: false,
-        message: 'Unable to authenticate your session. Please check your network connection and try again.',
-        loading: false
+        message: 'Unable to authenticate your session. Please check your network connection and try again.'
       })
     })
   }
@@ -773,11 +761,11 @@ class App extends React.Component {
         <p className="message"></p>
         <div className="row">
           <div className="input-field s12">
-            <input type="text" name="username" id="sttv_user" minLength="4" value={this.state.username} onChange={this.handleChange}/>
-            <label data-error="Must be at least 4 characters" data-success="Good job!">Username</label>
+            <input type="text" name="username" minLength="4" value={this.state.username} onChange={this.handleChange}/>
+            <label>Username</label>
           </div>
           <div className="input-field s12">
-            <input type="password" name="password" id="sttv_pass" value={this.state.password} onChange={this.handleChange}/>
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
             <label>Password</label>
           </div>
         </div>
@@ -856,12 +844,10 @@ class App extends React.Component {
   // Creates a bookmark by calling the API; uses the response to update the
   // state and the localStorage object
   createBookmark(url) {
-    console.log(url)
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
     method: 'PUT',
     accept: 'application/vnd.sttv.app+json',
     headers: {
-      'Authorization': 'Bearer ' + this.state.token,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -877,10 +863,10 @@ class App extends React.Component {
         course_data.user = user
         localStorage.setItem('sttv_data', JSON.stringify(course_data))
         const bookmarkedIds = user.bookmarks.map(a => a.data.url)
-        this.setState({loading: false, user: user, bookmarkedIds: bookmarkedIds})
+        this.setState({user: user, bookmarkedIds: bookmarkedIds})
       }
       else {
-        this.setState({loading: false, message: 'Could not remove that bookmark. Please try again later.'})
+        this.setState({message: 'Could not remove that bookmark. Please try again later.'})
       }
     })
     .catch(error => {
@@ -965,8 +951,10 @@ class App extends React.Component {
     }
     let downloads
     if (this.state.downloads != null && this.state.downloads.length > 0) {
-      downloads = <a title='Files' onClick={() => this.setState({downloadModal : true})} ><Icon>folder</Icon></a>
-
+      downloads = <a title='Files' onClick={() => this.setState({downloadModal : true})} ><Icon>cloud_download</Icon></a>
+    }
+    else {
+      downloads = <a title='Files' className='download-inactive' ><Icon>cloud_download</Icon></a>
     }
     return(
       <div>
@@ -1016,10 +1004,7 @@ class App extends React.Component {
   // Calls the Menu and various page components; Menu has the links
   // corresponding to these routes.
   render() {
-    if (this.state.loading) {
-      return 'Loading'
-    }
-    else if (!this.state.auth) {
+    if (!this.state.auth) {
       return(
         <section id="st-app">
               <Switch>
@@ -1029,7 +1014,7 @@ class App extends React.Component {
         </section>
       )
     }
-    else {
+    else if (this.state.courses && this.state.user){
       let courses = []
       for (let course in this.state.courses) {
         courses.push(
@@ -1064,6 +1049,15 @@ class App extends React.Component {
                 </section>
               </section>
           </div>
+        )
+      }
+      else {
+        return(
+          <section id="st-app">
+            <section id="st-app-inner">
+            Please enable cookies in order to use this site
+            </section>
+          </section>
         )
       }
     }
