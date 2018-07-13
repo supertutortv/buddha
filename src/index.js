@@ -122,6 +122,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
       method : 'PUT',
       accept: 'application/vnd.sttv.app+json',
+      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -296,6 +297,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data', {
     method: 'DELETE',
     accept: 'application/vnd.sttv.app+json',
+    credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -532,7 +534,6 @@ class App extends React.Component {
       return(response.json())
     }
     else {
-      console.log(response.json())
       if (response.status == 403) {
         this.setState({
           auth: false,
@@ -633,6 +634,7 @@ class App extends React.Component {
     }
     else {
       fetch('https://api.supertutortv.com/v2/courses/data', {
+        credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -685,7 +687,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/auth/token', {
     method: 'POST',
     accept: 'application/vnd.sttv.app+json',
-    withCredentials: true,
+    credentials: 'same-origin',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -724,8 +726,9 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/auth/token/verify', {
     method: 'POST',
     accept: 'application/vnd.sttv.app+json',
+    credentials: 'same-origin',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
       }
     })
     .then( response => this.handleResponse(response))
@@ -840,6 +843,7 @@ class App extends React.Component {
     fetch('https://api.supertutortv.com/v2/courses/data/bookmarks', {
     method: 'PUT',
     accept: 'application/vnd.sttv.app+json',
+    credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json'
     },
