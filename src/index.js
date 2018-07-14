@@ -1004,17 +1004,7 @@ class App extends React.Component {
   // Calls the Menu and various page components; Menu has the links
   // corresponding to these routes.
   render() {
-    if (!this.state.auth) {
-      return(
-        <section id="st-app">
-              <Switch>
-                <Route path='/login' component={this.Login}/>
-                <Redirect push to='/login'/>
-              </Switch>
-        </section>
-      )
-    }
-    else if (this.state.courses && this.state.user){
+    if (this.state.courses && this.state.user){
       let courses = []
       for (let course in this.state.courses) {
         courses.push(
