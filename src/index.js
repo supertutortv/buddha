@@ -530,7 +530,7 @@ class App extends React.Component {
 
   // Generic response handler for interacting with the sttv API
   handleResponse(response) {
-    return response
+    return(response.json())
     if (response.ok) {
       return(response.json())
     }
