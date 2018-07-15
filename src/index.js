@@ -661,10 +661,9 @@ class App extends React.Component {
     }
   }
 
-  // Destroy the old token and user/course info; this causes an automatic
-  // redirect to the login page.
+  // Server unsets the auth cookie and returns an object with a redirection url
   logout() {
-    fetch('https://api.supertutortv.com/v2/auth/token', {
+    fetch('https://api.supertutortv.com/v2/auth/logout', {
       method: 'POST',
       accept: 'application/vnd.sttv.app+json',
       credentials: 'include',
