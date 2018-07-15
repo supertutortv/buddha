@@ -672,8 +672,9 @@ class App extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-      }).then((res) => {
-        console.log(res.json())
+      }).then(response => this.handleResponse(response))
+      .then(items => {
+        console.log(items)
       })
   }
 
