@@ -665,14 +665,17 @@ class App extends React.Component {
   // Destroy the old token and user/course info; this causes an automatic
   // redirect to the login page.
   logout() {
-      localStorage.removeItem('sttv_data')
-      this.setState({
-        auth : false,
-        courses : {},
-        message : 'You have successfully logged out.',
-        password : '',
-        username : ''
-     })
+    fetch('https://api.supertutortv.com/v2/auth/token', {
+      method: 'POST',
+      accept: 'application/vnd.sttv.app+json',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+      }).then((res) => {
+        console.log(res)
+      })
   }
 
   // Get a token for a user on login; clears localStorage and fetches a new
