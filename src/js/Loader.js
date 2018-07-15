@@ -1,9 +1,8 @@
-import React from 'react';
-class Loader extends React.Component {
+import React from 'react'
+export default class Loader extends React.Component {
     render() {
         return(
             <div id="st-loader"></div>
         )
     }
 }
-export default new Loader
