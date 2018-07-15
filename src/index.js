@@ -673,7 +673,7 @@ class App extends React.Component {
       }
       }).then(response => this.handleResponse(response))
       .then(items => {
-        window.location.href = items.redirect
+        window.location.replace(items.redirect)
       })
   }
 
@@ -736,7 +736,7 @@ class App extends React.Component {
       }
       else {
         setTimeout(()=>{
-          window.location.href = 'http://localhost:8888/sttvroot/login'
+          window.location.replace('http://localhost:8888/sttvroot/login')
         },250)
       }
     })
