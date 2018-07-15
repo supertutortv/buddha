@@ -673,7 +673,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
       }).then((res) => {
-        return console.log(res.json())
+        console.log(res.json())
       })
   }
 
