@@ -531,7 +531,6 @@ class App extends React.Component {
 
   // Generic response handler for interacting with the sttv API
   handleResponse(response) {
-    return(response.json())
     if (response.ok) {
       return(response.json())
     }
@@ -674,7 +673,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
       }).then((res) => {
-        console.log(res)
+        return console.log(res.json())
       })
   }
 
