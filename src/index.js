@@ -732,7 +732,7 @@ class App extends React.Component {
         this.getData()
       }
       else {
-        this.setState({auth: false})
+        window.location.href = 'http://localhost:8888/sttvroot/login'
       }
     })
     .catch(error => {
