@@ -535,15 +535,7 @@ class App extends React.Component {
       return(response.json())
     }
     else {
-      if (response.status == 403) {
-        this.setState({
-          auth: false,
-          message: 'Your session has expired.',
-          username : '',
-          password : ''
-        })
-      }
-      else if (response.status == 429) {
+      if (response.status == 429) {
         this.setState({
           auth: false,
           message: 'Too many requests from this location. Please try again later.',
@@ -735,8 +727,7 @@ class App extends React.Component {
     })
     .then( response => this.handleResponse(response))
     .then( items => {
-      return console.log(items)
-      if (items == true) {
+      if (items.data == true) {
         this.setState({auth: true})
         this.getData()
       }
