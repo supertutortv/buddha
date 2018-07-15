@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
 import {Icon} from 'react-materialize'
+import loader from './js/Loader.js'
 import PropTypes from 'prop-types'
 
 // Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's into II's. Keeps 'vs' lowercase.
@@ -1034,11 +1035,7 @@ class App extends React.Component {
       }
       else {
         return(
-          <section id="st-app">
-            <section id="st-app-inner">
-            Please enable cookies in order to use this site
-            </section>
-          </section>
+          loader
         )
       }
     }

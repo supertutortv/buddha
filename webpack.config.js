@@ -12,18 +12,27 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.sass$/,
-        use: ExtractTextPlugin.extract([
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-                importer: globImporter()
+      { test : /\.sass$/,
+        use : ExtractTextPlugin.extract({
+          fallback : 'style-loader',
+          use : [
+            {
+              loader : 'css-loader',
+              options : {
+                url: false,
+                minimize: true,
+                sourceMap: true
               }
-          }
-        ])
+            },
+            {
+              loader : 'sass-loader',
+              options : {
+                sourceMap: true,
+                importer : globImporter()
+              }
+            }
+          ]
+        })
       },
       { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' }
     ]
