@@ -26,13 +26,16 @@ class App extends React.Component {
     this.Login = this.Login.bind(this)
     this.handleResponse = this.handleResponse.bind(this)
     this.state = {
-      auth : false,
+      auth : true,
       username: '',
-      password: ''
+      password: '',
+      query: '',
+      currentCourse: 'the-best-act-prep-course-ever'
     }
     // Bind all components and bound methods
     this.Bookmarks = this.Bookmarks.bind(this)
     this.Course = this.Course.bind(this)
+    this.CourseHome = this.CourseHome.bind(this)
     this.CourseNav = this.CourseNav.bind(this)
     this.courseRefresh = this.courseRefresh.bind(this)
     this.Dashboard = this.Dashboard.bind(this)
@@ -58,17 +61,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.verifyToken()
+    this.getData()
   }
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    const errorMessage = 'There was an error with your course data. You may wish to try refreshing from the menu.'
+    const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
+    document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
     if (this.state.auth) {
       try {
         let nextParent = this.props.location.pathname.split('/').filter(String)
         const newDownloads = this.getResourceByUrl(nextParent.slice(0, 2).join('/'))
-        nextParent.pop()
         const newDir = this.getResourceByUrl(nextParent.join('/'))
         let downloads = []
         if (newDownloads && 'files' in newDownloads) {
@@ -85,6 +88,9 @@ class App extends React.Component {
         }
         else if (!this.state.vids && this.state.user.history != null) {
           this.setState({vids: this.state.user.history, thumb: thumb})
+        }
+        if (this.state.courses && nextRoot && nextRoot in this.state.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
+          this.setState({lastLink: nextProps.location.pathname})
         }
       }
       catch (error) {
@@ -125,7 +131,7 @@ class App extends React.Component {
       accept: 'application/vnd.sttv.app+json',
       credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.user[key])
     })
@@ -160,6 +166,7 @@ class App extends React.Component {
               <Switch>
                 <Route className='st-link' path={'/' + this.state.currentCourse} component={() => (cleanup(this.state.currentCourse))}/>
                 <Route className='st-link' path='/dashboard' component={() => "Dashboard"}/>
+                <Route className='st-link' path='/courses' component={() => "Courses"}/>
                 <Route className='st-link' path='/history' component={() => "History"}/>
                 <Route className='st-link' path='/feedback' component={() => "Feedback"}/>
                 <Route className='st-link' path='/bookmarks' component={() => "Bookmarks"}/>
@@ -169,6 +176,23 @@ class App extends React.Component {
                 <Route path="/*" exact component={() => "Oops"}/>
               </Switch>
             </div>
+            <div id="dashboard-settings">
+              <div>
+                Dark Mode
+                <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.user.settings.dark_mode}
+                  onChange={(event) => {
+                    this.genericHandler(['settings'], event)
+                    let newClass = this.state.user.settings.dark_mode ? 'dark-mode' : ''
+                    this.updateUserObj()}}>
+                </input>
+              </div>
+              <div>
+                Autoplay
+                <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.user.settings.autoplay}
+                  onChange={(event) => this.genericHandler(['settings'], event)}>
+                </input>
+              </div>
+            </div>
           </div>
       </header>
     )
@@ -176,40 +200,11 @@ class App extends React.Component {
 
   // Dashboard component. Could use a little styling.
   Dashboard(props) {
-    let courses = []
-    for (let course in this.state.courses) {
-      courses.push(
-        <div key={course}>
-          {cleanup(course)}
-          <input type='checkbox' name='currentCourse' value={course} disabled={this.state.currentCourse===course}
-            checked={this.state.currentCourse === course}
-            onClick={this.settingsHandler}></input>
-        </div>
-      )
-    }
     return(
       <div>
         <h3>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h3>
         <div>
           <h2>Settings:</h2>
-          <div>
-            Your courses
-            {courses}
-          </div>
-          <br/>
-          <div>
-            Dark Mode
-            <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.user.settings.dark_mode}
-              onChange={(event) => this.genericHandler(['settings'], event)}>
-            </input>
-          </div>
-          <br/>
-          <div>
-            Autoplay
-            <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.user.settings.autoplay}
-              onChange={(event) => this.genericHandler(['settings'], event)}>
-            </input>
-          </div>
           <br/>
           <a onClick={() => this.updateUserObj('settings')}><strong>Update Settings </strong><Icon>cloud_upload</Icon></a>
           <div>
@@ -505,15 +500,13 @@ class App extends React.Component {
     const root = props.location.pathname.split('/').filter(String)[0]
     return(
       <section id="st-sidebar" style={this.state.search ? {pointerEvents : 'none'} : {pointerEvents: 'auto'}} >
-        <Link to="/dashboard" className={root == 'dashboard' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Dashboard' ><Icon>person</Icon></Link>
-        <a className={root in this.state.courses && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Course'  onClick={() => this.setState({nav: !this.state.nav})} ><Icon>apps</Icon></a>
-        <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Orders' onClick={() => this.setState({nav: false})} ><Icon>schedule</Icon></Link>
-        <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' onClick={() => this.setState({nav: false})} ><Icon>bookmark</Icon></Link>
+        <Link to='/dashboard' className={root == 'dashboard' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Dashboard' ><Icon>person</Icon></Link>
+        <Link to={!(root in this.state.courses) && this.state.lastLink ? this.state.lastLink : '/courses'} className={root in this.state.courses && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Courses' ><Icon>apps</Icon></Link>
+        <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='History' ><Icon>schedule</Icon></Link>
+        <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' ><Icon>bookmark</Icon></Link>
         <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>
         <a className='st-app-link divider'>&nbsp;</a>
-        <Link to='/review' className={root == 'review' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Review' onClick={() => this.setState({nav: false})} ><Icon>rate_review</Icon></Link>
-        <Link to='/feedback' className={root == 'feedback' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Feedback' onClick={() => this.setState({nav: false})} ><Icon>send</Icon></Link>
-        <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' onClick={() => this.setState({nav: false})}><Icon>help</Icon></Link>
+        <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' ><Icon>help</Icon></Link>
         <a onClick={this.courseRefresh} className='st-app-link' title='Refresh'><Icon>refresh</Icon></a>
         <a onClick={this.logout} className='st-app-link' title='Logout'><Icon>exit_to_app</Icon></a>
       </section>
@@ -550,16 +543,16 @@ class App extends React.Component {
   // Searches the course structure and returns links, used by the Search component
   searchCourse(query, object, path) {
     const results = []
-    if (!query || !object || query.length < 3) {
+    if (!query || !object) {
       return []
     }
     else {
       for (let i in object) {
         let newPath = path + '/' + i
-        if (object[i].data && object[i].data.name.toLowerCase().includes(query)) {
+        if (object[i].data && object[i].data.name.toLowerCase().includes(query.toLowerCase())) {
           results.push(newPath)
         }
-        else if ('name' in object[i] && object[i].name.toLowerCase().includes(query)) {
+        else if ('name' in object[i] && object[i].name.toLowerCase().includes(query.toLowerCase())) {
           results.push(newPath)
         }
         else {
@@ -578,22 +571,30 @@ class App extends React.Component {
   Search() {
     let links = []
     let index = 0
-    try {
-      const results = this.searchCourse(this.state.query, this.state.courses[this.state.currentCourse].collection, this.state.currentCourse)
-      for (let item in results) {
-      links.push(
-        <li className="search-result" key={index}>
-          <Link to={'/' + results[item]} onClick={() => this.setState({search : false, nav: true})}>
-            {cleanup(results[item])}
-          </Link>
-          <br/>
-        </li>
-        )
-        index++
-      }
+    const results = this.searchCourse(this.state.query, this.state.courses[this.state.currentCourse].collection, this.state.currentCourse)
+    if (this.state.query.length == 0) {
+      links = 'Begin typing to search this course'
     }
-    catch (error) {
-      links = 'Type more than three characters to search this course.'
+    else if (results.length == 0) {
+      links = 'No results found'
+    }
+    else {
+      try {
+        for (let item in results) {
+        links.push(
+          <li className="search-result" key={index}>
+            <Link to={'/' + results[item]} onClick={() => this.setState({search : false, nav: true})}>
+              {cleanup(results[item])}
+            </Link>
+            <br/>
+          </li>
+          )
+          index++
+        }
+      }
+      catch (error) {
+        links = 'Type more than three characters to search this course.'
+      }
     }
     return(
       <div className="sttv-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
@@ -629,7 +630,7 @@ class App extends React.Component {
       fetch('https://api.supertutortv.com/v2/courses/data', {
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
+              'Content-Type': 'application/json'
         }
       })
       .then(response => this.handleResponse(response))
@@ -668,11 +669,12 @@ class App extends React.Component {
       accept: 'application/vnd.sttv.app+json',
       credentials: 'include',
       headers: {
-        'Accept': 'application/json',
+          'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
       }).then(response => this.handleResponse(response))
       .then(items => {
+        localStorage.removeItem('sttv_data')
         window.location.replace(items.redirect)
       })
   }
@@ -771,11 +773,30 @@ class App extends React.Component {
     )
   }
 
+  // Course Home Page
+  CourseHome(props) {
+    let courses = []
+    for (let course in this.state.courses) {
+      courses.push(
+        <Link key={course} className='st-link' to={'/' + course}>{cleanup(course)}</Link>
+      )
+    }
+    return(
+      <div>
+        <h3>Your Courses:</h3>
+        {courses}
+      </div>
+    )
+  }
+
   // Wrapper for the stage and the right sidebar
   Course(props) {
     let link = '/' + this.state.currentCourse
     return(
       <div>
+        <div>
+          <this.CourseNav />
+        </div>
         <div className="st-stage">
           <this.Stage location={props.location.pathname}/>
         </div>
@@ -792,7 +813,7 @@ class App extends React.Component {
     let link = '/' + this.state.currentCourse
     return(
       <div id="sttv-sections">
-        {this.state.nav && <this.Section collection={course.collection}
+        {<this.Section collection={course.collection}
           link={link} thumb={course.data.thumbUrls.plain} spacing={0} />}
     </div>
     )
@@ -819,12 +840,12 @@ class App extends React.Component {
           collection={nextCollection} link={link} thumb={thumb}
           spacing={nextSpacing} />} />
         if ('intro' in currentSection.data) {
-          click = () => this.updateStage(String(currentSection.data.intro))
+          click = () => {this.updateStage(String(currentSection.data.intro)); this.setState({lastLink: link})}
         }
       }
       else {
         let vids = currentSection.collection
-        click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb})
+        click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb, lastLink: link})
       }
       renderedSections.push(
         <div key={section} style={{paddingLeft: 10*spacing}}>
@@ -920,15 +941,19 @@ class App extends React.Component {
     if (vid.data) {
       label = cleanup(props.location.split('/').filter(String).splice(1).join('/'))
     }
-    else {
+    else if (vid.name) {
       const location = props.location.split('/').filter(String).splice(1)
       location.pop()
       label = cleanup(location.join(' > ')) + ' > ' + vid.name
     }
+    else {
+      label = ''
+    }
     let frame
     if (this.state.stage == '0') {
-      frame = <div className='sttv-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
-          <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
+      frame =
+      <div className='sttv-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
+        <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
       </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
@@ -952,16 +977,18 @@ class App extends React.Component {
     else {
       downloads = <a title='Files' className='download-inactive' ><Icon>cloud_download</Icon></a>
     }
+    let feedback = <Link to='/review' title='Review' ><Icon>rate_review</Icon></Link>
     return(
       <div>
           {this.state.downloadModal && <this.Downloads />}
           {frame}
           <div>
             <div className='st-video-bookmarker'>
+              {feedback}
               {downloads}
               {bookmark}
             </div>
-            <h3 className='st-video-label'>{label} </h3>
+            <h3 className='st-video-label'>{label}</h3>
           </div>
       </div>
     )
@@ -1011,17 +1038,25 @@ class App extends React.Component {
       if (this.state.search) {
         search = <this.Search />
       }
+      // Prevents 404 page from loading on course-specific routes
+      let courseRoutes = []
+      for (let course in this.state.courses) {
+        courseRoutes.push(
+          <Route key={course} className='st-link' path={'/' + course}/>
+        )
+      }
       return(
           <div>
-              <Route path='/' component={this.Menu}/>
               <section id="st-app">
                 <Route path='/' component={this.Header}/>
+                <Route path='/' component={this.Menu}/>
                 <section id="st-app-inner">
-                  <this.CourseNav />
                   {courses}
                   {search}
                   <Switch>
+                    {courseRoutes}
                     <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
+                    <Route className='st-link' path='/courses' component={this.CourseHome}/>
                     <Route className='st-link' path={'/' + this.state.currentCourse}/>
                     <Route className='st-link' path='/history' component={this.History}/>
                     <Route className='st-link' path='/feedback' component={this.Feedback}/>
