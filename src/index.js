@@ -77,7 +77,8 @@ class App extends React.Component {
     document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
     if (this.state.auth) {
       try {
-        let nextParent = this.props.location.pathname.split('/').filter(String)
+        let nextParent = nextProps.location.pathname.split('/').filter(String)
+        nextParent.pop()
         const newDownloads = this.getResourceByUrl(nextParent.slice(0, 2).join('/'))
         const newDir = this.getResourceByUrl(nextParent.join('/'))
         let downloads = []
