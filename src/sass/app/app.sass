@@ -1,3 +1,5 @@
+$navw: 15em
+
 #st-loader
   overflow: hidden
   position: fixed
@@ -77,6 +79,25 @@ body.dark-mode #st-app
       width: 92%
       align: center
 
+      #st-course
+        overflow: hidden
+        height: 100%
+
+        #st-nav
+          #sttv-sections
+            padding-left: 10px
+            opacity: 2
+            position: fixed
+            width: $navw
+            left: $sidebarw*(3/2)
+            top: $sidebarw*(3/2)
+            padding-top: 20px
+            height: 53.9%
+
+        #st-stage
+          padding-left: $navw
+          padding-top: 0
+
       .sttv-downloads
         color: black
         background-color: lightGrey
@@ -118,9 +139,9 @@ body.dark-mode #st-app
       .star-active-lock
         color: #ed812e
 
-      .st-video-bookmarker
+      .st-video-icons
         float: right
-        padding-right: $videowidth + 3.5em
+        padding-right: $videowidth + .25em
 
       .st-video-label
         width: 946
@@ -132,14 +153,6 @@ body.dark-mode #st-app
         padding-left: 10px
         font-size: large
         outline: none
-
-      #sttv-sections
-        opacity: 2
-        position: fixed
-        left: $sidebarw*(3/2)
-        top: $sidebarw*(3/2)
-        background-color: black
-        padding-top: 20px
 
       .download-inactive
         color: grey
