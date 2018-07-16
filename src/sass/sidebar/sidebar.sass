@@ -1,5 +1,9 @@
+body.dark-mode #st-sidebar
+    color: $notwhite
+    background-color: $notblack
+
 #st-sidebar
-    position: fixed
+    position: relative
     overflow: hidden
     width: $sidebarw
     height: 100%
@@ -13,6 +17,7 @@
     -moz-user-select: none /* Firefox */
     -ms-user-select: none /* Internet Explorer/Edge */
     user-select: none
+    transition: all .25s ease-in-out
 
     a, a:hover, a:active, a:visited
         color: inherit
@@ -51,7 +56,7 @@
             margin-bottom: 15%
 
         &.logout
-            position: relative
+            position: absolute
             bottom: 0
             left: 0
             right: 0

@@ -3,6 +3,7 @@ $realEM: 16px
 $sidebarw: 3em
 $notblack: rgba(0,0,0,.75)
 $notwhite: rgba(241,241,241,1)
+$videowidth: 20em
 
 html
 
@@ -17,6 +18,11 @@ html
         width: 100vw
         height: 100vh
         box-sizing: border-box
+        transition: all .25s ease-in-out
+
+        &.dark-mode
+            color: $notwhite
+            background-color: $notblack
 
         div
             display: block
