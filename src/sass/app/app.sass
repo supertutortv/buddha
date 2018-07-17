@@ -1,4 +1,4 @@
-$navw: 13em
+$navw: 13.5em
 
 #st-loader
   overflow: hidden
@@ -21,9 +21,9 @@ body.dark-mode #st-app
 
   .info-input
     color: white
-
+  #st-app-inner
   #video-wrapper
-    background-color: $notblack !important
+      background-color: $notblack !important
 
 #st-app
     overflow: hidden
@@ -98,8 +98,12 @@ body.dark-mode #st-app
             padding-top: 2em
             height: 53.9%
 
+            .link-highlight
+              background-color: darkGrey
+
         #st-stage
-          padding-left: $navw
+          align: center
+          padding-left: $navw + .5em
           padding-top: 0
 
       .sttv-textarea
@@ -251,7 +255,10 @@ body.dark-mode #st-app
         overflow-x: hidden
         padding-top: 20px
 
-      .st-video-card
+      .st-video-card-highlight
+        background-color: darkGrey
+
+      .st-video-card, .st-video-card-highlight
         position: relative
         width: 16em
         cursor: pointer

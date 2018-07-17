@@ -31,7 +31,7 @@ function Stage(props) {
     frame = <iframe className='sttv-course-player'
       key='stage'
       src={link}
-      width='830' height='594' frameBorder='' title='Intro' webkitallowfullscreen='tr'
+      width='810' height='580' frameBorder='' title='Intro' webkitallowfullscreen='tr'
       allowFullScreen=''></iframe>
     let bookmark
     if (this.state.bookmarkedIds.includes(props.location)) {

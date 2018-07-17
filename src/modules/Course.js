@@ -82,8 +82,8 @@ function CourseSection(props) {
       click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb, lastLink: link})
     }
     renderedSections.push(
-      <div key={section} style={{paddingLeft: 10*spacing}}>
-        <Link to={link} onClick={click}> {name} </Link>
+      <div key={section} style={{paddingLeft: 10*spacing}} >
+        <Link to={link} onClick={click} className={window.location.pathname == link ? 'link-highlight' : 'link'}> {name} </Link>
         {route}
       </div>
     )
