@@ -73,29 +73,31 @@ class App extends React.Component {
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
+    const nextRoot = this.props.location.pathname.split('/').filter(String)[0]
     document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
     if (this.state.auth) {
       try {
-        let nextParent = nextProps.location.pathname.split('/').filter(String)
-        nextParent.pop()
-        const newDownloads = this.getResourceByUrl(nextParent.slice(0, 2).join('/'))
-        const newDir = this.getResourceByUrl(nextParent.join('/'))
+        let nextLink = this.props.location.pathname.split('/').filter(String)
+        const newDownloadsLocation = this.getResourceByUrl(nextLink.slice(0, 2).join('/'))
+        let nextDirectory = this.getResourceByUrl(nextLink.join('/'))
+        let copy = nextLink.slice()
+        copy.pop()
+        const nextParent = this.getResourceByUrl(copy.join('/'))
         let downloads = []
-        if (newDownloads && 'files' in newDownloads) {
-          downloads = newDownloads.files
+        if (newDownloadsLocation && 'files' in newDownloadsLocation) {
+          downloads = newDownloadsLocation.files
         }
-        if (newDir && newDir.collection && newDir.data && newDir.data.type == 'videos' && newDir.collection != nextState.vids) {
-          this.setState({vids : newDir.collection, vidLink: '/' + nextParent.join('/'), message: ''})
+        if (nextDirectory && nextDirectory.collection && nextDirectory.data && nextDirectory.data.type == 'videos' && nextDirectory.collection != nextState.vids) {
+          this.setState({vids : nextDirectory.collection, vidLink: '/' + nextLink.join('/')})
         }
-        if (newDownloads && newDownloads.data && newDownloads.data.type == 'collection' && downloads != nextState.downloads) {
-          this.setState({downloads: downloads, message: ''})
-        }
-        if (this.state.stage == null && newDownloads && newDownloads.data) {
-          this.setState({stage: newDownloads.data.intro})
+        else if (nextParent && nextParent.collection && nextParent.data && nextParent.data.type == 'videos' && (nextParent.collection != nextState.vids || nextDirectory.id != nextState.stage)) {
+          this.setState({vids: nextParent.collection, stage: nextDirectory.id, vidLink: '/' + copy.join('/')})
         }
         else if (!nextState.vids && this.state.user.history != null) {
-          this.setState({vids: this.state.user.history, thumb: thumb})
+          this.setState({vids: this.state.user.history, vidLink: '/' + nextLink.join('/')})
+        }
+        if (newDownloadsLocation && newDownloadsLocation.data && newDownloadsLocation.data.type == 'collection' && downloads != nextState.downloads) {
+          this.setState({downloads: downloads})
         }
         if (this.state.courses && nextRoot && nextRoot in this.state.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
           this.setState({lastLink: nextProps.location.pathname})

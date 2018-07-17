@@ -45,7 +45,7 @@ function getToken() {
       else {
         this.setState({
           message: 'Incorrect username or password',
-          auth: false,
+          auth: false
         })
       }
     }

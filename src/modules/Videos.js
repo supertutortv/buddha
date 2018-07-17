@@ -1,6 +1,5 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
-
 // Generates links and thumbnails for an array of videos; used in the
 // right sidebar of the Courses component
 function Videos(props) {
@@ -21,7 +20,7 @@ function Videos(props) {
     let ref = this.cleanup(link.slice(1)).concat(' >')
     videos.push(
       <Route path={link} key={key} className="st-video-card">
-        <Link to={link} onClick={() => this.setStage({stage: video.id})}>
+        <Link to={link}>
           <div className="st-video-card">
             <div>
                 <img className="st-thumb" src={thumb}/>
