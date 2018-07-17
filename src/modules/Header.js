@@ -19,7 +19,7 @@ function Header(props) {
           </div>
           <div id="st-header-view-title">
             <Switch>
-              <Route className='st-link' pvath={'/' + this.state.currentCourse} component={() => (this.cleanup(this.state.currentCourse))}/>
+              <Route className='st-link' path={'/' + this.state.currentCourse} component={() => (this.cleanup(this.state.currentCourse))}/>
               <Route className='st-link' path='/dashboard' component={() => "Dashboard"}/>
               <Route className='st-link' path='/courses' component={() => "Courses"}/>
               <Route className='st-link' path='/history' component={() => "History"}/>
