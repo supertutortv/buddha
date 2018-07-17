@@ -4,8 +4,15 @@ import {Route, Link} from 'react-router-dom'
 // right sidebar of the Courses component
 function Videos(props) {
   function duration(seconds) {
-    console.log(String(Math.floor(seconds/60)) + 'm ' + (seconds % 60) + 's')
-    return String(Math.floor(seconds/60)) + 'm ' + (seconds % 60) + 's'
+    let timeString = ''
+    if (Math.floor(seconds/3600) > 0) {
+      timeString += String(Math.floor(seconds/3600)) + 'h '
+    }
+    if (Math.floor(seconds/60) > 0) {
+      timeString += String(Math.floor(seconds/60)) + 'm '
+    }
+    timeString += String(seconds % 60) + 's '
+    return timeString
   }
   let key = 0
   let videos = []

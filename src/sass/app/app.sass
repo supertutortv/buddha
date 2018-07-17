@@ -16,6 +16,16 @@ $navw: 15em
 body.dark-mode #st-app
   color: $notwhite
 
+  a
+    color: $notwhite
+
+  .info-input
+    color: white
+
+
+  #video-wrapper
+    background-color: $notblack !important
+
 #st-app
     overflow: hidden
     position: fixed
@@ -25,17 +35,14 @@ body.dark-mode #st-app
     left: 0
     background-size: cover
     background-position: center
-    color: $notblack
     transition: all .25s ease-in-out
 
     a
-      color: white
+      color: $notblack
       &:focus, &:hover, &:visited, &:link, &:active
         text-decoration: none
 
     header
-        color: $notblack
-        background-color: $notwhite
         height: $sidebarw/2
         padding: .75em 0 .75em 1em
         border-bottom: 1px solid $notblack
@@ -68,7 +75,6 @@ body.dark-mode #st-app
       align: right
       text-align: right
 
-
     #st-app-inner
       overflow: auto
       position: absolute
@@ -88,10 +94,11 @@ body.dark-mode #st-app
             padding-left: 10px
             opacity: 2
             position: fixed
-            width: $navw
+            max-width: $navw
+            word-wrap: break-word
             left: $sidebarw*(3/2)
             top: $sidebarw*(3/2)
-            padding-top: 20px
+            padding-top: 2em
             height: 53.9%
 
         #st-stage
@@ -149,7 +156,6 @@ body.dark-mode #st-app
       .info-input
         background-color: transparent
         border: 0px solid white
-        color: white
         padding-left: 10px
         font-size: large
         outline: none
@@ -228,8 +234,8 @@ body.dark-mode #st-app
         position: fixed
         bottom: 0
         right: 0
-        top: $sidebarw*(3/2)
-        background-color: $notblack
+        top: $sidebarw*(38/25)
+        background-color: lightGrey
         overflow-x: hidden
         padding-top: 20px
 

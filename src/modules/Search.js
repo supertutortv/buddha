@@ -61,7 +61,7 @@ function Search() {
     <div className="sttv-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
       <div className="sttv-search" onClick={(e) => e.stopPropagation()} >
         <h3>Searching: {this.cleanup(this.state.currentCourse)}</h3>
-        <input className="sttv-searchbox" autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}>
+        <input className="sttv-searchbox" autoFocus autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}>
         </input>
         <ul className="sttv-search-results">
           {links}

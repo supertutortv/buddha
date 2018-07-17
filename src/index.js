@@ -23,6 +23,7 @@ import {Search, searchCourse} from './modules/Search.js'
 import {Stage} from './modules/Stage.js'
 import {cleanup, getResourceByUrl, handleChange, handleResponse} from './modules/utilities.js'
 import {Videos} from './modules/Videos.js'
+import {Grader} from './modules/Grader.js'
 
 // Class that controls the state and rendered components of the app
 class App extends React.Component {
@@ -73,7 +74,7 @@ class App extends React.Component {
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    const nextRoot = this.props.location.pathname.split('/').filter(String)[0]
+    const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
     document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
     if (this.state.auth) {
       try {
@@ -140,6 +141,14 @@ class App extends React.Component {
                   {search}
                   <Switch>
                     {courseRoutes}
+                    {/* <Route className='st-link' path='/dashboard' render={() => <Grader length={75} buckets={{
+                      75 : 36, 72 : 35, 71 : 34, 70 : 33, 68 : 32,
+                      67 : 31, 66 : 30, 65 : 29, 63 : 28, 62 : 27,
+                      60 : 26, 58 : 25, 56 : 24, 53 : 23, 51 : 22,
+                      48 : 21, 45 : 20, 43 : 19, 41 : 18, 39 : 17,
+                      36 : 16, 32 : 15, 29 : 14, 27 : 13, 25 : 12,
+                      23 : 11, 20 : 10, 18 : 9, 15 : 8, 12 : 7,
+                      10 : 6, 8 : 5, 6 : 4, 4 : 3, 2 : 2, 0 : 1 }} name={"ACT English Practice 1"} endpoint={"fakeEndpoint"}/>}/> */}
                     <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
                     <Route className='st-link' path='/courses' component={this.CourseHome}/>
                     <Route className='st-link' path={'/' + this.state.currentCourse}/>

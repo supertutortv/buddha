@@ -9,7 +9,7 @@ function Menu(props) {
   return(
     <section id="st-sidebar" style={this.state.search ? {pointerEvents : 'none'} : {pointerEvents: 'auto'}} >
       <Link to='/dashboard' className={root == 'dashboard' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Dashboard' ><Icon>person</Icon></Link>
-      <Link to={!(root in this.state.courses) && this.state.lastLink ? this.state.lastLink : '/courses'} className={root in this.state.courses && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Courses' ><Icon>apps</Icon></Link>
+      <Link to={!(root in this.state.courses) && this.state.lastLink ? this.state.lastLink : '/courses'} className={(root in this.state.courses || root == 'courses') && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Courses' ><Icon>apps</Icon></Link>
       <Link to='/history' className={root == 'history' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='History' ><Icon>schedule</Icon></Link>
       <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' ><Icon>bookmark</Icon></Link>
       <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>

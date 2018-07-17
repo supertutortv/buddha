@@ -4,11 +4,18 @@ import {Route, Switch} from 'react-router-dom'
 // Header that goes at the top of the app; contains routes to display the page title
 function Header(props) {
   const base = props.location.pathname.split('/').filter(String)
+  let image
+  if (this.state.user.settings.dark_mode) {
+    image = <img src={window.location.origin + "/web/assets/img/sttv_logo_contrast.png"}/>
+  }
+  else {
+    image = <img src={window.location.origin + "/web/assets/img/sttv_logo.png"} alt="SupertutorTV"/>
+  }
   return(
     <header>
         <div id="st-header-inner">
           <div id="st-header-branding">
-            <img src="https://supertutortv.com/wp-content/uploads/2016/10/sttv_site_logo.png" alt="SupertutorTV"/>
+            {image}
           </div>
           <div id="st-header-view-title">
             <Switch>
