@@ -2,6 +2,11 @@ body.dark-mode #st-sidebar
     color: $notwhite
     background-color: $notblack
 
+    a.st-app-link 
+      &.divider
+        background-color: $notwhite
+
+
 #st-sidebar
     position: absolute
     padding-left: 0
@@ -57,7 +62,7 @@ body.dark-mode #st-sidebar
             padding-bottom: 0px
             height: 1px
             overflow: hidden
-            background-color: #e0e0e0
+            background-color: $notblack
             margin-bottom: 15%
 
         &.logout
