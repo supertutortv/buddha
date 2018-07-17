@@ -5,7 +5,7 @@ function logout() {
     accept: 'application/vnd.sttv.app+json',
     credentials: 'include',
     headers: {
-      'X-RateLimit-Buster': 'C0ED0C923C20304CAE65E56E0DB9BBB20D14ADA67D6B478E64F500D0A3C4A2E0',
+      'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
@@ -24,7 +24,7 @@ function getToken() {
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'C0ED0C923C20304CAE65E56E0DB9BBB20D14ADA67D6B478E64F500D0A3C4A2E0',
+    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
@@ -65,7 +65,7 @@ function verifyToken() {
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'C0ED0C923C20304CAE65E56E0DB9BBB20D14ADA67D6B478E64F500D0A3C4A2E0',
+    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Content-Type': 'application/json',
     }
   })

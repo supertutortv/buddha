@@ -235,10 +235,26 @@ body.dark-mode #st-app
 
       .st-video-card
         position: relative
-        padding-bottom: 5%
         width: 16em
         cursor: pointer
-        margin: auto
+        margin-left: 1em
+        height: 6em
+        padding-bottom: 1em
+
+        .st-video-card-thumb
+          width: 60%
+          height: 6em
+          vertical-align: middle
+
+        .st-video-card-title, .st-video-card-timestamp
+          max-width: 37%
+          float: right
+          margin: 0px
+          padding: 0px
+          font-size: small
+
+        .st-video-card-timestamp
+          font-style: italic
 
         &:hover > div > .st-video-remover
           opacity: 1
