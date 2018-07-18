@@ -34,6 +34,7 @@ class App extends React.Component {
     this.Login = Login.bind(this)
     this.handleResponse = handleResponse.bind(this)
     this.state = {
+      adjustView: true,
       auth : true,
       username: '',
       password: '',
@@ -66,6 +67,7 @@ class App extends React.Component {
     this.updateUserObj = updateUserObj.bind(this)
     this.Videos = Videos.bind(this)
     this.getBookmarkId = getBookmarkId.bind(this)
+    this.scrollRef = React.createRef()
   }
 
   componentDidMount() {
@@ -74,6 +76,11 @@ class App extends React.Component {
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
+    if (this.scrollRef.current) {
+      if (this.scrollRef.current.offsetTop > window.innerHeight) {
+        this.scrollRef.current.scrollIntoView()
+      }
+    }
     const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
     document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
     if (this.state.auth) {

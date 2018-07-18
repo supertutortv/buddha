@@ -33,7 +33,7 @@ function Videos(props) {
     videos.push(
       <Route path={link} key={key} className="st-video-card">
         <Link to={link} >
-          <div className={window.location.pathname == link ? 'st-video-card-highlight' : 'st-video-card'}>
+          <div className={window.location.pathname == link ? 'st-video-card-highlight' : 'st-video-card'} ref={window.location.pathname == link ? this.scrollRef : null}>
             <img className="st-video-card-thumb" src={thumb}/>
             <span className="st-video-card-title">
               {video.name}

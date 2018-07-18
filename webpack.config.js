@@ -37,6 +37,7 @@ module.exports = {
       { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' }
     ]
   },
+  performance: { hints: false },
   devServer: {
     historyApiFallback: true,
   },
