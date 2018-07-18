@@ -77,7 +77,8 @@ class App extends React.Component {
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
     if (this.scrollRef.current) {
-      if (this.scrollRef.current.offsetTop > window.innerHeight) {
+      scroll = document.getElementById('video-wrapper')
+      if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight > scroll.scrollTop + window.innerHeight ) {
         this.scrollRef.current.scrollIntoView()
       }
     }
