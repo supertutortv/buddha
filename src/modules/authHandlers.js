@@ -37,10 +37,9 @@ function getToken() {
   .then( items => {
     if (items !== null) {
       if (items.code == 'login_success') {
-        //this.setState({auth: true, username: '', password : '', message: ''})
+        this.setState({auth: true, username: '', password : '', message: ''})
         localStorage.removeItem('sttv_data')
-        window.location.reload()
-        //this.getData()
+        this.getData()
       }
       else {
         this.setState({
