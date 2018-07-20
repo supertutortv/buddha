@@ -62,7 +62,7 @@ function Bookmarks(props) {
   )
 }
 
-function getBookmarkId(url){
+function getBookmarkId(url) {
   for (let index in this.state.user.bookmarks) {
     let bookmark = this.state.user.bookmarks[index]
     if (bookmark.data.url == url) {
