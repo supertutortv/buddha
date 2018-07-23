@@ -12,9 +12,9 @@ function Downloads(props) {
     let section = file[1]
     let test = file[0]
     files.push(
-      <Col s={4} key={index}>
+      <Col s={12} m={6} l={4} key={index}>
         <a className='download-link' href={'https://api.supertutortv.com/course-dl.php?' + 'res=' + res + '&section=' + section + '&test=' + test + '&hash=' + download.hash}>
-          {download.name}
+          &#8226; {download.name}
         </a>
       </Col>
     )

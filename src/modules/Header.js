@@ -32,20 +32,23 @@ function Header(props) {
             </Switch>
           </div>
           <div id="header-settings">
-            <div>
-              <input type="checkbox" id="darkmode" className="filled-in" name="dark_mode" checked={this.state.user.settings.dark_mode}
-                onChange={(event) => {
+            <div className="switch setting" >
+              <label className="setting">
+                <h6>Autoplay</h6>
+                <input type="checkbox" name="autoplay" value={this.state.user.settings.dark_mode} onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
-                  this.updateUserObj()}}>
-              </input>
-              <label htmlFor="darkmode">Dark Mode</label>
+                  this.updateUserObj()}}/>
+                <span className="lever"></span>
+              </label>
             </div>
-            <div>
-              <input type="checkbox" id="autoplay" className="filled-in" name="autoplay" checked={this.state.user.settings.autoplay}
-                onChange={(event) => this.nestedStateChange(['settings'], event)}>
-              </input>
-              <label htmlFor="autoplay">Auto Play</label>
-
+            <div className="switch setting" >
+              <label className="setting">
+                <h6>Dark Mode</h6>
+                <input type="checkbox" name="dark_mode" value={this.state.user.settings.dark_mode} onChange={(event) => {
+                  this.nestedStateChange(['settings'], event)
+                  this.updateUserObj()}}/>
+                <span class="lever"></span>
+              </label>
             </div>
           </div>
         </div>

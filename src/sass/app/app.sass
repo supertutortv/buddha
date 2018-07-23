@@ -1,4 +1,5 @@
 $navw: 13.5em
+$azure: #109FDA
 
 #st-loader
   overflow: hidden
@@ -85,9 +86,17 @@ body.dark-mode #st-app
 
     #header-settings
       position: absolute
-      right: 4em
-      align: left
-      text-align: left
+      top: 10px
+      right: 50px
+      .setting
+        display: inline-block
+        padding-left: 10px
+
+      .switch label input[type=checkbox]:checked+.lever
+        background-color: $azure
+
+      .switch label input[type=checkbox]:checked+.lever:after
+        background-color: $azure
 
       label
         color: $notblack
@@ -177,10 +186,7 @@ body.dark-mode #st-app
         z-index: 999
 
         .st-downloads
-          h3
-            text-align: center
-
-          overflow: auto
+          overflow: scroll
           display: inline-block
           background-color: white
           border-radius: 3px
@@ -193,19 +199,8 @@ body.dark-mode #st-app
           width: 50%
           height: 80%
 
-
-          ul
-            -moz-column-count: 3
-            -moz-column-gap: 20px
-            -webkit-column-count: 3
-            -webkit-column-gap: 20px
-            column-count: 3
-            column-gap: 20px
-            list-style: none
-            display: inline-block
-
-          li
-            padding-bottom: 1em
+          h3
+            text-align: center
 
         .download-link
           color: black

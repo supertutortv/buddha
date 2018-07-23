@@ -4,17 +4,20 @@ import {Link} from 'react-router-dom'
 // Searches the course structure and returns links, used by the Search component
 function searchCourse(query, object, path) {
   const results = []
-  const cleanedQuery = query.toLowerCase().replace(/[^a-zA-z ]/g, '').replace(/\s{2,}/, ' ')
+  function searchFormat(string) {
+    return string.toLowerCase().replace(/[^a-zA-z0-9 ]/g, '').replace(/\s{2,}/, ' ')
+  }
+  const cleanedQuery = searchFormat(query)
   if (!query || !object) {
     return []
   }
   else {
     for (let i in object) {
       let newPath = path + '/' + i
-      if (object[i].data && object[i].data.name.toLowerCase().replace(/([^a-zA-z ])/g, '').replace(/\s{2,}/, ' ').includes(cleanedQuery)) {
+      if (object[i].data && searchFormat(object[i].data.name).includes(cleanedQuery)) {
         results.push(newPath)
       }
-      else if ('name' in object[i] && object[i].name.toLowerCase().replace(/[^a-zA-z ]/g, '').replace(/\s{2,}/, ' ').includes(cleanedQuery)) {
+      else if ('name' in object[i] && searchFormat(object[i].name).includes(cleanedQuery)) {
         results.push(newPath)
       }
       else {

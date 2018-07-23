@@ -83,7 +83,7 @@ function CourseSection(props) {
     }
     renderedSections.push(
       <div key={section} style={{paddingLeft: 10*spacing}} >
-        <Link to={link} onClick={click} className={window.location.pathname.substring() == link ? 'link-highlight' : 'link'}> {name} </Link>
+        <Link to={link} onClick={click} className={window.location.pathname == link ? 'link-highlight' : 'link'}> {name} </Link>
         {route}
       </div>
     )
