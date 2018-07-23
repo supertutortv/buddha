@@ -22,13 +22,13 @@ function Stage(props) {
     let frame
     if (this.state.stage == '0') {
       frame =
-      <div className='sttv-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
+      <div className='st-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
         <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
       </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
-    frame = <iframe className='sttv-course-player'
+    frame = <iframe className='st-course-player'
       key='stage'
       src={link}
       width='810' height='580' frameBorder='' title='Intro' webkitallowfullscreen='tr'

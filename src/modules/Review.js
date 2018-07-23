@@ -25,7 +25,7 @@ function Review(props) {
             onClick={(e) => {this.setState({ratingLock:5}); e.stopPropagation()}}><Icon>star</Icon></a>
         </div>
         <div className="message-box" onClick={(e) => e.stopPropagation()}>
-        <textarea placeholder="Enter your review here." className="sttv-textarea" name="review" value={this.state.review} onChange={this.handleChange}></textarea>
+        <textarea placeholder="Enter your review here." className="st-textarea" name="review" value={this.state.review} onChange={this.handleChange}></textarea>
         </div>
       </section>
       <p className="center-align">

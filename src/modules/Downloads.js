@@ -21,8 +21,8 @@ function Downloads(props) {
     index++
   }
   return (
-    <div className="sttv-modal" onClick={() => this.setState({downloadModal: false})}>
-      <div className="sttv-downloads" onClick={(e) => e.stopPropagation()} >
+    <div className="st-modal" onClick={() => this.setState({downloadModal: false})}>
+      <div className="st-downloads" onClick={(e) => e.stopPropagation()} >
         <h3>Downloads:</h3>
         <Row>
           {files}

@@ -18,7 +18,7 @@ function Feedback(props) {
      </div>
     <div className="col s12" id="feedback-post-form">
       <div className="overlay"></div>
-      <textarea placeholder="Enter your feedback here." className="sttv-textarea"  name="feedback" value={this.state.feedback} onChange={this.handleChange} />
+      <textarea placeholder="Enter your feedback here." className="st-textarea"  name="feedback" value={this.state.feedback} onChange={this.handleChange} />
       <div className="feedback-submit-container center-align">
         <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
           <strong>Submit Feedback</strong>

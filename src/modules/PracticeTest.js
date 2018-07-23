@@ -17,15 +17,15 @@ function PracticeTest(props) {
       </p>
       <span>Missed Questions:</span>
       <div>
-        <textarea value={this.state.missed} onChange={this.handleChange} placeholder="Enter the number of each question you answered incorrectly (e.g. 1, 34, 35, 68)" className="sttv-textarea"  name="missed" />
+        <textarea value={this.state.missed} onChange={this.handleChange} placeholder="Enter the number of each question you answered incorrectly (e.g. 1, 34, 35, 68)" className="st-textarea"  name="missed" />
       </div>
       <span>Skipped Questions:</span>
       <div>
-        <textarea value={this.state.blank} onChange={this.handleChange}  placeholder="Enter the number of each question you left blank (e.g. 8, 73, 74, 75)" className="sttv-textarea"  name="blank" />
+        <textarea value={this.state.blank} onChange={this.handleChange}  placeholder="Enter the number of each question you left blank (e.g. 8, 73, 74, 75)" className="st-textarea"  name="blank" />
       </div>
       <span>Questions you guessed on but got right:</span>
       <div>
-        <textarea value={this.state.guessed} onChange={this.handleChange}  placeholder="Enter the number of each question you guessed on but still got right (e.g. 4, 53)" className="sttv-textarea"  name="guessed" />
+        <textarea value={this.state.guessed} onChange={this.handleChange}  placeholder="Enter the number of each question you guessed on but still got right (e.g. 4, 53)" className="st-textarea"  name="guessed" />
       </div>
       <button onClick={() => console.log(this.state.missed, this.state.blank, this.state.guessed)}>Grade</button>
     </div>

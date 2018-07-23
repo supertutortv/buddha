@@ -45,7 +45,7 @@ function CourseNav(props) {
   let course = this.state.courses[this.state.currentCourse]
   let link = '/' + this.state.currentCourse
   return(
-    <div id="sttv-sections">
+    <div id="st-sections">
       {<this.CourseSection collection={course.collection}
         link={link} thumb={course.data.thumbUrls.plain} spacing={0} />}
   </div>
