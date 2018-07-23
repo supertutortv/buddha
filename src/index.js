@@ -77,15 +77,18 @@ class App extends React.Component {
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    if (this.scrollRef.current) {
-      scroll = document.getElementById('video-wrapper')
-      if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight > scroll.scrollTop + window.innerHeight) {
-        this.scrollRef.current.scrollIntoView()
-      }
-    }
     const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
+        if (this.scrollRef.current) {
+          scroll = document.getElementById('video-wrapper')
+          if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
+            this.scrollRef.current.scrollIntoView(false)
+          }
+          else if (this.scrollRef.current.offsetTop + window.innerHeight - 705 < scroll.scrollTop + this.scrollRef.current.clientHeight) {
+            this.scrollRef.current.scrollIntoView()
+          }
+        }
         document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
         let nextLink = this.props.location.pathname.split('/').filter(String)
         const newDownloadsLocation = this.getResourceByUrl(nextLink.slice(0, 2).join('/'))

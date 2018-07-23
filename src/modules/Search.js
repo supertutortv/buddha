@@ -42,11 +42,11 @@ function Search() {
   }
   else {
     try {
-      links.push(<div>Results:</div>)
+      links.push(<div key={-1}>Results:</div>)
       for (let item in results) {
       links.push(
         <li key={index} className="st-result">
-          <Link to={'/' + results[item]} onClick={() => this.setState({search : false, nav: true})}>
+          <Link to={'/' + results[item]} >
             {this.cleanup(results[item])}
           </Link>
           <br/>
@@ -61,11 +61,11 @@ function Search() {
   }
   return(
     <div className="st-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
-      <div className="st-search" onClick={(e) => e.stopPropagation()} >
+      <div className="st-search" >
         <h3>Searching: {this.cleanup(this.state.currentCourse)}</h3>
-        <input className="st-searchbox" autoFocus autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}>
+        <input className="st-searchbox" autoFocus autoComplete="off" type="text" name="query" value={this.state.query} onChange={this.handleChange}  onClick={(e) => e.stopPropagation()}>
         </input>
-        <ul className="st-search-results">
+        <ul className="st-search-results" >
           {links}
         </ul>
       </div>
