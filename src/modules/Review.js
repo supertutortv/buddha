@@ -35,7 +35,7 @@ function Review(props) {
         </small>
       </p>
       <div className="ratings-submit-container center-align">
-        <a className="ratings-submit-button btn" disabled={this.state.ratingLock == null || this.state.review == null || this.state.review == ''}onClick={() => console.log("This will submit the review")}>
+        <a className="btn" disabled={this.state.ratingLock == null || this.state.review == null || this.state.review == ''}onClick={() => console.log("This will submit the review")}>
           <strong>Submit Your Review</strong>
         </a>
       </div>

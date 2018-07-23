@@ -35,7 +35,7 @@ function Header(props) {
             <div className="switch setting" >
               <label className="setting">
                 <h6>Autoplay</h6>
-                <input type="checkbox" name="autoplay" value={this.state.user.settings.dark_mode} onChange={(event) => {
+                <input type="checkbox" name="autoplay" checked={this.state.user.settings.autoplay} onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
                   this.updateUserObj()}}/>
                 <span className="lever"></span>
@@ -44,10 +44,10 @@ function Header(props) {
             <div className="switch setting" >
               <label className="setting">
                 <h6>Dark Mode</h6>
-                <input type="checkbox" name="dark_mode" value={this.state.user.settings.dark_mode} onChange={(event) => {
+                <input type="checkbox" name="dark_mode" checked={this.state.user.settings.dark_mode} onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
                   this.updateUserObj()}}/>
-                <span class="lever"></span>
+                <span className="lever"></span>
               </label>
             </div>
           </div>

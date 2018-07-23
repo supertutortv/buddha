@@ -50,8 +50,20 @@ body.dark-mode #st-app
     background-size: cover
     background-position: center
 
-    textarea
-      background-color: white
+    .switch label input[type=checkbox]:checked+.lever
+      background-color: $azure
+
+    .switch label input[type=checkbox]:checked+.lever:after
+      background-color: $azure
+
+    input:focus
+      border-bottom: 1px solid $azure
+      -webkit-box-shadow: 0 1px 0 0 $azure
+      -moz-box-shadow: 0 1px 0 0 $azure
+      box-shadow: 0 1px 0 0 $azure
+
+    .btn
+      background-color: $azure
 
     a
       color: $notblack
@@ -92,14 +104,9 @@ body.dark-mode #st-app
         display: inline-block
         padding-left: 10px
 
-      .switch label input[type=checkbox]:checked+.lever
-        background-color: $azure
+        label
+          color: $notblack
 
-      .switch label input[type=checkbox]:checked+.lever:after
-        background-color: $azure
-
-      label
-        color: $notblack
 
     #st-app-inner
       height: 100%

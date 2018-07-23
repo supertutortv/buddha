@@ -21,7 +21,7 @@ function Feedback(props) {
       <textarea placeholder="Enter your feedback here." className="st-textarea"  name="feedback" value={this.state.feedback} onChange={this.handleChange} />
       <div className="feedback-submit-container center-align">
         <br />
-        <a className="feedback-submit-button btn" disabled={this.state.feedback == null || this.state.feedback == ''} onClick={() => console.log('This will submit feedback')}>
+        <a className="btn" disabled={this.state.feedback == null || this.state.feedback == ''} onClick={() => console.log('This will submit feedback')}>
           <strong>Submit Feedback</strong>
         </a>
       </div>
