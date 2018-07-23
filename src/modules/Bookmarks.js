@@ -48,7 +48,7 @@ function Bookmarks(props) {
         click = () => this.updateStage(String(vid.id))
       }
       bookmarks.push(
-        <Col s={8} m={4} l={3} key={mark.id} className="st-grid">
+        <Col s={8} m={4} l={3} key={mark.id}>
           <div className="video-in-grid">
             <a className="st-video-remover" onClick={(e) => {e.stopPropagation(); console.log('bang!')}} ><Icon>highlight_off</Icon></a>
             <Link to={url} onClick={click}>

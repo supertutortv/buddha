@@ -17,7 +17,7 @@ function History(props) {
       click = () => this.updateStage(String(vid.id))
     }
     vids.push(
-      <Col s={8} m={4} l={3} key={index} className="st-grid">
+      <Col s={8} m={4} l={3} key={index}>
         <div key={index} className="video-in-grid">
           <Link to={url} onClick={click}>
             <div >

@@ -18,6 +18,10 @@ body.dark-mode #st-app
   a
     color: $notwhite
 
+  #header-settings
+    label
+      color: $notwhite
+
   .info-input
     color: white
   #st-app-inner
@@ -82,8 +86,8 @@ body.dark-mode #st-app
       align: left
       text-align: left
 
-    .st-grid
-      padding-bottom: 20px
+      label
+        color: $notblack
 
     #st-app-inner
       height: 100%
@@ -94,6 +98,7 @@ body.dark-mode #st-app
       font-size: $realEM
       width: 100%
       align: center
+      padding-bottom: 100px
 
       #st-course
         overflow: hidden
@@ -148,8 +153,8 @@ body.dark-mode #st-app
         width: 946
 
       .info-input
-        background-color: transparent
-        border: 0px solid white
+        width: 200px
+        border: none
         padding-left: 10px
         font-size: large
         outline: none
@@ -276,10 +281,11 @@ body.dark-mode #st-app
         position: fixed
         bottom: 0
         right: 0
-        top: $sidebarw*(37/25)
+        top: $sidebarw*(1.5)
         background-color: lightGrey
         overflow-x: hidden
         padding-top: 10px
+        border-left: 1px solid black
 
       .st-video-card-highlight
         background-color: darkGrey

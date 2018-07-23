@@ -151,8 +151,8 @@ class App extends React.Component {
                   {search}
                   <Switch>
                     {courseRoutes}
-                    <Route className='st-link' path='/dashboard' render={() => <this.PracticeTest name="Official English ACT Practice Test" />}/>
-                    {/* <Route className='st-link' path='/dashboard' component={this.Dashboard}/> */}
+                    {/* <Route className='st-link' path='/dashboard' render={() => <this.PracticeTest name="Official English ACT Practice Test" />}/> */}
+                    <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
                     <Route className='st-link' path='/courses' component={this.CourseHome}/>
                     <Route className='st-link' path={'/' + this.state.currentCourse}/>
                     <Route className='st-link' path='/history' component={this.History}/>

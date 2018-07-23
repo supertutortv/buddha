@@ -5,9 +5,9 @@ import {Icon} from 'react-materialize'
 function Dashboard(props) {
   return(
     <div>
-      <h3>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h3>
+      <h5>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h5>
       <div>
-        <h2>Your Information:</h2>
+        <h4>Your Information:</h4>
         <small>(click to edit)</small>
         <div>
           First Name
@@ -18,22 +18,31 @@ function Dashboard(props) {
           <input type="text" autoComplete="off" className="info-input" name="lastname" value={this.state.user.userdata.lastname} onChange={(event) => this.nestedStateChange(["userdata"], event)} />
         </div>
         <div>
-          <br/>
-          Line 1 <input type="text" autoComplete="off" className="info-input" name="line1" value={this.state.user.userdata.address.line1} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
-          <br/>
-          Line 2 <input type="text" autoComplete="off" className="info-input" name="line2" value={this.state.user.userdata.address.line2} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
-          <br/>
-          City <input type="text" autoComplete="off" className="info-input" name="city" value={this.state.user.userdata.address.city} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
-          <br/>
-          State <input type="text" autoComplete="off" className="info-input" name="state" value={this.state.user.userdata.address.state} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
-          <br/>
-          Zip <input type="text" autoComplete="off" className="info-input" name="zip" value={this.state.user.userdata.address.zip} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          <div>
+            <span>Line 1</span>
+            <input type="text" autoComplete="off" className="info-input" name="line1" value={this.state.user.userdata.address.line1} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          </div>
+          <div>
+            <span>Line 2</span>
+            <input type="text" autoComplete="off" className="info-input" name="line2" value={this.state.user.userdata.address.line2} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          </div>
+          <div>
+            <span>City</span>
+            <input type="text" autoComplete="off" className="info-input" name="city" value={this.state.user.userdata.address.city} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          </div>
+          <div>
+            <span>State</span>
+            <input type="text" autoComplete="off" className="info-input" name="state" value={this.state.user.userdata.address.state} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          </div>
+          <div>
+            <span>Zip</span>
+            <input type="text" autoComplete="off" className="info-input" name="zip" value={this.state.user.userdata.address.zip} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
+          </div>
         </div>
-        <br/>
-        <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
+          <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
       </div>
       <div>
-        <h2>Your Orders:</h2>
+        <h4>Your Orders:</h4>
         {this.state.user.userdata.orders}
       </div>
     </div>
