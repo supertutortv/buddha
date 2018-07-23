@@ -6,8 +6,8 @@ function CourseHome(props) {
   let courses = []
   for (let course in this.state.courses) {
     courses.push(
-      <div>
-        <Link key={course} className='st-link' to={'/' + course}>{this.cleanup(course)}</Link>
+      <div key={course}>
+        <Link className='st-link' to={'/' + course}>{this.cleanup(course)}</Link>
         <div style={{fontSize: '80%', fontStyle: 'italic', display: 'inline-block', paddingLeft: '10px'}}>
           (Version {this.state.courses[course].data.version})
         </div>

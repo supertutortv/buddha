@@ -45,7 +45,7 @@ function Stage(props) {
       downloads = <a title='Files' onClick={() => this.setState({downloadModal : true})} ><Icon>cloud_download</Icon></a>
     }
     else {
-      downloads = <a title='Files' className='download-inactive' ><Icon>cloud_download</Icon></a>
+      downloads = <a title='Files' className='download-inactive' ><Icon style={{color:"white"}}>cloud_download</Icon></a>
     }
     let feedback = <Link to='/feedback' title='Feedback' ><Icon>rate_review</Icon></Link>
     return(
@@ -58,7 +58,7 @@ function Stage(props) {
               {downloads}
               {bookmark}
             </div>
-            <h3 className="st-video-label">{label}</h3>
+            <h5 className="st-video-label">{label}</h5>
           </div>
       </div>
     )

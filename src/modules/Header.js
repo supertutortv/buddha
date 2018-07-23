@@ -31,21 +31,21 @@ function Header(props) {
               <Route path="/*" exact component={() => "Oops"}/>
             </Switch>
           </div>
-          <div id="dashboard-settings">
+          <div id="header-settings">
             <div>
-              Dark Mode
-              <input type="checkbox" label="Dark Mode" name="dark_mode" checked={this.state.user.settings.dark_mode}
+              <input type="checkbox" id="darkmode" className="filled-in" name="dark_mode" checked={this.state.user.settings.dark_mode}
                 onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
-                  let newClass = this.state.user.settings.dark_mode ? 'dark-mode' : ''
                   this.updateUserObj()}}>
               </input>
+              <label htmlFor="darkmode">Dark Mode</label>
             </div>
             <div>
-              Autoplay
-              <input type="checkbox" label="Autoplay" name="autoplay" checked={this.state.user.settings.autoplay}
+              <input type="checkbox" id="autoplay" className="filled-in" name="autoplay" checked={this.state.user.settings.autoplay}
                 onChange={(event) => this.nestedStateChange(['settings'], event)}>
               </input>
+              <label htmlFor="autoplay">Auto Play</label>
+
             </div>
           </div>
         </div>

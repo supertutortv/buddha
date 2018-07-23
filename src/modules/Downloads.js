@@ -1,4 +1,6 @@
 import React from 'react'
+import {Row, Col} from 'react-materialize'
+
 
 function Downloads(props) {
   let index = 0
@@ -10,11 +12,11 @@ function Downloads(props) {
     let section = file[1]
     let test = file[0]
     files.push(
-      <li key={index}>
+      <Col s={4} key={index}>
         <a className='download-link' href={'https://api.supertutortv.com/course-dl.php?' + 'res=' + res + '&section=' + section + '&test=' + test + '&hash=' + download.hash}>
           {download.name}
         </a>
-      </li>
+      </Col>
     )
     index++
   }
@@ -22,9 +24,9 @@ function Downloads(props) {
     <div className="sttv-modal" onClick={() => this.setState({downloadModal: false})}>
       <div className="sttv-downloads" onClick={(e) => e.stopPropagation()} >
         <h3>Downloads:</h3>
-        <ul>
+        <Row>
           {files}
-        </ul>
+        </Row>
       </div>
     </div>
   )

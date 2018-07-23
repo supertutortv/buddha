@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Icon, Row, Col} from 'react-materialize'
 
 // History component. Contains a grid of videos which is currently static
 function History(props) {
@@ -16,23 +17,25 @@ function History(props) {
       click = () => this.updateStage(String(vid.id))
     }
     vids.push(
-      <div key={index} className="video-in-grid">
-        <Link to={url} onClick={click}>
-          <div >
-            <div>
-                <img className="grid-thumb" src={thumb} className="z-depth-3"/>
+      <Col s={8} m={4} l={3} key={vid.id} >
+        <div key={index} className="video-in-grid">
+          <Link to={url} onClick={click}>
+            <div >
+              <div>
+                  <img src={thumb} className="grid-thumb"/>
+              </div>
+              <span> {this.cleanup(url.slice(1))} </span>
             </div>
-            <span className="video-grid-title"> {this.cleanup(url.slice(1))} </span>
-          </div>
-        </Link>
-      </div>
+          </Link>
+        </div>
+      </Col>
     )
     index++
   }
   return(
-    <div className="video-grid">
+    <Row>
       {vids}
-    </div>
+    </Row>
   )
 }
 
