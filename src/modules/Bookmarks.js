@@ -48,15 +48,15 @@ function Bookmarks(props) {
         click = () => this.updateStage(String(vid.id))
       }
       bookmarks.push(
-        <Col s={8} m={4} l={3} key={mark.id} >
+        <Col s={8} m={4} l={3} key={mark.id} className="st-grid">
           <div className="video-in-grid">
-            <a className="st-video-remover" style={{position: 'absolute', padding:'5px'}} onClick={(e) => {e.stopPropagation(); console.log('bang!')}} ><Icon>highlight_off</Icon></a>
+            <a className="st-video-remover" onClick={(e) => {e.stopPropagation(); console.log('bang!')}} ><Icon>highlight_off</Icon></a>
             <Link to={url} onClick={click}>
               <div >
                 <div>
                   <img className="grid-thumb" src={thumb}/>
                 </div>
-                <span > {title} </span>
+                <span className="grid-label"> {title} </span>
               </div>
             </Link>
           </div>

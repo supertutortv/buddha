@@ -4,16 +4,17 @@ import {Link} from 'react-router-dom'
 // Searches the course structure and returns links, used by the Search component
 function searchCourse(query, object, path) {
   const results = []
+  const cleanedQuery = query.toLowerCase().replace(/[^a-zA-z ]/g, '').replace(/\s{2,}/, ' ')
   if (!query || !object) {
     return []
   }
   else {
     for (let i in object) {
       let newPath = path + '/' + i
-      if (object[i].data && object[i].data.name.toLowerCase().includes(query.toLowerCase())) {
+      if (object[i].data && object[i].data.name.toLowerCase().replace(/([^a-zA-z ])/g, '').replace(/\s{2,}/, ' ').includes(cleanedQuery)) {
         results.push(newPath)
       }
-      else if ('name' in object[i] && object[i].name.toLowerCase().includes(query.toLowerCase())) {
+      else if ('name' in object[i] && object[i].name.toLowerCase().replace(/[^a-zA-z ]/g, '').replace(/\s{2,}/, ' ').includes(cleanedQuery)) {
         results.push(newPath)
       }
       else {
@@ -41,9 +42,10 @@ function Search() {
   }
   else {
     try {
+      links.push(<div>Results:</div>)
       for (let item in results) {
       links.push(
-        <li className="search-result" key={index}>
+        <li key={index} className="st-result">
           <Link to={'/' + results[item]} onClick={() => this.setState({search : false, nav: true})}>
             {this.cleanup(results[item])}
           </Link>

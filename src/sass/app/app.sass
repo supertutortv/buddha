@@ -15,18 +15,22 @@ $navw: 13.5em
 
 body.dark-mode #st-app
   color: $notwhite
-
   a
     color: $notwhite
 
   .info-input
     color: white
   #st-app-inner
+   .st-video-remover
+      background-color: $notblack
+      color: $notwhite
   #video-wrapper
       background-color: $notblack !important
 
+
   button
     color: $notblack
+
 
 #st-app
     overflow: hidden
@@ -78,9 +82,13 @@ body.dark-mode #st-app
       align: left
       text-align: left
 
+    .st-grid
+      padding-bottom: 20px
+
     #st-app-inner
-      overflow: auto
-      position: absolute
+      height: 100%
+      max-height: 100%
+      overflow: scroll
       padding: 2em
       padding-left: $sidebarw*2
       font-size: $realEM
@@ -201,12 +209,13 @@ body.dark-mode #st-app
           left: 50%
           transform: translate(-50%, -100%)
           margin: auto
-          width: 40%
+          width: 60%
           height: 20%
           z-index: 999
 
           .sttv-searchbox
-            width: 100%
+            opacity: 1
+            width: 50%
             height: 20%
             font-size: large
             border-radius: 5px
@@ -221,21 +230,42 @@ body.dark-mode #st-app
 
           .sttv-search-results
             overflow: auto
-            bottom: 5%
             list-style-type: none
             text-align: center
-            max-height: 80%
+            max-height: 150%
+
+            a
+              color: $notwhite
+
+            .st-result
+              padding-top: 15px
 
           .search-result
             padding-top: 5%
 
       .video-in-grid
+        position: relative
         width: 250px
         height: 250px
         display: inline-flex
 
-      .grid-thumb
-        max-width: 100%
+        .grid-thumb
+          position: absolute
+          max-width: 100%
+
+        .st-video-remover
+          background-color: $notwhite
+          color: $notblack
+          z-index: 500
+          opacity: 1
+          padding-left: 5px
+          padding-top: 5px
+          padding-right: 5px
+          position: absolute
+
+        .grid-label
+          position: absolute
+          top: 150px
 
       #sttv-course-player
         margin: auto

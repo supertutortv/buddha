@@ -17,14 +17,14 @@ function History(props) {
       click = () => this.updateStage(String(vid.id))
     }
     vids.push(
-      <Col s={8} m={4} l={3} key={vid.id} >
+      <Col s={8} m={4} l={3} key={index} className="st-grid">
         <div key={index} className="video-in-grid">
           <Link to={url} onClick={click}>
             <div >
               <div>
                   <img src={thumb} className="grid-thumb"/>
               </div>
-              <span> {this.cleanup(url.slice(1))} </span>
+              <span className="grid-label"> {this.cleanup(url.slice(1))} </span>
             </div>
           </Link>
         </div>
