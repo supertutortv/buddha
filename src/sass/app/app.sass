@@ -24,10 +24,15 @@ body.dark-mode #st-app
 
   .info-input
     color: white
+
   #st-app-inner
    .st-video-remover
       background-color: $notblack
       color: $notwhite
+      border: 1px solid $notwhite
+   .grid-thumb
+     border: 1px solid white
+
   #video-wrapper
       background-color: $notblack !important
 
@@ -124,11 +129,12 @@ body.dark-mode #st-app
           padding-left: $navw
 
       .st-textarea
+        margin-left: auto
+        margin-right: auto
+        display: block
         border: 0px solid white
         width: 400px
-        max-width: 400px
         height: 100px
-        margin-top: 1%
         outline: none
         border-radius: 2px
 
@@ -223,8 +229,6 @@ body.dark-mode #st-app
             width: 50%
             height: 20%
             font-size: large
-            border-radius: 5px
-            border: 0
 
             &:focus, &:hover
               outline: none
@@ -257,6 +261,7 @@ body.dark-mode #st-app
         .grid-thumb
           position: absolute
           max-width: 100%
+          border: 1px solid $notblack
 
         .st-video-remover
           background-color: $notwhite
@@ -267,6 +272,7 @@ body.dark-mode #st-app
           padding-top: 5px
           padding-right: 5px
           position: absolute
+          border: 1px solid $notblack
 
         .grid-label
           position: absolute

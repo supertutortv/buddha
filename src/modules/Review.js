@@ -4,11 +4,12 @@ import {Icon} from 'react-materialize'
 
 // Review component; also needs styling and backend support
 function Review(props) {
+  console.log(this.state.ratingLock, this.state.review)
   return(
-    <div id="ratings-modal-wrapper" onClick={() => this.setState({ratingLock: 0, rating: 0})}>
+    <div id="ratings-modal-wrapper">
       <div className="header center-align">
         <h2>Rate this course</h2>
-        <p>Rate us and leave a review so<b> others </b>
+        <p>Rate us and leave a review so others
         can see how this course has helped you!</p>
       </div>
       <section className="rating-widget">
@@ -29,12 +30,12 @@ function Review(props) {
         </div>
       </section>
       <p className="center-align">
-        <small>Not to be confused with <Link to='/feedback' >feedback</Link>,
+        <small>Not to be confused with <Link to='/feedback'><b>feedback</b></Link>,
         which is where you can report any issues or make suggestions to improve the course.
         </small>
       </p>
       <div className="ratings-submit-container center-align">
-        <a className="ratings-submit-button btn" onClick={() => console.log("This will submit the review")}>
+        <a className="ratings-submit-button btn" disabled={this.state.ratingLock == null || this.state.review == null || this.state.review == ''}onClick={() => console.log("This will submit the review")}>
           <strong>Submit Your Review</strong>
         </a>
       </div>

@@ -11,7 +11,7 @@ function Feedback(props) {
           Drop us a line if you catch any mistakes, have any suggestions,
           or would just like to let us know how we're helping you get a
           better score! If you'd like to rate us so future students can see what
-          you think of the course, you can do that <Link to='/review' style={{text: 'bold'}} >here</Link>.
+          you think of the course, you can do that <Link to='/review' style={{text: 'bold'}}><b>here</b></Link>.
           (By the way, this is just between us... no one else will see
           your feedback but the fine folks here at SupertutorTV.)
        </p>
@@ -20,7 +20,8 @@ function Feedback(props) {
       <div className="overlay"></div>
       <textarea placeholder="Enter your feedback here." className="st-textarea"  name="feedback" value={this.state.feedback} onChange={this.handleChange} />
       <div className="feedback-submit-container center-align">
-        <a className="feedback-submit-button btn" onClick={() => console.log('This will submit feedback')}>
+        <br />
+        <a className="feedback-submit-button btn" disabled={this.state.feedback == null || this.state.feedback == ''} onClick={() => console.log('This will submit feedback')}>
           <strong>Submit Feedback</strong>
         </a>
       </div>
