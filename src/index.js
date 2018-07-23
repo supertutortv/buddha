@@ -72,7 +72,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData()
+    this.verifyToken()
   }
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
