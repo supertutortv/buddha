@@ -33,7 +33,7 @@ function Videos(props) {
     const timeLabel = duration(video.time)
     videos.push(
       <Route path={link} key={key} className="st-video-card">
-        <Link to={link} >
+        <Link to={link} onClick={() => this.setState({stage: video.id})}>
           <div className={window.location.pathname == link ? 'st-video-card-highlight' : 'st-video-card'} ref={window.location.pathname == link ? this.scrollRef : null}>
             <img className="st-video-card-thumb" src={thumb}/>
             <span className="st-video-card-title">

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link, Route} from 'react-router-dom'
-import {BrowserRouter as Router} from "react-router-dom"
+import {BrowserRouter} from "react-router-dom"
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // Course Home Page
 function CourseHome(props) {
@@ -25,6 +26,7 @@ function CourseHome(props) {
 
 // Wrapper for the stage and the right sidebar
 function Course(props) {
+  // console.log(props.location)
   let link = '/' + this.state.currentCourse
   return(
     <div id="st-course">
@@ -35,9 +37,9 @@ function Course(props) {
         <this.Stage location={props.location.pathname}/>
       </div>
       <div id="video-wrapper">
-        <Router>
+        <BrowserRouter>
           <this.Videos vids={this.state.vids} link={this.state.vidLink} />
-        </Router>
+        </BrowserRouter>
       </div>
     </div>
   )

@@ -1,15 +1,8 @@
 import ReactDOM from 'react-dom'
 import React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom"
+import {BrowserRouter, Switch, Route, Link} from "react-router-dom"
 import Loader from './js/Loader.js'
-
 
 import {getToken, logout, verifyToken} from './modules/authHandlers.js'
 import {Bookmarks, getBookmarkId} from './modules/Bookmarks.js'
@@ -33,6 +26,7 @@ import {Videos} from './modules/Videos.js'
 
 class App extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props)
     this.verifyToken = verifyToken.bind(this)
     this.getData = getData.bind(this)
@@ -80,6 +74,7 @@ class App extends React.Component {
   }
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
+    console.log(this.props.location)
     const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
@@ -100,6 +95,10 @@ class App extends React.Component {
         copy.pop()
         const nextParent = this.getResourceByUrl(copy.join('/'))
         let downloads = []
+        // Hacky, but really cuts down on re-renders
+        if (nextProps.location.pathname != window.location.pathname) {
+          nextProps.location.pathname = window.location.pathname
+        }
         if (newDownloadsLocation && 'files' in newDownloadsLocation) {
           downloads = newDownloadsLocation.files
         }
@@ -130,7 +129,7 @@ class App extends React.Component {
       let courses = []
       for (let course in this.state.courses) {
         courses.push(
-          <Route key={course} className='st-link' path={'/' + course} component={this.Course}/>
+          <Route key={course} className='st-link' path={'/' + course} location={this.props.location} component={this.Course}/>
         )
       }
       let search
@@ -141,7 +140,7 @@ class App extends React.Component {
       let courseRoutes = []
       for (let course in this.state.courses) {
         courseRoutes.push(
-          <Route key={course} className='st-link' path={'/' + course}/>
+          <Route key={course} className='st-link'/>
         )
       }
       return (
@@ -202,7 +201,7 @@ const AllYourBase = () => (
 
 // Export the whole thing inside of a router
 ReactDOM.render (
-  <Router>
+  <BrowserRouter>
     <Route path='/' component={App} />
-  </Router>,
+  </BrowserRouter>,
   document.getElementById("app"));
