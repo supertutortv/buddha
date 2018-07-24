@@ -1,8 +1,10 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const globImporter = require('node-sass-glob-importer');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/sass/main.sass','./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'web'),
     filename: './assets/js/main.js',
@@ -10,16 +12,43 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' },
-      { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]}
+      { test : /\.sass$/,
+        use : ExtractTextPlugin.extract({
+          fallback : 'style-loader',
+          use : [
+            {
+              loader : 'css-loader',
+              options : {
+                url: false,
+                minimize: true,
+                sourceMap: true
+              }
+            },
+            {
+              loader : 'sass-loader',
+              options : {
+                sourceMap: true,
+                importer : globImporter()
+              }
+            }
+          ]
+        })
+      },
+      { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' }
     ]
   },
+  performance: { hints: false },
   devServer: {
     historyApiFallback: true,
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: './assets/css/final.min.css',
+      disable: false,
+      allChunks: true
+    }),
     new HtmlWebpackPlugin({
-      template: 'web/index.html',
+      template: 'web/app.html',
       inject : false
     })
   ]

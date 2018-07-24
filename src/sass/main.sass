@@ -1,0 +1,49 @@
+$blockEM: 24px
+$realEM: 16px
+$sidebarw: 3em
+$notblack: rgba(0,0,0,.75)
+$notwhite: rgba(241,241,241,1)
+$videowidth: 18em
+$azure: #109FDA
+
+html
+
+  .fade-enter
+    opacity: 0
+    z-index: 1
+    transition: opacity 500ms ease-in
+
+  .fade-enter.fade-enter-active
+    opacity: 1
+    transition: opacity 500ms ease-out
+
+  .fade-exit
+    opacity: 0
+    transition: opacity 500ms cubic-bezier(0, 0.5, 0.5)
+
+  body
+      overflow: hidden
+      margin-left: 0
+      margin-top: 0
+      font-size: $blockEM
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif
+      color: $notblack
+      background-color: $notwhite
+      width: 100vw
+      height: 100vh
+      box-sizing: border-box
+      transition: all .25s ease-in-out
+
+      &.dark-mode
+          color: $notwhite
+          background-color: $notblack
+
+      div
+          display: block
+
+      a
+          cursor: pointer
+
+
+@import './app/**/*.sass'
+@import './sidebar/**/*.sass'
