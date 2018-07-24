@@ -4,7 +4,6 @@ import {Icon} from 'react-materialize'
 
 // Review component; also needs styling and backend support
 function Review(props) {
-  console.log(this.state.ratingLock, this.state.review)
   return(
     <div id="ratings-modal-wrapper">
       <div className="header center-align">

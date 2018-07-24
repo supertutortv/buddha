@@ -1,5 +1,4 @@
 $navw: 13.5em
-$azure: #109FDA
 
 #st-loader
   overflow: hidden
@@ -31,8 +30,12 @@ body.dark-mode #st-app
       background-color: $notblack
       color: $notwhite
       border: 1px solid $notwhite
+
    .grid-thumb
      border: 1px solid white
+
+   .st-textarea::placeholder
+     color: $notwhite
 
   #video-wrapper
       background-color: $notblack !important
@@ -49,6 +52,17 @@ body.dark-mode #st-app
     left: 0
     background-size: cover
     background-position: center
+
+    .basket
+      position: absolute
+      transition: opacity 170ms ease-in
+      opacity: 1
+
+    .basket-hide
+      opacity: 0
+
+    .st-courses
+      padding-bottom: 1000px
 
     .switch label input[type=checkbox]:checked+.lever
       background-color: $azure
@@ -107,7 +121,6 @@ body.dark-mode #st-app
         label
           color: $notblack
 
-
     #st-app-inner
       height: 100%
       max-height: 100%
@@ -133,7 +146,7 @@ body.dark-mode #st-app
             left: $sidebarw*(3/2)
             top: $sidebarw*(3/2)
             padding-top: 2em
-            height: 53.9%
+            height: 100%
 
             .link-highlight
               background-color: darkGrey
@@ -141,6 +154,7 @@ body.dark-mode #st-app
         #st-stage
           align: center
           padding-left: $navw
+          padding-bottom: 200px
 
       .st-textarea
         margin-left: auto
@@ -150,6 +164,9 @@ body.dark-mode #st-app
         height: 100px
         outline: none
         border-radius: 2px
+
+      .st-textarea::placeholder
+          color: $notblack
 
       #ratings-modal-wrapper
         height: 100%
@@ -184,7 +201,7 @@ body.dark-mode #st-app
       .st-modal
         color: $notwhite
         position: fixed
-        z-index: 1
+        opacity: 1
         left: 0
         top: 0
         width: 100%

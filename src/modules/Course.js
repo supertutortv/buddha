@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, Route} from 'react-router-dom'
+import {BrowserRouter as Router} from "react-router-dom"
 
 // Course Home Page
 function CourseHome(props) {
@@ -15,8 +16,8 @@ function CourseHome(props) {
     )
   }
   return(
-    <div>
-      <h3>Your Courses:</h3>
+    <div className="st-courses">
+      <h4>Your Courses:</h4>
       {courses}
     </div>
   )
@@ -34,7 +35,9 @@ function Course(props) {
         <this.Stage location={props.location.pathname}/>
       </div>
       <div id="video-wrapper">
-        <this.Videos vids={this.state.vids} link={this.state.vidLink} />
+        <Router>
+          <this.Videos vids={this.state.vids} link={this.state.vidLink} />
+        </Router>
       </div>
     </div>
   )
@@ -46,8 +49,7 @@ function CourseNav(props) {
   let link = '/' + this.state.currentCourse
   return(
     <div id="st-sections">
-      {<this.CourseSection collection={course.collection}
-        link={link} thumb={course.data.thumbUrls.plain} spacing={0} />}
+      <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
   </div>
   )
 }
@@ -88,7 +90,7 @@ function CourseSection(props) {
       </div>
     )
   }
-  return renderedSections
+  return (renderedSections)
 }
 
 export {Course, CourseHome, CourseNav, CourseSection}

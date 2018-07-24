@@ -1,9 +1,15 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
-import {Icon} from 'react-materialize'
+import React from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom"
 import Loader from './js/Loader.js'
-import PropTypes from 'prop-types'
+
 
 import {getToken, logout, verifyToken} from './modules/authHandlers.js'
 import {Bookmarks, getBookmarkId} from './modules/Bookmarks.js'
@@ -25,7 +31,6 @@ import {Stage} from './modules/Stage.js'
 import {cleanup, getResourceByUrl, handleChange, handleResponse} from './modules/utilities.js'
 import {Videos} from './modules/Videos.js'
 
-// Class that controls the state and rendered components of the app
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -33,6 +38,7 @@ class App extends React.Component {
     this.getData = getData.bind(this)
     this.Login = Login.bind(this)
     this.handleResponse = handleResponse.bind(this)
+    this.Menu = Menu.bind(this)
     this.state = {
       auth : true,
       username: '',
@@ -40,7 +46,6 @@ class App extends React.Component {
       query: '',
       currentCourse: 'the-best-act-prep-course-ever'
     }
-    // Bind all components and bound methods
     this.Bookmarks = Bookmarks.bind(this)
     this.cleanup = cleanup.bind(this)
     this.Course = Course.bind(this)
@@ -70,21 +75,19 @@ class App extends React.Component {
     this.getBookmarkId = getBookmarkId.bind(this)
     this.scrollRef = React.createRef()
   }
-
   componentDidMount() {
     this.getData()
   }
-
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
     const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
+        scroll = document.getElementById('video-wrapper')
         if (this.scrollRef.current) {
-          scroll = document.getElementById('video-wrapper')
           if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
             this.scrollRef.current.scrollIntoView(false)
-          }
+        }
           else if (this.scrollRef.current.offsetTop + window.innerHeight - 705 < scroll.scrollTop + this.scrollRef.current.clientHeight) {
             this.scrollRef.current.scrollIntoView()
           }
@@ -122,9 +125,6 @@ class App extends React.Component {
       }
     }
   }
-
-  // Calls the Menu and various page components; Menu has the links
-  // corresponding to these routes.
   render() {
     if (this.state.courses && this.state.user){
       let courses = []
@@ -144,49 +144,65 @@ class App extends React.Component {
           <Route key={course} className='st-link' path={'/' + course}/>
         )
       }
+      return (
+        <section id="st-app">
+          <Route path='/' component={this.Header}/>
+          <Route path='/' component={this.Menu}/>
+          <section id="st-app-inner">
+            <div className={this.state.search ? 'basket' : 'basket-hide'}>
+              {search}
+            </div>
+            <Route
+              render={({ location }) => (
+                <div>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Redirect to="/dashboard" />}
+                  />
+                  <div>
+                    <TransitionGroup>
+                      <CSSTransition key={location.key} classNames="fade" timeout={500}>
+                        <div>
+                          <Switch location={location}>
+                            {courses}
+                            {courseRoutes}
+                            <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
+                            <Route className='st-link' path='/courses' component={this.CourseHome} />
+                            <Route className='st-link' path={'/' + this.state.currentCourse}/>
+                            <Route className='st-link' path='/history' component={this.History} />
+                            <Route className='st-link' path='/feedback' component={this.Feedback}/>
+                            <Route className='st-link' path='/bookmarks' component={this.Bookmarks}/>
+                            <Route className='st-link' path='/review' component={this.Review}/>
+                            <Route className='st-link' path='/help' component={this.Help}/>
+                          </Switch>
+                        </div>
+                      </CSSTransition>
+                    </TransitionGroup>
+                  </div>
+                </div>
+              )}/>
+            </section>
+          </section>
+      )
+    }
+    else {
       return(
-          <div>
-              <section id="st-app">
-                <Route path='/' component={this.Header}/>
-                <Route path='/' component={this.Menu}/>
-                <section id="st-app-inner">
-                  {courses}
-                  {search}
-                  <Switch>
-                    {courseRoutes}
-                    {/* <Route className='st-link' path='/dashboard' render={() => <this.PracticeTest name="Official English ACT Practice Test" />}/> */}
-                    <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
-                    <Route className='st-link' path='/courses' component={this.CourseHome}/>
-                    <Route className='st-link' path={'/' + this.state.currentCourse}/>
-                    <Route className='st-link' path='/history' component={this.History}/>
-                    <Route className='st-link' path='/feedback' component={this.Feedback}/>
-                    <Route className='st-link' path='/bookmarks' component={this.Bookmarks}/>
-                    <Route className='st-link' path='/review' component={this.Review}/>
-                    <Route className='st-link' path='/help' component={this.Help}/>
-                    <Route path='/(login|)' exact component={() => <Redirect to='/dashboard'/>}/>
-                    <Route path='/all-your-base-are-belong-to-us' component={AllYourBase} />
-                    <Route path="/*" exact component={() => <Four04 />}/>
-                  </Switch>
-                </section>
-              </section>
-          </div>
-        )
-      }
-      else {
-        return(
-          <Loader />
-        )
-      }
+        <Loader />
+      )
     }
   }
+}
+
 
 const AllYourBase = () => (
   <img style={{height:'100%', width:'100%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
 )
 
+
 // Export the whole thing inside of a router
 ReactDOM.render (
-  <BrowserRouter>
-      <Route path='/' component={App} />
-  </BrowserRouter>,
+  <Router>
+    <Route path='/' component={App} />
+  </Router>,
   document.getElementById("app"));

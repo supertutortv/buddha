@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
+
 // Generates links and thumbnails for an array of videos; used in the
 // right sidebar of the Courses component
 function Videos(props) {
@@ -42,7 +43,6 @@ function Videos(props) {
               {timeLabel}
               </span>
             </span>
-
           </div>
           <div path={link} />
         </Link>

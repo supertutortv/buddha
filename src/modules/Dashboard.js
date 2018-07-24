@@ -39,7 +39,7 @@ function Dashboard(props) {
             <input type="text" autoComplete="off" className="info-input" name="zip" value={this.state.user.userdata.address.zip} onChange={(event) => this.nestedStateChange(["userdata", "address"], event)} />
           </div>
         </div>
-          <a type="button" onClick={() => this.updateUserObj('userdata')}><strong>Update Information </strong><Icon>cloud_upload</Icon></a>
+          <a type="button" style={{display:'inline-flex'}} onClick={() => this.updateUserObj('userdata')}><strong>Update Information</strong>&nbsp;<Icon>cloud_upload</Icon></a>
       </div>
       <div>
         <h4>Your Orders:</h4>
