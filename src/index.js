@@ -26,7 +26,6 @@ import {Videos} from './modules/Videos.js'
 
 class App extends React.Component {
   constructor(props) {
-    console.log(props)
     super(props)
     this.verifyToken = verifyToken.bind(this)
     this.getData = getData.bind(this)
@@ -74,8 +73,7 @@ class App extends React.Component {
   }
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    console.log(this.props.location)
-    const nextRoot = nextProps.location.pathname.split('/').filter(String)[0]
+    const pathRoot = this.props.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
         scroll = document.getElementById('video-wrapper')
@@ -95,6 +93,13 @@ class App extends React.Component {
         copy.pop()
         const nextParent = this.getResourceByUrl(copy.join('/'))
         let downloads = []
+        // Hacky, but really cuts down on re-renders
+        if (nextProps.location.pathname != window.location.pathname) {
+          nextProps.location.pathname = window.location.pathname
+        }
+        if (nextState.courses && pathRoot && pathRoot in nextState.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
+          this.setState({lastLink: nextProps.location.pathname})
+        }
         if (newDownloadsLocation && 'files' in newDownloadsLocation) {
           downloads = newDownloadsLocation.files
         }
@@ -110,17 +115,8 @@ class App extends React.Component {
         if (newDownloadsLocation && newDownloadsLocation.data && newDownloadsLocation.data.type == 'collection' && downloads != nextState.downloads) {
           this.setState({downloads: downloads})
         }
-        if (nextState.courses && nextRoot && nextRoot in nextState.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
-          console.log('bing')
-          this.setState({lastLink: nextProps.location.pathname})
-        }
-        // Hacky, but really cuts down on re-renders
-        if (nextProps.location.pathname != window.location.pathname) {
-          nextProps.location.pathname = window.location.pathname
-        }
       }
       catch (error) {
-        console.log(error)
         void(0)
       }
     }

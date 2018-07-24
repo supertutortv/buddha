@@ -26,7 +26,6 @@ function CourseHome(props) {
 
 // Wrapper for the stage and the right sidebar
 function Course(props) {
-  // console.log(props.location)
   let link = '/' + this.state.currentCourse
   return(
     <div id="st-course">

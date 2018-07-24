@@ -168,7 +168,6 @@ class Grader extends React.Component {
         for (let link in recs) {
           let blameString = 'Because : ' + recs[link].join(', ')
           let vid = this.getResourceByUrl(link)
-          console.log(vid)
           let thumb = this.props.thumb.replace('||ID||', vid.thumb)
           formattedRecs.push(
             <div key={index} className="video-in-grid">

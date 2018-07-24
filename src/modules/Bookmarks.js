@@ -50,7 +50,7 @@ function Bookmarks(props) {
       bookmarks.push(
         <Col s={8} m={4} l={3} key={mark.id}>
           <div className="video-in-grid">
-            <a className="st-video-remover" onClick={(e) => {e.stopPropagation(); console.log('bang!')}} ><Icon>highlight_off</Icon></a>
+            <a className="st-video-remover" onClick={(e) => e.stopPropagation()} ><Icon>highlight_off</Icon></a>
             <Link to={url} onClick={click}>
               <div >
                 <div>
