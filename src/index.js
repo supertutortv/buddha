@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import {BrowserRouter, Switch, Route, Link} from "react-router-dom"
+import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
 
 import {getToken, logout, verifyToken} from './modules/authHandlers.js'
@@ -95,10 +95,6 @@ class App extends React.Component {
         copy.pop()
         const nextParent = this.getResourceByUrl(copy.join('/'))
         let downloads = []
-        // Hacky, but really cuts down on re-renders
-        if (nextProps.location.pathname != window.location.pathname) {
-          nextProps.location.pathname = window.location.pathname
-        }
         if (newDownloadsLocation && 'files' in newDownloadsLocation) {
           downloads = newDownloadsLocation.files
         }
@@ -114,8 +110,13 @@ class App extends React.Component {
         if (newDownloadsLocation && newDownloadsLocation.data && newDownloadsLocation.data.type == 'collection' && downloads != nextState.downloads) {
           this.setState({downloads: downloads})
         }
-        if (this.state.courses && nextRoot && nextRoot in this.state.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
+        if (nextState.courses && nextRoot && nextRoot in nextState.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
+          console.log('bing')
           this.setState({lastLink: nextProps.location.pathname})
+        }
+        // Hacky, but really cuts down on re-renders
+        if (nextProps.location.pathname != window.location.pathname) {
+          nextProps.location.pathname = window.location.pathname
         }
       }
       catch (error) {
@@ -165,7 +166,6 @@ class App extends React.Component {
                         <div>
                           <Switch location={location}>
                             {courses}
-                            {courseRoutes}
                             <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
                             <Route className='st-link' path='/courses' component={this.CourseHome} />
                             <Route className='st-link' path={'/' + this.state.currentCourse}/>
