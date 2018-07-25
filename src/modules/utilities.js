@@ -1,5 +1,4 @@
-// The name says it all here. Used throughout the app for accessing data from
-// the course object without passing resources around
+// The name says it all here. Used throughout the app
 function getResourceByUrl(url) {
   try {
     const lookup = url.split('/').filter(String)

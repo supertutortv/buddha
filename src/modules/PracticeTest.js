@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Grading page that will be connected to the backend at some point
 function PracticeTest(props) {
   return (
     <div>

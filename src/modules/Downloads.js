@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row, Col} from 'react-materialize'
 
-
+// A modal which contains the downloads for a course section
 function Downloads(props) {
   let index = 0
   let files = []

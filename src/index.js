@@ -4,18 +4,17 @@ import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
 
-import {getToken, logout, verifyToken} from './modules/authHandlers.js'
-import {Bookmarks, getBookmarkId} from './modules/Bookmarks.js'
-import {Course, CourseHome, CourseNav, CourseSection} from './modules/Course.js'
+import {startSession, logout, verifySession} from './modules/authHandlers.js'
+import {Bookmarks} from './modules/Bookmarks.js'
+import {Course, CourseHome, CourseSection} from './modules/Course.js'
 import {Dashboard, nestedStateChange} from './modules/Dashboard.js'
-import {courseRefresh, createBookmark, deleteBookmark, getData, updateUserObj} from './modules/dataHandlers.js'
+import {courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
 import {Downloads} from './modules/Downloads.js'
 import {Feedback} from './modules/Feedback.js'
 import {Four04} from './modules/Four04.js'
 import {Header} from './modules/Header.js'
 import {Help} from './modules/Help.js'
 import {History} from './modules/History.js'
-import {Login} from './modules/Login.js'
 import {Menu} from './modules/Menu.js'
 import {PracticeTest} from './modules/PracticeTest.js'
 import {Review} from './modules/Review.js'
@@ -27,9 +26,8 @@ import {Videos} from './modules/Videos.js'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.verifyToken = verifyToken.bind(this)
+    this.verifySession = verifySession.bind(this)
     this.getData = getData.bind(this)
-    this.Login = Login.bind(this)
     this.handleResponse = handleResponse.bind(this)
     this.Menu = Menu.bind(this)
     this.state = {
@@ -39,11 +37,11 @@ class App extends React.Component {
       query: '',
       currentCourse: 'the-best-act-prep-course-ever'
     }
+
     this.Bookmarks = Bookmarks.bind(this)
     this.cleanup = cleanup.bind(this)
     this.Course = Course.bind(this)
     this.CourseHome = CourseHome.bind(this)
-    this.CourseNav = CourseNav.bind(this)
     this.courseRefresh = courseRefresh.bind(this)
     this.Dashboard = Dashboard.bind(this)
     this.Downloads = Downloads.bind(this)
@@ -51,7 +49,7 @@ class App extends React.Component {
     this.Four04 = Four04.bind(this)
     this.nestedStateChange = nestedStateChange.bind(this)
     this.getResourceByUrl = getResourceByUrl.bind(this)
-    this.getToken = getToken.bind(this)
+    this.startSession = startSession.bind(this)
     this.handleChange = handleChange.bind(this)
     this.Header = Header.bind(this)
     this.Help = Help.bind(this)
@@ -70,11 +68,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData()
+    this.verifySession()
   }
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
+    console.log(this.state)
     const pathRoot = this.props.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
@@ -195,8 +194,8 @@ const AllYourBase = () => (
 )
 
 // Export the whole thing inside of a router
-ReactDOM.render (
+ReactDOM.render(
   <BrowserRouter>
     <Route path='/' component={App} />
   </BrowserRouter>,
-  document.getElementById("app"));
+  document.getElementById("app"))

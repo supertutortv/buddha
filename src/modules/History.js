@@ -14,7 +14,7 @@ function History(props) {
     let thumb = thumbURL.replace('||ID||', vid.thumb)
     let click
     if (vid.id) {
-      click = () => this.updateStage(String(vid.id))
+      click = () => this.setState({stage: String(vid.id)})
     }
     vids.push(
       <Col s={8} m={4} l={3} key={index}>

@@ -16,9 +16,9 @@ function logout() {
     })
 }
 
-// Get a token for a user on login; clears localStorage and fetches a new
+// Get a cookie for a user on login; clears localStorage and fetches a new
 // course object
-function getToken() {
+function startSession() {
   fetch('https://api.supertutortv.com/v2/auth/token', {
   method: 'POST',
   accept: 'application/vnd.sttv.app+json',
@@ -37,7 +37,8 @@ function getToken() {
   .then( items => {
     if (items !== null) {
       if (items.code == 'login_success') {
-        this.setState({auth: true, username: '', password : '', message: ''})
+        this.setState({auth: true, username: '', password : ''})
+        // Makes sure that new sessions have updated data.
         localStorage.removeItem('sttv_data')
         this.getData()
       }
@@ -56,9 +57,9 @@ function getToken() {
   })
 }
 
-// Verify an issued token; get data from localstorage if it exists or from
+// Verify an issued cookie; get data from localstorage if it exists or from
 // the API if not
-function verifyToken() {
+function verifySession() {
   fetch('https://api.supertutortv.com/v2/auth/token/verify', {
   method: 'POST',
   accept: 'application/vnd.sttv.app+json',
@@ -68,8 +69,8 @@ function verifyToken() {
     'Content-Type': 'application/json',
     }
   })
-  .then( response => this.handleResponse(response))
-  .then( items => {
+  .then(response => this.handleResponse(response))
+  .then(items => {
     if (items.data == true) {
       this.setState({auth: true})
       this.getData()
@@ -88,4 +89,4 @@ function verifyToken() {
   })
 }
 
-export {getToken, logout, verifyToken}
+export {startSession, logout, verifySession}

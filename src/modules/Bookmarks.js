@@ -2,16 +2,6 @@ import React from 'react'
 import {Icon, Row, Col} from 'react-materialize'
 import {Link} from 'react-router-dom'
 
-function getBookmarkId(url) {
-  for (let index in this.state.user.bookmarks) {
-    let bookmark = this.state.user.bookmarks[index]
-    if (bookmark.data.url == url) {
-      return bookmark.id
-    }
-  }
-  return null
-}
-
 // Bookmarks component. Contains a grid of videos which can be removed from
 // the local and remote objects by deleteBookmark
 function Bookmarks(props) {
@@ -24,16 +14,19 @@ function Bookmarks(props) {
       let vid = this.getResourceByUrl(url)
       let id
       let thumb
+      // Checks to see if the bookmarked item is really a video.
       if (vid && vid.data && vid.data.type == 'collection') {
+        // If this clause is true, it's actually a collection
         id = vid.data.intro
+        // This should eventually be thumb=vid.data.thumb, when thumbs are added to data objects
         thumb = id
       }
       else {
+        // Otherwise, it's a video
         id = vid.id
         thumb = vid.thumb
       }
       thumb = thumbURL.replace('||ID||', thumb)
-      vid = this.getResourceByUrl(url)
       const titleBase = url.slice(1).split('/')
       let title
       if (vid.name) {
@@ -67,6 +60,7 @@ function Bookmarks(props) {
       void(0)
     }
   }
+  // Reversed so that they are ordered new to old
   return(
     <div>
       <Row>
@@ -76,4 +70,4 @@ function Bookmarks(props) {
   )
 }
 
-export {Bookmarks, getBookmarkId}
+export {Bookmarks}

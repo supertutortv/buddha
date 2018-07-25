@@ -3,7 +3,7 @@ import {Link, Route} from 'react-router-dom'
 import {BrowserRouter} from "react-router-dom"
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-// Course Home Page
+// Course Home Page. Contains a list of courses the user can access.
 function CourseHome(props) {
   let courses = []
   for (let course in this.state.courses) {
@@ -24,13 +24,18 @@ function CourseHome(props) {
   )
 }
 
-// Wrapper for the stage and the right sidebar
+// Wrapper for the nav, stage, and the right sidebar
 function Course(props) {
+  // The extra router is in here to prevent full page re-renders when videos are clicked.
+  // It also necessitates that funky "hack" in componentDidUpdate (marked)
   let link = '/' + this.state.currentCourse
+  let course = this.state.courses[this.state.currentCourse]
   return(
     <div id="st-course">
       <div id="st-nav">
-        <this.CourseNav />
+        <div id="st-sections">
+          <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
+        </div>
       </div>
       <div id="st-stage">
         <this.Stage location={props.location.pathname}/>
@@ -43,18 +48,6 @@ function Course(props) {
     </div>
   )
 }
-
-// The Course tree navigation popup
-function CourseNav(props) {
-  let course = this.state.courses[this.state.currentCourse]
-  let link = '/' + this.state.currentCourse
-  return(
-    <div id="st-sections">
-      <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
-  </div>
-  )
-}
-
 
 // Component that recursively generates the routes and links for collections
 // until it gets to a video folder
@@ -94,4 +87,4 @@ function CourseSection(props) {
   return (renderedSections)
 }
 
-export {Course, CourseHome, CourseNav, CourseSection}
+export {Course, CourseHome, CourseSection}

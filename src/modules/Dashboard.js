@@ -1,7 +1,7 @@
 import React from 'react'
 import {Icon} from 'react-materialize'
 
-// Dashboard component. Could use a little styling.
+// Dashboard component. Currently contains user and order information.
 function Dashboard(props) {
   return(
     <div>
@@ -49,7 +49,7 @@ function Dashboard(props) {
   )
 }
 
-// Handles changes to the user object's state, used in the Dashboard
+// Handles changes to the user object's state; used in the Dashboard
 function nestedStateChange(path, {target}){
   // Recursive function that for updating nested objects
   const helper = function(path, obj, {target}) {

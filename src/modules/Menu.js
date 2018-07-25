@@ -3,7 +3,8 @@ import {Icon} from 'react-materialize'
 import {Link} from 'react-router-dom'
 
 // Menu component. Contains links which render different components and become
-// highlighted when they are activated.
+// highlighted when they are activated. Also contains the button
+// to activate the search modal. Always renders.
 function Menu(props) {
   const root = props.location.pathname.split('/').filter(String)[0]
   return(

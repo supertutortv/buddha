@@ -1,5 +1,6 @@
 // Deletes a bookmark from the remote object; uses the server's response to
-// delete the bookmark from the state and the localStorage object
+// delete the bookmark from the state and the localStorage object. Relies on
+// getBookmarkId.
 function deleteBookmark(id) {
   fetch('https://api.supertutortv.com/v2/courses/data', {
   method: 'DELETE',
@@ -25,8 +26,10 @@ function deleteBookmark(id) {
       const course_data = JSON.parse(localStorage.getItem('sttv_data'))
       course_data.user = user
       localStorage.setItem('sttv_data', JSON.stringify(course_data))
-      const bookmarkedIds = user.bookmarks.map(a => a.data.url)
-      this.setState({user: user, bookmarkedIds: bookmarkedIds})
+      // bookmarkedIds is in the state to efficiently set the behavior and appearance
+      // of a video's bookmark icon when it is in the stage; otherwise, this would have
+      // to be done on each video change. Not pretty, I am aware.
+      this.setState({user: user, bookmarkedIds: user.bookmarks.map(a => a.data.url)})
     }
     else {
       this.setState({message: 'Could not remove that bookmark. Please try again later.'})
@@ -35,6 +38,17 @@ function deleteBookmark(id) {
   .catch(error => {
     this.getData()
   })
+}
+
+// Gets a bookmark's id from the url so that it can be deleted
+function getBookmarkId(url) {
+  for (let index in this.state.user.bookmarks) {
+    let bookmark = this.state.user.bookmarks[index]
+    if (bookmark.data.url == url) {
+      return bookmark.id
+    }
+  }
+  return null
 }
 
 // Try localStorage; if it is empty, fetch new data
@@ -64,6 +78,7 @@ function getData() {
     .then(response => this.handleResponse(response))
     .then(items => {
       if (items !== null) {
+        console.log(items)
         localStorage.setItem('sttv_data', JSON.stringify(items.data))
         const currentCourse = items.data.user.settings.default_course
         const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
@@ -109,6 +124,8 @@ function createBookmark(url) {
   .then( items => {
     if (items !== null) {
       let user = this.state.user
+      // Items.data is what the server pushes into its array; this helps keep
+      // the local and remote objects in sync
       user.bookmarks.push(items.data)
       const course_data = JSON.parse(localStorage.getItem('sttv_data'))
       course_data.user = user
@@ -143,6 +160,7 @@ function updateUserObj(key) {
   .then( items => {
     if (items !== null) {
       const user_obj = this.state.user
+      // Same thing as in createBookmark; the response is the value that gets updated.
       user_obj[key] = items.data[key]
       this.setState({user : user_obj})
       const courseData = JSON.parse(localStorage.getItem('sttv_data'))
@@ -157,8 +175,8 @@ function updateUserObj(key) {
   })
 }
 
-// Clears the course data in localstorage and fetches new data from the API;
-// updates the state and re-renders if necessary
+// Clears the course data in localstorage and fetches new data from the API.
+// Not as scary as it pretends.
 function courseRefresh() {
   if (confirm("Only do this if advised by a technician at SupertutorTV, as access to your course could be broken or interrupted. Are you sure you want to proceed?")) {
     localStorage.removeItem('sttv_data')
@@ -166,4 +184,4 @@ function courseRefresh() {
   }
 }
 
-export {courseRefresh, createBookmark, deleteBookmark, getData, updateUserObj}
+export {courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj}

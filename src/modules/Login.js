@@ -1,6 +1,7 @@
 import React from 'react'
 
-// Login component; tries to get a token from the API with the login information
+// Login component; tries to get a cookie from the API with the login information.
+// Has been replaced by the main sttv login; left here in case it saves some time.
 function Login() {
   return(
     <div>
@@ -16,7 +17,7 @@ function Login() {
           <label>Password</label>
         </div>
       </div>
-      <button className="z-depth-1" id="login-btn" onClick={() => this.getToken()}>Login</button>
+      <button className="z-depth-1" id="login-btn" onClick={() => this.startSession()}>Login</button>
       </div>
       {this.state.message}
     </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom'
 
-// Header that goes at the top of the app; contains routes to display the page title
+// Header that goes at the top of the app; contains routes to display page titles
+// as well as the dark_mode and autoplay switches. Always gets rendered.
 function Header(props) {
   const base = props.location.pathname.split('/').filter(String)
   let image

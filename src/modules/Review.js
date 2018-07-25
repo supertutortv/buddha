@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Icon} from 'react-materialize'
 
-// Review component; also needs styling and backend support
+// Review component; needs backend support
 function Review(props) {
   return(
     <div id="ratings-modal-wrapper">

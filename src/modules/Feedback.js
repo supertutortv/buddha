@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-// Feedback component; needs styling and backend support
+// Feedback component; needs backend support
 function Feedback(props) {
   return(
     <div id="course-feedback">
