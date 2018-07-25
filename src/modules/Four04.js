@@ -1,8 +1,12 @@
+import React from 'react'
+
 // Basic component for unmatched routes
 function Four04() {
   return (
-    <h3>
+    <h5>
       We couldn't find that page!
-    </h3>
+    </h5>
   )
 }
+
+export {Four04}

@@ -48,6 +48,7 @@ class App extends React.Component {
     this.Dashboard = Dashboard.bind(this)
     this.Downloads = Downloads.bind(this)
     this.Feedback = Feedback.bind(this)
+    this.Four04 = Four04.bind(this)
     this.nestedStateChange = nestedStateChange.bind(this)
     this.getResourceByUrl = getResourceByUrl.bind(this)
     this.getToken = getToken.bind(this)
@@ -69,6 +70,7 @@ class App extends React.Component {
     this.scrollRef = React.createRef()
   }
   componentDidMount() {
+    console.log('bang')
     this.getData()
   }
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
@@ -81,7 +83,7 @@ class App extends React.Component {
           if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
             this.scrollRef.current.scrollIntoView(false)
         }
-          else if (this.scrollRef.current.offsetTop + window.innerHeight - 705 < scroll.scrollTop + this.scrollRef.current.clientHeight) {
+          else if (this.scrollRef.current.offsetTop + window.innerHeight - 690 < scroll.scrollTop + this.scrollRef.current.clientHeight) {
             this.scrollRef.current.scrollIntoView()
           }
         }
@@ -93,7 +95,7 @@ class App extends React.Component {
         copy.pop()
         const nextParent = this.getResourceByUrl(copy.join('/'))
         let downloads = []
-        // Hacky, but really cuts down on re-renders
+        // Hacky, but really cuts down on re-renders and fixes an odd video behavior.
         if (nextProps.location.pathname != window.location.pathname) {
           nextProps.location.pathname = window.location.pathname
         }
@@ -133,13 +135,6 @@ class App extends React.Component {
       if (this.state.search) {
         search = <this.Search />
       }
-      // Prevents 404 page from loading on course-specific routes
-      let courseRoutes = []
-      for (let course in this.state.courses) {
-        courseRoutes.push(
-          <Route key={course} className='st-link'/>
-        )
-      }
       return (
         <section id="st-app">
           <Route path='/' component={this.Header}/>
@@ -158,18 +153,21 @@ class App extends React.Component {
                   />
                   <div>
                     <TransitionGroup>
-                      <CSSTransition key={location.key} classNames="fade" timeout={500}>
+                      <CSSTransition key={location.key}
+                        classNames="fade"
+                        timeout={500}>
                         <div>
                           <Switch location={location}>
                             {courses}
-                            <Route className='st-link' path='/dashboard' component={this.Dashboard}/>
-                            <Route className='st-link' path='/courses' component={this.CourseHome} />
-                            <Route className='st-link' path={'/' + this.state.currentCourse}/>
-                            <Route className='st-link' path='/history' component={this.History} />
-                            <Route className='st-link' path='/feedback' component={this.Feedback}/>
-                            <Route className='st-link' path='/bookmarks' component={this.Bookmarks}/>
-                            <Route className='st-link' path='/review' component={this.Review}/>
-                            <Route className='st-link' path='/help' component={this.Help}/>
+                            <Route path='/dashboard' component={this.Dashboard} />
+                            <Route path='/courses' component={this.CourseHome} />
+                            <Route path={'/' + this.state.currentCourse} />
+                            <Route path='/history' component={this.History} />
+                            <Route path='/feedback' component={this.Feedback} />
+                            <Route path='/bookmarks' component={this.Bookmarks} />
+                            <Route path='/review' component={this.Review} />
+                            <Route path='/help' component={this.Help} />
+                            <Route path="/*" component={this.Four04} />
                           </Switch>
                         </div>
                       </CSSTransition>

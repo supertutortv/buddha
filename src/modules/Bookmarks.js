@@ -45,7 +45,7 @@ function Bookmarks(props) {
       }
       let click
       if (vid.id) {
-        click = () => this.updateStage(String(vid.id))
+        click = () => this.setState({stage: String(vid.id)})
       }
       bookmarks.push(
         <Col s={8} m={4} l={3} key={mark.id}>
