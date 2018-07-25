@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
 
@@ -67,24 +67,25 @@ class App extends React.Component {
     this.updateUserObj = updateUserObj.bind(this)
     this.Videos = Videos.bind(this)
     this.getBookmarkId = getBookmarkId.bind(this)
-    this.scrollRef = React.createRef()
   }
+
   componentDidMount() {
-    console.log('bang')
     this.getData()
   }
+
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
     const pathRoot = this.props.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
         scroll = document.getElementById('video-wrapper')
-        if (this.scrollRef.current) {
-          if (this.scrollRef.current.offsetTop + this.scrollRef.current.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
-            this.scrollRef.current.scrollIntoView(false)
+        const scrollRef = document.getElementsByClassName('st-video-card-highlight')[0]
+        if (scrollRef) {
+          if (scrollRef.offsetTop + scrollRef.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
+            scrollRef.scrollIntoView(false)
         }
-          else if (this.scrollRef.current.offsetTop + window.innerHeight - 690 < scroll.scrollTop + this.scrollRef.current.clientHeight) {
-            this.scrollRef.current.scrollIntoView()
+          else if (scrollRef.offsetTop + window.innerHeight - 690 < scroll.scrollTop + scrollRef.clientHeight) {
+            scrollRef.scrollIntoView()
           }
         }
         document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
@@ -119,10 +120,12 @@ class App extends React.Component {
         }
       }
       catch (error) {
+        console.log(error)
         void(0)
       }
     }
   }
+
   render() {
     if (this.state.courses && this.state.user){
       let courses = []
@@ -187,11 +190,9 @@ class App extends React.Component {
   }
 }
 
-
 const AllYourBase = () => (
   <img style={{height:'100%', width:'100%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
 )
-
 
 // Export the whole thing inside of a router
 ReactDOM.render (
