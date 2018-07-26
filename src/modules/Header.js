@@ -38,7 +38,7 @@ function Header(props) {
                 <h6>Autoplay</h6>
                 <input type="checkbox" name="autoplay" checked={this.state.user.settings.autoplay} onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
-                  this.updateUserObj()}}/>
+                  this.updateUserObj('settings')}}/>
                 <span className="lever"></span>
               </label>
             </div>
@@ -47,7 +47,7 @@ function Header(props) {
                 <h6>Dark Mode</h6>
                 <input type="checkbox" name="dark_mode" checked={this.state.user.settings.dark_mode} onChange={(event) => {
                   this.nestedStateChange(['settings'], event)
-                  this.updateUserObj()}}/>
+                  this.updateUserObj('settings')}}/>
                 <span className="lever"></span>
               </label>
             </div>

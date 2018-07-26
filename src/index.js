@@ -31,7 +31,6 @@ class App extends React.Component {
     this.handleResponse = handleResponse.bind(this)
     this.Menu = Menu.bind(this)
     this.state = {
-      auth : true,
       username: '',
       password: '',
       query: '',
@@ -43,6 +42,7 @@ class App extends React.Component {
     this.Course = Course.bind(this)
     this.CourseHome = CourseHome.bind(this)
     this.courseRefresh = courseRefresh.bind(this)
+    this.createBookmark = createBookmark.bind(this)
     this.Dashboard = Dashboard.bind(this)
     this.Downloads = Downloads.bind(this)
     this.Feedback = Feedback.bind(this)
@@ -73,7 +73,6 @@ class App extends React.Component {
 
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
-    console.log(this.state)
     const pathRoot = this.props.location.pathname.split('/').filter(String)[0]
     if (this.state.auth) {
       try {
@@ -119,7 +118,6 @@ class App extends React.Component {
         }
       }
       catch (error) {
-        console.log(error)
         void(0)
       }
     }

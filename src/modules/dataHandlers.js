@@ -55,7 +55,7 @@ function getBookmarkId(url) {
 function getData() {
   const data = JSON.parse(localStorage.getItem('sttv_data'))
   if (data !== null) {
-    const current = data.user.settings.default_course
+    const current = 'the-best-act-prep-course-ever'
     const bookmarkedIds = data.user.bookmarks.map(a => a.data.url)
     this.setState({
       courses: data.courses,
@@ -78,7 +78,6 @@ function getData() {
     .then(response => this.handleResponse(response))
     .then(items => {
       if (items !== null) {
-        console.log(items)
         localStorage.setItem('sttv_data', JSON.stringify(items.data))
         const currentCourse = items.data.user.settings.default_course
         const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
@@ -159,6 +158,7 @@ function updateUserObj(key) {
   .then(response => this.handleResponse(response))
   .then( items => {
     if (items !== null) {
+      console.log(items)
       const user_obj = this.state.user
       // Same thing as in createBookmark; the response is the value that gets updated.
       user_obj[key] = items.data[key]

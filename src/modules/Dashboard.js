@@ -6,7 +6,7 @@ function Dashboard(props) {
   return(
     <div>
       <h5>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h5>
-      <div>
+      {/* <div>
         <h4>Your Information:</h4>
         <small>(click to edit)</small>
         <div>
@@ -40,7 +40,7 @@ function Dashboard(props) {
           </div>
         </div>
           <a type="button" style={{display:'inline-flex'}} onClick={() => this.updateUserObj('userdata')}><strong>Update Information</strong>&nbsp;<Icon>cloud_upload</Icon></a>
-      </div>
+      </div> */}
       <div>
         <h4>Your Orders:</h4>
         {this.state.user.userdata.orders}
@@ -51,7 +51,7 @@ function Dashboard(props) {
 
 // Handles changes to the user object's state; used in the Dashboard
 function nestedStateChange(path, {target}){
-  // Recursive function that for updating nested objects
+  // Recursive function for updating nested objects
   const helper = function(path, obj, {target}) {
     if (path.length > 0) {
       let key = path.shift()
