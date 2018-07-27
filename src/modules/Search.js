@@ -36,7 +36,7 @@ function searchCourse(query, object, path) {
 function Search() {
   let links = []
   let index = 0
-  const results = this.searchCourse(this.state.query, this.state.courses[this.state.currentCourse].collection, this.state.currentCourse)
+  const results = this.searchCourse(this.state.query, this.state.courses[this.state.currentCourse].collection, '')
   if (this.state.query.length == 0) {
     links = 'Begin typing to search this course'
   }
@@ -49,8 +49,8 @@ function Search() {
       for (let item in results) {
       links.push(
         <li key={index} className="st-result">
-          <Link to={'/' + results[item]} >
-            {this.cleanup(results[item])}
+          <Link to={'/' + this.state.currentCourse + results[item]} >
+            {this.cleanup(results[item].substring(1))}
           </Link>
           <br/>
         </li>
@@ -59,7 +59,7 @@ function Search() {
       }
     }
     catch (error) {
-      links = 'Type more than three characters to search this course.'
+      links = 'Invalid query'
     }
   }
   return(

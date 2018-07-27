@@ -50,7 +50,7 @@ function handleResponse(response) {
 
 // Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's into II's. Keeps 'vs' lowercase.
 function cleanup(string) {
-  return string.replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ').replace(/i(?=(i|\b))/g, 'I').replace('Vs', 'vs')
+  return string.replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ').replace(/i(?=(i|\b))/g, 'I').replace('Vs', 'vs').replace('Act', 'ACT').replace('Sat', 'SAT')
 }
 
 export {cleanup, getResourceByUrl, handleChange, handleResponse}
