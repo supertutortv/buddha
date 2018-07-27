@@ -44,6 +44,7 @@ class App extends React.Component {
     this.courseRefresh = courseRefresh.bind(this)
     this.createBookmark = createBookmark.bind(this)
     this.Dashboard = Dashboard.bind(this)
+    this.deleteBookmark = deleteBookmark.bind(this)
     this.Downloads = Downloads.bind(this)
     this.Feedback = Feedback.bind(this)
     this.Four04 = Four04.bind(this)

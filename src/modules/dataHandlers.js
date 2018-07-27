@@ -2,7 +2,7 @@
 // delete the bookmark from the state and the localStorage object. Relies on
 // getBookmarkId.
 function deleteBookmark(id) {
-  fetch('https://api.supertutortv.com/v2/courses/data', {
+  fetch('https://api.supertutortv.com/v2/courses/data/', {
   method: 'DELETE',
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
@@ -11,11 +11,12 @@ function deleteBookmark(id) {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-      id: id
+      id: String(id)
     })
   })
   .then( response => this.handleResponse(response))
   .then( items => {
+    console.log(items)
     if (items !== null) {
       let user = this.state.user
       for (let item in user.bookmarks) {
@@ -36,6 +37,7 @@ function deleteBookmark(id) {
     }
   })
   .catch(error => {
+    console.log(error)
     this.getData()
   })
 }
@@ -107,7 +109,7 @@ function getData() {
           courses : items.data.courses,
           user: items.data.user,
           bookmarkedIds: bookmarkedIds,
-          currentCourse: items.data.user.settings.default_course,
+          currentCourse: currentCourse,
           thumb: thumb,
           stage: stage,
           vids: items.data.user.history,
@@ -162,36 +164,41 @@ function createBookmark(url) {
 // Updates the remote user object and then uses the response from the server
 // to update the state and the localStorage object
 function updateUserObj(key) {
-  const setting = this.state.key
-  fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
-    method : 'PUT',
-    accept: 'application/vnd.sttv.app+json',
-    credentials: 'include',
-    headers: {
-      'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(this.state.user[key])
-  })
-  .then(response => this.handleResponse(response))
-  .then( items => {
-    if (items !== null) {
-      console.log(items)
-      const user_obj = this.state.user
-      // Same thing as in createBookmark; the response is the value that gets updated.
-      user_obj[key] = items.data[key]
-      this.setState({user : user_obj})
-      const courseData = JSON.parse(localStorage.getItem('sttv_data'))
-      courseData.user = this.state.user
-      localStorage.setItem('sttv_data', JSON.stringify(courseData))
-    }
-  })
-  .catch(error => {
-    this.setState({
-      message : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
+  if (!this.state.loading) {
+    this.setState({loading: true})
+    const setting = this.state.key
+    fetch('https://api.supertutortv.com/v2/courses/data/' + key, {
+      method : 'PUT',
+      accept: 'application/vnd.sttv.app+json',
+      credentials: 'include',
+      headers: {
+        'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.user[key])
     })
-  })
+    .then(response => this.handleResponse(response))
+    .then( items => {
+      if (items !== null) {
+        const user_obj = this.state.user
+        // Same thing as in createBookmark; the response is the value that gets updated.
+        user_obj[key] = items.data[key]
+        this.setState({user : user_obj})
+        const courseData = JSON.parse(localStorage.getItem('sttv_data'))
+        courseData.user = this.state.user
+        localStorage.setItem('sttv_data', JSON.stringify(courseData))
+      }
+    })
+    // Ensures that they can't accidentally spam the server by toggling settings
+    .then(() => new Promise(() => setTimeout(() => this.setState({loading:false}), 300)))
+    .catch(error => {
+      this.setState({
+        message : 'There was an error upadating your settings. Please contact STTV support if the problem persists.'
+      })
+    })
+  }
 }
+
 
 // Clears the course data in localstorage and fetches new data from the API.
 // Not as scary as it pretends.
