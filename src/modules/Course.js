@@ -7,11 +7,12 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 function CourseHome(props) {
   let courses = []
   for (let course in this.state.courses) {
+    const label = typeof this.state.courses[course] == 'object' && 'data' in this.state.courses[course] ? 'Version ' + this.state.courses[course].data.version  : 'Expired'
     courses.push(
       <div key={course}>
         <Link className='st-link' to={'/' + course}>{this.cleanup(course)}</Link>
         <div style={{fontSize: '80%', fontStyle: 'italic', display: 'inline-block', paddingLeft: '10px'}}>
-          (Version {this.state.courses[course].data.version})
+          ({label})
         </div>
       </div>
     )
@@ -30,23 +31,38 @@ function Course(props) {
   // It also necessitates that funky "hack" in componentDidUpdate (marked)
   let link = '/' + this.state.currentCourse
   let course = this.state.courses[this.state.currentCourse]
-  return(
-    <div id="st-course">
-      <div id="st-nav">
-        <div id="st-sections">
-          <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
+  if (course instanceof Array) {
+      return (
+        <h5>
+          It looks like your subscription to this course has expired! You can
+          renew your subscription, or go to the help page if you think this is an error.
+        </h5>
+      )
+  }
+  else {
+    if (this.getResourceByUrl(props.location.pathname) !== null) {
+      return(
+        <div id="st-course">
+          <div id="st-nav">
+            <div id="st-sections">
+              <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
+            </div>
+          </div>
+          <div id="st-stage">
+            <this.Stage location={props.location.pathname}/>
+          </div>
+          <div id="video-wrapper">
+            <BrowserRouter>
+              <this.Videos vids={this.state.vids} link={this.state.vidLink} />
+            </BrowserRouter>
+          </div>
         </div>
-      </div>
-      <div id="st-stage">
-        <this.Stage location={props.location.pathname}/>
-      </div>
-      <div id="video-wrapper">
-        <BrowserRouter>
-          <this.Videos vids={this.state.vids} link={this.state.vidLink} />
-        </BrowserRouter>
-      </div>
-    </div>
-  )
+      )
+    }
+    else {
+      return <this.Four04 />
+    }
+  }
 }
 
 // Component that recursively generates the routes and links for collections

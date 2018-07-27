@@ -55,15 +55,25 @@ function getBookmarkId(url) {
 function getData() {
   const data = JSON.parse(localStorage.getItem('sttv_data'))
   if (data !== null) {
-    const current = 'the-best-act-prep-course-ever'
-    const bookmarkedIds = data.user.bookmarks.map(a => a.data.url)
+    const currentCourse = 'the-best-act-prep-course-ever'
+    const bookmarkedIds = data.user.bookmarks != null ? data.user.bookmarks.map(a => a.data.url) : []
+    let thumb
+    let stage
+    if (data.courses[currentCourse] != null && !(data.courses[currentCourse] instanceof Array)) {
+      thumb = data.courses[currentCourse].data.thumbUrls.plain,
+      stage = data.courses[currentCourse].data.intro
+    }
+    else {
+      thumb = ''
+      stage = ''
+    }
     this.setState({
       courses: data.courses,
       bookmarkedIds: bookmarkedIds,
       user: data.user,
-      currentCourse: current,
-      thumb: data.courses[current].data.thumbUrls.plain,
-      stage: data.courses[current].data.intro,
+      currentCourse: currentCourse,
+      thumb: thumb,
+      stage: stage,
       vids: data.user.history,
     })
   }
@@ -79,10 +89,18 @@ function getData() {
     .then(items => {
       if (items !== null) {
         localStorage.setItem('sttv_data', JSON.stringify(items.data))
-        const currentCourse = items.data.user.settings.default_course
-        const thumb = items.data.courses[currentCourse].data.thumbUrls.plain
-        const stage = items.data.courses[currentCourse].data.intro
-        const bookmarkedIds = items.data.user.bookmarks.map(a => a.data.url)
+        const currentCourse = 'the-best-act-prep-course-ever'
+        const bookmarkedIds = items.data.user.bookmarks != null ? items.data.user.bookmarks.map(a => a.data.url) : []
+        let thumb
+        let stage
+        if (items.data.courses != null && !(items.data.courses[currentCourse] instanceof Array)) {
+          thumb = items.data.courses[currentCourse].data.thumbUrls.plain,
+          stage = items.data.courses[currentCourse].data.intro
+        }
+        else {
+          thumb = ''
+          stage = ''
+        }
         // This is basically a rewrite of the first part of getData, but
         // it needs to be done asynchronously so there's no easy way to refactor
         this.setState({

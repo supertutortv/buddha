@@ -14,7 +14,7 @@ function getResourceByUrl(url) {
         obj = obj[lookup.shift()]
       }
       else {
-        return(obj)
+        return null
       }
     }
   }
