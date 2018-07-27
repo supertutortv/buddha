@@ -10,7 +10,7 @@ function CourseHome(props) {
     const label = typeof this.state.courses[course] == 'object' && 'data' in this.state.courses[course] ? 'Version ' + this.state.courses[course].data.version  : 'Expired'
     courses.push(
       <div key={course}>
-        <Link className='st-link' to={'/' + course}>{this.cleanup(course)}</Link>
+        <Link className='st-link' to={'/' + course} onClick={() => this.setState({currentCourse: course})}>{this.cleanup(course)}</Link>
         <div style={{fontSize: '80%', fontStyle: 'italic', display: 'inline-block', paddingLeft: '10px'}}>
           ({label})
         </div>

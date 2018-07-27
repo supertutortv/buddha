@@ -14,8 +14,8 @@ function deleteBookmark(id) {
       id: String(id)
     })
   })
-  .then( response => this.handleResponse(response))
-  .then( items => {
+  .then(response => this.handleResponse(response))
+  .then(items => {
     console.log(items)
     if (items !== null) {
       let user = this.state.user
@@ -57,11 +57,12 @@ function getBookmarkId(url) {
 function getData() {
   const data = JSON.parse(localStorage.getItem('sttv_data'))
   if (data !== null) {
-    const currentCourse = 'the-best-act-prep-course-ever'
+    const courses = Object.keys(data.courses)
+    const currentCourse = courses.length > 0 ? courses[0] : null
     const bookmarkedIds = data.user.bookmarks != null ? data.user.bookmarks.map(a => a.data.url) : []
     let thumb
     let stage
-    if (data.courses[currentCourse] != null && !(data.courses[currentCourse] instanceof Array)) {
+    if (currentCourse != null) {
       thumb = data.courses[currentCourse].data.thumbUrls.plain,
       stage = data.courses[currentCourse].data.intro
     }
@@ -91,7 +92,8 @@ function getData() {
     .then(items => {
       if (items !== null) {
         localStorage.setItem('sttv_data', JSON.stringify(items.data))
-        const currentCourse = 'the-best-act-prep-course-ever'
+        const courses = Object.keys(items.data.courses)
+        const currentCourse = courses.length > 0 ? courses[0] : null
         const bookmarkedIds = items.data.user.bookmarks != null ? items.data.user.bookmarks.map(a => a.data.url) : []
         let thumb
         let stage
