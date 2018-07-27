@@ -62,8 +62,8 @@ function getData() {
     const bookmarkedIds = data.user.bookmarks != null ? data.user.bookmarks.map(a => a.data.url) : []
     let thumb
     let stage
-    if (currentCourse != null) {
-      thumb = data.courses[currentCourse].data.thumbUrls.plain,
+    if (currentCourse != null && !(data.courses[currentCourse] instanceof Array)) {
+      thumb = data.courses[currentCourse].data.thumbUrls.plain
       stage = data.courses[currentCourse].data.intro
     }
     else {
@@ -97,8 +97,8 @@ function getData() {
         const bookmarkedIds = items.data.user.bookmarks != null ? items.data.user.bookmarks.map(a => a.data.url) : []
         let thumb
         let stage
-        if (items.data.courses != null && !(items.data.courses[currentCourse] instanceof Array)) {
-          thumb = items.data.courses[currentCourse].data.thumbUrls.plain,
+        if (currentCourse != null && !(items.data.courses[currentCourse] instanceof Array)) {
+          thumb = items.data.courses[currentCourse].data.thumbUrls.plain
           stage = items.data.courses[currentCourse].data.intro
         }
         else {
