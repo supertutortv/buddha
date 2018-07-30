@@ -2,6 +2,7 @@ import React from 'react'
 import {Icon} from 'react-materialize'
 import {Link} from 'react-router-dom'
 
+
 // The video stage component; generates an iframe based on this.state.stage
 // and generates a label for the video as well as a bookmark button
 function Stage(props) {
@@ -28,7 +29,7 @@ function Stage(props) {
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
-    frame = <iframe className='st-course-player'
+    frame = <iframe className='st-course-player' id="st-player"
       key='stage'
       src={link}
       width='810' height='580' frameBorder='' title='Intro' webkitallowfullscreen='tr'

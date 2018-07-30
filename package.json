@@ -44,5 +44,8 @@
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "@vimeo/player": "^2.6.3"
   }
 }

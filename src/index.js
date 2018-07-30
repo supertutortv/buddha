@@ -3,6 +3,7 @@ import React from "react";
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
+import Vimeo from '@vimeo/player'
 
 import {startSession, logout, verifySession} from './modules/authHandlers.js'
 import {Bookmarks} from './modules/Bookmarks.js'
@@ -87,6 +88,14 @@ class App extends React.Component {
             scrollRef.scrollIntoView()
           }
         }
+        const frame = document.getElementById('st-player')
+        // console.log(player)
+        if (frame) {
+          const Player = new Vimeo(frame)
+          Player.on('play', function() {
+            console.log('played the video!');
+        });
+        }
         document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
         let nextLink = this.props.location.pathname.split('/').filter(String)
         const newDownloadsLocation = this.getResourceByUrl(nextLink.slice(0, 2).join('/'))
@@ -119,6 +128,7 @@ class App extends React.Component {
         }
       }
       catch (error) {
+        console.log(error)
         void(0)
       }
     }
