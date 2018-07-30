@@ -1,15 +1,14 @@
 import ReactDOM from 'react-dom'
-import React from "react";
+import React from "react"
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
-import Vimeo from '@vimeo/player'
 
 import {startSession, logout, verifySession} from './modules/authHandlers.js'
 import {Bookmarks} from './modules/Bookmarks.js'
 import {Course, CourseHome, CourseSection} from './modules/Course.js'
 import {Dashboard, nestedStateChange} from './modules/Dashboard.js'
-import {courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
+import {addToHistory, courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
 import {Downloads} from './modules/Downloads.js'
 import {Feedback} from './modules/Feedback.js'
 import {Four04} from './modules/Four04.js'
@@ -38,6 +37,7 @@ class App extends React.Component {
       currentCourse: 'the-best-act-prep-course-ever'
     }
 
+    this.addToHistory = addToHistory.bind(this)
     this.Bookmarks = Bookmarks.bind(this)
     this.cleanup = cleanup.bind(this)
     this.Course = Course.bind(this)
@@ -87,14 +87,6 @@ class App extends React.Component {
           else if (scrollRef.offsetTop + window.innerHeight - 690 < scroll.scrollTop + scrollRef.clientHeight) {
             scrollRef.scrollIntoView()
           }
-        }
-        const frame = document.getElementById('st-player')
-        // console.log(player)
-        if (frame) {
-          const Player = new Vimeo(frame)
-          Player.on('play', function() {
-            console.log('played the video!');
-        });
         }
         document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
         let nextLink = this.props.location.pathname.split('/').filter(String)

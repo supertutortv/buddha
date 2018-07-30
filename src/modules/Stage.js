@@ -1,7 +1,7 @@
 import React from 'react'
 import {Icon} from 'react-materialize'
 import {Link} from 'react-router-dom'
-
+import ReactPlayer from 'react-player'
 
 // The video stage component; generates an iframe based on this.state.stage
 // and generates a label for the video as well as a bookmark button
@@ -49,10 +49,11 @@ function Stage(props) {
       downloads = <a title='Files' className='download-inactive' ><Icon style={{color:"white"}}>cloud_download</Icon></a>
     }
     let feedback = <Link to='/feedback' title='Feedback' ><Icon>rate_review</Icon></Link>
-    return(
+    return (
       <div>
           {this.state.downloadModal && <this.Downloads />}
-          {frame}
+          <ReactPlayer url={link} onPlay={() => this.addToHistory(this.props.location.pathname)}
+          />
           <div>
             <div className="st-video-icons">
               {feedback}

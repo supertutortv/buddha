@@ -163,6 +163,41 @@ function createBookmark(url) {
   })
 }
 
+// Adds a video to the user's history by calling the API; uses the response
+// to update the state and the localStorage object
+function addToHistory(url) {
+  fetch('https://api.supertutortv.com/v2/courses/data/history', {
+  method: 'PUT',
+  accept: 'application/vnd.sttv.app+json',
+  credentials: 'include',
+  headers: {
+    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+      url: url
+      })
+  })
+  .then( response => this.handleResponse(response))
+  .then( items => {
+    if (items !== null) {
+      let user = this.state.user
+      user.history.push(items.data)
+      const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+      course_data.user = user
+      localStorage.setItem('sttv_data', JSON.stringify(course_data))
+      this.setState({user: user})
+    }
+    else {
+      this.setState({message: 'Could not add that video to your history. Please try again later.'})
+    }
+  })
+  .catch(error => {
+    console.log(error)
+    this.getData()
+  })
+}
+
 // Updates the remote user object and then uses the response from the server
 // to update the state and the localStorage object
 function updateUserObj(key) {
@@ -211,4 +246,4 @@ function courseRefresh() {
   }
 }
 
-export {courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj}
+export {addToHistory, courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj}
