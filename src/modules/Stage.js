@@ -36,7 +36,7 @@ function Stage(props) {
       allowFullScreen=''></iframe>
     let bookmark
     if (this.state.bookmarkedIds.includes(props.location)) {
-      bookmark = <a title='Remove Bookmark' onClick={() => this.deleteBookmark(this.getBookmarkId(this.props.location.pathname))}><Icon>bookmark</Icon></a>
+      bookmark = <a title='Remove Bookmark' onClick={() => this.deleteBookmark(this.props.location.pathname)}><Icon>bookmark</Icon></a>
     }
     else {
       bookmark = <a title='Bookmark' onClick={() => this.createBookmark(this.props.location.pathname)}><Icon>bookmark_border</Icon></a>
@@ -52,8 +52,7 @@ function Stage(props) {
     return (
       <div>
           {this.state.downloadModal && <this.Downloads />}
-          <ReactPlayer url={link}
-            onPlay={() => this.addToHistory(this.props.location.pathname)}/>
+          {frame}
           <div>
             <div className="st-video-icons">
               {feedback}

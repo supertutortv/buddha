@@ -28,27 +28,29 @@ function Videos(props) {
     else {
       link = props.link + '/' + video.slug
     }
-    let thumb = this.state.thumb.replace('||ID||', video.thumb)
-    let ref = this.cleanup(link.slice(1)).concat(' >')
-    const timeLabel = duration(video.time)
-    videos.push(
-      <Route path={link} key={key} className="st-video-card">
-        <Link to={link} onClick={() => this.setState({stage: video.id})}>
-          <div className={window.location.pathname == link ? 'st-video-card-highlight' : 'st-video-card'} >
-            <img className="st-video-card-thumb" src={thumb}/>
-            <span className="st-video-card-title">
-              {video.name}
-              <br />
-              <span style={{fontStyle: 'italic'}}>
-              {timeLabel}
+    if (video && video.name) {
+      let thumb = this.state.thumb.replace('||ID||', video.thumb)
+      let ref = this.cleanup(link.slice(1)).concat(' >')
+      const timeLabel = duration(video.time)
+      videos.push(
+        <Route path={props.link} key={key} className="st-video-card">
+          <Link to={link} onClick={() => {this.setState({stage: video.id}); this.addToHistory(link)}}>
+            <div className={window.location.pathname == link ? 'st-video-card-highlight' : 'st-video-card'} >
+              <img className="st-video-card-thumb" src={thumb}/>
+              <span className="st-video-card-title">
+                {video.name}
+                <br />
+                <span style={{fontStyle: 'italic'}}>
+                {timeLabel}
+                </span>
               </span>
-            </span>
-          </div>
-          <div path={link} />
-        </Link>
-      </Route>
-      )
-      key++
+            </div>
+            <div path={link} />
+          </Link>
+        </Route>
+        )
+        key++
+    }
     }
   return videos
 }

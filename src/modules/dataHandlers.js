@@ -1,7 +1,8 @@
 // Deletes a bookmark from the remote object; uses the server's response to
 // delete the bookmark from the state and the localStorage object. Relies on
 // getBookmarkId.
-function deleteBookmark(id) {
+function deleteBookmark(url) {
+  const ids = getIdsByUrl(url, this.state.user.bookmarks)
   fetch('https://api.supertutortv.com/v2/courses/data', {
   method: 'DELETE',
   accept: 'application/vnd.sttv.app+json',
@@ -10,7 +11,7 @@ function deleteBookmark(id) {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-      id: parseInt(id)
+      id: ids
     })
   })
   .then(response => this.handleResponse(response))
@@ -37,17 +38,6 @@ function deleteBookmark(id) {
   .catch(error => {
     this.getData()
   })
-}
-
-// Gets a bookmark's id from the url so that it can be deleted
-function getBookmarkId(url) {
-  for (let index in this.state.user.bookmarks) {
-    let bookmark = this.state.user.bookmarks[index]
-    if (bookmark.data.url == url) {
-      return bookmark.id
-    }
-  }
-  return null
 }
 
 // Try localStorage; if it is empty, fetch new data
@@ -165,8 +155,20 @@ function createBookmark(url) {
   })
 }
 
-function deleteFromHistory(id) {
-  console.log('ran the delete function')
+function getIdsByUrl(url, array) {
+  let matches = []
+  for (let index in array) {
+    let item = array[index]
+    if (item.data.url == url) {
+      matches.push(item.id)
+    }
+  }
+  return matches
+}
+
+function replaceInHistory(url) {
+  this.setState({loading: true})
+  let id = getIdsByUrl(url, this.state.user.history)
   fetch('https://api.supertutortv.com/v2/courses/data', {
   method: 'DELETE',
   accept: 'application/vnd.sttv.app+json',
@@ -175,34 +177,41 @@ function deleteFromHistory(id) {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-      id: parseInt(id)
+      id: id
     })
   })
   .then(response => this.handleResponse(response))
   .then(items => {
-    console.log('got a response from the delete request')
-    console.log('items')
     if (items !== null) {
       let user = this.state.user
-      for (let item in user.history) {
-        if (user.history[item].id == items.data[0].id) {
-          user.history.splice(item, 1)
+      for (let deleted in items.data) {
+        for (let item in user.history) {
+          if (user.history[item].id == items.data[deleted].id) {
+            user.history.splice(item, 1)
+          }
         }
       }
-      console.log(user.history)
       const course_data = JSON.parse(localStorage.getItem('sttv_data'))
       course_data.user = user
       localStorage.setItem('sttv_data', JSON.stringify(course_data))
       // bookmarkedIds is in the state to efficiently set the behavior and appearance
       // of a video's bookmark icon when it is in the stage; otherwise, this would have
       // to be done on each video change. Not pretty, I am aware.
-      this.setState({user: user})
+      this.setState({user: user, loading: false})
+      let id = getIdsByUrl(url, this.state.user.history)
+      if (id.length == 0) {
+        this.addToHistory(url)
+      }
+      else {
+        this.setState({message: 'Could not remove that bookmark. Please try again later.', loading: false})
+      }
     }
     else {
-      this.setState({message: 'Could not remove that bookmark. Please try again later.'})
+      this.setState({message: 'Could not remove that bookmark. Please try again later.', loading: false})
     }
   })
   .catch(error => {
+    this.setState({loading: false})
     this.getData()
   })
 }
@@ -210,55 +219,51 @@ function deleteFromHistory(id) {
 // Adds a video to the user's history by calling the API; uses the response
 // to update the state and the localStorage object
 function addToHistory(url) {
+  console.log(url)
   let urlsInHistory = this.state.user.history.map(a => a.data.url)
   if (!(this.state.loading)) {
-    this.setState({loading: true})
     if (urlsInHistory.indexOf(url) > -1) {
-      console.log('in history')
-      for (let index in this.state.user.history) {
-        let item = this.state.user.history[index]
-        if (item.data.url == url) {
-          console.log(item.id)
-          this.deleteFromHistory(item.id)
-        }
-      }
+      this.replaceInHistory(url)
     }
-    fetch('https://api.supertutortv.com/v2/courses/data/history', {
-    method: 'PUT',
-    accept: 'application/vnd.sttv.app+json',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        url: url
-        })
-    })
-    .then( response => this.handleResponse(response))
-    .then( items => {
-      if (items != null) {
-        if (items.data && items.data.data && items.data.data.url && items.data.id) {
-          let user_obj = this.state.user
-          if (user_obj.history) {
-            user_obj.history.push(items.data)
+    else {
+      this.setState({loading: true})
+      fetch('https://api.supertutortv.com/v2/courses/data/history', {
+      method: 'PUT',
+      accept: 'application/vnd.sttv.app+json',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          url: url
+          })
+      })
+      .then( response => this.handleResponse(response))
+      .then( items => {
+        if (items != null) {
+          if (items.data && items.data.data && items.data.data.url && items.data.id) {
+            let user_obj = this.state.user
+            if (user_obj.history) {
+              user_obj.history.push(items.data)
+            }
+            else {
+              user_obj.history = [items.data]
+            }
+            const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+            course_data.user = user_obj
+            localStorage.setItem('sttv_data', JSON.stringify(course_data))
+            this.setState({user: user_obj, loading: false})
           }
-          else {
-            user_obj.history = [items.data]
-          }
-          const course_data = JSON.parse(localStorage.getItem('sttv_data'))
-          course_data.user = user_obj
-          localStorage.setItem('sttv_data', JSON.stringify(course_data))
-          this.setState({user: user_obj, loading: false})
         }
-      }
-      else {
-        this.setState({message: 'Could not add that video to your history. Please try again later.', loading: false})
-      }
-    })
-    .catch(error => {
-      this.setState({loading: false})
-      this.getData()
-    })
+        else {
+          this.setState({message: 'Could not add that video to your history. Please try again later.', loading: false})
+        }
+      })
+      .catch(error => {
+        this.setState({loading: false})
+        this.getData()
+      })
+    }
   }
 }
 
@@ -335,4 +340,4 @@ function courseRefresh() {
   }
 }
 
-export {addToHistory, courseRefresh, createBookmark, deleteBookmark, deleteFromHistory, downloadTracker, getBookmarkId, getData, updateUserObj}
+export {addToHistory, courseRefresh, createBookmark, deleteBookmark, replaceInHistory, downloadTracker, getData, updateUserObj}
