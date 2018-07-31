@@ -143,15 +143,22 @@ function createBookmark(url) {
   .then( response => this.handleResponse(response))
   .then( items => {
     if (items !== null) {
-      let user = this.state.user
-      // Items.data is what the server pushes into its array; this helps keep
-      // the local and remote objects in sync
-      user.bookmarks.push(items.data)
-      const course_data = JSON.parse(localStorage.getItem('sttv_data'))
-      course_data.user = user
-      localStorage.setItem('sttv_data', JSON.stringify(course_data))
-      const bookmarkedIds = user.bookmarks.map(a => a.data.url)
-      this.setState({user: user, bookmarkedIds: bookmarkedIds})
+      if (items.data && items.data.data && items.data.data.url && items.data.id) {
+        let user_obj = this.state.user
+        // Items.data is what the server pushes into its array; this helps keep
+        // the local and remote objects in sync
+        if (user_obj.bookmarks) {
+          user_obj.bookmarks.push(items.data)
+        }
+        else {
+          user_obj.bookmarks = [items.data]
+        }
+        const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+        course_data.user = user_obj
+        localStorage.setItem('sttv_data', JSON.stringify(course_data))
+        const bookmarkedIds = user_obj.bookmarks.map(a => a.data.url)
+        this.setState({user: user_obj, bookmarkedIds: bookmarkedIds})
+      }
     }
     else {
       this.setState({message: 'Could not remove that bookmark. Please try again later.'})
@@ -180,12 +187,19 @@ function addToHistory(url) {
   .then( response => this.handleResponse(response))
   .then( items => {
     if (items != null) {
-      let user = this.state.user
-      user.history.push(items.data)
-      const course_data = JSON.parse(localStorage.getItem('sttv_data'))
-      course_data.user = user
-      localStorage.setItem('sttv_data', JSON.stringify(course_data))
-      this.setState({user: user})
+      if (items.data && items.data.data && items.data.data.url && items.data.id) {
+        let user_obj = this.state.user
+        if (user_obj.history) {
+          user_obj.history.push(items.data)
+        }
+        else {
+          user_obj.history = [items.data]
+        }
+        this.setState({user: user_obj})
+        const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+        course_data.user_obj = user_obj
+        localStorage.setItem('sttv_data', JSON.stringify(course_data))
+      }
     }
     else {
       this.setState({message: 'Could not add that video to your history. Please try again later.'})
@@ -216,7 +230,7 @@ function updateUserObj(key) {
     .then(response => this.handleResponse(response))
     .then( items => {
       if (items != null) {
-        const user_obj = this.state.user
+        let user_obj = this.state.user
         // Same thing as in createBookmark; the response is the value that gets updated.
         user_obj[key] = items.data[key]
         this.setState({user : user_obj})

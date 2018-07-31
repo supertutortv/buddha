@@ -47,7 +47,7 @@ function History(props) {
       return (
         <h6>
           It looks like you don't have any watch history! Try watching some
-          videos, or go to the help section if you think this is an error.
+          videos.
         </h6>
       )
     }

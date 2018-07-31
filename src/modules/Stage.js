@@ -23,8 +23,8 @@ function Stage(props) {
     let frame
     if (this.state.stage == '0') {
       frame =
-      <div className='st-course-player' style={{width:'946px', height:'594px', 'background-color' : 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
-        <h3 style={{'vertical-align':'middle', 'line-height' : '594px', 'text-align':'center'}}>This video will become available when you purchase the full course</h3>
+      <div className='st-course-player' style={{width:'946px', height: '594px', 'background-color': 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
+        <h3 style={{'vertical-align': 'middle', 'line-height': '594px', 'text-align': 'center'}}>This video will become available when you purchase the full course</h3>
       </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
@@ -43,7 +43,7 @@ function Stage(props) {
     }
     let downloads
     if (this.state.downloads != null && this.state.downloads.length > 0) {
-      downloads = <a title='Files' onClick={() => this.setState({downloadModal : true})} ><Icon>cloud_download</Icon></a>
+      downloads = <a title='Files' onClick={() => this.setState({downloadModal: true})} ><Icon>cloud_download</Icon></a>
     }
     else {
       downloads = <a title='Files' className='download-inactive' ><Icon style={{color:"white"}}>cloud_download</Icon></a>
@@ -52,8 +52,8 @@ function Stage(props) {
     return (
       <div>
           {this.state.downloadModal && <this.Downloads />}
-          <ReactPlayer url={link} onPlay={() => this.addToHistory(this.props.location.pathname)}
-          />
+          <ReactPlayer url={link}
+            onPlay={() => this.addToHistory(this.props.location.pathname)}/>
           <div>
             <div className="st-video-icons">
               {feedback}

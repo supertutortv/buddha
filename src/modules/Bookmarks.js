@@ -78,8 +78,7 @@ function Bookmarks(props) {
       return (
         <h6>
           It looks like you don't have any bookmarks! Try clicking the bookmark
-          icon under a video, or go to the help section if you think this is an
-          error.
+          icon under a video.
         </h6>
       )
     }

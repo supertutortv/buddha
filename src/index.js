@@ -77,7 +77,7 @@ class App extends React.Component {
   // Makes sure the correct thumbnails, videos, and downloads are rendered.
   componentDidUpdate(nextProps, nextState) {
     const pathRoot = this.props.location.pathname.split('/').filter(String)[0]
-    if (this.state.auth) {
+    if (this.state.auth && this.state.user) {
       try {
         scroll = document.getElementById('video-wrapper')
         const scrollRef = document.getElementsByClassName('st-video-card-highlight')[0]
@@ -171,6 +171,7 @@ class App extends React.Component {
                             <Route path='/bookmarks' component={this.Bookmarks} />
                             <Route path='/review' component={this.Review} />
                             <Route path='/help' component={this.Help} />
+                            <Route path='/all-your-base-are-belong-to-us' component={AllYourBase} />
                             <Route path="/*" component={this.Four04} />
                           </Switch>
                         </div>
@@ -192,7 +193,7 @@ class App extends React.Component {
 }
 
 const AllYourBase = () => (
-  <img style={{height:'100%', width:'100%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
+  <img style={{width:'75%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
 )
 
 // Export the whole thing inside of a router
