@@ -8,7 +8,7 @@ import {startSession, logout, verifySession} from './modules/authHandlers.js'
 import {Bookmarks} from './modules/Bookmarks.js'
 import {Course, CourseHome, CourseSection} from './modules/Course.js'
 import {Dashboard, nestedStateChange} from './modules/Dashboard.js'
-import {addToHistory, courseRefresh, createBookmark, deleteBookmark, downloadTracker, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
+import {addToHistory, courseRefresh, createBookmark, deleteBookmark, deleteFromHistory, downloadTracker, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
 import {Downloads} from './modules/Downloads.js'
 import {Feedback} from './modules/Feedback.js'
 import {Four04} from './modules/Four04.js'
@@ -46,6 +46,7 @@ class App extends React.Component {
     this.createBookmark = createBookmark.bind(this)
     this.Dashboard = Dashboard.bind(this)
     this.deleteBookmark = deleteBookmark.bind(this)
+    this.deleteFromHistory = deleteFromHistory.bind(this)
     this.Downloads = Downloads.bind(this)
     this.downloadTracker = downloadTracker.bind(this)
     this.Feedback = Feedback.bind(this)

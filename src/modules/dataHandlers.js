@@ -7,7 +7,6 @@ function deleteBookmark(id) {
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
@@ -23,7 +22,7 @@ function deleteBookmark(id) {
           user.bookmarks.splice(item, 1)
         }
       }
-      const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+      let course_data = JSON.parse(localStorage.getItem('sttv_data'))
       course_data.user = user
       localStorage.setItem('sttv_data', JSON.stringify(course_data))
       // bookmarkedIds is in the state to efficiently set the behavior and appearance
@@ -36,7 +35,6 @@ function deleteBookmark(id) {
     }
   })
   .catch(error => {
-    console.log(error)
     this.getData()
   })
 }
@@ -83,7 +81,6 @@ function getData() {
     fetch('https://api.supertutortv.com/v2/courses/data', {
       credentials: 'include',
       headers: {
-        'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
         'Content-Type': 'application/json'
       }
     })
@@ -133,7 +130,6 @@ function createBookmark(url) {
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
@@ -169,46 +165,101 @@ function createBookmark(url) {
   })
 }
 
-// Adds a video to the user's history by calling the API; uses the response
-// to update the state and the localStorage object
-function addToHistory(url) {
-  fetch('https://api.supertutortv.com/v2/courses/data/history', {
-  method: 'PUT',
+function deleteFromHistory(id) {
+  console.log('ran the delete function')
+  fetch('https://api.supertutortv.com/v2/courses/data', {
+  method: 'DELETE',
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-      url: url
-      })
+      id: parseInt(id)
+    })
   })
-  .then( response => this.handleResponse(response))
-  .then( items => {
-    if (items != null) {
-      if (items.data && items.data.data && items.data.data.url && items.data.id) {
-        let user_obj = this.state.user
-        if (user_obj.history) {
-          user_obj.history.push(items.data)
+  .then(response => this.handleResponse(response))
+  .then(items => {
+    console.log('got a response from the delete request')
+    console.log('items')
+    if (items !== null) {
+      let user = this.state.user
+      for (let item in user.history) {
+        if (user.history[item].id == items.data[0].id) {
+          user.history.splice(item, 1)
         }
-        else {
-          user_obj.history = [items.data]
-        }
-        this.setState({user: user_obj})
-        const course_data = JSON.parse(localStorage.getItem('sttv_data'))
-        course_data.user_obj = user_obj
-        localStorage.setItem('sttv_data', JSON.stringify(course_data))
       }
+      console.log(user.history)
+      const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+      course_data.user = user
+      localStorage.setItem('sttv_data', JSON.stringify(course_data))
+      // bookmarkedIds is in the state to efficiently set the behavior and appearance
+      // of a video's bookmark icon when it is in the stage; otherwise, this would have
+      // to be done on each video change. Not pretty, I am aware.
+      this.setState({user: user})
     }
     else {
-      this.setState({message: 'Could not add that video to your history. Please try again later.'})
+      this.setState({message: 'Could not remove that bookmark. Please try again later.'})
     }
   })
   .catch(error => {
-    console.log(error)
     this.getData()
   })
+}
+
+// Adds a video to the user's history by calling the API; uses the response
+// to update the state and the localStorage object
+function addToHistory(url) {
+  let urlsInHistory = this.state.user.history.map(a => a.data.url)
+  if (!(this.state.loading)) {
+    this.setState({loading: true})
+    if (urlsInHistory.indexOf(url) > -1) {
+      console.log('in history')
+      for (let index in this.state.user.history) {
+        let item = this.state.user.history[index]
+        if (item.data.url == url) {
+          console.log(item.id)
+          this.deleteFromHistory(item.id)
+        }
+      }
+    }
+    fetch('https://api.supertutortv.com/v2/courses/data/history', {
+    method: 'PUT',
+    accept: 'application/vnd.sttv.app+json',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        url: url
+        })
+    })
+    .then( response => this.handleResponse(response))
+    .then( items => {
+      if (items != null) {
+        if (items.data && items.data.data && items.data.data.url && items.data.id) {
+          let user_obj = this.state.user
+          if (user_obj.history) {
+            user_obj.history.push(items.data)
+          }
+          else {
+            user_obj.history = [items.data]
+          }
+          const course_data = JSON.parse(localStorage.getItem('sttv_data'))
+          course_data.user = user_obj
+          localStorage.setItem('sttv_data', JSON.stringify(course_data))
+          this.setState({user: user_obj, loading: false})
+        }
+      }
+      else {
+        this.setState({message: 'Could not add that video to your history. Please try again later.', loading: false})
+      }
+    })
+    .catch(error => {
+      this.setState({loading: false})
+      this.getData()
+    })
+  }
 }
 
 // Updates the remote user object and then uses the response from the server
@@ -222,7 +273,6 @@ function updateUserObj(key) {
       accept: 'application/vnd.sttv.app+json',
       credentials: 'include',
       headers: {
-        'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.user[key])
@@ -255,7 +305,6 @@ function downloadTracker(path) {
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
   headers: {
-    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
@@ -286,4 +335,4 @@ function courseRefresh() {
   }
 }
 
-export {addToHistory, courseRefresh, createBookmark, deleteBookmark, downloadTracker, getBookmarkId, getData, updateUserObj}
+export {addToHistory, courseRefresh, createBookmark, deleteBookmark, deleteFromHistory, downloadTracker, getBookmarkId, getData, updateUserObj}
