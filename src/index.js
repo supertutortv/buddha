@@ -13,7 +13,6 @@ import {Downloads} from './modules/Downloads.js'
 import {Feedback} from './modules/Feedback.js'
 import {Four04} from './modules/Four04.js'
 import {Header} from './modules/Header.js'
-import {Help} from './modules/Help.js'
 import {History} from './modules/History.js'
 import {Menu} from './modules/Menu.js'
 import {PracticeTest} from './modules/PracticeTest.js'
@@ -56,7 +55,6 @@ class App extends React.Component {
     this.startSession = startSession.bind(this)
     this.handleChange = handleChange.bind(this)
     this.Header = Header.bind(this)
-    this.Help = Help.bind(this)
     this.History = History.bind(this)
     this.logout = logout.bind(this)
     this.Menu = Menu.bind(this)
@@ -170,7 +168,6 @@ class App extends React.Component {
                             <Route path='/feedback' component={this.Feedback} />
                             <Route path='/bookmarks' component={this.Bookmarks} />
                             <Route path='/review' component={this.Review} />
-                            <Route path='/help' component={this.Help} />
                             <Route path='/all-your-base-are-belong-to-us' component={AllYourBase} />
                             <Route path="/*" component={this.Four04} />
                           </Switch>

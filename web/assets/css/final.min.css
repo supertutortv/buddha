@@ -76,7 +76,7 @@ body.dark-mode #st-app {
   background-position: center; }
   #st-app .basket {
     position: absolute;
-    transition: opacity 10ms ease-in;
+    transition: opacity 100ms ease-in;
     opacity: 1; }
   #st-app .basket-hide {
     opacity: 0; }

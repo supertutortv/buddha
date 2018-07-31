@@ -27,7 +27,6 @@ function Header(props) {
               <Route className='st-link' path='/feedback' component={() => "Feedback"}/>
               <Route className='st-link' path='/bookmarks' component={() => "Bookmarks"}/>
               <Route className='st-link' path='/review' component={() => "Review"}/>
-              <Route className='st-link' path='/help' component={() => "Help"}/>
               <Route className='st-link' path='/all-your-base-are-belong-to-us' component={() => "You have no chance to survive make your time"} />
               <Route path="/*" exact component={() => "Oops"}/>
             </Switch>

@@ -15,7 +15,7 @@ function Menu(props) {
       <Link to='/bookmarks' className={root == 'bookmarks' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Bookmarks' ><Icon>bookmark</Icon></Link>
       <a onClick={() => this.setState({search: !this.state.search})} className={this.state.search ? 'st-link-active' : 'st-app-link'} title='Search' ><Icon>search</Icon></a>
       <a className="st-app-link divider">&nbsp;</a>
-      <Link to='/help' className={root == 'help' && !this.state.search ? 'st-link-active' : 'st-app-link'} title='Help' ><Icon>help</Icon></Link>
+      <a href='http://support.supertutortv.com/' className='st-app-link' title='Help' ><Icon>help</Icon></a>
       <a onClick={this.courseRefresh} className='st-app-link' title='Refresh'><Icon>refresh</Icon></a>
       <a onClick={this.logout} className='st-app-link' title='Logout'><Icon>exit_to_app</Icon></a>
     </section>
