@@ -33,7 +33,13 @@ this.setState({
 // Generic response handler for interacting with the sttv API
 function handleResponse(response) {
   if (response.ok) {
-    return(response.json())
+    if (response.code == 'web_token_expired') {
+      localStorage.removeItem('sttv_data')
+      window.location.replace('http://localhost:8888/sttvroot/login?sessionexp=1')
+    }
+    else {
+      return(response.json())
+    }
   }
   else {
     if (response.status == 429) {

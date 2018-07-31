@@ -2,7 +2,7 @@
 // delete the bookmark from the state and the localStorage object. Relies on
 // getBookmarkId.
 function deleteBookmark(id) {
-  fetch('https://api.supertutortv.com/v2/courses/data/', {
+  fetch('https://api.supertutortv.com/v2/courses/data', {
   method: 'DELETE',
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
@@ -11,12 +11,11 @@ function deleteBookmark(id) {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-      id: String(id)
+      id: parseInt(id)
     })
   })
   .then(response => this.handleResponse(response))
   .then(items => {
-    console.log(items)
     if (items !== null) {
       let user = this.state.user
       for (let item in user.bookmarks) {
@@ -180,7 +179,7 @@ function addToHistory(url) {
   })
   .then( response => this.handleResponse(response))
   .then( items => {
-    if (items !== null) {
+    if (items != null) {
       let user = this.state.user
       user.history.push(items.data)
       const course_data = JSON.parse(localStorage.getItem('sttv_data'))
@@ -216,7 +215,7 @@ function updateUserObj(key) {
     })
     .then(response => this.handleResponse(response))
     .then( items => {
-      if (items !== null) {
+      if (items != null) {
         const user_obj = this.state.user
         // Same thing as in createBookmark; the response is the value that gets updated.
         user_obj[key] = items.data[key]
@@ -236,6 +235,33 @@ function updateUserObj(key) {
   }
 }
 
+function downloadTracker(path) {
+  fetch('https://api.supertutortv.com/v2/courses/data/downloads', {
+  method: 'PUT',
+  accept: 'application/vnd.sttv.app+json',
+  credentials: 'include',
+  headers: {
+    'X-RateLimit-Buster': 'bf6ca4f90c6f5dd48c7c289f34376e12765d315eb23b81a90701e18508610f52',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+      path: path
+      })
+  })
+  .then( response => this.handleResponse(response))
+  .then( items => {
+    if (items != null) {
+      this.setState({message: 'File added to your downloads history'})
+    }
+    else {
+      this.setState({message: 'Could not add that file to your download history. Please try again.'})
+    }
+  })
+  .catch(error => {
+    void(0)
+  })
+}
+
 
 // Clears the course data in localstorage and fetches new data from the API.
 // Not as scary as it pretends.
@@ -246,4 +272,4 @@ function courseRefresh() {
   }
 }
 
-export {addToHistory, courseRefresh, createBookmark, deleteBookmark, getBookmarkId, getData, updateUserObj}
+export {addToHistory, courseRefresh, createBookmark, deleteBookmark, downloadTracker, getBookmarkId, getData, updateUserObj}

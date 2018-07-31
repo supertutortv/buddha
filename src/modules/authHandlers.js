@@ -39,7 +39,6 @@ function startSession() {
       if (items.code == 'login_success') {
         this.setState({auth: true, username: '', password : ''})
         // Makes sure that new sessions have updated data.
-        localStorage.removeItem('sttv_data')
         this.getData()
       }
       else {

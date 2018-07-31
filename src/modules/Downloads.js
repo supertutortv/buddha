@@ -6,13 +6,13 @@ function Downloads(props) {
   let index = 0
   let files = []
   for (let item in this.state.downloads) {
-    let download = this.state.downloads[item]
-    let file = download.file.split('/').filter(String)
-    let res = file[2]
-    let section = file[1]
-    let test = file[0]
+    const download = this.state.downloads[item]
+    const file = download.file.split('/').filter(String)
+    const res = file[2]
+    const section = file[1]
+    const test = file[0]
     files.push(
-      <Col s={12} m={6} l={4} key={index}>
+      <Col s={12} m={6} l={4} key={index} onClick={() => this.downloadTracker('/' + test + '/' + section + '/' + res)}>
         <a className='download-link' href={'https://api.supertutortv.com/course-dl.php?' + 'res=' + res + '&section=' + section + '&test=' + test + '&hash=' + download.hash}>
           &#8226; {download.name}
         </a>
