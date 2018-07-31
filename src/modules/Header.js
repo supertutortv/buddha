@@ -7,10 +7,10 @@ function Header(props) {
   const base = props.location.pathname.split('/').filter(String)
   let image
   if (this.state.user.settings.dark_mode) {
-    image = <img src={window.location.origin + "/web/assets/img/sttv_logo_contrast.png"}/>
+    image = <img src={window.location.origin + "/assets/img/sttv_logo_contrast.png"}/>
   }
   else {
-    image = <img src={window.location.origin + "/web/assets/img/sttv_logo.png"} alt="SupertutorTV"/>
+    image = <img src={window.location.origin + "/assets/img/sttv_logo.png"} alt="SupertutorTV"/>
   }
   return(
     <header>
