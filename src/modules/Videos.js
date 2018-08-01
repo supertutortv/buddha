@@ -16,6 +16,7 @@ function duration(seconds) {
 // Generates links and thumbnails for an array of videos; used in the
 // right sidebar of the Courses component
 function Videos(props) {
+  console.log(props.location)
   let key = 0
   let videos = []
   const vids = props.vids
@@ -27,10 +28,9 @@ function Videos(props) {
       video = this.getResourceByUrl(video.data.url)
     }
     else {
-      link = '/' + props.link + '/' + video.slug
+      link = props.link + '/' + video.slug
     }
     console.log(link)
-    if (video && video.name) {
       let thumb = this.state.thumb.replace('||ID||', video.thumb)
       let ref = this.cleanup(link.slice(1)).concat(' >')
       const timeLabel = duration(video.time)
@@ -52,7 +52,6 @@ function Videos(props) {
         </Route>
         )
       key++
-    }
     }
   return videos
 }

@@ -55,7 +55,7 @@ function Course(props) {
       else {
         let parentUrl = props.location.pathname.split('/').filter(String)
         parentUrl.splice(-1, 1)
-        parentUrl = parentUrl.join('/')
+        parentUrl = '/' + parentUrl.join('/')
         const vids = directory.collection ? directory.collection : this.getResourceByUrl(parentUrl).collection
         const link = directory.collection ? props.location.pathname : parentUrl
         return(
