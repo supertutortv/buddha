@@ -63,7 +63,7 @@ function Course(props) {
               <this.Stage location={props.location.pathname}/>
             <div id="video-wrapper">
               <BrowserRouter>
-                <this.Videos vids={vids} link={'/' + link} />
+                <this.Videos vids={vids} link={link} />
               </BrowserRouter>
             </div>
           </div>

@@ -27,8 +27,9 @@ function Videos(props) {
       video = this.getResourceByUrl(video.data.url)
     }
     else {
-      link = props.link + '/' + video.slug
+      link = '/' + props.link + '/' + video.slug
     }
+    console.log(link)
     if (video && video.name) {
       let thumb = this.state.thumb.replace('||ID||', video.thumb)
       let ref = this.cleanup(link.slice(1)).concat(' >')
