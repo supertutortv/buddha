@@ -4,11 +4,11 @@ import {TransitionGroup, CSSTransition} from "react-transition-group";
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
 
-import {startSession, logout, verifySession} from './modules/authHandlers.js'
+import {logout, verifySession} from './modules/authHandlers.js'
 import {Bookmarks} from './modules/Bookmarks.js'
 import {Course, CourseHome, CourseSection} from './modules/Course.js'
 import {Dashboard, nestedStateChange} from './modules/Dashboard.js'
-import {addToHistory, courseRefresh, createBookmark, deleteBookmark, replaceInHistory, downloadTracker, getBookmarkId, getData, updateUserObj} from './modules/dataHandlers.js'
+import {addToHistory, courseRefresh, createBookmark, deleteBookmark, replaceInHistory, downloadTracker, getBookmarkId, getData, updateUserObj, submitPracticeTest} from './modules/dataHandlers.js'
 import {Downloads} from './modules/Downloads.js'
 import {Feedback} from './modules/Feedback.js'
 import {Four04} from './modules/Four04.js'
@@ -33,9 +33,10 @@ class App extends React.Component {
       username: '',
       password: '',
       query: '',
-      currentCourse: 'the-best-act-prep-course-ever'
+      missed: '',
+      blank: '',
+      guessed: ''
     }
-
     this.addToHistory = addToHistory.bind(this)
     this.Bookmarks = Bookmarks.bind(this)
     this.cleanup = cleanup.bind(this)
@@ -52,7 +53,6 @@ class App extends React.Component {
     this.Four04 = Four04.bind(this)
     this.nestedStateChange = nestedStateChange.bind(this)
     this.getResourceByUrl = getResourceByUrl.bind(this)
-    this.startSession = startSession.bind(this)
     this.handleChange = handleChange.bind(this)
     this.Header = Header.bind(this)
     this.History = History.bind(this)
@@ -64,6 +64,7 @@ class App extends React.Component {
     this.searchCourse = searchCourse.bind(this)
     this.CourseSection = CourseSection.bind(this)
     this.Stage = Stage.bind(this)
+    this.submitPracticeTest = submitPracticeTest.bind(this)
     this.updateUserObj = updateUserObj.bind(this)
     this.Videos = Videos.bind(this)
   }
@@ -104,15 +105,6 @@ class App extends React.Component {
         }
         if (newDownloadsLocation && 'files' in newDownloadsLocation) {
           downloads = newDownloadsLocation.files
-        }
-        if (nextDirectory && nextDirectory.collection && nextDirectory.data && nextDirectory.data.type == 'videos' && nextDirectory.collection != nextState.vids) {
-          this.setState({vids : nextDirectory.collection, vidLink: '/' + nextLink.join('/')})
-        }
-        else if (nextParent && nextParent.collection && nextParent.data && nextParent.data.type == 'videos' && (nextParent.collection != nextState.vids || nextDirectory.id != nextState.stage)) {
-          this.setState({vids: nextParent.collection, stage: nextDirectory.id, vidLink: '/' + copy.join('/')})
-        }
-        else if (!nextState.vids && this.state.user.history != null) {
-          this.setState({vids: this.state.user.history, vidLink: '/' + nextLink.join('/')})
         }
         if (newDownloadsLocation && newDownloadsLocation.data && newDownloadsLocation.data.type == 'collection' && downloads != nextState.downloads) {
           this.setState({downloads: downloads})
@@ -161,7 +153,7 @@ class App extends React.Component {
                         <div>
                           <Switch location={location}>
                             {courses}
-                            <Route path='/dashboard' component={this.Dashboard} />
+                            <Route path='/dashboard' component={this.PracticeTest} />
                             <Route path='/courses' component={this.CourseHome} />
                             <Route path={'/' + this.state.currentCourse} />
                             <Route path='/history' component={this.History} />

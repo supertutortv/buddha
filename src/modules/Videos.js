@@ -1,20 +1,21 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
 
+function duration(seconds) {
+  let timeString = ''
+  if (Math.floor(seconds/3600) > 0) {
+    timeString += String(Math.floor(seconds/3600)) + 'h '
+  }
+  if (Math.floor(seconds/60) > 0) {
+    timeString += String(Math.floor(seconds/60)) + 'm '
+  }
+  timeString += String(seconds % 60) + 's '
+  return timeString
+}
+
 // Generates links and thumbnails for an array of videos; used in the
 // right sidebar of the Courses component
 function Videos(props) {
-  function duration(seconds) {
-    let timeString = ''
-    if (Math.floor(seconds/3600) > 0) {
-      timeString += String(Math.floor(seconds/3600)) + 'h '
-    }
-    if (Math.floor(seconds/60) > 0) {
-      timeString += String(Math.floor(seconds/60)) + 'm '
-    }
-    timeString += String(seconds % 60) + 's '
-    return timeString
-  }
   let key = 0
   let videos = []
   const vids = props.vids
@@ -49,7 +50,7 @@ function Videos(props) {
           </Link>
         </Route>
         )
-        key++
+      key++
     }
     }
   return videos

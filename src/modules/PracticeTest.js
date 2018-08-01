@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 // Grading page that will be connected to the backend at some point
 function PracticeTest(props) {
   return (
@@ -28,7 +30,7 @@ function PracticeTest(props) {
       <div>
         <textarea value={this.state.guessed} onChange={this.handleChange}  placeholder="Enter the number of each question you guessed on but still got right (e.g. 4, 53)" className="st-textarea"  name="guessed" />
       </div>
-      <button onClick={() => console.log(this.state.missed, this.state.blank, this.state.guessed)}>Grade</button>
+      <a className="btn" onClick={() => this.submitPracticeTest(props.name)}>Grade</a>
     </div>
   )
 }

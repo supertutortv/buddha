@@ -28,7 +28,7 @@ function Stage(props) {
       </div>
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
-    const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', this.state.stage)
+    const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', vid.id)
     frame = <iframe className='st-course-player' id="st-player"
       key='stage'
       src={link}
@@ -49,10 +49,11 @@ function Stage(props) {
       downloads = <a title='Files' className='download-inactive' ><Icon style={{color:"white"}}>cloud_download</Icon></a>
     }
     let feedback = <Link to='/feedback' title='Feedback' ><Icon>rate_review</Icon></Link>
+    let onEnded = ()=>{}
     return (
       <div>
           {this.state.downloadModal && <this.Downloads />}
-          {frame}
+          <ReactPlayer url={link} onEnded={() => console.log('hi')} />
           <div>
             <div className="st-video-icons">
               {feedback}

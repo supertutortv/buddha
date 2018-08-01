@@ -64,7 +64,6 @@ function getData() {
       currentCourse: currentCourse,
       thumb: thumb,
       stage: stage,
-      vids: data.user.history,
     })
   }
   else {
@@ -100,7 +99,6 @@ function getData() {
           currentCourse: currentCourse,
           thumb: thumb,
           stage: stage,
-          vids: items.data.user.history,
        })
       }
     })
@@ -126,8 +124,8 @@ function createBookmark(url) {
       url: url
       })
   })
-  .then( response => this.handleResponse(response))
-  .then( items => {
+  .then(response => this.handleResponse(response))
+  .then(items => {
     if (items !== null) {
       if (items.data && items.data.data && items.data.data.url && items.data.id) {
         let user_obj = this.state.user
@@ -219,7 +217,6 @@ function replaceInHistory(url) {
 // Adds a video to the user's history by calling the API; uses the response
 // to update the state and the localStorage object
 function addToHistory(url) {
-  console.log(url)
   let urlsInHistory = this.state.user.history.map(a => a.data.url)
   if (!(this.state.loading)) {
     if (urlsInHistory.indexOf(url) > -1) {
@@ -238,8 +235,8 @@ function addToHistory(url) {
           url: url
           })
       })
-      .then( response => this.handleResponse(response))
-      .then( items => {
+      .then(response => this.handleResponse(response))
+      .then(items => {
         if (items != null) {
           if (items.data && items.data.data && items.data.data.url && items.data.id) {
             let user_obj = this.state.user
@@ -283,7 +280,7 @@ function updateUserObj(key) {
       body: JSON.stringify(this.state.user[key])
     })
     .then(response => this.handleResponse(response))
-    .then( items => {
+    .then(items => {
       if (items != null) {
         let user_obj = this.state.user
         // Same thing as in createBookmark; the response is the value that gets updated.
@@ -316,8 +313,8 @@ function downloadTracker(path) {
       path: path
       })
   })
-  .then( response => this.handleResponse(response))
-  .then( items => {
+  .then(response => this.handleResponse(response))
+  .then(items => {
     if (items != null) {
       this.setState({message: 'File added to your downloads history'})
     }
@@ -330,6 +327,30 @@ function downloadTracker(path) {
   })
 }
 
+function submitPracticeTest(name) {
+  fetch('https://api.supertutortv.com/v2/courses/practice', {
+  method: 'POST',
+  accept: 'application/vnd.sttv.app+json',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: name,
+    timestamp: Date(),
+    missed: this.state.missed.split(',').filter(Boolean),
+    blank: this.state.blank.split(',').filter(Boolean),
+    guessed: this.state.guessed.split(',').filter(Boolean)
+      })
+  })
+  .then(response => this.handleResponse(response))
+  .then(items => console.log(items))
+  .catch(error => {
+    void(0)
+    }
+  )
+}
+
 
 // Clears the course data in localstorage and fetches new data from the API.
 // Not as scary as it pretends.
@@ -340,4 +361,4 @@ function courseRefresh() {
   }
 }
 
-export {addToHistory, courseRefresh, createBookmark, deleteBookmark, replaceInHistory, downloadTracker, getData, updateUserObj}
+export {addToHistory, courseRefresh, createBookmark, deleteBookmark, replaceInHistory, downloadTracker, getData, updateUserObj, submitPracticeTest}

@@ -34,6 +34,7 @@ this.setState({
 function handleResponse(response) {
   if (response.ok) {
     if (response.code == 'web_token_expired') {
+      console.log("that's amore")
       localStorage.removeItem('sttv_data')
       window.location.replace('http://localhost:8888/sttvroot/login?sessionexp=1')
     }

@@ -40,24 +40,35 @@ function Course(props) {
       )
   }
   else {
-    if (this.getResourceByUrl(props.location.pathname) !== null) {
-      return(
-        <div id="st-course">
-          <div id="st-nav">
-            <div id="st-sections">
-              <this.CourseSection collection={course.collection} link={link} thumb={course.data.thumbUrls.plain} spacing={0} />
+    const directory = this.getResourceByUrl(props.location.pathname)
+    if (directory !== null) {
+      if (directory.data && directory.data.type && directory.data.type == 'collection' || directory.data && !directory.data.type) {
+        return(
+          <div id="st-course">
+            <this.Stage location={props.location.pathname}/>
+            <div id="st-nav">
+              <this.CourseSection location={props.location.pathname} />
             </div>
           </div>
-          <div id="st-stage">
-            <this.Stage location={props.location.pathname}/>
+        )
+      }
+      else {
+        let parentUrl = props.location.pathname.split('/').filter(String)
+        parentUrl.splice(-1, 1)
+        parentUrl = parentUrl.join('/')
+        const vids = directory.collection ? directory.collection : this.getResourceByUrl(parentUrl).collection
+        const link = directory.collection ? props.location.pathname : parentUrl
+        return(
+          <div id="st-course">
+              <this.Stage location={props.location.pathname}/>
+            <div id="video-wrapper">
+              <BrowserRouter>
+                <this.Videos vids={vids} link={'/' + link} />
+              </BrowserRouter>
+            </div>
           </div>
-          <div id="video-wrapper">
-            <BrowserRouter>
-              <this.Videos vids={this.state.vids} link={this.state.vidLink} />
-            </BrowserRouter>
-          </div>
-        </div>
-      )
+        )
+      }
     }
     else {
       return <this.Four04 />
@@ -68,35 +79,16 @@ function Course(props) {
 // Component that recursively generates the routes and links for collections
 // until it gets to a video folder
 function CourseSection(props) {
-  const collection = props.collection
-  const topLink = props.link
-  const thumb = props.thumb
-  const spacing = props.spacing
   let renderedSections = []
-  for (let section in collection) {
-    let currentSection = collection[section]
-    const name = currentSection.data.name
-    let link = topLink + '/' + section
-    let route
-    let click
-    if (currentSection.data.type == 'collection') {
-      let nextCollection = currentSection.collection
-      let nextSpacing = spacing + 1
-      route = <Route path={link} render={() => <this.CourseSection
-        collection={nextCollection} link={link} thumb={thumb}
-        spacing={nextSpacing} />} />
-      if ('intro' in currentSection.data) {
-        click = () => {this.setState({stage: currentSection.data.intro, lastLink: link})}
-      }
-    }
-    else {
-      let vids = currentSection.collection
-      click = () => this.setState({vids: vids, vidLink : link, vidThumbLink: thumb, lastLink: link})
-    }
+  const parent = this.getResourceByUrl(props.location)
+  const dir = parent.collection
+  for (let section in dir) {
+    let subSection = dir[section]
+    const name = subSection.data.name
+    const link = props.location + '/' + section
     renderedSections.push(
-      <div key={section} style={{paddingLeft: 10*spacing}} >
-        <Link to={link} onClick={click} className={window.location.pathname == link ? 'link-highlight' : 'link'}> {name} </Link>
-        {route}
+      <div key={section} >
+        <Link to={link} > {name} </Link>
       </div>
     )
   }
