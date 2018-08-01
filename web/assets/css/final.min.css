@@ -60,6 +60,8 @@ body.dark-mode #st-app {
     border: 1px solid white; }
   body.dark-mode #st-app #st-app-inner .st-textarea::placeholder {
     color: #f1f1f1; }
+  body.dark-mode #st-app #st-app-inner .st-subsection {
+    border: 1px solid white; }
   body.dark-mode #st-app #video-wrapper {
     background-color: rgba(0, 0, 0, 0.75) !important; }
   body.dark-mode #st-app button {
@@ -160,9 +162,9 @@ body.dark-mode #st-app {
       display: block;
       width: 400px;
       height: 100px;
-      outline: none;
-      border-radius: 2px; }
+      outline: none; }
     #st-app #st-app-inner .st-subsection {
+      margin-top: auto;
       margin-left: auto;
       margin-right: auto;
       display: block;
@@ -170,8 +172,8 @@ body.dark-mode #st-app {
       min-height: 100px;
       min-width: 100px;
       max-width: 500px;
-      background-color: darkGrey;
-      border-radius: 5px; }
+      border-radius: 8px;
+      border: 1px solid black; }
     #st-app #st-app-inner .st-textarea::placeholder {
       color: rgba(0, 0, 0, 0.75); }
     #st-app #st-app-inner #ratings-modal-wrapper {
