@@ -17,22 +17,26 @@ function Stage(props) {
       location.pop()
       label = this.cleanup(location.join(' > ')) + ' > ' + vid.name
     }
-    else {
-      label = ''
+    if (!label) {
+      label = <br />
     }
     let frame
-    if (this.state.stage == '0') {
-      frame =
-      <div className='st-course-player' style={{width:'946px', height: '594px', 'background-color': 'black'}} frameBorder='' title='Intro' webkitallowfullscreen='tr'>
-        <h3 style={{'vertical-align': 'middle', 'line-height': '594px', 'text-align': 'center'}}>This video will become available when you purchase the full course</h3>
-      </div>
+    let id
+    if (vid.id) {
+      id = vid.id
+    }
+    else if (vid.data && vid.data.intro) {
+      id = vid.data.intro
+    }
+    else {
+      id = vid.collection[Object.keys(vid.collection)[0]].id
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
-    const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', vid.id)
+    const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', id)
     frame = <iframe className='st-course-player' id="st-player"
       key='stage'
       src={link}
-      width='810' height='580' frameBorder='' title='Intro' webkitallowfullscreen='tr'
+      width='1000' height='600' frameBorder='' title='Intro' webkitallowfullscreen='tr'
       allowFullScreen=''></iframe>
     let bookmark
     if (this.state.bookmarkedIds.includes(props.location)) {
@@ -49,11 +53,11 @@ function Stage(props) {
       downloads = <a title='Files' className='download-inactive' ><Icon style={{color:"white"}}>cloud_download</Icon></a>
     }
     let feedback = <Link to='/feedback' title='Feedback' ><Icon>rate_review</Icon></Link>
-    let onEnded = ()=>{}
-    return (
-      <div>
+    let onEnded = () => {}
+    return(
+      <div style={{width: '1000px'}}>
           {this.state.downloadModal && <this.Downloads />}
-          <ReactPlayer url={link} onEnded={() => console.log('hi')} />
+          {frame}
           <div>
             <div className="st-video-icons">
               {feedback}

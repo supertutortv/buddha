@@ -162,6 +162,16 @@ body.dark-mode #st-app {
       height: 100px;
       outline: none;
       border-radius: 2px; }
+    #st-app #st-app-inner .st-subsection {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      text-align: center;
+      min-height: 100px;
+      min-width: 100px;
+      max-width: 500px;
+      background-color: darkGrey;
+      border-radius: 5px; }
     #st-app #st-app-inner .st-textarea::placeholder {
       color: rgba(0, 0, 0, 0.75); }
     #st-app #st-app-inner #ratings-modal-wrapper {
@@ -172,8 +182,7 @@ body.dark-mode #st-app {
     #st-app #st-app-inner .star-active-lock {
       color: #ed812e; }
     #st-app #st-app-inner .st-video-icons {
-      float: right;
-      padding-right: 18.25em; }
+      float: right; }
       #st-app #st-app-inner .st-video-icons a {
         padding-left: .75em; }
     #st-app #st-app-inner .st-video-label {
@@ -266,8 +275,11 @@ body.dark-mode #st-app {
       #st-app #st-app-inner .video-in-grid .grid-label {
         position: absolute;
         top: 150px; }
-    #st-app #st-app-inner #st-course-player {
-      margin: auto; }
+    #st-app #st-app-inner .stage-center {
+      padding-left: 150px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; }
     #st-app #st-app-inner #video-wrapper {
       opacity: 100%;
       width: 18em;

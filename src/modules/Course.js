@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, Route} from 'react-router-dom'
 import {BrowserRouter} from "react-router-dom"
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {Row, Col} from 'react-materialize'
 
 // Course Home Page. Contains a list of courses the user can access.
 function CourseHome(props) {
@@ -32,7 +32,7 @@ function Course(props) {
   let link = '/' + this.state.currentCourse
   let course = this.state.courses[this.state.currentCourse]
   if (course instanceof Array) {
-      return (
+      return(
         <h5>
           It looks like your subscription to this course has expired! You can
           renew your subscription, or go to the help page if you think this is an error.
@@ -41,11 +41,16 @@ function Course(props) {
   }
   else {
     const directory = this.getResourceByUrl(props.location.pathname)
+    let parentUrl = props.location.pathname.split('/').filter(String)
+    parentUrl.splice(-1, 1)
+    parentUrl = '/' + parentUrl.join('/')
     if (directory !== null) {
       if (directory.data && directory.data.type && directory.data.type == 'collection' || directory.data && !directory.data.type) {
         return(
-          <div id="st-course">
-            <this.Stage location={props.location.pathname}/>
+          <div>
+            <div className="stage-center">
+              <this.Stage location={props.location.pathname}/>
+            </div>
             <div id="st-nav">
               <this.CourseSection location={props.location.pathname} />
             </div>
@@ -59,9 +64,9 @@ function Course(props) {
         const vids = directory.collection ? directory.collection : this.getResourceByUrl(parentUrl).collection
         const link = directory.collection ? props.location.pathname : parentUrl
         return(
-          <div id="st-course">
+          <div id="st-course" >
               <this.Stage location={props.location.pathname}/>
-            <div id="video-wrapper">
+            <div id="video-wrapper" >
               <BrowserRouter>
                 <this.Videos vids={vids} link={link} />
               </BrowserRouter>
@@ -87,12 +92,24 @@ function CourseSection(props) {
     const name = subSection.data.name
     const link = props.location + '/' + section
     renderedSections.push(
-      <div key={section} >
-        <Link to={link} > {name} </Link>
-      </div>
+      <Col s={12} m={12} l={6} key={section} style={{paddingBottom: '20px'}}>
+        <Link to={link}>
+          <div className="st-subsection">
+            <h3>
+              {name}
+            </h3>
+            <br />
+            {!!subSection.data.description && subSection.data.description}
+          </div>
+        </Link>
+      </Col>
     )
   }
-  return (renderedSections)
+  return(
+    <Row>
+      {renderedSections}
+    </Row>
+  )
 }
 
 export {Course, CourseHome, CourseSection}
