@@ -14,6 +14,7 @@ function CourseHome(props) {
         <div style={{fontSize: '80%', fontStyle: 'italic', display: 'inline-block', paddingLeft: '10px'}}>
           ({label})
         </div>
+        <br />
       </div>
     )
   }
@@ -47,11 +48,27 @@ function Course(props) {
     if (directory !== null) {
       if (directory.data && directory.data.type && directory.data.type == 'collection' || directory.data && !directory.data.type) {
         return(
-          <div>
-            <div className="stage-center">
-              <this.Stage location={props.location.pathname}/>
+          <div style={{height: '350px'}}>
+            <div className="stage-left">
+              <this.Stage location={props.location.pathname} width={'100%'} height={'100%'}/>
             </div>
-            <div id="st-nav">
+            <div style={{paddingTop: '50px'}}>
+              <Route exact path={'/' + this.state.currentCourse} render={() =>
+                <div>
+                  <Link to={'/' + this.state.currentCourse + '/tests'}>
+                  <h4>
+                    Practice Tests
+                  </h4>
+                  </Link>
+                  <Link to={'/' + this.state.currentCourse + '/playlists'}>
+                  <h4>
+                    Playlists
+                  </h4>
+                  </Link>
+                </div>
+              } />
+            </div>
+            <div id="course-nav">
               <this.CourseSection location={props.location.pathname} />
             </div>
           </div>
@@ -64,8 +81,10 @@ function Course(props) {
         const vids = directory.collection ? directory.collection : this.getResourceByUrl(parentUrl).collection
         const link = directory.collection ? props.location.pathname : parentUrl
         return(
-          <div id="st-course" >
-              <this.Stage location={props.location.pathname}/>
+          <div>
+            <div >
+              <this.Stage location={props.location.pathname} width={'1000px'} height={'600px'}/>
+            </div>
             <div id="video-wrapper" >
               <BrowserRouter>
                 <this.Videos vids={vids} link={link} />
@@ -92,12 +111,12 @@ function CourseSection(props) {
     const name = subSection.data.name
     const link = props.location + '/' + section
     renderedSections.push(
-      <Col s={12} m={12} l={6} key={section} style={{paddingBottom: '20px'}}>
+      <Col s={12} m={12} l={6} key={section} style={{paddingBottom: '10px'}}>
         <Link to={link}>
           <div className="st-subsection">
-            <h3>
+            <h5>
               {name}
-            </h3>
+            </h5>
             <br />
             {!!subSection.data.description && subSection.data.description}
           </div>

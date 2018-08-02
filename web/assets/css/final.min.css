@@ -60,12 +60,82 @@ body.dark-mode #st-app {
     border: 1px solid white; }
   body.dark-mode #st-app #st-app-inner .st-textarea::placeholder {
     color: #f1f1f1; }
-  body.dark-mode #st-app #st-app-inner .st-subsection {
-    border: 1px solid white; }
+  body.dark-mode #st-app #st-app-inner #course-nav .st-subsection {
+    border: 1px solid #f1f1f1; }
   body.dark-mode #st-app #video-wrapper {
     background-color: rgba(0, 0, 0, 0.75) !important; }
   body.dark-mode #st-app button {
     color: rgba(0, 0, 0, 0.75); }
+
+body.matrix-mode #st-app {
+  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+  color: lime;
+  background-color: black; }
+  body.matrix-mode #st-app .matrix-background {
+    padding-left: 6.75em;
+    top: 0;
+    bottom: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    opacity: .25;
+    display: inline-block;
+    font-size: small;
+    position: absolute;
+    z-index: -100;
+    margin: 0;
+    display: block; }
+  body.matrix-mode #st-app .switch label input[type=checkbox]:checked + .lever {
+    background-color: lime; }
+  body.matrix-mode #st-app .switch label input[type=checkbox]:checked + .lever:after {
+    background-color: lime; }
+  body.matrix-mode #st-app input:focus {
+    border-bottom: 1px solid lime;
+    -webkit-box-shadow: 0 1px 0 0 lime;
+    -moz-box-shadow: 0 1px 0 0 lime;
+    box-shadow: 0 1px 0 0 lime; }
+  body.matrix-mode #st-app .btn {
+    background-color: lime;
+    color: black; }
+  body.matrix-mode #st-app a {
+    color: lime; }
+  body.matrix-mode #st-app header {
+    background-color: black;
+    color: lime; }
+  body.matrix-mode #st-app #header-settings label {
+    background-color: black;
+    color: lime; }
+  body.matrix-mode #st-app .info-input {
+    color: lime; }
+  body.matrix-mode #st-app .st-link {
+    font-size: large;
+    color: lime; }
+  body.matrix-mode #st-app #st-app-inner {
+    position: absolute;
+    z-index: 10; }
+  body.matrix-mode #st-app #st-app-inner .btn {
+    color: black; }
+  body.matrix-mode #st-app #st-app-inner .st-video-remover {
+    background-color: black;
+    color: lime;
+    border: 1px solid lime; }
+  body.matrix-mode #st-app #st-app-inner .grid-thumb {
+    border: 1px solid lime; }
+  body.matrix-mode #st-app #st-app-inner .st-textarea::placeholder {
+    color: lime; }
+  body.matrix-mode #st-app #st-app-inner .download-inactive {
+    color: black; }
+  body.matrix-mode #st-app #st-app-inner .st-downloads {
+    background-color: black;
+    color: lime; }
+  body.matrix-mode #st-app #st-app-inner .download-link {
+    color: lime; }
+  body.matrix-mode #st-app #video-wrapper {
+    background-color: black !important; }
+  body.matrix-mode #st-app button {
+    color: black; }
 
 #st-app {
   overflow: hidden;
@@ -137,11 +207,13 @@ body.dark-mode #st-app {
     font-size: 16px;
     width: 100%;
     align: center;
-    padding-bottom: 100px; }
+    padding-bottom: 100px;
+    overflow-x: hidden; }
     #st-app #st-app-inner #st-course {
       overflow: hidden;
       height: 100%; }
       #st-app #st-app-inner #st-course #st-nav #st-sections {
+        float: right;
         padding-left: 10px;
         opacity: 2;
         position: fixed;
@@ -163,17 +235,6 @@ body.dark-mode #st-app {
       width: 400px;
       height: 100px;
       outline: none; }
-    #st-app #st-app-inner .st-subsection {
-      margin-top: auto;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-      text-align: center;
-      min-height: 100px;
-      min-width: 100px;
-      max-width: 500px;
-      border-radius: 8px;
-      border: 1px solid black; }
     #st-app #st-app-inner .st-textarea::placeholder {
       color: rgba(0, 0, 0, 0.75); }
     #st-app #st-app-inner #ratings-modal-wrapper {
@@ -282,6 +343,23 @@ body.dark-mode #st-app {
       display: block;
       margin-left: auto;
       margin-right: auto; }
+    #st-app #st-app-inner #course-nav {
+      opacity: 100%;
+      width: 50%;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: 4.5em;
+      overflow-x: hidden;
+      padding-top: 10px; }
+      #st-app #st-app-inner #course-nav .st-subsection {
+        min-height: 100px;
+        border: 1px solid rgba(0, 0, 0, 0.75);
+        border-radius: 8px;
+        text-align: center; }
+    #st-app #st-app-inner .stage-left {
+      width: 45%;
+      height: 100%; }
     #st-app #st-app-inner #video-wrapper {
       opacity: 100%;
       width: 18em;
@@ -347,6 +425,12 @@ body.dark-mode #st-sidebar {
   background-color: rgba(0, 0, 0, 0.75); }
   body.dark-mode #st-sidebar a.st-app-link.divider {
     background-color: #f1f1f1; }
+
+body.matrix-mode #st-sidebar {
+  color: lime;
+  background-color: black; }
+  body.matrix-mode #st-sidebar a.st-app-link.divider {
+    background-color: lime; }
 
 #st-sidebar {
   position: absolute;

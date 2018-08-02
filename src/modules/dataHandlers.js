@@ -165,7 +165,7 @@ function getIdsByUrl(url, array) {
 }
 
 function replaceInHistory(url) {
-  this.setState({loading: true})
+  this.setState({historyLoading: true})
   let id = getIdsByUrl(url, this.state.user.history)
   fetch('https://api.supertutortv.com/v2/courses/data', {
   method: 'DELETE',
@@ -195,21 +195,21 @@ function replaceInHistory(url) {
       // bookmarkedIds is in the state to efficiently set the behavior and appearance
       // of a video's bookmark icon when it is in the stage; otherwise, this would have
       // to be done on each video change. Not pretty, I am aware.
-      this.setState({user: user, loading: false})
+      this.setState({user: user, historyLoading: false})
       let id = getIdsByUrl(url, this.state.user.history)
       if (id.length == 0) {
         this.addToHistory(url)
       }
       else {
-        this.setState({message: 'Could not remove that bookmark. Please try again later.', loading: false})
+        this.setState({message: 'Could not remove that bookmark. Please try again later.', historyLoading: false})
       }
     }
     else {
-      this.setState({message: 'Could not remove that bookmark. Please try again later.', loading: false})
+      this.setState({message: 'Could not remove that bookmark. Please try again later.', historyLoading: false})
     }
   })
   .catch(error => {
-    this.setState({loading: false})
+    this.setState({historyLoading: false})
     this.getData()
   })
 }
@@ -218,12 +218,12 @@ function replaceInHistory(url) {
 // to update the state and the localStorage object
 function addToHistory(url) {
   let urlsInHistory = this.state.user.history.map(a => a.data.url)
-  if (!(this.state.loading)) {
+  if (!(this.state.historyLoading)) {
     if (urlsInHistory.indexOf(url) > -1) {
       this.replaceInHistory(url)
     }
     else {
-      this.setState({loading: true})
+      this.setState({historyLoading: true})
       fetch('https://api.supertutortv.com/v2/courses/data/history', {
       method: 'PUT',
       accept: 'application/vnd.sttv.app+json',
@@ -246,18 +246,21 @@ function addToHistory(url) {
             else {
               user_obj.history = [items.data]
             }
+            if (user_obj.history.length > 50) {
+              user_obj.history = user_obj.history.slice(0, 50)
+            }
             const course_data = JSON.parse(localStorage.getItem('sttv_data'))
             course_data.user = user_obj
             localStorage.setItem('sttv_data', JSON.stringify(course_data))
-            this.setState({user: user_obj, loading: false})
+            this.setState({user: user_obj, historyLoading: false})
           }
         }
         else {
-          this.setState({message: 'Could not add that video to your history. Please try again later.', loading: false})
+          this.setState({message: 'Could not add that video to your history. Please try again later.', historyLoading: false})
         }
       })
       .catch(error => {
-        this.setState({loading: false})
+        this.setState({historyLoading: false})
         this.getData()
       })
     }

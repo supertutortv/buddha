@@ -10,12 +10,28 @@ function Stage(props) {
     const vid = this.getResourceByUrl(props.location)
     let label
     if (vid.data) {
-      label = this.cleanup(props.location.split('/').filter(String).splice(1).join('/'))
+      const location = props.location.split('/').filter(String).splice(1)
+      let to = '/' + this.state.currentCourse
+      label = []
+      for (let i in location) {
+        let part = location[i]
+        to += '/' + part
+        const subLabel = (i == location.length - 1 ? this.cleanup(part) : this.cleanup(part) + ' > ')
+        label.push(<Link to={to} key={part}>{subLabel}</Link>)
+      }
     }
     else if (vid.name) {
       const location = props.location.split('/').filter(String).splice(1)
       location.pop()
-      label = this.cleanup(location.join(' > ')) + ' > ' + vid.name
+      let to = '/' + this.state.currentCourse
+      label = []
+      for (let i in location) {
+        let part = location[i]
+        to += '/' + part
+        const subLabel = (i == location.length - 1 ? this.cleanup(part) : this.cleanup(part) + ' > ')
+        label.push(<Link to={to} key={part}>{subLabel}</Link>)
+      }
+      label.push(<Link to={to + '/' + vid.slug} key='name'>{ ' > ' + vid.name}</Link>)
     }
     if (!label) {
       label = <br />
@@ -36,7 +52,8 @@ function Stage(props) {
     frame = <iframe className='st-course-player' id="st-player"
       key='stage'
       src={link}
-      width='1000' height='600' frameBorder='' title='Intro' webkitallowfullscreen='tr'
+      width={props.width}
+      height={props.height} frameBorder='' title='Intro' webkitallowfullscreen='tr'
       allowFullScreen=''></iframe>
     let bookmark
     if (this.state.bookmarkedIds.includes(props.location)) {
@@ -55,7 +72,7 @@ function Stage(props) {
     let feedback = <Link to='/feedback' title='Feedback' ><Icon>rate_review</Icon></Link>
     let onEnded = () => {}
     return(
-      <div style={{width: '1000px'}}>
+      <div style={{width: '100%', height: '100%', paddingBottom: '10px'}}>
           {this.state.downloadModal && <this.Downloads />}
           {frame}
           <div>
@@ -70,6 +87,7 @@ function Stage(props) {
     )
   }
   catch (e) {
+    console.log(e)
     void(0)
   }
 }

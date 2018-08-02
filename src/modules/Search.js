@@ -62,6 +62,14 @@ function Search() {
       links = 'Invalid query'
     }
   }
+  if (this.state.query == 'matrix') {
+    if (this.state.matrixMode) {
+      links.push(<li className="st-result"><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: false})} >電話に出る</Link></li>)
+    }
+    else {
+      links.push(<li className="st-result"><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: true})} >赤い丸薬を取る</Link></li>)
+    }
+  }
   return(
     <div className="st-modal" onClick={() => this.setState({search: false})} onKeyDown={(e) => {if (e.keyCode == 27){this.setState({search:false})}}}>
       <div className="st-search" >

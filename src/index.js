@@ -15,10 +15,12 @@ import {Four04} from './modules/Four04.js'
 import {Header} from './modules/Header.js'
 import {History} from './modules/History.js'
 import {Menu} from './modules/Menu.js'
+import {Playlists} from './modules/Playlists.js'
 import {PracticeTest} from './modules/PracticeTest.js'
 import {Review} from './modules/Review.js'
 import {Search, searchCourse} from './modules/Search.js'
 import {Stage} from './modules/Stage.js'
+import {Tests} from './modules/Tests.js'
 import {cleanup, getResourceByUrl, handleChange, handleResponse} from './modules/utilities.js'
 import {Videos} from './modules/Videos.js'
 
@@ -58,10 +60,12 @@ class App extends React.Component {
     this.History = History.bind(this)
     this.logout = logout.bind(this)
     this.Menu = Menu.bind(this)
+    this.Playlists = Playlists.bind(this)
     this.PracticeTest = PracticeTest.bind(this)
     this.Review = Review.bind(this)
     this.Search = Search.bind(this)
     this.searchCourse = searchCourse.bind(this)
+    this.Tests = Tests.bind(this)
     this.CourseSection = CourseSection.bind(this)
     this.Stage = Stage.bind(this)
     this.submitPracticeTest = submitPracticeTest.bind(this)
@@ -88,7 +92,7 @@ class App extends React.Component {
             scrollRef.scrollIntoView()
           }
         }
-        document.body.className = this.state.user.settings.dark_mode ? 'dark-mode' : ''
+        document.body.className = this.state.matrixMode ? 'matrix-mode' : this.state.user.settings.dark_mode ? 'dark-mode' : ''
         let nextLink = this.props.location.pathname.split('/').filter(String)
         const newDownloadsLocation = this.getResourceByUrl(nextLink.slice(0, 2).join('/'))
         let nextDirectory = this.getResourceByUrl(nextLink.join('/'))
@@ -111,18 +115,20 @@ class App extends React.Component {
         }
       }
       catch (error) {
-        console.log(error)
         void(0)
       }
     }
   }
 
   render() {
+    try {
     if (this.state.courses && this.state.user){
       let courses = []
       for (let course in this.state.courses) {
         courses.push(
-          <Route key={course} className='st-link' path={'/' + course} location={this.props.location} component={this.Course}/>
+            [<Route key={course + 'tests'} path={'/' + course + '/tests'} component={this.Tests} />,
+            <Route key={course + 'playlists'} path={'/' + course + '/playlists'} component={this.Playlists} />,
+            <Route key={course} className='st-link' path={'/' + course} location={this.props.location} component={this.Course}/>]
         )
       }
       let search
@@ -133,6 +139,7 @@ class App extends React.Component {
         <section id="st-app">
           <Route path='/' component={this.Header}/>
           <Route path='/' component={this.Menu}/>
+          {this.state.matrixMode && <MatrixBackground />}
           <section id="st-app-inner">
             <div className={this.state.search ? 'basket' : 'basket-hide'}>
               {search}
@@ -153,7 +160,7 @@ class App extends React.Component {
                         <div>
                           <Switch location={location}>
                             {courses}
-                            <Route path='/dashboard' component={this.PracticeTest} />
+                            <Route path='/dashboard' component={this.Dashboard} />
                             <Route path='/courses' component={this.CourseHome} />
                             <Route path={'/' + this.state.currentCourse} />
                             <Route path='/history' component={this.History} />
@@ -179,10 +186,17 @@ class App extends React.Component {
       )
     }
   }
+  catch (e){console.log(e)}
+  }
 }
 
 const AllYourBase = () => (
   <img style={{width:'75%'}} src="https://upload.wikimedia.org/wikipedia/en/0/03/Aybabtu.png" />
+)
+
+const MatrixBackground = () => (
+    <iframe src="./background.html" className='matrix-background'>
+    </iframe>
 )
 
 // Export the whole thing inside of a router

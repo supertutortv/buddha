@@ -6,7 +6,7 @@ function Dashboard(props) {
   if (this.state.user.userdata == null || this.state.user.userdata.type == 'multiuser') {
     return (
       <div>
-        <h5>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h5>
+        <h5>Welcome to the Dashboard, {this.state.matrixMode ? 'Mr. Anderson' : this.state.user.userdata.firstname}</h5>
         <div>
           <h4>Your Orders:</h4>
           {this.state.user.userdata.orders}
