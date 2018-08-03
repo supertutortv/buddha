@@ -6,7 +6,6 @@ import ReactPlayer from 'react-player'
 // The video stage component; generates an iframe based on this.state.stage
 // and generates a label for the video as well as a bookmark button
 function Stage(props) {
-  try {
     const vid = this.getResourceByUrl(props.location)
     let label
     if (vid.data) {
@@ -44,8 +43,14 @@ function Stage(props) {
     else if (vid.data && vid.data.intro) {
       id = vid.data.intro
     }
-    else {
+    else if (vid.collection) {
       id = vid.collection[Object.keys(vid.collection)[0]].id
+    }
+    if (id == null) {
+      // If there's no video, don't bother making a frame or icons
+      return (
+        <h5 className="st-video-label">{label}</h5>
+      )
     }
     const stage = (this.state.stage !== null) ? this.state.stage : this.state.courses[this.state.currentCourse].intro
     const link = 'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=0'.replace('||ID||', id)
@@ -84,12 +89,7 @@ function Stage(props) {
             <h5 className="st-video-label">{label}</h5>
           </div>
       </div>
-    )
-  }
-  catch (e) {
-    console.log(e)
-    void(0)
-  }
+  )
 }
 
 

@@ -99,16 +99,13 @@ class App extends React.Component {
         let copy = nextLink.slice()
         copy.pop()
         const nextParent = this.getResourceByUrl(copy.join('/'))
-        let downloads = []
+        let downloads = (newDownloadsLocation && 'files' in newDownloadsLocation) ? newDownloadsLocation.files : []
         // Hacky, but really cuts down on re-renders and fixes an odd video behavior.
         if (nextProps.location.pathname != window.location.pathname) {
           nextProps.location.pathname = window.location.pathname
         }
         if (nextState.courses && pathRoot && pathRoot in nextState.courses && nextProps.location.pathname != nextState.lastLink && nextProps.location.pathname) {
           this.setState({lastLink: nextProps.location.pathname})
-        }
-        if (newDownloadsLocation && 'files' in newDownloadsLocation) {
-          downloads = newDownloadsLocation.files
         }
         if (newDownloadsLocation && newDownloadsLocation.data && newDownloadsLocation.data.type == 'collection' && downloads != nextState.downloads) {
           this.setState({downloads: downloads})
@@ -195,7 +192,7 @@ const AllYourBase = () => (
 )
 
 const MatrixBackground = () => (
-    <iframe src="./background.html" className='matrix-background'>
+    <iframe src="./web/background.html" className='matrix-background'>
     </iframe>
 )
 

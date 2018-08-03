@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, Route} from 'react-router-dom'
 import {BrowserRouter} from "react-router-dom"
 import {Row, Col} from 'react-materialize'
+import {TransitionGroup, CSSTransition} from "react-transition-group";
 
 // Course Home Page. Contains a list of courses the user can access.
 function CourseHome(props) {
@@ -52,18 +53,18 @@ function Course(props) {
             <div className="stage-left">
               <this.Stage location={props.location.pathname} width={'100%'} height={'100%'}/>
             </div>
-            <div style={{paddingTop: '50px'}}>
+            <div style={{paddingTop: '30px'}}>
               <Route exact path={'/' + this.state.currentCourse} render={() =>
                 <div>
                   <Link to={'/' + this.state.currentCourse + '/tests'}>
-                  <h4>
+                  <h5>
                     Practice Tests
-                  </h4>
+                  </h5>
                   </Link>
                   <Link to={'/' + this.state.currentCourse + '/playlists'}>
-                  <h4>
+                  <h5>
                     Playlists
-                  </h4>
+                  </h5>
                   </Link>
                 </div>
               } />
@@ -82,7 +83,7 @@ function Course(props) {
         const link = directory.collection ? props.location.pathname : parentUrl
         return(
           <div>
-            <div >
+            <div style={{width:'1000px'}}>
               <this.Stage location={props.location.pathname} width={'1000px'} height={'600px'}/>
             </div>
             <div id="video-wrapper" >
@@ -118,7 +119,7 @@ function CourseSection(props) {
               {name}
             </h5>
             <br />
-            {!!subSection.data.description && subSection.data.description}
+            {subSection.data.description}
           </div>
         </Link>
       </Col>

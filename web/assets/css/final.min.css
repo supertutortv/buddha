@@ -11,6 +11,18 @@ html .fade-exit {
   opacity: 0;
   transition: opacity 500ms cubic-bezier(0, 0.5, 0.5); }
 
+html .slide-enter {
+  -webkit-animation: slide 0.5s left;
+  animation: slide 0.5s left; }
+
+html .slide-enter.slide-enter-active {
+  -webkit-animation: slide 0.5s left;
+  animation: slide 0.5s left; }
+
+html .slide-exit {
+  -webkit-animation: slide 0.5s left;
+  animation: slide 0.5s left; }
+
 html body {
   overflow: hidden;
   margin-left: 0;

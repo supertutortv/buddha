@@ -64,10 +64,10 @@ function Search() {
   }
   if (this.state.query == 'matrix') {
     if (this.state.matrixMode) {
-      links.push(<li className="st-result"><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: false})} >電話に出る</Link></li>)
+      links.push(<li className="st-result" key='matrix'><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: false})} >電話に出る</Link></li>)
     }
     else {
-      links.push(<li className="st-result"><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: true})} >赤い丸薬を取る</Link></li>)
+      links.push(<li className="st-result" key='matrix'><Link to='/dashboard' style={{color:'rgb(0, 255, 0)', fontSize: 'large'}} onClick={() => this.setState({matrixMode: true})} >赤い丸薬を取る</Link></li>)
     }
   }
   return(
