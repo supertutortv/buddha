@@ -32,7 +32,7 @@ function searchCourse(query, object, path) {
 }
 
 // Search component; opens a modal over the rest of the course and calls the
-// searchCourse whenever the textbox is updated.
+// searchCourse function whenever the textbox is updated.
 function Search() {
   let links = []
   let index = 0

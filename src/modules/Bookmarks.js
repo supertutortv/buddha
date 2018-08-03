@@ -60,7 +60,6 @@ function Bookmarks(props) {
         }
       }
       catch (e) {
-        console.log(e)
         void(0)
       }
     }

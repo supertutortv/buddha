@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Icon, Row, Col} from 'react-materialize'
 
-// History component. Contains a grid of videos which is currently static
+// History component. Contains a grid of videos.
 function History(props) {
   try {
     let vids = []
@@ -46,7 +46,7 @@ function History(props) {
     else {
       return (
         <h6>
-          It looks like you don't have any watch history! Try watching some
+          It looks like you don't have any history! Try watching some
           videos.
         </h6>
       )

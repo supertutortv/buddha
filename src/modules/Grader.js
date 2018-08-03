@@ -4,7 +4,7 @@ import {cleanup, getResourceByUrl} from './utilities.js'
 
 // Unused component that provides a more granular grading approach. See the
 // bottom for an example of the data structure. Left here in case it saves
-// some time in the future.
+// some time in the future. See example props at the bottom.
 class Grader extends React.Component {
   constructor(props) {
     super(props)

@@ -1,7 +1,6 @@
 import React from 'react'
 import {Icon} from 'react-materialize'
 import {Link} from 'react-router-dom'
-import ReactPlayer from 'react-player'
 
 // The video stage component; generates an iframe based on this.state.stage
 // and generates a label for the video as well as a bookmark button
@@ -47,7 +46,8 @@ function Stage(props) {
       id = vid.collection[Object.keys(vid.collection)[0]].id
     }
     if (id == null) {
-      // If there's no video, don't bother making a frame or icons
+      // If there's no video, don't bother making a frame or icons- just return
+      // the label for navigation purposes
       return (
         <h5 className="st-video-label">{label}</h5>
       )

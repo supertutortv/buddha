@@ -1,12 +1,13 @@
 import React from 'react'
 import {Icon} from 'react-materialize'
 
-// Dashboard component. Currently contains user and order information.
+// Dashboard component. Currently contains user and order information if it exists.
 function Dashboard(props) {
+  const name = this.state.matrixMode ? 'Mr. Anderson' : this.state.user.userdata.firstname
   if (this.state.user.userdata == null || this.state.user.userdata.type == 'multiuser') {
     return (
       <div>
-        <h5>Welcome to the Dashboard, {this.state.matrixMode ? 'Mr. Anderson' : this.state.user.userdata.firstname}</h5>
+        <h5>Welcome to the Dashboard{name && ', ' + name}</h5>
         <div>
           <h4>Your Orders:</h4>
           {this.state.user.userdata.orders}
@@ -17,7 +18,7 @@ function Dashboard(props) {
   else {
     return(
       <div>
-        <h5>Welcome to the Dashboard, {this.state.user.userdata.firstname}</h5>
+        <h5>Welcome to the Dashboard{name && ', ' + name}</h5>
         <div>
           <h4>Your Information:</h4>
           <small>(click to edit)</small>

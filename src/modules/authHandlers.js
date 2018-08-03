@@ -1,4 +1,4 @@
-// Server unsets the auth cookie and returns an object with a redirection url
+// Server unsets the auth cookie and returns a redirect
 function logout() {
   fetch('https://api.supertutortv.com/v2/auth/logout', {
     method: 'POST',
@@ -15,8 +15,8 @@ function logout() {
     })
 }
 
-// Verify an issued cookie; get data from localstorage if it exists or from
-// the API if not
+// Verify an issued cookie; bump user to login if their cookie is bad, otherwise
+// get data from localstorage if it exists or from the API if not;
 function verifySession() {
   fetch('https://api.supertutortv.com/v2/auth/token/verify', {
   method: 'POST',
@@ -34,13 +34,12 @@ function verifySession() {
     }
     else {
       localStorage.removeItem('sttv_data')
-      setTimeout(()=>{
+      setTimeout(() => {
         window.location.replace('http://localhost:8888/sttvroot/login')
       },250)
     }
   })
   .catch(error => {
-    console.log(error)
     void(0)
   })
 }

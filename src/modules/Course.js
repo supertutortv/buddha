@@ -27,7 +27,7 @@ function CourseHome(props) {
   )
 }
 
-// Wrapper for the nav, stage, and the right sidebar
+// Wrapper for the course (nav and stage or stage and videos)
 function Course(props) {
   // The extra router is in here to prevent full page re-renders when videos are clicked.
   // It also necessitates that funky "hack" in componentDidUpdate (marked)

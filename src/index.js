@@ -85,10 +85,10 @@ class App extends React.Component {
         scroll = document.getElementById('video-wrapper')
         const scrollRef = document.getElementsByClassName('st-video-card-highlight')[0]
         if (scrollRef) {
-          if (scrollRef.offsetTop + scrollRef.clientHeight + 50 > scroll.scrollTop + window.innerHeight) {
+          if (scrollRef.offsetTop + scrollRef.clientHeight + 65 > scroll.scrollTop + window.innerHeight) {
             scrollRef.scrollIntoView(false)
         }
-          else if (scrollRef.offsetTop + window.innerHeight - 690 < scroll.scrollTop + scrollRef.clientHeight) {
+          else if (scrollRef.offsetTop + window.innerHeight - 650 < scroll.scrollTop + scrollRef.clientHeight) {
             scrollRef.scrollIntoView()
           }
         }

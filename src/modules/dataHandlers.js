@@ -347,7 +347,10 @@ function submitPracticeTest(name) {
       })
   })
   .then(response => this.handleResponse(response))
-  .then(items => console.log(items))
+  .then(items => {
+    // This would be the place to put them into the user object
+    void(0)
+  })
   .catch(error => {
     void(0)
     }

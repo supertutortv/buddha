@@ -50,7 +50,7 @@ function Videos(props) {
         </Route>
         )
       key++
-    }
+  }
   return videos
 }
 

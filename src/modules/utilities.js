@@ -1,4 +1,5 @@
-// The name says it all here. Used throughout the app
+// The name says it all here. Used throughout the app to associate a url
+// with a location in the course data.
 function getResourceByUrl(url) {
   try {
     const lookup = url.split('/').filter(String)
@@ -51,11 +52,11 @@ function handleResponse(response) {
         password : ''
       })
     }
-    return null
   }
 }
 
-// Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's into II's. Keeps 'vs' lowercase.
+// Replaces slashes with '>'s, capitalizes words, removes dashes, and makes ii's
+ // into II's. Keeps 'vs' lowercase. Capitalizes test names.
 function cleanup(string) {
   return string.replace(/\//g,' > ').replace(/\b\w/g,(x)=>(x.toUpperCase())).replace(/-/g, ' ').replace(/i(?=(i|\b))/g, 'I').replace('Vs', 'vs').replace('Act', 'ACT').replace('Sat', 'SAT')
 }

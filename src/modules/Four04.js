@@ -1,6 +1,6 @@
 import React from 'react'
 
-// Basic component for unmatched routes
+// Placed at the bottom of a react-router switch to catch unmatched routes. 
 function Four04() {
   return (
     <h5>
