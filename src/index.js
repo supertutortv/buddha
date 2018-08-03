@@ -192,7 +192,7 @@ const AllYourBase = () => (
 )
 
 const MatrixBackground = () => (
-    <iframe src="./web/background.html" className='matrix-background'>
+    <iframe src="./background.html" className='matrix-background'>
     </iframe>
 )
 

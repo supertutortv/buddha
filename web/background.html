@@ -33,38 +33,45 @@
         <canvas id="c"></canvas>
 
         <script>
-        var c = document.getElementById("c");
-        var ctx = c.getContext("2d");
+        const c = document.getElementById("c");
+        const ctx = c.getContext("2d");
 
         c.height = window.innerHeight;
         c.width = window.innerWidth;
 
-        var matrix = "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
-        matrix = matrix.split("");
+        const matrix = 'ｸ｜¦<>-+*=,,˙・:Z68ㄥ9ϛ̲ㄣƐᄅƖ0日ﾍﾇﾀｽﾈｾﾗﾕﾑｷｶｴﾒｹﾏﾃﾎｱﾘｵﾂﾜｻﾆﾓﾅｼｳｰﾋﾐﾊ'.split('');
 
-        var font_size = 10;
-        var columns = c.width / font_size;
-        var drops = [];
-        for(var x = 0; x < columns; x++)
-            drops[x] = c.height + 1;
-
-        function draw()
-        {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-            ctx.fillRect(0, 0, c.width, c.height);
-
-            ctx.fillStyle = "#0F0";
-            ctx.font = font_size + "px arial";
-            for( var i = 0; i < drops.length; i++ )
-            {
-                var text = matrix[ Math.floor( Math.random() * matrix.length ) ];
-                ctx.fillText(text, i * font_size, drops[i] * font_size);
-                if( drops[i] * font_size > c.height && Math.random() > 0.975 )
-                    drops[i] = 0;
-                drops[i]++;
-            }
+        const font_size = 10;
+        const columns = c.width / font_size;
+        const drops = [];
+        for (let index = 0; index < columns; index++) {
+            drops[index] = c.height + 1;
         }
-        setInterval( draw, 35 );
+
+        function draw() {
+          ctx.fillStyle = "rgba(0, 0, 0, 0.01)";
+          ctx.fillRect(0, 0, c.width, c.height);
+
+          ctx.fillStyle = "#0F0"
+          ctx.font = font_size + "px arial";
+          for (let stream = 0; stream < drops.length; stream++) {
+            const text = matrix[Math.floor(Math.random() * matrix.length)];
+            const lead = matrix[Math.floor(Math.random() * matrix.length)];
+            ctx.fillStyle = "rgb(0, 255, 255, 1)"
+            ctx.fillText(lead, stream * font_size, drops[stream] * font_size );
+            ctx.fillStyle = "rgba(0,0,0)"
+            ctx.fillText('█', stream * font_size, (drops[stream] - 1) * font_size);
+            ctx.fillStyle = "#0F0"
+            ctx.fillText(text, stream * font_size, (drops[stream] - 1) * font_size);
+            if (drops[stream] * font_size > c.height && Math.random() > 0.97) {
+              drops[stream] = 0
+            }
+            if (drops[stream] * (font_size - 1) < c.height && Math.random() < 0.6) {
+              drops[stream]++
+            }
+          }
+        }
+        setInterval(draw, 35);
         </script>
     </body>
 </html>
