@@ -15,10 +15,7 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props,this.state)
-        setTimeout(() => {
-            this.active()
-        },5000)
+
     }
 
     loading() {
