@@ -56,7 +56,7 @@ html body {
   bottom: 0;
   left: 0; }
 
-#stApp #stAppMain {
+#stApp #stAppInner {
   position: absolute;
   top: 0;
   right: 0;
@@ -67,7 +67,7 @@ html body {
   visibility: visible;
   opacity: 1;
   transition: all .25s ease-in-out; }
-  #stApp #stAppMain.loading {
+  #stApp #stAppInner.loading {
     visibility: hidden;
     opacity: 0; }
 
