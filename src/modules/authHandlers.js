@@ -18,7 +18,7 @@ function logout() {
 // Verify an issued cookie; bump user to login if their cookie is bad, otherwise
 // get data from localstorage if it exists or from the API if not;
 function verifySession() {
-  fetch('https://api.supertutortv.com/v2/auth/token/verify', {
+  fetch('https://api.supertutortv.com/v2/auth/verify', {
   method: 'POST',
   accept: 'application/vnd.sttv.app+json',
   credentials: 'include',
