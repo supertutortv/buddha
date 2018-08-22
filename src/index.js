@@ -178,9 +178,7 @@ class App extends React.Component {
       )
     }
     else {
-      return(
-        <Loader />
-      )
+
     }
   }
   catch (e){console.log(e)}
