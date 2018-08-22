@@ -178,7 +178,7 @@ class App extends React.Component {
       )
     }
     else {
-
+      return null
     }
   }
   catch (e){console.log(e)}
