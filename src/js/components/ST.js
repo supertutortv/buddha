@@ -4,15 +4,14 @@ export default class ST extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeClass : ''
+            activeClass : 'loading'
         }
-        this.hidden()
     }
 
     componentDidMount() {
         setTimeout(() => {
             this.visible()
-        },3000)
+        },10000)
     }
 
     hidden() {
@@ -25,7 +24,7 @@ export default class ST extends React.Component {
 
     render() {
         return (
-            <div id="stAppMain" className={this.state.activeClass}>Hello world!</div>
+            <div id="stAppMain" className={this.state.activeClass}>Coming soon</div>
         )
     }
 }
