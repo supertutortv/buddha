@@ -3,7 +3,7 @@ import React from 'react'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
-        this.loading()
+        this.hidden()
     }
 
     componentDidMount() {
