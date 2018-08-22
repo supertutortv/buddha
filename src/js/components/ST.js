@@ -15,7 +15,7 @@ export default class ST extends React.Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.visible()
+            this.active()
         },5000)
     }
 
