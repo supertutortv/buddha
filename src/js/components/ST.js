@@ -3,6 +3,9 @@ import React from 'react'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            activeClass : ''
+        }
         this.hidden()
     }
 
