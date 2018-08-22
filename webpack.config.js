@@ -10,6 +10,9 @@ module.exports = {
     filename: './assets/js/main.js',
     publicPath: '/'
   },
+  externals: {
+
+  },
   module: {
     rules: [
       { test : /\.sass$/,

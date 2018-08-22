@@ -199,4 +199,4 @@ ReactDOM.render(
   <BrowserRouter>
     <Route path='/' component={App} />
   </BrowserRouter>,
-  document.getElementById("app"))
+  document.getElementById("stApp"))
