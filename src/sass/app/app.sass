@@ -9,6 +9,19 @@ $console: rgb(0, 255, 0)
   bottom: 0
   left: 0
 
+#stApp
+
+  #stAppMain
+    background-color: $notwhite
+    color: $notblack
+    visibility: visible
+    opacity: 1
+    transition: all .25s ease-in-out
+
+    &.loading
+      visibility: hidden
+      opacity: 0
+
 body.dark-mode #st-app
   color: $notwhite
   a

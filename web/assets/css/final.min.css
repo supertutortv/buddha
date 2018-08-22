@@ -55,6 +55,16 @@ html body {
   bottom: 0;
   left: 0; }
 
+#stApp #stAppMain {
+  background-color: #f1f1f1;
+  color: rgba(0, 0, 0, 0.75);
+  visibility: visible;
+  opacity: 1;
+  transition: all .25s ease-in-out; }
+  #stApp #stAppMain.loading {
+    visibility: hidden;
+    opacity: 0; }
+
 body.dark-mode #st-app {
   color: #f1f1f1; }
   body.dark-mode #st-app a {

@@ -4,14 +4,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const globImporter = require('node-sass-glob-importer');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/sass/main.sass','./src/index.js'],
+  entry: ['babel-polyfill', './src/sass/main.sass','./src/js/entry.js'],
   output: {
     path: path.resolve(__dirname, 'web'),
-    filename: './assets/js/main.js',
+    filename: './assets/js/stApp.js',
     publicPath: '/'
   },
   externals: {
-
+    materialize: 'M'
   },
   module: {
     rules: [

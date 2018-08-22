@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from "react"
-import {TransitionGroup, CSSTransition} from "react-transition-group";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
 import {BrowserRouter, Switch, Route, Link, Redirect} from "react-router-dom"
 import Loader from './js/Loader.js'
 
