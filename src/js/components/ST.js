@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
-import {BrowserRouter, Switch, Route, Link, Redirect} from 'react-router-dom'
+import {Switch, Route, Link, Redirect} from 'react-router-dom'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
+import Main from './main/Main'
 
 export default class ST extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props,this.state)
         setTimeout(() => {
             this.active()
         },5000)
@@ -32,6 +34,7 @@ export default class ST extends React.Component {
             <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
                 <Header />
                 <Sidebar />
+                <Main />
             </div>
         )
     }

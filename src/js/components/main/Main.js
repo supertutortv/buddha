@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default class Sidebar extends React.Component {
+export default class Main extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
         return(
-            <div>Sidebar</div>
+            <div>Main</div>
         )
     }
     
