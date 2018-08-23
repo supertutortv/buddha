@@ -2,6 +2,8 @@ import React from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
 import Main from './Main'
+import Login from './Login'
+
 import allYourBase from './allYourBase'
 
 export default class ST extends React.Component {
