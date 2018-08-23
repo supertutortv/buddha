@@ -8,10 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'web'),
     filename: './assets/js/stApp.js',
-    publicPath: '/',
-    library: '_st',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    publicPath: '/'
   },
   externals: {
     materialize: 'M'
