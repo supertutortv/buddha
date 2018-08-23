@@ -11,7 +11,9 @@ export default class STRoute extends Component {
         const STComp = component
         return (
             <Route {...rest} render={rtProps => {
-                <STComp {...rtProps} {...rest}/>
+                return (
+                    <STComp {...rtProps} {...rest}/>
+                )
             }} />
         )
     }
