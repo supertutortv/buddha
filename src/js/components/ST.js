@@ -5,6 +5,7 @@ import {Switch, Route, Link, Redirect} from 'react-router-dom'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Main from './Main'
+import allYourBase from './allYourBase'
 
 export default class ST extends React.Component {
     constructor(props) {
@@ -15,8 +16,18 @@ export default class ST extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.active()
+    verifySession() {
+        fetch('https://api.supertutortv.com/v2/auth/verify', {
+            method: 'POST',
+            accept: 'application/vnd.sttv.app+json',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .then(response => {
+            console.log(response)
+        })
     }
 
     loading() {
@@ -25,6 +36,10 @@ export default class ST extends React.Component {
 
     active() {
         this.setState({loading : false})
+    }
+
+    componentDidMount() {
+        this.verifySession()
     }
 
     render() {

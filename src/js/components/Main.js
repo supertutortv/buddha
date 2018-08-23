@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.state)
+
     }
 
     render() {
