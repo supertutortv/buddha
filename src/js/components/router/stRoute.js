@@ -1,10 +1,18 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
 
-const STRoute = ({component, ...props}) => {
-    <Route {...props} render={rtProps => {
-        <component {...rtProps} {...props}/>
-    }} />
-}
+export default class STRoute extends Component {
+    constructor(props) {
+        super(props)
+    }
 
-export default STRoute
+    render() {
+        const {component, ...rest} = this.props
+        const STComp = component
+        return (
+            <Route {...rest} render={rtProps => {
+                <STComp {...rtProps} {...rest}/>
+            }} />
+        )
+    }
+}
