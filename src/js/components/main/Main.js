@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Header from './Header'
-import Sidebar from './Sidebar'
-import Four04 from './Four04'
+import Header from '../header/Header'
+import Sidebar from '../sidebar/Sidebar'
+import Four04 from '../pages/Four04'
 
 export default class Main extends React.Component {
     constructor(props) {

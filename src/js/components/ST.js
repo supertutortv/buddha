@@ -1,10 +1,11 @@
 import React from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
-import Main from './Main'
-import Login from './Login'
+import stRoute from './router/stRoute'
+import Main from './main/Main'
+import Login from './pages/Login'
 
-import allYourBase from './allYourBase'
+import allYourBase from './pages/allYourBase'
 
 export default class ST extends React.Component {
     constructor(props) {
@@ -51,10 +52,10 @@ export default class ST extends React.Component {
         if (this.state.auth === null) return null
         return (
             <Switch>
-                <Route path='/login' component={Login} auth={this.state.auth}/>
-                <Route path='/signup' component={Login} auth={this.state.auth}/>
-                <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                <Route path='/' component={Main} auth={this.state.auth}/>
+                <stRoute path='/login' component={Login} auth={this.state.auth}/>
+                <stRoute path='/signup' component={Login} auth={this.state.auth}/>
+                <stRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
+                <stRoute path='/' component={Main} auth={this.state.auth}/>
             </Switch>
         )
     }
