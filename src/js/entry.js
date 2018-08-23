@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import ST from './components/ST'
 
 const STTV = {
-    hello : 'Hello World'
+    auth : null,
+    loading : true
 }
 
 ReactDOM.render(

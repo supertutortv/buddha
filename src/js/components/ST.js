@@ -11,14 +11,10 @@ import * as auth from '../functions/auth'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            loading : true,
-            auth : null
-        }
+        this.state = this.props
 
         this.verifySession = auth.verifySession.bind(this)
         this.loading = this.loading.bind(this)
-        console.log(this.context,this.props)
     }
 
     loading() {
@@ -29,12 +25,13 @@ export default class ST extends React.Component {
     componentDidMount() {}
 
     render() {
+        let { _st } = this.props
         return (
             <Switch>
-                <STRoute path='/login' component={Login} st={this}/>
-                <STRoute path='/signup' component={Signup} st={this}/>
+                <STRoute path='/login' component={Login} _st={_st}/>
+                <STRoute path='/signup' component={Signup} _st={_st}/>
                 <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                <STRoute path='/' component={Main} st={this}/>
+                <STRoute path='/' component={Main} _st={_st}/>
             </Switch>
         )
     }

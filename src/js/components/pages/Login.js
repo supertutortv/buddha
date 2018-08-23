@@ -3,10 +3,9 @@ import React from 'react'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
-
-        this.st = this.props.st
+        this._st = this.props._st
         this.state = {
-            skipLogin : this.st.state.auth
+            skipLogin : false
         }
         
         if (!this.st.state.auth) this.st.verifySession()
