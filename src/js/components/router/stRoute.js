@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
 
-export default class stRoute extends Component {
+export default class STRoute extends Component {
     constructor(props) {
         super(props)
         console.log(this.props)
