@@ -54,7 +54,7 @@ export default class ST extends React.Component {
     render() {
         if (this.state.auth === null) return null
 
-        if (redirect) return <Redirect to={this.state.redirect}/>
+        if (this.state.redirect) return <Redirect to={this.state.redirect}/>
 
         return (
             <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
