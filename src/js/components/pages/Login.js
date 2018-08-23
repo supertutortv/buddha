@@ -4,12 +4,14 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
+        console.log(st)
+
         var st = this.props.st
         this.state = {
             skipLogin : st.state.auth
         }
 
-        console.log(st)
+        
         if (!st.state.auth) st.verifySession()
     }
     render() {
