@@ -11,9 +11,12 @@ export default class ST extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            redirect : false,
             loading : true,
-            auth : false
+            auth : null
         }
+
+        this.verifySession()
     }
 
     verifySession() {
@@ -26,8 +29,18 @@ export default class ST extends React.Component {
             }
         }).then(response => response.json())
         .then(response => {
-            console.log(response)
+            this.state.auth = response.data
+
+            if (response.data) {
+                this.getData()
+            } else {
+                return <Redirect to='/login'/>
+            }
         })
+    }
+
+    getData() {
+        return true
     }
 
     loading() {
@@ -39,10 +52,12 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
-        this.verifySession()
+        if (this.state.auth !== null) this.active()
     }
 
     render() {
+        if (this.state.auth === null) return null
+
         return (
             <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
                 <Header />

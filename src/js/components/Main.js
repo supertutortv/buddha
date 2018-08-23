@@ -17,8 +17,8 @@ export default class Main extends React.Component {
             <main id="stAppStage">
                 <Switch>
                     <Route path='/login' component={Login} />
-                    <Route path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route path='/dashboard' component={Login} />
+                    <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route path="/*" component={Four04} />
                 </Switch>
             </main>
