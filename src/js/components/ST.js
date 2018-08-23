@@ -4,8 +4,9 @@ import {Switch, Route, Link, Redirect} from 'react-router-dom'
 import STRoute from './router/STRoute'
 import Main from './main/Main'
 import Login from './pages/Login'
-
+import Signup from './pages/Signup'
 import allYourBase from './pages/allYourBase'
+import * as auth from '../functions/auth'
 
 export default class ST extends React.Component {
     constructor(props) {
@@ -14,25 +15,8 @@ export default class ST extends React.Component {
             loading : true,
             auth : null
         }
-        this.loading()
-    }
 
-    verifySession() {
-        fetch('https://api.supertutortv.com/v2/auth/verify', {
-            method: 'POST',
-            accept: 'application/vnd.sttv.app+json',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.json())
-        .then(d => {
-            this.setState({
-                auth : d.data,
-                loading : false
-            })
-            this.loading()
-        })
+        this.verifySession = auth.verifySession.bind(this)
     }
 
     loading() {
@@ -41,15 +25,15 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
-        this.state.loading = false
-        this.loading()
+        this.setState({loading : false})
     }
 
     render() {
+        this.loading()
         return (
             <Switch>
                 <STRoute path='/login' component={Login} st={this}/>
-                <STRoute path='/signup' component={Login} st={this}/>
+                <STRoute path='/signup' component={Signup} st={this}/>
                 <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
                 <STRoute path='/' component={Main} st={this}/>
             </Switch>
