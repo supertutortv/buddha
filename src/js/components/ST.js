@@ -48,7 +48,7 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.auth !== null) this.active()
+        this.active()
     }
 
     render() {
