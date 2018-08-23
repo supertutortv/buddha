@@ -22,7 +22,9 @@ export default class ST extends React.Component {
         return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        return null
+    }
 
     render() {
         let { _st } = this.props
