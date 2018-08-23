@@ -12,5 +12,6 @@ export function verifySession() {
             auth : d.data,
             loading : false
         })
+        this.loading()
     })
 }
