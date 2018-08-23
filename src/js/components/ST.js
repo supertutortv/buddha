@@ -31,9 +31,7 @@ export default class ST extends React.Component {
         }).then(response => response.json())
         .then(d => {
             this.state.auth = d.data
-            console.log(this.state.auth)
-
-            if (d.data === false) return <Redirect to='/login'/>
+            if (d.data === false) this.setState({redirect: '/login'})
         })
     }
 
@@ -55,6 +53,8 @@ export default class ST extends React.Component {
 
     render() {
         if (this.state.auth === null) return null
+
+        if (redirect) return <Redirect to={this.state.redirect}/>
 
         return (
             <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
