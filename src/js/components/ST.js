@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
-import Header from './header/Header'
-import Sidebar from './sidebar/Sidebar'
-import Main from './main/Main'
+import Header from './Header'
+import Sidebar from './Sidebar'
+import Main from './Main'
 
 export default class ST extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
-
+        this.active()
     }
 
     loading() {
