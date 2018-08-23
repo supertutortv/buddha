@@ -28,7 +28,17 @@ export default class ST extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => console.log(response))
+        }).then(response => response.json())
+        .then(d => {
+            return console.log(d)
+            this.state.auth = d.data
+
+            if (d.data) {
+                this.getData()
+            } else {
+                return <Redirect to='/login'/>
+            }
+        })
     }
 
     getData() {
