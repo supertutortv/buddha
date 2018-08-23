@@ -1,9 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
-import Header from './Header'
-import Sidebar from './Sidebar'
 import Main from './Main'
 import allYourBase from './allYourBase'
 
@@ -11,13 +8,10 @@ export default class ST extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            redirect : false,
             loading : true,
-            auth : null,
-            test : true
+            auth : null
         }
-
-        this.verifySession()
+        this.loading()
     }
 
     verifySession() {
@@ -30,8 +24,11 @@ export default class ST extends React.Component {
             }
         }).then(response => response.json())
         .then(d => {
-            this.state.auth = d.data
-            if (d.data === false) this.setState({redirect: '/login'})
+            this.setState({
+                auth : d.data,
+                loading : false
+            })
+            this.loading()
         })
     }
 
@@ -40,28 +37,23 @@ export default class ST extends React.Component {
     }
 
     loading() {
-        this.setState({loading : true})
-    }
-
-    active() {
-        this.setState({loading : false})
+        let stApp = document.getElementById('stApp')
+        return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
     componentDidMount() {
-        this.active()
+        this.verifySession()
     }
 
     render() {
         if (this.state.auth === null) return null
-
-        if (this.state.redirect) return <Redirect to={this.state.redirect}/>
-
         return (
-            <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
-                <Header />
-                <Sidebar />
-                <Main />
-            </div>
+            <Switch>
+                <Route path='/login' component={Login} auth={this.state.auth}/>
+                <Route path='/signup' component={Login} auth={this.state.auth}/>
+                <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
+                <Route path='/' component={Main} auth={this.state.auth}/>
+            </Switch>
         )
     }
 }

@@ -1,32 +1,10 @@
-html .fade-enter {
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 500ms ease-in; }
+html, body {
+  margin: 0;
+  padding: 0; }
 
-html .fade-enter.fade-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-out; }
-
-html .fade-exit {
-  opacity: 0;
-  transition: opacity 500ms cubic-bezier(0, 0.5, 0.5); }
-
-html .slide-enter {
-  -webkit-animation: slide 0.5s left;
-  animation: slide 0.5s left; }
-
-html .slide-enter.slide-enter-active {
-  -webkit-animation: slide 0.5s left;
-  animation: slide 0.5s left; }
-
-html .slide-exit {
-  -webkit-animation: slide 0.5s left;
-  animation: slide 0.5s left; }
-
-html body {
+body {
   overflow: hidden;
-  margin-left: 0;
-  margin-top: 0;
+  position: relative;
   font-size: 24px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
   color: rgba(0, 0, 0, 0.75);
@@ -40,13 +18,9 @@ html body {
   box-sizing: border-box;
   transition: color .25s ease-in-out;
   transition: background-color .25s ease-in-out; }
-  html body.dark-mode {
-    color: #f1f1f1;
-    background-color: rgba(0, 0, 0, 0.75); }
-  html body div {
-    display: block; }
-  html body a {
-    cursor: pointer; }
+  body.dark-mode {
+    background-color: black;
+    color: #f1f1f1; }
 
 #st-loader {
   overflow: hidden;
@@ -446,6 +420,21 @@ body.matrix-mode #st-app {
         width: 100%;
         text-align: center;
         padding: .25em; }
+
+#stApp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #f1f1f1;
+  color: rgba(0, 0, 0, 0.75);
+  visibility: visible;
+  opacity: 1;
+  transition: all .25s ease-in-out; }
+  #stApp.loading {
+    visibility: hidden;
+    opacity: 0; }
 
 body.dark-mode #st-sidebar {
   color: #f1f1f1;
