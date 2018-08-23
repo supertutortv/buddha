@@ -30,14 +30,10 @@ export default class ST extends React.Component {
             }
         }).then(response => response.json())
         .then(d => {
-            return console.log(d)
             this.state.auth = d.data
+            console.log(this.state.auth)
 
-            if (d.data) {
-                this.getData()
-            } else {
-                return <Redirect to='/login'/>
-            }
+            if (d.data === false) return <Redirect to='/login'/>
         })
     }
 
