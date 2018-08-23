@@ -35,27 +35,22 @@ export default class ST extends React.Component {
         })
     }
 
-    getData() {
-        return true
-    }
-
     loading() {
         let stApp = document.getElementById('stApp')
         return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
     componentDidMount() {
-        this.verifySession()
+        this.loading()
     }
 
     render() {
-        if (this.state.auth === null) return null
         return (
             <Switch>
-                <STRoute path='/login' component={Login} auth={this.state.auth}/>
-                <STRoute path='/signup' component={Login} auth={this.state.auth}/>
+                <STRoute path='/login' component={Login} st={this}/>
+                <STRoute path='/signup' component={Login} st={this}/>
                 <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                <STRoute path='/' component={Main} auth={this.state.auth}/>
+                <STRoute path='/' component={Main} st={this}/>
             </Switch>
         )
     }
