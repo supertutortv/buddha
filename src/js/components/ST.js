@@ -41,6 +41,7 @@ export default class ST extends React.Component {
     }
 
     componentDidMount() {
+        this.state.loading = false
         this.loading()
     }
 
