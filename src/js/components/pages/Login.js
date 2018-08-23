@@ -9,7 +9,7 @@ export default class Login extends React.Component {
             skipLogin : this.st.state.auth
         }
         
-        if (!this.st.state.auth) st.verifySession()
+        if (!this.st.state.auth) this.st.verifySession()
     }
 
     componentDidMount() {}
