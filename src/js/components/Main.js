@@ -6,7 +6,6 @@ import Four04 from './Four04'
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
-        this.state.main = true
     }
 
     componentDidMount() {
