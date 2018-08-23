@@ -7,16 +7,9 @@ export default class STRoute extends Component {
         console.log(this.props)
     }
 
-    renderMergedProps(component,...rest) {
-        const final = Object.assign({},...rest)
-        return (
-            React.createElement(component, final)
-        )
-    }
-
     render() {
         return (
-            <Route  />
+            <Route {...this.props} />
         )
     }
 }
