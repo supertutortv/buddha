@@ -13,7 +13,8 @@ export default class ST extends React.Component {
         this.state = {
             redirect : false,
             loading : true,
-            auth : null
+            auth : null,
+            test : true
         }
 
         this.verifySession()
