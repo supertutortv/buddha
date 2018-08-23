@@ -4,8 +4,6 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        return console.log(props)
-
         var st = this.props.st
         this.state = {
             skipLogin : st.state.auth
@@ -15,7 +13,7 @@ export default class Login extends React.Component {
         if (!st.state.auth) st.verifySession()
     }
     render() {
-        return st.state.auth ? (<Redirect to='/dashboard'/>) : (
+        return this.state.skipLogin ? (<Redirect to='/dashboard'/>) : (
             <div id="stLoginWrapper" className="stFormWrapper row">
                 <div className="stOverlay"></div>
                 <div id="stLoginHeader" className="stFormHeader col s12">
