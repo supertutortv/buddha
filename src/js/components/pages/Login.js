@@ -12,6 +12,11 @@ export default class Login extends React.Component {
         
         if (!st.state.auth) st.verifySession()
     }
+
+    componentDidMount() {
+        this.props.st.loading()
+    }
+
     render() {
         return this.state.skipLogin ? (<Redirect to='/dashboard'/>) : (
             <div id="stLoginWrapper" className="stFormWrapper row">

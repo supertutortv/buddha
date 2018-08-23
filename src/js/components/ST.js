@@ -17,6 +17,8 @@ export default class ST extends React.Component {
         }
 
         this.verifySession = auth.verifySession.bind(this)
+        this.loading = this.loading.bind(this)
+        this.loading()
     }
 
     loading() {
