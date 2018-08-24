@@ -6,7 +6,7 @@ export default class Signup extends React.Component {
     }
     render() {
         return(
-            <div>{this.props.st.atts}</div>
+            <div>{JSON.stringyfy(this.props.st.atts)}</div>
         )
     }
 }
