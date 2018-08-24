@@ -18,7 +18,7 @@ export default class ST extends React.Component {
 
         this.verifySession((d) => {
             this.setState({
-                loggedIn : d.data,
+                loggedIn : !d.data,
                 loading : false
             },() => this.loading())
         })
