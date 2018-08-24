@@ -36,7 +36,6 @@ export default class ST extends React.Component {
 
     render() {
         this.loading()
-        console.log(this.state)
         return (
             <GlobalState.Provider value={this}>
                 <Switch>

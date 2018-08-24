@@ -3,17 +3,14 @@ import React from 'react'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.props.st)
         this.state = {
             skipLogin : this.props.st.loggedIn
         }
-
     }
 
     componentDidMount() {}
 
     render() {
-        return null
         return this.state.skipLogin ? (<Redirect to='/dashboard'/>) : (
             <div id="stLoginWrapper" className="stFormWrapper row">
                 <div className="stOverlay"></div>
