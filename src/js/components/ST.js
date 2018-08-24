@@ -13,8 +13,9 @@ import * as auth from '../functions/auth'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.props)
-        this.state = this.props.defaultState
+        const { defaultState } = this.props
+        this.state = defaultState
+        console.log(props)
     }
 
     verifySession(cb) {auth.verifySession.call(this,cb)}
