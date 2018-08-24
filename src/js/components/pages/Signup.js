@@ -6,7 +6,7 @@ export default class Signup extends React.Component {
     }
     render() {
         return(
-            <div>Signup page</div>
+            <div>{this.props.st.atts}</div>
         )
     }
 }
