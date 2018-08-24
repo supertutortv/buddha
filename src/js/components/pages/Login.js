@@ -3,9 +3,10 @@ import React from 'react'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.props.st)
+        let { st } = this.props
+
         this.state = {
-            skipLogin : false
+            skipLogin : st.state.loggedIn
         }
     }
 
