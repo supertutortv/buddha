@@ -6,7 +6,7 @@ import {globalProps,defaultState} from './utilities/setup'
 
 ReactDOM.render(
     <BrowserRouter>
-        <ST globalProps={globalProps} defaultState={defaultState} />
+        <ST {...globalProps} defaultState={defaultState} />
     </BrowserRouter>,
     document.getElementById('stApp')
 )

@@ -13,12 +13,13 @@ import * as auth from '../functions/auth'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
-        const { defaultState } = this.props
+        const { defaultState, ...rest } = this.props
         this.state = defaultState
+        this.atts = rest
 
         this.verifySession((d) => {
             this.setState({
-                loggedIn : !d.data,
+                loggedIn : d.data,
                 loading : false
             },() => this.loading())
         })
@@ -39,10 +40,10 @@ export default class ST extends React.Component {
         if (this.state.loggedIn === null) return null
 
         return (
-            <GlobalState.Provider value={this}>
+            <GlobalState.Provider value={{state:this.state,atts:this.atts}}>
                 <Switch>
-                    <STRoute path='/login' component={Login} />
                     <STRoute path='/signup' component={Signup} />
+                    <STRoute path='/login' component={Login} />
                     <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
                     <STRoute path='/' component={Main} />
                 </Switch>

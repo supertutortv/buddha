@@ -5,6 +5,7 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         let { st } = this.props
+        console.log(st)
 
         this.state = {
             skipLogin : st.state.loggedIn
