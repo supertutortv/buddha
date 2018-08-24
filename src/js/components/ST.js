@@ -10,24 +10,31 @@ import allYourBase from './pages/allYourBase'
 import * as auth from '../functions/auth'
 
 
-
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
         this.state = this.props.defaultState
     }
 
-    verifySession() {auth.verifySession.call(this)}
+    verifySession(cb) {auth.verifySession.call(this,cb)}
 
     loading() {
         let stApp = document.getElementById('stApp')
         return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.verifySession((d) => {
+            this.setState({
+                loggedIn : d.data,
+                loading : false
+            })
+        })
+    }
 
     render() {
         this.loading()
+        console.log(this.state)
         return (
             <GlobalState.Provider value={this}>
                 <Switch>

@@ -11,9 +11,6 @@ export function verifySession(cb) {
         response.json()
     })
     .then(d => {
-        this.setState({
-            loggedIn : d.data
-        })
-        typeof cb === 'function' && cb()
+        typeof cb === 'function' && cb(d)
     })
 }
