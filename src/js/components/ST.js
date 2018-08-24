@@ -13,6 +13,7 @@ import * as auth from '../functions/auth'
 export default class ST extends React.Component {
     constructor(props) {
         super(props)
+        console.log(this.props)
         this.state = this.props.defaultState
     }
 
