@@ -1,4 +1,4 @@
-export function verifySession() {
+export function verifySession(cb) {
     fetch('https://api.supertutortv.com/v2/auth/verify', {
         method: 'POST',
         accept: 'application/vnd.sttv.app+json',
@@ -12,9 +12,8 @@ export function verifySession() {
     })
     .then(d => {
         this.setState({
-            auth : d.data,
-            loading : false
+            loggedIn : d.data
         })
-        this.loading()
+        typeof cb === 'function' && cb()
     })
 }
