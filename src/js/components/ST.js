@@ -15,6 +15,7 @@ export default class ST extends React.Component {
     constructor(props) {
         super(props)
         this.state = this.props.defaultState
+        console.log(GlobalState)
     }
 
     verifySession() {auth.verifySession.call(this)}

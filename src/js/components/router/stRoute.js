@@ -4,6 +4,7 @@ import GlobalState from '../../utilities/GlobalState'
 
 export default class STRoute extends Component {
     render() {
+        console.log(GlobalState)
         const {component, ...rest} = this.props
         const STComp = component
         return (
