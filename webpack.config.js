@@ -10,6 +10,10 @@ module.exports = {
     filename: './assets/js/stApp.js',
     publicPath: '/'
   },
+  devServer: {
+    publicPath: '/',
+    port: 8888
+  },
   externals: {
     materialize: 'M'
   },
