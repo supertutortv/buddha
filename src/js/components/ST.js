@@ -16,6 +16,13 @@ export default class ST extends React.Component {
         const { defaultState } = this.props
         this.state = defaultState
         console.log(props)
+
+        this.verifySession((d) => {
+            this.setState({
+                loggedIn : d.data,
+                loading : false
+            },() => this.loader())
+        })
     }
 
     verifySession(cb) {auth.verifySession.call(this,cb)}
@@ -25,9 +32,13 @@ export default class ST extends React.Component {
         return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        
+    }
 
     render() {
+        if (this.state.loggedIn === null) return null
+
         return (
             <GlobalState.Provider value={this}>
                 <Switch>

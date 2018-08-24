@@ -26,6 +26,6 @@ export const globalProps = {
 }
 
 export const defaultState = {
-    loggedIn : false,
+    loggedIn : null,
     loading : true
 }
