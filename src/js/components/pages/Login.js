@@ -3,8 +3,9 @@ import React from 'react'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
+        console.log(this.props.st)
         this.state = {
-            skipLogin : this.props.st.loggedIn
+            skipLogin : false
         }
     }
 

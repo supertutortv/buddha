@@ -6,10 +6,7 @@ export function verifySession(cb) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(response => {
-        console.log(response)
-        response.json()
-    })
+    }).then(response => response.json())
     .then(d => {
         typeof cb === 'function' && cb(d)
     })
