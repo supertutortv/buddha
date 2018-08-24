@@ -1,7 +1,7 @@
 import React from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
-import GlobalState from '../utilities/GlobalState'
+import {GlobalState} from '../utilities/GlobalState'
 import STRoute from './router/STRoute'
 import Main from './main/Main'
 import Login from './pages/Login'
