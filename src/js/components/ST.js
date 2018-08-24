@@ -15,13 +15,12 @@ export default class ST extends React.Component {
         super(props)
         const { defaultState } = this.props
         this.state = defaultState
-        console.log(props)
 
         this.verifySession((d) => {
             this.setState({
                 loggedIn : d.data,
                 loading : false
-            },() => this.loader())
+            })
         })
     }
 
@@ -37,6 +36,7 @@ export default class ST extends React.Component {
     }
 
     render() {
+        this.loader()
         if (this.state.loggedIn === null) return null
 
         return (
