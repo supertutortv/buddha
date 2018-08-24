@@ -16,8 +16,6 @@ export default class ST extends React.Component {
         const { defaultState } = this.props
         this.state = defaultState
 
-        this.loading()
-
         this.verifySession((d) => {
             this.setState({
                 loggedIn : d.data,
