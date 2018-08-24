@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import GlobalState from '../../utilities/GlobalState'
 import Header from '../header/Header'
 import Sidebar from '../sidebar/Sidebar'
 import Four04 from '../pages/Four04'
