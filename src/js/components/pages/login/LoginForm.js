@@ -1,4 +1,4 @@
-import Form from './Form'
+import Form from '../../../st/helpers/Form'
 
 export default class Login extends Form {
     constructor() {
