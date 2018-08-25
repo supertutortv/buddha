@@ -8,7 +8,8 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             username : '',
-            password : ''
+            password : '',
+            skipLogin : false
         }
     }
 
