@@ -13,7 +13,8 @@ export default class Login extends React.Component {
     }
 
     setLoginState(e) {
-        _st.form.setState(this.state,e.target)
+        let state = this.state
+        _st.form.setState(state,e.target)
     }
 
     componentDidMount() {
