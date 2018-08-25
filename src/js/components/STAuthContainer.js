@@ -1,10 +1,9 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
 import {GlobalState} from '../utilities/StateContext'
 import * as _st from '../classes/st'
 
 export default class StAuthContainer extends React.Component {
-    /* constructor(props) {
+    constructor(props) {
         super(props)
         this.state = {
             loggedIn : null,
@@ -12,35 +11,38 @@ export default class StAuthContainer extends React.Component {
             fireRedirect : false,
             redirectTo : this.props.location.pathname
         }
-    } */
+    }
 
     componentDidMount() {
-        /* if (this.state.loggedIn === null) {
+        if (this.state.loggedIn === null) {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data,
                     fireRedirect : true,
                     loading : false
-                })
+                },(c) => console.log(c))
             })
-        } */
+        }
+    }
+
+    loginRedirect() {
+        if (this.props.location.pathname !== '/login') return this.props.history.push('/login')
     }
 
     render() {
-        console.log(this.props)
-        return null
-        _st.loading(this.state.loading)
         if (this.state.loggedIn === null) return null
+        _st.loading(this.state.loading)
         if (this.state.loggedIn) {
             return (
                 <GlobalState.Provider value={this.state}>
-                    {this.props.children}
+                    {this.state.loggedIn ? this.props.children : null}
                 </GlobalState.Provider>
             )
         } else {
             return (
                 <GlobalState.Provider value={this.state}>
-                    <Redirect to='/login' />
+                    {this.loginRedirect()}
+                    <Login />
                 </GlobalState.Provider>
             )
         }
