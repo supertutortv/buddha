@@ -7,14 +7,22 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username : '',
-            password : ''
+            creds : {
+                username : '',
+                password : ''
+            }
         }
+
+        this.setLoginState = this.setLoginState.bind(this)
+        this.submit = this.submit.bind(this)
     }
 
     setLoginState(e) {
-        let state = this.state
-        _st.form.setState(state,e.target)
+        _st.form.setState(this.state.creds,e.target)
+    }
+
+    submit(e) {
+        console.log(e,this.state.creds)
     }
 
     componentDidMount() {
@@ -26,7 +34,7 @@ export default class Login extends React.Component {
             <GlobalState.Consumer>
                 {gstate => {
                     return (gstate.loggedIn) ? <Redirect to='/dashboard'/> : (
-                        <form id="stLoginWrapper" className="stFormWrapper row">
+                        <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                             <div className="stOverlay"></div>
                             <div id="stLoginHeader" className="stFormHeader col s12">
                                 <h2>Sign into your account</h2>
