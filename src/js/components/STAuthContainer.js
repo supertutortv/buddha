@@ -31,7 +31,7 @@ export default class STAuthContainer extends React.Component {
         return !(nextProps.location.pathname === this.props.location.pathname)
     }
 
-    loginRedirect(c) {
+    loginRedirect() {
         if (this.props.location.pathname === '/login') {
             console.log('not redirected')
             return this.props.children
@@ -39,7 +39,7 @@ export default class STAuthContainer extends React.Component {
             this.props.history.push('/login')
             console.log('redirected')
             return (
-                c
+                <Login />
             )
         }
     }
@@ -49,7 +49,7 @@ export default class STAuthContainer extends React.Component {
         _st.loading(this.state.loading)
         return (
             <GlobalState.Provider value={this.state}>
-                {this.state.loggedIn ? this.props.children : this.loginRedirect(<Login />)}
+                {this.state.loggedIn ? this.props.children : this.loginRedirect()}
             </GlobalState.Provider>
         )
     }
