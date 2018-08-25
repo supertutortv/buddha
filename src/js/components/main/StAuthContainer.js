@@ -20,6 +20,7 @@ export default class StAuthContainer extends React.Component {
         return (
             <GlobalState.Consumer>
                 {st => {
+                    st.loading()
                     if (st.state.loggedIn) {
                         return this.props.children
                     } else {
