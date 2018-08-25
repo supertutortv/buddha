@@ -22,12 +22,11 @@ export default class Login extends React.Component {
     }
 
     submit(e) {
+        e.preventDefault()
         console.log(e,this.state.creds)
     }
 
-    componentDidMount() {
-        console.log(this.state)
-    }
+    componentDidMount() {}
 
     render() {
         return (
