@@ -23,7 +23,9 @@ export default class Login extends React.Component {
 
     submit(e) {
         e.preventDefault()
-        console.log(e,this.state.creds)
+        _st.auth.token(this.state.creds,(d) => {
+            console.log(d)
+        })
     }
 
     componentDidMount() {}
