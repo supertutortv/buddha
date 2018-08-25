@@ -11,6 +11,7 @@ export default class StAuthContainer extends React.Component {
             fireRedirect : false,
             redirectTo : '/login'
         }
+        _st.loading()
     }
 
     componentDidMount() {
@@ -18,14 +19,13 @@ export default class StAuthContainer extends React.Component {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data
-                },() => _st.loading())
+                },() => _st.loading(false))
             })
         }
     }
 
     render() {
         if (this.state.loggedIn === null) return null
-        _st.loading()
         if (this.state.loggedIn) {
             return (
                 <GlobalState.Provider value={this.state}>
