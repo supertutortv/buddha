@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import allYourBase from './components/pages/allYourBase'
-import Signup from './components/pages/Signup'
+import allYourBase from './components/allYourBase'
+import Signup from './components/Signup'
 import STAuthContainer from './components/STAuthContainer'
-import Main from './components/main/Main'
-import Login from './components/pages/Login'
+import Main from './components/Main'
+import Login from './components/Login'
 
 ReactDOM.render(
     <BrowserRouter>

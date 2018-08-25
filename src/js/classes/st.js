@@ -1,4 +1,5 @@
 import loading from './modules/loading'
+import {request,get,post,put,patch,del} from './modules/http'
 
 const config = {
     env : 'staging',
@@ -26,4 +27,10 @@ export const env = {
     api : 'https://api.supertutortv.com/v2'
 }
 
-export { loading }
+export const auth = {
+    verify : (cb) => post('https://api.supertutortv.com/v2/auth/verify',{},cb),
+    token : (dt,cb) => post('https://api.supertutortv.com/v2/auth/token',{data:dt},cb),
+    logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
+}
+
+export { loading, request, get, post, put, patch, del }

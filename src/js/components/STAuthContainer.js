@@ -7,26 +7,35 @@ export default class StAuthContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn : false
+            loggedIn : null,
+            fireRedirect : false,
+            redirectTo : '/login'
         }
     }
 
     componentDidMount() {
-        /* if (!this.state.loggedIn) {
+        if (this.state.loggedIn === null) {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data
                 },() => _st.loading())
             })
-        } */
+        }
     }
 
     render() {
-        console.log(this.props)
+        _st.loading()
+        if (this.state.loggedIn === null) return null
         if (this.state.loggedIn) {
-            return this.props.children
+            return (
+                <GlobalState.Provider value={this.state}>
+                    {this.props.children}
+                </GlobalState.Provider>
+            )
         } else {
-            return null
+            return (
+                <Redirect to='/login' />
+            )
         }
     }
 }
