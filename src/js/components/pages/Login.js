@@ -4,11 +4,14 @@ import {Redirect} from 'react-router-dom'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
-        let { st } = this.props
-
         this.state = {
-            skipLogin : st.state.loggedIn
+            username : '',
+            password : ''
         }
+    }
+
+    setState(e) {
+        console.log(e.target)
     }
 
     componentDidMount() {}
@@ -23,10 +26,10 @@ export default class Login extends React.Component {
                 </div>
                 <div id="stLoginCredentials" className="col s12">
                     <div className="input-field col s12">
-                        <input className="browser-default validate email" type="email" name="st-username" placeholder="Email Address"/>
+                        <input className="browser-default validate email" type="email" name="st-username" placeholder="Email Address" onBlur={this.setState}/>
                     </div>
                     <div className="input-field col s12">
-                        <input className="browser-default validate" type="password" name="st-password" placeholder="Password"/>
+                        <input className="browser-default validate" type="password" name="st-password" placeholder="Password" onBlur={this.setState}/>
                     </div>
                 </div>
                 <div className="stForgotBlock col s12">

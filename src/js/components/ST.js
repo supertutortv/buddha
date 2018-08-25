@@ -1,7 +1,6 @@
 import React from 'react'
-import {Switch} from 'react-router-dom'
+import {Switch,Route} from 'react-router-dom'
 import {GlobalState} from '../utilities/StateContext'
-import STRoute from './router/STRoute'
 import STAuthContainer from './main/STAuthContainer'
 import Main from './main/Main'
 import Login from './pages/Login'
@@ -28,12 +27,12 @@ export default class ST extends React.Component {
     render() {
         return (
             <Switch>
-                <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                <STRoute path='/signup' component={Signup} />
+                <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
                 <GlobalState.Provider value={{state:this.state,atts:this.atts}}>
+                    <Route path='/signup' component={Signup} />
                     <STAuthContainer st={this}>
-                        <STRoute path='/login' component={Login} />
-                        <STRoute path='/' component={Main} />
+                        <Route path='/login' component={Login} />
+                        <Route path='/' component={Main} />
                     </STAuthContainer>
                 </GlobalState.Provider>
             </Switch>
