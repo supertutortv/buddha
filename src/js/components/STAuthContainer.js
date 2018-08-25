@@ -1,5 +1,6 @@
 import React from 'react'
 import {GlobalState} from '../utilities/StateContext'
+import Login from './Login'
 import * as _st from '../classes/st'
 
 export default class StAuthContainer extends React.Component {
@@ -26,25 +27,23 @@ export default class StAuthContainer extends React.Component {
     }
 
     loginRedirect() {
-        if (this.props.location.pathname !== '/login') return this.props.history.push('/login')
+        if (this.props.location.pathname === '/login') {
+            return this.props.children
+        } else {
+            this.props.history.push('/login')
+            return (
+                <Login />
+            )
+        }
     }
 
     render() {
         if (this.state.loggedIn === null) return null
         _st.loading(this.state.loading)
-        if (this.state.loggedIn) {
-            return (
-                <GlobalState.Provider value={this.state}>
-                    {this.state.loggedIn ? this.props.children : null}
-                </GlobalState.Provider>
-            )
-        } else {
-            return (
-                <GlobalState.Provider value={this.state}>
-                    {this.loginRedirect()}
-                    <Login />
-                </GlobalState.Provider>
-            )
-        }
+        return (
+            <GlobalState.Provider value={this.state}>
+                {this.state.loggedIn ? this.props.children : this.loginRedirect()}
+            </GlobalState.Provider>
+        )
     }
 }
