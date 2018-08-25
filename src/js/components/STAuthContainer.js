@@ -8,11 +8,10 @@ export default class StAuthContainer extends React.Component {
         super(props)
         this.state = {
             loggedIn : null,
+            loading : true,
             fireRedirect : false,
             redirectTo : this.props.location.pathname
         }
-        console.log(this.props)
-        _st.loading()
     }
 
     componentDidMount() {
@@ -20,13 +19,16 @@ export default class StAuthContainer extends React.Component {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data,
-                    fireRedirect : true
+                    fireRedirect : true,
+                    loading : false
                 })
             })
         }
     }
 
     render() {
+        _st.loading(this.state.loading)
+        console.log(this.state)
         if (this.state.loggedIn === null) return null
         if (this.state.loggedIn) {
             return (
