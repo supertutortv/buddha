@@ -8,11 +8,11 @@ export async function request(route = '/',...obj) {
                 'Content-Type': 'application/json'
             }
         }
-
-    if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
+        console.log(obj)
+    /* if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
     const response = await fetch(route, atts)
     const d = await response.json()
-    return d
+    return d */
 }
 export async function get(rt,cb) {
     return await request(rt).then(d => typeof cb === 'function' && cb(d)).catch(error => {
