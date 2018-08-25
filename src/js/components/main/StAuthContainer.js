@@ -18,6 +18,7 @@ export default class StAuthContainer extends React.Component {
 
     render() {
         var st = this.props.st
+        console.log(st)
         if (st.state.loggedIn) {
             st.loading()
             return this.props.children
