@@ -17,7 +17,9 @@ export default class Login extends React.Component {
         console.log(e.target)
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        console.log(this.state)
+    }
 
     render() {
         return this.state.skipLogin ? (<Redirect to='/dashboard'/>) : (

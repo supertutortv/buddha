@@ -3,7 +3,7 @@ import {GlobalState} from '../utilities/StateContext'
 import Login from './Login'
 import * as _st from '../classes/st'
 
-export default class StAuthContainer extends React.Component {
+export default class STAuthContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,16 +21,18 @@ export default class StAuthContainer extends React.Component {
                     loggedIn : d.data,
                     fireRedirect : true,
                     loading : false
-                },(c) => console.log(c))
+                })
             })
         }
     }
 
     loginRedirect() {
         if (this.props.location.pathname === '/login') {
+            console.log('not redirected')
             return this.props.children
         } else {
             this.props.history.push('/login')
+            console.log('redirected')
             return (
                 <Login />
             )
