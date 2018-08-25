@@ -6,18 +6,17 @@ export default class StAuthContainer extends React.Component {
     componentDidMount() {
         let st = this.props.st
 
-        /* if (!st.state.loggedIn) {
+        if (!st.state.loggedIn) {
             st.verifySession((d) => {
                 st.setState({
                     loggedIn : d.data,
                     loading : false
                 },() => st.loading())
             })
-        } */
+        }
     }
 
     render() {
-        console.log(this.props)
         return (
             <GlobalState.Consumer>
                 {st => {
