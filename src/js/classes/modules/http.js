@@ -1,14 +1,16 @@
 export async function request(route = '/',...obj) {
-    var {method,data} = obj
-    const response = await fetch(route, {
-        method: method || 'GET',
-        accept: 'application/vnd.sttv.app+json',
-        credentials: 'include',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data || {})
-    })
+    var {method,data} = obj,
+        atts = {
+            method: method || 'GET',
+            accept: 'application/vnd.sttv.app+json',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+    if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
+    const response = await fetch(route, atts)
     const d = await response.json()
     return d
 }
