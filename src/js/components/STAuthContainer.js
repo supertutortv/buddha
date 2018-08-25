@@ -31,7 +31,6 @@ export default class STAuthContainer extends React.Component {
             console.log('not redirected')
             return this.props.children
         } else {
-            this.props.history.push('/login')
             console.log('redirected')
             return (
                 <Login />
