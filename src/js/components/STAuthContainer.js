@@ -32,16 +32,10 @@ export default class STAuthContainer extends React.Component {
     }
 
     loginRedirect() {
-        if (this.props.location.pathname === '/login') {
-            console.log('not redirected')
-            return this.props.children
-        } else {
-            this.props.history.push('/login')
-            console.log('redirected')
-            return (
-                <Login />
-            )
-        }
+        if (this.props.location.pathname !== '/login') this.props.history.push('/login')
+        return (
+            <Login />
+        )
     }
 
     render() {
