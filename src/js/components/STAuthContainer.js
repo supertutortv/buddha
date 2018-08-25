@@ -12,6 +12,7 @@ export default class StAuthContainer extends React.Component {
             fireRedirect : false,
             redirectTo : this.props.location.pathname
         }
+        _st.loading(this.state.loading)
     }
 
     componentDidMount() {
