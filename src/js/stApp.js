@@ -12,10 +12,10 @@ ReactDOM.render(
         <Switch>
             <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route path='/signup' component={Signup} />
-            <STAuthContainer>
+            <Route component={STAuthContainer}>
                 <Route path='/login' component={Login} />
                 <Route path='/' component={Main} />
-            </STAuthContainer>
+            </Route>
         </Switch>
     </BrowserRouter>,
     document.getElementById('stApp')
