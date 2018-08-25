@@ -12,8 +12,8 @@ export default class Login extends React.Component {
         }
     }
 
-    setState(e) {
-        console.log(e.target)
+    setLoginState(e) {
+        _st.form.setState(this.state,e.target)
     }
 
     componentDidMount() {
@@ -33,10 +33,10 @@ export default class Login extends React.Component {
                             </div>
                             <div id="stLoginCredentials" className="col s12">
                                 <div className="input-field col s12">
-                                    <input className="browser-default validate email" type="email" name="st-username" placeholder="Email Address" onBlur={this.setState}/>
+                                    <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" onBlur={this.setLoginState}/>
                                 </div>
                                 <div className="input-field col s12">
-                                    <input className="browser-default validate" type="password" name="st-password" placeholder="Password" onBlur={this.setState}/>
+                                    <input className="browser-default validate" type="password" name="password" placeholder="Password" onBlur={this.setLoginState}/>
                                 </div>
                             </div>
                             <div className="stForgotBlock col s12">

@@ -1,5 +1,6 @@
 import loading from './modules/loading'
 import {request,get,post,put,patch,del} from './modules/http'
+import * as form from './modules/form'
 
 const config = {
     env : 'staging',
@@ -33,4 +34,4 @@ export const auth = {
     logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
 }
 
-export { loading, request, get, post, put, patch, del }
+export { loading, request, get, post, put, patch, del, form }
