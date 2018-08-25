@@ -11,6 +11,7 @@ export default class StAuthContainer extends React.Component {
             fireRedirect : false,
             redirectTo : '/login'
         }
+        console.log(this.props)
         _st.loading()
     }
 
@@ -19,7 +20,7 @@ export default class StAuthContainer extends React.Component {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data
-                },() => _st.loading(false))
+                })
             })
         }
     }
