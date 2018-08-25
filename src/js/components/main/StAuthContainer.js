@@ -17,17 +17,12 @@ export default class StAuthContainer extends React.Component {
     }
 
     render() {
-        return (
-            <GlobalState.Consumer>
-                {st => {
-                    st.loading()
-                    if (st.state.loggedIn) {
-                        return this.props.children
-                    } else {
-                        return null
-                    }
-                }}
-            </GlobalState.Consumer>
-        )
+        var st = this.props.st
+        if (st.state.loggedIn) {
+            st.loading()
+            return this.props.children
+        } else {
+            return null
+        }
     }
 }

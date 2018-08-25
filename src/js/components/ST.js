@@ -28,7 +28,7 @@ export default class ST extends React.Component {
         return (
             <Switch>
                 <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                <GlobalState.Provider value={{state:this.state,atts:this.atts}}>
+                <GlobalState.Provider value={this}>
                     <Route path='/signup' component={Signup} />
                     <STAuthContainer st={this}>
                         <Route path='/login' component={Login} />
