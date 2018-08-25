@@ -22,11 +22,10 @@ export const globalProps = {
     url : {
         root : 'https://courses.supertutortv.com',
         api : 'https://api.supertutortv.com/v2'
-    },
-    someRule : 'yep'
+    }
 }
 
 export const defaultState = {
-    loggedIn : null,
+    loggedIn : false,
     loading : true
 }

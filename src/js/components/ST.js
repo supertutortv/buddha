@@ -1,7 +1,6 @@
 import React from 'react'
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {Switch, Route, Link, Redirect} from 'react-router-dom'
-import {GlobalState} from '../utilities/GlobalState'
+import {GlobalState} from '../utilities/StateContext'
 import STRoute from './router/STRoute'
 import Main from './main/Main'
 import Login from './pages/Login'
@@ -16,13 +15,6 @@ export default class ST extends React.Component {
         const { defaultState, ...rest } = this.props
         this.state = defaultState
         this.atts = rest
-
-        this.verifySession((d) => {
-            this.setState({
-                loggedIn : d.data,
-                loading : false
-            },() => this.loading())
-        })
     }
 
     verifySession(cb) {auth.verifySession.call(this,cb)}
@@ -32,22 +24,18 @@ export default class ST extends React.Component {
         return this.state.loading ? stApp.classList.add('loading') : stApp.classList.remove('loading')
     }
 
-    componentDidMount() {
-        
-    }
-
     render() {
-        if (this.state.loggedIn === null) return null
-
         return (
-            <GlobalState.Provider value={{state:this.state,atts:this.atts}}>
-                <Switch>
-                    <STRoute path='/signup' component={Signup} />
-                    <STRoute path='/login' component={Login} />
-                    <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                    <STRoute path='/' component={Main} />
-                </Switch>
-            </GlobalState.Provider>
+            <Switch>
+                <STRoute path='/all-your-base-are-belong-to-us' component={allYourBase} />
+                <STRoute path='/signup' component={Signup} />
+                <GlobalState.Provider value={{state:this.state,atts:this.atts}}>
+                    <STAuthContainer st={this}>
+                        <STRoute path='/login' component={Login} />
+                        <STRoute path='/' component={Main} />
+                    </STAuthContainer>
+                </GlobalState.Provider>
+            </Switch>
         )
     }
 }

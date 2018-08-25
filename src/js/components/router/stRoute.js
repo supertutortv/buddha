@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
-import {GlobalState} from '../../utilities/GlobalState'
+import {GlobalState} from '../../utilities/StateContext'
 
 export default class STRoute extends Component {
     render() {

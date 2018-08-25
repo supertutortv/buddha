@@ -15,7 +15,7 @@ export default class Login extends React.Component {
 
     render() {
         return this.state.skipLogin ? (<Redirect to='/dashboard'/>) : (
-            <div id="stLoginWrapper" className="stFormWrapper row">
+            <form id="stLoginWrapper" className="stFormWrapper row">
                 <div className="stOverlay"></div>
                 <div id="stLoginHeader" className="stFormHeader col s12">
                     <h2>Sign into your account</h2>
@@ -35,7 +35,7 @@ export default class Login extends React.Component {
                 <div className="stFormButtons col s12">
                     <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
                 </div>
-            </div>
+            </form>
         )
     }
 }
