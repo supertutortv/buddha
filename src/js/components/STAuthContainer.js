@@ -28,7 +28,7 @@ export default class STAuthContainer extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return !(nextProps.location.pathname === this.props.location.pathname)
+        return (nextProps.location.pathname === this.props.location.pathname)
     }
 
     loginRedirect() {
