@@ -1,5 +1,5 @@
-export async function request(route = '/',...obj) {
-    var {method: method,data: data} = obj,
+export async function request(route = '/',obj) {
+    var {method,data} = obj,
         atts = {
             method: method || 'GET',
             accept: 'application/vnd.sttv.app+json',
@@ -8,7 +8,7 @@ export async function request(route = '/',...obj) {
                 'Content-Type': 'application/json'
             }
         }
-        console.log(obj)
+        console.log(method)
     /* if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
     const response = await fetch(route, atts)
     const d = await response.json()
