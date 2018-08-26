@@ -61,7 +61,8 @@ body.login #stApp {
         background-color: rgba(0, 0, 0, 0.8);
         color: rgba(255, 255, 255, 0.85); }
         #stStripped #stStrippedInset #stStrippedSpacer header > div.col {
-          text-align: center; }
+          text-align: center;
+          height: 100%; }
           #stStripped #stStrippedInset #stStrippedSpacer header > div.col img {
             height: 100%;
             width: auto;
