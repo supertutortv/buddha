@@ -45,8 +45,8 @@ export default class Signup extends React.Component {
         })
     }
 
-    renderStep() {
-        console.log(this.props)
+    renderStep(d) {
+        console.log(d)
         return <Redirect to="/signup/billing" />
     }
 
@@ -55,7 +55,7 @@ export default class Signup extends React.Component {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' component={this.renderStep} />
+                    <Route path='/signup/:step' render={(d) => this.renderStep(d)} />
                     <Route exact path='/signup' render={(d) => {return this.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
