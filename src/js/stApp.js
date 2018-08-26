@@ -9,6 +9,7 @@ import Login from './components/Login'
 
 ReactDOM.render(
     <BrowserRouter>
+        {console.log(this)}
         <Switch>
             <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route path='/signup' component={Signup} />
