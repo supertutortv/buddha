@@ -24,9 +24,9 @@ export default class Login extends React.Component {
 
     submit(e) {
         e.preventDefault()
-        _st.auth.token(this.state.creds,(d) => {
+        /* _st.auth.token(this.state.creds,(d) => {
             console.log(d)
-        })
+        }) */
     }
 
     componentWillUnmount() {
@@ -44,7 +44,7 @@ export default class Login extends React.Component {
                 {gstate => {
                     return (gstate.loggedIn) ? <Redirect to='/dashboard'/> : (
                         <STStrippedWrapper>
-                            <form id="stLoginWrapper" className="stFormWrapper row" /* onSubmit={this.submit} */>
+                            <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                                 <div className="stOverlay"></div>
                                 <div id="stLoginHeader" className="stFormHeader col s12">
                                     <h2>Sign into your account</h2>
