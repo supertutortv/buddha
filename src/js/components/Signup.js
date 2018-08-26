@@ -32,7 +32,7 @@ export default class Signup extends React.Component {
                     <Route path='/signup/billing' render={(d) => {return this.renderStep(d)}} />
                     <Route path='/signup/shipping' render={(d) => {return this.renderStep(d)}} />
                     <Route path='/signup/pay' render={(d) => {return this.renderStep(d)}} />
-                    <Route path='/signup' render={(d) => {return this.renderStep(d)}} />
+                    <Route exact path='/signup' render={(d) => {return this.renderStep(d)}} />
                 </Switch>
             </STStrippedWrapper>
         )
