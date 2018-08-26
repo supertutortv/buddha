@@ -153,6 +153,7 @@ body.signup #stApp {
             width: auto;
             display: inline-block; }
       #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper {
+        font-size: 16px;
         min-height: 20em;
         padding: 1.5em !important; }
         #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field {
