@@ -39,7 +39,7 @@ export default class Signup extends React.Component {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' component={this.plans} />
+                    <Route path='/signup/:step' component={this[this.props.match.params.step]} />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
