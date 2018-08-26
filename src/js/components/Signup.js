@@ -9,6 +9,7 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
+        console.log(this.props)
     }
 
     componentWillUnmount() {
@@ -20,7 +21,6 @@ export default class Signup extends React.Component {
     }
 
     renderStep(d) {
-        console.log(d)
         return (<div>Step</div>)
     }
 
