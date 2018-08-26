@@ -22,13 +22,14 @@ export default class Signup extends React.Component {
     render() {
         return(
             <STStrippedWrapper>
-                <Route path='/signup/:step' render={() => {
-                        console.log(this.props)
+                <Route path='/signup/:step' render={d => {
+                        console.log(d)
                         return (
-                            <div>Signup page</div>
+                            <div>{d.match.params.step}</div>
                         )
                     }
                 } />
+                <Route path='/signup' component={Plan} />
             </STStrippedWrapper>
         )
     }
