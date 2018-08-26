@@ -1,6 +1,6 @@
-import React from 'react'
+import STComponent from './STComponent'
 
-export default class allYourBase extends React.Component {
+export default class allYourBase extends STComponent {
     render() {
         return(
             <div style={{width:'100%',height:'100%',textAlign:'center',backgroundColor:'black'}}>

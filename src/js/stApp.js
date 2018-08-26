@@ -10,7 +10,6 @@ import Login from './components/Login'
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            {console.log(this)}
             <Route path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route path='/signup' component={Signup} />
             <Route component={STAuthContainer}>
