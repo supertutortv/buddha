@@ -32,14 +32,14 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
-        console.log('method called')
+        console.log(this.props)
     }
 
     render() {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' component={this[this.props.match.params.step]} />
+                    <Route path='/signup/:step' component={this.renderStep} />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
