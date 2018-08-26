@@ -54,7 +54,7 @@ export default class Signup extends React.Component {
         if (this.steps[this.state.step] !== d.match.params.step)
             return <Redirect to="/signup" />
         else
-        return this[this.steps[this.state.step]]()
+            return this[this.steps[this.state.step]]()
     }
 
     render() {
@@ -63,7 +63,7 @@ export default class Signup extends React.Component {
             <STStrippedWrapper>
                 <Switch>
                     <Route path='/signup/:step' render={(d) => this.renderStep(d)} />
-                    <Route exact path='/signup' render={(d) => {return this.plans(d)}} />
+                    <Route exact path='/signup' render={(d) =>  this.plans(d)} />
                 </Switch>
             </STStrippedWrapper>
         )
