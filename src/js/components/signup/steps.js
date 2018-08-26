@@ -7,3 +7,4 @@ export const account = () => <div>account</div>
 export const billing = () => <div>billing</div>
 export const shipping = () => <div>shipping</div>
 export const pay = () => <div>pay</div>
+export const thankyou = () => <div>Thank you!</div>
