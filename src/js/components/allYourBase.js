@@ -1,3 +1,4 @@
+import React from 'react'
 import STComponent from './STComponent'
 
 export default class allYourBase extends STComponent {
