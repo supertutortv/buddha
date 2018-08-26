@@ -1,5 +1,5 @@
 export async function request(route = '/',...obj) {
-    var {method,data} = obj,
+    var {method: method,data: data} = obj,
         atts = {
             method: method || 'GET',
             accept: 'application/vnd.sttv.app+json',
