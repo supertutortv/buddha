@@ -50,7 +50,7 @@ html, body, .row, .col {
   margin: 0;
   padding: 0; }
 
-body {
+html body {
   overflow: hidden;
   position: relative;
   font-family: 'Texta', sans-serif;
@@ -68,10 +68,10 @@ body {
   box-sizing: border-box;
   transition: color .25s ease-in-out;
   transition: background-color .25s ease-in-out; }
-  body.dark-mode {
+  html body.dark-mode {
     background-color: black;
     color: rgba(255, 255, 255, 0.85); }
-  body .row, body .col, body .col .row, body .row .col {
+  html body .row, html body .col, html body .col .row, html body .row .col {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -80,35 +80,29 @@ body {
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0; }
-  body h1, body h2 {
+  html body h1, html body h2 {
     font-size: 2em; }
-  body h3, body h4 {
+  html body h3, html body h4 {
     font-size: 1.25em; }
-  body h1 {
+  html body h1 {
     font-weight: 800;
     text-tranform: uppercase; }
-  body h3 {
+  html body h3 {
     font-weight: 600; }
-  body h6 {
+  html body h6 {
     font-weight: 200; }
-
-h1 {
-  margin: 0; }
-
-h2 {
-  margin: 0; }
-
-h3 {
-  margin: 0; }
-
-h4 {
-  margin: 0; }
-
-h5 {
-  margin: 0; }
-
-h6 {
-  margin: 0; }
+  html body h1 {
+    margin: 0; }
+  html body h2 {
+    margin: 0; }
+  html body h3 {
+    margin: 0; }
+  html body h4 {
+    margin: 0; }
+  html body h5 {
+    margin: 0; }
+  html body h6 {
+    margin: 0; }
 
 #stApp {
   position: absolute;
