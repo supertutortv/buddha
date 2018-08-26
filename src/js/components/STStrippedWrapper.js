@@ -3,9 +3,9 @@ import React from 'react'
 export default class STStrippedWrapper extends React.Component {
     render() {
         return (
-            <section id="stStrippedInner" className="row">
-                <div id="stStrippedInsetRight" className="col s12 l8 offset-l2 stBordered">
-                    <div id="stStrippedInsetRightInner" className="z-depth-4">
+            <section id="stStripped" className="row">
+                <div id="stStrippedInset" className="col s12">
+                    <div id="stStrippedSpacer" className="row z-depth-4">
                         <header className="stBordered row">
                             <div id="stStrippedInsetDarkHeader" className="col s12">
                                 <img src="http://localhost:8888/sttvroot/wp-content/themes/sttvsite/i/sttv_logo_contrast.png" />
