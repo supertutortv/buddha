@@ -9,7 +9,7 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
-        console.log(this.props.location.query)
+        console.log(this.props.location)
     }
 
     componentWillUnmount() {

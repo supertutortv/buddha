@@ -9,7 +9,7 @@ import Login from './components/Login'
 
 class STError extends React.Component {
     render() {
-        return null
+        return (<div>Error</div>)
     }
 }
 
