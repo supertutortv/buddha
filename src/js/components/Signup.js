@@ -47,6 +47,10 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
+    step(inc = 'plus') {
+        return inc === 'plus' ? this.state.step++ : this.state.step--
+    }
+
     renderStep(d) {
         if (this.steps[this.state.step] !== d.match.params.step)
             return <Redirect to="/signup" />
