@@ -78,3 +78,7 @@ body.login #stApp {
         #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span a {
           text-decoration: underline;
           cursor: pointer; }
+      #stStripped #stStrippedInset #stStrippedSpacer footer img {
+        display: block;
+        width: 100%;
+        height: auto; }
