@@ -34,4 +34,6 @@ export const auth = {
     logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
 }
 
+export const bodyClass = (cls = '') => document.body.classList.toggle(cls)
+
 export { loading, request, get, post, put, patch, del, form }
