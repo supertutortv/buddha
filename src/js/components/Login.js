@@ -32,11 +32,11 @@ export default class Login extends React.Component {
     }
 
     componentWillUnmount() {
-        _st.bodyClass(BODY_CLASS)
+        _st.bodyClass('login')
     }
 
     componentDidMount() {
-        _st.bodyClass(BODY_CLASS)
+        _st.bodyClass('login')
     }
 
     render() {
