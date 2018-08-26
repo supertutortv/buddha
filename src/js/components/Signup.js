@@ -9,9 +9,11 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
+
+        this.renderStep = this.renderStep.bind(this)
     }
 
-    plans() {
+    plans(d) {
         console.log(this)
         return (
         <div id="step-2" class="stFormStep row">
@@ -33,6 +35,7 @@ export default class Signup extends React.Component {
 
     renderStep() {
         console.log(this.props)
+        return null
     }
 
     render() {
@@ -40,7 +43,7 @@ export default class Signup extends React.Component {
             <STStrippedWrapper>
                 <Switch>
                     <Route path='/signup/:step' component={this.renderStep} />
-                    <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
+                    <Route exact path='/signup' render={(d) => {return this.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
         )
