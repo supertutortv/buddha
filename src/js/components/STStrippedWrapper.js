@@ -4,7 +4,7 @@ export default class STStrippedWrapper extends React.Component {
     render() {
         return (
             <section id="stStripped" className="row">
-                <div id="stStrippedInset" className="col s12">
+                <div id="stStrippedInset" className="col s12 l8 offset-l2">
                     <div id="stStrippedSpacer" className="row z-depth-4">
                         <header className="stBordered row">
                             <div id="stStrippedInsetDarkHeader" className="col s12">
