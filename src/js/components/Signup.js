@@ -22,8 +22,8 @@ export default class Signup extends React.Component {
     render() {
         return(
             <STStrippedWrapper>
-                <Route path='/signup/:step' render={(d) => {
-                        console.log(d)
+                <Route path='/signup/:step' render={() => {
+                        console.log(this.props)
                         return (
                             <div>Signup page</div>
                         )
