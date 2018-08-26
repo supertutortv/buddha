@@ -8,12 +8,17 @@ export default class Signup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            init: false
+            init: false,
+            step: 0
         }
 
         this.steps = [
-            this.plans.bind(this),
-            this.account.bind(this)
+            '',
+            'account',
+            'billing',
+            'pay',
+            'shipping',
+            'thankyou'
         ]
 
         this.renderStep = this.renderStep.bind(this)
@@ -31,7 +36,7 @@ export default class Signup extends React.Component {
     )}
 
     account() {
-        return null
+        return <div>account</div>
     }
 
     componentWillUnmount() {
@@ -46,8 +51,10 @@ export default class Signup extends React.Component {
     }
 
     renderStep(d) {
-        console.log(d)
-        return <Redirect to="/signup/billing" />
+        if (this.steps[this.state.step] !== d.match.params.step)
+            return <Redirect to="/signup" />
+        else
+        return this[this.steps[this.state.step]]()
     }
 
     render() {
