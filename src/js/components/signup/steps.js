@@ -2,7 +2,9 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import * as _st from '../../classes/st'
 
-export const plans = (plans) => {
+export const plans = (plans,x) => {
+    var render = false
+    console.log(plans,x)
     return (
 <div id="step-2" class="stFormStep row">
     <div class="stFormHeader col s12">
