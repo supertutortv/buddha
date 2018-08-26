@@ -9,7 +9,7 @@ import Login from './components/Login'
 
 class STError extends React.Component {
     render() {
-        return (<div>Error</div>)
+        return (<div style="background-color:white;height:100%;width:100%">Not found</div>)
     }
 }
 
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route path='/signup' component={Signup} />
-            <Route path='/error' component={STError} />
+            <Route path='/notfound' component={STError} />
             <Route component={STAuthContainer}>
                 <Route path='/login' component={Login} />
                 <Route path='/' component={Main} />

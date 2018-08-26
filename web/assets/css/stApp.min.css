@@ -158,15 +158,17 @@ body.signup #stApp {
             height: 100%;
             width: auto;
             display: inline-block; }
-      #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
-        color: #ed812e; }
-      #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span {
-        font-size: 0.75em;
-        line-height: 1em;
-        font-style: italic; }
-        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span a {
-          text-decoration: underline;
-          cursor: pointer; }
+      #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper {
+        padding: 1.25em; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
+          color: #ed812e; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span {
+          font-size: 0.75em;
+          line-height: 1em;
+          font-style: italic; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span a {
+            text-decoration: underline;
+            cursor: pointer; }
       #stStripped #stStrippedInset #stStrippedSpacer footer img {
         display: block;
         width: 100%;
