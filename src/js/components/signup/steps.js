@@ -2,32 +2,8 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import * as _st from '../../classes/st'
 
-export class Plans extends React.Component {
-    render() {
-        return null
-    }
-}
-
-export class Account extends React.Component {
-    render() {
-        return null
-    }
-}
-
-export class Billing extends React.Component {
-    render() {
-        return null
-    }
-}
-
-export class Shipping extends React.Component {
-    render() {
-        return null
-    }
-}
-
-export class Pay extends React.Component {
-    render() {
-        return null
-    }
-}
+export const plans = () => <div>plans</div>
+export const account = () => <div>account</div>
+export const billing = () => <div>billing</div>
+export const shipping = () => <div>shipping</div>
+export const pay = () => <div>pay</div>
