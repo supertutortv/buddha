@@ -34,6 +34,9 @@ body {
 body.login #stApp {
   background-color: #e6e4dc; }
 
+body.signup #stApp {
+  background-color: #e6e4dc; }
+
 #stApp {
   position: absolute;
   top: 0;
