@@ -11,10 +11,10 @@ export default class Signup extends React.Component {
         this.state = {}
 
         this.renderStep = this.renderStep.bind(this)
+        console.log('initialized')
     }
 
-    plans(d) {
-        console.log(this)
+    plans() {
         return (
         <div id="step-2" class="stFormStep row">
             <div class="stFormHeader col s12">
@@ -34,8 +34,8 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
-        console.log(this.props)
-        return null
+        console.log(this)
+        return <Redirect to="/signup/billing" />
     }
 
     render() {
