@@ -7,8 +7,9 @@ import * as _st from '../classes/st'
 export default class Signup extends React.Component {
     constructor(props) {
         super(props)
-        this.init = false
-        this.state = {}
+        this.state = {
+            init: false
+        }
 
         this.renderStep = this.renderStep.bind(this)
     }
@@ -41,7 +42,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        if (!this.init) return null
+        if (!this.state.init) return null
         return(
             <STStrippedWrapper>
                 <Switch>
