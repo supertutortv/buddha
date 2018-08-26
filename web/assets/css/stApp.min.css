@@ -67,3 +67,14 @@ body.login #stApp {
             height: 100%;
             width: auto;
             display: inline-block; }
+      #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
+        margin: 0;
+        color: #ed812e;
+        font-size: 1.25em;
+        font-weight: 700; }
+      #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span {
+        font-size: 0.75em;
+        font-style: italic; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span a {
+          text-decoration: underline;
+          cursor: pointer; }
