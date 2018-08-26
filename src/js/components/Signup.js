@@ -11,7 +11,6 @@ export default class Signup extends React.Component {
         this.state = {}
 
         this.renderStep = this.renderStep.bind(this)
-        console.log('initialized')
     }
 
     plans() {
@@ -30,15 +29,19 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
+        console.log('initialized')
         _st.bodyClass('signup')
+        this.setState({
+            init: true
+        })
     }
 
     renderStep() {
-        console.log(this)
         return <Redirect to="/signup/billing" />
     }
 
     render() {
+        if (!this.init) return null
         return(
             <STStrippedWrapper>
                 <Switch>
