@@ -27,7 +27,7 @@ export default class Main extends React.Component {
                             <div>Dashboard</div>
                         } />
                         <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                        <Route path="/*" component={Four04} />
+                    <Route path="/*" render={() => <Redirect to="/notfound" />} />
                     </Switch>
                 </main>
                 {this.state.redirect && (
