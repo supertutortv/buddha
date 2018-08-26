@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom'
 import * as _st from '../../classes/st'
 
 export const plans = (plans,x) => {
+    x.renderStep()
     var render = false
     console.log(plans,x)
     return (

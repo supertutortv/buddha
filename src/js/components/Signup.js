@@ -19,15 +19,15 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
-    renderStep(d) {
-        return (<div>Step</div>)
+    renderStep() {
+        console.log('method called')
     }
 
     render() {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' render={(d,x) => (typeof steps[d.match.params.step] !== 'undefined') ? steps[d.match.params.step](d,x) : <Redirect to='/notfound' /> } />
+                    <Route path='/signup/:step' render={(d) => (typeof steps[d.match.params.step] !== 'undefined') ? steps[d.match.params.step](d,this) : <Redirect to='/notfound' /> } />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
