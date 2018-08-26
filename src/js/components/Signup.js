@@ -45,9 +45,6 @@ export default class Signup extends React.Component {
 
     componentDidMount() {
         _st.bodyClass('signup')
-        this.setState({
-            init: true
-        })
     }
 
     renderStep(d) {
@@ -58,7 +55,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        if (!this.state.init) return null
         return(
             <STStrippedWrapper>
                 <Switch>
