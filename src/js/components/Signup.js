@@ -46,7 +46,7 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
-        console.log(this.steps)
+        console.log(this.props)
         return <Redirect to="/signup/billing" />
     }
 
