@@ -1,6 +1,7 @@
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
+import {Plans,Account,Billing,Shipping,Pay} from './signup/steps'
 import * as _st from '../classes/st'
 
 export default class Signup extends React.Component {
@@ -8,7 +9,6 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
-        console.log(this.props)
     }
 
     componentWillUnmount() {
@@ -22,7 +22,7 @@ export default class Signup extends React.Component {
     render() {
         return(
             <STStrippedWrapper>
-                <div>Signup page</div>
+                <Route path='/signup/:step' render={(d) => console.log(d)} />
             </STStrippedWrapper>
         )
     }
