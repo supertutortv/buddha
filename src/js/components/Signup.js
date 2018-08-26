@@ -27,7 +27,7 @@ export default class Signup extends React.Component {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' render={(d) => (typeof steps[d.match.params.step] !== 'undefined') ? steps[d.match.params.step](d,this) : <Redirect to='/notfound' /> } />
+                    <Route path='/signup/:step' render={(d) => (typeof steps[d.match.params.step] !== 'undefined') ? steps[d.match.params.step].bind(this,d,this) : <Redirect to='/notfound' /> } />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
                 </Switch>
             </STStrippedWrapper>
