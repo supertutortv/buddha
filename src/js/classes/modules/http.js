@@ -8,7 +8,7 @@ export async function request(route = '/',...obj) {
                 'Content-Type': 'application/json'
             }
         }
-        console.log(method)
+        console.log(obj)
     /* if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
     const response = await fetch(route, atts)
     const d = await response.json()
