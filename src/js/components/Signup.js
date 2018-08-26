@@ -9,7 +9,7 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
-        console.log(this.props.location)
+        console.log(this.props)
     }
 
     componentWillUnmount() {
@@ -28,10 +28,11 @@ export default class Signup extends React.Component {
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/account' render={(d) => {return steps.account(d)}} />
-                    <Route path='/signup/billing' render={(d) => {return steps.billing(d)}} />
-                    <Route path='/signup/shipping' render={(d) => {return steps.shipping(d)}} />
-                    <Route path='/signup/pay' render={(d) => {return steps.pay(d)}} />
+                    <Route path='/signup/:step' render={(d) => {
+                        console.log(d)
+                        return null
+                        return typeof steps[d.step] !== 'undefined' && steps[d.step](d)
+                    }} />
                     <Route path='/signup/*' render={(d) => {return (<Redirect to='/error' />)}} />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
                 </Switch>
