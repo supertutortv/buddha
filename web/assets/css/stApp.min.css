@@ -86,7 +86,7 @@ html body {
     font-size: 1.25em; }
   html body h1 {
     font-weight: 800;
-    text-tranform: uppercase; }
+    text-transform: uppercase; }
   html body h3 {
     font-weight: 600; }
   html body h6 {
@@ -205,7 +205,7 @@ body.signup #stApp {
           text-align: center; }
           #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stFormButtons .stFormButton {
             background-color: #109fda; }
-        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h1, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
           color: #ed812e; }
         #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span {
           font-size: 0.75em;
