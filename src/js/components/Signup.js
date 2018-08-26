@@ -29,7 +29,7 @@ export default class Signup extends React.Component {
                         )
                     }
                 } />
-                <Route path='/signup' component={Plan} />
+                <Route path='/signup' component={Plans} />
             </STStrippedWrapper>
         )
     }
