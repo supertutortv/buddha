@@ -4,8 +4,6 @@ import {GlobalState} from '../utilities/StateContext'
 import STStrippedWrapper from './STStrippedWrapper'
 import * as _st from '../classes/st'
 
-const BODY_CLASS =  'login'
-
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
