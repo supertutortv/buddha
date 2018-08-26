@@ -31,7 +31,75 @@
                         display: inline-block
 
             .stFormWrapper
-                padding: $medium
+                min-height: $huge * 10
+                padding: $large !important
+
+                .input-field
+                    margin: 0
+
+                    &.st-input-half-left
+                        padding-right: $tiny
+
+                    &.st-input-half-right
+                        padding-left: $tiny
+
+                    &>label
+                        position: relative
+
+                input, select, #st-checkout-card-element
+                    padding: $tiny $small
+                    margin-bottom: 1em
+                    width: 100%
+                    border-radius: $ittybitty
+                    border: 1px solid black(.25)
+                    transition: border .25s linear
+
+                    &.invalid
+                        border: 1px solid red
+                    
+                    &.valid
+                        border: 1px solid green
+
+                    &:focus:not(.invalid)
+                        border: 1px solid azure()
+
+                    &::placeholder
+                        opacity: 1
+                        color: black(.25)
+                        font-style: italic
+
+                select
+                    -webkit-appearance: none
+                    -moz-appearance: none
+                    appearance: none
+
+                    &.selector, option:selected
+                        color: black(.6)
+
+                .input-field.required:before, .input-field.required [type="checkbox"]:required+label:after
+                    color: red
+                    display: block
+                    height: 0
+                    position: absolute
+                    top: 25%
+                    right: 1em
+                    content: "*"
+
+                .stFormHeader
+                    padding-bottom: 1em
+
+                .stFormBody
+                    padding: 1em 1em 0
+
+                .stForgotBlock
+                    text-align: center
+                    padding-bottom: 1em
+
+                .stFormButtons
+                    text-align: center
+
+                    .stFormButton
+                        background-color: azure()
 
                 h2
                     color: sunrise()

@@ -153,7 +153,58 @@ body.signup #stApp {
             width: auto;
             display: inline-block; }
       #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper {
-        padding: 1.25em; }
+        min-height: 20em;
+        padding: 1.5em !important; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field {
+          margin: 0; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field.st-input-half-left {
+            padding-right: 0.5em; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field.st-input-half-right {
+            padding-left: 0.5em; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field > label {
+            position: relative; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper input, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper #st-checkout-card-element {
+          padding: 0.5em 0.75em;
+          margin-bottom: 1em;
+          width: 100%;
+          border-radius: 0.25em;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          transition: border .25s linear; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper input.invalid, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select.invalid, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper #st-checkout-card-element.invalid {
+            border: 1px solid red; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper input.valid, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select.valid, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper #st-checkout-card-element.valid {
+            border: 1px solid green; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper input:focus:not(.invalid), #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select:focus:not(.invalid), #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper #st-checkout-card-element:focus:not(.invalid) {
+            border: 1px solid #109fda; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper input::placeholder, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select::placeholder, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper #st-checkout-card-element::placeholder {
+            opacity: 1;
+            color: rgba(0, 0, 0, 0.25);
+            font-style: italic; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select.selector, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper select option:selected {
+            color: rgba(0, 0, 0, 0.6); }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field.required:before, #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .input-field.required [type="checkbox"]:required + label:after {
+          color: red;
+          display: block;
+          height: 0;
+          position: absolute;
+          top: 25%;
+          right: 1em;
+          content: "*"; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stFormHeader {
+          padding-bottom: 1em; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stFormBody {
+          padding: 1em 1em 0; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stForgotBlock {
+          text-align: center;
+          padding-bottom: 1em; }
+        #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stFormButtons {
+          text-align: center; }
+          #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper .stFormButtons .stFormButton {
+            background-color: #109fda; }
         #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper h2 {
           color: #ed812e; }
         #stStripped #stStrippedInset #stStrippedSpacer .stFormWrapper span {
