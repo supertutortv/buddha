@@ -9,7 +9,6 @@ export default class Signup extends React.Component {
         super(props)
         this.init = false
         this.state = {}
-        console.log(this.props)
     }
 
     componentWillUnmount() {
@@ -29,12 +28,10 @@ export default class Signup extends React.Component {
             <STStrippedWrapper>
                 <Switch>
                     <Route path='/signup/:step' render={(d) => {
-                        console.log(d)
-                        return null
-                        return typeof steps[d.step] !== 'undefined' && steps[d.step](d)
+                        return typeof steps[d.params.step] !== 'undefined' ? steps[d.params.step](d) : <Redirect to='/error' />
                     }} />
-                    <Route path='/signup/*' render={(d) => {return (<Redirect to='/error' />)}} />
                     <Route exact path='/signup' render={(d) => {return steps.plans(d)}} />
+                    <Route path='/signup/*' render={(d) => {return (<Redirect to='/error' />)}} />
                 </Switch>
             </STStrippedWrapper>
         )
