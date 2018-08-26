@@ -7,11 +7,18 @@ import STAuthContainer from './components/STAuthContainer'
 import Main from './components/Main'
 import Login from './components/Login'
 
+class STError extends React.Component {
+    render() {
+        return null
+    }
+}
+
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route path='/signup' component={Signup} />
+            <Route path='/error' component={STError} />
             <Route component={STAuthContainer}>
                 <Route path='/login' component={Login} />
                 <Route path='/' component={Main} />

@@ -19,17 +19,21 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
+    renderStep(d) {
+        console.log(d)
+        return (<div>Step</div>)
+    }
+
     render() {
         return(
             <STStrippedWrapper>
-                <Route path='/signup/:step' render={d => {
-                        console.log(d)
-                        return (
-                            <div>{d.match.params.step}</div>
-                        )
-                    }
-                } />
-                <Route path='/signup' component={Plans} />
+                <Switch>
+                    <Route path='/signup/account' render={(d) => {return this.renderStep(d)}} />
+                    <Route path='/signup/billing' render={(d) => {return this.renderStep(d)}} />
+                    <Route path='/signup/shipping' render={(d) => {return this.renderStep(d)}} />
+                    <Route path='/signup/pay' render={(d) => {return this.renderStep(d)}} />
+                    <Route path='/signup' render={(d) => {return this.renderStep(d)}} />
+                </Switch>
             </STStrippedWrapper>
         )
     }
