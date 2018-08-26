@@ -11,6 +11,11 @@ export default class Signup extends React.Component {
             init: false
         }
 
+        this.steps = [
+            this.plans.bind(this),
+            this.account.bind(this)
+        ]
+
         this.renderStep = this.renderStep.bind(this)
     }
 
@@ -25,12 +30,15 @@ export default class Signup extends React.Component {
         </div>
     )}
 
+    account() {
+        return null
+    }
+
     componentWillUnmount() {
         _st.bodyClass('signup')
     }
 
     componentDidMount() {
-        console.log('initialized')
         _st.bodyClass('signup')
         this.setState({
             init: true
@@ -38,6 +46,7 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
+        console.log(this.steps)
         return <Redirect to="/signup/billing" />
     }
 
