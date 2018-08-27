@@ -27,6 +27,8 @@ export default class STAuthContainer extends React.Component {
 
         this.loginForm = loginForm.bind(this)
         this.lpwForm = lpwForm.bind(this)
+        this.setLoginState = this.setLoginState.bind(this)
+        this.submit = this.submit.bind(this)
         _st.loading()
     }
 
