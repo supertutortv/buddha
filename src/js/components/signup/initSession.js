@@ -1,5 +1,3 @@
-import React from 'react'
-import {Redirect} from 'react-router-dom'
 import * as _st from '../../classes/st'
 
 export default function initSession(plan) {
@@ -11,7 +9,7 @@ export default function initSession(plan) {
             return thePlan = obj
     })
 
-    if (!Object.keys(thePlan).length) return <Redirect to='/signup' />
+    if (!Object.keys(thePlan).length) return this.props.history.push('/signup') && this.plans()
     
     this.setState({
         step: 1,
