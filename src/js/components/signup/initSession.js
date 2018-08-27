@@ -6,7 +6,7 @@ export default function initSession(plan) {
 
     _st.plans.some((obj) => {
         console.log(obj)
-        if (obj.id === planId || obj.name === planId)
+        if (obj.id === planId || obj.slug === planId)
             return thePlan = obj
     })
 
