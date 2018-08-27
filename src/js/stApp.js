@@ -30,6 +30,7 @@ class STApp extends React.Component {
     }
     
     render() {
+        return (
         <GlobalState.Provider>
             <BrowserRouter>
                 <Switch>
@@ -45,6 +46,7 @@ class STApp extends React.Component {
                 </Switch>
             </BrowserRouter>
         </GlobalState.Provider>
+        )
     }
 }
 
