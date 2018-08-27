@@ -5,15 +5,18 @@ export default function initSession(plan) {
         thePlan = {}
 
     _st.plans.some((obj) => {
-        console.log(obj)
         if (obj.id === planId || obj.slug === planId)
             return thePlan = obj
     })
 
-    if (Object.keys(thePlan).length)
-        this.setState({
-            step: 1,
-            init: true
-        })
+    console.log(history)
+    if (!Object.keys(thePlan).length) return null
+
+    
+    
+    this.setState({
+        step: 1,
+        init: true
+    })
     return null
 }
