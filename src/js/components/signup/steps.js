@@ -10,7 +10,7 @@ export const thankyou = () => <div>Thank you!</div>
 export function plans(d) {
     var state = this.state
     var plan = state.params['plan'] || '1206420'
-    console.log(_st.plans.plan)
+    console.log(_st.plans[plan])
     return (
     <div id="step-2" class="stFormStep row">
         <div class="stFormHeader col s12">
