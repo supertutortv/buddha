@@ -36,7 +36,7 @@ export const auth = {
 
 export const bodyClass = (cls = '') => document.body.classList.toggle(cls)
 
-export const objectifyURLParams = (params = '') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
+export const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
   return ({ ...obj, [key]: value })
 }, {});
