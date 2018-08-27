@@ -9,6 +9,7 @@ export default function initSession(plan) {
             return thePlan = obj
     })
 
+    console.log(thePlan)
     if (Object.keys(thePlan).length)
         this.setState({
             step: 1,
