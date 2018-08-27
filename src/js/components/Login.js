@@ -3,7 +3,7 @@ import { GlobalState } from '../utilities/StateContext'
 import STStrippedWrapper from './STStrippedWrapper'
 import * as _st from '../classes/st'
 
-export const login = () => {
+export default login = () => {
     return (
         <STStrippedWrapper>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
