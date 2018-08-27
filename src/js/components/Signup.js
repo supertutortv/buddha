@@ -22,6 +22,12 @@ export default class Signup extends React.Component {
         ]
 
         this.renderStep = this.renderStep.bind(this)
+        this.step = this.step.bind(this)
+
+        var prevSesh = localStorage.getItem('stSignupSesh')
+
+        if (prevSesh !== null)
+            this.state = JSON.parse(prevSesh)
     }
 
     plans() {
@@ -59,6 +65,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
+        if (this.state.session === null)
         return(
             <STStrippedWrapper>
                 <Switch>
