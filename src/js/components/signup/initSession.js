@@ -15,6 +15,7 @@ export default function initSession(plan) {
             init: true
         })
     } else {
+        this.props.history.replace('/signup')
         return this.plans()
     }
     return null
