@@ -41,6 +41,7 @@ export default class Login extends React.Component {
         return (
             <GlobalState.Consumer>
                 {gstate => {
+                    console.log(gstate)
                     return (gstate.loggedIn) ? <Redirect to='/dashboard'/> : (
                         <STStrippedWrapper>
                             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>

@@ -7,6 +7,8 @@ import STAuthContainer from './components/STAuthContainer'
 import Main from './components/Main'
 import Login from './components/Login'
 
+const prevSignup = localStorage.getItem('stPrevSesh')
+
 class STError extends React.Component {
     render() {
         return (<div style="background-color:white;height:100%;width:100%">Not found</div>)
@@ -17,7 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-            <Route path='/signup' component={Signup} />
+            <Route path='/signup' context={prevSignup} component={Signup} />
             <Route path='/notfound' component={STError} />
             <Route component={STAuthContainer}>
                 <Route path='/login' component={Login} />
