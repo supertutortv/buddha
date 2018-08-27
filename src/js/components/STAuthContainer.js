@@ -1,4 +1,5 @@
 import React from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import { GlobalState } from '../utilities/StateContext'
 import loginForm from './login/loginForm'
