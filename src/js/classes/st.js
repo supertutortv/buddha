@@ -39,7 +39,7 @@ export const plans = [
         taxable: 0
     },
     {
-        id: '12b1280',
+        id: '12c9920',
         slug: 'sat-act-bundle',
         name: 'SAT and ACT Prep Course Bundle',
         price: 39900,
