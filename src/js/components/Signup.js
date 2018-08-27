@@ -56,6 +56,7 @@ export default class Signup extends React.Component {
                                 return this[this.steps[this.state.step]]()
                         }} />
                     </Switch>
+                    {_st.form.overlay()}
                 </form>
             </STStrippedWrapper>
         )
