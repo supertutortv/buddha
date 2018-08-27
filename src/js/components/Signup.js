@@ -37,24 +37,26 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        _st.form.overlay()
         _st.bodyClass('signup')
     }
 
     render() {
         return(
             <STStrippedWrapper>
-                <Switch>
-                    <Route path='/signup/thankyou' component={this.thankyou} />
-                    <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
-                    <Route exact path='/signup' render={(d) => {
-                        
-                        if (('plan' in this.state.params)&&!this.state.init)
-                            return this.initSession(this.state.params['plan'])
-                        else
-                            return this[this.steps[this.state.step]]()
-                    }} />
-                </Switch>
+                <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={this.submit}>
+                    <div className="stOverlay"></div>
+                    <Switch>
+                        <Route path='/signup/thankyou' component={this.thankyou} />
+                        <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
+                        <Route exact path='/signup' render={(d) => {
+                            
+                            if (('plan' in this.state.params)&&!this.state.init)
+                                return this.initSession(this.state.params['plan'])
+                            else
+                                return this[this.steps[this.state.step]]()
+                        }} />
+                    </Switch>
+                </form>
             </STStrippedWrapper>
         )
     }
