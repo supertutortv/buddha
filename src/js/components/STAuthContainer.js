@@ -79,7 +79,7 @@ export default class STAuthContainer extends React.Component {
                                 <Switch>
                                     <Route exact path='/login' component={this.loginForm} />
                                     <Route path='/login/lostpw' component={this.lpwForm} />
-                                    {this.loginRedirect}
+                                    {this.loginRedirect()}
                                 </Switch>
                             </STStrippedWrapper>
                         )
