@@ -42,6 +42,7 @@ export default class Signup extends React.Component {
 
     render() {
         var step = this.state.step ? this[this.steps[this.state.step]] : this.plans
+        console.log(this.state)
         return(
             <STStrippedWrapper>{step()}</STStrippedWrapper>
         )
