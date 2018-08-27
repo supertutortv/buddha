@@ -9,10 +9,7 @@ export default function initSession(plan) {
             return thePlan = obj
     })
 
-    console.log(history)
-    if (!Object.keys(thePlan).length) return null
-
-    
+    if (!Object.keys(thePlan).length) return history.push('/signup')
     
     this.setState({
         step: 1,
