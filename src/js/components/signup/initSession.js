@@ -15,7 +15,42 @@ export default function initSession(plan) {
     } else {
         this.setState({
             step: 1,
-            init: true
+            init: true,
+            session: {
+                valid: false,
+                id: Date.now(),
+                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
+                card : {
+                    valid : false,
+                    obj : null
+                },
+                stripe : null,
+                customer : {
+                    account : {
+                        email: '',
+                        firstname: '',
+                        lastname: '',
+                        password: ''
+                    },
+                    plan : thePlan,
+                    shipping : {},
+                    billing : {},
+                    token: ''
+                },
+                pricing : {
+                    total : thePlan.price,
+                    shipping : 0,
+                    taxable : thePlan.taxable,
+                    tax : {
+                        id: '',
+                        value: 0
+                    },
+                    coupon : {
+                        id: '',
+                        value: ''
+                    }
+                }
+            }
         })
     }
     return null

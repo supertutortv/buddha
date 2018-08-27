@@ -47,6 +47,7 @@ export default class Signup extends React.Component {
                     <Route path='/signup/thankyou' component={this.thankyou} />
                     <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
                     <Route exact path='/signup' render={(d) => {
+                        console.log(this.state)
                         if (('plan' in this.state.params)&&!this.state.init)
                             return this.initSession(this.state.params['plan'])
                         else
