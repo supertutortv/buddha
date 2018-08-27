@@ -21,7 +21,7 @@ export default class STAuthContainer extends React.Component {
             },
             error : {
                 id : '',
-                message : '&nbsp;'
+                message : ''
             }
         }
 
@@ -72,7 +72,7 @@ export default class STAuthContainer extends React.Component {
                                 <Switch>
                                     <Route exact path='/login' component={this.loginForm} />
                                     <Route path='/login/lostpw' component={this.lpwForm} />
-                                    <Redirect to='/login' />
+                                    {this.loginForm}
                                 </Switch>
                             </STStrippedWrapper>
                         )
