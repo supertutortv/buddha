@@ -47,7 +47,7 @@ export default class Login extends React.Component {
                             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                                 <div className="stOverlay"></div>
                                 <div id="stLoginHeader" className="stFormHeader col s12">
-                                    <h1>Sign into your account</h1>
+                                    <h2>Welcome! Please sign in.</h2>
                                     <span>You can access all of your test prep courses, as well as all of your account information, by logging in below.</span>
                                 </div>
                                 <div id="stLoginCredentials" className="col s12">
