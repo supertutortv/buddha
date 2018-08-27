@@ -12,7 +12,7 @@ export default class Signup extends React.Component {
         this.state = {
             init: false,
             step: 0,
-            params: _st.objectifyURLParams(props.location.search)
+            params: props.location.search ? _st.objectifyURLParams(props.location.search) : ''
         }
         this.steps = [
             '',
