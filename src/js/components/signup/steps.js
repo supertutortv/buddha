@@ -7,13 +7,16 @@ export const shipping = () => <div>shipping</div>
 export const pay = () => <div>pay</div>
 export const thankyou = () => <div>Thank you!</div>
 
+export const PlanComp = () => {
+
+}
+
 export function plans() {
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
-            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug}>{plan.name}</a>
+            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={this.initSession}>{plan.name}</a>
         )
-        console.log(this)
     })
     return (
     <div id="step-2" class="stFormStep row">
