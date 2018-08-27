@@ -10,12 +10,13 @@ export const thankyou = () => <div>Thank you!</div>
 export function plans() {
     var state = this.state
     var plan = state.params['plan']
+    console.log(plan)
 
-    if (plan) {
+    /* if (plan) {
         this.state.step++
         this.state.session = this.initSession()
         return <Redirect to='/signup/account' />
-    }
+    } */
     
     return (
     <div id="step-2" class="stFormStep row">
