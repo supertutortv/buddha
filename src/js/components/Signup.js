@@ -65,7 +65,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        if (this.state.session === null)
         return(
             <STStrippedWrapper>
                 <Switch>
