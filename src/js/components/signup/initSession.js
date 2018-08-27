@@ -1,4 +1,5 @@
-import { browserHistory } from 'react-router';
+import React from 'react'
+import { browserHistory } from 'react-router'
 import * as _st from '../../classes/st'
 
 export default function initSession(plan) {
