@@ -1,6 +1,7 @@
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
+import createAccount from './signup/createAccount'
 import initSession from './signup/initSession'
 import * as steps from './signup/steps'
 import * as _st from '../classes/st'
@@ -30,6 +31,7 @@ export default class Signup extends React.Component {
         this.pay = steps.pay.bind(this)
         this.thankyou = steps.thankyou.bind(this)
         this.initSession = initSession.bind(this)
+        this.createAccount = createAccount.bind(this)
     }
 
     componentWillUnmount() {

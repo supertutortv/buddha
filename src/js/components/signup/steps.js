@@ -26,29 +26,28 @@ export function plans() {
 
 export function account() {
     return (
-        <div id="step-1" class="stFormStep row">
-            <div class="stFormHeader col s12">
+        <div id="step-1" className="stFormStep row">
+            <div className="stFormHeader col s12">
                 <h2>Awesome! Let's create your account!</h2>
                 <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
-            <div id="stSignupAccount" class="stFormBody col s12">
-                <div class="input-field required col s12 m6 st-input-half-left">
-                    <input class="browser-default validate" type="text" name="st-customer-account-firstname" placeholder="First Name" required />
+            <div id="stSignupAccount" className="stFormBody col s12">
+                <div className="input-field required col s12 m6 st-input-half-left">
+                    <input className="browser-default validate" type="text" name="st-customer-account-firstname" placeholder="First Name" required />
                 </div>
-                <div class="input-field required col s12 m6 st-input-half-right">
-                    <input class="browser-default validate" type="text" name="st-customer-account-lastname" placeholder="Last Name" required/>
+                <div className="input-field required col s12 m6 st-input-half-right">
+                    <input className="browser-default validate" type="text" name="st-customer-account-lastname" placeholder="Last Name" required/>
                 </div>
-                <div class="input-field required col s12">
-                    <input class="browser-default validate email" type="email" name="st-customer-account-email" placeholder="Email Address" required/>
+                <div className="input-field required col s12">
+                    <input className="browser-default validate email" type="email" name="st-customer-account-email" placeholder="Email Address" required/>
                 </div>
-                <div class="input-field required col s12">
-                    <input class="browser-default validate" type="password" name="st-customer-account-password" placeholder="Password" required/>
+                <div className="input-field required col s12">
+                    <input className="browser-default validate" type="password" name="st-customer-account-password" placeholder="Password" required/>
                 </div>
             </div>
-            <div class="stFormButtons col s12">
-                <button id="stBtn_account" class="stFormButton pmt-button btn waves-effect waves-light" onclick="_st.signup.next(this.id)">Next >></button>
+            <div className="stFormButtons col s12">
+                <button id="stBtn_account" type="submit" className="stFormButton pmt-button btn waves-effect waves-light" onClick={this.createAccount}>Next >></button>
             </div>
-            {_st.form.overlay()}
         </div>
     )
 }
