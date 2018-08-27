@@ -69,7 +69,7 @@ export default class STAuthContainer extends React.Component {
                     if (this.state.loggedIn) {
                         return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children
                     } else {
-                        context.bodyClass('login')
+                        console.log(context)
                         return (
                             <STStrippedWrapper>
                                 <Switch>
