@@ -5,8 +5,9 @@ import * as steps from './signup/steps'
 import * as _st from '../classes/st'
 
 export default class Signup extends React.Component {
-    constructor(props) {
+    constructor(props,context) {
         super(props)
+        console.log(props,context)
         this.state = {
             init: false,
             step: 2
