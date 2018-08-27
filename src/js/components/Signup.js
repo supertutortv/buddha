@@ -13,7 +13,6 @@ export default class Signup extends React.Component {
             step: 0,
             params: _st.objectifyURLParams(props.location.search)
         }
-        console.log(this.state)
         this.steps = [
             '',
             'account',
@@ -25,22 +24,12 @@ export default class Signup extends React.Component {
 
         this.renderStep = this.renderStep.bind(this)
         this.step = this.step.bind(this)
-    }
-
-    plans(d) {
-        console.log(d)
-        return (
-        <div id="step-2" class="stFormStep row">
-            <div class="stFormHeader col s12">
-                <h2>Select a plan.</h2>
-                <span>All plans come with a 5 day free trial. <strong>NOTE:</strong> Your card will not be charged until your trial period is over, and you're free to cancel at any time. If your course comes with free books, they will not ship until your trial has expired.</span>
-            </div>
-            <div id="stSignupPlans" class="stFormBody col s12">{}</div>
-        </div>
-    )}
-
-    account() {
-        return <div>account</div>
+        this.plans = steps.plans.bind(this)
+        this.account = steps.account.bind(this)
+        this.billing = steps.billing.bind(this)
+        this.shipping = steps.shipping.bind(this)
+        this.pay = steps.pay.bind(this)
+        this.thankyou = steps.thankyou.bind(this)
     }
 
     componentWillUnmount() {
