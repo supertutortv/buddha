@@ -1,6 +1,6 @@
 import React from 'react'
 import { GlobalState } from '../utilities/StateContext'
-import Login from './Login'
+import login from './Login'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -22,7 +22,7 @@ export default class STAuthContainer extends React.Component {
             }
         }
 
-        this.Login = Login.bind(this)
+        this.loginForm = login.bind(this)
         _st.loading()
     }
 
@@ -44,9 +44,7 @@ export default class STAuthContainer extends React.Component {
 
     loginRedirect() {
         if (this.props.location.pathname !== '/login') this.props.history.push('/login')
-        return (
-            this.Login()
-        )
+        return this.login()
     }
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
