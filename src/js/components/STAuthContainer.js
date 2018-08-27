@@ -1,11 +1,12 @@
 import React from 'react'
-import {GlobalState} from '../utilities/StateContext'
+import { GlobalState } from '../utilities/StateContext'
 import Login from './Login'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
     constructor(props) {
         super(props)
+
         this.state = {
             loggedIn : null,
             loading : true,
@@ -20,6 +21,7 @@ export default class STAuthContainer extends React.Component {
                 message : '&nbsp;'
             }
         }
+
         this.Login = Login.bind(this)
         _st.loading()
     }
@@ -61,9 +63,9 @@ export default class STAuthContainer extends React.Component {
         if (this.state.loggedIn === null) return null
         _st.loading(this.state.loading)
         return (
-            <GlobalState.Provider value={this.state}>
+            <GlobalState.Consumer>
                 {this.state.loggedIn ? ((this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children) : this.loginRedirect()}
-            </GlobalState.Provider>
+            </GlobalState.Consumer>
         )
     }
 }
