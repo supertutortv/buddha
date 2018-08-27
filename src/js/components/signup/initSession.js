@@ -11,7 +11,7 @@ export default function initSession(plan) {
             return thePlan = obj
     })
 
-    if (!Object.keys(thePlan).length) return console.log(this.props)
+    if (!Object.keys(thePlan).length) return this.props.history.push('/signup')
     
     this.setState({
         step: 1,
