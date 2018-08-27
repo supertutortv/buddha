@@ -44,7 +44,7 @@ export default class STAuthContainer extends React.Component {
 
     loginRedirect() {
         if (this.props.location.pathname !== '/login') this.props.history.push('/login')
-        return this.login()
+        return this.loginForm()
     }
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
