@@ -1,6 +1,8 @@
 import React from 'react'
+import STStrippedWrapper from './STStrippedWrapper'
 import { GlobalState } from '../utilities/StateContext'
-import login from './Login'
+import loginForm from './login/loginForm'
+import lpwForm from './login/lpwForm'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -22,7 +24,8 @@ export default class STAuthContainer extends React.Component {
             }
         }
 
-        this.loginForm = login.bind(this)
+        this.loginForm = loginForm.bind(this)
+        this.lpwForm = lpwForm.bind(this)
         _st.loading()
     }
 
@@ -43,9 +46,9 @@ export default class STAuthContainer extends React.Component {
     }
 
     loginRedirect() {
-        if (this.props.location.pathname !== '/login') this.props.history.push('/login')
-        return this.loginForm()
+        if (this.props.location.pathname !== '/login') return <Redirect to='/login' />
     }
+
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
     }
@@ -62,7 +65,22 @@ export default class STAuthContainer extends React.Component {
         _st.loading(this.state.loading)
         return (
             <GlobalState.Consumer>
-                {this.state.loggedIn ? ((this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children) : this.loginRedirect()}
+                {context => {
+                    if (this.state.loggedIn) {
+                        return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children
+                    } else {
+                        context.bodyClass('login')
+                        return (
+                            <STStrippedWrapper>
+                                <Switch>
+                                    <Route exact path='/login' component={this.loginForm} />
+                                    <Route path='/login/lostpw' component={this.lpwForm} />
+                                    {this.loginRedirect()}
+                                </Switch>
+                            </STStrippedWrapper>
+                        )
+                    }
+                }}
             </GlobalState.Consumer>
         )
     }
