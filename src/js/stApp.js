@@ -20,7 +20,7 @@ ReactDOM.render(
             <Route path='/signup' component={Signup} />
             <Route path='/notfound' component={STError} />
             <Route component={STAuthContainer}>
-                <Route path='/login' component={Login} />
+                <Route path='/login' />
                 <Route path='/' component={Main} />
             </Route>
         </Switch>

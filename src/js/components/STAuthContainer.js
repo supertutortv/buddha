@@ -10,8 +10,17 @@ export default class STAuthContainer extends React.Component {
             loggedIn : null,
             loading : true,
             fireRedirect : false,
-            redirectTo : this.props.location.pathname
+            redirectTo : this.props.location.pathname,
+            creds : {
+                username : '',
+                password : ''
+            },
+            error : {
+                id : '',
+                message : '&nbsp;'
+            }
         }
+        this.Login = Login.bind(this)
         _st.loading()
     }
 
@@ -34,8 +43,18 @@ export default class STAuthContainer extends React.Component {
     loginRedirect() {
         if (this.props.location.pathname !== '/login') this.props.history.push('/login')
         return (
-            <Login />
+            this.Login
         )
+    }
+    setLoginState(e) {
+        _st.form.setState(this.state.creds,e.target)
+    }
+
+    submit(e) {
+        e.preventDefault()
+        /* _st.auth.token(this.state.creds,(d) => {
+            console.log(d)
+        }) */
     }
 
     render() {
@@ -43,7 +62,7 @@ export default class STAuthContainer extends React.Component {
         _st.loading(this.state.loading)
         return (
             <GlobalState.Provider value={this.state}>
-                {this.state.loggedIn ? this.props.children : this.loginRedirect()}
+                {this.state.loggedIn ? ((this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children) : this.loginRedirect()}
             </GlobalState.Provider>
         )
     }
