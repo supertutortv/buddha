@@ -10,13 +10,16 @@ export default function initSession(plan) {
     })
 
     if (!Object.keys(thePlan).length) {
-        this.props.history.push('/signup')
-        return this.plans()
+        this.props.history.push({
+            pathname: '/signup',
+            search: ''
+        })
+    } else {
+        this.setState({
+            step: 1,
+            init: true
+        })
+        console.log(this.state)
     }
-    
-    this.setState({
-        step: 1,
-        init: true
-    })
     return null
 }
