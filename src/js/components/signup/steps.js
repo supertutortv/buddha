@@ -12,12 +12,13 @@ export function plans() {
     var plan = state.params['plan']
 
     if (plan) {
-        this.setState((prev) => {
-            return {
+        this.setState((prev) => ({
                 step: prev.step + 1,
                 session: this.initSession()
             }
-        },() => <Redirect to='/signup/account' />)
+        ),() => {
+            return <Redirect to='/signup/account' />
+        })
     }
     
     return (
