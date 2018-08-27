@@ -12,7 +12,7 @@ export default class STStrippedWrapper extends React.Component {
                             </div>
                         </header>
                         {this.props.children}
-                        <div id="stFormErrors" className="row">{this.props.error.message}</div>
+                        <div id="stFormErrors" className="row"></div>
                         <footer className="row">
                             <img src="/assets/img/supertutortv-students.png" />
                         </footer>
