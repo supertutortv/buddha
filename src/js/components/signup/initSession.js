@@ -8,15 +8,15 @@ export default function initSession(plan) {
         if (obj.id === planId || obj.slug === planId)
             return thePlan = obj
     })
-    console.log(this.state.params)
-    if (Object.keys(thePlan).length) {
-        this.setState({
-            step: 1,
-            init: true
-        })
-    } else {
+    
+    if (!Object.keys(thePlan).length) {
+        delete this.state.params.plan
         this.props.history.replace('/signup')
-        return this.plans()
     }
+
+    this.setState({
+        step: 1,
+        init: true
+    })
     return null
 }
