@@ -46,10 +46,6 @@ export default class STAuthContainer extends React.Component {
         return (nextProps.location.pathname === this.props.location.pathname)
     }
 
-    loginRedirect() {
-        if (this.props.location.pathname !== '/login') return <Redirect to='/login' />
-    }
-
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
     }
@@ -76,7 +72,7 @@ export default class STAuthContainer extends React.Component {
                                 <Switch>
                                     <Route exact path='/login' component={this.loginForm} />
                                     <Route path='/login/lostpw' component={this.lpwForm} />
-                                    {this.loginRedirect()}
+                                    <Redirect to='/login' />
                                 </Switch>
                             </STStrippedWrapper>
                         )
