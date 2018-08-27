@@ -6,4 +6,5 @@ export default function initSession(plan) {
         step: 1,
         init: true
     })
+    return null
 }

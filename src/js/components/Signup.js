@@ -48,9 +48,9 @@ export default class Signup extends React.Component {
                     <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
                     <Route exact path='/signup' render={(d) => {
                         if (('plan' in this.state.params)&&!this.state.init)
-                            this.initSession(this.state.params['plan'])
+                            return this.initSession(this.state.params['plan'])
                         else
-                            this[this.steps[this.state.step]]()
+                            return this[this.steps[this.state.step]]()
                     }} />
                 </Switch>
             </STStrippedWrapper>
