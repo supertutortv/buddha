@@ -37,6 +37,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
+        _st.form.overlay()
         _st.bodyClass('signup')
     }
 
@@ -56,7 +57,6 @@ export default class Signup extends React.Component {
                                 return this[this.steps[this.state.step]]()
                         }} />
                     </Switch>
-                    {_st.form.overlay()}
                 </form>
             </STStrippedWrapper>
         )
