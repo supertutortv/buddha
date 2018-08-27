@@ -120,11 +120,11 @@ html body {
 
 body.login #stApp {
   background-color: #e6e4dc; }
+  body.login #stApp #stStripped {
+    width: 1200px; }
 
 body.signup #stApp {
   background-color: #e6e4dc; }
-  body.signup #stApp #stStripped {
-    width: 1200px; }
 
 #stStripped {
   position: relative;
