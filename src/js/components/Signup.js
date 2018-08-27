@@ -9,7 +9,7 @@ export default class Signup extends React.Component {
         super(props)
         this.state = {
             init: false,
-            step: 0
+            step: 2
         }
 
         this.steps = [
@@ -23,11 +23,6 @@ export default class Signup extends React.Component {
 
         this.renderStep = this.renderStep.bind(this)
         this.step = this.step.bind(this)
-
-        var prevSesh = localStorage.getItem('stSignupSesh')
-
-        if (prevSesh !== null)
-            this.state = JSON.parse(prevSesh)
     }
 
     plans() {
