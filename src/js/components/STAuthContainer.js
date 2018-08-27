@@ -57,6 +57,13 @@ export default class STAuthContainer extends React.Component {
         }) */
     }
 
+    loginRedirect() {
+        this.props.history.push('/login')
+        return (
+            this.loginForm()
+        )
+    }
+
     render() {
         if (this.state.loggedIn === null) return null
         _st.loading(this.state.loading)
@@ -72,7 +79,7 @@ export default class STAuthContainer extends React.Component {
                                 <Switch>
                                     <Route exact path='/login' component={this.loginForm} />
                                     <Route path='/login/lostpw' component={this.lpwForm} />
-                                    {this.loginForm}
+                                    {this.loginRedirect}
                                 </Switch>
                             </STStrippedWrapper>
                         )
