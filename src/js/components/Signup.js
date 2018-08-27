@@ -12,7 +12,7 @@ export default class Signup extends React.Component {
         this.state = {
             init: false,
             step: 0,
-            params: props.location.search ? _st.objectifyURLParams(props.location.search) : ''
+            params: props.location.search ? _st.objectifyURLParams(props.location.search) : {}
         }
         this.steps = [
             '',
@@ -47,7 +47,11 @@ export default class Signup extends React.Component {
                     <Route path='/signup/thankyou' component={this.thankyou} />
                     <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
                     <Route exact path='/signup' render={(d) => {
-                        console.log(d,this.state.params)
+                        if ('plan' in this.state.params) {
+                            console.log(this.state.params['plan'])
+                        } else {
+                            console.log('no plan selected')
+                        }
                         return null
                     }} />
                 </Switch>
