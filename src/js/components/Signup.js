@@ -5,14 +5,15 @@ import * as steps from './signup/steps'
 import * as _st from '../classes/st'
 
 export default class Signup extends React.Component {
-    constructor(props,context) {
+    constructor(props) {
         super(props)
-        console.log(props,context)
+    
         this.state = {
             init: false,
-            step: 2
+            step: 0,
+            params: _st.objectifyURLParams(props.location.search)
         }
-
+        console.log(this.state)
         this.steps = [
             '',
             'account',
