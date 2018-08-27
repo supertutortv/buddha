@@ -17,13 +17,12 @@ export default class Signup extends React.Component {
             '',
             'account',
             'billing',
-            'pay',
             'shipping',
+            'pay',
             'thankyou'
         ]
 
         this.renderStep = this.renderStep.bind(this)
-        this.step = this.step.bind(this)
         this.plans = steps.plans.bind(this)
         this.account = steps.account.bind(this)
         this.billing = steps.billing.bind(this)
@@ -40,10 +39,6 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
-    step(inc = 'plus') {
-        return inc === 'plus' ? this.state.step++ : this.state.step--
-    }
-
     renderStep(d) {
         if (this.steps[this.state.step] !== d.match.params.step)
             return <Redirect to="/signup" />
@@ -52,11 +47,11 @@ export default class Signup extends React.Component {
     }
 
     render() {
+        var step = this.state.step ? this[this.steps[this.state.step]] : this.plans
         return(
             <STStrippedWrapper>
                 <Switch>
-                    <Route path='/signup/:step' render={(d) => this.renderStep(d)} />
-                    <Route exact path='/signup' render={(d) =>  this.plans(d)} />
+                    {step()}
                 </Switch>
             </STStrippedWrapper>
         )
