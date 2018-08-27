@@ -7,10 +7,19 @@ export const shipping = () => <div>shipping</div>
 export const pay = () => <div>pay</div>
 export const thankyou = () => <div>Thank you!</div>
 
-export function plans(d) {
+export function plans() {
     var state = this.state
-    var plan = state.params['plan'] || '1206420'
-    console.log(_st.plans[plan])
+    var plan = state.params['plan']
+
+    if (plan) {
+        this.setState((prev) => {
+            return {
+                step: prev.step + 1,
+                session: this.initSession()
+            }
+        },() => <Redirect to='/signup/account' />)
+    }
+    
     return (
     <div id="step-2" class="stFormStep row">
         <div class="stFormHeader col s12">
