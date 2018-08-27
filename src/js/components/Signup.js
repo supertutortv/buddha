@@ -41,10 +41,17 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        var step = this.state.step ? this[this.steps[this.state.step]] : this.plans
-        console.log(this.state)
         return(
-            <STStrippedWrapper>{step()}</STStrippedWrapper>
+            <STStrippedWrapper>
+                <Switch>
+                    <Route path='/signup/:step' render={(d) => {
+                        //var step = this.state.step ? this[this.steps[this.state.step]] : this.plans
+                        console.log(console.log(d))
+                        return null
+                    }}/>
+                    <Route exact path='/signup' component={this.plans} />
+                </Switch>
+            </STStrippedWrapper>
         )
     }
 }
