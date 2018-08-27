@@ -48,6 +48,7 @@ export function account() {
             <div class="stFormButtons col s12">
                 <button id="stBtn_account" class="stFormButton pmt-button btn waves-effect waves-light" onclick="_st.signup.next(this.id)">Next >></button>
             </div>
+            {_st.form.overlay()}
         </div>
     )
 }

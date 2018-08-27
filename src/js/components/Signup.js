@@ -37,6 +37,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
+        _st.form.overlay()
         _st.bodyClass('signup')
     }
 
@@ -47,7 +48,7 @@ export default class Signup extends React.Component {
                     <Route path='/signup/thankyou' component={this.thankyou} />
                     <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
                     <Route exact path='/signup' render={(d) => {
-                        _st.form.overlay()
+                        
                         if (('plan' in this.state.params)&&!this.state.init)
                             return this.initSession(this.state.params['plan'])
                         else
