@@ -25,8 +25,8 @@ class STApp extends React.Component {
     }
 
     bodyClass(cls = '') {
-        document.body.classList.replace(this.state.bodyClass,cls)
-        return Object.assign(this.state,{bodyClass:cls})
+        Object.assign(this.state,{bodyClass:cls})
+        return document.body.className = this.state.bodyClass
     }
     
     render() {
