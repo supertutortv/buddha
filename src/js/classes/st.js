@@ -23,6 +23,34 @@ const config = {
 
 export const stripe = config[config.env].stripe
 
+export const plans = new Proxy({
+    'the-best-act-prep-course-ever|1206420': {
+        id: '1206420',
+        name: 'The Best ACT Prep Course Ever',
+        price: 24900,
+        taxable: 2490
+    },
+    'the-best-sat-prep-course-ever|12b1280': {
+        id: '12b1280',
+        name: 'The Best SAT Prep Course Ever',
+        price: 24900,
+        taxable: 0
+    },
+    'sat-act-bundle|12c9920': {
+        id: '12b1280',
+        name: 'SAT and ACT Prep Course Bundle',
+        price: 39900,
+        taxable: 2490
+    },
+}, {
+    get: function(target, property, receiver) {
+        for (let k in target)
+            if (new RegExp(k).test(property))
+                return target[k]
+        return null
+    }
+})
+
 export const env = {
     root : 'https://courses.supertutortv.com',
     api : 'https://api.supertutortv.com/v2'
