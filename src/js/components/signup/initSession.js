@@ -8,13 +8,12 @@ export default function initSession(plan) {
         if (obj.id === planId || obj.slug === planId)
             return thePlan = obj
     })
-
+    console.log(this.props.history)
     if (Object.keys(thePlan).length) {
         this.setState({
             step: 1,
             init: true
         })
-        console.log(this.state)
     } else {
         return this.plans()
     }
