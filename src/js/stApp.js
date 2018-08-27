@@ -31,7 +31,7 @@ class STApp extends React.Component {
     
     render() {
         return (
-        <GlobalState.Provider>
+        <GlobalState.Provider value={this}>
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
