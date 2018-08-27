@@ -26,6 +26,7 @@ export default class Signup extends React.Component {
     }
 
     plans() {
+        if (this.state.step !== 0) window.location,reload(true)
         return (
         <div id="step-2" class="stFormStep row">
             <div class="stFormHeader col s12">
