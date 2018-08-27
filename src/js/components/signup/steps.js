@@ -8,7 +8,9 @@ export const pay = () => <div>pay</div>
 export const thankyou = () => <div>Thank you!</div>
 
 export function plans(d) {
-    console.log(_st.plans)
+    var state = this.state
+    var plan = state.params['plan'] || '1206420'
+    console.log(_st.plans.plan)
     return (
     <div id="step-2" class="stFormStep row">
         <div class="stFormHeader col s12">
