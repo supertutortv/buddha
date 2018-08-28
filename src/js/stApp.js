@@ -6,7 +6,6 @@ import ResetPassword from './components/ResetPassword'
 import allYourBase from './components/allYourBase'
 import Signup from './components/Signup'
 import STAuthContainer from './components/STAuthContainer'
-import Main from './components/Main'
 
 class STError extends React.Component {
     render() {
@@ -41,7 +40,7 @@ class STApp extends React.Component {
                     <Route component={STAuthContainer}>
                         <Route path='/login' />
                         <Route path='/password' />
-                        <Route path='/' component={Main} />
+                        <Route path='/' />
                     </Route>
                 </Switch>
             </BrowserRouter>

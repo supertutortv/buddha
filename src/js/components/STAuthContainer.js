@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
+import Main from './Main'
 import { GlobalState } from '../utilities/StateContext'
 import * as _st from '../classes/st'
 
@@ -125,14 +126,13 @@ export default class STAuthContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.children)
         if (this.state.loggedIn === null) return null
         _st.loading(this.state.loading)
         return (
             <GlobalState.Consumer>
                 {context => {
                     if (this.state.loggedIn) {
-                        return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children
+                        return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : <Route path='/' component={Main} />
                     } else {
                         context.bodyClass('login')
                         return (
