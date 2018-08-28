@@ -126,6 +126,7 @@ export default class STAuthContainer extends React.Component {
     }
 
     render() {
+        console.log('rendered')
         if (this.state.loggedIn === null) return null
         _st.loading(this.state.loading)
         return (
