@@ -43,9 +43,9 @@ export default class Main extends React.Component {
                                             <Route exact path='/dashboard' render={() => 
                                                 <div>Dashboard</div>
                                             } />
-                                            <Route exact path='/:course(the-best-act-prep-course-ever|the-best-sat-prep-course-ever)' render={props => <Course {...props} />} />
+                                            <Route exact path='/:course(the-best-act-prep-course-ever|the-best-sat-prep-course-ever)/:section?' render={props => <Course {...props} />} />
                                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                                            <Route path="/" render={() => <Redirect to="/notfound" />} />
+                                            <Route path="/*" render={() => <Redirect to="/notfound" />} />
                                         </Switch>
                                     </main>
                                 </div>
