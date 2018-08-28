@@ -58,7 +58,7 @@ export default class STAuthContainer extends React.Component {
                 this.setState({
                     loggedIn: true,
                     creds: {}
-                },() => <Redirect to={this.state.redirectTo || '/dashboard'} />)
+                },() => this.props.history.push(this.state.redirectTo || '/dashboard') )
         })
     }
 
