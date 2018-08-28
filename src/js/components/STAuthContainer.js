@@ -54,14 +54,14 @@ export default class STAuthContainer extends React.Component {
     submit(e) {
         e.preventDefault()
         _st.auth.token(this.state.creds,(d) => {
-            if (d.code === 'login_success')
+            if (d.code === 'login_success') {
+                let redir = this.state.redirectTo || '/dashboard'
+                this.props.history.push(redir)
                 this.setState({
                     loggedIn: true,
                     creds: {}
-                },() => {
-                    let redir = this.state.redirectTo || '/dashboard'
-                    return this.props.history.push(redir)
-                 })
+                })
+            }
         })
     }
 
