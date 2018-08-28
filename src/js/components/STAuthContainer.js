@@ -61,6 +61,7 @@ export default class STAuthContainer extends React.Component {
                     loggedIn: true,
                     creds: {}
                 })
+                return null
             }
         })
     }
