@@ -69,7 +69,7 @@ export default class STAuthContainer extends React.Component {
     loginRedirect() {
         this.props.history.push('/login')
         return (
-            <Login lostPw={this.state.lostPw}/>
+            <Login lostPwGo={this.lostPwGo} lostPw={this.state.lostPw}/>
         )
     }
 
@@ -86,7 +86,7 @@ export default class STAuthContainer extends React.Component {
                         return (
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
-                                    <Route path='/login' component={() => <Login lostPw={this.state.lostPw}/>}/>
+                                    <Route path='/login' component={() => <Login lostPwGo={this.lostPwGo} lostPw={this.state.lostPw}/>}/>
                                     <Route path='/*' component={this.loginRedirect} />
                                 </Switch>
                             </STStrippedWrapper>
