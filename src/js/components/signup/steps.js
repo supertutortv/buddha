@@ -15,7 +15,7 @@ export function plans() {
         )
     })
     return (
-    <div id="step-2" class="stFormStep row">
+    <div id="step-1" class="stFormStep row">
         <div class="stFormHeader col s12">
             <h2>Select a plan.</h2>
             <span>All plans come with a 5 day free trial. <strong>NOTE:</strong> Your card will not be charged until your trial period is over, and you're free to cancel at any time. If your course comes with free books, they will not ship until your trial has expired.</span>
@@ -26,7 +26,7 @@ export function plans() {
 
 export function account() {
     return (
-        <div id="step-1" className="stFormStep row">
+        <form id="step-2" className="stFormStep row" onSubmit={this.createAccount}>
             <div className="stFormHeader col s12">
                 <h2>Awesome! Let's create your account!</h2>
                 <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
@@ -46,8 +46,8 @@ export function account() {
                 </div>
             </div>
             <div className="stFormButtons col s12">
-                <button id="stBtn_account" type="submit" className="stFormButton pmt-button btn waves-effect waves-light" onClick={this.createAccount}>Next >></button>
+                <button id="stBtn_account" type="submit" className="stFormButton pmt-button btn waves-effect waves-light" >Next >></button>
             </div>
-        </div>
+        </form>
     )
 }
