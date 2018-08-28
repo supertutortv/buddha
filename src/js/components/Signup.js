@@ -49,10 +49,16 @@ export default class Signup extends React.Component {
     }
 
     renderStep(d) {
-        console.log(typeof d.match.params.step)
-        if (('plan' in this.state.params)&&!this.state.init)
-            return this.initSession(this.state.params['plan'])
-        else
+        if (('plan' in this.state.params)&&!this.state.init) return this.initSession(this.state.params['plan'])
+
+        var step = d.match.params.step,
+            valStep = this.steps.indexOf(step),
+            state = valStep || 0,
+            path = (state) ? '/'+step : ''
+
+            this.setState({
+                step : state
+            },() => this.props.history.push('/signup'+path))
             return this[this.steps[this.state.step]]()
     }
 
