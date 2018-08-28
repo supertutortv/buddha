@@ -64,9 +64,9 @@ export default class Signup extends React.Component {
     }
 
     updateInp(e) {
-        console.log(e)
+        var el = e.target
         this.setState(prev => {
-            
+            console.log(el)
             /* var obj = e.target.name.split('|').reduceRight((obj,val,i,arr) => {
                 return {[val] : (i+1 === arr.length) ? e.target.value : obj}
             },{}) */
