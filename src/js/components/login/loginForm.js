@@ -3,9 +3,6 @@ import { Redirect, Link } from 'react-router-dom'
 import * as _st from '../../classes/st'
 
 export default function loginForm() {
-    lostpwhandleclick = () => {
-        this.props.history.push('/login/lostpw')
-    }
     return (
         <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
             <div className="stOverlay"></div>
@@ -22,7 +19,7 @@ export default function loginForm() {
                 </div>
             </div>
             <div className="stForgotBlock col s12">
-                <span><a onClick={lostpwhandleclick}>Forgot your password?</a></span>
+                <span><a onClick={this.lostPwGo}>Forgot your password?</a></span>
             </div>
             <div className="stFormButtons col s12">
                 <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>

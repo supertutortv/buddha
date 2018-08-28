@@ -30,6 +30,7 @@ export default class STAuthContainer extends React.Component {
         this.loginRedirect = this.loginRedirect.bind(this)
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
+        this.lostPwGo = this.lostPwGo.bind(this)
         _st.loading()
     }
 
@@ -58,6 +59,10 @@ export default class STAuthContainer extends React.Component {
         /* _st.auth.token(this.state.creds,(d) => {
             console.log(d)
         }) */
+    }
+
+    lostPwGo() {
+        this.props.history.push('/login/lostpw')
     }
 
     loginRedirect() {
