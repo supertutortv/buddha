@@ -14,10 +14,6 @@ export default class STAuthContainer extends React.Component {
             loading : true,
             fireRedirect : false,
             redirectTo : this.props.location.pathname,
-            creds : {
-                username : '',
-                password : ''
-            },
             error : {
                 id : '',
                 message : ''
@@ -57,7 +53,11 @@ export default class STAuthContainer extends React.Component {
         }) */
     }
 
-    loginRedirect() {
+    loginRedirect(d) {
+        console.log(d)
+        Object.assign(this.state,{
+            fireRedirect : true
+        })
         this.props.history.push('/login')
         return (
             <Login />
@@ -78,7 +78,7 @@ export default class STAuthContainer extends React.Component {
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
                                     <Route path='/login' component={Login}/>
-                                    <Route path='/*' component={this.loginRedirect} />
+                                    <Route path='/*' render={(d) => this.loginRedirect(d)} />
                                 </Switch>
                             </STStrippedWrapper>
                         )

@@ -6,7 +6,11 @@ export default class Login extends React.Component {
         super(props)
 
         this.state = {
-            lostPw : false
+            lostPw : false,
+            creds : {
+                username : '',
+                password : ''
+            },
         }
 
         this.lostPwGo = this.lostPwGo.bind(this)
