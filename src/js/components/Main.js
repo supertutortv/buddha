@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { GlobalState, DataState } from '../utilities/StateContext'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import Course from './Sidebar'
 import * as _st from '../classes/st'
 
 export default class Main extends React.Component {
@@ -39,11 +40,12 @@ export default class Main extends React.Component {
                                     <Sidebar />
                                     <main id="stAppStage">
                                         <Switch>
-                                            <Route path='/dashboard' render={() => 
+                                            <Route exact path='/dashboard' render={() => 
                                                 <div>Dashboard</div>
                                             } />
+                                            <Route exact path='/:course(the-best-act-prep-course-ever|the-best-sat-prep-course-ever)' component={Course} />
                                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                                            <Route path="/*" render={() => <Redirect to="/notfound" />} />
+                                            <Route path="/" render={() => <Redirect to="/notfound" />} />
                                         </Switch>
                                     </main>
                                 </div>
