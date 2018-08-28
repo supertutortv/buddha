@@ -83,14 +83,13 @@ export default class Signup extends React.Component {
     }
 
     render() {
+        console.log(this.props.history)
         return(
             <STStrippedWrapper error={this.state.error}>
-                <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={this.submit}>
+                <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
-                    <Switch>
-                        <Route exact path='/signup/:step?' render={d => this.renderStep(d) } />
-                    </Switch>
-                </form>
+                    {this.renderStep()}
+                </div>
             </STStrippedWrapper>
         )
     }
