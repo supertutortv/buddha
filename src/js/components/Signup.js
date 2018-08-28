@@ -73,10 +73,9 @@ export default class Signup extends React.Component {
                     if (i+1 === arr.length) obj[key] = el.value
                     else return obj[key]
                 },newObj)
-                console.log(newObj)
             
-            return Object.assign(prev.session[params[0]],{})
-        })
+            return Object.assign(prev.session[params[0]],newObj)
+        },() => console.log(this.state))
     }
 
     renderStep(d) {
