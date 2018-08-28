@@ -15,9 +15,7 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            loading: false
-        })
+        this.context.bodyClass('main')
     }
 
     render() {
@@ -25,7 +23,7 @@ export default class Main extends React.Component {
             <GlobalState.Consumer>
                 {context => {
                     _st.loading(this.state.loading)
-                    context.bodyClass('main')
+                    this.context = context
                     return (
                         <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
                             <Header />
