@@ -30,7 +30,7 @@ export default class STAuthContainer extends React.Component {
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
         this.lostPwGo = this.lostPwGo.bind(this)
-        _st.loading()
+        _st.loading(this.state.loading)
     }
 
     componentDidMount() {
@@ -132,7 +132,11 @@ export default class STAuthContainer extends React.Component {
             <GlobalState.Consumer>
                 {context => {
                     if (this.state.loggedIn) {
-                        return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : <Route path='/' component={Main} />
+                        return (this.props.location.pathname === '/login') ?
+                            <Redirect to='/dashboard'/> :
+                            <CourseState.Provider value={this.state.data}>
+                                <Route path='/' component={Main} />
+                            </CourseState.Provider>
                     } else {
                         _st.loading(this.state.loading)
                         context.bodyClass('login')

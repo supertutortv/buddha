@@ -15,9 +15,9 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.context.bodyClass('main')
+        this.global.bodyClass('main')
 
-        if (this.context.state.data)
+        if (this.data)
             this.setState({
                 loading: false
             })
@@ -26,23 +26,30 @@ export default class Main extends React.Component {
     render() {
         return(
             <GlobalState.Consumer>
-                {context => {
+                {global => {
                     _st.loading(this.state.loading)
-                    this.context = context
+                    this.global = global
                     return (
-                        <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
-                            <Header />
-                            <Sidebar />
-                            <main id="stAppStage">
-                                <Switch>
-                                    <Route path='/dashboard' render={() => 
-                                        <div>Dashboard</div>
-                                    } />
-                                    <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                                    <Route path="/*" render={() => <Redirect to="/notfound" />} />
-                                </Switch>
-                            </main>
-                        </div>
+                        <CourseState.Consumer>
+                            {data => {
+                                this.data = data
+                                return (
+                                <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
+                                    <Header />
+                                    <Sidebar />
+                                    <main id="stAppStage">
+                                        <Switch>
+                                            <Route path='/dashboard' render={() => 
+                                                <div>Dashboard</div>
+                                            } />
+                                            <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
+                                            <Route path="/*" render={() => <Redirect to="/notfound" />} />
+                                        </Switch>
+                                    </main>
+                                </div>
+                                )
+                            }}
+                        </CourseState.Consumer>
                     )
                 }}
             </GlobalState.Consumer>
