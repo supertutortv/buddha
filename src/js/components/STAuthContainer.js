@@ -78,15 +78,14 @@ export default class STAuthContainer extends React.Component {
                         context.bodyClass('login')
                         return (
                             <STStrippedWrapper error={this.state.error}>
-                            {() => {
-                                console.log(this.props.location.pathname)
-                                if (this.props.location.pathname === '/login')
-                                    return (this.loginForm())
-                                else if (this.props.location.pathname === '/login/lostpw')
-                                    return (this.lpwForm())
-                                else
-                                    return (this.loginRedirect())
-                            }}
+                                <Switch>
+                                    <Route path='/login' render={(d) => {
+                                        console.log(d)
+                                        //if (this.props.location.pathname === '/login/lostpw') return (this.lpwForm())
+                                        return null
+                                    }} />
+                                    {this.loginRedirect()}
+                                </Switch>
                             </STStrippedWrapper>
                         )
                     }
