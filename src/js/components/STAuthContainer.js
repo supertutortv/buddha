@@ -14,6 +14,7 @@ export default class STAuthContainer extends React.Component {
             loading : true,
             redirectTo : false,
             lostPw : false,
+            data : true,
             creds : {
                 username : '',
                 password : ''
