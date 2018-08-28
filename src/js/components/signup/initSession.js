@@ -13,10 +13,6 @@ export default function initSession(plan) {
         delete this.state.params.plan
         this.props.history.replace('/signup')
     } else {
-        this.props.history.replace({
-            pathname: '/signup',
-            search: ''
-        })
         Object.assign(this.state,{
             init: true,
             session: {
