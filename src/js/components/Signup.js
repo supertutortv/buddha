@@ -49,7 +49,7 @@ export default class Signup extends React.Component {
     }
 
     renderStep(d) {
-        console.log(d)
+        console.log(typeof d.match.params.step)
         if (('plan' in this.state.params)&&!this.state.init)
             return this.initSession(this.state.params['plan'])
         else
