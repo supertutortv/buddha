@@ -138,7 +138,6 @@ export default class STAuthContainer extends React.Component {
                                 <Route path='/' component={Main} />
                             </DataState.Provider>
                     } else {
-                        _st.loading(this.state.loading)
                         context.bodyClass('login')
                         return (
                             <STStrippedWrapper error={this.state.error}>
@@ -146,6 +145,7 @@ export default class STAuthContainer extends React.Component {
                                     <Route path='/login' render={(d) => this.loginForm(d)} />
                                     <Route path='/*' render={(d) => this.loginRedirect(d)} />
                                 </Switch>
+                                {_st.loading(this.state.loading)}
                             </STStrippedWrapper>
                         )
                     }
