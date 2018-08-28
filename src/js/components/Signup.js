@@ -36,7 +36,7 @@ export default class Signup extends React.Component {
         this.thankyou = steps.thankyou.bind(this)
         this.initSession = initSession.bind(this)
         this.createAccount = createAccount.bind(this)
-        this.renderStep = renderStep.bind(this)
+        this.renderStep = this.renderStep.bind(this)
     }
 
     componentWillUnmount() {
