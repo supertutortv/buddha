@@ -58,7 +58,10 @@ export default class STAuthContainer extends React.Component {
                 this.setState({
                     loggedIn: true,
                     creds: {}
-                },() => this.props.history.push(this.state.redirectTo || '/dashboard') )
+                },() => {
+                    let redir = this.state.redirectTo || '/dashboard'
+                    return this.props.history.push(redir)
+                 })
         })
     }
 
@@ -70,7 +73,7 @@ export default class STAuthContainer extends React.Component {
 
     loginRedirect(d) {
         this.setState({
-            redirectTo : d.match.url
+            redirectTo : d.match.url || '/'
         }, () => this.props.history.push('/login'))
         
         return null
