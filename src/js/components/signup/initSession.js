@@ -13,8 +13,7 @@ export default function initSession(plan) {
         delete this.state.params.plan
         this.props.history.replace('/signup')
     } else {
-        this.setState({
-            step: 1,
+        Object.assign(this.state,{
             init: true,
             session: {
                 valid: false,
@@ -52,6 +51,7 @@ export default function initSession(plan) {
                 }
             }
         })
+        this.changeStep()
     }
     return null
 }

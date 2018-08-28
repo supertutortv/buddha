@@ -20,7 +20,7 @@ export default class Signup extends React.Component {
             }
         }
         this.steps = [
-            'plans',
+            '',
             'account',
             'billing',
             'shipping',
@@ -37,6 +37,7 @@ export default class Signup extends React.Component {
         this.initSession = initSession.bind(this)
         this.createAccount = createAccount.bind(this)
         this.renderStep = this.renderStep.bind(this)
+        this.changeStep = this.changeStep.bind(this)
     }
 
     componentWillUnmount() {
@@ -48,18 +49,21 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
+    changeStep(inc = true) {
+        this.setState({
+            step : inc ? this.state.step + 1 : this.state.step - 1
+        },() => {
+            let path = this.state.step ? '/'+this.steps[this.state.step] : ''
+            this.props.history.push('/signup'+path)
+        })
+    }
+
     renderStep(d) {
+        if (typeof d.match.params.step !== 'undefined' && d.match.params.step === this.steps[this.state.step]) return this[this.steps[this.state.step]]()
+
         if (('plan' in this.state.params)&&!this.state.init) return this.initSession(this.state.params['plan'])
 
-        var step = d.match.params.step,
-            valStep = this.steps.indexOf(step),
-            state = valStep || 0,
-            path = (state) ? '/'+step : ''
-
-            this.setState({
-                step : state
-            },() => this.props.history.push('/signup'+path))
-            return this[this.steps[this.state.step]]()
+        return this.plans()
     }
 
     render() {
