@@ -9,7 +9,7 @@ import STAuthContainer from './components/STAuthContainer'
 
 class STError extends React.Component {
     render() {
-        return (<div style="background-color:white;height:100%;width:100%">Not found</div>)
+        return (<div style={{backgroundColor:'white',height:'100%',width:'100%'}}>Not found</div>)
     }
 }
 
