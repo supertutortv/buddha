@@ -54,10 +54,11 @@ export default class STAuthContainer extends React.Component {
     }
 
     loginRedirect(d) {
-        console.log(d)
         Object.assign(this.state,{
-            fireRedirect : true
+            fireRedirect : true,
+            redirectTo : d.match.url
         })
+        console.log(this.state)
         this.props.history.push('/login')
         return (
             <Login />
