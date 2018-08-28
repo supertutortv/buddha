@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { GlobalState } from '../utilities/StateContext'
+import { GlobalState, DataState } from '../utilities/StateContext'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import * as _st from '../classes/st'
@@ -30,7 +30,7 @@ export default class Main extends React.Component {
                     _st.loading(this.state.loading)
                     this.global = global
                     return (
-                        <CourseState.Consumer>
+                        <DataState.Consumer>
                             {data => {
                                 this.data = data
                                 return (
@@ -49,7 +49,7 @@ export default class Main extends React.Component {
                                 </div>
                                 )
                             }}
-                        </CourseState.Consumer>
+                        </DataState.Consumer>
                     )
                 }}
             </GlobalState.Consumer>

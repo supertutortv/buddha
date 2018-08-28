@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import Main from './Main'
-import { GlobalState } from '../utilities/StateContext'
+import { GlobalState, DataState } from '../utilities/StateContext'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -134,9 +134,9 @@ export default class STAuthContainer extends React.Component {
                     if (this.state.loggedIn) {
                         return (this.props.location.pathname === '/login') ?
                             <Redirect to='/dashboard'/> :
-                            <CourseState.Provider value={this.state.data}>
+                            <DataState.Provider value={this.state.data}>
                                 <Route path='/' component={Main} />
-                            </CourseState.Provider>
+                            </DataState.Provider>
                     } else {
                         _st.loading(this.state.loading)
                         context.bodyClass('login')
