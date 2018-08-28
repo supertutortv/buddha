@@ -19,7 +19,7 @@ export default function loginForm() {
                 </div>
             </div>
             <div className="stForgotBlock col s12">
-                <span><a onClick={<Redirect to='/login/lostpw' />}>Forgot your password?</a></span>
+                <span><a onClick={() => <Redirect to='/login/lostpw' />}>Forgot your password?</a></span>
             </div>
             <div className="stFormButtons col s12">
                 <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
