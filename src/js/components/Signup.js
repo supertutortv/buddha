@@ -69,6 +69,7 @@ export default class Signup extends React.Component {
                 return {[val] : (i+1 === arr.length) ? e.target.value : obj}
             },{})
             console.log(prev)
+            return {}
         })
     }
 
