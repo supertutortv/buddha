@@ -85,7 +85,7 @@ export default class STAuthContainer extends React.Component {
                                         else
                                             return (this.loginForm())
                                     }} />
-                                    {this.loginRedirect()}
+                                    <Route path='/*' component={this.loginRedirect} />
                                 </Switch>
                             </STStrippedWrapper>
                         )
