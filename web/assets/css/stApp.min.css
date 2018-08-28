@@ -123,6 +123,9 @@ body.login #stApp {
   body.login #stApp #stStripped {
     width: 1200px; }
 
+body.main #stApp {
+  background-color: white; }
+
 body.signup #stApp {
   background-color: #e6e4dc; }
 
