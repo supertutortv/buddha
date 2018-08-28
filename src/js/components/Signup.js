@@ -13,7 +13,11 @@ export default class Signup extends React.Component {
         this.state = {
             init: false,
             step: 0,
-            params: props.location.search ? _st.objectifyURLParams(props.location.search) : {}
+            params: props.location.search ? _st.objectifyURLParams(props.location.search) : {},
+            error : {
+                id : '',
+                message : ''
+            }
         }
         this.steps = [
             'plans',
@@ -45,7 +49,7 @@ export default class Signup extends React.Component {
 
     render() {
         return(
-            <STStrippedWrapper>
+            <STStrippedWrapper error={this.state.error}>
                 <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                     <div className="stOverlay"></div>
                     <Switch>
