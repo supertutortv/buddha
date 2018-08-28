@@ -24,6 +24,7 @@ export default function initSession(plan) {
                     obj : null
                 },
                 stripe : null,
+                plan : thePlan,
                 customer : {
                     account : {
                         email: '',
@@ -31,7 +32,6 @@ export default function initSession(plan) {
                         lastname: '',
                         password: ''
                     },
-                    plan : thePlan,
                     shipping : {},
                     billing : {},
                     token: ''

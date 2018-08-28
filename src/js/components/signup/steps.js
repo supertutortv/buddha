@@ -33,16 +33,16 @@ export function account() {
             </div>
             <div id="stSignupAccount" className="stFormBody col s12">
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={this.update} required />
+                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={this.updateInp} required />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={this.update} required/>
+                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={this.updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={this.update} required/>
+                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={this.updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={this.update} required/>
+                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={this.updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">

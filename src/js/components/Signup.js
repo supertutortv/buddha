@@ -59,15 +59,15 @@ export default class Signup extends React.Component {
     }
 
     shouldComponentUpdate(nprops,nstate) {
-        console.log(nprops,nstate)
+        return (this.state.session.customer === nstate.session.customer)
     }
 
-    update(e) {
+    updateInp(e) {
         var el = e.target,
-            obj = {}
-        obj = el.name.split('|').reduce(() => {
-            console.log(this)
-        })
+            obj = el.name.split('|').reduce((obj,val,i) => {
+                console.log(this)
+            },{})
+        console.log(obj)
         //this.setState({session : obj})
     }
 
