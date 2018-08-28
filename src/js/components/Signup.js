@@ -51,10 +51,6 @@ export default class Signup extends React.Component {
         _st.form.overlay()
         _st.bodyClass('signup')
     }
-    
-    componentDidUpdate() {
-        this.state.update = true
-    }
 
     changeStep(inc = true) {
         this.setState({
@@ -78,7 +74,7 @@ export default class Signup extends React.Component {
                     else return obj[key]
                 },newObj)
             return Object.assign(prev.session,newObj)
-        },() => console.log(this.state.session))
+        },() => this.state.update = true)
     }
 
     renderStep(d) {
