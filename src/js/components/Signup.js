@@ -65,8 +65,7 @@ export default class Signup extends React.Component {
     updateInp(e) {
         var el = e.target,
             obj = el.name.split('|').reduceRight((obj,val,i,arr) => {
-                if (i+1 === arr.length) return obj[val] = e.value
-                return {[val] : obj}
+                return {[val] : (i+1 === arr.length) ? el.value : obj}
             },{})
             console.log(obj)
         //this.setState({session : obj})
