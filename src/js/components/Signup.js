@@ -58,6 +58,19 @@ export default class Signup extends React.Component {
         })
     }
 
+    shouldComponentUpdate(nprops,nstate) {
+        console.log(nprops,nstate)
+    }
+
+    update(e) {
+        var el = e.target,
+            obj = {}
+        obj = el.name.split('|').reduce(() => {
+            console.log(this)
+        })
+        //this.setState({session : obj})
+    }
+
     renderStep(d) {
         if (typeof d.match.params.step !== 'undefined' && d.match.params.step === this.steps[this.state.step]) return this[this.steps[this.state.step]]()
 
