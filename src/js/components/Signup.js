@@ -69,10 +69,11 @@ export default class Signup extends React.Component {
             var params = el.name.split('|'),
                 newObj = {[params[0]] : {...prev.session[params[0]]}}
 
-                params.reduce((curr,next,i) => {
-                    console.log(next)
-                    //return (i+1 === arr.length) ? el.value : obj[val]
-                })
+                params.reduce((obj,key,i,arr) => {
+                    if (i+1 === arr.length) obj[key] = el.value
+                    else return obj[key]
+                },newObj)
+                console.log(newObj)
             
             return Object.assign(prev.session[params[0]],{})
         })
