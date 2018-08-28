@@ -11,6 +11,7 @@ export default class Signup extends React.Component {
         super(props)
     
         this.state = {
+            update: true,
             loading: true,
             init: false,
             step: 0,
@@ -50,6 +51,10 @@ export default class Signup extends React.Component {
         _st.form.overlay()
         _st.bodyClass('signup')
     }
+    
+    componentDidUpdate() {
+        this.state.update = true
+    }
 
     changeStep(inc = true) {
         this.setState({
@@ -57,11 +62,12 @@ export default class Signup extends React.Component {
         })
     }
 
-    shouldComponentUpdate(nprops,nstate) {
-        return (this.state.session.customer === nstate.session.customer)
+    shouldComponentUpdate() {
+        return this.state.update 
     }
 
     updateInp(e) {
+        this.state.update = false
         var el = e.target
         this.setState(prev => {
             var params = el.name.split('|'),
@@ -71,7 +77,7 @@ export default class Signup extends React.Component {
                     if (i+1 === arr.length) obj[key] = el.value
                     else return obj[key]
                 },newObj)
-            
+            console.log(newObj)
             return Object.assign(prev.session[params[0]],newObj)
         })
     }
@@ -83,7 +89,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(this.props.history)
         return(
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
