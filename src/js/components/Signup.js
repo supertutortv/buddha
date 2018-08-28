@@ -36,6 +36,7 @@ export default class Signup extends React.Component {
         this.thankyou = steps.thankyou.bind(this)
         this.initSession = initSession.bind(this)
         this.createAccount = createAccount.bind(this)
+        this.renderStep = renderStep.bind(this)
     }
 
     componentWillUnmount() {
@@ -47,21 +48,21 @@ export default class Signup extends React.Component {
         _st.bodyClass('signup')
     }
 
+    renderStep(d) {
+        console.log(d)
+        if (('plan' in this.state.params)&&!this.state.init)
+            return this.initSession(this.state.params['plan'])
+        else
+            return this[this.steps[this.state.step]]()
+    }
+
     render() {
         return(
             <STStrippedWrapper error={this.state.error}>
                 <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                     <div className="stOverlay"></div>
                     <Switch>
-                        <Route path='/signup/thankyou' component={this.thankyou} />
-                        <Route path='/signup/*' render={() => <Redirect to='/notfound' />}/>
-                        <Route exact path='/signup' render={(d) => {
-                            
-                            if (('plan' in this.state.params)&&!this.state.init)
-                                return this.initSession(this.state.params['plan'])
-                            else
-                                return this[this.steps[this.state.step]]()
-                        }} />
+                        <Route exact path='/signup/:step?' render={d => this.renderStep(d) } />
                     </Switch>
                 </form>
             </STStrippedWrapper>
