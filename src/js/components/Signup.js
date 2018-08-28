@@ -47,7 +47,6 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        console.log('component mounted')
         _st.form.overlay()
         _st.bodyClass('signup')
     }
