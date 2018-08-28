@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import { GlobalState } from '../utilities/StateContext'
-import loginForm from './Login'
+import Login from './Login'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -14,7 +14,6 @@ export default class STAuthContainer extends React.Component {
             loading : true,
             fireRedirect : false,
             redirectTo : this.props.location.pathname,
-            lostPw : false,
             creds : {
                 username : '',
                 password : ''
@@ -60,17 +59,10 @@ export default class STAuthContainer extends React.Component {
         }) */
     }
 
-    lostPwGo() {
-        this.props.history.push('/login/lostpw')
-        this.setState({
-            lostPw : true
-        })
-    }
-
     loginRedirect() {
         this.props.history.push('/login')
         return (
-            this.loginForm()
+            <Login />
         )
     }
 
@@ -87,7 +79,7 @@ export default class STAuthContainer extends React.Component {
                         return (
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
-                                    <Route path='/login' component={this.loginForm}/>
+                                    <Route path='/login' component={Login}/>
                                     <Route path='/*' component={this.loginRedirect} />
                                 </Switch>
                             </STStrippedWrapper>
