@@ -50,13 +50,14 @@ export default class STAuthContainer extends React.Component {
 
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
+        console.log(this.state)
     }
 
     submit(e) {
         e.preventDefault()
-        /* _st.auth.token(this.state.creds,(d) => {
+        _st.auth.token(this.state.creds,(d) => {
             console.log(d)
-        }) */
+        })
     }
 
     lostPwGo() {
