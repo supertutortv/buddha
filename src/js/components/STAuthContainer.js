@@ -60,10 +60,9 @@ export default class STAuthContainer extends React.Component {
     }
 
     lostPwGo() {
-        this.props.history.push('/login/lostpw')
         this.setState({
             lostPw : true
-        })
+        }, () => this.props.history.push('/login/lostpw'))
     }
 
     loginRedirect(d) {
