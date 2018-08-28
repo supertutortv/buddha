@@ -21,7 +21,6 @@ export default class Main extends React.Component {
     }
 
     render() {
-        _st.loading(this.state.loading)
         return(
             <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
                 <Header />
@@ -34,6 +33,7 @@ export default class Main extends React.Component {
                         <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                         <Route path="/*" render={() => <Redirect to="/notfound" />} />
                     </Switch>
+                    {_st.loading(this.state.loading)}
                 </main>
             </div>
         )
