@@ -1,7 +1,7 @@
 import React from 'react'
 import * as _st from '../classes/st'
 
-export default loginForm = () => {
+const loginForm = () => {
     if (this.state.lostPw)
         return (
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
@@ -45,3 +45,4 @@ export default loginForm = () => {
             </form>
         )
 }
+export default loginForm
