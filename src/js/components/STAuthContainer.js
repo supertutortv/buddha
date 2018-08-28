@@ -132,6 +132,7 @@ export default class STAuthContainer extends React.Component {
             <GlobalState.Consumer>
                 {context => {
                     if (this.state.loggedIn) {
+                        console.log('access granted')
                         return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : this.props.children
                     } else {
                         context.bodyClass('login')
