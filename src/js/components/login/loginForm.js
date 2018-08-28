@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import * as _st from '../../classes/st'
 
 export default function loginForm() {
@@ -19,7 +19,7 @@ export default function loginForm() {
                 </div>
             </div>
             <div className="stForgotBlock col s12">
-                <span><a onClick={() => <Redirect to='/login/lostpw' />}>Forgot your password?</a></span>
+                <span><Link to='/login/lostpw'>Forgot your password?</Link></span>
             </div>
             <div className="stFormButtons col s12">
                 <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
