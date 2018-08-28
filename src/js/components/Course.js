@@ -6,7 +6,10 @@ export default class Course extends React.Component {
     render() {
         console.log(this.props)
         return(
-            <div>Course Component</div>
+            <Switch>
+                <Route exact path='/:course/:section' render={d => <div>{d.match.params.section}</div>} />
+                <Route exact path='/:course' render={d => <div>Course Component</div>} />
+            </Switch>
         )
     }
 }
