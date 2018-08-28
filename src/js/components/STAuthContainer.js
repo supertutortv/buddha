@@ -11,8 +11,7 @@ export default class STAuthContainer extends React.Component {
         this.state = {
             loggedIn : null,
             loading : true,
-            fireRedirect : false,
-            redirectTo : this.props.location.pathname,
+            redirectTo : false,
             lostPw : false,
             creds : {
                 username : '',
@@ -37,7 +36,6 @@ export default class STAuthContainer extends React.Component {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data,
-                    fireRedirect : true,
                     loading : false
                 })
             })
@@ -56,7 +54,11 @@ export default class STAuthContainer extends React.Component {
     submit(e) {
         e.preventDefault()
         _st.auth.token(this.state.creds,(d) => {
-            console.log(d)
+            if (d.code === 'login_success')
+                this.setState({
+                    loggedIn: true,
+                    creds: {}
+                },() => <Redirect to={this.state.redirectTo || '/dashboard'} />)
         })
     }
 
@@ -68,7 +70,6 @@ export default class STAuthContainer extends React.Component {
 
     loginRedirect(d) {
         this.setState({
-            fireRedirect : true,
             redirectTo : d.match.url
         }, () => this.props.history.push('/login'))
         

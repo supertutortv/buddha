@@ -8,7 +8,8 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            redirect : false
+            redirect : false,
+            loading : false
         }
     }
 
@@ -30,9 +31,6 @@ export default class Main extends React.Component {
                     <Route path="/*" render={() => <Redirect to="/notfound" />} />
                     </Switch>
                 </main>
-                {this.state.redirect && (
-                    <Redirect to={this.state.redirectTo}/>
-                )}
             </div>
         )
     }
