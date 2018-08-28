@@ -11,6 +11,7 @@ export default class Signup extends React.Component {
         super(props)
     
         this.state = {
+            loading: true,
             init: false,
             step: 0,
             params: props.location.search ? _st.objectifyURLParams(props.location.search) : {},
@@ -46,6 +47,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
+        console.log('component mounted')
         _st.form.overlay()
         _st.bodyClass('signup')
     }
@@ -75,7 +77,7 @@ export default class Signup extends React.Component {
                 },newObj)
             
             return Object.assign(prev.session[params[0]],newObj)
-        },() => console.log(this.state))
+        })
     }
 
     renderStep(d) {

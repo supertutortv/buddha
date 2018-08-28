@@ -58,6 +58,11 @@ export const auth = {
     logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
 }
 
+export const signup = {
+    account : (dt,cb) => post('https://api.supertutortv.com/v2/signup/account',dt,cb),
+    pay : (dt,cb) => post('https://api.supertutortv.com/v2/signup/pay',dt,cb)
+}
+
 export const bodyClass = (cls = '') => document.body.classList.toggle(cls)
 
 export const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
