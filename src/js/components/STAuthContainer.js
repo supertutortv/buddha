@@ -2,8 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import { GlobalState } from '../utilities/StateContext'
-import loginForm from './login/loginForm'
-import lpwForm from './login/lpwForm'
+import Login from './Login'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -15,6 +14,7 @@ export default class STAuthContainer extends React.Component {
             loading : true,
             fireRedirect : false,
             redirectTo : this.props.location.pathname,
+            lostPw : false,
             creds : {
                 username : '',
                 password : ''
@@ -25,8 +25,6 @@ export default class STAuthContainer extends React.Component {
             }
         }
 
-        this.loginForm = loginForm.bind(this)
-        this.lpwForm = lpwForm.bind(this)
         this.loginRedirect = this.loginRedirect.bind(this)
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
@@ -69,7 +67,7 @@ export default class STAuthContainer extends React.Component {
     loginRedirect() {
         this.props.history.push('/login')
         return (
-            this.loginForm()
+            <Login lostPw={this.state.lostPw}/>
         )
     }
 
@@ -86,12 +84,7 @@ export default class STAuthContainer extends React.Component {
                         return (
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
-                                    <Route path='/login' render={(d) => {
-                                        if (d.location.pathname === '/login/lostpw')
-                                            return (this.lpwForm())
-                                        else
-                                            return (this.loginForm())
-                                    }} />
+                                    <Route path='/login' lostPw={this.state.lostPw} component={Login}/>
                                     <Route path='/*' component={this.loginRedirect} />
                                 </Switch>
                             </STStrippedWrapper>
