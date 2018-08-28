@@ -84,7 +84,7 @@ export default class STAuthContainer extends React.Component {
                         return (
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
-                                    <Route path='/login' component={<Login lostPw={this.state.lostPw}/>}/>
+                                    <Route path='/login' component={() => <Login lostPw={this.state.lostPw}/>}/>
                                     <Route path='/*' component={this.loginRedirect} />
                                 </Switch>
                             </STStrippedWrapper>
