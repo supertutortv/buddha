@@ -25,6 +25,7 @@ export function plans() {
 )}
 
 export function account() {
+    var cust = this.state.session.customer
     return (
         <form id="step-2" className="stFormStep row" onSubmit={this.createAccount}>
             <div className="stFormHeader col s12">
@@ -33,16 +34,16 @@ export function account() {
             </div>
             <div id="stSignupAccount" className="stFormBody col s12">
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate" type="text" name="st-customer-account-firstname" placeholder="First Name" required />
+                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" value={cust.account.firstname} required />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate" type="text" name="st-customer-account-lastname" placeholder="Last Name" required/>
+                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" value={cust.account.lastname} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate email" type="email" name="st-customer-account-email" placeholder="Email Address" required/>
+                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" value={cust.account.email} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate" type="password" name="st-customer-account-password" placeholder="Password" required/>
+                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" value={cust.account.password} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">
