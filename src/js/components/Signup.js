@@ -78,7 +78,7 @@ export default class Signup extends React.Component {
                     else return obj[key]
                 },newObj)
             console.log(newObj)
-            return Object.assign(prev.session[params[0]],newObj)
+            return Object.assign(prev.session,newObj)
         })
     }
 
@@ -89,6 +89,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
+        console.log('rendered')
         return(
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
