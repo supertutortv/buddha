@@ -2,7 +2,6 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import { GlobalState } from '../utilities/StateContext'
-//import Login from './Login'
 import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
@@ -75,7 +74,7 @@ export default class STAuthContainer extends React.Component {
         console.log(this.state)
         this.props.history.push('/login')
         return (
-            <Login />
+            this.loginForm()
         )
     }
 
