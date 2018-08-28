@@ -12,6 +12,7 @@ export default function createAccount(e) {
         })
 
         Object.assign(this.state.session.customer,d.update)
+        console.log(this.state.session.customer)
         this.changeStep()
     })
 }
