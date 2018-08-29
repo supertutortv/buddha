@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const CountryDD = (props) => {
     return (
@@ -253,7 +254,7 @@ const CountryDD = (props) => {
 }
 
 CountryDD.propTypes = {
-    required: React.PropTypes.bool
+    required: PropTypes.bool
 }
 
 export default CountryDD
