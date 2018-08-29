@@ -77,14 +77,13 @@ export default class Signup extends React.Component {
         },() => this.state.update = true)
     }
 
-    renderStep(d) {
+    renderStep() {
         if (('plan' in this.state.params)&&!this.state.init) return this.initSession(this.state.params['plan'])
 
         return this[this.steps[this.state.step]]()
     }
 
     render() {
-        console.log('rendered')
         return(
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">

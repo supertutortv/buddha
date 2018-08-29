@@ -1,9 +1,8 @@
 import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
+import CountryDD from '../pieces/CountryDD'
 import * as _st from '../../classes/st'
 
-export const billing = () => <div>billing</div>
-export const shipping = () => <div>shipping</div>
 export const pay = () => <div>pay</div>
 export const thankyou = () => <div>Thank you!</div>
 
@@ -47,6 +46,87 @@ export function account() {
             </div>
             <div className="stFormButtons col s12">
                 <button id="stBtn_account" type="submit" className="stFormButton pmt-button btn waves-effect waves-light" >Next >></button>
+            </div>
+        </form>
+    )
+}
+
+export function billing() {
+    return (
+        <form id="step-3" className="stFormStep row" onSubmit={() => null}>
+            <div className="stFormHeader col s12">
+                <h2>What's your billing address?</h2>
+                <span>This is the address associated with the card you are going to use for payment. We use this to verify your payment, so please check the accuracy of the information you provide.</span>
+            </div>
+            <div id="stSignupBilling" className="stFormBody col s12">
+                <div className="input-field required col s12">
+                    <input className="browser-default validate billing address1" type="text" name="customer|billing|address_line1" placeholder="Address 1" required/>
+                </div>
+                <div className="input-field col s12">
+                    <input className="browser-default validate billing address2" type="text" name="customer|billing|address_line2" placeholder="Address 2"/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-left">
+                    <input className="browser-default validate billing city" type="text" name="customer|billing|address_city" placeholder="City" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-right">
+                    <input className="browser-default validate billing state" type="text" name="customer|billing|address_state" placeholder="State" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-left">
+                    <input className="browser-default validate billing pcode" type="text" name="customer|billing|address_zip" placeholder="Postal Code" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-right">
+                    {<CountryDD className="browser-default validate billing country" name="customer|billing|address_country" required/>}
+                </div>
+            </div>
+            <div className="stFormButtons col s12">
+                <button id="stBtn_billing" className="stFormButton pmt-button btn waves-effect waves-light" type="submit">Next >></button>
+            </div>
+        </form>
+    )
+}
+
+export function shipping() {
+    return (
+        <form id="step-4" className="stFormStep row" onSubmit={() => null}>
+            <div className="stFormHeader col s12">
+                <h2>Where are we sending your books?</h2>
+                <span>Even if you're signing up for a course that doesn't ship books, we still collect this information to keep on file in your account with our payment processor. We never share this information with anyone.</span>
+            </div>
+            <div id="stSignupShipping" className="stFormBody col s12">
+                <div className="st-checkout-spaced col s12">
+                    <label>
+                        <input name="customer|options|copyAddress" className="filled-in" value="1" type="checkbox" />
+                        <span>Same as billing address</span>
+                    </label>
+                </div>
+                <div className="st-checkout-spaced col s12">
+                    <label>
+                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" />
+                        <span>I want Priority Shipping (+$7.05, U.S. only)</span>
+                    </label>
+                </div>
+                <div className="input-field required col s12">
+                    <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" required/>
+                </div>
+                <div className="input-field col s12">
+                    <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" />
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-left">
+                    <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-right">
+                    <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-left">
+                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" required/>
+                </div>
+                <div className="input-field required col s12 m6 st-input-half-right">
+                    {<CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" required/>}
+                </div>
+            </div>
+            <div className="stFormButtons col s12">
+                <button className="stFormButton pmt-button btn waves-effect waves-light" onClick={() => null}>{'<< Back'}</button>
+                <button id="stBtn_shipping" className="stFormButton pmt-button btn waves-effect waves-light" type="submit">Next >></button>
             </div>
         </form>
     )
