@@ -1,4 +1,4 @@
 *.code-workspace
 node_modules
 .htaccess
-**/.DS_Store
+.DS_Store
