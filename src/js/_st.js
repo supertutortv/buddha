@@ -56,6 +56,11 @@ const _st = () => {
         root : 'https://courses.supertutortv.com',
         api : 'https://api.supertutortv.com/v2'
     }
+    this.session = {
+        loggedIn : null,
+        set logIn(maybe) {this.loggedIn = !!(maybe)}
+    }
+    this.data = {}
 }
 
 _st.prototype = {

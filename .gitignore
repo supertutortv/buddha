@@ -2,4 +2,3 @@
 node_modules
 .htaccess
 .DS_Store
-src/js/config.js
