@@ -69,7 +69,7 @@ _st.prototype = {
         console.log(this)
     },
     auth : {
-        _auth : (() => this)(),
+        _auth : (function() {return this})(),
         authFunc : function() {
             console.log(this._auth)
         }
