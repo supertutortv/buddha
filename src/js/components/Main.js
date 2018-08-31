@@ -4,7 +4,6 @@ import { GlobalState, DataState } from '../utilities/StateContext'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Course from './Course'
-import * as _st from '../classes/st'
 
 export default class Main extends React.Component {
     constructor(props) {

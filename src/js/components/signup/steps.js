@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
-import * as _st from '../../classes/st'
 
 export const pay = () => <div>pay</div>
 export const thankyou = () => <div>Thank you!</div>

@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import Main from './Main'
 import { GlobalState, DataState } from '../utilities/StateContext'
-import * as _st from '../classes/st'
 
 export default class STAuthContainer extends React.Component {
     constructor(props) {

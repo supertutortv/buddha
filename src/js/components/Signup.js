@@ -4,7 +4,6 @@ import STStrippedWrapper from './STStrippedWrapper'
 import createAccount from './signup/createAccount'
 import initSession from './signup/initSession'
 import * as steps from './signup/steps'
-import * as _st from '../classes/st'
 
 export default class Signup extends React.Component {
     constructor(props) {

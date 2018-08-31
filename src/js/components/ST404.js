@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalState } from './utilities/StateContext'
+import { GlobalState } from '../utilities/StateContext'
 
 const ST404 = () => {
     return (
