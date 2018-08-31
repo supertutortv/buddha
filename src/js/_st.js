@@ -48,11 +48,11 @@ export { loading, request, get, post, put, patch, del, form } */
 
 import config from './config'
 
-const _st = {
-    _loading : true,
-    _bodyClass : '',
-    stripe : config[config.env].stripe,
-    env : {
+function _st() {
+    this._loading = true
+    this._bodyClass = ''
+    this.stripe = config[config.env].stripe
+    this.env = {
         root : 'https://courses.supertutortv.com',
         api : 'https://api.supertutortv.com/v2'
     }
