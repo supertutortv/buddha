@@ -1,5 +1,4 @@
 import React from 'react'
-import * as _st from '../classes/st'
 
 export default class ResetPassword extends React.Component {
     render() {

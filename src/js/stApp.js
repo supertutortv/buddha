@@ -4,57 +4,30 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { GlobalState } from './utilities/StateContext'
 import ResetPassword from './components/ResetPassword'
 import allYourBase from './components/allYourBase'
+import ST404 from './components/ST404'
 import Signup from './components/Signup'
 import STAuthContainer from './components/STAuthContainer'
-import * as _st from './classes/st'
+import _st from './_st'
 
 const mount = document.getElementById('stApp')
 
-class STError extends React.Component {
-    render() {
-        return (
-            <GlobalState.Consumer>
-                {global => {
-                    global.bodyClass('notfound')
-                    return (
-                        <div style={{backgroundColor:'white',height:'100%',width:'100%'}}>Not found</div>
-                    )
-                }}
-            </GlobalState.Consumer>
-        )
-    }
-}
+/* ReactDOM.render( 
+    <GlobalState.Provider value={_st}>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
+                <Route path='/password/reset' component={ResetPassword} />
+                <Route path='/signup' component={Signup} />
+                <Route path='/notfound' component={ST404} />
+                <Route component={STAuthContainer}>
+                    <Route path='/login' />
+                    <Route path='/' />
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    </GlobalState.Provider>,
+mount ) */
 
-class STApp extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            bodyClass : '',
-            loading : true
-        }
-    }
-    
-    render() {
-        console.log(this.props)
-        document.body.className = this.state.bodyClass
-        mount.classList.toggle('loading',this.state.loading)
-        return (
-            <GlobalState.Provider value={this}>
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                        <Route path='/password/reset' component={ResetPassword} />
-                        <Route path='/signup' component={Signup} />
-                        <Route path='/notfound' component={STError} />
-                        <Route component={STAuthContainer}>
-                            <Route path='/login' />
-                            <Route path='/' />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-            </GlobalState.Provider>
-        )
-    }
-}
-
-ReactDOM.render( <STApp/>, mount )
+ReactDOM.render( 
+    <div></div>,
+mount )

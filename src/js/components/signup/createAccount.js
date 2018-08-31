@@ -1,4 +1,4 @@
-import * as _st from '../../classes/st'
+import * as _st from '../../_st'
 
 export default function createAccount(e) {
     e.preventDefault()

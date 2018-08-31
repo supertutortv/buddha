@@ -15,26 +15,26 @@ export async function request(route = '/',obj) {
 }
 export async function get(rt,cb) {
     return await request(rt).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        console.log(error) && alert('There was an error. Please try again later.')
+        alert('There was an error. Please try again later.') && console.log(error)
     })
 }
 export async function post(rt,data,cb) {
     return await request(rt,{method:'POST',data:data}).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        console.log(error) && alert('There was an error. Please try again later.')
+        alert('There was an error. Please try again later.') && console.log(error)
     })
 }
 export async function put(rt,data,cb) {
     return await request(rt,{method:'PUT',data:data}).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        console.log(error) && alert('There was an error. Please try again later.')
+        alert('There was an error. Please try again later.') && console.log(error)
     })
 }
 export async function patch(rt,data,cb) {
     return await request(rt,{method:'PATCH',data:data}).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        console.log(error) && alert('There was an error. Please try again later.')
+        alert('There was an error. Please try again later.') && console.log(error)
     })
 }
 export async function del(rt,data,cb) {
     return await request(rt,{method:'DELETE',data:data}).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        console.log(error) && alert('There was an error. Please try again later.')
+        alert('There was an error. Please try again later.') && console.log(error)
     })
 }
