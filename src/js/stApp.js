@@ -6,6 +6,9 @@ import ResetPassword from './components/ResetPassword'
 import allYourBase from './components/allYourBase'
 import Signup from './components/Signup'
 import STAuthContainer from './components/STAuthContainer'
+import * as _st from './classes/st'
+
+window._st = _st
 
 class STError extends React.Component {
     render() {
