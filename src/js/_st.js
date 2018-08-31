@@ -68,12 +68,13 @@ _st.prototype = {
     testFunc1 : function() {
         console.log(this)
     },
-    auth : (function(t){
+    auth : (function(){
+        var t = this
         return {
             authFunc : function() {
                 console.log(t)
             }
         }
-    })(this)
+    })()
 }
 export default new _st
