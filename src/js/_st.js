@@ -66,11 +66,6 @@ const _st = () => {
 _st.prototype = {
     testFunc1 : function() {
         console.log(this)
-    },
-    auth : {
-        authFunc : function() {
-            console.log(this)
-        }
     }
 }
 export default new _st
