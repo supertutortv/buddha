@@ -48,7 +48,8 @@ export { loading, request, get, post, put, patch, del, form } */
 
 import config from './config'
 
-const _st = () => {
+function _st() {
+    this._lang = 'EN'
     this._loading = true
     this._bodyClass = ''
     this.stripe = config[config.env].stripe
@@ -56,11 +57,21 @@ const _st = () => {
         root : 'https://courses.supertutortv.com',
         api : 'https://api.supertutortv.com/v2'
     }
+    this.session = {
+        loggedIn : null,
+        set logIn(maybe) {this.loggedIn = !!(maybe)}
+    }
+    this.data = {}
 }
 
 _st.prototype = {
     testFunc1 : function() {
         console.log(this)
+    },
+    auth : {
+        authFunc : function() {
+            console.log(this)
+        }
     }
 }
 export default new _st
