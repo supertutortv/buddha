@@ -21,10 +21,6 @@ export default class STAuthContainer extends React.Component {
             error : {
                 id : '',
                 message : ''
-            },
-            globalSet : {
-                bodyClass : 'login',
-                loading : true
             }
         }
 
@@ -124,7 +120,7 @@ export default class STAuthContainer extends React.Component {
         return (
             <GlobalState.Consumer>
                 {global => {
-                    global.setState(this.state.globalSet)
+                    if (globalSet in this.state && this.state.globalSet !== global.state) global.setState(this.state.globalSet)
                     if (this.state.loggedIn) {
                         return (this.props.location.pathname === '/login') ?
                             <Redirect to='/dashboard'/> :
