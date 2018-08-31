@@ -9,6 +9,8 @@ import Signup from './components/Signup'
 import STAuthContainer from './components/STAuthContainer'
 import _st from './_st'
 
+window._st = _st
+
 const mount = document.getElementById('stApp')
 
 /* ReactDOM.render( 
