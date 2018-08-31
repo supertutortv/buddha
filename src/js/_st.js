@@ -66,4 +66,4 @@ _st.prototype = {
         console.log(this)
     }
 }
-export default _st
+export default new _st
