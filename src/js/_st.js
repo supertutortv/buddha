@@ -1,5 +1,5 @@
-import config from ''
-import loading from './classes/modules/loading'
+import config from './config'
+/* import loading from './classes/modules/loading'
 import {request,get,post,put,patch,del} from './classes/modules/http'
 
 const auth = {
@@ -8,7 +8,7 @@ const auth = {
     logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
 }
 
-/* export const plans = [
+export const plans = [
     {
         id: '1206420',
         slug: 'the-best-act-prep-course-ever',
