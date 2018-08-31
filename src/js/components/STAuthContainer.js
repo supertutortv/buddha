@@ -11,7 +11,6 @@ export default class STAuthContainer extends React.Component {
 
         this.state = {
             loggedIn : null,
-            loading : true,
             redirectTo : false,
             lostPw : false,
             data : true,
@@ -22,15 +21,17 @@ export default class STAuthContainer extends React.Component {
             error : {
                 id : '',
                 message : ''
+            },
+            globalSet : {
+                bodyClass : 'login',
+                loading : true
             }
         }
 
         this.loginForm = this.loginForm.bind(this)
-        this.loginRedirect = this.loginRedirect.bind(this)
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
         this.lostPwGo = this.lostPwGo.bind(this)
-        _st.loading(this.state.loading)
     }
 
     componentDidMount() {
@@ -38,7 +39,7 @@ export default class STAuthContainer extends React.Component {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn : d.data,
-                    loading : false
+                    globalSet : Object.assign({},this.state.globalSet,{loading : false})
                 })
             })
         }
@@ -59,7 +60,6 @@ export default class STAuthContainer extends React.Component {
                 let redir = this.state.redirectTo || '/dashboard'
                 this.props.history.push(redir)
                 this.setState({
-                    loggedIn: true,
                     creds: {}
                 })
                 return null
@@ -71,14 +71,6 @@ export default class STAuthContainer extends React.Component {
         this.setState({
             lostPw : true
         }, () => this.props.history.push('/login/lostpw'))
-    }
-
-    loginRedirect(d) {
-        this.setState({
-            redirectTo : d.match.url || '/'
-        }, () => this.props.history.push('/login'))
-        
-        return null
     }
 
     loginForm(d) {
@@ -130,7 +122,8 @@ export default class STAuthContainer extends React.Component {
         if (this.state.loggedIn === null) return null
         return (
             <GlobalState.Consumer>
-                {context => {
+                {global => {
+                    global.setState(this.state.globalSet)
                     if (this.state.loggedIn) {
                         return (this.props.location.pathname === '/login') ?
                             <Redirect to='/dashboard'/> :
@@ -138,14 +131,17 @@ export default class STAuthContainer extends React.Component {
                                 <Route path='/' component={Main} />
                             </DataState.Provider>
                     } else {
-                        context.bodyClass('login')
                         return (
                             <STStrippedWrapper error={this.state.error}>
                                 <Switch>
                                     <Route path='/login' render={(d) => this.loginForm(d)} />
-                                    <Route path='/*' render={(d) => this.loginRedirect(d)} />
+                                    <Route path='/*' render={(d) => {
+                                        this.setState({
+                                            redirectTo : d.match.url || '/'
+                                        }, () => this.props.history.push('/login'))
+                                        return null
+                                    }} />
                                 </Switch>
-                                {_st.loading(this.state.loading)}
                             </STStrippedWrapper>
                         )
                     }
