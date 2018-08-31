@@ -1,4 +1,4 @@
-import config from './config'
+
 /* import loading from './classes/modules/loading'
 import {request,get,post,put,patch,del} from './classes/modules/http'
 
@@ -45,6 +45,8 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 }, {});
 
 export { loading, request, get, post, put, patch, del, form } */
+
+import config from './config'
 
 const _st = {
     _loading : true,
