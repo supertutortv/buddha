@@ -50,9 +50,7 @@ _st.prototype = {
     _state : {
         lang: 'EN',
         loading: false,
-        bodyClass: 'default',
-        loggedIn: null,
-        data: {}
+        bodyClass: 'default'
     },
     get loading() {
         return this._state.loading
