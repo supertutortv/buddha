@@ -59,18 +59,20 @@ function _st() {
         },
         data: {
 
-        },
-        get [prop]() {
-            console.log(prop)
-        },
-        set [prop](cb) {
-            console.log(prop)
         }
     }
 }
 
 _st.prototype = {
-    setBodyClass : function(){}
+    get bodyClass() {
+        return this.state.bodyClass
+    },
+    set bodyClass(val) {
+        this.state.bodyClass = val
+        document.body.classList.remove(...document.body.className.splice(' '))
+        document.body.classList.add(this.state.bodyClass)
+    }
+
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
