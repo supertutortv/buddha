@@ -4,6 +4,7 @@ import Login from './Login'
 
 export default class STSecured extends React.Component() {
     constructor(props) {
+        super(props)
         Object.assign(this,...props,{
             state: {
                 loggedIn: _st.loggedIn
@@ -26,7 +27,7 @@ export default class STSecured extends React.Component() {
     render() {
         console.log(this)
         return (
-            <Route path={path} render={(d) => {
+            <Route path={this.props.path} render={(d) => {
                 if (_st.loggedIn === null) return null
     
                 if (!_st.loggedIn) {
