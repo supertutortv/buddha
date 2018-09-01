@@ -45,43 +45,24 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
-import getSet from './core/utilities/getSet'
+import loading from './core/loading'
+import bodyClass from './core/bodyClass'
 import config from './config'
-
-var state = {
-    lang: 'EN',
-    loading: true,
-    bodyClass: 'default',
-    loggedIn: null,
-    data: {}
-}
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
 }
 
 _st.prototype = {
-    _state : state,
-    getSet : (param,cb) => {
-        return {
-            get [param]() {
-                return this._state[param]
-            },
-            set [param](val) {
-                this._state[param] = val
-                typeof cb === 'function' && cb()
-            }
-        }
+    _state : {
+        lang: 'EN',
+        loading: true,
+        bodyClass: 'default',
+        loggedIn: null,
+        data: {}
     },
-    ...this.getSet('loading',() => {
-        console.log(_st.ROOT)
-        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
-    }),
-    ...this.getSet('bodyClass',() => {
-        let bCls = document.body.className
-        if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(this._state.bodyClass)
-    })
+    ...loading,
+    ...bodyClass
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
