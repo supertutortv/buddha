@@ -4,6 +4,19 @@ import STStrippedWrapper from './STStrippedWrapper'
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            lostPw : false,
+            creds : {
+                username : '',
+                password : ''
+            },
+            error : {
+                id : '',
+                message : ''
+            },
+            authResponse : ''
+        }
     }
 
     componentDidMount() {
@@ -12,7 +25,15 @@ export default class Login extends React.Component {
 
     render() {
         _st.loading = false
-        return null
+        return (
+            <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
+                <div className="stOverlay"></div>
+                {() => this.state.lostPw ? 
+                    <ResetPassword setLoginState={this.setLoginState}/> : 
+                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
+                }
+            </form>
+        )
     }
 }
 
@@ -36,27 +57,5 @@ export default class Login extends React.Component {
             </form>
         )
     else
-        return (
-            <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={auth.submit}>
-                <div className="stOverlay"></div>
-                <div id="stLoginHeader" className="stFormHeader col s12">
-                    <h2>Welcome! Please sign in.</h2>
-                    <span>You can access all of your test prep courses, as well as all of your account information, by logging in below.</span>
-                </div>
-                <div id="stLoginCredentials" className="col s12">
-                    <div className="input-field col s12">
-                        <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" onBlur={auth.setLoginState}/>
-                    </div>
-                    <div className="input-field col s12">
-                        <input className="browser-default validate" type="password" name="password" placeholder="Password" onBlur={auth.setLoginState}/>
-                    </div>
-                </div>
-                <div className="stForgotBlock col s12">
-                    <span><a onClick={this.lostPwGo}>Forgot your password?</a></span>
-                </div>
-                <div className="stFormButtons col s12">
-                    <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
-                </div>
-            </form>
-        )
+        
     } */
