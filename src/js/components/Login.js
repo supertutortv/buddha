@@ -28,7 +28,7 @@ export default class Login extends React.Component {
     render() {
         _st.loading = false
         return (
-            <STStrippedWrapper>
+            <STStrippedWrapper error={this.state.error}>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                 <div className="stOverlay"></div>
                 {() => this.state.lostPw ? 
