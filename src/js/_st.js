@@ -50,7 +50,7 @@ import {request,get,post,put,patch,del} from './core/http'
 import config from './config'
 
 function _st() {
-    this = {
+    this.state = {
         lang: 'EN',
         loading: true,
         bodyClass: '',
@@ -88,7 +88,7 @@ _st.SETSTATE = function(cb) {
             return Reflect.defineProperty(target, property)
         }
     }
-    return new Proxy(this, handler)
+    return new Proxy(this.state, handler)
 }
 
 export default new _st
