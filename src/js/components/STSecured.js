@@ -6,9 +6,12 @@ export default function STSecured(props) {
     const {component: Component, path, location: loc, history: hist} = props
     return (
         <Route path={path} render={(d) => {
-            if (_st.loggedIn === null) return _st.auth.verify((d) => {
-                _st.loggedIn = d.data
-            })
+            if (_st.loggedIn === null) {
+                _st.auth.verify((d) => {
+                    _st.loggedIn = d.data
+                })
+                return null
+            }
 
             if (!_st.loggedIn) {
                 if (loc.pathname !== '/login') hist.replace('/login')
