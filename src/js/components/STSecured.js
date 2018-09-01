@@ -22,19 +22,19 @@ export default class STSecured extends React.Component {
     }
 
     render() {
-        console.log(this.props)
-        const {component: Component, path, location: loc, history: hist} = this.props;
+        const {component: Component, path, history: hist} = this.props;
         return (
             <Route path={path} render={(d) => {
+                console.log(d)
                 if (this.state.loggedIn === null) return null
     
                 if (!this.state.loggedIn) {
-                    if (loc.pathname !== '/login') hist.replace('/login')
+                    if (path !== '/login') hist.replace('/login')
                     return (
                         <Login {...d} />
                     )
                 }
-                if (loc.pathname === '/login') hist.replace('/dashboard')
+                if (path === '/login') hist.replace('/dashboard')
                 return <Component {...d} />
             }} />
         )
