@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import Main from './Main'
-import { GlobalState, DataState } from '../utilities/StateContext'
+import { GlobalState, DataState } from './StateContext'
 
 export default class STAuthContainer extends React.Component {
     constructor(props) {

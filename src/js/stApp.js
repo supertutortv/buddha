@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { GlobalState } from './utilities/StateContext'
+import { GlobalState } from './components/StateContext'
 import ResetPassword from './components/ResetPassword'
 import allYourBase from './components/allYourBase'
 import ST404 from './components/ST404'

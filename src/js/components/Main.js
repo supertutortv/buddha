@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { GlobalState, DataState } from '../utilities/StateContext'
+import { GlobalState, DataState } from './StateContext'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Course from './Course'

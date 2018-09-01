@@ -45,8 +45,7 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
-import bodyClass from './core/bodyClass'
-import loading from './core/loading'
+import getSet from './core/utilities/getSet'
 import config from './config'
 
 function _st() {
@@ -57,14 +56,20 @@ _st.prototype = {
     _state : {
         lang: 'EN',
         loading: true,
-        bodyClass: 'test',
+        bodyClass: 'default',
         session: {
             loggedIn: null
         },
         data: {}
     },
-    bodyClass,
-    loading
+    ...getSet('bodyClass',() => {
+        let bCls = document.body.className
+        if (bCls) document.body.classList.remove(...bCls.split(' '))
+        document.body.classList.add(this._state.bodyClass)
+    }),
+    ...getSet('loading',() => {
+        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
+    })
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'

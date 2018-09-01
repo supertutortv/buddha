@@ -4,8 +4,6 @@ export default {
     },
     set bodyClass(val) {
         this._state.bodyClass = val
-        let bCls = document.body.className
-        if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(this._state.bodyClass)
+        
     }
 }

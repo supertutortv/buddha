@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalState } from '../utilities/StateContext'
+import { GlobalState } from './StateContext'
 
 export default class allYourBase extends React.Component {
     render() {
