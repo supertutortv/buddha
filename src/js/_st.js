@@ -50,29 +50,45 @@ import {request,get,post,put,patch,del} from './core/http'
 import config from './config'
 
 function _st() {
-    this.lang = 'EN'
-    this.loading = true
-    this.bodyClass = new Proxy({val : ''},{
-        set(target,key,val) {
-            console.log(document.body)
-            target['val'] = val
+    this = {
+        lang: 'EN',
+        loading: true,
+        bodyClass: '',
+        session: {
+            loggedIn: null
         },
-        get() {
-            return this.val
+        data: {
+
         }
-    })
-    this.session = {
-        loggedIn : null,
-        set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
     }
-    this.data = {}
-    console.log(document)
 }
 
-_st.prototype = {}
+_st.prototype = {
+    setBodyClass : function(){
+        _st.SETSTATE(() => {
+            document.body.className = this.bodyClass
+        })
+    }
+}
 
 _st.ROOT = 'https://courses.supertutortv.com'
 _st.API = 'https://api.supertutortv.com/v2'
 _st.STRIPE = config[config.env].stripe
+_st.SETSTATE = function(cb) {
+    const handler = {
+        get(target, property, receiver) {
+            try {
+                return new Proxy(target[property], handler)
+            } catch (e) {
+                return Reflect.get(target, property, receiver)
+            }
+        },
+        defineProperty(target, property, descriptor) {
+            typeof cb === 'function' && cb()
+            return Reflect.defineProperty(target, property)
+        }
+    }
+    return new Proxy(this, handler)
+}
 
 export default new _st
