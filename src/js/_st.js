@@ -69,7 +69,8 @@ _st.prototype = {
     },
     set bodyClass(val) {
         this.state.bodyClass = val
-        document.body.classList.remove(...document.body.className.split(' '))
+        let bCls = document.body.className
+        if (bCls) document.body.classList.remove(...bCls.split(' '))
         document.body.classList.add(this.state.bodyClass)
     }
 
