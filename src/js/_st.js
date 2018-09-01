@@ -50,6 +50,7 @@ import config from './config'
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
+    this.getSet = getSet.bind(this)
 }
 
 _st.prototype = {
@@ -62,12 +63,12 @@ _st.prototype = {
         },
         data: {}
     },
-    ...getSet('bodyClass',() => {
+    ...this.getSet('bodyClass',() => {
         let bCls = document.body.className
         if (bCls) document.body.classList.remove(...bCls.split(' '))
         document.body.classList.add(this._state.bodyClass)
     }),
-    ...getSet('loading',() => {
+    ...this.getSet('loading',() => {
         document.getElementById('stApp').classList.toggle('loading',this._state.loading)
     })
 }
