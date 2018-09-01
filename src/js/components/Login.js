@@ -12,7 +12,7 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div>{JSON.stringify(props)}</div>
+            <div>{JSON.stringify(this.props)}</div>
         )
     }
 }
