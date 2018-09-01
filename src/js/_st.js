@@ -52,16 +52,15 @@ import config from './config'
 function _st() {
     this.lang = 'EN'
     this.loading = true
-    this.bodyClass = {
-        val : '',
-        set(cls) {
-            this.val = cls
-            return document.body.className = cls
+    this.bodyClass = new Proxy({val : ''},{
+        set(target,key,val) {
+            target['val'] = val
+            return document.body.className = val
         },
         get() {
             return this.val
         }
-    }
+    })
     this.session = {
         loggedIn : null,
         set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
