@@ -21,8 +21,8 @@ export async function get(rt,cb) {
 }
 export async function post(rt,data,cb) {
     return await request(rt,{method:'POST',data:data}).then(d => typeof cb === 'function' && cb(d)).catch(error => {
-        alert('There was an error. Please try again later.')
         console.log(error)
+        alert('There was an error. Please try again later.')
     })
 }
 export async function put(rt,data,cb) {
