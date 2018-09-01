@@ -52,6 +52,16 @@ import config from './config'
 function _st() {
     this.lang = 'EN'
     this.loading = true
+    this.bodyClass = {
+        val : '',
+        set(cls) {
+            this.val = cls
+            return document.body.className = cls
+        },
+        get() {
+            return this.val
+        }
+    }
     this.session = {
         loggedIn : null,
         set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
@@ -62,18 +72,7 @@ function _st() {
     }
 }
 
-_st.prototype = {
-    bodyClass : {
-        val : '',
-        set(cls) {
-            this.val = cls
-            document.body.className = cls
-        },
-        get() {
-            return this.val
-        }
-    }
-}
+_st.prototype = {}
 
 _st.ROOT = 'https://courses.supertutortv.com'
 _st.API = 'https://api.supertutortv.com/v2'
