@@ -45,55 +45,31 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
+import bodyClass from './core/bodyClass'
 import loading from './core/loading'
-import {request,get,post,put,patch,del} from './core/http'
 import config from './config'
 
 function _st() {
-    this.state = {
-        lang: 'EN',
-        loading: true,
-        bodyClass: 'test',
-        session: {
-            loggedIn: null
-        },
-        data: {
-
+    Object.assign(this,{
+        _state : {
+            lang: 'EN',
+            loading: true,
+            bodyClass: 'test',
+            session: {
+                loggedIn: null
+            },
+            data: {
+    
+            }
         }
-    }
+    })
+    console.log(this.bodyClass)
 }
 
-_st.prototype = {
-    get bodyClass() {
-        return this.state.bodyClass
-    },
-    set bodyClass(val) {
-        this.state.bodyClass = val
-        let bCls = document.body.className
-        if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(this.state.bodyClass)
-    }
-
-}
+_st.prototype = Object.assign({}, bodyClass, loading )
 
 _st.ROOT = 'https://courses.supertutortv.com'
 _st.API = 'https://api.supertutortv.com/v2'
 _st.STRIPE = config[config.env].stripe
-_st.SETSTATE = function(cb) {
-    const handler = {
-        get(target, property, receiver) {
-            try {
-                return new Proxy(target[property], handler)
-            } catch (e) {
-                return Reflect.get(target, property, receiver)
-            }
-        },
-        defineProperty(target, property, descriptor) {
-            typeof cb === 'function' && cb()
-            return Reflect.defineProperty(target, property)
-        }
-    }
-    return new Proxy(this.state, handler)
-}
 
 export default new _st
