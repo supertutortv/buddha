@@ -36,7 +36,7 @@ export const signup = {
     pay : (dt,cb) => post('https://api.supertutortv.com/v2/signup/pay',dt,cb)
 }
 
-export const bodyClass = (cls = '') => document.body.className = cls
+export const bodyClass = (cls = '') => 
 
 export const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
@@ -61,8 +61,8 @@ function _st() {
 }
 
 _st.prototype = {
-    testFunc1 : function() {
-        console.log(_st.ROOT)
+    bodyClass : function() {
+        document.body.className = this.bodyClass
     }
 }
 
