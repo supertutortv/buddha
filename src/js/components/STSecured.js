@@ -2,27 +2,44 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 
-export default function STSecured(props) {
-    const {component: Component, path, location: loc, history: hist} = props
-    return (
-        <Route path={path} render={(d) => {
-            if (_st.loggedIn === null) {
-                _st.auth.verify((d) => {
-                    _st.loggedIn = d.data
-                })
-                return null
+export default class STSecured extends React.Component() {
+    constructor(props) {
+        Object.assign(this,...props,{
+            state: {
+                loggedIn: _st.loggedIn
             }
+        })
+    }
 
-            if (!_st.loggedIn) {
-                if (loc.pathname !== '/login') hist.replace('/login')
-                return (
-                    <Login {...d} />
-                )
-            }
-            if (loc.pathname === '/login') hist.replace('/dashboard')
-            return <Component {...d} />
-        }} />
-    )
+    componentDidMount() {
+        /* if (_st.loggedIn === null) {
+            _st.auth.verify((d) => {
+                this.setState({
+                    loggedIn: d.data
+                },() => {
+                    _st.loggedIn = this.state.loggedIn
+                })
+            })
+        } */
+    }
+
+    render() {
+        console.log(this)
+        return (
+            <Route path={path} render={(d) => {
+                if (_st.loggedIn === null) return null
+    
+                if (!_st.loggedIn) {
+                    if (loc.pathname !== '/login') hist.replace('/login')
+                    return (
+                        <Login {...d} />
+                    )
+                }
+                if (loc.pathname === '/login') hist.replace('/dashboard')
+                return <Component {...d} />
+            }} />
+        )
+    }
 }
 
 /* export default class STSecured extends React.Component {
