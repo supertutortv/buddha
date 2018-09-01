@@ -1,4 +1,5 @@
 export default function getSet(param,cb) {
+    console.log(this)
     return {
         get [param]() {
             return this._state[param]
