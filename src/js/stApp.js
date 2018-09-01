@@ -15,7 +15,7 @@ ReactDOM.render(
             {_st.loading = true}
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route exact path='/signup' component={Signup} />
-            <STSecured path='/' component={Main} />
+            <Route path='/' render={(p) => <STSecured {...p} />} />
         </Switch>
     </BrowserRouter>,
 document.getElementById('stApp') )
