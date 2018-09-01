@@ -1,7 +1,7 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 
-const Login = props => {
+function Login(props) {
     return (
         <div>{JSON.stringify(props)}</div>
     )
