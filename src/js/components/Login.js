@@ -1,11 +1,20 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 
-function Login(props) {
-    _st.bodyClass = 'login'
-    return (
-        <div>{JSON.stringify(props)}</div>
-    )
+export default class Login extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        _st.bodyClass = 'login'
+    }
+
+    render() {
+        return (
+            <div>{JSON.stringify(props)}</div>
+        )
+    }
 }
 
 export default Login
