@@ -1,6 +1,13 @@
 import React from 'react'
+import STStrippedWrapper from './STStrippedWrapper'
 
-export default Login = auth => {
+export default Login = props => {
+    return (
+        <div>{JSON.stringify(props)}</div>
+    )
+}
+
+/* export default Login = auth => {
     if (auth.state.lostPw)
         return (
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={auth.submit}>
@@ -43,4 +50,4 @@ export default Login = auth => {
                 </div>
             </form>
         )
-    }
+    } */

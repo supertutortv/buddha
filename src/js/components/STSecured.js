@@ -1,10 +1,28 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import STStrippedWrapper from './STStrippedWrapper'
 import Login from './Login'
-import Main from './Main'
 
-export default class STAuthContainer extends React.Component {
+export default function STSecured(props) {
+    const {component: Component, path, location: loc, history: hist} = props
+    return (
+        <Route path={path} render={(d) => {
+            if (_st.loggedIn === null) return await _st.auth.verify((d) => {
+                _st.loggedIn = d.data
+            })
+
+            if (!_st.loggedIn) {
+                if (loc.pathname !== '/login') hist.replace('/login')
+                return (
+                    <Login {...d} />
+                )
+            }
+            if (loc.pathname === '/login') hist.replace('/dashboard')
+            return <Component {...d} />
+        }} />
+    )
+}
+
+/* export default class STSecured extends React.Component {
     constructor(props) {
         super(props)
 
@@ -64,6 +82,7 @@ export default class STAuthContainer extends React.Component {
 
     render() {
         _st.loading = true
+
         if (_st.loggedIn === null) return null
 
         if (_st.loggedIn) {
@@ -75,9 +94,12 @@ export default class STAuthContainer extends React.Component {
             if (this.props.location.pathname !== '/login') this.props.history.replace('/login')
             return (
                 <STStrippedWrapper error={this.state.error}>
-                    <Login />
+                    <Switch>
+                        <Route path='/password/reset' />
+                    </Switch>
+                    <Login auth={this} />
                 </STStrippedWrapper>
             )
         }
     }
-}
+} */

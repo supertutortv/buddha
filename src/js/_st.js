@@ -76,6 +76,7 @@ _st.prototype = {
     },
     set loggedIn(val) {
         this._state.loggedIn = val
+        return this._state.loggedIn
     },
     auth
 }
