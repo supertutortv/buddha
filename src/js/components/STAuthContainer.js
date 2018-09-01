@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
+import Main from './Login'
 import Main from './Main'
 
 export default class STAuthContainer extends React.Component {
