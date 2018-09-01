@@ -11,6 +11,7 @@ export default class Login extends React.Component {
     }
 
     render() {
+        _st.loading = false
         return (
             <div>{JSON.stringify(this.props)}</div>
         )
