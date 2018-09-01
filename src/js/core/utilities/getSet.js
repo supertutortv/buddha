@@ -1,4 +1,4 @@
-export default function getSet(param,cb) {
+export default (param,cb) => {
     console.log(this)
     return {
         get [param]() {
