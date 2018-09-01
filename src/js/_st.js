@@ -63,7 +63,6 @@ function _st() {
             }
         }
     })
-    console.log(this.bodyClass)
 }
 
 _st.prototype = Object.assign({}, bodyClass, loading )
