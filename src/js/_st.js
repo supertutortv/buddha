@@ -52,17 +52,26 @@ import config from './config'
 function _st() {
     this.lang = 'EN'
     this.loading = true
-    this.bodyClass = ''
     this.session = {
         loggedIn : null,
         set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
     }
     this.data = {}
+    this.setState = {
+        set()
+    }
 }
 
 _st.prototype = {
-    bodyClass : function() {
-        document.body.className = this.bodyClass
+    bodyClass : {
+        val : '',
+        set(cls) {
+            this.val = cls
+            document.body.className = cls
+        },
+        get() {
+            return this.val
+        }
     }
 }
 
