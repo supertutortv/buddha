@@ -45,9 +45,30 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
-import loading from './core/loading'
-import bodyClass from './core/bodyClass'
 import config from './config'
+
+const loading = {
+    get loading() {
+        return this._state.loading
+    },
+    set loading(val) {
+        this._state.loading = val
+        console.log(_st.ROOT)
+        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
+    }
+}
+
+const bodyClass = {
+    get bodyClass() {
+        return this._state.bodyClass
+    },
+    set bodyClass(val) {
+        this._state.bodyClass = val
+        let bCls = document.body.className
+        if (bCls) document.body.classList.remove(...bCls.split(' '))
+        document.body.classList.add(this._state.bodyClass)
+    }
+}
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
@@ -61,14 +82,7 @@ _st.prototype = {
         loggedIn: null,
         data: {}
     },
-    get loading() {
-        return this._state.loading
-    },
-    set loading(val) {
-        this._state.loading = val
-        console.log(_st.ROOT)
-        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
-    },
+    ...loading,
     ...bodyClass
 }
 
