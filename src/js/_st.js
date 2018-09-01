@@ -40,6 +40,7 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 export { loading, request, get, post, put, patch, del, form } */
 
 import config from './config'
+import auth from './utilities/auth'
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
@@ -75,7 +76,8 @@ _st.prototype = {
     },
     set loggedIn(val) {
         this._state.loggedIn = val
-    }
+    },
+    auth
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
