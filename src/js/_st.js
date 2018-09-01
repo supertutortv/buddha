@@ -62,12 +62,12 @@ function _st() {
 
 _st.prototype = {
     testFunc1 : function() {
-        console.log(this)
+        console.log(_st.ROOT)
     }
 }
 
-_st.prototype.ROOT = 'https://courses.supertutortv.com'
-_st.prototype.API = 'https://api.supertutortv.com/v2'
-_st.prototype.STRIPE = config[config.env].stripe
+_st.ROOT = 'https://courses.supertutortv.com'
+_st.API = 'https://api.supertutortv.com/v2'
+_st.STRIPE = config[config.env].stripe
 
 export default new _st
