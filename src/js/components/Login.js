@@ -2,6 +2,7 @@ import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 
 function Login(props) {
+    _st.bodyClass = 'login'
     return (
         <div>{JSON.stringify(props)}</div>
     )

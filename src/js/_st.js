@@ -57,7 +57,6 @@ _st.prototype = {
     },
     set loading(val) {
         this._state.loading = val
-        console.log(_st.ROOT)
         document.getElementById('stApp').classList.toggle('loading',this._state.loading)
     },
     get bodyClass() {
