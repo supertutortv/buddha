@@ -2,17 +2,14 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import Main from './Main'
-import { GlobalState, DataState } from './StateContext'
 
 export default class STAuthContainer extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            loggedIn : null,
             redirectTo : false,
             lostPw : false,
-            data : true,
             creds : {
                 username : '',
                 password : ''
@@ -20,7 +17,8 @@ export default class STAuthContainer extends React.Component {
             error : {
                 id : '',
                 message : ''
-            }
+            },
+            authResponse : ''
         }
 
         this.loginForm = this.loginForm.bind(this)
@@ -33,9 +31,9 @@ export default class STAuthContainer extends React.Component {
         console.log('auth mounted')
         if (this.state.loggedIn === null) {
             _st.auth.verify((d) => {
+                _st.loggedIn = d.data
                 this.setState({
-                    loggedIn : d.data,
-                    globalSet : Object.assign({},this.state.globalSet,{loading : false})
+                    authResponse : d.data
                 })
             })
         }
@@ -115,34 +113,24 @@ export default class STAuthContainer extends React.Component {
     }
 
     render() {
-        if (this.state.loggedIn === null) return null
-        return (
-            <GlobalState.Consumer>
-                {global => {
-                    if (globalSet in this.state && this.state.globalSet !== global.state) global.setState(this.state.globalSet)
-                    if (this.state.loggedIn) {
-                        return (this.props.location.pathname === '/login') ?
-                            <Redirect to='/dashboard'/> :
-                            <DataState.Provider value={this.state.data}>
-                                <Route path='/' component={Main} />
-                            </DataState.Provider>
-                    } else {
-                        return (
-                            <STStrippedWrapper error={this.state.error}>
-                                <Switch>
-                                    <Route path='/login' render={(d) => this.loginForm(d)} />
-                                    <Route path='/*' render={(d) => {
-                                        this.setState({
-                                            redirectTo : d.match.url || '/'
-                                        }, () => this.props.history.push('/login'))
-                                        return null
-                                    }} />
-                                </Switch>
-                            </STStrippedWrapper>
-                        )
-                    }
-                }}
-            </GlobalState.Consumer>
-        )
+        if (_st.loggedIn === null) return null
+
+        if (_st.loggedIn) {
+            return (this.props.location.pathname === '/login') ? <Redirect to='/dashboard'/> : <Route path='/' component={Main} />
+        } else {
+            return (
+                <STStrippedWrapper error={this.state.error}>
+                    <Switch>
+                        <Route path='/login' render={(d) => this.loginForm(d)} />
+                        <Route path='/*' render={(d) => {
+                            this.setState({
+                                redirectTo : d.match.url || '/'
+                            }, () => this.props.history.push('/login'))
+                            return null
+                        }} />
+                    </Switch>
+                </STStrippedWrapper>
+            )
+        }
     }
 }
