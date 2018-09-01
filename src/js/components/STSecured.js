@@ -6,7 +6,7 @@ export default class STSecured extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: _st.loggedIn
+            loggedIn: null
         }
     }
 
