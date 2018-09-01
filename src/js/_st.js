@@ -56,9 +56,10 @@ function _st() {
         bodyClass: {
             val: '',
             get() {
+                console.log('Previous val: '+this.val)
                 return this.val
             },
-            defineProperty(prop) {
+            set(prop) {
                 document.body.classList.add(prop)
                 document.body.classList.remove(...document.body.className.splice(' '))
                 this.val = prop
