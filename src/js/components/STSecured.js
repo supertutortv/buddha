@@ -13,7 +13,7 @@ export default class STSecured extends React.Component {
     }
 
     componentDidMount() {
-        /* if (_st.loggedIn === null) {
+        if (_st.loggedIn === null) {
             _st.auth.verify((d) => {
                 this.setState({
                     loggedIn: d.data
@@ -21,13 +21,13 @@ export default class STSecured extends React.Component {
                     _st.loggedIn = this.state.loggedIn
                 })
             })
-        } */
+        }
     }
 
     render() {
-        console.log(this)
+        const {component: Component, path, location: loc, history: hist} = this.props;
         return (
-            <Route path={this.props.path} render={(d) => {
+            <Route path={path} render={(d) => {
                 if (_st.loggedIn === null) return null
     
                 if (!_st.loggedIn) {
