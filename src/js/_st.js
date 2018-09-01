@@ -66,9 +66,7 @@ function _st() {
         set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
     }
     this.data = {}
-    this.setState = {
-        set()
-    }
+    console.log(document)
 }
 
 _st.prototype = {}
