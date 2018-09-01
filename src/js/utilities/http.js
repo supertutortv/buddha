@@ -9,7 +9,7 @@ export async function request(route = '/',obj) {
             }
         }
     if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
-    const response = await fetch(route, atts)
+    const response = await fetch('https://api.supertutortv.com/v2'+route, atts)
     const d = await response.json()
     return d
 }

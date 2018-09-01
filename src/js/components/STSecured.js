@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
+import Main from './Main'
 
 export default class STSecured extends React.Component {
     constructor(props) {
@@ -21,14 +22,13 @@ export default class STSecured extends React.Component {
     }
 
     render() {
-        console.log('rendered')
         const {history: hist, location: loc} = this.props;
         if (this.state.loggedIn === null) return null
 
         if (this.state.loggedIn) {
             if (loc.pathname === '/login') hist.replace('/dashboard')
             return (
-                <Component {...this.props} />
+                <Main {...this.props} />
             )
         } else {
             if (loc.pathname !== '/login') hist.replace('/login')

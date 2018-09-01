@@ -47,6 +47,7 @@ function _st() {
 }
 
 _st.prototype = {
+    stripe : config[config.env].stripe,
     _state : {
         lang: 'EN',
         loading: false,
@@ -57,7 +58,8 @@ _st.prototype = {
     },
     set loading(val) {
         this._state.loading = val
-        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
+        const loader = document.getElementById('stApp').classList
+        return this._state.loading ? loader.replace('active','loading') : loader.replace('loading','active')
     },
     get bodyClass() {
         return this._state.bodyClass
@@ -77,9 +79,5 @@ _st.prototype = {
     },
     auth
 }
-
-_st.ROOT = 'https://courses.supertutortv.com'
-_st.API = 'https://api.supertutortv.com/v2'
-_st.STRIPE = config[config.env].stripe
 
 export default new _st
