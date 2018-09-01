@@ -45,8 +45,8 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
-import loading from './classes/modules/loading'
-import {request,get,post,put,patch,del} from './classes/modules/http'
+import loading from './core/loading'
+import {request,get,post,put,patch,del} from './core/http'
 import config from './config'
 
 function _st() {
