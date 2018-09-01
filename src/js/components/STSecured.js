@@ -13,7 +13,6 @@ export default class STSecured extends React.Component {
     componentDidMount() {
         if (this.state.loggedIn === null) {
             _st.auth.verify((d) => {
-                console.log(d)
                 this.setState({
                     loggedIn: d.data
                 })
