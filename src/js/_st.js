@@ -53,7 +53,7 @@ function _st() {
     this._appStart = Math.floor(Date.now()/1000)
 }
 
-_st.prototype = Object.assign({
+_st.prototype = {
     _state : {
         lang: 'EN',
         loading: true,
@@ -62,8 +62,10 @@ _st.prototype = Object.assign({
             loggedIn: null
         },
         data: {}
-    }
-}, bodyClass, loading )
+    },
+    bodyClass,
+    loading
+}
 
 _st.ROOT = 'https://courses.supertutortv.com'
 _st.API = 'https://api.supertutortv.com/v2'
