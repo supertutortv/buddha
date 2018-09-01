@@ -1,6 +1,5 @@
 export default {
     get bodyClass() {
-        console.log(_st.STRIPE)
         return this._state.bodyClass
     },
     set bodyClass(val) {

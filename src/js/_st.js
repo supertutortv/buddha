@@ -58,9 +58,7 @@ function _st() {
             session: {
                 loggedIn: null
             },
-            data: {
-    
-            }
+            data: {}
         }
     })
 }
