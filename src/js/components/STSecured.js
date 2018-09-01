@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 
-export default class STSecured extends React.Component() {
+export default class STSecured extends React.Component {
     constructor(props) {
         super(props)
         Object.assign(this,...props,{
