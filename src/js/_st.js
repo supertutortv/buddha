@@ -50,20 +50,20 @@ import loading from './core/loading'
 import config from './config'
 
 function _st() {
-    Object.assign(this,{
-        _state : {
-            lang: 'EN',
-            loading: true,
-            bodyClass: 'test',
-            session: {
-                loggedIn: null
-            },
-            data: {}
-        }
-    })
+    this._appStart = Math.floor(Date.now()/1000)
 }
 
-_st.prototype = Object.assign({}, bodyClass, loading )
+_st.prototype = Object.assign({
+    _state : {
+        lang: 'EN',
+        loading: true,
+        bodyClass: 'test',
+        session: {
+            loggedIn: null
+        },
+        data: {}
+    }
+}, bodyClass, loading )
 
 _st.ROOT = 'https://courses.supertutortv.com'
 _st.API = 'https://api.supertutortv.com/v2'
