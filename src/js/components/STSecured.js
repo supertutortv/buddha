@@ -6,7 +6,7 @@ export default function STSecured(props) {
     const {component: Component, path, location: loc, history: hist} = props
     return (
         <Route path={path} render={(d) => {
-            if (_st.loggedIn === null) return await _st.auth.verify((d) => {
+            if (_st.loggedIn === null) return _st.auth.verify((d) => {
                 _st.loggedIn = d.data
             })
 
