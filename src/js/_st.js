@@ -47,7 +47,18 @@ export { loading, request, get, post, put, patch, del, form } */
 
 import config from './config'
 
-const loading = {
+function _st() {
+    this._appStart = Math.floor(Date.now()/1000)
+}
+
+_st.prototype = {
+    _state : {
+        lang: 'EN',
+        loading: true,
+        bodyClass: 'default',
+        loggedIn: null,
+        data: {}
+    },
     get loading() {
         return this._state.loading
     },
@@ -55,10 +66,7 @@ const loading = {
         this._state.loading = val
         console.log(_st.ROOT)
         document.getElementById('stApp').classList.toggle('loading',this._state.loading)
-    }
-}
-
-const bodyClass = {
+    },
     get bodyClass() {
         return this._state.bodyClass
     },
@@ -67,23 +75,13 @@ const bodyClass = {
         let bCls = document.body.className
         if (bCls) document.body.classList.remove(...bCls.split(' '))
         document.body.classList.add(this._state.bodyClass)
+    },
+    get loggedIn() {
+        return this._state.loggedIn
+    },
+    set loggedIn(val) {
+        this._state.loggedIn = val
     }
-}
-
-function _st() {
-    this._appStart = Math.floor(Date.now()/1000)
-    this._state = {
-        lang: 'EN',
-        loading: true,
-        bodyClass: 'default',
-        loggedIn: null,
-        data: {}
-    }
-}
-
-_st.prototype = {
-    ...loading,
-    ...bodyClass
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
