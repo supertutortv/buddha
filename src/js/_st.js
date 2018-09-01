@@ -53,23 +53,18 @@ function _st() {
     this.state = {
         lang: 'EN',
         loading: true,
-        bodyClass: {
-            val: '',
-            get() {
-                console.log('Previous val: '+this.val)
-                return this.val
-            },
-            set(prop) {
-                document.body.classList.add(prop)
-                document.body.classList.remove(...document.body.className.splice(' '))
-                this.val = prop
-            }
-        },
+        bodyClass: 'test',
         session: {
             loggedIn: null
         },
         data: {
 
+        },
+        get [prop]() {
+            console.log(prop)
+        },
+        set [prop](cb) {
+            console.log(prop)
         }
     }
 }
