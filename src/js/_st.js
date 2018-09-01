@@ -1,6 +1,5 @@
 
-/* import loading from './classes/modules/loading'
-import {request,get,post,put,patch,del} from './classes/modules/http'
+/* 
 
 const auth = {
     verify : (cb) => post('https://api.supertutortv.com/v2/auth/verify',{},cb),
@@ -46,20 +45,17 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 
 export { loading, request, get, post, put, patch, del, form } */
 
+import loading from './classes/modules/loading'
+import {request,get,post,put,patch,del} from './classes/modules/http'
 import config from './config'
 
 function _st() {
-    this._lang = 'EN'
-    this._loading = true
-    this._bodyClass = ''
-    this.stripe = config[config.env].stripe
-    this.env = {
-        root : 'https://courses.supertutortv.com',
-        api : 'https://api.supertutortv.com/v2'
-    }
+    this.lang = 'EN'
+    this.loading = true
+    this.bodyClass = ''
     this.session = {
         loggedIn : null,
-        set logIn(maybe) {this.loggedIn = !!(maybe)}
+        set logIn(maybe) {this.loggedIn = !!(maybe);console.log(this.loggedIn)}
     }
     this.data = {}
 }
@@ -67,14 +63,11 @@ function _st() {
 _st.prototype = {
     testFunc1 : function() {
         console.log(this)
-    },
-    auth : (function(){
-        var t = this
-        return {
-            authFunc : function() {
-                console.log(t)
-            }
-        }
-    })()
+    }
 }
+
+_st.ROOT = 'https://courses.supertutortv.com'
+_st.API = 'https://api.supertutortv.com/v2'
+_st.STRIPE = config[config.env].stripe
+
 export default new _st
