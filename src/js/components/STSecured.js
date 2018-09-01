@@ -13,10 +13,9 @@ export default class STSecured extends React.Component {
     componentDidMount() {
         if (_st.loggedIn === null) {
             _st.auth.verify((d) => {
+                console.log(d)
                 this.setState({
                     loggedIn: d.data
-                },() => {
-                    _st.loggedIn = this.state.loggedIn
                 })
             })
         }
@@ -27,9 +26,9 @@ export default class STSecured extends React.Component {
         const {component: Component, path, location: loc, history: hist} = this.props;
         return (
             <Route path={path} render={(d) => {
-                if (_st.loggedIn === null) return null
+                if (this.state.loggedIn === null) return null
     
-                if (!_st.loggedIn) {
+                if (!this.state.loggedIn) {
                     if (loc.pathname !== '/login') hist.replace('/login')
                     return (
                         <Login {...d} />
