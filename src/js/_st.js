@@ -1,11 +1,5 @@
 
-/* 
-
-const auth = {
-    verify : (cb) => post('https://api.supertutortv.com/v2/auth/verify',{},cb),
-    token : (dt,cb) => post('https://api.supertutortv.com/v2/auth/token',dt,cb),
-    logout : (cb) => post('https://api.supertutortv.com/v2/auth/logout',{},cb)
-}
+/*
 
 export const plans = [
     {
@@ -54,7 +48,7 @@ function _st() {
 _st.prototype = {
     _state : {
         lang: 'EN',
-        loading: true,
+        loading: false,
         bodyClass: 'default',
         loggedIn: null,
         data: {}

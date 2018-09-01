@@ -113,6 +113,7 @@ export default class STAuthContainer extends React.Component {
     }
 
     render() {
+        _st.loading = true
         if (_st.loggedIn === null) return null
 
         if (_st.loggedIn) {
@@ -126,6 +127,7 @@ export default class STAuthContainer extends React.Component {
                             this.setState({
                                 redirectTo : d.match.url || '/'
                             }, () => this.props.history.push('/login'))
+                            _st.loading = false
                             return null
                         }} />
                     </Switch>
