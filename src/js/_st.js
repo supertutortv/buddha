@@ -54,8 +54,8 @@ function _st() {
     this.loading = true
     this.bodyClass = new Proxy({val : ''},{
         set(target,key,val) {
+            document.body.className = val
             target['val'] = val
-            return document.body.className = val
         },
         get() {
             return this.val
