@@ -53,7 +53,17 @@ function _st() {
     this.state = {
         lang: 'EN',
         loading: true,
-        bodyClass: '',
+        bodyClass: {
+            val: '',
+            get() {
+                return this.val
+            },
+            defineProperty(prop) {
+                document.body.classList.add(prop)
+                document.body.classList.remove(...document.body.className.splice(' '))
+                this.val = prop
+            }
+        },
         session: {
             loggedIn: null
         },
@@ -64,11 +74,7 @@ function _st() {
 }
 
 _st.prototype = {
-    setBodyClass : function(){
-        _st.SETSTATE(() => {
-            document.body.className = this.bodyClass
-        })
-    }
+    setBodyClass : function(){}
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
