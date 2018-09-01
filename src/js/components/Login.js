@@ -1,11 +1,13 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 
-export default props => {
+const Login = props => {
     return (
         <div>{JSON.stringify(props)}</div>
     )
 }
+
+export default Login
 
 /* export default Login = auth => {
     if (auth.state.lostPw)
