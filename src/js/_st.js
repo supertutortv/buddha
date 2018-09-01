@@ -48,33 +48,40 @@ export { loading, request, get, post, put, patch, del, form } */
 import getSet from './core/utilities/getSet'
 import config from './config'
 
-const bodyClass = getSet('bodyClass',() => {
-    let bCls = document.body.className
-    if (bCls) document.body.classList.remove(...bCls.split(' '))
-    document.body.classList.add(this._state.bodyClass)
-})
-
-const loading = getSet('loading',() => {
-    console.log(_st.ROOT)
-    document.getElementById('stApp').classList.toggle('loading',this._state.loading)
-})
+var state = {
+    lang: 'EN',
+    loading: true,
+    bodyClass: 'default',
+    loggedIn: null,
+    data: {}
+}
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
 }
 
 _st.prototype = {
-    _state : {
-        lang: 'EN',
-        loading: true,
-        bodyClass: 'default',
-        session: {
-            loggedIn: null
-        },
-        data: {}
+    _state : state,
+    getSet : (param,cb) => {
+        return {
+            get [param]() {
+                return this._state[param]
+            },
+            set [param](val) {
+                this._state[param] = val
+                typeof cb === 'function' && cb()
+            }
+        }
     },
-    ...bodyClass,
-    ...loading
+    ...this.getSet('loading',() => {
+        console.log(_st.ROOT)
+        document.getElementById('stApp').classList.toggle('loading',this._state.loading)
+    }),
+    ...this.getSet('bodyClass',() => {
+        let bCls = document.body.className
+        if (bCls) document.body.classList.remove(...bCls.split(' '))
+        document.body.classList.add(this._state.bodyClass)
+    })
 }
 
 _st.ROOT = 'https://courses.supertutortv.com'
