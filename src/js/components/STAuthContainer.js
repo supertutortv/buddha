@@ -28,8 +28,7 @@ export default class STAuthContainer extends React.Component {
     }
 
     componentDidMount() {
-        console.log('auth mounted')
-        if (this.state.loggedIn === null) {
+        if (_st.loggedIn === null) {
             _st.auth.verify((d) => {
                 _st.loggedIn = d.data
                 this.setState({
