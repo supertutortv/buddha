@@ -72,16 +72,16 @@ const bodyClass = {
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
-}
-
-_st.prototype = {
-    _state : {
+    this._state = {
         lang: 'EN',
         loading: true,
         bodyClass: 'default',
         loggedIn: null,
         data: {}
-    },
+    }
+}
+
+_st.prototype = {
     ...loading,
     ...bodyClass
 }
