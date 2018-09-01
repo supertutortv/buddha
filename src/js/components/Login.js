@@ -1,5 +1,7 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
+import LoginForm from './login/LoginForm'
+import ResetPassword from './login/ResetPassword'
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -26,6 +28,7 @@ export default class Login extends React.Component {
     render() {
         _st.loading = false
         return (
+            <STStrippedWrapper>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                 <div className="stOverlay"></div>
                 {() => this.state.lostPw ? 
@@ -33,6 +36,7 @@ export default class Login extends React.Component {
                     <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
                 }
             </form>
+            </STStrippedWrapper>
         )
     }
 }
