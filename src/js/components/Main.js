@@ -19,7 +19,7 @@ export default class Main extends React.Component {
         if (this.state.data === null)
             console.log('needs data')
         else if (typeof this.state.data === 'string')
-            JSON.parse(this.state.data) && console.log(this.state.data)
+            this.state.data = JSON.parse(this.state.data) && console.log(this.state.data)
 
         this.setState({ loading: false })
     }
