@@ -11,15 +11,16 @@ export default class Main extends React.Component {
             data : localStorage.getItem('stCourseData'),
             loading : true
         }
-
-        console.log('main component')
     }
 
     componentDidMount() {
         _st.bodyClass = 'main'
-        console.log(this.state)
 
-        if (this.state.data === null) return null
+        if (this.state.data === null)
+            console.log('needs data')
+        else if (typeof this.state.data === 'string')
+            JSON.parse(this.state.data)
+
         this.setState({ loading: false })
     }
 
