@@ -1,6 +1,21 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
-import ResetPassword from './login/ResetPassword'
+
+const ResetPassword = ({setLoginState}) => 
+    (<div>
+        <div id="stLoginHeader" className="stFormHeader col s12">
+            <h2>Reset your password</h2>
+            <span>Please enter the email address associated with your account</span>
+        </div>
+        <div id="stLoginCredentials" className="col s12">
+            <div className="input-field col s12">
+                <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" onBlur={setLoginState}/>
+            </div>
+        </div>
+        <div className="stFormButtons col s12">
+            <button className="stFormButton pmt-button btn waves-effect waves-light">Reset your password</button>
+        </div>
+    </div>)
 
 const LoginForm = ({setLoginState, lostPwGo}) =>
     (<div>
@@ -57,9 +72,13 @@ export default class Login extends React.Component {
     }
 
     lostPwGo() {
+        _st.loading = true
         this.setState({
             lostPw : true
-        }, () => this.props.history.push('/password/reset'))
+        }, () => {
+            this.props.history.push('/password/reset')
+            _st.loading = false
+        })
     }
 
     submit(e) {
