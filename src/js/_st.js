@@ -40,6 +40,7 @@ export { loading, request, get, post, put, patch, del, form } */
 import config from './config'
 import auth from './utilities/auth'
 import * as form from './utilities/form'
+import * as req from './utilities/http'
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)
@@ -79,7 +80,8 @@ _st.prototype = {
         return this._state.loggedIn
     },
     auth,
-    form
+    form,
+    req
 }
 
 export default new _st

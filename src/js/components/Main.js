@@ -13,21 +13,21 @@ export default class Main extends React.Component {
         }
     }
 
-    componentDidMount() {
-        _st.bodyClass = 'main'
-
-        if (this.state.data === null)
-            console.log('needs data')
+    async componentDidMount() {
+        if (this.state.data === null) {
+            let d = await _st.req.get('/courses/data')
+            console.log(d)
+        }
         else if (typeof this.state.data === 'string')
             this.setState({
                 data: JSON.parse(this.state.data)
             })
 
+        _st.bodyClass = 'main'
         this.setState({ loading: false })
     }
 
     render() {
-        console.log(this.state.data)
         _st.loading = this.state.loading
         return(
             <DataState.Provider value={this.state.data}>
