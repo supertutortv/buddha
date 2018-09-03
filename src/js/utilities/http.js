@@ -1,4 +1,4 @@
-export async function request(route = '/',obj) {
+export async function request(route = '/',obj = {}) {
     var {method,data} = obj,
         atts = {
             method: method || 'GET',
