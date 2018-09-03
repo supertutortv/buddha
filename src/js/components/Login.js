@@ -60,7 +60,6 @@ export default class Login extends React.Component {
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
         this.lostPwGo = this.lostPwGo.bind(this)
-        console.log(this.props)
     }
 
     componentDidMount() {
