@@ -19,10 +19,36 @@ export default class Login extends React.Component {
             },
             authResponse : ''
         }
+
+        this.setLoginState = this.setLoginState.bind(this)
+        this.submit = this.submit.bind(this)
+        this.lostPwGo = this.lostPwGo.bind(this)
     }
 
     componentDidMount() {
         _st.bodyClass = 'login'
+    }
+
+    setLoginState(e) {
+        console.log(e.target)
+    }
+
+    lostPwGo() {
+        this.setState({
+            lostPw : true
+        }, () => this.props.history.push('/password/reset'))
+    }
+
+    submit(e) {
+        e.preventDefault()
+        console.log(e.target)
+        /* _st.auth.token(this.state.creds,(d) => {
+            if (d.code === 'login_success') {
+                this.setState({
+                    creds: {}
+                }, () => <Redirect to='/dashboard' />)
+            }
+        }) */
     }
 
     render() {
@@ -33,34 +59,11 @@ export default class Login extends React.Component {
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                 <div className="stOverlay"></div>
                 {() => this.state.lostPw ? 
-                    <ResetPassword setLoginState={this.setLoginState}/> : 
-                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
+                    <ResetPassword setLoginState={this.setLoginState} /> : 
+                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
                 }
             </form>
             </STStrippedWrapper>
         )
     }
 }
-
-/* export default Login = auth => {
-    if (auth.state.lostPw)
-        return (
-            <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={auth.submit}>
-                <div className="stOverlay"></div>
-                <div id="stLoginHeader" className="stFormHeader col s12">
-                    <h2>Reset your password</h2>
-                    <span>Please enter the email address associated with your account</span>
-                </div>
-                <div id="stLoginCredentials" className="col s12">
-                    <div className="input-field col s12">
-                        <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" onBlur={auth.setLoginState}/>
-                    </div>
-                </div>
-                <div className="stFormButtons col s12">
-                    <button className="stFormButton pmt-button btn waves-effect waves-light">Reset your password</button>
-                </div>
-            </form>
-        )
-    else
-        
-    } */

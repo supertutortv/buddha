@@ -33,7 +33,7 @@ export default class STSecured extends React.Component {
         } else {
             if (loc.pathname !== '/login') hist.replace('/login')
             return (
-                <Login {...this.props} />
+                <Login setLoggedIn={this.setState} {...this.props} />
             )
         }
     }
