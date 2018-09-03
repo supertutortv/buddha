@@ -30,8 +30,6 @@ export const signup = {
     pay : (dt,cb) => post('https://api.supertutortv.com/v2/signup/pay',dt,cb)
 }
 
-export const bodyClass = (cls = '') => 
-
 export const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
   return ({ ...obj, [key]: value })
@@ -49,6 +47,8 @@ function _st() {
 
 _st.prototype = {
     stripe : config[config.env].stripe,
+    root : 'http://courses.supertutortv.com',
+    api : 'https://api.supertutortv.com/v2',
     _state : {
         lang: 'EN',
         loading: false,

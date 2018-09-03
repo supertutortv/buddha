@@ -7,7 +7,9 @@ export default class Header extends React.Component {
 
     render() {
         return(
-            <header id="stAppHeader" className="row z-depth-1">Header</header>
+            <header id="stAppHeader" className="row z-depth-1">
+                <img src={_st.root+'/assets/img/sttv_logo.png'} />
+            </header>
         )
     }
 }
