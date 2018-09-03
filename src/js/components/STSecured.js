@@ -38,6 +38,7 @@ export default class STSecured extends React.Component {
                 <Main {...this.props} />
             )
         } else {
+            localStorage.removeItem('stCourseData')
             if (loc.pathname !== '/login' && loc.pathname !== '/password/reset') hist.replace('/login')
             return (
                 <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
