@@ -21,10 +21,10 @@ export default class Main extends React.Component {
     }
 
     render() {
+        _st.loading = this.state.loading
         return(
             <GlobalState.Consumer>
                 {global => {
-                    _st.loading = this.state.loading
                     this.global = global
                     return (
                         <DataState.Consumer>
