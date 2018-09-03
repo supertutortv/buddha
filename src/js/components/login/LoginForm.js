@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const LoginForm = ({setLoginState, lostPwGo}) =>
-    <div>
+    (<div>
         <div id="stLoginHeader" className="stFormHeader col s12">
             <h2>Welcome! Please sign in.</h2>
             <span>You can access all of your test prep courses, as well as all of your account information, by logging in below.</span>
@@ -20,6 +20,6 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
         <div className="stFormButtons col s12">
             <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
         </div>
-    </div>;
+    </div>)
 
 export default LoginForm
