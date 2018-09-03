@@ -67,6 +67,7 @@ export default class Login extends React.Component {
 
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
+        console.log(this.state)
     }
 
     lostPwGo() {
