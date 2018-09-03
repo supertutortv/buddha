@@ -23,6 +23,8 @@ export default class Login extends React.Component {
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
         this.lostPwGo = this.lostPwGo.bind(this)
+
+        console.log(this.props)
     }
 
     componentDidMount() {
@@ -52,16 +54,12 @@ export default class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         _st.loading = false
         return (
             <STStrippedWrapper error={this.state.error}>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                 <div className="stOverlay"></div>
-                {() => this.state.lostPw ? 
-                    <ResetPassword setLoginState={this.setLoginState} /> : 
-                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-                }
+                {() => this.state.lostPw ? <ResetPassword setLoginState={this.setLoginState} /> : <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />}
             </form>
             </STStrippedWrapper>
         )
