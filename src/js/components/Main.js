@@ -1,15 +1,14 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { GlobalState, DataState } from './StateContext'
+import { DataState } from './StateContext'
 import Header from './Header'
-import Sidebar from './Sidebar'
 import Course from './Course'
 
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data : {},
+            data : localStorage.getItem('stCourseData'),
             loading : true
         }
 
@@ -19,6 +18,7 @@ export default class Main extends React.Component {
     componentDidMount() {
         _st.bodyClass = 'main'
 
+        if (this.state.data === null) return null
         this.setState({ loading: false })
     }
 
