@@ -15,7 +15,7 @@ export default class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.global.bodyClass('main')
+        _st.bodyClass = 'main'
 
         if (this.data)
             this.setState({
