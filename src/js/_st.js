@@ -81,7 +81,7 @@ _st.prototype = {
     },
     auth,
     form,
-    req
+    ...req
 }
 
 export default new _st
