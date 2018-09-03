@@ -7,7 +7,7 @@ export default class Header extends React.Component {
 
     render() {
         return(
-            <header id="stAppHeader">Header</header>
+            <header id="stAppHeader" className="row z-depth-1">Header</header>
         )
     }
 }
