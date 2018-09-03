@@ -22,10 +22,10 @@ export default class STSecured extends React.Component {
         }
     }
 
-    logThatFuckerIn(cb) {
+    logThatFuckerIn() {
         this.setState({
             loggedIn: true
-        }, () => typeof cb === 'function' && cb())
+        }, () => this.props.history.replace('/dashboard'))
     }
 
     render() {
