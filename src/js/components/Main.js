@@ -26,7 +26,7 @@ export default class Main extends React.Component {
             <DataState.Provider value={this.state.data}>
                 <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
                     <Header />
-                    <main id="stAppStage">
+                    <main id="stAppStage" className="row">
                         <Switch>
                             <Route exact path='/dashboard' render={() => 
                                 <div>Dashboard</div>
