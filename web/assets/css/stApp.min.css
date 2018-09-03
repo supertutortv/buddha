@@ -127,7 +127,7 @@ html body {
     display: grid;
     width: 100%; }
     #stApp #stAppInner #stAppStage {
-      width: 960px;
+      width: 35%;
       margin: 0 auto; }
       #stApp #stAppInner #stAppStage #stAppVidBlock {
         position: relative;
