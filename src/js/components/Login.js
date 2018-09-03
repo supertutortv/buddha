@@ -86,9 +86,7 @@ export default class Login extends React.Component {
         _st.loading = true
         _st.auth.token(this.state.creds,(d) => {
             if (d.code === 'login_success') {
-                this.props.setLoggedIn({
-                    loggedIn: true
-                }, () => <Redirect to='/dashboard' />)
+                this.props.setLoggedIn(() => <Redirect to='/dashboard' />)
             }
         })
     }
