@@ -25,7 +25,7 @@ export default class STSecured extends React.Component {
     logThatFuckerIn() {
         this.setState({
             loggedIn: true
-        }, () => this.props.history.replace('/dashboard'))
+        })
     }
 
     render() {
