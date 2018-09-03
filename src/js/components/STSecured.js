@@ -25,7 +25,7 @@ export default class STSecured extends React.Component {
     logThatFuckerIn(cb) {
         this.setState({
             loggedIn: true
-        }, typeof cb === 'function' && cb())
+        }, () => typeof cb === 'function' && cb())
     }
 
     render() {
