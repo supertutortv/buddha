@@ -128,8 +128,10 @@ html body {
     #stApp #stAppInner #stAppStage {
       width: 100%; }
       #stApp #stAppInner #stAppStage #stAppVidBlock {
+        position: relative;
         background-color: #109fda;
         width: 960px;
+        height: 0;
         margin: 0 auto;
         padding: 28.125% 0; }
 
