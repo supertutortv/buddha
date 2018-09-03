@@ -128,7 +128,11 @@ html body {
 
 #stAppHeader {
   height: 3em;
-  background-color: white; }
+  background-color: white;
+  padding: 0 1em; }
+  #stAppHeader img {
+    height: 100%;
+    width: auto; }
 
 body.login #stApp {
   background-color: #e6e4dc; }
