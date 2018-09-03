@@ -35,7 +35,7 @@ export default class Main extends React.Component {
                     <main id="stAppStage" className="row">
                         <Switch>
                             <Route exact path='/dashboard' render={() => 
-                                <div id="stAppVidBlock"></div>
+                                <div id="stAppVidBlock" className="z-depth-2"></div>
                             } />
                             <Route exact path='/:course(the-best-act-prep-course-ever|the-best-sat-prep-course-ever)/:section?' render={props => <Course {...props} />} />
                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
