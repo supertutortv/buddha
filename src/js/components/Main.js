@@ -19,12 +19,15 @@ export default class Main extends React.Component {
         if (this.state.data === null)
             console.log('needs data')
         else if (typeof this.state.data === 'string')
-            this.state.data = JSON.parse(this.state.data) && console.log(this.state.data)
+            this.setState({
+                data: JSON.parse(this.state.data)
+            })
 
         this.setState({ loading: false })
     }
 
     render() {
+        console.log(this.state.data)
         _st.loading = this.state.loading
         return(
             <DataState.Provider value={this.state.data}>
