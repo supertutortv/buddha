@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            redirect : false,
+            data : false,
             loading : true
         }
     }
@@ -17,9 +17,7 @@ export default class Main extends React.Component {
     componentDidMount() {
         _st.bodyClass = 'main'
 
-        this.setState({
-            loading: false
-        })
+        if (this.state.data) this.setState({ loading: false })
     }
 
     render() {

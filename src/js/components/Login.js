@@ -68,7 +68,6 @@ export default class Login extends React.Component {
 
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
-        console.log(this.state)
     }
 
     lostPwGo() {
@@ -83,11 +82,11 @@ export default class Login extends React.Component {
 
     submit(e) {
         e.preventDefault()
-        console.log(e.target)
+        _st.loading = true
         _st.auth.token(this.state.creds,(d) => {
             if (d.code === 'login_success') {
-                this.setState({
-                    creds: {}
+                this.props.setloggedIn({
+                    loggedIn: true
                 }, () => <Redirect to='/dashboard' />)
             }
         })
