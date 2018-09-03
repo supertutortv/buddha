@@ -8,6 +8,8 @@ export default class STSecured extends React.Component {
         this.state = {
             loggedIn: null
         }
+
+        this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
     }
 
     componentDidMount() {
@@ -18,6 +20,12 @@ export default class STSecured extends React.Component {
                 })
             })
         }
+    }
+
+    logThatFuckerIn() {
+        this.setState({
+            loggedIn: true
+        })
     }
 
     render() {
@@ -32,7 +40,7 @@ export default class STSecured extends React.Component {
         } else {
             if (loc.pathname !== '/login' && loc.pathname !== '/password/reset') hist.replace('/login')
             return (
-                <Login setLoggedIn={this.setState} {...this.props} />
+                <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
             )
         }
     }
