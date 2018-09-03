@@ -20,6 +20,6 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
         <div className="stFormButtons col s12">
             <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
         </div>
-    </div>
+    </div>;
 
 export default LoginForm
