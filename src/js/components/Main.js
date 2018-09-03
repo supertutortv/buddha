@@ -12,6 +12,8 @@ export default class Main extends React.Component {
             data : {},
             loading : true
         }
+
+        console.log('main component')
     }
 
     componentDidMount() {
