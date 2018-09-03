@@ -47,7 +47,7 @@ function _st() {
 
 _st.prototype = {
     stripe : config[config.env].stripe,
-    root : 'http://courses.supertutortv.com',
+    root : 'https://courses.supertutortv.com',
     api : 'https://api.supertutortv.com/v2',
     _state : {
         lang: 'EN',
