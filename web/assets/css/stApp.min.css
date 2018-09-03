@@ -124,15 +124,16 @@ html body {
     visibility: hidden;
     opacity: 0; }
   #stApp #stAppInner {
-    display: grid; }
+    display: grid;
+    width: 100%; }
     #stApp #stAppInner #stAppStage {
-      width: 100%; }
+      width: 960px;
+      margin: 0 auto; }
       #stApp #stAppInner #stAppStage #stAppVidBlock {
         position: relative;
         background-color: #109fda;
-        width: 960px;
+        width: 100%;
         height: 0;
-        margin: 0 auto;
         padding: 28.125% 0; }
 
 #stAppHeader {
