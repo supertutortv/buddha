@@ -59,6 +59,7 @@ export default class Login extends React.Component {
         }
 
         this.props.location.state = this.state
+        console.log(this.props)
 
         this.setLoginState = this.setLoginState.bind(this)
         this.submit = this.submit.bind(this)
@@ -103,7 +104,6 @@ export default class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         _st.loading = false
         return (
             <STStrippedWrapper error={this.state.error}>
