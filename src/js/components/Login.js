@@ -67,6 +67,10 @@ export default class Login extends React.Component {
         _st.bodyClass = 'login'
     }
 
+    componentDidUpdate() {
+        _st.loading = false
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.location.pathname === '/auth/token' && this.state.lostPw)
             this.setState({
@@ -80,14 +84,12 @@ export default class Login extends React.Component {
 
     lostPwGo() {
         _st.loading = true
-        this.setState({
-            lostPw : true
-        }, (prev) => {
+        this.setState((prev) => {
+            console.log(prev)
             this.props.history.push({
                 pathname: '/auth/resetpw'
             })
-            console.log(prev)
-            _st.loading = false
+            return {lostPw : true}
         })
     }
 
