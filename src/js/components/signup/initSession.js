@@ -1,5 +1,3 @@
-import * as _st from '../../_st'
-
 export default function initSession(plan) {
     var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
         thePlan = {}
