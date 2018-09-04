@@ -1,7 +1,7 @@
 
-/*
 
-export const plans = [
+
+const plans = [
     {
         id: '1206420',
         slug: 'the-best-act-prep-course-ever',
@@ -25,6 +25,7 @@ export const plans = [
     }
 ]
 
+/*
 export const signup = {
     account : (dt,cb) => post('https://api.supertutortv.com/v2/signup/account',dt,cb),
     pay : (dt,cb) => post('https://api.supertutortv.com/v2/signup/pay',dt,cb)
@@ -81,7 +82,8 @@ _st.prototype = {
     },
     auth,
     form,
-    ...req
+    ...req,
+    plans
 }
 
 export default new _st
