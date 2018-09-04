@@ -164,6 +164,13 @@ body.signup #stApp {
   width: 100%; }
   #stStripped #stStrippedInset {
     padding: 1.5em; }
+    #stStripped #stStrippedInset #stFormErrors {
+      color: red;
+      font-size: 0.75em;
+      padding: 0 1.5em 1.5em;
+      text-align: center; }
+      #stStripped #stStrippedInset #stFormErrors a {
+        text-decoration: underline; }
     #stStripped #stStrippedInset #stStrippedSpacer {
       background-color: white;
       border-radius: 1em;
