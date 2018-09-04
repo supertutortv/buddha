@@ -5,11 +5,12 @@ import CountryDD from '../pieces/CountryDD'
 const Pay = () => <div>pay</div>
 const ThankYou = () => <div>Thank you!</div>
 
-const Plans = () => {
+const Plans = props => {
+    return console.log(props)
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
-            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={this.initSession}>{plan.name}</a>
+            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={props.initSession}>{plan.name}</a>
         )
     })
     return (

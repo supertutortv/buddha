@@ -72,7 +72,7 @@ export default class Signup extends React.Component {
             return this.initSession(this.state.params['plan'])
         else {
             var Component = this.steps[this.state.step]
-            return <Component />
+            return <Component {...this} />
         }
     }
 
