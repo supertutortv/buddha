@@ -1,7 +1,7 @@
-export default function createAccount() {
+export default function createAccount(e) {
+    e.preventDefault()
     var account = this.state.session.customer.account
     console.log(account)
-    return false
     /* _st.signup.account(account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {

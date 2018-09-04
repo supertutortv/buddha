@@ -77,13 +77,13 @@ export default class Signup extends React.Component {
         const SignupStep = this.steps[this.state.step]
         return(
             <STStrippedWrapper error={this.state.error}>
-                <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={_st.signup.pay}>
+                <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
                     {(('plan' in this.state.params)&&!this.state.init) ?
                         this.initSession(this.state.params['plan']) :
                         <SignupStep createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
                     }
-                </form>
+                </div>
             </STStrippedWrapper>
         )
     }
