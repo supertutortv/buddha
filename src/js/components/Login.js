@@ -72,7 +72,7 @@ export default class Login extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location.pathname === '/auth/token' && typeof nextProps.location.state !== 'undefined') this.setState(nextProps.location.state)
+        if (typeof this.props.location.state !== 'undefined') this.setState(this.props.location.state)
     }
 
     setLoginState(e) {
