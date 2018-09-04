@@ -70,13 +70,7 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
-        if (('plan' in this.state.params)&&!this.state.init)
-            return this.initSession(this.state.params['plan'])
-        else {
-            const SUComponent = this.steps[this.state.step]
-            console.log(<SUComponent />)
-            return (<SUComponent createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />)
-        }
+        
     }
 
     render() {
@@ -84,7 +78,14 @@ export default class Signup extends React.Component {
             <STStrippedWrapper error={this.state.error}>
                 <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={_st.signup.pay}>
                     <div className="stOverlay"></div>
-                    {this.renderStep()}
+                    {() => {
+                        if (('plan' in this.state.params)&&!this.state.init)
+                            return this.initSession(this.state.params['plan'])
+                        else {
+                            const SUComponent = this.steps[this.state.step]
+                            return (<SUComponent createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />)
+                        }
+                    }}
                 </form>
             </STStrippedWrapper>
         )
