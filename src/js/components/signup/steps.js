@@ -2,10 +2,10 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-export const pay = () => <div>pay</div>
-export const thankyou = () => <div>Thank you!</div>
+const pay = () => <div>pay</div>
+const thankyou = () => <div>Thank you!</div>
 
-export function plans() {
+const plans = () => {
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
@@ -22,7 +22,7 @@ export function plans() {
     </div>
 )}
 
-export function account() {
+const account = () => {
     return (
         <form id="step-2" className="stFormStep row" onSubmit={this.createAccount}>
             <div className="stFormHeader col s12">
@@ -50,7 +50,7 @@ export function account() {
     )
 }
 
-export function billing() {
+const billing = () => {
     return (
         <form id="step-3" className="stFormStep row" onSubmit={() => null}>
             <div className="stFormHeader col s12">
@@ -84,7 +84,7 @@ export function billing() {
     )
 }
 
-export function shipping() {
+const shipping = () => {
     return (
         <form id="step-4" className="stFormStep row" onSubmit={() => null}>
             <div className="stFormHeader col s12">
@@ -130,3 +130,5 @@ export function shipping() {
         </form>
     )
 }
+
+export { plans, account, billing, shipping, pay, thankyou }
