@@ -68,7 +68,10 @@ export default class Login extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        if (nextProps.location.pathname === '/auth/token' && this.state.lostPw)
+            this.setState({
+                lostPw: false
+            })
     }
 
     setLoginState(e) {
