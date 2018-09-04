@@ -28,13 +28,15 @@ export default class Signup extends React.Component {
             ThankYou
         ]
 
-        console.log(Object.keys(methods))
+        Object.keys(methods).forEach((method) => {
+            this[method] = methods[method].bind(this)
+        })
 
-        this.changeStep = methods.changeStep.bind(this)
+        /* this.changeStep = methods.changeStep.bind(this)
         this.createAccount = methods.createAccount.bind(this)
         this.initSession = methods.initSession.bind(this)
         this.submitPayment = methods.submitPayment.bind(this)
-        this.updateInp = methods.updateInp.bind(this)
+        this.updateInp = methods.updateInp.bind(this) */
     }
 
     componentDidUpdate() {
