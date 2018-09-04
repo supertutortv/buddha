@@ -38,9 +38,9 @@ export const objectifyURLParams = (params = '?void=0') => params.slice(1).split(
 export { loading, request, get, post, put, patch, del, form } */
 
 import config from './config'
-import auth from './utilities/auth'
 import * as form from './utilities/form'
 import * as req from './utilities/http'
+import auth from './utilities/auth'
 
 function _st() {
     this._appStart = Math.floor(Date.now()/1000)

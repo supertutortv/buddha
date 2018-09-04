@@ -46,6 +46,7 @@ export default class Login extends React.Component {
 
         this.state = {
             lostPw : false,
+            resetSent : false,
             creds : {
                 username : '',
                 password : ''
@@ -75,7 +76,7 @@ export default class Login extends React.Component {
         this.setState({
             lostPw : true
         }, () => {
-            this.props.history.push('/password/reset')
+            this.props.history.push('/auth/resetpw')
             _st.loading = false
         })
     }
@@ -83,7 +84,7 @@ export default class Login extends React.Component {
     submit(e) {
         e.preventDefault()
         _st.loading = true
-        _st.auth.token(this.state.creds,(d) => {
+        _st.auth.submit(this.props.location.pathname,this.state.creds,(d) => {
             if (d.code === 'login_success') {
                 this.props.setLoggedIn()
             }
@@ -97,7 +98,10 @@ export default class Login extends React.Component {
             <STStrippedWrapper error={this.state.error}>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
                 <div className="stOverlay"></div>
-                {this.state.lostPw ? <ResetPassword setLoginState={this.setLoginState} /> : <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />}
+                {this.state.lostPw ? 
+                    <ResetPassword resetSent={this.state.resetSent} setLoginState={this.setLoginState} /> : 
+                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
+                }
             </form>
             </STStrippedWrapper>
         )
