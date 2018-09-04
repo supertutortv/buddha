@@ -30,11 +30,11 @@ export default class Signup extends React.Component {
 
         console.log(methods)
 
-        this.changeStep = changeStep.bind(this)
-        this.createAccount = createAccount.bind(this)
-        this.initSession = initSession.bind(this)
-        this.submitPayment = submitPayment.bind(this)
-        this.updateInp = updateInp.bind(this)
+        this.changeStep = methods.changeStep.bind(this)
+        this.createAccount = methods.createAccount.bind(this)
+        this.initSession = methods.initSession.bind(this)
+        this.submitPayment = methods.submitPayment.bind(this)
+        this.updateInp = methods.updateInp.bind(this)
     }
 
     componentDidUpdate() {
