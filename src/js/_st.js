@@ -2,6 +2,7 @@ import config from './config'
 import * as form from './utilities/form'
 import * as req from './utilities/http'
 import auth from './utilities/auth'
+import signup from './utilities/signup'
 
 const plans = [
     {
@@ -26,11 +27,6 @@ const plans = [
         taxable: 2490
     }
 ]
-
-const signup = {
-    account : (dt,cb) => post('/signup/account',dt,cb),
-    pay : (dt,cb) => post('/signup/pay',dt,cb)
-}
 
 const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
