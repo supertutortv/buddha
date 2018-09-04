@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'
-import { CSSTransition } from 'react-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import STStrippedWrapper from './STStrippedWrapper'
 import createAccount from './signup/createAccount'
 import initSession from './signup/initSession'
@@ -81,12 +81,14 @@ export default class Signup extends React.Component {
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
-                    <CSSTransition classNames='crossfade' timeout={250}>
-                    {(('plan' in this.state.params)&&!this.state.init) ?
-                        this.initSession(this.state.params['plan']) :
-                        <SignupStep changeStep={this.changeStep} createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
-                    }
-                    </CSSTransition>
+                    <TransitionGroup>
+                        <CSSTransition key={this.props.location.key} classNames='fade' timeout={250}>
+                        {(('plan' in this.state.params)&&!this.state.init) ?
+                            this.initSession(this.state.params['plan']) :
+                            <SignupStep changeStep={this.changeStep} createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
+                        }
+                        </CSSTransition>
+                    </TransitionGroup>
                 </div>
             </STStrippedWrapper>
         )
