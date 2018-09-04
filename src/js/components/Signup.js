@@ -28,7 +28,7 @@ export default class Signup extends React.Component {
             ThankYou
         ]
 
-        console.log(methods)
+        console.log(Object.keys(methods))
 
         this.changeStep = methods.changeStep.bind(this)
         this.createAccount = methods.createAccount.bind(this)
