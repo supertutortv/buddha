@@ -33,13 +33,13 @@ export default class STSecured extends React.Component {
         if (this.state.loggedIn === null) return null
 
         if (this.state.loggedIn) {
-            if (loc.pathname === '/login') hist.replace('/dashboard')
+            if (loc.pathname === '/auth/token') hist.replace('/dashboard')
             return (
                 <Main {...this.props} />
             )
         } else {
             localStorage.removeItem('stCourseData')
-            if (loc.pathname !== '/login' && loc.pathname !== '/password/reset') hist.replace('/login')
+            if (loc.pathname !== '/auth/token' && loc.pathname !== '/auth/pwreset') hist.replace('/auth/token')
             return (
                 <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
             )
