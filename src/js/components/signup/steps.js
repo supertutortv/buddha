@@ -5,8 +5,10 @@ import CountryDD from '../pieces/CountryDD'
 const Pay = () => <div>pay</div>
 const ThankYou = () => <div>Thank you!</div>
 
-const Plans = ({ initSession }) => {
-    var plans = []
+const Plans = (props) => {
+    console.log(props)
+    return null
+    /* var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
             <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={initSession}>{plan.name}</a>
@@ -20,7 +22,7 @@ const Plans = ({ initSession }) => {
         </div>
         <div id="stSignupPlans" class="stFormBody col s12">{plans}</div>
     </div>
-)}
+) */}
 
 const Account = ({ createAccount, updateInp }) => {
     return (

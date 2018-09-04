@@ -57,7 +57,7 @@ export default class Signup extends React.Component {
                         <CSSTransition key={this.props.location.key} classNames='fade' timeout={250}>
                         {(('plan' in this.state.params)&&!this.state.init) ?
                             this.initSession(this.state.params['plan']) :
-                            <SignupStep changeStep={this.changeStep} createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
+                            <SignupStep {...this} />
                         }
                         </CSSTransition>
                     </TransitionGroup>
