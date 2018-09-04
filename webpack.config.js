@@ -29,6 +29,12 @@ const appConfig = {
                         loader: 'css-loader'
                     },
                     {
+                        loader: 'resolve-url-loader'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true,
@@ -43,7 +49,12 @@ const appConfig = {
                 use: {
                     loader: 'babel-loader'
                 }
-            }
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                exclude: /node_modules/,
+                loader: 'file-loader'
+              }
         ]
     },
     performance: {
