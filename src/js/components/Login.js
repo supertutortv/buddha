@@ -88,7 +88,13 @@ export default class Login extends React.Component {
         var prevState = {}
         this.setState((prev) => {
             prevState = prev
-            return {lostPw : true}
+            return {
+                lostPw : true,
+                error : {
+                    id : '',
+                    message : ''
+                }
+            }
         }, () => this.props.history.push({
             pathname: '/auth/resetpw',
             state: prevState
