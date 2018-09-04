@@ -74,6 +74,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return(
             <STStrippedWrapper error={this.state.error}>
                 <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={_st.signup.pay}>
