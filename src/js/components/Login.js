@@ -99,11 +99,14 @@ export default class Login extends React.Component {
         e.preventDefault()
         _st.loading = true
         _st.auth.submit(this.props.location.pathname,this.state.creds,(d) => {
-            console.log(d)
-            /* if (d.code === '') return console.log(d)
-            if (d.code === 'login_success') {
-                this.props.setLoggedIn()
-            } */
+            if (d.code === 'login_fail') return this.setState({
+                    error: {
+                        id: d.code,
+                        message: d.message
+                    }
+                })
+            else
+                return this.props.setLoggedIn()
         })
     }
 
