@@ -13,7 +13,7 @@ ReactDOM.render(
         <Switch>
             {_st.loading = true}
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/signup/:step?' component={Signup} />
             <Route exact path='/login' render={() => <Redirect to='/auth/token' />} />
             <Route path='/' render={(p) => <STSecured {...p} />} />
         </Switch>

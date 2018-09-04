@@ -5,11 +5,11 @@ import CountryDD from '../pieces/CountryDD'
 const Pay = () => <div>pay</div>
 const ThankYou = () => <div>Thank you!</div>
 
-const Plans = props => console.log(props) && null /* {
+const Plans = ({ initSession }) => {
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
-            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={props.initSession}>{plan.name}</a>
+            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={initSession}>{plan.name}</a>
         )
     })
     return (
@@ -20,27 +20,27 @@ const Plans = props => console.log(props) && null /* {
         </div>
         <div id="stSignupPlans" class="stFormBody col s12">{plans}</div>
     </div>
-)} */
+)}
 
-const Account = () => {
+const Account = ({ createAccount, updateInp }) => {
     return (
-        <form id="step-2" className="stFormStep row" onSubmit={this.createAccount}>
+        <form id="step-2" className="stFormStep row" onSubmit={createAccount}>
             <div className="stFormHeader col s12">
                 <h2>Awesome! Let's create your account!</h2>
                 <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div id="stSignupAccount" className="stFormBody col s12">
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={this.updateInp} required />
+                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={this.updateInp} required/>
+                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={this.updateInp} required/>
+                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={this.updateInp} required/>
+                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">
@@ -50,7 +50,7 @@ const Account = () => {
     )
 }
 
-const Billing = () => {
+const Billing = ({ createAccount, updateInp }) => {
     return (
         <form id="step-3" className="stFormStep row" onSubmit={() => null}>
             <div className="stFormHeader col s12">
@@ -59,22 +59,22 @@ const Billing = () => {
             </div>
             <div id="stSignupBilling" className="stFormBody col s12">
                 <div className="input-field required col s12">
-                    <input className="browser-default validate billing address1" type="text" name="customer|billing|address_line1" placeholder="Address 1" required/>
+                    <input className="browser-default validate billing address1" type="text" name="customer|billing|address_line1" placeholder="Address 1" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field col s12">
-                    <input className="browser-default validate billing address2" type="text" name="customer|billing|address_line2" placeholder="Address 2"/>
+                    <input className="browser-default validate billing address2" type="text" name="customer|billing|address_line2" placeholder="Address 2" onBlur={updateInp}/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate billing city" type="text" name="customer|billing|address_city" placeholder="City" required/>
+                    <input className="browser-default validate billing city" type="text" name="customer|billing|address_city" placeholder="City" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate billing state" type="text" name="customer|billing|address_state" placeholder="State" required/>
+                    <input className="browser-default validate billing state" type="text" name="customer|billing|address_state" placeholder="State" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate billing pcode" type="text" name="customer|billing|address_zip" placeholder="Postal Code" required/>
+                    <input className="browser-default validate billing pcode" type="text" name="customer|billing|address_zip" placeholder="Postal Code" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    {<CountryDD className="browser-default validate billing country" name="customer|billing|address_country" required/>}
+                    {<CountryDD className="browser-default validate billing country" name="customer|billing|address_country" onBlur={updateInp} required/>}
                 </div>
             </div>
             <div className="stFormButtons col s12">
@@ -94,33 +94,33 @@ const Shipping = () => {
             <div id="stSignupShipping" className="stFormBody col s12">
                 <div className="st-checkout-spaced col s12">
                     <label>
-                        <input name="customer|options|copyAddress" className="filled-in" value="1" type="checkbox" />
+                        <input name="customer|options|copyAddress" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                         <span>Same as billing address</span>
                     </label>
                 </div>
                 <div className="st-checkout-spaced col s12">
                     <label>
-                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" />
+                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                         <span>I want Priority Shipping (+$7.05, U.S. only)</span>
                     </label>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" required/>
+                    <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field col s12">
-                    <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" />
+                    <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" onBlur={updateInp} />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" required/>
+                    <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" required/>
+                    <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" required/>
+                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    {<CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" required/>}
+                    {<CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>}
                 </div>
             </div>
             <div className="stFormButtons col s12">

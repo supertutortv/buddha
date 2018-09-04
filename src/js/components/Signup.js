@@ -36,10 +36,13 @@ export default class Signup extends React.Component {
         this.updateInp = this.updateInp.bind(this)
     }
 
-    componentDidUpdate() {}
+    componentDidUpdate() {
+        _st.loading = false
+    }
 
     componentDidMount() {
         _st.bodyClass = 'signup'
+        _st.loading = false
     }
 
     changeStep(inc = true) {
@@ -52,9 +55,8 @@ export default class Signup extends React.Component {
         return this.state.update 
     }
 
-    updateInp(e) {
+    updateInp({target: el}) {
         this.state.update = false
-        var el = e.target
         this.setState(prev => {
             var params = el.name.split('|'),
                 newObj = {[params[0]] : {...prev.session[params[0]]}}
@@ -72,7 +74,7 @@ export default class Signup extends React.Component {
             return this.initSession(this.state.params['plan'])
         else {
             var Component = this.steps[this.state.step]
-            return <Component {...this} />
+            return <Component createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
         }
     }
 
