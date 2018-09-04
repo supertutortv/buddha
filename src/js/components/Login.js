@@ -82,8 +82,11 @@ export default class Login extends React.Component {
         _st.loading = true
         this.setState({
             lostPw : true
-        }, () => {
-            this.props.history.push('/auth/resetpw')
+        }, (prev) => {
+            this.props.history.push({
+                pathname: '/auth/resetpw'
+            })
+            console.log(prev)
             _st.loading = false
         })
     }
