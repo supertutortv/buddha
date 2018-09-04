@@ -74,20 +74,15 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        const SignupStep = this.steps[this.state.step]
         return(
             <STStrippedWrapper error={this.state.error}>
                 <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={_st.signup.pay}>
                     <div className="stOverlay"></div>
-                    {() => {
-                        if (('plan' in this.state.params)&&!this.state.init)
-                            return this.initSession(this.state.params['plan'])
-                        else {
-                            const SignupStep = this.steps[this.state.step]
-                            console.log(SignupStep)
-                            return <SignupStep createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
-                        }
-                    }}
+                    {(('plan' in this.state.params)&&!this.state.init) ?
+                        this.initSession(this.state.params['plan']) :
+                        <SignupStep createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
+                    }
                 </form>
             </STStrippedWrapper>
         )
