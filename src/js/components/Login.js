@@ -117,7 +117,6 @@ export default class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <STStrippedWrapper error={this.state.error}>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>

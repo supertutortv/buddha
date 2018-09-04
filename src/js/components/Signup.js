@@ -42,13 +42,12 @@ export default class Signup extends React.Component {
         this.updateInp = this.updateInp.bind(this)
     }
 
-    componentWillUnmount() {
-        _st.bodyClass('signup')
+    componentDidUpdate() {
+        
     }
 
     componentDidMount() {
-        _st.form.overlay()
-        _st.bodyClass('signup')
+        _st.bodyClass = 'signup'
     }
 
     changeStep(inc = true) {
