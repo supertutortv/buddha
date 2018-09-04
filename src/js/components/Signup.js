@@ -21,12 +21,12 @@ export default class Signup extends React.Component {
             }
         }
         this.steps = [
-            'Plans',
-            'Account',
-            'Billing',
-            'Shipping',
-            'Pay',
-            'ThankYou'
+            Plans,
+            Account,
+            Billing,
+            Shipping,
+            Pay,
+            ThankYou
         ]
 
         this.initSession = initSession.bind(this)
