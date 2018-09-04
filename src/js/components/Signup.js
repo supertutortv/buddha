@@ -52,14 +52,10 @@ export default class Signup extends React.Component {
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
-                    <TransitionGroup>
-                        <CSSTransition key={this.props.location.key} classNames='fade' timeout={250}>
                         {(('plan' in this.state.params)&&!this.state.init) ?
                             this.initSession(this.state.params['plan']) :
                             <SignupStep {...this} />
                         }
-                        </CSSTransition>
-                    </TransitionGroup>
                 </div>
             </STStrippedWrapper>
         )
