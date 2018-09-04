@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
 
 const appConfig = {
-    entry: ['babel-polyfill', './src/sass/stApp.sass','./src/js/stApp.js'],
+    entry: ['babel-polyfill','./src/js/stApp.js'],
     output: {
         path: path.resolve(__dirname, 'web'),
         filename: './assets/js/stApp.js',
@@ -20,21 +20,19 @@ const appConfig = {
     module: {
         rules: [
             {
-                test : /\.sass$/,
-                use : [
+                test: /\.sass$/,
+                use: [
                     {
-                        loader : 'css-loader',
-                        options : {
-                            url: false,
-                            minimize: true,
-                            sourceMap: true
-                        }
+                        loader: 'style-loader'
                     },
                     {
-                        loader : 'sass-loader',
-                        options : {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
                             sourceMap: true,
-                            importer : globImporter()
+                            importer: globImporter()
                         }
                     }
                 ]
@@ -42,7 +40,10 @@ const appConfig = {
             {
                 test: /\.(js)$/,
                 exclude: /node_modules/,
-                use: 'babel-loader'
+                use: {
+                    loader: 'babel-loader',
+                    options: { presets: ["es2015"] }
+                }
             }
         ]
     },
