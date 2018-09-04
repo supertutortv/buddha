@@ -6,6 +6,8 @@ import Signup from './components/Signup'
 import STSecured from './components/STSecured'
 import STTV from './_st'
 
+import '../sass/stApp.sass'
+
 window._st = STTV
 
 ReactDOM.render( 
