@@ -1,4 +1,31 @@
-export default function initSession(plan) {
+// changeStep
+export function changeStep(inc = true,e) {
+    if (typeof e !== 'undefined') e.preventDefault()
+    this.setState({
+        step : inc ? this.state.step + 1 : this.state.step - 1
+    })
+}
+
+// createAccount
+export default function createAccount(e) {
+    _st.loading = true
+    e.preventDefault()
+    var account = this.state.session.customer.account
+    _st.http.post('/signup/account',account,(d) => {
+        if (d.code === 'signupError') return this.setState({
+            error: {
+                id: d.code,
+                message: d.message
+            }
+        })
+
+        Object.assign(this.state.session.customer,d.update)
+        this.changeStep()
+    })
+}
+
+// initSession
+export function initSession(plan) {
     var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
         thePlan = {}
 
@@ -52,4 +79,24 @@ export default function initSession(plan) {
         this.changeStep()
     }
     return null
+}
+
+// submitPayment
+export function submitPayment() {
+    _st.http.post('/signup/pay',dt,cb)
+}
+
+// updateInp
+export function updateInp({target: el}) {
+    this.state.update = false
+    this.setState(prev => {
+        var params = el.name.split('|'),
+            newObj = {[params[0]] : {...prev.session[params[0]]}}
+
+            params.reduce((obj,key,i,arr) => {
+                if (i+1 === arr.length) obj[key] = el.value
+                else return obj[key]
+            },newObj)
+        return Object.assign(prev.session,newObj)
+    },() => this.state.update = true)
 }

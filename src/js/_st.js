@@ -1,8 +1,7 @@
 import config from './config'
 import * as form from './utilities/form'
-import * as req from './utilities/http'
+import * as http from './utilities/http'
 import auth from './utilities/auth'
-import signup from './utilities/signup'
 
 const plans = [
     {
@@ -75,9 +74,8 @@ STTV.prototype = {
     objectifyURLParams,
     auth,
     form,
-    ...req,
-    plans,
-    signup
+    http,
+    plans
 }
 
 export default new STTV
