@@ -1,13 +1,13 @@
 @mixin fontFace($family,$weight)
 	@font-face
 		font-family: $family
-		src: url('/assets/fonts/#{$family}/Norm/#{$family}-#{$weight}.woff') format('woff'), url('../fonts/#{$family}-#{$weight}.ttf') format('truetype')
+		src: url('/assets/fonts/#{$family}/Norm/#{$family}-#{$weight}.woff') format('woff'), url('/assets/fonts/#{$family}-#{$weight}.ttf') format('truetype')
 		font-style: normal
 		font-weight: $weight
 	
 	@font-face
 		font-family: $family
-		src: url('/assets/fonts/#{$family}/Ital/#{$family}-#{$weight}-It.woff') format('woff'), url('../fonts/#{$family}-#{$weight}-It.ttf') format('truetype')
+		src: url('/assets/fonts/#{$family}/Ital/#{$family}-#{$weight}-It.woff') format('woff'), url('/assets/fonts/#{$family}-#{$weight}-It.ttf') format('truetype')
 		font-style: italic
 		font-weight: $weight
 		
