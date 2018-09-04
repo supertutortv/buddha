@@ -1,5 +1,7 @@
-
-
+import config from './config'
+import * as form from './utilities/form'
+import * as req from './utilities/http'
+import auth from './utilities/auth'
 
 const plans = [
     {
@@ -25,29 +27,23 @@ const plans = [
     }
 ]
 
-/*
-export const signup = {
-    account : (dt,cb) => post('https://api.supertutortv.com/v2/signup/account',dt,cb),
-    pay : (dt,cb) => post('https://api.supertutortv.com/v2/signup/pay',dt,cb)
+const signup = {
+    account : (dt,cb) => post('/signup/account',dt,cb),
+    pay : (dt,cb) => post('/signup/pay',dt,cb)
 }
 
-export const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
+const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
   return ({ ...obj, [key]: value })
 }, {});
 
-export { loading, request, get, post, put, patch, del, form } */
+// FUNCTION START //
 
-import config from './config'
-import * as form from './utilities/form'
-import * as req from './utilities/http'
-import auth from './utilities/auth'
-
-function _st() {
+function STTV() {
     this._appStart = Math.floor(Date.now()/1000)
 }
 
-_st.prototype = {
+STTV.prototype = {
     stripe : config[config.env].stripe,
     root : 'https://courses.supertutortv.com',
     api : 'https://api.supertutortv.com/v2',
@@ -80,10 +76,12 @@ _st.prototype = {
         this._state.loggedIn = val
         return this._state.loggedIn
     },
+    objectifyURLParams,
     auth,
     form,
     ...req,
-    plans
+    plans,
+    signup
 }
 
-export default new _st
+export default new STTV

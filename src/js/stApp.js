@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import allYourBase from './components/allYourBase'
 import Signup from './components/Signup'
 import STSecured from './components/STSecured'
-import _st from './_st'
+import STTV from './_st'
 
-window._st = _st
+window._st = STTV
 
 ReactDOM.render( 
     <BrowserRouter>
