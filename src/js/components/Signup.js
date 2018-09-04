@@ -3,7 +3,7 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 import STStrippedWrapper from './STStrippedWrapper'
 import createAccount from './signup/createAccount'
 import initSession from './signup/initSession'
-import * as steps from './signup/steps'
+import { Plans, Account, Billing, Shipping, Pay, ThankYou } from './signup/steps'
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -21,20 +21,14 @@ export default class Signup extends React.Component {
             }
         }
         this.steps = [
-            'plans',
-            'account',
-            'billing',
-            'shipping',
-            'pay',
-            'thankyou'
+            'Plans',
+            'Account',
+            'Billing',
+            'Shipping',
+            'Pay',
+            'ThankYou'
         ]
 
-        this.plans = steps.plans.bind(this)
-        this.account = steps.account.bind(this)
-        this.billing = steps.billing.bind(this)
-        this.shipping = steps.shipping.bind(this)
-        this.pay = steps.pay.bind(this)
-        this.thankyou = steps.thankyou.bind(this)
         this.initSession = initSession.bind(this)
         this.createAccount = createAccount.bind(this)
         this.renderStep = this.renderStep.bind(this)
@@ -42,9 +36,7 @@ export default class Signup extends React.Component {
         this.updateInp = this.updateInp.bind(this)
     }
 
-    componentDidUpdate() {
-        
-    }
+    componentDidUpdate() {}
 
     componentDidMount() {
         _st.bodyClass = 'signup'
@@ -76,18 +68,21 @@ export default class Signup extends React.Component {
     }
 
     renderStep() {
-        if (('plan' in this.state.params)&&!this.state.init) return this.initSession(this.state.params['plan'])
-
-        return this[this.steps[this.state.step]]()
+        if (('plan' in this.state.params)&&!this.state.init)
+            return this.initSession(this.state.params['plan'])
+        else {
+            var Component = this.steps[this.state.step]
+            return <Component />
+        }
     }
 
     render() {
         return(
             <STStrippedWrapper error={this.state.error}>
-                <div id="stSignupWrapper" className="stFormWrapper row">
+                <form id="stSignupWrapper" className="stFormWrapper row" onSubmit={}>
                     <div className="stOverlay"></div>
                     {this.renderStep()}
-                </div>
+                </form>
             </STStrippedWrapper>
         )
     }
