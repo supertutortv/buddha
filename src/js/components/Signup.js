@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
 import STStrippedWrapper from './STStrippedWrapper'
 import createAccount from './signup/createAccount'
 import initSession from './signup/initSession'
@@ -45,7 +46,8 @@ export default class Signup extends React.Component {
         _st.loading = false
     }
 
-    changeStep(inc = true) {
+    changeStep(inc = true,e) {
+        if (typeof e !== 'undefined') e.preventDefault()
         this.setState({
             step : inc ? this.state.step + 1 : this.state.step - 1
         })
@@ -79,10 +81,12 @@ export default class Signup extends React.Component {
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
+                    <CSSTransition classNames='crossfade'>
                     {(('plan' in this.state.params)&&!this.state.init) ?
                         this.initSession(this.state.params['plan']) :
-                        <SignupStep createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
+                        <SignupStep changeStep={this.changeStep} createAccount={this.createAccount} updateInp={this.updateInp} initSession={this.initSession} />
                     }
+                    </CSSTransition>
                 </div>
             </STStrippedWrapper>
         )

@@ -50,9 +50,9 @@ const Account = ({ createAccount, updateInp }) => {
     )
 }
 
-const Billing = ({ createAccount, updateInp }) => {
+const Billing = ({ updateInp, changeStep }) => {
     return (
-        <form id="step-3" className="stFormStep row" onSubmit={() => null}>
+        <form id="step-3" className="stFormStep row" onSubmit={(e) => changeStep(true,e)}>
             <div className="stFormHeader col s12">
                 <h2>What's your billing address?</h2>
                 <span>This is the address associated with the card you are going to use for payment. We use this to verify your payment, so please check the accuracy of the information you provide.</span>
