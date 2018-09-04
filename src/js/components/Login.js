@@ -105,6 +105,7 @@ export default class Login extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         _st.loading = false
         return (
             <STStrippedWrapper error={this.state.error}>
