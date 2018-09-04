@@ -72,10 +72,7 @@ export default class Login extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.location.pathname === '/auth/token' && this.state.lostPw)
-            this.setState({
-                lostPw: false
-            })
+        if (nextProps.location.pathname === '/auth/token' && typeof nextProps.location.state !== 'undefined') this.setState(nextProps.location.state)
     }
 
     setLoginState(e) {
@@ -85,9 +82,9 @@ export default class Login extends React.Component {
     lostPwGo() {
         _st.loading = true
         this.setState((prev) => {
-            console.log(prev)
             this.props.history.push({
-                pathname: '/auth/resetpw'
+                pathname: '/auth/resetpw',
+                state: prev
             })
             return {lostPw : true}
         })
@@ -104,6 +101,7 @@ export default class Login extends React.Component {
     }
 
     render() {
+        console.log(this.props.location)
         _st.loading = false
         return (
             <STStrippedWrapper error={this.state.error}>
