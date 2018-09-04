@@ -5,8 +5,7 @@ import CountryDD from '../pieces/CountryDD'
 const Pay = () => <div>pay</div>
 const ThankYou = () => <div>Thank you!</div>
 
-const Plans = props => {
-    return console.log(props)
+const Plans = props => console.log(props) && null /* {
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
@@ -21,7 +20,7 @@ const Plans = props => {
         </div>
         <div id="stSignupPlans" class="stFormBody col s12">{plans}</div>
     </div>
-)}
+)} */
 
 const Account = () => {
     return (
