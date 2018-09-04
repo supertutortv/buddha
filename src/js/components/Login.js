@@ -74,8 +74,8 @@ export default class Login extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        //if (typeof this.props.location.state !== 'undefined') this.setState(this.props.location.state)
+        var { history: hist, location: loc } = nextProps
+        if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
     setLoginState(e) {
