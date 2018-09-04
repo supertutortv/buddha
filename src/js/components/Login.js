@@ -67,6 +67,10 @@ export default class Login extends React.Component {
         _st.bodyClass = 'login'
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+    }
+
     setLoginState(e) {
         _st.form.setState(this.state.creds,e.target)
     }
@@ -92,7 +96,6 @@ export default class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         _st.loading = false
         return (
             <STStrippedWrapper error={this.state.error}>
