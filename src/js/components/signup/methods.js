@@ -3,7 +3,7 @@ export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
     this.setState({
         step : inc ? this.state.step + 1 : this.state.step - 1
-    },() => this.props.history.replace)
+    },() => this.props.history.replace('/signup/'+this.steps[this.state.step].toLowerCase()))
 }
 
 // createAccount
