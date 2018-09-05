@@ -3,8 +3,8 @@ import React from 'react'
 const STStrippedWrapper = ({error,children}) => {
     return (
         <section id="stStripped">
-            <div id="stStrippedInset" className="col s12 m8 l6 offset-m2 offset-l3">
-                <div id="stStrippedSpacer" className="row">
+            <div id="stStrippedInset" className="row">
+                <div id="stStrippedSpacer" className="col s12">
                     <header className="stBordered row">
                         <div id="stStrippedInsetHeader" className="col s12">
                             <img src="/assets/img/sttv_logo.png" />
