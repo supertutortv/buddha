@@ -37,9 +37,8 @@ export default class Main extends React.Component {
                             <Route exact path='/dashboard' render={() => 
                                 <div id="stAppVidBlock" className="z-depth-2"></div>
                             } />
-                            <Route exact path='/:course(the-best-act-prep-course-ever|the-best-sat-prep-course-ever)/:section?' render={props => <Course {...props} />} />
+                            <Route exact path='/:course/:section?/:third?/:fourth?/:fifth?' render={props => <Course {...props} />} />
                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                            <Route path="/*" render={() => null} />
                         </Switch>
                     </main>
                 </div>

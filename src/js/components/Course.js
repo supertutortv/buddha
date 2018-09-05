@@ -4,7 +4,7 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 export default class Course extends React.Component {
     render() {
         return(
-            <div>{JSON.stringify(this.props)}</div>
+            <div>{JSON.stringify(this.props.match.params)}</div>
         )
     }
 }
