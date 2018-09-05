@@ -22,26 +22,25 @@ const Plans = ({ initSession }) => {
     </div>
 )}
 
-const Account = (props) => {
-    console.log(props)
+const Account = ({ createAccount, updateInp }) => {
     return (
-        <form id="step-2" className="stFormStep row" onSubmit={props.createAccount}>
+        <form id="step-2" className="stFormStep row" onSubmit={createAccount}>
             <div className="stFormHeader col s12">
                 <h2>Awesome! Let's create your account!</h2>
                 <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div id="stSignupAccount" className="stFormBody col s12">
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={props.updateInp} required />
+                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={props.updateInp} required/>
+                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={props.updateInp} required/>
+                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={props.updateInp} required/>
+                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">

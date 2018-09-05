@@ -42,7 +42,7 @@ export default class Signup extends React.Component {
     }
 
     shouldComponentUpdate() {
-        return this.state.update
+        return this.state.update 
     }
 
     render() {
@@ -53,7 +53,12 @@ export default class Signup extends React.Component {
                     <div className="stOverlay"></div>
                         {(('plan' in this.state.params)&&!this.state.init) ?
                             this.initSession(this.state.params['plan']) :
-                            <SignupStep {...this} />
+                            <SignupStep 
+                                changeStep={this.changeStep}
+                                createAccount={this.createAccount}
+                                updateInp={this.updateInp}
+                                initSession={this.initSession} 
+                            />
                         }
                 </div>
             </STStrippedWrapper>
