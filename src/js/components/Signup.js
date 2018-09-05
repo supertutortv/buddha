@@ -46,7 +46,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log('render method')
+        console.log(this.props.match)
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <STStrippedWrapper error={this.state.error}>
@@ -62,7 +62,6 @@ export default class Signup extends React.Component {
                             />
                         }
                 </div>
-                {this.props.history.replace('/signup/'+this.steps[this.state.step].toLowerCase())}
             </STStrippedWrapper>
         )
     }
