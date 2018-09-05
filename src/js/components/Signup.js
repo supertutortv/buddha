@@ -32,6 +32,8 @@ export default class Signup extends React.Component {
         })
     }
 
+    steps = {...steps}
+
     componentDidMount() {
         _st.bodyClass = 'signup'
         _st.loading = false
@@ -46,8 +48,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {step} = this.props.match.params
-        console.log(step)
+        console.log(this)
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <STStrippedWrapper error={this.state.error}>

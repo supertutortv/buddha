@@ -3,7 +3,7 @@ export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
     this.setState({
         step : inc ? this.state.step + 1 : this.state.step - 1
-    })
+    },() => this.props.history.replace)
 }
 
 // createAccount
@@ -36,7 +36,7 @@ export function initSession(plan) {
 
     if (!Object.keys(thePlan).length) {
         delete this.state.params.plan
-        this.props.history.replace('/signup')
+        this.props.history.replace('/signup/plans')
     } else {
         Object.assign(this.state,{
             init: true,
