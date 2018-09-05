@@ -42,7 +42,7 @@ export default class Signup extends React.Component {
     }
 
     shouldComponentUpdate() {
-        return this.state.update 
+        return this.state.update
     }
 
     render() {
