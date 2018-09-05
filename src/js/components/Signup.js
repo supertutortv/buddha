@@ -1,7 +1,7 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 import * as methods from './signup/methods'
-import { Plans, Account, Billing, Shipping, Pay, ThankYou } from './signup/steps'
+import * as steps from './signup/steps'
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -19,12 +19,12 @@ export default class Signup extends React.Component {
             }
         }
         this.steps = [
-            Plans,
-            Account,
-            Billing,
-            Shipping,
-            Pay,
-            ThankYou
+            'Plans',
+            'Account',
+            'Billing',
+            'Shipping',
+            'Pay',
+            'ThankYou'
         ]
 
         Object.keys(methods).forEach((method) => {
@@ -46,7 +46,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        const SignupStep = this.steps[this.state.step]
+        const SignupStep = steps[this.steps[this.state.step]]
         return(
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
