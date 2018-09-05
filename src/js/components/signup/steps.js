@@ -5,6 +5,7 @@ import CountryDD from '../pieces/CountryDD'
 const ThankYou = () => <div>Thank you!</div>
 
 const Plans = ({ initSession }) => {
+    console.log(this.name)
     var plans = []
     _st.plans.forEach((plan) => {
         plans.push(
