@@ -32,16 +32,16 @@ const Account = (props) => {
             </div>
             <div id="stSignupAccount" className="stFormBody col s12">
                 <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
+                    <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={props.updateInp} required />
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
+                    <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={props.updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={updateInp} required/>
+                    <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={props.updateInp} required/>
                 </div>
                 <div className="input-field required col s12">
-                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
+                    <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={props.updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">
