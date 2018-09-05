@@ -2,7 +2,6 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-const Pay = () => <div>pay</div>
 const ThankYou = () => <div>Thank you!</div>
 
 const Plans = ({ initSession }) => {
@@ -84,9 +83,9 @@ const Billing = ({ updateInp, changeStep }) => {
     )
 }
 
-const Shipping = () => {
+const Shipping = ({ updateInp, changeStep }) => {
     return (
-        <form id="step-4" className="stFormStep row" onSubmit={() => null}>
+        <form id="step-4" className="stFormStep row" onSubmit={changeStep}>
             <div className="stFormHeader col s12">
                 <h2>Where are we sending your books?</h2>
                 <span>Even if you're signing up for a course that doesn't ship books, we still collect this information to keep on file in your account with our payment processor. We never share this information with anyone.</span>
@@ -124,11 +123,23 @@ const Shipping = () => {
                 </div>
             </div>
             <div className="stFormButtons col s12">
-                <button className="stFormButton pmt-button btn waves-effect waves-light" onClick={() => null}>{'<< Back'}</button>
+                <button className="stFormButton pmt-button btn waves-effect waves-light" onClick={() => changeStep(false)}>{'<< Back'}</button>
                 <button id="stBtn_shipping" className="stFormButton pmt-button btn waves-effect waves-light" type="submit">Next >></button>
             </div>
         </form>
     )
+}
+
+class Pay extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <div>Pay screen</div>
+        )
+    }
 }
 
 export { Plans, Account, Billing, Shipping, Pay, ThankYou }
