@@ -52,7 +52,7 @@ STTV.prototype = {
     },
     set loading(val) {
         this._state.loading = val
-        const loader = document.getElementById('stApp').classList
+        const loader = document.querySelector('stApp').classList
         return this._state.loading ? loader.replace('active','loading') : loader.replace('loading','active')
     },
     get bodyClass() {
