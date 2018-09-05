@@ -73,7 +73,7 @@ const Billing = ({ updateInp, changeStep }) => {
                     <input className="browser-default validate billing pcode" type="text" name="customer|billing|address_zip" placeholder="Postal Code" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    {<CountryDD className="browser-default validate billing country" name="customer|billing|address_country" onBlur={updateInp} required/>}
+                    <CountryDD className="browser-default validate billing country" name="customer|billing|address_country" onBlur={updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">
@@ -119,7 +119,7 @@ const Shipping = ({ updateInp, changeStep }) => {
                     <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
                 </div>
                 <div className="input-field required col s12 m6 st-input-half-right">
-                    {<CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>}
+                    <CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                 </div>
             </div>
             <div className="stFormButtons col s12">
