@@ -4,7 +4,7 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
     (<div>
         <div id="stLoginHeader" className="stFormHeader col s12">
             <h1>Welcome! Please sign in.</h1>
-            <span>You can access all of your test prep courses, as well as all of your account information, by logging in below.</span>
+            {/* <span>You can access all of your test prep courses, as well as all of your account information, by logging in below.</span> */}
         </div>
         <div id="stLoginCredentials" className="col s12">
             <div className="input-field col s12">
