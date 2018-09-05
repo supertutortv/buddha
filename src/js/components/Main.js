@@ -11,19 +11,26 @@ export default class Main extends React.Component {
             data : localStorage.getItem('stCourseData'),
             loading : true
         }
+
+        this.dataSaveLocal = this.dataSaveLocal.bind(this)
     }
 
     async componentDidMount() {
-        if (this.state.data === null) {
-            let d = await _st.http.get('/courses/data',(h) => console.log(h))
-        }
+        var tData = ''
+        if (this.state.data === null)
+            await _st.http.get('/courses/data',(h) => tData = h.data)
         else if (typeof this.state.data === 'string')
-            this.setState({
-                data: JSON.parse(this.state.data)
-            })
+            tData = JSON.parse(this.state.data)
 
         _st.bodyClass = 'main'
-        this.setState({ loading: false })
+        this.setState({
+            data: tData,
+            loading: false
+        },() => this.dataSaveLocal())
+    }
+
+    dataSaveLocal() {
+        return localStorage.setItem('stCourseData',this.state.data)
     }
 
     render() {
