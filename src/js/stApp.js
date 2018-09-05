@@ -19,4 +19,4 @@ ReactDOM.render(
             <Route path='/' render={(p) => <STSecured {...p} />} />
         </Switch>
     </BrowserRouter>,
-document.querySelector('stApp') )
+document.querySelector('st-app') )
