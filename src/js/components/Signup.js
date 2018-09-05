@@ -46,7 +46,8 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(this.props.match)
+        let {step} = this.props.match.params
+        console.log(step)
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <STStrippedWrapper error={this.state.error}>
