@@ -1,5 +1,4 @@
 import React from 'react'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import STStrippedWrapper from './STStrippedWrapper'
 import * as methods from './signup/methods'
 import { Plans, Account, Billing, Shipping, Pay, ThankYou } from './signup/steps'
