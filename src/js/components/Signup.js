@@ -47,6 +47,7 @@ export default class Signup extends React.Component {
 
     render() {
         const SignupStep = this.steps[this.state.step]
+        console.log(SignupStep.name)
         return(
             <STStrippedWrapper error={this.state.error}>
                 <div id="stSignupWrapper" className="stFormWrapper row">
