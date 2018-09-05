@@ -7,7 +7,7 @@ export function changeStep(inc = true,e) {
 }
 
 // createAccount
-export default function createAccount(e) {
+export function createAccount(e) {
     _st.loading = true
     e.preventDefault()
     var account = this.state.session.customer.account
