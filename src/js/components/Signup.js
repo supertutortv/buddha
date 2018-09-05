@@ -38,7 +38,6 @@ export default class Signup extends React.Component {
 
     componentDidMount() {
         _st.bodyClass = 'signup'
-        _st.loading = false
     }
 
     shouldComponentUpdate() {
