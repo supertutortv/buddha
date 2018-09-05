@@ -61,6 +61,7 @@ export default class Signup extends React.Component {
                             />
                         }
                 </div>
+                {this.props.history.replace('/signup/'+this.steps[this.state.step].toLowerCase())}
             </STStrippedWrapper>
         )
     }
