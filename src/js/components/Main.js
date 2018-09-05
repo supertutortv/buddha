@@ -15,7 +15,7 @@ export default class Main extends React.Component {
 
     async componentDidMount() {
         if (this.state.data === null) {
-            let d = await _st.get('/courses/data',(h) => console.log(h))
+            let d = await _st.http.get('/courses/data',(h) => console.log(h))
         }
         else if (typeof this.state.data === 'string')
             this.setState({
