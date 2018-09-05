@@ -10,8 +10,6 @@ import '../sass/stApp.sass'
 
 window._st = STTV
 
-_st.loading = true
-
 ReactDOM.render( 
     <BrowserRouter>
         <Switch>
@@ -21,4 +19,4 @@ ReactDOM.render(
             <Route path='/' render={(p) => <STSecured {...p} />} />
         </Switch>
     </BrowserRouter>,
-document.getElementById('stApp') )
+document.querySelector('stApp') )
