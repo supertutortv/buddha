@@ -32,12 +32,13 @@ export default class Signup extends React.Component {
         })
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
+        _st.bodyClass = 'signup'
         _st.loading = false
     }
 
-    componentDidMount() {
-        _st.bodyClass = 'signup'
+    componentDidUpdate() {
+        _st.loading = false
     }
 
     shouldComponentUpdate() {
