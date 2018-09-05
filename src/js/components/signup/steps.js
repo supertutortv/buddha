@@ -22,10 +22,10 @@ const Plans = ({ initSession }) => {
     </div>
 )}
 
-const Account = ({ createAccount, updateInp }) => {
-    console.log(createAccount)
+const Account = (props) => {
+    console.log(props.createAccount)
     return (
-        <form id="step-2" className="stFormStep row" onSubmit={(e) => createAccount(e)}>
+        <form id="step-2" className="stFormStep row" onSubmit={props.createAccount}>
             <div className="stFormHeader col s12">
                 <h2>Awesome! Let's create your account!</h2>
                 <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
