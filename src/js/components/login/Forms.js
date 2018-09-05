@@ -18,7 +18,7 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
             <span><a onClick={lostPwGo}>Forgot your password?</a></span>
         </div>
         <div className="stFormButtons col s12">
-            <button className="stFormButton pmt-button btn waves-effect waves-light">Login</button>
+            <button className="stFormButton btn waves-effect waves-light">Login</button>
         </div>
     </div>)
 
