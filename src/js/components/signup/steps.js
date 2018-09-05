@@ -23,7 +23,6 @@ const Plans = ({ initSession }) => {
 )}
 
 const Account = ({ createAccount, updateInp }) => {
-    console.log(createAccount)
     return (
         <form id="step-2" className="stFormStep row" onSubmit={createAccount}>
             <div className="stFormHeader col s12">
