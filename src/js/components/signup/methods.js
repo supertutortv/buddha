@@ -26,7 +26,6 @@ export default function createAccount(e) {
 
 // initSession
 export function initSession(plan) {
-    _st.loading = true
     var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
         thePlan = {}
 
