@@ -54,9 +54,9 @@ export default class Signup extends React.Component {
                         {(('plan' in this.state.params)&&!this.state.init) ?
                             this.initSession(this.state.params['plan']) :
                             <SignupStep 
-                                changeStep={this.changeStep}
-                                createAccount={this.createAccount}
-                                updateInp={this.updateInp}
+                                changeStep={this.changeStep} 
+                                createAccount={this.createAccount} 
+                                updateInp={this.updateInp} 
                                 initSession={this.initSession} 
                             />
                         }
