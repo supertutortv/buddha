@@ -11,7 +11,15 @@ const Plans = ({ initSession }) => {
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
                 {_st.plans.map((plan) => {
-                    return (<a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+plan.slug} onClick={initSession}>{plan.name}</a>)
+                    return (
+                        <a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+plan.slug} onClick={initSession}>
+                            <div className="stPlanInner z-depth-3">
+                                <div className="stPlanTest row">{plan.name}</div>
+                                <div className="stPlanPrice row">{plan.price/100}</div>
+                                <div className="stPlanItems row"></div>
+                            </div>
+                        </a>
+                    )
                 })}
             </div>
         </div>
