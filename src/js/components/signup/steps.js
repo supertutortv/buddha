@@ -61,7 +61,7 @@ const Account = ({ createAccount, updateInp }) => {
                 </form>
             </div>
             <h1>Create your account.</h1><br/>
-            <span>Create your account below. Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
+            <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
         </div>
     )
 }
