@@ -2,6 +2,9 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
+const STPlan = ({...props}) =>
+    <div>{name}</div>
+
 const ThankYou = () => <div>Thank you!</div>
 
 const Plans = ({ initSession }) => {
@@ -10,17 +13,7 @@ const Plans = ({ initSession }) => {
         <h1>Select your plan.</h1>
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
-                {_st.plans.map((plan) => {
-                    return (
-                        <a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+plan.slug} onClick={initSession}>
-                            <div className="stPlanInner z-depth-3">
-                                <div className="stPlanTest row">{plan.name}</div>
-                                <div className="stPlanPrice row">{plan.price/100}</div>
-                                <div className="stPlanItems row"></div>
-                            </div>
-                        </a>
-                    )
-                })}
+                <STPlan name="the-best-act-prep-course-ever" />
             </div>
         </div>
     </div>

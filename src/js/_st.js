@@ -3,29 +3,29 @@ import * as form from './utilities/form'
 import * as http from './utilities/http'
 import auth from './utilities/auth'
 
-const plans = [
-    {
+const plans = {
+    'the-best-act-prep-course-ever': {
         id: '1206420',
-        slug: 'the-best-act-prep-course-ever',
+        test: 'ACT',
         name: 'The Best ACT Prep Course Ever',
         price: 24900,
         taxable: 2490
     },
-    {
+    'the-best-sat-prep-course-ever': {
         id: '12b1280',
-        slug: 'the-best-sat-prep-course-ever',
+        test: 'SAT',
         name: 'The Best SAT Prep Course Ever',
         price: 24900,
         taxable: 0
     },
-    {
+    'sat-act-bundle': {
         id: '12c9920',
-        slug: 'sat-act-bundle',
+        test: 'SAT & ACT',
         name: 'SAT and ACT Prep Course Bundle',
         price: 39900,
         taxable: 2490
     }
-]
+}
 
 const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
