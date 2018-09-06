@@ -7,7 +7,7 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
         hLt = highlight ? ' highlight' : ''
     return (
         <div className={'col s12 m4 stPlan '+exClass}>
-            <a id={'stPlan_'+slug} className={"stPlanInner z-depth-3"+hLt} onClick={(e) => initSession(e)}>
+            <a id={'stPlan_'+slug} className={"stPlanInner row z-depth-3"+hLt} onClick={(e) => initSession(e)}>
                 <div className="stPlanTest row">
                     <span className="test">{plan.test}</span>
                     <span className="name">{plan.name}</span>
