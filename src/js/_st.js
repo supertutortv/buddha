@@ -11,10 +11,10 @@ const plans = {
         price: 24900,
         taxable: 2490,
         list: [
-            '6 month access',
-            '50+ hours HD video',
-            '5 day FREE* trial',
-            'Free Official ACT Prep Guide'
+            '*6 month* access',
+            '*50+ hours* HD video',
+            '*5* day FREE trial',
+            '*Free* Official ACT Prep Guide'
         ]
     },
     'the-best-sat-prep-course-ever': {
@@ -24,10 +24,10 @@ const plans = {
         price: 24900,
         taxable: 0,
         list: [
-            '6 month access',
-            '50+ hours HD video',
-            '5 day FREE* trial',
-            'Free Official SAT Study Guide'
+            '*6 month* access',
+            '*50+ hours* HD video',
+            '*5* day FREE trial',
+            '*Free* Official SAT Study Guide'
         ]
     },
     'sat-act-bundle': {
@@ -37,10 +37,10 @@ const plans = {
         price: 39900,
         taxable: 2490,
         list: [
-            'Full year access',
-            'Discounted rate',
-            '5 day FREE* trial',
-            'Free copies of both study guides'
+            '*Full year* access',
+            '*Discounted* rate',
+            '*5* day FREE trial',
+            '*Free* copies of both study guides'
         ]
     }
 }
