@@ -72,8 +72,8 @@ export function initSession(plan) {
             }
         })
         this.changeStep()
-        consol.log(this.state)
     }
+    console.log(this.state)
     return null
 }
 
