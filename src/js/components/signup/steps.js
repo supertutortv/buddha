@@ -8,7 +8,10 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
     return (
         <a id={'stPlan_'+slug} className={'col s12 m4 stPlan '+exClass} onClick={(e) => initSession(e)}>
             <div className={"stPlanInner z-depth-3"+hLt}>
-                <div className="stPlanTest row">{plan.name}</div>
+                <div className="stPlanTest row">
+                    <span className="test">{plan.test}</span>
+                    <span className="name">{plan.name}</span>
+                </div>
                 <div className="stPlanPrice row">{plan.price/100}</div>
                 <div className="stPlanItems row"></div>
             </div>
