@@ -6,8 +6,8 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
     let plan = _st.plans[slug],
         hLt = highlight ? ' highlight' : ''
     return (
-        <a id={'stPlan_'+slug} className={'col s12 m4 stPlan '+exClass} onClick={(e) => initSession(e)}>
-            <div className={"stPlanInner z-depth-3"+hLt}>
+        <div className={'col s12 m4 stPlan '+exClass}>
+            <a id={'stPlan_'+slug} className={"stPlanInner z-depth-3"+hLt} onClick={(e) => initSession(e)}>
                 <div className="stPlanTest row">
                     <span className="test">{plan.test}</span>
                     <span className="name">{plan.name}</span>
@@ -17,12 +17,10 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
                     let newLi = li.match(/\*(.*)\*(.*)/)
                     return <div className="stPlanItem row">{newLi ? <span><strong>{newLi[1]}</strong>{newLi[2]}</span> : <span>{li}</span>}</div>
                 })}</div>
-            </div>
-        </a>
+            </a>
+        </div>
     )
 }
-
-const ThankYou = () => <div>Thank you!</div>
 
 const Plans = ({ initSession }) => {
     return (
@@ -146,6 +144,8 @@ const Shipping = ({ updateInp, changeStep }) => {
         </form>
     )
 }
+
+const ThankYou = () => <div>Thank you!</div>
 
 class Pay extends React.Component {
     constructor(props) {
