@@ -61,14 +61,12 @@ export default class Signup extends React.Component {
                         <polygon points="0,0 0,100 1920,0 "></polygon>
                     </svg>
                 </div>
-                <div id="stSignupWrapper" className="row">
-                    <SignupStep 
-                        changeStep={this.changeStep} 
-                        createAccount={this.createAccount} 
-                        updateInp={this.updateInp} 
-                        initSession={this.initSession} 
-                    />
-                </div>
+                <SignupStep 
+                    changeStep={this.changeStep} 
+                    createAccount={this.createAccount} 
+                    updateInp={this.updateInp} 
+                    initSession={this.initSession} 
+                />
             </STSignupWrapper>
         )
     }
