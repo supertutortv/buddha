@@ -56,22 +56,18 @@ export default class Signup extends React.Component {
         return(
             <STSignupWrapper error={this.state.error}>
                 <Header shadow="0"/>
-                <div id="stSignupDiagSep" className="row">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
-                        <polygon points="0,0 0,100 1920,0 "></polygon>
-                    </svg>
-                </div>
                 <div id="stSignupWrapper" className="stFormWrapper row">
-                    <div className="stOverlay"></div>
-                        {(('plan' in this.state.params)&&!this.state.init) ?
-                            this.initSession(this.state.params['plan']) :
-                            <SignupStep 
-                                changeStep={this.changeStep} 
-                                createAccount={this.createAccount} 
-                                updateInp={this.updateInp} 
-                                initSession={this.initSession} 
-                            />
-                        }
+                    <div id="stSignupDiagSep" className="row">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
+                            <polygon points="0,0 0,100 1920,0 "></polygon>
+                        </svg>
+                    </div>
+                    <SignupStep 
+                        changeStep={this.changeStep} 
+                        createAccount={this.createAccount} 
+                        updateInp={this.updateInp} 
+                        initSession={this.initSession} 
+                    />
                 </div>
             </STSignupWrapper>
         )

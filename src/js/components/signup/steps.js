@@ -5,19 +5,16 @@ import CountryDD from '../pieces/CountryDD'
 const ThankYou = () => <div>Thank you!</div>
 
 const Plans = ({ initSession }) => {
-    var plans = []
-    _st.plans.forEach((plan) => {
-        plans.push(
-            <a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={initSession}>{plan.name}</a>
-        )
-    })
     return (
-    <div id="step-1" class="stFormStep row">
-        <div class="stFormHeader col s12">
-            <h2>Select a plan.</h2>
-            <span>All plans come with a 5 day free trial. <strong>NOTE:</strong> Your card will not be charged until your trial period is over, and you're free to cancel at any time. If your course comes with free books, they will not ship until your trial has expired.</span>
+    <div id="stSignupPlans" class="row">
+        <h1>Select your plan.</h1>
+        <div class="stSignupInner col s12">
+            <div id="stPlansContainer" class="stFormBody col s12">
+                {_st.plans.map((plan) => {
+                    return (<a id={'stPlan-'+plan.id} className={'stPlan '+plan.slug} onClick={initSession}>{plan.name}</a>)
+                })}
+            </div>
         </div>
-        <div id="stSignupPlans" class="stFormBody col s12">{plans}</div>
     </div>
 )}
 
