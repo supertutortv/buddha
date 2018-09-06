@@ -29,7 +29,7 @@ export function initSession(plan) {
     var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
         thePlan = {}
 
-        return console.log(plan)
+        return console.log(plan.target)
 
     _st.plans.some((obj) => {
         if (obj.id === planId || obj.slug === planId)
