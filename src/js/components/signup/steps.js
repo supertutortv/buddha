@@ -3,11 +3,11 @@ import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
 const STPlan = ({slug, initSession, highlight=false}) => {
-    console.log(highlight)
-    let plan = _st.plans[slug]
+    let plan = _st.plans[slug],
+        hLt = highlight ? ' highlight' : ''
     return (
         <a id={'stPlan_'+slug} className={'col s12 m4 stPlan'} onClick={(e) => initSession(e)}>
-            <div className="stPlanInner z-depth-3">
+            <div className={"stPlanInner z-depth-3"+hLt}>
                 <div className="stPlanTest row">{plan.name}</div>
                 <div className="stPlanPrice row">{plan.price/100}</div>
                 <div className="stPlanItems row"></div>
