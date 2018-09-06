@@ -31,10 +31,10 @@ export default class Signup extends React.Component {
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
+        _st.bodyClass = 'signup'
     }
 
     componentDidMount() {
-        _st.bodyClass = 'signup'
         _st.loading = false
     }
 
