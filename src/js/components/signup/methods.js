@@ -26,7 +26,6 @@ export function createAccount(e) {
 
 // initSession
 export function initSession(plan) {
-    plan.stopPropagation()
     var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
         thePlan = {}
 
