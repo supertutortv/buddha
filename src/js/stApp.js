@@ -14,8 +14,8 @@ window._st = STTV
 
 ReactDOM.render( 
     <BrowserRouter>
-        <Header />
         <Switch>
+            {<Header />}
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route exact path='/signup/:step?' component={Signup} />
             <Route exact path='/mu/:teacher' component={MU} />
