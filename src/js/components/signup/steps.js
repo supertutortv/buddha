@@ -13,10 +13,8 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
                     <span className="name">{plan.name}</span>
                 </div>
                 <div className="stPlanPrice row">{'$'+plan.price/100}</div>
-                <div className="stPlanItems row">{plan.list.map((li) => {
-                    const Redo = li.replace(/\*(.*)\*/gi,(m,p1) => <strong>{p1}</strong>)
-                    console.log(redo)
-                    return <div className="stPlanItem row"><Redo /></div>
+                <div className="stPlanItems row">{plan.list.map((li) => {                    
+                    return <div className="stPlanItem row">{() => li.replace(/\*(.*)\*/gi,(m,p1) => <strong>{p1}</strong>)}</div>
                 })}</div>
             </div>
         </a>
