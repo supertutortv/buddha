@@ -2,7 +2,7 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-const STPlan = ({slug,initSession, highlight}) => {
+const STPlan = ({slug, initSession, highlight=false}) => {
     console.log(highlight)
     let plan = _st.plans[slug]
     return (
