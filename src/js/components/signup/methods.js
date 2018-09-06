@@ -72,6 +72,7 @@ export function initSession(plan) {
             }
         })
         this.changeStep()
+        consol.log(this.state)
     }
     return null
 }
