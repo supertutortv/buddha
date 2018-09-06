@@ -1,5 +1,6 @@
 import React from 'react'
 import STSignupWrapper from './STSignupWrapper'
+import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
 
@@ -54,6 +55,7 @@ export default class Signup extends React.Component {
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <STSignupWrapper error={this.state.error}>
+                <Header />
                 <div id="stSignupWrapper" className="stFormWrapper row">
                     <div className="stOverlay"></div>
                         {(('plan' in this.state.params)&&!this.state.init) ?
