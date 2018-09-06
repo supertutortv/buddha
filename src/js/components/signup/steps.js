@@ -6,7 +6,7 @@ const STPlan = ({slug, initSession, highlight=false}) => {
     console.log(highlight)
     let plan = _st.plans[slug]
     return (
-        <a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+slug} onClick={initSession}>
+        <a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+slug} onClick={(e) => initSession(e)}>
             <div className="stPlanInner z-depth-3">
                 <div className="stPlanTest row">{plan.name}</div>
                 <div className="stPlanPrice row">{plan.price/100}</div>
