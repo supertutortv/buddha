@@ -28,6 +28,7 @@ body.signup
 
             .stSignupInner
                 margin-top: 3em
+                margin-bottom: 5em
 
             #stPlansContainer
                 font-size: $bodytext
@@ -39,12 +40,13 @@ body.signup
                 .stPlan
                     cursor: pointer
                     padding: 0 $tiny
+                    position: relative
 
                     &.first
-                        top: 1em
+                        top: $huge
 
                     &.last
-                        top: -1em
+                        top: -$huge
 
                     .stPlanInner
                         background-color: white()
