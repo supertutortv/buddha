@@ -2,8 +2,19 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-const STPlan = ({...props}) =>
-    <div>{name}</div>
+const STPlan = ({slug,initSession, highlight}) => {
+    console.log(highlight)
+    let plan = _st.plans[slug]
+    return (
+        <a id={'stPlan-'+plan.id} className={'col s12 m4 stPlan '+slug} onClick={initSession}>
+            <div className="stPlanInner z-depth-3">
+                <div className="stPlanTest row">{plan.name}</div>
+                <div className="stPlanPrice row">{plan.price/100}</div>
+                <div className="stPlanItems row"></div>
+            </div>
+        </a>
+    )
+}
 
 const ThankYou = () => <div>Thank you!</div>
 
@@ -13,7 +24,9 @@ const Plans = ({ initSession }) => {
         <h1>Select your plan.</h1>
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
-                <STPlan name="the-best-act-prep-course-ever" />
+                <STPlan slug="the-best-act-prep-course-ever" initSession={initSession} />
+                <STPlan slug="sat-act-bundle" initSession={initSession} highlight />
+                <STPlan slug="the-best-sat-prep-course-ever" initSession={initSession} />
             </div>
         </div>
     </div>
