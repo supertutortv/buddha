@@ -29,8 +29,6 @@ export function initSession(plan) {
     var planId = (typeof plan === 'string') ? plan : plan.currentTarget.id.replace('stPlan_',''),
         thePlan = _st.plans[planId]
 
-        return console.log(thePlan)
-
     if (!Object.keys(thePlan).length) {
         delete this.state.params.plan
         this.props.history.replace('/signup/plans')
