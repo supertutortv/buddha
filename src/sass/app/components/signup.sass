@@ -22,13 +22,17 @@ body.signup
         header
             font-size: $bodytext
 
-        #stPlansContainer
-            font-size: $bodytext
-            min-height: $huge * 4
-            padding: 0 $tiny
-            -webkit-animation: 750ms ease 0s normal forwards 1 fadein
-            animation: 750ms ease 0s normal forwards 1 fadein
+        #stSignupWrapper
+            +centerblock
 
-            .stPlan
+            #stPlansContainer
+                font-size: $bodytext
+                min-height: $huge * 4
                 padding: 0 $tiny
+                -webkit-animation: 750ms ease 0s normal forwards 1 fadein
+                animation: 750ms ease 0s normal forwards 1 fadein
+
+                .stPlan
+                    background-color: white()
+                    padding: 0 $tiny
             
