@@ -14,7 +14,8 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
                 </div>
                 <div className="stPlanPrice row">{'$'+plan.price/100}</div>
                 <div className="stPlanItems row">{plan.list.map((li) => {
-                    return <div className="stPlanItem row">{li.replace(/\*(.*)\*/gi,(m,p1) => <strong>{p1}</strong>)}</div>
+                    let redo = li.replace(/\*(.*)\*/gi,(m,p1) => <strong>{p1}</strong>)
+                    return <div className="stPlanItem row">{redo}</div>
                 })}</div>
             </div>
         </a>
