@@ -21,7 +21,6 @@ const ThankYou = () => <div>Thank you!</div>
 const Plans = ({ initSession }) => {
     return (
     <div id="stSignupPlans" class="stSignupStep row">
-        <h1>Select your plan.</h1>
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
                 <STPlan slug="the-best-act-prep-course-ever" initSession={initSession} />
@@ -29,6 +28,7 @@ const Plans = ({ initSession }) => {
                 <STPlan slug="the-best-sat-prep-course-ever" initSession={initSession} />
             </div>
         </div>
+        <h1>Select your plan.</h1>
     </div>
 )}
 
