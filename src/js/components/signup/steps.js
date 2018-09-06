@@ -15,8 +15,7 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
                 <div className="stPlanPrice row">{'$'+plan.price/100}</div>
                 <div className="stPlanItems row">{plan.list.map((li) => {
                     let newLi = li.match(/\*(.*)\*(.*)/)
-                    console.log(newLi)
-                    return <div className="stPlanItem row">{li}</div>
+                    return <div className="stPlanItem row">{newLi ? <span><strong>{newLi[1]}</strong>{newLi[2]}</span> : <span>{li}</span>}</div>
                 })}</div>
             </div>
         </a>
