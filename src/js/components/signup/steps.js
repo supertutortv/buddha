@@ -12,7 +12,7 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
                     <span className="test">{plan.test}</span>
                     <span className="name">{plan.name}</span>
                 </div>
-                <div className="stPlanPrice row">{plan.price/100}</div>
+                <div className="stPlanPrice row">{'$'+plan.price/100}</div>
                 <div className="stPlanItems row"></div>
             </div>
         </a>
