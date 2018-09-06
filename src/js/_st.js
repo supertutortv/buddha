@@ -9,21 +9,39 @@ const plans = {
         test: 'ACT',
         name: 'The Best ACT Prep Course Ever',
         price: 24900,
-        taxable: 2490
+        taxable: 2490,
+        list: [
+            '6 month access',
+            '50+ hours HD video',
+            '5 day FREE* trial',
+            'Free Official ACT Prep Guide'
+        ]
     },
     'the-best-sat-prep-course-ever': {
         id: '12b1280',
         test: 'SAT',
         name: 'The Best SAT Prep Course Ever',
         price: 24900,
-        taxable: 0
+        taxable: 0,
+        list: [
+            '6 month access',
+            '50+ hours HD video',
+            '5 day FREE* trial',
+            'Free Official SAT Study Guide'
+        ]
     },
     'sat-act-bundle': {
         id: '12c9920',
         test: 'SAT & ACT',
         name: 'SAT and ACT Prep Course Bundle',
         price: 39900,
-        taxable: 2490
+        taxable: 2490,
+        list: [
+            'Full year access',
+            'Discounted rate',
+            '5 day FREE* trial',
+            'Free copies of both study guides'
+        ]
     }
 }
 
