@@ -2,11 +2,11 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-const STPlan = ({slug, initSession, highlight=false}) => {
+const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
     let plan = _st.plans[slug],
         hLt = highlight ? ' highlight' : ''
     return (
-        <a id={'stPlan_'+slug} className={'col s12 m4 stPlan'} onClick={(e) => initSession(e)}>
+        <a id={'stPlan_'+slug} className={'col s12 m4 stPlan '+exClass} onClick={(e) => initSession(e)}>
             <div className={"stPlanInner z-depth-3"+hLt}>
                 <div className="stPlanTest row">{plan.name}</div>
                 <div className="stPlanPrice row">{plan.price/100}</div>
@@ -23,9 +23,9 @@ const Plans = ({ initSession }) => {
     <div id="stSignupPlans" class="stSignupStep row">
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
-                <STPlan slug="the-best-act-prep-course-ever" initSession={initSession} />
+                <STPlan exClass="first" slug="the-best-act-prep-course-ever" initSession={initSession} />
                 <STPlan slug="sat-act-bundle" initSession={initSession} highlight />
-                <STPlan slug="the-best-sat-prep-course-ever" initSession={initSession} />
+                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" initSession={initSession} />
             </div>
         </div>
         <h1>Select your plan.</h1>
