@@ -39,9 +39,9 @@ const Plans = ({ initSession }) => {
 const Account = ({ createAccount, updateInp }) => {
     return (
         <div id="stSignupAccount" class="stSignupStep row">
-            <div class="stSignupInner col s12 m6 offset-m3">
-                <form id="step-2" className="stFormStep row" onSubmit={createAccount}>
-                    <div id="stSignupAccount" className="stFormBody col s12">
+            <div class="stSignupInner row">
+                <form id="step-2" className="stFormStep col s12 m6 offset-m3" onSubmit={createAccount}>
+                    <div id="stSignupDetails" className="stFormBody row">
                         <div className="input-field required col s12 m6 st-input-half-left">
                             <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                         </div>
@@ -55,7 +55,7 @@ const Account = ({ createAccount, updateInp }) => {
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
                     </div>
-                    <div className="stFormButtons col s12">
+                    <div className="stFormButtons row">
                         <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
                     </div>
                 </form>
