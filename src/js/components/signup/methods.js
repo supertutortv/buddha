@@ -26,15 +26,10 @@ export function createAccount(e) {
 
 // initSession
 export function initSession(plan) {
-    var planId = (typeof plan === 'string') ? plan : plan.target.id.replace('stPlan-',''),
-        thePlan = {}
+    var planId = (typeof plan === 'string') ? plan : plan.currentTarget.id.replace('stPlan_',''),
+        thePlan = _st.plans[planId]
 
-        return console.log(plan.currentTarget)
-
-    _st.plans.some((obj) => {
-        if (obj.id === planId || obj.slug === planId)
-            return thePlan = obj
-    })
+        return console.log(thePlan)
 
     if (!Object.keys(thePlan).length) {
         delete this.state.params.plan
