@@ -13,7 +13,7 @@ export default class Signup extends React.Component {
             loading: true,
             init: false,
             step: 0,
-            params: props.location.search ? _st.objectifyURLParams(props.location.search) : {},
+            plan: {},
             error : {
                 id : '',
                 message : ''
@@ -40,8 +40,8 @@ export default class Signup extends React.Component {
         _st.loading = false
     }
 
-    shouldComponentUpdate() {
-        return this.state.update 
+    shouldComponentUpdate(nProps,nState) {
+        return !(this.state.step === nState.step)
     }
 
     render() {
@@ -60,7 +60,8 @@ export default class Signup extends React.Component {
                     </svg>
                 </div>
                 <SignupStep 
-                    error={this.state.error}
+                    error={this.state.error} 
+                    setPlan={this.setPlan} 
                     changeStep={this.changeStep} 
                     createAccount={this.createAccount} 
                     updateInp={this.updateInp} 

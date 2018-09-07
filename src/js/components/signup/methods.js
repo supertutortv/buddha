@@ -72,6 +72,10 @@ export function initSession(plan) {
     return this.changeStep()
 }
 
+export function setPlan(e) {
+    return console.log(e)
+}
+
 // submitPayment
 export function submitPayment() {
     _st.http.post('/signup/pay',dt,cb)

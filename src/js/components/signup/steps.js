@@ -22,14 +22,14 @@ const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
     )
 }
 
-const Plans = ({ initSession }) => {
+const Plans = ({ setPlan }) => {
     return (
     <div id="stSignupPlans" class="stSignupStep row">
         <div class="stSignupInner col s12">
             <div id="stPlansContainer" class="stFormBody col s12">
-                <STPlan exClass="first" slug="the-best-act-prep-course-ever" initSession={initSession} />
-                <STPlan slug="sat-act-bundle" initSession={initSession} highlight />
-                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" initSession={initSession} />
+                <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
+                <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
+                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
             </div>
         </div>
         <h1>Select your plan.</h1>
