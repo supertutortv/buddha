@@ -178,7 +178,17 @@ const Payment = ({updateInp}) => {
                             </div>
                         </fieldset>
                     </div>
-                    <div id="stSignupFormOptions"className="row"></div>
+                    <div id="stSignupFormOptions"className="row">
+                    <fieldset className="col s12 m6">
+                            <legend>Options</legend>
+                            <div className="st-checkout-spaced col s12">
+                                <label>
+                                    <input name="customer|options|skiptrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
+                                    <span>Skip the trial period and start immediately</span>
+                                </label>
+                            </div>
+                    </fieldset>
+                    </div>
                 </form>
             </div>
             <div id="stSignupPaymentBottom" className="row">
