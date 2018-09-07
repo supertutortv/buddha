@@ -14,11 +14,11 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
                 <input className="browser-default validate" type="password" name="password" placeholder="Password" onBlur={setLoginState}/>
             </div>
         </div>
-        <div className="stForgotBlock col s12">
-            <span><a onClick={lostPwGo}>Forgot your password?</a></span>
-        </div>
         <div className="stFormButtons col s12">
             <button className="stFormButton btn waves-effect waves-light">Login</button>
+        </div>
+        <div className="stForgotBlock col s12">
+            <span><a onClick={lostPwGo}>Forgot your password?</a></span>
         </div>
     </div>)
 
