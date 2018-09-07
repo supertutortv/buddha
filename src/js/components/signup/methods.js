@@ -24,9 +24,9 @@ export function createAccount(e) {
 
         return this.changeStep({
             session: Object.assign(this.state.session,{
-                customer: d.update,
-                stripe: this.initPayment()
-            })
+                customer: d.update
+            }),
+            stripe: this.initPayment()
         })
     })
 }

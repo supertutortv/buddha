@@ -18,6 +18,7 @@ export default class Signup extends React.Component {
                 id : '',
                 message : ''
             },
+            stripe : null,
             session: {
                 valid: false,
                 id: Date.now(),
@@ -26,7 +27,6 @@ export default class Signup extends React.Component {
                     valid : false,
                     obj : null
                 },
-                stripe : null,
                 customer : {
                     account : {
                         email: '',
@@ -98,7 +98,7 @@ export default class Signup extends React.Component {
         }
         const SignupStep = steps[this.steps[this.state.step]]
         return(
-            <StripeProvider stripe={this.state.session.stripe}>
+            <StripeProvider stripe={this.state.stripe}>
                 <React.Fragment>
                     <Header shadow="0"/>
                     <div id="stSignupDiagSep" className="row">
