@@ -37,7 +37,7 @@ const Plans = ({ initSession }) => {
 )}
 
 const Account = ({ createAccount, updateInp, error }) => {
-    var msg = (error.message.match(/already in use/)) ? <span>{error.message}<Link to='/login'>{'Sign in'}</Link></span> : <span>{error.message}</span>
+    var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
     return (
         <div id="stSignupAccount" class="stSignupStep row">
             <div class="stSignupInner row">
