@@ -1,5 +1,5 @@
 import React from 'react'
-import STSignupWrapper from './STSignupWrapper'
+import STBlankWrapper from './STBlankWrapper'
 import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
@@ -22,9 +22,7 @@ export default class Signup extends React.Component {
         this.steps = [
             'Plans',
             'Account',
-            'Billing',
-            'Shipping',
-            'Pay',
+            'Payment',
             'ThankYou'
         ]
 
@@ -54,7 +52,7 @@ export default class Signup extends React.Component {
         }
         const SignupStep = steps[this.steps[this.state.step]]
         return(
-            <STSignupWrapper error={this.state.error}>
+            <STBlankWrapper>
                 <Header shadow="0"/>
                 <div id="stSignupDiagSep" className="row">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
@@ -62,12 +60,13 @@ export default class Signup extends React.Component {
                     </svg>
                 </div>
                 <SignupStep 
+                    error={this.state.error}
                     changeStep={this.changeStep} 
                     createAccount={this.createAccount} 
                     updateInp={this.updateInp} 
                     initSession={this.initSession} 
                 />
-            </STSignupWrapper>
+            </STBlankWrapper>
         )
     }
 }

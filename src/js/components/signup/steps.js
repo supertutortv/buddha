@@ -36,7 +36,7 @@ const Plans = ({ initSession }) => {
     </div>
 )}
 
-const Account = ({ createAccount, updateInp, errors }) => {
+const Account = ({ createAccount, updateInp, error }) => {
     return (
         <div id="stSignupAccount" class="stSignupStep row">
             <div class="stSignupInner row">
@@ -55,7 +55,7 @@ const Account = ({ createAccount, updateInp, errors }) => {
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
                     </div>
-                    <div id="stFormErrors" className="row">{errors}</div>
+                    <div id="stFormErrors" className="row">{error.message}</div>
                     <div className="stFormButtons row">
                         <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
                     </div>
@@ -150,16 +150,19 @@ const Shipping = ({ updateInp, changeStep }) => {
 
 const ThankYou = () => <div>Thank you!</div>
 
-class Pay extends React.Component {
+class Payment extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
         return (
-            <div>Pay screen</div>
+            <div id="stSignupPayment" className="stSignupStep row">
+                <div className="col s12 m4">Pricing</div>
+                <div className="col s12 m8">Form</div>
+            </div>
         )
     }
 }
 
-export { Plans, Account, Billing, Shipping, Pay, ThankYou }
+export { Plans, Account, Billing, Shipping, Payment, ThankYou }
