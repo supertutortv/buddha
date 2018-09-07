@@ -154,7 +154,7 @@ const Payment = ({updateInp}) => {
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stInfoWrap row">
                 <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">Pricing</div>
-                <form id="stSignupPaymentForm" className="col s12 m8" onSubmit={(e) => e.preventDefault()}>
+                <form id="stSignupPaymentForm" className="stFormWrapper col s12 m8" onSubmit={(e) => e.preventDefault()}>
                     <div id="stSignupFormShipping" className="row">
                         <fieldset>
                             <legend>Shipping</legend>
