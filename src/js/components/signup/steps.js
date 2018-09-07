@@ -153,7 +153,7 @@ const Payment = () => {
     return (
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stInfoWrap row">
-                <div id="stSignupPricingTable" className="col s12 m4">Pricing</div>
+                <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">Pricing</div>
                 <div id="stSignupPaymentForm" className="col s12 m8">Form</div>
             </div>
             <div id="stSignupPaymentBottom" className="row">
