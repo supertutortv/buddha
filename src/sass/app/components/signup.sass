@@ -96,14 +96,16 @@ body.signup
         #stSignupPayment
             text-align: left
             padding: 0 1em
-            margin: $huge auto $huge * 1.5
+            
+            .stInfoWrap
+                margin: $huge 0 $huge * 1.5
 
-            #stSignupPricingTable
-                background-color: white()
-                padding: $huge
-                border-radius: $tiny
-                border: 1px solid black(.1)
-                transition: all 250ms ease-in-out
+                #stSignupPricingTable
+                    background-color: white()
+                    padding: $huge
+                    border-radius: $tiny
+                    border: 1px solid black(.1)
+                    transition: all 250ms ease-in-out
 
             #stSignupPaymentBottom
                 text-align: center
