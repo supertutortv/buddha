@@ -3,7 +3,7 @@ import React from 'react'
 const STStrippedWrapper = ({error,children}) => {
     return (
         <section id="stStripped" className="row">
-            <div id="stStrippedInset" className="col s12 m6 l4 offset-m3 offset-l4">
+            <div id="stStrippedInset" className="col s12 m6 offset-m3">
                 <div id="stStrippedSpacer" className="col s12">
                     <header className="stBordered row">
                         <div id="stStrippedInsetHeader" className="col s12">
