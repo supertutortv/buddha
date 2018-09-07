@@ -73,7 +73,7 @@ export function initSession(plan) {
 }
 
 export function setPlan(e) {
-    return console.log(e)
+    return console.log(e.currentTarget)
 }
 
 // submitPayment
