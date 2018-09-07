@@ -2,12 +2,12 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import CountryDD from '../pieces/CountryDD'
 
-const STPlan = ({slug, initSession, exClass='', highlight=false}) => {
+const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
     let plan = _st.plans[slug],
         hLt = highlight ? ' highlight' : ''
     return (
         <div className={'col s12 m4 stPlan '+exClass}>
-            <a id={'stPlan_'+slug} className={"stPlanInner row z-depth-3"+hLt} onClick={(e) => initSession(e)}>
+            <a id={'stPlan_'+slug} className={"stPlanInner row z-depth-3"+hLt} onClick={(e) => setPlan(e)}>
                 <div className="stPlanTest row">
                     <span className="test">{plan.test}</span>
                     <span className="name">{plan.name}</span>
