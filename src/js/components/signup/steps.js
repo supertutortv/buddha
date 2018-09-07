@@ -42,10 +42,10 @@ const Account = ({ createAccount, updateInp }) => {
             <div class="stSignupInner row">
                 <form id="stAccountForm" className="stFormStep col s12 m6 offset-m3 z-depth-3" onSubmit={createAccount}>
                     <div id="stSignupDetails" className="stFormBody row">
-                        <div className="input-field required col s12 m6 st-input-half-left">
+                        <div className="input-field required col s12">
                             <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                         </div>
-                        <div className="input-field required col s12 m6 st-input-half-right">
+                        <div className="input-field required col s12">
                             <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
                         </div>
                         <div className="input-field required col s12">
