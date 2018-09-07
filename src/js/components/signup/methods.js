@@ -26,54 +26,15 @@ export function createAccount(e) {
 }
 
 // initSession
-export function initSession(plan) {
-    var planId = (typeof plan === 'string') ? plan : plan.currentTarget.id.replace('stPlan_',''),
-        thePlan = _st.plans[planId]
+export function initSession() {
 
-        Object.assign(this.state,{
-            init: true,
-            session: {
-                valid: false,
-                id: Date.now(),
-                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
-                card : {
-                    valid : false,
-                    obj : null
-                },
-                stripe : null,
-                plan : thePlan,
-                customer : {
-                    account : {
-                        email: '',
-                        firstname: '',
-                        lastname: '',
-                        password: ''
-                    },
-                    shipping : {},
-                    billing : {},
-                    token: ''
-                },
-                pricing : {
-                    total : thePlan.price,
-                    shipping : 0,
-                    taxable : thePlan.taxable,
-                    tax : {
-                        id: '',
-                        value: 0
-                    },
-                    coupon : {
-                        id: '',
-                        value: ''
-                    }
-                }
-            }
-        })
-
-    return this.changeStep()
 }
 
 export function setPlan(e) {
-    return console.log(JSON.parse(e.currentTarget.getAttribute('data-obj')))
+    this.setState({
+        step: 1,
+        plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
+    })
 }
 
 // submitPayment

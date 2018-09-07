@@ -17,6 +17,39 @@ export default class Signup extends React.Component {
             error : {
                 id : '',
                 message : ''
+            },
+            session: {
+                valid: false,
+                id: Date.now(),
+                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
+                card : {
+                    valid : false,
+                    obj : null
+                },
+                stripe : null,
+                customer : {
+                    account : {
+                        email: '',
+                        firstname: '',
+                        lastname: '',
+                        password: ''
+                    },
+                    shipping : {},
+                    token: ''
+                },
+                pricing : {
+                    total : thePlan.price,
+                    shipping : 0,
+                    taxable : thePlan.taxable,
+                    tax : {
+                        id: '',
+                        value: 0
+                    },
+                    coupon : {
+                        id: '',
+                        value: ''
+                    }
+                }
             }
         }
         this.steps = [
@@ -40,11 +73,12 @@ export default class Signup extends React.Component {
         _st.loading = false
     }
 
-    shouldComponentUpdate(nProps,nState) {
-        return !(this.state.step === nState.step)
+    shouldComponentUpdate() {
+        return this.state.update
     }
 
     render() {
+        console.log(this.state)
         let {step} = this.props.match.params
         if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
             this.props.history.replace('/signup/plans')

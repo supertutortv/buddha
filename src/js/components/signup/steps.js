@@ -68,40 +68,6 @@ const Account = ({ createAccount, updateInp, error }) => {
     )
 }
 
-/* const Billing = ({ updateInp, changeStep }) => {
-    return (
-        <form id="step-3" className="stFormStep row" onSubmit={(e) => changeStep(true,e)}>
-            <div className="stFormHeader col s12">
-                <h2>What's your billing address?</h2>
-                <span>This is the address associated with the card you are going to use for payment. We use this to verify your payment, so please check the accuracy of the information you provide.</span>
-            </div>
-            <div id="stSignupBilling" className="stFormBody col s12">
-                <div className="input-field required col s12">
-                    <input className="browser-default validate billing address1" type="text" name="customer|billing|address_line1" placeholder="Address 1" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field col s12">
-                    <input className="browser-default validate billing address2" type="text" name="customer|billing|address_line2" placeholder="Address 2" onBlur={updateInp}/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate billing city" type="text" name="customer|billing|address_city" placeholder="City" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate billing state" type="text" name="customer|billing|address_state" placeholder="State" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate billing pcode" type="text" name="customer|billing|address_zip" placeholder="Postal Code" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-right">
-                    <CountryDD className="browser-default validate billing country" name="customer|billing|address_country" onBlur={updateInp} required/>
-                </div>
-            </div>
-            <div className="stFormButtons col s12">
-                <button id="stBtn_billing" className="stFormButton pmt-button btn waves-effect waves-light" type="submit">Next >></button>
-            </div>
-        </form>
-    )
-} */
-
 /* const Shipping = ({ updateInp, changeStep }) => {
     return (
         <form id="step-4" className="stFormStep row" onSubmit={changeStep}>
@@ -183,7 +149,7 @@ const Payment = ({updateInp}) => {
                             <legend>Options</legend>
                             <div className="st-checkout-spaced col s12">
                                 <label>
-                                    <input name="customer|options|skiptrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
+                                    <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                                     <span>Skip the trial period and start immediately</span>
                                 </label>
                             </div>
