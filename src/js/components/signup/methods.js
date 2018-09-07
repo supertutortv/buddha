@@ -22,19 +22,22 @@ export function createAccount(e) {
             }
         })
 
-        Object.assign(this.state.session.customer,d.update)
-        this.changeStep()
+        return this.changeStep({
+            session: Object.assign({},{
+                customer: d.update,
+                stripe: this.initPayment()
+            })
+        })
     })
 }
 
 // initPayment
 export function initPayment() {
-    return console.log(window.Stripe)
+    return window.Stripe ? window.Stripe(_st.stripe) : null
 }
 
 //setPlan
 export function setPlan(e) {
-    this.initPayment()
     e.preventDefault()
     return this.changeStep({
         plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
