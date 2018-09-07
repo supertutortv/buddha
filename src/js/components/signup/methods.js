@@ -33,6 +33,7 @@ export function initSession() {
 }
 
 export function setPlan(e) {
+    e.preventDefault()
     return this.changeStep({
         plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
     })
