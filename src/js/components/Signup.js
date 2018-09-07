@@ -100,7 +100,6 @@ export default class Signup extends React.Component {
                     updateInp={this.updateInp} 
                     initPayment={this.initPayment} 
                 />
-                <script src="https://js.stripe.com/v3/"></script>
             </React.Fragment>
         )
     }
