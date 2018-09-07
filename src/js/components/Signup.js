@@ -1,4 +1,5 @@
 import React from 'react'
+import { StripeProvider } from 'react-stripe-elements'
 import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
@@ -66,6 +67,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
+        console.log(window.Stripe)
         _st.loading = false
     }
 
@@ -85,7 +87,7 @@ export default class Signup extends React.Component {
         }
         const SignupStep = steps[this.steps[this.state.step]]
         return(
-            <React.Fragment>
+            <StripeProvider stripe={this.state.session.stripe}>
                 <Header shadow="0"/>
                 <div id="stSignupDiagSep" className="row">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
@@ -100,7 +102,8 @@ export default class Signup extends React.Component {
                     updateInp={this.updateInp} 
                     initPayment={this.initPayment} 
                 />
-            </React.Fragment>
+                <script src="https://js.stripe.com/v3/" async></script>
+            </StripeProvider>
         )
     }
 }

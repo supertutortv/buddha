@@ -28,7 +28,9 @@ export function createAccount(e) {
 }
 
 // initPayment
-export function initPayment() {}
+export function initPayment() {
+    
+}
 
 //setPlan
 export function setPlan(e) {
