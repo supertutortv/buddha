@@ -22,10 +22,14 @@ export function createAccount(e) {
             }
         })
 
+        console.log(Object.assign(this.state.session,{
+            customer: d.update
+        }))
+
         return this.changeStep({
-            session: Object.assign(this.state.session,{
+            /* session: Object.assign(this.state.session,{
                 customer: d.update
-            }),
+            }), */
             stripe: this.initPayment()
         })
     })
