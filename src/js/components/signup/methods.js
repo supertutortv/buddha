@@ -73,7 +73,7 @@ export function initSession(plan) {
 }
 
 export function setPlan(e) {
-    return console.log(e.currentTarget.getAttribute('data-obj'))
+    return console.log(JSON.parse(e.currentTarget.getAttribute('data-obj')))
 }
 
 // submitPayment
