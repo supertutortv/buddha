@@ -38,9 +38,9 @@ export default class Signup extends React.Component {
                     token: ''
                 },
                 pricing : {
-                    total : thePlan.price,
+                    total : 0,
                     shipping : 0,
-                    taxable : thePlan.taxable,
+                    taxable : 0,
                     tax : {
                         id: '',
                         value: 0
