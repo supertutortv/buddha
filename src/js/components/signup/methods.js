@@ -3,7 +3,8 @@ export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
     this.setState({
         step : inc ? this.state.step + 1 : this.state.step - 1
-    },() => this.props.history.replace('/signup/'+this.steps[this.state.step].toLowerCase()))
+    },() => this.props.history.push('/signup/'+this.steps[this.state.step].toLowerCase()))
+    return null
 }
 
 // createAccount
@@ -29,10 +30,6 @@ export function initSession(plan) {
     var planId = (typeof plan === 'string') ? plan : plan.currentTarget.id.replace('stPlan_',''),
         thePlan = _st.plans[planId]
 
-    if (!Object.keys(thePlan).length) {
-        delete this.state.params.plan
-        this.props.history.replace('/signup/plans')
-    } else {
         Object.assign(this.state,{
             init: true,
             session: {
@@ -71,9 +68,8 @@ export function initSession(plan) {
                 }
             }
         })
-        this.changeStep()
-    }
-    return null
+
+    return this.changeStep()
 }
 
 // submitPayment
