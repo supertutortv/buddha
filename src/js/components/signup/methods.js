@@ -23,7 +23,7 @@ export function createAccount(e) {
         })
 
         return this.changeStep({
-            session: Object.assign({},{
+            session: Object.assign(this.state.session,{
                 customer: d.update,
                 stripe: this.initPayment()
             })
