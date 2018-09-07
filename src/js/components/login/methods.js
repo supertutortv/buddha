@@ -23,14 +23,17 @@ export function setLoginState(e) {
 export function submit(e) {
     e.preventDefault()
     _st.loading = true
-    _st.auth.submit(this.props.location.pathname,this.state.creds,(d) => {
-        if (d.code === 'login_fail') return this.setState({
-                error: {
-                    id: d.code,
-                    message: d.message
-                }
-            })
-        else
-            return this.props.setLoggedIn()
+    _st.auth.submit(this.state.lostPw ? '/auth/lostpw' : '/auth/token',this.state.creds,(d) => {
+        switch (d.code) {
+            case 'loginFail':
+                return this.setState({
+                    error: {
+                        id: d.code,
+                        message: d.message
+                    }
+                })
+            case 'loginSuccess':
+                return this.props.setLoggedIn()
+        }
     })
 }

@@ -34,7 +34,7 @@ const ResetPassword = ({setLoginState}) =>
             </div>
         </div>
         <div className="stFormButtons col s12">
-            <button className="stFormButton pmt-button btn waves-effect waves-light">Reset your password</button>
+            <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
         </div>
     </div>)
 
