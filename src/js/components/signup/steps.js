@@ -149,21 +149,18 @@ const Shipping = ({ updateInp, changeStep }) => {
     )
 }
 
-const ThankYou = () => <div>Thank you!</div>
-
-class Payment extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div id="stSignupPayment" className="stSignupStep row">
-                <div className="col s12 m4">Pricing</div>
-                <div className="col s12 m8">Form</div>
+const Payment = () => {
+    return (
+        <div id="stSignupPayment" className="stSignupStep row">
+            <div id="stSignupPricingTable" className="col s12 m4">Pricing</div>
+            <div id="stSignupPaymentForm" className="col s12 m8">Form</div>
+            <div id="stSignupPaymentBottom" className="row">
+                <h1>Set up your payment.</h1>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export { Plans, Account, Billing, Shipping, Payment, ThankYou }
+const ThankYou = () => <div>Thank you!</div>
+
+export { Plans, Account, Payment, ThankYou }
