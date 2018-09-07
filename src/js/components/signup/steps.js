@@ -149,7 +149,7 @@ const Shipping = ({ updateInp, changeStep }) => {
     )
 }
 
-const Payment = () => {
+const Payment = ({updateInp}) => {
     return (
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stInfoWrap row">
