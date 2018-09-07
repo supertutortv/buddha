@@ -11,7 +11,6 @@ export function changeStep(inc = true,e) {
 
 // createAccount
 export function createAccount(e) {
-    this.initPayment()
     e.preventDefault()
     _st.loading = true
     var account = this.state.session.customer.account
@@ -35,6 +34,7 @@ export function initPayment() {
 
 //setPlan
 export function setPlan(e) {
+    this.initPayment()
     e.preventDefault()
     return this.changeStep({
         plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
