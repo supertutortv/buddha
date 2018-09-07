@@ -152,8 +152,10 @@ const Shipping = ({ updateInp, changeStep }) => {
 const Payment = () => {
     return (
         <div id="stSignupPayment" className="stSignupStep row">
-            <div id="stSignupPricingTable" className="col s12 m4">Pricing</div>
-            <div id="stSignupPaymentForm" className="col s12 m8">Form</div>
+            <div className="row">
+                <div id="stSignupPricingTable" className="col s12 m4">Pricing</div>
+                <div id="stSignupPaymentForm" className="col s12 m8">Form</div>
+            </div>
             <div id="stSignupPaymentBottom" className="row">
                 <h1>Set up your payment.</h1>
             </div>
