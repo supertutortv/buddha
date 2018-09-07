@@ -11,7 +11,7 @@ export function lostPwGo() {
             }
         }
     }, () => this.props.history.push({
-        pathname: '/auth/resetpw',
+        pathname: '/password/reset',
         state: prevState
     }))
 }
