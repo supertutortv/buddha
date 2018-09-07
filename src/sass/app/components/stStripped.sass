@@ -6,15 +6,6 @@
     #stStrippedInset
         padding: $large
 
-        #stFormErrors
-            color: red
-            font-size: $small
-            padding: 0 $large $large
-            text-align: center
-
-            a
-                text-decoration: underline
-
         #stStrippedSpacer
             border-radius: 1em
             margin: 0
@@ -36,97 +27,106 @@
                         width: auto
                         display: inline-block
 
-            .stFormWrapper
-                font-size: $bodytext
-                min-height: $huge * 8
-                padding: $large !important
+#stFormErrors
+    color: red
+    font-size: $small
+    padding: 0 $large $large
+    text-align: center
 
-                .input-field
-                    margin: 0
+    a
+        text-decoration: underline
 
-                    &.st-input-half-left
-                        padding-right: $tiny
+.stFormWrapper
+    font-size: $bodytext
+    min-height: $huge * 8
+    padding: $large !important
 
-                    &.st-input-half-right
-                        padding-left: $tiny
+    .input-field
+        margin: 0
 
-                    &>label
-                        position: relative
+        &.st-input-half-left
+            padding-right: $tiny
 
-                input, select, #st-checkout-card-element
-                    padding: $tiny $small
-                    margin-bottom: 1em
-                    width: 100%
-                    border-radius: $ittybitty
-                    border: 1px solid black(.25)
-                    transition: border .25s linear
+        &.st-input-half-right
+            padding-left: $tiny
 
-                    &.invalid
-                        border: 1px solid red
-                    
-                    &.valid
-                        border: 1px solid green
+        &>label
+            position: relative
 
-                    &:focus:not(.invalid)
-                        border: 1px solid azure()
+    input, select, #st-checkout-card-element
+        padding: $tiny $small
+        margin-bottom: 1em
+        width: 100%
+        border-radius: $ittybitty
+        border: 1px solid black(.25)
+        transition: border .25s linear
 
-                    &::placeholder
-                        opacity: 1
-                        color: black(.25)
-                        font-style: italic
+        &.invalid
+            border: 1px solid red
+        
+        &.valid
+            border: 1px solid green
 
-                select
-                    -webkit-appearance: none
-                    -moz-appearance: none
-                    appearance: none
+        &:focus:not(.invalid)
+            border: 1px solid azure()
 
-                    &.selector, option:selected
-                        color: black(.6)
+        &::placeholder
+            opacity: 1
+            color: black(.25)
+            font-style: italic
 
-                .input-field.required:before, .input-field.required [type="checkbox"]:required+label:after
-                    color: red
-                    display: block
-                    height: 0
-                    position: absolute
-                    top: 25%
-                    right: 1em
-                    content: "*"
+    select
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
 
-                .stFormHeader
-                    padding-bottom: 1em
-                    line-height: $small
+        &.selector, option:selected
+            color: black(.6)
 
-                .stFormBody
-                    padding: 1em 1em 0
+    .input-field.required:before, .input-field.required [type="checkbox"]:required+label:after
+        color: red
+        display: block
+        height: 0
+        position: absolute
+        top: 25%
+        right: 1em
+        content: "*"
 
-                .stForgotBlock
-                    padding-bottom: 1em
+    .stFormHeader
+        padding-bottom: 1em
+        line-height: $small
 
-                .stFormButtons
-                    text-align: center
+    .stFormBody
+        padding: 1em 1em 0
 
-                    .stFormButton
-                        background-color: sunrise()
-                        display: block
-                        width: 100%
+    .stForgotBlock
+        padding-bottom: 1em
 
-                h1,h2
-                    font-size: 1.25em
-                    color: sunrise()
-                    text-transform: none
-                    
-                span
-                    font-size: $small
-                    font-style: italic
+    .stFormButtons
+        text-align: center
 
-                    a
-                        text-decoration: underline
-                        cursor: pointer
-                        color: inherit
-            
-            footer
+        .stFormButton
+            background-color: sunrise()
+            display: block
+            width: 100%
 
-                img
-                    display: block
-                    width: 100%
-                    height: auto
+    h1,h2
+        font-size: 1.25em
+        color: sunrise()
+        text-transform: none
+        
+    span
+        font-size: $small
+        font-style: italic
+
+        a
+            text-decoration: underline
+            cursor: pointer
+            color: inherit
+
+footer
+
+    img
+        display: block
+        width: 100%
+        height: auto
