@@ -164,16 +164,16 @@ const Payment = ({updateInp}) => {
                             <div className="input-field col s12">
                                 <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" onBlur={updateInp} />
                             </div>
-                            <div className="input-field required col s12 m6 st-input-half-left">
+                            <div className="input-field required col s12 m6 stInputHalfLeft">
                                 <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" onBlur={updateInp} required/>
                             </div>
-                            <div className="input-field required col s12 m6 st-input-half-right">
+                            <div className="input-field required col s12 m6 stInputHalfRight">
                                 <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" onBlur={updateInp} required/>
                             </div>
-                            <div className="input-field required col s12 m6 st-input-half-left">
+                            <div className="input-field required col s12 m6 stInputHalfLeft">
                                 <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
                             </div>
-                            <div className="input-field required col s12 m6 st-input-half-right">
+                            <div className="input-field required col s12 m6 stInputHalfRight">
                                 <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                             </div>
                         </fieldset>
