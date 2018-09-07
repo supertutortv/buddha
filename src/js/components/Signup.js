@@ -67,12 +67,23 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        console.log(window.Stripe)
+        if (typeof window.Stripe === 'undefined') {
+            const script = document.createElement("script")
+            script.id = 'stStripeScript'
+            script.src = "https://js.stripe.com/v3/"
+            script.async = true
+            document.body.appendChild(script)
+        }
         _st.loading = false
     }
 
     componentDidUpdate() {
         _st.loading = false
+    }
+
+    componentWillUnmount() {
+        let el = document.getElementById('stStripeScript')
+        el.parentNode.removeChild(el)
     }
 
     shouldComponentUpdate() {
@@ -102,7 +113,6 @@ export default class Signup extends React.Component {
                     updateInp={this.updateInp} 
                     initPayment={this.initPayment} 
                 />
-                <script src="https://js.stripe.com/v3/" async></script>
             </StripeProvider>
         )
     }

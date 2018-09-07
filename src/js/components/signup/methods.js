@@ -11,6 +11,7 @@ export function changeStep(inc = true,e) {
 
 // createAccount
 export function createAccount(e) {
+    this.initPayment()
     e.preventDefault()
     _st.loading = true
     var account = this.state.session.customer.account
@@ -29,7 +30,7 @@ export function createAccount(e) {
 
 // initPayment
 export function initPayment() {
-    
+    return console.log(window.Stripe)
 }
 
 //setPlan
