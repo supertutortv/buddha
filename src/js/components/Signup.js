@@ -1,5 +1,4 @@
 import React from 'react'
-import STBlankWrapper from './STBlankWrapper'
 import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
@@ -63,6 +62,7 @@ export default class Signup extends React.Component {
             this[method] = methods[method].bind(this)
         })
         _st.bodyClass = 'signup'
+        console.log(this.props)
     }
 
     componentDidMount() {
@@ -78,7 +78,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         let {step} = this.props.match.params
         if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
             this.props.history.replace('/signup/plans')
@@ -86,7 +85,7 @@ export default class Signup extends React.Component {
         }
         const SignupStep = steps[this.steps[this.state.step]]
         return(
-            <STBlankWrapper>
+            <React.Fragment>
                 <Header shadow="0"/>
                 <div id="stSignupDiagSep" className="row">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
@@ -99,9 +98,10 @@ export default class Signup extends React.Component {
                     changeStep={this.changeStep} 
                     createAccount={this.createAccount} 
                     updateInp={this.updateInp} 
-                    initSession={this.initSession} 
+                    initPayment={this.initPayment} 
                 />
-            </STBlankWrapper>
+                <script src="https://js.stripe.com/v3/"></script>
+            </React.Fragment>
         )
     }
 }

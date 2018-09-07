@@ -27,11 +27,10 @@ export function createAccount(e) {
     })
 }
 
-// initSession
-export function initSession() {
+// initPayment
+export function initPayment() {}
 
-}
-
+//setPlan
 export function setPlan(e) {
     e.preventDefault()
     return this.changeStep({

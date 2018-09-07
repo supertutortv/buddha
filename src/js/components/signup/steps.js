@@ -154,6 +154,9 @@ const Payment = ({updateInp}) => {
                                 </label>
                             </div>
                     </fieldset>
+                    <div className="col s12 m6">
+                        <div id="stSignupCardElement"></div>
+                    </div>
                     </div>
                 </form>
             </div>
