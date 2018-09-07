@@ -68,7 +68,7 @@ const Account = ({ createAccount, updateInp, error }) => {
     )
 }
 
-const Billing = ({ updateInp, changeStep }) => {
+/* const Billing = ({ updateInp, changeStep }) => {
     return (
         <form id="step-3" className="stFormStep row" onSubmit={(e) => changeStep(true,e)}>
             <div className="stFormHeader col s12">
@@ -100,9 +100,9 @@ const Billing = ({ updateInp, changeStep }) => {
             </div>
         </form>
     )
-}
+} */
 
-const Shipping = ({ updateInp, changeStep }) => {
+/* const Shipping = ({ updateInp, changeStep }) => {
     return (
         <form id="step-4" className="stFormStep row" onSubmit={changeStep}>
             <div className="stFormHeader col s12">
@@ -147,7 +147,7 @@ const Shipping = ({ updateInp, changeStep }) => {
             </div>
         </form>
     )
-}
+} */
 
 const Payment = ({updateInp}) => {
     return (
@@ -174,7 +174,7 @@ const Payment = ({updateInp}) => {
                                 <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
                             </div>
                             <div className="input-field required col s12 m6 st-input-half-right">
-                                <CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
+                                <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                             </div>
                         </fieldset>
                     </div>
