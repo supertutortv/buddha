@@ -1,8 +1,10 @@
 // changeStep
 export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
+    var obj = (typeof inc === 'object') ? inc : {}
     this.setState({
-        step : inc ? this.state.step + 1 : this.state.step - 1
+        step : inc ? this.state.step + 1 : this.state.step - 1,
+        ...obj
     },() => this.props.history.push('/signup/'+this.steps[this.state.step].toLowerCase()))
     return null
 }
@@ -31,8 +33,7 @@ export function initSession() {
 }
 
 export function setPlan(e) {
-    this.setState({
-        step: 1,
+    return this.changeStep({
         plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
     })
 }
