@@ -63,7 +63,6 @@ export default class Signup extends React.Component {
             this[method] = methods[method].bind(this)
         })
         _st.bodyClass = 'signup'
-        console.log(this.props)
     }
 
     componentDidMount() {
