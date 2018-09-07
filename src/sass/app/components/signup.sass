@@ -54,9 +54,14 @@ body.signup
                         background-color: white()
                         padding: 12%
                         border-radius: $tiny
+                        border: 1px solid transparent
                         cursor: pointer
                         color: inherit
                         display: block
+                        transition: all 250ms ease-in-out
+
+                        &:hover
+                            border: 1px solid azure()
 
                         .stPlanTest
 
