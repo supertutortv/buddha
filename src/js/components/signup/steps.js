@@ -116,7 +116,8 @@ const Account = ({ createAccount, updateInp, error }) => {
 } */
 
 const Payment = ({updateInp}) => {
-    var currDate = new Date()
+    var trialDate = new Date()
+    trialDate.setDate(trialDate.getDate() + 5)
     return (
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stSignupInner row">
@@ -164,7 +165,7 @@ const Payment = ({updateInp}) => {
                 </div>
                 <div id="stSignupPaymentBottom" className="stStepBottom row">
                     <h1>Set up your payment.</h1>
-                    <span>5 day free trial expires <strong>{currDate.setDate(currDate.getDate() + 5).toLocaleDateString()}</strong></span>
+                    <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
                 </div>
             </div>
         </div>
