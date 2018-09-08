@@ -90,6 +90,10 @@ export default class Signup extends React.Component {
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
+    shouldComponentUpdate() {
+        return this.state.update
+    }
+
     render() {
         let {step} = this.props.match.params
         if (typeof step === 'undefined') {
