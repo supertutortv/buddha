@@ -86,7 +86,7 @@ export default class Signup extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        var { history: hist } = nextProps
+        var { history: hist} = nextProps
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
@@ -96,7 +96,7 @@ export default class Signup extends React.Component {
 
     render() {
         let {step} = this.props.match.params
-        if (typeof step === 'undefined') {
+        if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
             this.props.history.replace('/signup/plans')
             return null 
         }
