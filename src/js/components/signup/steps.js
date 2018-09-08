@@ -162,7 +162,7 @@ const Payment = ({updateInp}) => {
             </div>
             <div id="stSignupPaymentBottom" className="row">
                 <h1>Set up your payment.</h1>
-                <span>{new Date()}</span>
+                <span>{new Date().toLocaleDateString()}</span>
             </div>
         </div>
     )
