@@ -20,8 +20,7 @@ export function changeStep(inc = true,e) {
 export function createAccount(e) {
     e.preventDefault()
     _st.loading = true
-    var account = this.state.session.customer.account
-    _st.http.post('/signup/account',account,(d) => {
+    _st.http.post('/signup/account',this.state.session.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
                 id: d.code,
