@@ -3,7 +3,6 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from '../pieces/CountryDD'
 
 const _Payment = ({updateInp, stripe}) => {
-    console.log(updateInp)
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
@@ -12,7 +11,7 @@ const _Payment = ({updateInp, stripe}) => {
                 <div className="stInfoWrap row">
                     <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">
                         <span>Pricing</span>
-                        <div className="row"><CardElement /></div>
+                        <div className="row"><CardElement onChange={(e) => console.log(e)} /></div>
                     </div>
                     <form id="stSignupPaymentForm" className="stFormWrapper col s12 m8" onSubmit={(e) => e.preventDefault()}>
                         <div id="stSignupFormShipping" className="row">
