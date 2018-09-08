@@ -45,11 +45,7 @@ const Payment = ({updateInp}) => {
                                 </div>
                         </fieldset>
                         <div className="col s12 m6">
-                            <div id="stSignupCardElement">
-                                <Elements>
-                                    <CardElement />
-                                </Elements>
-                            </div>
+                            <div id="stSignupCardElement"><CardElement /></div>
                         </div>
                         </div>
                     </form>
