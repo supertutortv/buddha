@@ -85,15 +85,19 @@ export default class Signup extends React.Component {
         el.parentNode.removeChild(el)
     }
 
-    shouldComponentUpdate() {
-        return this.state.update
+    componentWillReceiveProps(nextProps) {
+        var { history: hist } = nextProps
+        if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
         let {step} = this.props.match.params
         if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
-            this.props.history.replace('/signup/plans')
+            this.props.history.replace({
+                pathname: '/signup/plans',
+                state: this.state
+            })
             return null 
         }
         const SignupStep = steps[this.steps[this.state.step]]

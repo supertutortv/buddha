@@ -1,11 +1,18 @@
 // changeStep
 export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
-    var obj = (typeof inc === 'object') ? inc : {}
-    this.setState({
-        step : inc ? this.state.step + 1 : this.state.step - 1,
-        ...obj
-    },() => this.props.history.push('/signup/'+this.steps[this.state.step].toLowerCase()))
+    var obj = (typeof inc === 'object') ? inc : {},
+        prevState
+    this.setState((prev) => {
+        prevState = prev
+        return {
+            step : (inc) ? this.state.step + 1 : this.state.step - 1,
+            obj
+        }
+    }, () => this.props.history.push({
+        pathname:'/signup/'+this.steps[this.state.step].toLowerCase(),
+        state: prevState
+    }))
     return null
 }
 
@@ -22,14 +29,16 @@ export function createAccount(e) {
             }
         })
 
-        console.log(Object.assign(this.state.session,{
+        console.log(d.update)
+
+        /* console.log(Object.assign(this.state.session.customer,{
             customer: d.update
-        }))
+        })) */
 
         return this.changeStep({
-            /* session: Object.assign(this.state.session,{
+            session: Object.assign(this.state.session,{
                 customer: d.update
-            }), */
+            }),
             stripe: this.initPayment()
         })
     })
