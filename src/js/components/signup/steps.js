@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
+import {Elements, CardElement} from 'react-stripe-elements'
 import CountryDD from '../pieces/CountryDD'
 
 const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
@@ -158,7 +159,11 @@ const Payment = ({updateInp}) => {
                                 </div>
                         </fieldset>
                         <div className="col s12 m6">
-                            <div id="stSignupCardElement"></div>
+                            <div id="stSignupCardElement">
+                                <Elements>
+                                    <CardElement />
+                                </Elements>
+                            </div>
                         </div>
                         </div>
                     </form>
