@@ -14,38 +14,46 @@ export default class Signup extends React.Component {
             init: false,
             step: 0,
             plan: {},
-            error : {
-                id : '',
-                message : ''
+            error: {
+                id: '',
+                message: ''
             },
-            stripe : null,
+            stripe: null,
             session: {
                 valid: false,
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
-                card : {
-                    valid : false,
-                    obj : null
+                card: {
+                    valid: false,
+                    obj: null
                 },
-                customer : {
-                    account : {
+                customer: {
+                    account: {
                         email: '',
                         firstname: '',
                         lastname: '',
                         password: ''
                     },
-                    shipping : {},
+                    shipping: {
+                        name: '',
+                        address: {
+
+                        }
+                    },
+                    options: {
+
+                    },
                     token: ''
                 },
-                pricing : {
-                    total : 0,
-                    shipping : 0,
-                    taxable : 0,
-                    tax : {
+                pricing: {
+                    total: 0,
+                    shipping: 0,
+                    taxable: 0,
+                    tax: {
                         id: '',
                         value: 0
                     },
-                    coupon : {
+                    coupon: {
                         id: '',
                         value: ''
                     }
@@ -62,14 +70,6 @@ export default class Signup extends React.Component {
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
-
-        if (typeof window.Stripe === 'undefined') {
-            const script = document.createElement("script")
-            script.id = 'stStripeScript'
-            script.src = "https://js.stripe.com/v3/"
-            script.async = true
-            document.head.appendChild(script)
-        }
 
         _st.bodyClass = 'signup'
     }
