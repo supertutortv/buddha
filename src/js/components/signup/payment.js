@@ -13,12 +13,6 @@ const _Payment = ({updateInp, stripe}) => {
                         <div id="stSignupFormShipping" className="row">
                             <fieldset>
                                 <legend>Shipping</legend>
-                                <div class="st-checkout-spaced col s12">
-                                    <label>
-                                        <input name="customer|options|priorityShip" class="filled-in" value="1" type="checkbox" onChange={updateInp}/>
-                                        <span>I want Priority Shipping (+$7.05, U.S. only)</span>
-                                    </label>
-                                </div>
                                 <div className="input-field required col s12">
                                     <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" onBlur={updateInp} required/>
                                 </div>
@@ -42,21 +36,21 @@ const _Payment = ({updateInp, stripe}) => {
                         <div id="stSignupFormOptions"className="row">
                         <fieldset>
                                 <legend>Options</legend>
+                                <div class="st-checkout-spaced col s12">
+                                    <label>
+                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={updateInp}/>
+                                        <span>I want Priority Shipping (+$7.05, U.S. only)</span>
+                                    </label>
+                                </div>
                                 <div className="st-checkout-spaced col s12">
                                     <label>
                                         <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                                         <span>Skip the trial period and start immediately</span>
                                     </label>
                                 </div>
-                                <div class="st-checkout-spaced required col s12">
-                                    <label>
-                                        <input id="stTermsBox" name="customer|options|terms" class="filled-in" value="1" type="checkbox" onChange={updateInp} required/>
-                                        <span>I have read SupertutorTV's Terms & Conditions</span>
-                                    </label>
-                                </div>
                                 <div class="st-checkout-spaced col s12">
                                     <label>
-                                        <input name="customer|options|mailingList" class="filled-in" value="1" type="checkbox" />
+                                        <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                                         <span>Add me to the SupertutorTV mailing list for future discounts and offers</span>
                                     </label>
                                 </div>
@@ -65,7 +59,13 @@ const _Payment = ({updateInp, stripe}) => {
                     </form>
                     <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">
                         <span>Pricing</span>
-                        <div className="row"><CardElement onChange={(e) => console.log(e)} /></div>
+                        <div className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
+                        <div className="st-checkout-spaced required col s12">
+                            <label>
+                                <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={updateInp} required/>
+                                <span>I have read SupertutorTV's Terms & Conditions</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div id="stSignupPaymentBottom" className="stStepBottom row">
