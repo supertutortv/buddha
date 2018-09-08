@@ -1,5 +1,5 @@
 import React from 'react'
-import { StripeProvider } from 'react-stripe-elements'
+import { StripeProvider, Elements } from 'react-stripe-elements'
 import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
@@ -110,14 +110,16 @@ export default class Signup extends React.Component {
                             <polygon points="0,0 0,100 1920,0 "></polygon>
                         </svg>
                     </div>
-                    <SignupStep 
-                        error={this.state.error} 
-                        setPlan={this.setPlan} 
-                        changeStep={this.changeStep} 
-                        createAccount={this.createAccount} 
-                        updateInp={this.updateInp} 
-                        initPayment={this.initPayment} 
-                    />
+                    <Elements>
+                        <SignupStep 
+                            error={this.state.error} 
+                            setPlan={this.setPlan} 
+                            changeStep={this.changeStep} 
+                            createAccount={this.createAccount} 
+                            updateInp={this.updateInp} 
+                            initPayment={this.initPayment} 
+                        />
+                    </Elements>
                 </React.Fragment>
             </StripeProvider>
         )

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
-import {Elements, CardElement} from 'react-stripe-elements'
+import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from '../pieces/CountryDD'
 
 const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
@@ -179,4 +179,5 @@ const Payment = ({updateInp}) => {
 
 const ThankYou = () => <div>Thank you!</div>
 
-export { Plans, Account, Payment, ThankYou }
+export { Plans, Account, ThankYou }
+export default injectStripe(Payment)
