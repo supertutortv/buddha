@@ -2,7 +2,8 @@ import React from 'react'
 import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from '../pieces/CountryDD'
 
-const Payment = ({updateInp}) => {
+const Payment = ({updateInp, stripe}) => {
+    console.log(stripe)
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
