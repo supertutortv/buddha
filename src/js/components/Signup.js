@@ -35,6 +35,7 @@ export default class Signup extends React.Component {
                         password: ''
                     },
                     shipping: {
+                        phone: '',
                         name: '',
                         address: {}
                     },
