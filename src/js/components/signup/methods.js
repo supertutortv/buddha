@@ -51,14 +51,20 @@ export function setPlan(e) {
 
 // setOutcome
 export function setOutcome( result ) {
-    this.state.update = false
     if (typeof result !== 'undefined') {
-        if (typeof result.error !== 'undefined') return !(this.state.card.valid = false) && this.printError(result.error.message)
-        this.state.card.valid = !result.empty && result.complete
+        if (typeof result.error !== 'undefined') return this.setState({
+            card: false,
+            error: {
+                id: 'stripeError',
+                message: result.error.message
+            }
+        })
+        this.state.card = !result.empty && result.complete
     }
-    this.state.valid = this.state.card.valid && document.getElementById('stTermsBox').checked && this.validate()
 
-    this.setState(Object.assign(this))
+    this.setState({
+        valid: this.state.card && document.getElementById('stTermsBox').checked && this.validate()
+    })
 }
 
 // submitPayment

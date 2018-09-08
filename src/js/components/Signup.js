@@ -19,14 +19,11 @@ export default class Signup extends React.Component {
                 message: ''
             },
             stripe: null,
+            card: false,
             session: {
                 valid: false,
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
-                card: {
-                    valid: false,
-                    obj: null
-                },
                 customer: {
                     account: {
                         email: '',
