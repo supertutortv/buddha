@@ -49,6 +49,18 @@ export function setPlan(e) {
     })
 }
 
+// setOutcome
+export function setOutcome( result ) {
+    this.state.update = false
+    if (typeof result !== 'undefined') {
+        if (typeof result.error !== 'undefined') return !(this.state.card.valid = false) && this.printError(result.error.message)
+        this.state.card.valid = !result.empty && result.complete
+    }
+    this.state.valid = this.state.card.valid && document.getElementById('stTermsBox').checked && this.validate()
+
+    this.setState(Object.assign(this))
+}
+
 // submitPayment
 export function submitPayment() {
     _st.http.post('/signup/pay',dt,cb)
@@ -67,4 +79,9 @@ export function updateInp({target: el}) {
             },newObj)
         return Object.assign(prev.session,newObj)
     },() => this.state.update = true)
+}
+
+// validate
+export function validate() {
+    return true
 }

@@ -9,10 +9,6 @@ const _Payment = ({updateInp, stripe}) => {
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stSignupInner row">
                 <div className="stInfoWrap row">
-                    <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">
-                        <span>Pricing</span>
-                        <div className="row"><CardElement onChange={(e) => console.log(e)} /></div>
-                    </div>
                     <form id="stSignupPaymentForm" className="stFormWrapper col s12 m8" onSubmit={(e) => e.preventDefault()}>
                         <div id="stSignupFormShipping" className="row">
                             <fieldset>
@@ -49,6 +45,10 @@ const _Payment = ({updateInp, stripe}) => {
                         </fieldset>
                         </div>
                     </form>
+                    <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">
+                        <span>Pricing</span>
+                        <div className="row"><CardElement onChange={(e) => console.log(e)} /></div>
+                    </div>
                 </div>
                 <div id="stSignupPaymentBottom" className="stStepBottom row">
                     <h1>Set up your payment.</h1>
