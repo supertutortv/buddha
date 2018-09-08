@@ -62,17 +62,19 @@ export default class Signup extends React.Component {
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
-        _st.bodyClass = 'signup'
-    }
 
-    componentDidMount() {
         if (typeof window.Stripe === 'undefined') {
             const script = document.createElement("script")
             script.id = 'stStripeScript'
             script.src = "https://js.stripe.com/v3/"
             script.async = true
-            document.body.appendChild(script)
+            document.head.appendChild(script)
         }
+
+        _st.bodyClass = 'signup'
+    }
+
+    componentDidMount() {
         _st.loading = false
     }
 
@@ -102,7 +104,7 @@ export default class Signup extends React.Component {
         }
         const SignupStep = steps[this.steps[this.state.step]]
         return(
-            <StripeProvider stripe={this.state.stripe}>
+            <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
                     <Header shadow="0"/>
                     <div id="stSignupDiagSep" className="row">
