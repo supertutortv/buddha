@@ -14,7 +14,7 @@ export function calculatePricing() {
 
     if ( discprice > 0 ) {
         pricing.total -= discprice
-        items.push({name: 'Discount '+pricing.coupon.id, amt: discprice})
+        items.push({name: 'Discount '+pricing.coupon.id, amt: '-'+discprice})
     }
 
     if ( pricing.tax.value > 0 ) {
