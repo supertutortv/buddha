@@ -68,8 +68,10 @@ export function createAccount(e) {
 }
 
 // setChecker
-export function setChecker({target}) {
-    console.log(target.value)
+export function setChecker(el, {target}) {
+    var val = target.value,
+        p = target.classList.contains('tax') ? 'tax' : 'coupon'
+        console.log(el,target)
 }
 
 // setPlan
