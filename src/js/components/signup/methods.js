@@ -76,7 +76,7 @@ export function setChecker(el) {
     if (val === '') this.state.pricing[p].value = val
 
     if (val !== this.state.pricing[p].value)
-        await _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
+        _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
             console.log(d)
             if (d.code === 'signup_error') return tar.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
             this.setState({[pricing[p]]: d.update})
