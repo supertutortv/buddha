@@ -40,7 +40,7 @@ export function changeStep(inc = true,e) {
         prevState = prev
         return {
             step : (inc) ? this.state.step + 1 : this.state.step - 1,
-            obj
+            ...obj
         }
     }, () => this.props.history.push({
         pathname:'/signup/'+this.steps[this.state.step].toLowerCase(),

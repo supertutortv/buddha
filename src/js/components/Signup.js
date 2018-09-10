@@ -17,7 +17,6 @@ export default class Signup extends React.Component {
                 id: '',
                 message: ''
             },
-            stripe: null,
             card: false,
             valid: false,
             customer: {
