@@ -95,8 +95,6 @@ export default class Signup extends React.Component {
             this.props.history.replace('/signup/plans')
             return null 
         }
-
-        console.log(this.state)
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <StripeProvider apiKey={_st.stripe}>
