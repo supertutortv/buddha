@@ -110,6 +110,13 @@ export function setOutcome( result ) {
     })
 }
 
+export function setShipping(el) {
+    this.setState({
+        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 705 : 0})
+    })
+    this.updateInp(el)
+}
+
 // submitPayment
 export function submitPayment() {
     _st.http.post('/signup/pay',dt,cb)
