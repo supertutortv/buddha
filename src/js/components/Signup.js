@@ -116,6 +116,7 @@ export default class Signup extends React.Component {
                             createAccount={this.createAccount} 
                             updateInp={this.updateInp} 
                             state={this.state} 
+                            setChecker={this.setChecker}
                             toPrice={this.toPrice}
                         />
                     </Elements>

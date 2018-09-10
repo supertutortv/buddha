@@ -3,7 +3,7 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state}) => {
+const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker}) => {
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
@@ -59,7 +59,7 @@ const _Payment = ({updateInp, submitPayment, state}) => {
                         </div>
                     </form>
                     <div id="stSignupPricing" className="col s12 m4 z-depth-3">
-                        <PricingTable state={state} />
+                        <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
                         <div className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
                         <div className="st-checkout-spaced required col s12">
                             <label>
