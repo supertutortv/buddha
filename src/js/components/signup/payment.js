@@ -11,7 +11,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stSignupInner row">
                 <div className="stInfoWrap row">
-                    <form className="stFormWrapper" onSubmit={() => submitPayment(stripe)}>
+                    <form className="stFormWrapper" onSubmit={(e) => submitPayment(e,stripe)}>
                         <div id="stSignupPaymentForm" className="col s12 m8">
                             <div id="stSignupFormShipping" className="row">
                                 <fieldset>
