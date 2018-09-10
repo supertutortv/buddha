@@ -41,7 +41,12 @@ export function initPayment() {
     return window.Stripe ? window.Stripe(_st.stripe) : null
 }
 
-//setPlan
+// setChecker
+export function setChecker() {
+
+}
+
+// setPlan
 export function setPlan(e) {
     e.preventDefault()
     return this.changeStep({
@@ -70,6 +75,11 @@ export function setOutcome( result ) {
 // submitPayment
 export function submitPayment() {
     _st.http.post('/signup/pay',dt,cb)
+}
+
+// toPrice
+export function toPrice(amt = 0) {
+    return (Math.round(amt)/100).toFixed(2)
 }
 
 // updateInp
