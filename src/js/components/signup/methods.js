@@ -68,8 +68,8 @@ export function createAccount(e) {
 }
 
 // setChecker
-export function setChecker() {
-
+export function setChecker({target}) {
+    console.log(target)
 }
 
 // setPlan
