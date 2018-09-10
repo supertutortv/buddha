@@ -2,7 +2,7 @@ import React from 'react'
 
 const PricingTable = ({state,setChecker,toPrice}) => {
     return (
-        <div id="stSignupPricingTable" className="col s12">
+        <div id="stSignupPricingTable" className="row">
             <div id="stPricingHeading" className="row">
                 <div className="col s8">ITEM</div>
                 <div className="col s4 right-al">PRICE</div>
