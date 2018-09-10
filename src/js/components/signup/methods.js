@@ -123,6 +123,9 @@ export function setOutcome( result ) {
 }
 
 export function setShipping(el) {
+    this.state.update = false
+    this.setChecker(el)
+    this.state.update = true
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 705 : 0})
     })
