@@ -1,15 +1,16 @@
 import React from 'react'
 import {injectStripe, CardElement} from 'react-stripe-elements'
-import CountryDD from '../pieces/CountryDD'
+import CountryDD from './pieces/CountryDD'
+import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, stripe}) => {
+const _Payment = ({updateInp, submitPayment, state}) => {
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stSignupInner row">
                 <div className="stInfoWrap row">
-                    <form id="stSignupPaymentForm" className="stFormWrapper col s12 m8" onSubmit={(e) => e.preventDefault()}>
+                    <form id="stSignupPaymentForm" className="stFormWrapper col s12 m8" onSubmit={submitPayment}>
                         <div id="stSignupFormShipping" className="row">
                             <fieldset>
                                 <legend>Shipping</legend>
@@ -57,8 +58,8 @@ const _Payment = ({updateInp, stripe}) => {
                         </fieldset>
                         </div>
                     </form>
-                    <div id="stSignupPricingTable" className="col s12 m4 z-depth-3">
-                        <span>Pricing</span>
+                    <div id="stSignupPricing" className="col s12 m4 z-depth-3">
+                        <PricingTable state={state} />
                         <div className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
                         <div className="st-checkout-spaced required col s12">
                             <label>

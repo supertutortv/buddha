@@ -114,6 +114,7 @@ export default class Signup extends React.Component {
                             createAccount={this.createAccount} 
                             updateInp={this.updateInp} 
                             initPayment={this.initPayment} 
+                            state={this.state}
                         />
                     </Elements>
                 </React.Fragment>
