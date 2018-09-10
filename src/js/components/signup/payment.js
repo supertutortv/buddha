@@ -5,6 +5,7 @@ import PricingTable from './pieces/PricingTable'
 
 const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calculatePricing}) => {
     calculatePricing()
+    console.log(setChecker)
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
