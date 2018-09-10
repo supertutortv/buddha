@@ -158,5 +158,16 @@ export function updateInp({target: el}) {
 
 // validate
 export function validate() {
-    return true
+    var err = false,
+        inp = Array.from(document.querySelectorAll('input, select'))
+
+    inp.some((el) => {
+        if ( (el.hasAttribute('required') && ( !el.value || el.classList.contains('invalid') )) || el.classList.contains('invalid') ) {
+            el.classList.add('invalid')
+            return err = true
+        }
+        return false
+    })
+    typeof cb === 'function' && cb()
+    return !err
 }

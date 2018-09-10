@@ -120,6 +120,7 @@ export default class Signup extends React.Component {
                             setShipping={this.setShipping} 
                             toPrice={this.toPrice} 
                             submitPayment={this.submitPayment} 
+                            validate={this.validate}
                         />
                     </Elements>
                 </React.Fragment>
