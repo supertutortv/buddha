@@ -28,7 +28,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calcula
                                     <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" onBlur={updateInp} required/>
                                 </div>
                                 <div className="input-field required col s12 m6 stInputHalfLeft">
-                                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
+                                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={setChecker} required/>
                                 </div>
                                 <div className="input-field required col s12 m6 stInputHalfRight">
                                     <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
