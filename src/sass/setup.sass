@@ -35,7 +35,19 @@ html
             height: 1em
             padding-left: $huge
 
+        [type="checkbox"].filled-in:not(:checked) + span:not(.lever)
+
+            &:after
+                height: 1em
+                width: 1em
+
         [type="checkbox"].filled-in:checked + span:not(.lever)
+
+            &:before
+                top: -4px
+                left: 0
+                width: 6px
+                height: $small
 
             &:after
                 height: 1em

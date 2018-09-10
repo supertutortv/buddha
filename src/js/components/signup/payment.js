@@ -63,14 +63,14 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, 
                         <div id="stSignupPricing" className="col s12 m4 z-depth-3">
                             <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
                             <div id="stPricingCardElement" className="row"><CardElement onChange={(e) => console.log(e)} /></div>
-                            <div className="st-checkout-spaced row">
+                            <div className="stTermsRow row">
                                 <label>
                                     <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
                                     <span>I have read SupertutorTV's Terms & Conditions</span>
                                 </label>
                             </div>
                             <div className="stFormButtons row">
-                                <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" >Submit payment</button>
+                                <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled>Submit payment</button>
                             </div>
                             <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
                         </div>
