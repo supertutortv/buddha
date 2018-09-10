@@ -10,7 +10,7 @@ const PricingTable = ({state,setChecker,toPrice}) => {
             <div id="stPricingItems" className="row">
                 {state.items.map((item) => {
                     return (
-                        <div className="row">
+                        <div className="item row">
                             <div className="col s9">{item.name}</div>
                             <div className="col s3 right-al">{toPrice(item.amt)}</div>
                         </div>

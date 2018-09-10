@@ -61,7 +61,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calcula
                     </form>
                     <div id="stSignupPricing" className="col s12 m4 z-depth-3">
                         <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
-                        <div className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
+                        <div id="stPricingCardElement" className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
                         <div className="st-checkout-spaced required col s12">
                             <label>
                                 <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={updateInp} required/>
