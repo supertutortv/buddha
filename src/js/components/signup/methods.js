@@ -73,6 +73,8 @@ export function setChecker(el) {
         val = tar.value,
         p = tar.classList.contains('tax') ? 'tax' : 'coupon'
 
+    console.log(tar.type)
+
     if (val === '') this.state.pricing[p].value = val
 
     if (val !== this.state.pricing[p].value)
