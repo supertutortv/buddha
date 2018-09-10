@@ -77,11 +77,9 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, 
                         </div>
                     </form>
                 </div>
-                <div id="stSignupPaymentBottom" className="stStepBottom row">
-                    <h1>Set up your payment.</h1>
-                    <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
-                </div>
             </div>
+            <h1>Set up your payment.</h1>
+            <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
         </div>
     )
 }
