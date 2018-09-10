@@ -143,7 +143,7 @@ export function submitPayment(e,stripe) {
     e.preventDefault()
     if (typeof stripe === 'undefined') return false
     _st.loading = true
-    stripe.createToken().then((t) => {
+    stripe.createToken().then(({token: t}) => {
         console.log(t)
         _st.loading = false
     })
