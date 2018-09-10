@@ -3,10 +3,11 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, setOutcome, setShipping, calculatePricing}) => {
+const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setChecker, setShipping, calculatePricing, setOutcome}) => {
     calculatePricing()
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
+    console.log(stripe)
     return (
         <div id="stSignupPayment" className="stSignupStep row">
             <div className="stSignupInner row">
@@ -76,9 +77,11 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, 
                         </div>
                     </form>
                 </div>
+                <div id="stSignupPaymentBottom" className="stStepBottom row">
+                    <h1>Set up your payment.</h1>
+                    <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
+                </div>
             </div>
-            <h1>Set up your payment.</h1>
-            <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
         </div>
     )
 }
