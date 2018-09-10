@@ -111,14 +111,15 @@ export default class Signup extends React.Component {
                         <SignupStep 
                             state={this.state} 
                             error={this.state.error} 
-                            setPlan={this.setPlan} 
                             changeStep={this.changeStep} 
                             createAccount={this.createAccount} 
-                            calculatePricing={this.calculatePricing}
+                            calculatePricing={this.calculatePricing} 
                             updateInp={this.updateInp} 
-                            setChecker={this.setChecker}
+                            setChecker={this.setChecker} 
+                            setPlan={this.setPlan} 
+                            setShipping={this.setShipping} 
                             toPrice={this.toPrice} 
-                            submitPayment={this.submitPayment}
+                            submitPayment={this.submitPayment} 
                         />
                     </Elements>
                 </React.Fragment>

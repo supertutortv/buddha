@@ -3,7 +3,7 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calculatePricing}) => {
+const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, setShipping, calculatePricing}) => {
     calculatePricing()
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
@@ -40,7 +40,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calcula
                                 <legend>Options</legend>
                                 <div class="st-checkout-spaced col s12">
                                     <label>
-                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={updateInp}/>
+                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
                                         <span>I want Priority Shipping (+$7.05, U.S. only)</span>
                                     </label>
                                 </div>
