@@ -139,8 +139,9 @@ export function setShipping(el) {
 }
 
 // submitPayment
-export function submitPayment() {
-    console.log(this.state)
+export function submitPayment(stripe) {
+    if (typeof stripe === 'undefined') return false
+    stripe.createToken().then((t) => console.log(t))
     /* _st.http.post('/signup/pay',dt,cb) */
 }
 
