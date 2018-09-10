@@ -11,47 +11,47 @@ export default class Signup extends React.Component {
         this.state = {
             update: true,
             loading: true,
-            init: false,
             step: 0,
-            plan: {},
+            plan: null,
             error: {
                 id: '',
                 message: ''
             },
             stripe: null,
             card: false,
-            session: {
-                valid: false,
-                id: Date.now(),
-                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
-                customer: {
-                    account: {
-                        email: '',
-                        firstname: '',
-                        lastname: '',
-                        password: ''
-                    },
-                    shipping: {
-                        phone: '',
-                        name: '',
-                        address: {}
-                    },
-                    options: {},
-                    token: ''
+            valid: false,
+            customer: {
+                account: {
+                    email: '',
+                    firstname: '',
+                    lastname: '',
+                    password: ''
                 },
-                pricing: {
-                    total: 0,
-                    shipping: 0,
-                    taxable: 0,
-                    tax: {
-                        id: '',
-                        value: 0
-                    },
-                    coupon: {
-                        id: '',
-                        value: ''
-                    }
+                shipping: {
+                    phone: '',
+                    name: '',
+                    address: {}
+                },
+                options: {},
+                token: ''
+            },
+            pricing: {
+                total: 0,
+                shipping: 0,
+                taxable: 0,
+                tax: {
+                    id: '',
+                    value: 0
+                },
+                coupon: {
+                    id: '',
+                    value: ''
                 }
+            },
+            items: [],
+            session: {
+                id: Date.now(),
+                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
             }
         }
         this.steps = [
@@ -96,7 +96,9 @@ export default class Signup extends React.Component {
             this.props.history.replace('/signup/plans')
             return null 
         }
+
         const SignupStep = steps[this.steps[this.state.step]]
+        if (this.state.plan !== null) this.calculatePricing()
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>

@@ -68,53 +68,6 @@ const Account = ({ createAccount, updateInp, error }) => {
     )
 }
 
-/* const Shipping = ({ updateInp, changeStep }) => {
-    return (
-        <form id="step-4" className="stFormStep row" onSubmit={changeStep}>
-            <div className="stFormHeader col s12">
-                <h2>Where are we sending your books?</h2>
-                <span>Even if you're signing up for a course that doesn't ship books, we still collect this information to keep on file in your account with our payment processor. We never share this information with anyone.</span>
-            </div>
-            <div id="stSignupShipping" className="stFormBody col s12">
-                <div className="st-checkout-spaced col s12">
-                    <label>
-                        <input name="customer|options|copyAddress" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
-                        <span>Same as billing address</span>
-                    </label>
-                </div>
-                <div className="st-checkout-spaced col s12">
-                    <label>
-                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
-                        <span>I want Priority Shipping (+$7.05, U.S. only)</span>
-                    </label>
-                </div>
-                <div className="input-field required col s12">
-                    <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field col s12">
-                    <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" onBlur={updateInp} />
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-right">
-                    <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-left">
-                    <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={updateInp} required/>
-                </div>
-                <div className="input-field required col s12 m6 st-input-half-right">
-                    <CountryDD classNameName="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
-                </div>
-            </div>
-            <div className="stFormButtons col s12">
-                <button className="stFormButton pmt-button btn waves-effect waves-light" onClick={() => changeStep(false)}>{'<< Back'}</button>
-                <button id="stBtn_shipping" className="stFormButton pmt-button btn waves-effect waves-light" type="submit">Next >></button>
-            </div>
-        </form>
-    )
-} */
-
 const ThankYou = () => <div>Thank you!</div>
 
 export { Plans, Account, Payment, ThankYou }
