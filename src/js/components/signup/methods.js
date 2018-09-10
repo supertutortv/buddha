@@ -93,6 +93,7 @@ export function setChecker(el) {
 
         this.updateInp(el)
     }
+    this.validate()
     return true
 }
 
@@ -117,9 +118,7 @@ export function setOutcome( result ) {
         this.state.card = !result.empty && result.complete
     }
 
-    this.setState({
-        valid: this.state.card && document.getElementById('stTermsBox').checked && this.validate()
-    })
+    this.validate()
 }
 
 export function setShipping(el) {
@@ -168,6 +167,8 @@ export function validate() {
         }
         return false
     })
-    typeof cb === 'function' && cb()
-    return !err
+
+    this.setState({
+        valid: this.state.card && this.state.customer.options.terms && !err
+    })
 }

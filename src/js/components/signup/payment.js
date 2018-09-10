@@ -5,8 +5,7 @@ import PricingTable from './pieces/PricingTable'
 
 const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, setShipping, calculatePricing, validate}) => {
     calculatePricing()
-    var trialDate = new Date(),
-        disabled = state.card ? 'disabled' : ''
+    var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
         <div id="stSignupPayment" className="stSignupStep row">
@@ -71,7 +70,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, 
                                 </label>
                             </div>
                             <div className="stFormButtons row">
-                                <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!(state.card && state.customer.options.terms && validate())} >Submit payment</button>
+                                <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Submit payment</button>
                             </div>
                             <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
                         </div>
