@@ -46,13 +46,13 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, setShip
                                 </div>
                                 <div className="st-checkout-spaced col s12">
                                     <label>
-                                        <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
+                                        <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
                                         <span>Skip the trial period and start immediately</span>
                                     </label>
                                 </div>
                                 <div class="st-checkout-spaced col s12">
                                     <label>
-                                        <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
+                                        <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
                                         <span>Add me to the SupertutorTV mailing list for future discounts and offers</span>
                                     </label>
                                 </div>
@@ -64,7 +64,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, setShip
                         <div id="stPricingCardElement" className="col s12"><CardElement onChange={(e) => console.log(e)} /></div>
                         <div className="st-checkout-spaced required col s12">
                             <label>
-                                <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={updateInp} required/>
+                                <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
                                 <span>I have read SupertutorTV's Terms & Conditions</span>
                             </label>
                         </div>
