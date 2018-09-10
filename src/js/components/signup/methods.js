@@ -73,6 +73,8 @@ export function setChecker(el) {
         val = tar.value,
         p = tar.classList.contains('tax') ? 'tax' : 'coupon'
 
+        tar.classList.remove('valid','invalid')
+
     if (tar.type === 'checkbox') {
         let params = tar.name.split('|')
         this.setState({
@@ -83,7 +85,9 @@ export function setChecker(el) {
             })
         })
     } else {
-        if (val === '') this.state.pricing[p].value = val
+        if (val === '') {
+            this.state.pricing[p].value = val
+        }
 
         if (val !== this.state.pricing[p].value)
             _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
