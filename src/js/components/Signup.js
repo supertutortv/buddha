@@ -117,7 +117,8 @@ export default class Signup extends React.Component {
                             calculatePricing={this.calculatePricing}
                             updateInp={this.updateInp} 
                             setChecker={this.setChecker}
-                            toPrice={this.toPrice}
+                            toPrice={this.toPrice} 
+                            submitPayment={this.submitPayment}
                         />
                     </Elements>
                 </React.Fragment>
