@@ -21,7 +21,7 @@ const PricingTable = ({state,setChecker,toPrice}) => {
                 <div className="input-field col s9">
                     <input class="browser-default coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker} />
                 </div>
-                <div id="stPricingTotal" className="col s3">{'$'+toPrice(state.session.pricing.total)}</div>
+                <div id="stPricingTotal" className="col s3">{'$'+toPrice(state.pricing.total)}</div>
             </div>
         </div>
     )
