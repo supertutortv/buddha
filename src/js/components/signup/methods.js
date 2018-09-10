@@ -69,7 +69,7 @@ export function createAccount(e) {
 
 // setChecker
 export function setChecker({target}) {
-    console.log(target)
+    console.log(target.value)
 }
 
 // setPlan
