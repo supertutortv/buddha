@@ -73,17 +73,27 @@ export function setChecker(el) {
         val = tar.value,
         p = tar.classList.contains('tax') ? 'tax' : 'coupon'
 
-    console.log(tar.type)
-
-    if (val === '') this.state.pricing[p].value = val
-
-    if (val !== this.state.pricing[p].value)
-        _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
-            if (d.code === 'signup_error') return tar.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
-            this.setState({pricing: Object.assign(this.state.pricing,{[p]: d.update})})
+    if (tar.type === 'checkbox') {
+        let params = tar.name.split('|')
+        this.setState({
+            customer: Object.assign(this.state.customer,{
+                options: Object.assign(this.state.customer.options,{
+                    [params[params.length-1]] : tar.checked
+                })
+            })
         })
+    } else {
+        if (val === '') this.state.pricing[p].value = val
 
-    this.updateInp(el)
+        if (val !== this.state.pricing[p].value)
+            _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
+                if (d.code === 'signup_error') return tar.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
+                this.setState({pricing: Object.assign(this.state.pricing,{[p]: d.update})})
+            })
+
+        this.updateInp(el)
+    }
+    return true
 }
 
 // setPlan
