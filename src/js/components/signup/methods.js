@@ -149,11 +149,24 @@ export function submitPayment(e,stripe) {
     e.preventDefault()
     if (typeof stripe === 'undefined') return false
     _st.loading = true
+
+    var cus = this.state.customer
     stripe.createToken().then(({token: t}) => {
-        console.log(t)
-        _st.loading = false
+        if (t.error) return this.setState({
+            error: {
+                id: 'stripeError',
+                message: t.error.message
+            }
+        })
+
+        cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
+        cus.token = t.id
+
+        return _st.http.post('/signup/pay',this.state,(d) => {
+            console.log(d)
+        })
+        
     })
-    /* _st.http.post('/signup/pay',dt,cb) */
 }
 
 // toPrice

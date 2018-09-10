@@ -32,7 +32,8 @@ export default class Signup extends React.Component {
                     address: {}
                 },
                 options: {},
-                token: ''
+                token: '',
+                nameOnCard: ''
             },
             pricing: {
                 total: 0,

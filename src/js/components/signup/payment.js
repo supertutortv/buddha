@@ -34,6 +34,9 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                     <div className="input-field required col s12 m6 stInputHalfRight">
                                         <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                                     </div>
+                                    <div className="input-field col s12 m6 offset-m3">
+                                        <input type="tel" name="customer|shipping|phone" pattern="(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}" onBlur={updateInp} required />
+                                    </div>
                                 </fieldset>
                             </div>
                             <div id="stSignupFormOptions"className="row">
@@ -62,6 +65,9 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                         </div>
                         <div id="stSignupPricing" className="col s12 m4 z-depth-3">
                             <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
+                            <div className="input-field required row">
+                                <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
+                            </div>
                             <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
                             <div className="stTermsRow row">
                                 <label>
