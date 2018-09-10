@@ -30,6 +30,17 @@ html
             background-color: black(.85)
             color: white(.85)
 
+        [type="checkbox"]+span:not(.lever)
+            line-height: 1em
+            height: 1em
+            padding-left: $huge
+
+            &:after
+                height: 1em
+                width: 1em
+                border: 2px solid azure()
+                background-color: azure()
+
         .row, .col, .col .row, .row .col
             margin-top: 0
             margin-bottom: 0
