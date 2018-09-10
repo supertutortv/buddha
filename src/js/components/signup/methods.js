@@ -14,7 +14,7 @@ export function calculatePricing() {
 
     if ( discprice > 0 ) {
         pricing.total -= discprice
-        items.push({name: 'Discount '+pricing.coupon.id, amt: '-'+discprice})
+        items.push({name: 'Discount ('+pricing.coupon.id+')', amt: '-'+discprice})
     }
 
     if ( pricing.tax.value > 0 ) {
@@ -77,7 +77,6 @@ export function setChecker(el) {
 
     if (val !== this.state.pricing[p].value)
         _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
-            console.log(d)
             if (d.code === 'signup_error') return tar.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
             this.setState({pricing: Object.assign(this.state.pricing,{[p]: d.update})})
         })
