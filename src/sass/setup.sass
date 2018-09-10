@@ -30,10 +30,12 @@ html
             background-color: black(.85)
             color: white(.85)
 
-        [type="checkbox"].filled-in:checked + span:not(.lever)
+        [type="checkbox"] + span:not(.lever)
             line-height: 1em
             height: 1em
             padding-left: $huge
+
+        [type="checkbox"].filled-in:checked + span:not(.lever)
 
             &:after
                 height: 1em
