@@ -3,7 +3,7 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, setShipping, calculatePricing, validate}) => {
+const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, setOutcome, setShipping, calculatePricing}) => {
     calculatePricing()
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
@@ -62,7 +62,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, setChecker, 
                         </div>
                         <div id="stSignupPricing" className="col s12 m4 z-depth-3">
                             <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
-                            <div id="stPricingCardElement" className="row"><CardElement onChange={(e) => console.log(e)} /></div>
+                            <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
                             <div className="stTermsRow row">
                                 <label>
                                     <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>

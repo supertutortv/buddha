@@ -132,7 +132,8 @@ export function setShipping(el) {
 
 // submitPayment
 export function submitPayment() {
-    _st.http.post('/signup/pay',dt,cb)
+    console.log(this.state)
+    /* _st.http.post('/signup/pay',dt,cb) */
 }
 
 // toPrice
