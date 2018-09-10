@@ -61,9 +61,9 @@ export function createAccount(e) {
             }
         })
 
-        Object.assign(this.state.customer,d.update)
-
-        return this.changeStep()
+        return this.changeStep({
+            customer: Object.assign(this.state.customer,d.update)
+        })
     })
 }
 

@@ -8,7 +8,7 @@ const PricingTable = ({state,setChecker,toPrice}) => {
                 <div className="col s3">PRICE</div>
             </div>
             <div id="stPricingItems" className="row">
-                {state.session.items.map((item) => {
+                {state.items.map((item) => {
                     return (
                         <div className="row">
                             <div className="col s9">{item.name}</div>
