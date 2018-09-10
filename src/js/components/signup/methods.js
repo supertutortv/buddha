@@ -96,7 +96,13 @@ export function setChecker(el) {
                     this.setState({error: {id: d.code, message: d.message}})
                     return false
                 }
-                this.setState({pricing: Object.assign(this.state.pricing,{[p]: d.update})})
+                this.setState({
+                    pricing: Object.assign(this.state.pricing,{[p]: d.update}),
+                    error: {
+                        id: '',
+                        message: ''
+                    }
+                })
             })
 
         this.updateInp(el)

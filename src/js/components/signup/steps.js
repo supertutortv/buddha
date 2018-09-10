@@ -56,10 +56,10 @@ const Account = ({ createAccount, updateInp, error }) => {
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
                     </div>
-                    <div id="stFormErrors" className="row">{msg}</div>
                     <div className="stFormButtons row">
                         <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
                     </div>
+                    <div id="stFormErrors" className="row">{msg}</div>
                 </form>
             </div>
             <h1>Create your account.</h1>
