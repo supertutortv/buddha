@@ -63,9 +63,7 @@ export function createAccount(e) {
 
         Object.assign(this.state.customer,d.update)
 
-        return this.changeStep({
-            stripe: this.initPayment()
-        })
+        return this.changeStep()
     })
 }
 
