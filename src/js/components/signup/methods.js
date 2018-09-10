@@ -69,21 +69,20 @@ export function createAccount(e) {
 
 // setChecker
 export function setChecker(el) {
-    return console.log(el)
-    /* var {target} = el, 
-        val = target.value,
-        p = target.classList.contains('tax') ? 'tax' : 'coupon'
+    var tar = el.target, 
+        val = tar.value,
+        p = tar.classList.contains('tax') ? 'tax' : 'coupon'
 
     if (val === '') this.state.pricing[p].value = val
 
     if (val !== this.state.pricing[p].value)
         await _st.http.get('/signup/check?'+p+'='+val+'&sig='+this.state.signature, (d) => {
             console.log(d)
-            if (d.code === 'signup_error') return target.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
+            if (d.code === 'signup_error') return tar.classList.add('invalid') && this.setState({error: {id: d.code, message: d.message}})
             this.setState({[pricing[p]]: d.update})
         })
 
-    this.updateInp(el) */
+    this.updateInp(el)
 }
 
 // setPlan
