@@ -97,6 +97,7 @@ export default class Signup extends React.Component {
             return null 
         }
 
+        console.log(this.state)
         const SignupStep = steps[this.steps[this.state.step]]
         return(
             <StripeProvider apiKey={_st.stripe}>
