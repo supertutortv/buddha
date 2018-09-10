@@ -1,5 +1,5 @@
 // calculatePricing
-export function calcluatePricing() {
+export function calculatePricing() {
     var items = [],
         plan = this.state.plan,
         pricing = this.state.pricing
