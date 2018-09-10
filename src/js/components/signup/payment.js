@@ -3,7 +3,8 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker}) => {
+const _Payment = ({updateInp, submitPayment, state, toPrice, setChecker, calculatePricing}) => {
+    calculatePricing()
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (

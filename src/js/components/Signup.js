@@ -98,7 +98,6 @@ export default class Signup extends React.Component {
         }
 
         const SignupStep = steps[this.steps[this.state.step]]
-        if (this.state.plan !== null) this.calculatePricing()
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
@@ -110,12 +109,13 @@ export default class Signup extends React.Component {
                     </div>
                     <Elements>
                         <SignupStep 
+                            state={this.state} 
                             error={this.state.error} 
                             setPlan={this.setPlan} 
                             changeStep={this.changeStep} 
                             createAccount={this.createAccount} 
+                            calculatePricing={this.calculatePricing}
                             updateInp={this.updateInp} 
-                            state={this.state} 
                             setChecker={this.setChecker}
                             toPrice={this.toPrice}
                         />

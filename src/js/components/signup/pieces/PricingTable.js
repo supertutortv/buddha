@@ -5,14 +5,14 @@ const PricingTable = ({state,setChecker,toPrice}) => {
         <div id="stSignupPricingTable" className="col s12">
             <div id="stPricingHeading" className="row">
                 <div className="col s9">ITEM</div>
-                <div className="col s3">PRICE</div>
+                <div className="col s3 right-al">PRICE</div>
             </div>
             <div id="stPricingItems" className="row">
                 {state.items.map((item) => {
                     return (
                         <div className="row">
                             <div className="col s9">{item.name}</div>
-                            <div className="col s3">{toPrice(item.amt)}</div>
+                            <div className="col s3 right-al">{toPrice(item.amt)}</div>
                         </div>
                     )
                 })}
@@ -21,7 +21,7 @@ const PricingTable = ({state,setChecker,toPrice}) => {
                 <div className="input-field col s9">
                     <input class="browser-default coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker} />
                 </div>
-                <div id="stPricingTotal" className="col s3">{'$'+toPrice(state.pricing.total)}</div>
+                <div id="stPricingTotal" className="col s3 right-al">{'$'+toPrice(state.pricing.total)}</div>
             </div>
         </div>
     )
