@@ -1,5 +1,5 @@
 import React from 'react'
-import STStrippedWrapper from '../STStrippedWrapper'
+import STStrippedWrapper from './STStrippedWrapper'
 import { LoginForm } from './login/Forms'
 import * as methods from './login/methods'
 
