@@ -1,6 +1,5 @@
 import React from 'react'
 import STStrippedWrapper from '../STStrippedWrapper'
-import './ResetPassword.sass'
 
 export default class ResetPassword extends React.Component {
     constructor(props) {
