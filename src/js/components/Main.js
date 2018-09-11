@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { DataState } from './StateContext'
+import { DataState } from './courses/StateContext'
 import Header from './Header'
-import Course from './Course'
+import Course from './courses/Course'
 
 export default class Main extends React.Component {
     constructor(props) {
