@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from './Login'
-import Main from '../courses/Main'
+import Main from './Main'
 
 export default class STSecured extends React.Component {
     constructor(props) {
