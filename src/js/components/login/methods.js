@@ -23,7 +23,7 @@ export function setLoginState(e) {
 export function submit(e) {
     e.preventDefault()
     _st.loading = true
-    _st.auth.submit(this.state.lostPw ? '/auth/lostpw' : '/auth/token',this.state.creds,(d) => {
+    _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':
                 return this.setState({
