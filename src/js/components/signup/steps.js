@@ -46,6 +46,12 @@ const Plans = ({ setPlan }) => {
 const Account = ({ createAccount, updateInp, error }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
     return (
+        <React.Fragment>
+        <div id="stSignupDiagSep" className="row">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
+                <polygon points="0,0 0,100 1920,0 "></polygon>
+            </svg>
+        </div>
         <div id="stSignupAccount" class="stSignupStep row">
             <div class="stSignupInner row">
                 <form id="stAccountForm" className="stFormWrapper col s12 m6 offset-m3" onSubmit={createAccount}>
@@ -72,6 +78,7 @@ const Account = ({ createAccount, updateInp, error }) => {
             <h1>Create your account.</h1>
             <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
         </div>
+        </React.Fragment>
     )
 }
 
