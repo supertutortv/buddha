@@ -173,7 +173,12 @@ export function submitPayment(e,stripe) {
                 },() => _st.loading = false)
             }
 
-            console.log(d.response)
+            let res = d.response
+            this.changeStep({
+                thankYou: {
+                    id: res.id.replace('in_','')
+                }
+            })
         })
         
     })
