@@ -172,6 +172,8 @@ export function submitPayment(e,stripe) {
                     }
                 },() => _st.loading = false)
             }
+
+            console.log(d.response)
         })
         
     })
