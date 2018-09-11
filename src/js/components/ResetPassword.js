@@ -1,13 +1,6 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
 
-const
-
-/* const ResetPassword = ({setLoginState}) => 
-    (<div>
-        
-    </div>) */
-
 export default class ResetPassword extends React.Component {
     constructor(props) {
         super(props)
@@ -30,7 +23,7 @@ export default class ResetPassword extends React.Component {
         if (this.props.match.params.key) return null
         return (
             <STStrippedWrapper error={this.state.error}>
-                <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
+                <form id="stLoginWrapper" className="stFormWrapper row">
                 <div id="stLoginHeader" className="stFormHeader col s12">
                     <h1>Reset your password</h1>
                 </div>
