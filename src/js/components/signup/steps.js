@@ -94,7 +94,7 @@ const ThankYou = ({state}) => {
                     </div>
                 </div>
                 <div className="stFormButtons row">
-                    <a id="stBtn_thankyou" className="stFormButton btn waves-effect waves-light" onClick={() => <Redirect to="/dashboard" />} >Go to dashboard</a>
+                    <a id="stBtn_thankyou" className="stFormButton btn waves-effect waves-light" onClick={<Redirect to="/dashboard" />} >Go to dashboard</a>
                 </div>
             </div>
         </div>
