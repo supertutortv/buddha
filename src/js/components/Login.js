@@ -1,6 +1,6 @@
 import React from 'react'
 import STStrippedWrapper from './STStrippedWrapper'
-import { LoginForm, ResetPassword } from './login/Forms'
+import { LoginForm } from './login/Forms'
 import * as methods from './login/methods'
 
 export default class Login extends React.Component {
@@ -46,11 +46,7 @@ export default class Login extends React.Component {
         return (
             <STStrippedWrapper error={this.state.error}>
             <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
-                <div className="stOverlay"></div>
-                {this.state.lostPw ? 
-                    <ResetPassword resetSent={this.state.resetSent} setLoginState={this.setLoginState} /> : 
-                    <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-                }
+                <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
             </form>
             </STStrippedWrapper>
         )

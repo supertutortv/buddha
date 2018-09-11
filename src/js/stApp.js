@@ -17,6 +17,7 @@ ReactDOM.render(
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route exact path='/signup/:step?' component={Signup} />
             <Route exact path='/mu/:teacher' component={MU} />
+            <Route exact path='/password/reset/:key?' component={ResetPassword} />
             <Route exact path='/login' component={STSecured} />
             <Route path='/' render={(p) => <STSecured {...p} />} />
         </Switch>
