@@ -1,5 +1,6 @@
 import React from 'react'
 import STStrippedWrapper from '../STStrippedWrapper'
+import './ResetPassword.sass'
 
 export default class ResetPassword extends React.Component {
     constructor(props) {
@@ -16,15 +17,15 @@ export default class ResetPassword extends React.Component {
 
     componentDidMount() {
         //if (this.props.match.params.key)
+        _st.bodyClass = 'passwordReset'
         _st.loading = false
     }
 
     render() {
         if (this.props.match.params.key) return null
         return (
-            <STStrippedWrapper error={this.state.error}>
-                <form id="stLoginWrapper" className="stFormWrapper row">
-                <div id="stLoginHeader" className="stFormHeader col s12">
+            <form id="stPasswordWrapper" className="stFormWrapper row">
+                <div id="stPasswordHeader" className="stFormHeader col s12">
                     <h1>Reset your password</h1>
                 </div>
                 <div id="stLoginCredentials" className="col s12">
@@ -35,8 +36,7 @@ export default class ResetPassword extends React.Component {
                 <div className="stFormButtons col s12">
                     <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
                 </div>
-                </form>
-            </STStrippedWrapper>
+            </form>
         )
     }
 }
