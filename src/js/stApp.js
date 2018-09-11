@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import allYourBase from './components/allYourBase'
 import Signup from './components/Signup'
 import MU from './components/MU'
+import ResetPassword from './components/ResetPassword'
 import STSecured from './components/STSecured'
 import STTV from './_st'
 
