@@ -91,7 +91,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         let {step} = this.props.match.params
         if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
             this.props.history.replace('/signup/plans')
