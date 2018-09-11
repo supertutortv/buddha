@@ -163,7 +163,15 @@ export function submitPayment(e,stripe) {
         cus.token = t.id
 
         return _st.http.post('/signup/pay',this.state,(d) => {
-            console.log(d)
+            if (d.code === 'stripeError') {
+                var ecode = d.data.decline_code || d.data.code
+                return this.setState({
+                    error: {
+                        id: ecode,
+                        message: d.data.message
+                    }
+                },() => _st.loading = false)
+            }
         })
         
     })
