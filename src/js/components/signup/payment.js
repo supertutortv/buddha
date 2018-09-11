@@ -35,7 +35,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                         <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                                     </div>
                                     <div className="input-field col s12 m6 offset-m3">
-                                        <input className="browser-default validate" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
+                                        <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
                                     </div>
                                 </fieldset>
                             </div>
