@@ -151,7 +151,7 @@ export function submitPayment(e,stripe) {
     _st.loading = true
 
     var cus = this.state.customer
-    stripe.createToken().then(({token: t}) => {
+    stripe.createToken({name: cus.nameOnCard}).then(({token: t}) => {
         if (t.error) return this.setState({
             error: {
                 id: 'stripeError',
