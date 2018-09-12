@@ -4,7 +4,7 @@ import STDialogCentered from './STDialogCentered'
 const SendForm = ({sent, sentMsg}) => {
     if (sent) {
         return (
-            <div className="stPasswordSent"><strong>{sentMsg}</strong></div>
+            <div className="stResetSent"><strong>{sentMsg}</strong></div>
         )
     } else {
         return (
