@@ -37,8 +37,13 @@ export default class ResetPassword extends React.Component {
 
     sendReset(e) {
         e.preventDefault()
-        var formData = new FormData(e.target)
-        console.log(formData.get('email'))
+        var formData = new FormData(e.target),
+            obj = {}
+
+        for(var pair of formData.entries()) {
+            obj[pair[0]] = pair[1]
+        }
+        console.log(obj)
         /* _st.http.post('/auth/reset',this.state.customer.account,(d) => {
             if (d.code === 'signupError') return this.setState({
                 error: {
