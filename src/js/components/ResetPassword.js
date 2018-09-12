@@ -113,7 +113,7 @@ export default class ResetPassword extends React.Component {
         }
         
         _st.http[method]('/auth/reset',obj,(d) => {
-            if (d.code === 'signupError') return this.setState({
+            if (d.code === 'resetError') return this.setState({
                 error: {
                     id: d.code,
                     message: d.message
