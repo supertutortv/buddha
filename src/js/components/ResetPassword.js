@@ -27,7 +27,7 @@ const SendForm = ({sent, sentMsg}) => {
     }
 }
 
-const ResetForm = ({passMatch,sent}) => {
+const ResetForm = ({passMatch,sent,sentMsg}) => {
     if (sent) {
         return (
             <div className="stResetSent">
