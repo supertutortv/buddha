@@ -80,7 +80,6 @@ export default class ResetPassword extends React.Component {
         var obj = {}
         _st.bodyClass = 'passwordReset'
         if (this.state.key !== null)
-            console.log('check token')
             _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
                 if (d.code === 'pwError')
                     this.props.history.replace('/password/reset')
@@ -89,9 +88,12 @@ export default class ResetPassword extends React.Component {
                         reset: true,
                         key: this.props.match.params.key
                     }
+                console.log('check token')
             })
 
-        this.setState(Object.assign({init:true},obj))
+        var newObj = Object.assign({init:true},obj)
+        console.log(newObj)
+        this.setState(newObj)
         _st.loading = false
     }
 
