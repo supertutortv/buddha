@@ -51,16 +51,16 @@ export default class ResetPassword extends React.Component {
         if (this.props.match.params.key) return null
         return (
             <STDialogCentered error={this.state.error}>
-            <form id="stPasswordWrapper" className="stFormWrapper row" onSubmit={this.sendReset}>
+            <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
                 <div id="stPasswordHeader" className="stFormHeader">
                     <h1>Reset your password</h1>
                 </div>
-                <div id="stLoginCredentials" className="col s12">
-                    <div className="input-field col s12">
+                <div className="stLoginCredentials">
+                    <div className="input-field">
                         <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" />
                     </div>
                 </div>
-                <div className="stFormButtons col s12">
+                <div className="stFormButtons">
                     <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
                 </div>
             </form>
