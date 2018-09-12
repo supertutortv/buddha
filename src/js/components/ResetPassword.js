@@ -1,5 +1,5 @@
 import React from 'react'
-import STStrippedWrapper from './STStrippedWrapper'
+import STDialogCentered from './STDialogCentered'
 
 const SendForm = () => {
 
@@ -50,8 +50,9 @@ export default class ResetPassword extends React.Component {
     render() {
         if (this.props.match.params.key) return null
         return (
+            <STDialogCentered error={this.state.error}>
             <form id="stPasswordWrapper" className="stFormWrapper row" onSubmit={this.sendReset}>
-                <div id="stPasswordHeader" className="stFormHeader col s12">
+                <div id="stPasswordHeader" className="stFormHeader">
                     <h1>Reset your password</h1>
                 </div>
                 <div id="stLoginCredentials" className="col s12">
@@ -63,6 +64,7 @@ export default class ResetPassword extends React.Component {
                     <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
                 </div>
             </form>
+            </STDialogCentered>
         )
     }
 }
