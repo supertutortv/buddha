@@ -25,8 +25,25 @@ const SendForm = ({sent, sentMsg}) => {
     }
 }
 
-const ResetForm = () => {
-
+const ResetForm = ({passMatch}) => {
+    return (
+        <React.Fragment>
+            <div className="stPasswordHeader">
+                <h1>Enter your new password</h1>
+            </div>
+            <div className="stPasswordCredentials">
+                <div className="input-field">
+                    <input className="browser-default validate" id="password1" type="password" name="password1" placeholder="New Password" required />
+                </div>
+                <div className="input-field">
+                    <input className="browser-default validate" id="password2" type="password" name="password2" placeholder="Confirm Password" onBlur={passMatch} required />
+                </div>
+            </div>
+            <div className="stFormButtons">
+                <button className="stFormButton btn waves-effect waves-light">Change password</button>
+            </div>
+        </React.Fragment>
+    )
 }
 
 export default class ResetPassword extends React.Component {
@@ -44,11 +61,17 @@ export default class ResetPassword extends React.Component {
         }
 
         this.sendReset = this.sendReset.bind(this)
+        this.passMatch = this.passMatch.bind(this)
     }
 
     componentDidMount() {
         _st.bodyClass = 'passwordReset'
-        if (this.props.match.params.key) return console.log(this.props.match.params.key)
+
+        if (this.props.match.params.key) {
+            _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
+                console.log(d)
+            })
+        }
         
         _st.loading = false
     }
@@ -57,17 +80,31 @@ export default class ResetPassword extends React.Component {
         _st.loading = false
     }
 
+    passMatch() {
+        let p1 = document.getElementById('password1'),
+            p2 = document.getElementById('password2')
+        p2.classList.remove('invalid')
+
+        if (p2.value !== p1.value) return this.setState({
+            error: {
+                id: 'passNoMatch',
+                message: 'The passwords do not match'
+            }
+        }, () => p2.classList.add('invalid'))
+    }
+
     sendReset(e) {
         _st.loading = true
         e.preventDefault()
         var formData = new FormData(e.target),
-            obj = {}
+            obj = {},
+            method = reset ? 'put' : 'post'
 
         for(var pair of formData.entries()) {
             obj[pair[0]] = pair[1]
         }
         
-        _st.http.post('/auth/reset',obj,(d) => {
+        _st.http[method]('/auth/reset',obj,(d) => {
             if (d.code === 'signupError') return this.setState({
                 error: {
                     id: d.code,
@@ -87,7 +124,7 @@ export default class ResetPassword extends React.Component {
         return (
             <STDialogCentered error={this.state.error}>
                 <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                    {this.state.reset ? <ResetForm /> : <SendForm {...this.state} />}
+                    {this.state.reset ? <ResetForm passMatch={this.passMatch}/> : <SendForm {...this.state} />}
                 </form>
             </STDialogCentered>
         )
