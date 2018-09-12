@@ -73,6 +73,7 @@ export default class ResetPassword extends React.Component {
                     this.props.history.replace('/password/reset')
                 else
                     this.setState({
+                        reset: true,
                         key: this.props.match.params.key
                     })
             })
