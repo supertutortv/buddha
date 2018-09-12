@@ -8,6 +8,7 @@ const SendForm = ({sent, sentMsg}) => {
             <div>{sentMsg}</div>
         )
     } else {
+        return (
         <React.Fragment>
             <div className="stPasswordHeader">
                 <h1>Reset your password</h1>
@@ -21,6 +22,7 @@ const SendForm = ({sent, sentMsg}) => {
                 <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
             </div>
         </React.Fragment>
+        )
     }
 }
 
