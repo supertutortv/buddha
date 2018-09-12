@@ -51,9 +51,10 @@ export default class ResetPassword extends React.Component {
         super(props)
 
         this.state = {
+            init: false,
             sent: false,
             reset: false,
-            key: null,
+            key: this.props.match.params.key || null,
             sentMsg: '',
             error: {
                 id: '',
@@ -66,17 +67,20 @@ export default class ResetPassword extends React.Component {
     }
 
     componentDidMount() {
+        var obj = {}
         _st.bodyClass = 'passwordReset'
         if (this.props.match.params.key)
             return _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
                 if (d.code === 'pwError')
                     this.props.history.replace('/password/reset')
                 else
-                    this.setState({
+                    obj = {
                         reset: true,
                         key: this.props.match.params.key
-                    })
+                    }
             })
+
+        this.setState(Object.assign({init:true},obj))
         _st.loading = false
     }
 
@@ -124,11 +128,11 @@ export default class ResetPassword extends React.Component {
     }
 
     render() {
-        if (this.props.match.params.key) return null
+        if (!this.state.init) return null
         return (
             <STDialogCentered error={this.state.error}>
                 <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                    {this.state.reset ? <ResetForm passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+                    {this.state.key ? <ResetForm passMatch={this.passMatch}/> : <SendForm {...this.state} />}
                 </form>
             </STDialogCentered>
         )
