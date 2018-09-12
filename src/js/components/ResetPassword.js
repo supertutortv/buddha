@@ -47,8 +47,9 @@ export default class ResetPassword extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.key) console.log(this.props.match.params.key)
         _st.bodyClass = 'passwordReset'
+        if (this.props.match.params.key) return console.log(this.props.match.params.key)
+        
         _st.loading = false
     }
 
