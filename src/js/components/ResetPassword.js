@@ -128,6 +128,7 @@ export default class ResetPassword extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         if (!this.state.init) return null
         return (
             <STDialogCentered error={this.state.error}>
