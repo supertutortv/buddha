@@ -57,7 +57,7 @@ export default class ResetPassword extends React.Component {
                 </div>
                 <div className="stLoginCredentials">
                     <div className="input-field">
-                        <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" />
+                        <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
                     </div>
                 </div>
                 <div className="stFormButtons">
