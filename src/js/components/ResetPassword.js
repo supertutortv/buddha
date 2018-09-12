@@ -10,7 +10,7 @@ const SendForm = ({sent, sentMsg}) => {
         return (
         <React.Fragment>
             <div className="stPasswordHeader">
-                <h1>Reset your password</h1>
+                <h1>Forgot your password?</h1>
             </div>
             <div className="stPasswordCredentials">
                 <div className="input-field">
@@ -18,7 +18,7 @@ const SendForm = ({sent, sentMsg}) => {
                 </div>
             </div>
             <div className="stFormButtons">
-                <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
+                <button className="stFormButton btn waves-effect waves-light">Send reset link</button>
             </div>
         </React.Fragment>
         )
