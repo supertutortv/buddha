@@ -4,7 +4,9 @@ import STDialogCentered from './STDialogCentered'
 const SendForm = ({sent, sentMsg}) => {
     if (sent) {
         return (
-            <div className="stResetSent"><strong>{sentMsg}</strong></div>
+            <div className="stResetSent">
+                <strong>{sentMsg}</strong>
+            </div>
         )
     } else {
         return (
@@ -104,6 +106,11 @@ export default class ResetPassword extends React.Component {
     sendReset(e) {
         _st.loading = true
         e.preventDefault()
+
+        this.state.error = {
+            id: '',
+            message: ''
+        }
         var formData = new FormData(e.target),
             obj = {},
             method = this.state.reset ? 'put' : 'post'
