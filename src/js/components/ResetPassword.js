@@ -128,8 +128,7 @@ export default class ResetPassword extends React.Component {
         }
         
         _st.http[method]('/auth/reset',obj,(d) => {
-            console.log(d)
-            /* if (d.code === 'resetError') return this.setState({
+            if (d.code === 'resetError') return this.setState({
                 error: {
                     id: d.code,
                     message: d.message
@@ -139,12 +138,11 @@ export default class ResetPassword extends React.Component {
             this.setState({
                 sent: true,
                 sentMsg: d.message
-            }) */
+            })
         })
     }
 
     render() {
-        console.log(this.state)
         if (!this.state.init) return null
         return (
             <STDialogCentered error={this.state.error}>
