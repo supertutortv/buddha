@@ -52,7 +52,7 @@ export default class ResetPassword extends React.Component {
         return (
             <STDialogCentered error={this.state.error}>
             <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                <div id="stPasswordHeader" className="stFormHeader">
+                <div className="stPasswordHeader">
                     <h1>Reset your password</h1>
                 </div>
                 <div className="stLoginCredentials">
