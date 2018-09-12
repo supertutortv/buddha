@@ -2,7 +2,6 @@ import React from 'react'
 import STDialogCentered from './STDialogCentered'
 
 const SendForm = ({sent, sentMsg}) => {
-    console.log(sent, sentMsg)
     if (sent) {
         return (
             <div>{sentMsg}</div>
