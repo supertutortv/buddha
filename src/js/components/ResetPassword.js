@@ -66,8 +66,6 @@ export default class ResetPassword extends React.Component {
     }
 
     componentDidMount() {
-        _st.bodyClass = 'passwordReset'
-
         if (this.props.match.params.key)
             return _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
                 if (d.code === 'pwError')
@@ -77,7 +75,7 @@ export default class ResetPassword extends React.Component {
                         key: this.props.match.params.key
                     })
             })
-        
+        _st.bodyClass = 'passwordReset'
         _st.loading = false
     }
 
