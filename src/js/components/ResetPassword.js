@@ -27,25 +27,33 @@ const SendForm = ({sent, sentMsg}) => {
     }
 }
 
-const ResetForm = ({passMatch}) => {
-    return (
-        <React.Fragment>
-            <div className="stPasswordHeader">
-                <h1>Enter your new password</h1>
+const ResetForm = ({passMatch,sent}) => {
+    if (sent) {
+        return (
+            <div className="stResetSent">
+                <strong>{sentMsg}<Link to="/login">Sign In</Link></strong>
             </div>
-            <div className="stPasswordCredentials">
-                <div className="input-field">
-                    <input className="browser-default validate" id="password1" type="password" name="password1" placeholder="New Password" required />
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <div className="stPasswordHeader">
+                    <h1>Enter your new password</h1>
                 </div>
-                <div className="input-field">
-                    <input className="browser-default validate" id="password2" type="password" name="password2" placeholder="Confirm Password" onBlur={passMatch} required />
+                <div className="stPasswordCredentials">
+                    <div className="input-field">
+                        <input className="browser-default validate" id="password1" type="password" name="password1" placeholder="New Password" required />
+                    </div>
+                    <div className="input-field">
+                        <input className="browser-default validate" id="password2" type="password" name="password2" placeholder="Confirm Password" onBlur={passMatch} required />
+                    </div>
                 </div>
-            </div>
-            <div className="stFormButtons">
-                <button className="stFormButton btn waves-effect waves-light">Change password</button>
-            </div>
-        </React.Fragment>
-    )
+                <div className="stFormButtons">
+                    <button className="stFormButton btn waves-effect waves-light">Change password</button>
+                </div>
+            </React.Fragment>
+        )
+    }
 }
 
 export default class ResetPassword extends React.Component {
@@ -112,7 +120,7 @@ export default class ResetPassword extends React.Component {
             message: ''
         }
         var formData = new FormData(e.target),
-            obj = {},
+            obj = this.state.reset ? {key: this.state.key} : {},
             method = this.state.reset ? 'put' : 'post'
 
         for(var pair of formData.entries()) {
@@ -120,7 +128,8 @@ export default class ResetPassword extends React.Component {
         }
         
         _st.http[method]('/auth/reset',obj,(d) => {
-            if (d.code === 'resetError') return this.setState({
+            console.log(d)
+            /* if (d.code === 'resetError') return this.setState({
                 error: {
                     id: d.code,
                     message: d.message
@@ -130,17 +139,16 @@ export default class ResetPassword extends React.Component {
             this.setState({
                 sent: true,
                 sentMsg: d.message
-            })
+            }) */
         })
     }
 
     render() {
-        console.log(this.state)
         if (!this.state.init) return null
         return (
             <STDialogCentered error={this.state.error}>
                 <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                    {this.state.key ? <ResetForm passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+                    {this.state.key ? <ResetForm {...this.state} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
                 </form>
             </STDialogCentered>
         )
