@@ -81,13 +81,12 @@ export default class ResetPassword extends React.Component {
         _st.bodyClass = 'passwordReset'
         if (this.state.key !== null) {
             _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
-                if (d.code === 'pwError')
-                    this.props.history.replace('/password/reset')
-                else
-                    obj = {
-                        reset: true,
-                        key: this.props.match.params.key
-                    }
+                if (d.code === 'pwError') return this.props.history.replace('/password/reset')
+
+                obj = {
+                    reset: true,
+                    key: this.props.match.params.key
+                }
                 console.log('check token')
             })
         }
