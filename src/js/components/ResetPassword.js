@@ -1,8 +1,27 @@
 import React from 'react'
 import STDialogCentered from './STDialogCentered'
 
-const SendForm = () => {
-
+const SendForm = ({sent, sentMsg}) => {
+    console.log(sent, sentMsg)
+    if (sent) {
+        return (
+            <div>{sentMsg}</div>
+        )
+    } else {
+        <React.Fragment>
+            <div className="stPasswordHeader">
+                <h1>Reset your password</h1>
+            </div>
+            <div className="stPasswordCredentials">
+                <div className="input-field">
+                    <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
+                </div>
+            </div>
+            <div className="stFormButtons">
+                <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
+            </div>
+        </React.Fragment>
+    }
 }
 
 const ResetForm = () => {
@@ -15,7 +34,8 @@ export default class ResetPassword extends React.Component {
 
         this.state = {
             sent: false,
-            creds: {},
+            reset: false,
+            sentMsg: '',
             error: {
                 id: '',
                 message: ''
@@ -26,7 +46,7 @@ export default class ResetPassword extends React.Component {
     }
 
     componentDidMount() {
-        //if (this.props.match.params.key)
+        if (this.props.match.params.key) console.log(this.props.match.params.key)
         _st.bodyClass = 'passwordReset'
         _st.loading = false
     }
@@ -36,6 +56,7 @@ export default class ResetPassword extends React.Component {
     }
 
     sendReset(e) {
+        _st.loading = true
         e.preventDefault()
         var formData = new FormData(e.target),
             obj = {}
@@ -52,7 +73,10 @@ export default class ResetPassword extends React.Component {
                 }
             })
 
-            console.log(d)
+            this.setState({
+                sent: true,
+                sentMsg: d.message
+            })
         })
     }
 
@@ -61,17 +85,7 @@ export default class ResetPassword extends React.Component {
         return (
             <STDialogCentered error={this.state.error}>
                 <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                    <div className="stPasswordHeader">
-                        <h1>Reset your password</h1>
-                    </div>
-                    <div className="stPasswordCredentials">
-                        <div className="input-field">
-                            <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
-                        </div>
-                    </div>
-                    <div className="stFormButtons">
-                        <button className="stFormButton btn waves-effect waves-light">Reset your password</button>
-                    </div>
+                    {this.state.reset ? <ResetForm /> : <SendForm {...this.state} />}
                 </form>
             </STDialogCentered>
         )
