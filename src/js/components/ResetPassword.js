@@ -79,7 +79,7 @@ export default class ResetPassword extends React.Component {
     componentDidMount() {
         var obj = {}
         _st.bodyClass = 'passwordReset'
-        if (this.props.match.params.key)
+        if (this.state.key)
             _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
                 if (d.code === 'pwError')
                     this.props.history.replace('/password/reset')
