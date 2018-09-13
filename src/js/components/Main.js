@@ -40,6 +40,7 @@ export default class Main extends React.Component {
     }
 
     render() {
+        if (this.state.data === null) return null
         return(
             <DataState.Provider value={this.state.data}>
                 <div id="stAppInner">
