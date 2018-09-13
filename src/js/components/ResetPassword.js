@@ -32,7 +32,7 @@ const ResetForm = ({passMatch,sent,sentMsg}) => {
     if (sent) {
         return (
             <div className="stResetSent">
-                <strong>{sentMsg}<Link to="/login">Sign In</Link></strong>
+                <strong>{sentMsg}<Link to="/login">Sign In</Link>.</strong>
             </div>
         )
     } else {
