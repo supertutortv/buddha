@@ -40,6 +40,7 @@ export default class Main extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         if (this.state.data === null) return null
         return(
             <DataState.Provider value={this.state.data}>
