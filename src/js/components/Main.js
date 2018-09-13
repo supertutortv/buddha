@@ -9,11 +9,13 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data : JSON.parse(localStorage.getItem('stCourseData') || '{}'),
+            data : localStorage.getItem('stCourseData'),
             loading : true
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
+
+        if (this.state.data !== null) JSON.parse(this.state.data)
     }
 
     async componentDidMount() {
@@ -40,7 +42,7 @@ export default class Main extends React.Component {
     }
 
     render() {
-        if (!this.state.data.length) return null
+        if (this.state.data === null) return null
 
         return(
             <DataState.Provider value={this.state.data}>
