@@ -16,7 +16,7 @@ export default class Main extends React.Component {
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         _st.bodyClass = 'main'
         var tData = ''
         if (this.state.data === null)
