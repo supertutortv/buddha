@@ -20,7 +20,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-    courseNav: true,
+    courseNav: false,
     depth: '3'
 }
 
