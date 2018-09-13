@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data : localStorage.getItem('stCourseData'),
+            data : JSON.parse(localStorage.getItem('stCourseData') || '{}'),
             loading : true
         }
 
@@ -18,16 +18,16 @@ export default class Main extends React.Component {
 
     async componentDidMount() {
         _st.bodyClass = 'main'
-        var tData = ''
-        if (this.state.data === null)
-            await _st.http.get('/courses/data',(h) => tData = h.data)
-        else if (typeof this.state.data === 'string')
-            tData = JSON.parse(this.state.data)
+        var obj = { loading: false }
 
-        this.setState({
-            data: tData,
-            loading: false
-        },() => this.dataSaveLocal())
+        const dataEmpty = () => {
+            for (var x in this.state.data) { return false }
+            return true
+        }
+
+        if (dataEmpty()) await _st.http.get('/courses/data',(h) => obj.data = h.data)
+
+        this.setState(obj,() => this.dataSaveLocal())
     }
 
     componentDidUpdate() {
@@ -40,7 +40,11 @@ export default class Main extends React.Component {
     }
 
     render() {
-        if (this.state.data === null) return null
+        if (this.state.data === null)
+            return null
+        else
+            JSON.parse(this.state.data)
+
         return(
             <DataState.Provider value={this.state.data}>
                 <div id="stAppInner">
