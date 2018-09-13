@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { DataState } from './courses/StateContext'
 import Header from './Header'
 import Course from './courses/Course'
+import Dashboard from './Dashboard'
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -16,17 +17,22 @@ export default class Main extends React.Component {
     }
 
     async componentDidMount() {
+        _st.bodyClass = 'main'
         var tData = ''
         if (this.state.data === null)
             await _st.http.get('/courses/data',(h) => tData = h.data)
         else if (typeof this.state.data === 'string')
             tData = JSON.parse(this.state.data)
 
-        _st.bodyClass = 'main'
         this.setState({
             data: tData,
             loading: false
         },() => this.dataSaveLocal())
+    }
+
+    componentDidUpdate() {
+        _st.loading = false
+        {/* <div id="stAppVidBlock" className="z-depth-2"></div> */}
     }
 
     dataSaveLocal() {
@@ -34,16 +40,13 @@ export default class Main extends React.Component {
     }
 
     render() {
-        _st.loading = this.state.loading
         return(
             <DataState.Provider value={this.state.data}>
-                <div id="stAppInner" className={this.state.loading ? 'loading' : 'active'}>
+                <div id="stAppInner">
                     <Header courseNav={true}/>
-                    <main id="stAppStage" className="row">
+                    <main id="stAppStage" className={'row ' + this.state.loading ? 'loading' : 'active'}>
                         <Switch>
-                            <Route exact path='/dashboard' render={() => 
-                                <div id="stAppVidBlock" className="z-depth-2"></div>
-                            } />
+                            <Route exact path='/dashboard' component={Dashboard} />
                             <Route exact path='/:course/:section?/:third?/:fourth?/:fifth?' render={props => <Course {...props} />} />
                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                         </Switch>
