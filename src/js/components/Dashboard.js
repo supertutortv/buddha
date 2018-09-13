@@ -6,8 +6,9 @@ const Dashboard = () => {
     return(
         <DataState.Consumer>
             {(data) => {
+                
                 <div className="stDashboardCourses">
-                    {Object.keys(data.courses).map((course) => <div>{course}</div>)}
+                    {console.log(data)/* Object.keys(data.courses).map((course) => <div>{course}</div>) */}
                 </div>
             }}
         </DataState.Consumer>

@@ -16,7 +16,7 @@ export default class Main extends React.Component {
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         _st.bodyClass = 'main'
         var tData = ''
         if (this.state.data === null)
@@ -40,7 +40,6 @@ export default class Main extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         if (this.state.data === null) return null
         return(
             <DataState.Provider value={this.state.data}>
