@@ -8,17 +8,8 @@ const Course = ({location: loc, history: hist, match, setState}) => {
     return(
         <DataState.Consumer>
             {(data) => {
-                try {
-                    const course = match.params.course
-                    console.log(data.courses[course])
-                    return (
-                        <div>{JSON.stringify(data.courses[course])}</div>
-                    )
-                } catch (e) {
-                    return (
-                        <ST404 />
-                    )
-                }
+                console.log(Object.entries(data.courses))
+                return null
             }}
         </DataState.Consumer>
     )
