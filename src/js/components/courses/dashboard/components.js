@@ -7,10 +7,12 @@ export const DBStats = () =>
 export const DBCourses = ({courses}) => {
     return (
         <div className="stDashboardCourses row">
-            {Object.keys(courses).map((course) =>
-                <div>
-                    <Link to={'/'+course} >{courses[course].name}</Link>
-                </div>
+            {Object.keys(courses).map((course) => {
+                return (
+                    <div>
+                        <Link to={'/'+course} >{courses[course].data.name}</Link>
+                    </div>
+                )}
             )}
         </div>
     )
