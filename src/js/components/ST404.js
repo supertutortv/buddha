@@ -1,6 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { GlobalState } from './StateContext'
 
 const ST404 = () => {
     _st.bodyClass = 'notFound'
