@@ -9,7 +9,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
         <DataState.Consumer>
             {(data) => {
                 try {
-                    let course = data.courses[match.params.course]
+                    const course = data.courses[match.params.course]
                     return (
                         <div>{JSON.stringify(course)}</div>
                     )
