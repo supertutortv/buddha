@@ -6,10 +6,11 @@ const Dashboard = () => {
     return(
         <DataState.Consumer>
             {(data) => {
-                
-                <div className="stDashboardCourses">
-                    {Object.keys(data.courses).map((course) => <div>{course}</div>)}
-                </div>
+                return (
+                    <div className="stDashboardCourses">
+                        {Object.keys(data.courses).map((course) => <div>{course}</div>)}
+                    </div>
+                )
             }}
         </DataState.Consumer>
     )
