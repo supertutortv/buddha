@@ -14,7 +14,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         <div>{JSON.stringify(course)}</div>
                     )
                 } catch (e) {
-                    <ST404 />
+                    return (
+                        <ST404 />
+                    )
                 }
             }}
         </DataState.Consumer>
