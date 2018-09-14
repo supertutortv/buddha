@@ -3,15 +3,9 @@ import ReactDOM from 'react-dom'
 import { GlobalState } from './StateContext'
 
 const ST404 = () => {
+    _st.bodyClass = 'notFound'
     return (
-        <GlobalState.Consumer>
-            {global => {
-                global.bodyClass('notfound')
-                return (
-                    <div style={{backgroundColor:'white',height:'100%',width:'100%'}}>Not found</div>
-                )
-            }}
-        </GlobalState.Consumer>
+        <div style={{backgroundColor:'yellow',height:'100%',width:'100%'}}>Not found</div>
     )
 }
 
