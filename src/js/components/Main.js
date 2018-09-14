@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { DataState } from './courses/StateContext'
 import Header from './Header'
 import Course from './courses/Course'
-import Dashboard from './Dashboard'
+import Dashboard from './courses/Dashboard'
 
 export default class Main extends React.Component {
     constructor(props) {

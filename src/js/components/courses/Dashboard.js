@@ -1,15 +1,14 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { DataState } from './courses/StateContext'
+import { DataState } from './StateContext'
+import { DBCourses } from './dashboard/components'
 
 const Dashboard = () => {
     return(
         <DataState.Consumer>
             {(data) => {
                 return (
-                    <div className="stDashboardCourses">
-                        {Object.keys(data.courses).map((course) => <div>{course}</div>)}
-                    </div>
+                    <DBCourses courses={data.courses} />
                 )
             }}
         </DataState.Consumer>
