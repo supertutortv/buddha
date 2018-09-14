@@ -1,9 +1,8 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
 import { DataState } from './StateContext'
 import { DBCourses, DBStats } from './dashboard/components'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     return(
         <DataState.Consumer>
             {(data) => {
