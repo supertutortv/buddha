@@ -5,7 +5,7 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
     const { params } = match
-
+    console.log(params)
     return(
         <DataState.Consumer>
             {(data) => {
