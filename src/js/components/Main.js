@@ -8,26 +8,22 @@ import Dashboard from './Dashboard'
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
+
+        let sCD = localStorage.getItem('stCourseData') || false
+
         this.state = {
-            data : localStorage.getItem('stCourseData'),
+            data: !sCD || JSON.parse(sCD),
             loading : true
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
-
-        if (this.state.data !== null) JSON.parse(this.state.data)
     }
 
     async componentDidMount() {
         _st.bodyClass = 'main'
         var obj = { loading: false }
 
-        const dataEmpty = () => {
-            for (var x in this.state.data) { return false }
-            return true
-        }
-
-        if (dataEmpty()) await _st.http.get('/courses/data',(h) => obj.data = h.data)
+        if (this.state.data === true) await _st.http.get('/courses/data',(h) => obj.data = h.data)
 
         this.setState(obj,() => this.dataSaveLocal())
     }
@@ -42,8 +38,7 @@ export default class Main extends React.Component {
     }
 
     render() {
-        console.log(this.state)
-        if (this.state.data === null) return null
+        if (this.state.data === true) return null
 
         return(
             <DataState.Provider value={this.state.data}>
