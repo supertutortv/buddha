@@ -4,12 +4,12 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 export const DBStats = () => 
     <div className="stDashboardStats row">Stats row</div>
 
-export const DBCourses = ({data}) => {
+export const DBCourses = ({courses}) => {
     return (
         <div className="stDashboardCourses row">
-            {Object.keys(data).map((course) =>
+            {Object.keys(courses).map((course) =>
                 <div>
-                    <Link to={'/'+course} >{data[course].name}</Link>
+                    <Link to={'/'+course} >{courses[course].name}</Link>
                 </div>
             )}
         </div>
