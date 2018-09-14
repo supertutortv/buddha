@@ -10,7 +10,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
             {(data) => {
                 try {
                     const course = match.params.course
-                    if (data.courses[course])
+                    console.log(data.courses[course])
                     return (
                         <div>{JSON.stringify(data.courses[course])}</div>
                     )
