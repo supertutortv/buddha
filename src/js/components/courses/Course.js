@@ -9,7 +9,6 @@ const Course = ({location: loc, history: hist, match, setState}) => {
     return(
         <DataState.Consumer>
             {(data) => {
-
                 try {
                     var activeObj = Object.entries(params).reduce((obj,val) => {
                         if (typeof val[1] === 'undefined')
