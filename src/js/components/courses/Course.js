@@ -13,7 +13,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
 
                 try {
                     Object.entries(params).reduce((obj,val) => {
-                        console.log(val)
+                        console.log(typeof val[1])
                         if (typeof val[1] !== 'undefined') return activeObj = obj[val[0][val[1]]]
                     }, data)
                     console.log(activeObj)
