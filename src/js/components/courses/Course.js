@@ -15,7 +15,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                     Object.values(params).filter(par => par !== undefined).reduce((obj,val) => {
                         if (typeof obj[val] !== 'undefined') return crss = obj[val]
                     }, crss)
-                    
+                    console.log(crss)
                     return null
                 } catch (e) {
                     return (
