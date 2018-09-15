@@ -15,7 +15,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                     )
                 else
                     return (
-                        <div>{JSON.stringify(params)}</div>
+                        <div>{JSON.stringify(Object.values(params))}</div>
                     )
             }}
         </DataState.Consumer>
