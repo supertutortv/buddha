@@ -9,13 +9,13 @@ const Course = ({location: loc, history: hist, match, setState}) => {
     return(
         <DataState.Consumer>
             {(data) => {
-                var crss = data.courses
+                var activeObj = {}
 
                 try {
-                    Object.values(params).filter(par => par !== undefined).reduce((obj,val) => {
-                        if (typeof obj[val] !== 'undefined') return crss = obj[val]
-                    }, crss)
-                    console.log(crss)
+                    Object.entries(params).reduce((obj,val) => {
+                        if (typeof val[1] !== 'undefined') return activeObj = obj[val[0][val[1]]]
+                    }, data)
+                    console.log(activeObj)
                     return null
                 } catch (e) {
                     return (
