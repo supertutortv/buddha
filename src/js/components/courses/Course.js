@@ -12,10 +12,11 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                 var crss = data.courses
 
                 try {
+                    console.log(Object.values(params).filter(String))
                     Object.values(params).filter(String).reduce((obj,val) => {
                         if (typeof obj[val] !== 'undefined') return crss = obj[val]
                     }, crss)
-                    console.log(Object.values(params).filter(String))
+                    
                     return null
                 } catch (e) {
                     return (
