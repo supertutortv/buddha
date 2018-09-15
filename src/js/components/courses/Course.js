@@ -9,22 +9,19 @@ const Course = ({location: loc, history: hist, match, setState}) => {
     return(
         <DataState.Consumer>
             {(data) => {
-                if (!(params.course in data.courses))
+                var crss = data.courses
+
+                try {
+                    Object.values(params).reduce((obj,val) => {
+                        if (typeof obj[val] !== 'undefined') return crss = obj[val]
+                    }, crss)
+                    console.log(crss)
+                    return null
+                } catch (e) {
                     return (
                         <ST404 />
                     )
-                else
-                    var crss = data.courses
-
-                    try {
-                        Object.values(params).reduce((obj,val) => {
-                            if (typeof obj[val] !== 'undefined') return crss = obj[val]
-                        }, crss)
-                    } catch (e) {
-
-                    }
-                    console.log(crss)
-                    return null
+                }
             }}
         </DataState.Consumer>
     )

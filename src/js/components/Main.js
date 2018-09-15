@@ -47,7 +47,7 @@ export default class Main extends React.Component {
                     <main id="stAppStage" className={'row ' + this.state.loading ? 'loading' : 'active'}>
                         <Switch>
                             <Route exact path='/dashboard' component={Dashboard} />
-                            <Route exact path='/:course/:section?/:third?/:fourth?/:fifth?' render={props => <Course setState={this.setState} {...props} />} />
+                            <Route exact path='/:courses/:section?/:third?/:fourth?/:fifth?' render={props => <Course setState={this.setState} {...props} />} />
                             <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                         </Switch>
                     </main>
