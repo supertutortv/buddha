@@ -15,6 +15,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         if (typeof val[1] === 'undefined')
                             return obj
                         else
+                            if ( !(val[1] in obj[val[0]]) ) throw true
                             return obj[val[0]][val[1]]
                     }, data)
                     console.log(activeObj)
