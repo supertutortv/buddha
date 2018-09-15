@@ -14,15 +14,15 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         <ST404 />
                     )
                 else
-                var crss = data.courses
+                    var crss = data.courses
 
-                try {
-                    crss = Object.values(params).reduce((obj,val) => obj[val], crss)
-                } catch (e) {
+                    try {
+                        crss = Object.values(params).reduce((obj,val) => obj[val], crss)
+                    } catch (e) {
 
-                }
-                console.log(crss)
-                return null
+                    }
+                    console.log(crss)
+                    return null
             }}
         </DataState.Consumer>
     )
