@@ -17,7 +17,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                     var crss = data.courses
 
                     try {
-                        crss = Object.values(params).reduce((obj,val) => obj[val], crss)
+                        Object.values(params).reduce((obj,val) => crss = obj[val], crss)
                     } catch (e) {
 
                     }
