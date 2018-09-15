@@ -14,9 +14,8 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         <ST404 />
                     )
                 else
-                    return (
-                        <div>{JSON.stringify(Object.values(params))}</div>
-                    )
+                console.log(Object.values(params).reduce((obj,val) => obj[val], data.courses))
+                return null
             }}
         </DataState.Consumer>
     )
