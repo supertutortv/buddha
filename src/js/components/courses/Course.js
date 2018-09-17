@@ -18,7 +18,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             return obj[val[0]][val[1]]
                     }, data)
                     console.log(activeObj)
-                    return null
+                    return (
+                        <div>{activeObj.type}</div>
+                    )
                 } catch (e) {
                     return (
                         <ST404 />
