@@ -31,6 +31,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             </React.Fragment>
                         )
                 } catch (e) {
+                    console.log(e)
                     return (
                         <ST404 />
                     )
