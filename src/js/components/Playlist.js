@@ -7,13 +7,14 @@ export default class Playlist extends React.Component {
         this.state = {
             obj: this.props.obj
         }
-
-        console.log(this.props)
     }
 
     componentDidMount() {}
 
     render() {
+        const { loc, hist, match } = this.props
+
+        if (loc.search) console.log(loc.search)
         const sbStyle = {
             backgroundColor: this.state.obj.color
         }
