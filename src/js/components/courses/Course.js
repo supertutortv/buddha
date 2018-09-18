@@ -20,7 +20,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                     }, data)
                     if (activeObj.type === 'playlist')
                         return (
-                            <Playlist obj={activeObj} />
+                            <Playlist hist={hist} match={match} obj={activeObj} />
                         )
                     else
                         return (
