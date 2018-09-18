@@ -12,6 +12,9 @@ export default class Playlist extends React.Component {
     componentDidMount() {}
 
     render() {
+        const sbStyle = {
+            backgroundColor: this.state.obj.color
+        }
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
@@ -25,7 +28,7 @@ export default class Playlist extends React.Component {
                         </figure>
                     </div>
                     <div className="stPlaylistColB">
-                        <section className="stPlaylistSidebar">
+                        <section className="stPlaylistSidebar" style={sbStyle}>
                             <div className="stPlaylistSidebarInner">
                                 {JSON.stringify(this.props.obj)}
                             </div>
