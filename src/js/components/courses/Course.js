@@ -1,11 +1,11 @@
 import React from 'react'
 import { DataState } from './StateContext'
+import Playlist from '../Playlist'
 import ST404 from '../ST404'
 import {Switch,Route,Redirect} from 'react-router-dom'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
     const { params } = match
-    console.log(params)
     return(
         <DataState.Consumer>
             {(data) => {
@@ -17,10 +17,14 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             if ( !(val[1] in obj[val[0]]) ) throw true
                             return obj[val[0]][val[1]]
                     }, data)
-                    console.log(activeObj)
-                    return (
-                        <div>{activeObj.type}</div>
-                    )
+                    if (activeObj.type === 'playlist')
+                        return (
+                            <Playlist obj={activeObj} />
+                        )
+                    else
+                        return (
+                            <div>{activeObj.type}</div>
+                        )
                 } catch (e) {
                     return (
                         <ST404 />
