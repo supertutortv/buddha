@@ -17,6 +17,11 @@
         display: -ms-flexbox
         display: flex
 
+        figure
+            line-height: 0
+            margin: 0
+            position: relative
+
         .stPlaylistColA
             -webkit-box-flex: 1
             -webkit-flex: 1
@@ -26,6 +31,13 @@
             flex: 1
             text-align: center
             min-height: 1px
+
+            .stVideoStage
+                display: inline-block
+                padding: 1em
+                max-width: 1025px
+                width: 100%
+                background-color: white()
 
         .stPlaylistColB
             -webkit-align-self: flex-start
