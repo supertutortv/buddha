@@ -16,7 +16,10 @@ export default class Playlist extends React.Component {
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
-                        <figure className="stVideoStage"></figure>
+                        <figure className="stVideoStage">
+                            <header className="stVideoHeader"></header>
+                            <figcaption className="stVideoCaption"></figcaption>
+                        </figure>
                     </div>
                     <div className="stPlaylistColB">{JSON.stringify(this.props.obj)}</div>
                 </div>
