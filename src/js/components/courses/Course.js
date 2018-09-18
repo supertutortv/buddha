@@ -1,5 +1,6 @@
 import React from 'react'
 import { DataState } from './StateContext'
+import Header from '../Header'
 import Playlist from '../Playlist'
 import ST404 from '../ST404'
 import {Switch,Route,Redirect} from 'react-router-dom'
