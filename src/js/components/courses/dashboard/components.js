@@ -10,7 +10,7 @@ export const DBCourses = ({courses}) => {
             {Object.keys(courses).map((course) => {
                 return (
                     <div>
-                        <Link to={'/'+course} >{courses[course].data.name}</Link>
+                        <Link to={'/'+course} >{courses[course].name}</Link>
                     </div>
                 )}
             )}
