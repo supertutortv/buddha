@@ -18,7 +18,9 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
                             <header className="stVideoHeader"></header>
-                            <div className="stVideoContainer"></div>
+                            <div className="stVideoContainer">
+                                <div className="stVideoPlayer"></div>
+                            </div>
                             <figcaption className="stVideoCaption"></figcaption>
                         </figure>
                     </div>
