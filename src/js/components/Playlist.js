@@ -5,9 +5,16 @@ export default class Playlist extends React.Component {
         super(props)
     }
 
+    componentDidMount() {
+        _st.bodyClass = 'playlist'
+    }
+
     render() {
         return (
-            <div>{JSON.stringify(this.props.obj)}</div>
+            <section className="stPlaylistRoot">
+                <div className="stPlaylistColA"></div>
+                <div className="stPlaylistColB">{JSON.stringify(this.props.obj)}</div>
+            </section>
         )
     }
 }
