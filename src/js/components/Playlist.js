@@ -7,6 +7,8 @@ export default class Playlist extends React.Component {
         this.state = {
             obj: this.props.obj
         }
+
+        console.log(this.props)
     }
 
     componentDidMount() {}
