@@ -23,9 +23,12 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         )
                     else
                         return (
-                            <main id="stAppStage" className='row'>
-                                <div>{activeObj.type}</div>
-                            </main>
+                            <React.Fragment>
+                                <Header />
+                                <main id="stAppStage" className='row'>
+                                    <div>{activeObj.type}</div>
+                                </main>
+                            </React.Fragment>
                         )
                 } catch (e) {
                     return (
