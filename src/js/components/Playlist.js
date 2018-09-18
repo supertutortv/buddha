@@ -14,7 +14,7 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match } = this.props
 
-        if (loc.search) console.log(loc.search)
+        if (loc.search) console.log(loc)
         const sbStyle = {
             backgroundColor: this.state.obj.color
         }
