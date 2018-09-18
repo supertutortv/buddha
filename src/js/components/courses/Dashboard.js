@@ -8,6 +8,7 @@ const Dashboard = (props) => {
             {(data) => {
                 return (
                     <React.Fragment>
+                        <Header />
                         <DBStats />
                         <DBCourses courses={data.courses} />
                     </React.Fragment>
