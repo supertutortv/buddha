@@ -42,13 +42,13 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj } = this.props
 
-        const sbStyle = {
-            backgroundColor: obj.color
-        }
-
         if (!loc.hash) {
             hist.replace('#introduction')
             return null
+        }
+
+        const sbStyle = {
+            backgroundColor: obj.color
         }
         
         return (
@@ -62,7 +62,7 @@ export default class Playlist extends React.Component {
                             </div>
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoTitle">
-                                    <h1>{obj.name}</h1>
+                                    <h1>{obj.name || ''}<span>{' (video title)'}</span></h1>
                                 </div>
                             </figcaption>
                         </figure>
