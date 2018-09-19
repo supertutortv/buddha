@@ -92,17 +92,23 @@
 
                             .stNoAccessOverlay
                                 position: absolute
-                                text-align: center
-                                line-height: 100%
-                                vertical-align: middle
+                                opacity: .8
                                 top: 0
                                 right: 0
                                 left: 0
                                 bottom: 0
                                 z-index: 10000
                                 background-color: black(.75)
+                                transition: opacity 100ms ease-in-out
+
+                                &:hover
+                                    opacity: 1
                                 
                                 h2
+                                    position: absolute
+                                    top: 50%
+                                    left: 50%
+                                    transform: translate3d(-50%,-50%,0)
                                     font-size: $small
                                     text-transform: uppercase
 
