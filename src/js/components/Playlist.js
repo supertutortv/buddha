@@ -74,7 +74,7 @@ export default class Playlist extends React.Component {
                             </div>
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoTitle">
-                                    <h1>{obj.name ? obj.name+' - ' : ''}<span>{' (video title)'}</span></h1>
+                                    <h1>{obj.name ? obj.name+' - ' : ''}<span>{vid.name || ''}</span></h1>
                                 </div>
                             </figcaption>
                         </figure>
