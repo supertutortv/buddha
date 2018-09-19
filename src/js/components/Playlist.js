@@ -40,6 +40,7 @@ export default class Playlist extends React.Component {
     componentDidMount() {}
 
     render() {
+        console.log(this.props)
         const { loc, hist, match, obj } = this.props
 
         const sbStyle = {
