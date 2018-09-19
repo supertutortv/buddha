@@ -50,6 +50,8 @@ export default class Playlist extends React.Component {
         const sbStyle = {
             backgroundColor: obj.color
         }
+
+        console.log(loc.hash.replace(/^\#/,''))
         
         return (
             <section className="stPlaylistRoot">
