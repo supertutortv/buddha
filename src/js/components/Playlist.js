@@ -1,4 +1,12 @@
 import React from 'react'
+import {Switch,Route,Redirect,Link} from 'react-router-dom'
+
+const PlSidebar = ({collection}) => {
+    console.log(collection.length)
+    return (
+        <div>{JSON.stringify(collection)}</div>
+    )
+}
 
 export default class Playlist extends React.Component {
     constructor(props) {
@@ -37,7 +45,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar" style={sbStyle}>
                             <div className="stPlaylistSidebarInner">
-                                {JSON.stringify(this.props.obj)}
+                                <PlSidebar collection={this.props.obj.collection} />
                             </div>
                         </section>
                     </div>
