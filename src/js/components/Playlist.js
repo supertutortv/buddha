@@ -71,13 +71,13 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(match)
+
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader">{<Link >{'< Back to course'}</Link>}</header>
+                            <header className="stVideoHeader">{<Link to={match.params.courses}>{'< Back to course'}</Link>}</header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
