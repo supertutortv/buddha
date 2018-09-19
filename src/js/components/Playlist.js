@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
 const PlSidebar = ({collection}) => {
-    console.log(collection.length)
+    console.log(collection)
     return (
         <div>{JSON.stringify(collection)}</div>
     )
