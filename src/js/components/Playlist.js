@@ -83,7 +83,7 @@ export default class Playlist extends React.Component {
                                     <article className="stVideoPlayerContainer">
                                     {vid.id === 0 ? 
                                         <React.Fragment>
-                                            <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_1280x720.jpg?r=pad"} />
+                                            <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_960x540.jpg?r=pad"} />
                                             <div className="stNoAccessOverlay"><h2>This video is not available during the free trial period</h2></div>
                                         </React.Fragment> : 
                                         <iframe src={'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=1'.replace('||ID||', vid.id || '0')} frameBorder="0" webkitAllowFullscreen="" mozAllowFullscreen="" allowFullscreen=""></iframe>
