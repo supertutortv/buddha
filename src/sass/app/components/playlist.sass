@@ -90,6 +90,26 @@
                                 width: 100%
                                 height: auto
 
+                            .stNoAccessOverlay
+                                position: absolute
+                                display: table
+                                text-align: center
+                                top: 0
+                                right: 0
+                                left: 0
+                                bottom: 0
+                                z-index: 10000
+                                background-color: black(.75)
+                                opacity: 0
+
+                                &:hover
+                                    opacity: 1
+                                
+                                span
+                                    display: table-cell
+                                    vertical-align: middle
+
+
                 .stVideoCaption
                     display: -webkit-box
                     display: -webkit-flex
