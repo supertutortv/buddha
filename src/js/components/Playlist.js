@@ -11,7 +11,7 @@ const PlSidebar = ({collection}) => {
         var { tips, ...collection } = collection,
             tipvids = []
         for (var tipvid in tips.videos) {
-            tipvids.push(<Link to={'#'+tipvid}>{tips.videos[vid].name}</Link>)
+            tipvids.push(<Link to={'#'+tipvid}>{tips.videos[tipvid].name}</Link>)
         }
         tabs.push(<Tab>{tips.name}</Tab>)
         panels.push(<TabPanel>{tipvids}</TabPanel>)
