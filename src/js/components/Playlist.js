@@ -1,9 +1,11 @@
 import React from 'react'
-import {Switch,Route,Redirect,Link} from 'react-router-dom'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({collection}) => {
     let len = Object.keys(collection).length
-    console.log(len)
+    if ('tips' in collection) console.log(collection.tips)
+    
     return (
         <div>{JSON.stringify(collection)}</div>
     )
