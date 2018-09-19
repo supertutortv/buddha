@@ -51,7 +51,9 @@ export default class Playlist extends React.Component {
             backgroundColor: obj.color
         }
 
-        console.log(loc.hash.replace(/^\#/,''))
+        const hash = loc.hash.replace(/^\#/,'')
+
+        const vid = Object.keys(obj.collection).some((val) => hash in obj.collection[val].videos ? obj.collection[val].videos[hash] : false)
         
         return (
             <section className="stPlaylistRoot">
@@ -60,7 +62,7 @@ export default class Playlist extends React.Component {
                         <figure className="stVideoStage">
                             <header className="stVideoHeader"></header>
                             <div className="stVideoContainer">
-                                <div className="stVideoPlayer"></div>
+                                <div className="stVideoPlayer">{JSON.stringify(vid)}</div>
                             </div>
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoTitle">
@@ -72,7 +74,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB" style={sbStyle}>
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar collection={this.props.obj.collection} />
+                                <PlSidebar collection={obj.collection} />
                             </div>
                         </section>
                     </div>
