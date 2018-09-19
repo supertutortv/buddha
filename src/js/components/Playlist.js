@@ -5,19 +5,18 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 const PlSidebar = ({collection}) => {
     let len = Object.keys(collection).length,
         tabs = [],
-        panels = [],
-        iter = new Map()
+        panels = []
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
-        iter.set(tips.name,tips.videos)
+        tabs.push(<Tab>{tips.name}</Tab>)
+        panels.push(<TabPanel>{JSON.stringify(tips.videos)}</TabPanel>)
     }
 
     for ( var coll in collection ) {
-        iter.set(collection[coll].name,collection[coll].videos)
+        tabs.push(<Tab>{collection[coll].name}</Tab>)
+        panels.push(<TabPanel>{JSON.stringify(collection[coll].videos)}</TabPanel>)
     }
-
-    console.log(iter)
     
     return (
         <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
