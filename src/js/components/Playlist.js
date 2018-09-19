@@ -77,7 +77,7 @@ export default class Playlist extends React.Component {
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader">{<Link to="/">{'< Back to course'}</Link>}</header>
+                            <header className="stVideoHeader">{<Link to={'/'+match.params.courses}>{'< Back to course'}</Link>}</header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
