@@ -94,7 +94,7 @@ export default class Playlist extends React.Component {
                             </figcaption>
                         </figure>
                     </div>
-                    <div className="stPlaylistColB" style={sbStyle}>
+                    <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
                                 <PlSidebar collection={obj.collection} />
