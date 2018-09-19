@@ -62,8 +62,6 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
-        if (typeof vid.id === 'undefined') throw true
         
         return (
             <section className="stPlaylistRoot">
@@ -76,7 +74,7 @@ export default class Playlist extends React.Component {
                             </div>
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoTitle">
-                                    <h1>{obj.name ? obj.name+' - ' : ''}<span>{vid.name || ''}</span></h1>
+                                    <h1>{obj.name ? obj.name+' - ' : ''}<span>{vid.name || 'Not Found'}</span></h1>
                                 </div>
                             </figcaption>
                         </figure>
