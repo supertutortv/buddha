@@ -10,9 +10,14 @@ const PlSidebar = ({collection}) => {
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
-        iter.set('tips',tips)
-        console.log(tips)
+        iter.set(tips.name,tips.videos)
     }
+
+    for ( var coll in collection ) {
+        iter.set(collection[coll].name,collection[coll].videos)
+    }
+
+    console.log(iter)
     
     return (
         <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
