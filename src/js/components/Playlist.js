@@ -3,11 +3,24 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({collection}) => {
-    let len = Object.keys(collection).length
-    if ('tips' in collection) console.log(collection.tips)
+    let len = Object.keys(collection).length,
+        tabs = [],
+        panels = [],
+        iter = new Map()
+
+    if ('tips' in collection) {
+        var { tips, ...collection } = collection
+        iter.set('tips',tips)
+        console.log(tips)
+    }
     
     return (
-        <div>{JSON.stringify(collection)}</div>
+        <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
+            <TabList>
+                {tabs}
+            </TabList>
+            {panels}
+        </Tabs>
     )
 }
 
