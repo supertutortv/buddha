@@ -5,19 +5,19 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            obj: this.props.obj
+            activeVid: ''
         }
     }
 
     componentDidMount() {}
 
     render() {
-        const { loc, hist, match } = this.props
+        const { loc, hist, match, obj } = this.props
 
-        console.log(loc)
         const sbStyle = {
-            backgroundColor: this.state.obj.color
+            backgroundColor: obj.color
         }
+        
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
@@ -27,7 +27,11 @@ export default class Playlist extends React.Component {
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer"></div>
                             </div>
-                            <figcaption className="stVideoCaption"></figcaption>
+                            <figcaption className="stVideoCaption">
+                                <div className="stVideoTitle">
+                                    <h1>{obj.name}</h1>
+                                </div>
+                            </figcaption>
                         </figure>
                     </div>
                     <div className="stPlaylistColB">

@@ -3,7 +3,7 @@ import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
 import ST404 from '../ST404'
-import {Switch,Route,Redirect} from 'react-router-dom'
+import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
     const { params } = match
@@ -18,16 +18,22 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             if ( !(val[1] in obj[val[0]]) ) throw true
                             return obj[val[0]][val[1]]
                     }, data)
+
                     if (activeObj.type === 'playlist')
                         return (
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
+                        let sections = []
+                        Object.keys(data.courses[params.courses].collections).forEach((val) => {
+                            sections = <Link>{val.name}</Link>
+                        })
+
                         return (
                             <React.Fragment>
                                 <Header />
                                 <main id="stAppStage" className='row'>
-                                    <div>{activeObj.type}</div>
+                                    <div>{sections}</div>
                                 </main>
                             </React.Fragment>
                         )
