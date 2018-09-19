@@ -14,8 +14,13 @@ const PlSidebar = ({collection}) => {
     }
 
     for ( var coll in collection ) {
+        let videos = []
+
+        for ( var vid in collection[coll].videos) {
+            videos.push(<Link to={'#'+vid}>{collection[coll].videos[vid].name}</Link>)
+        }
         tabs.push(<Tab>{collection[coll].name}</Tab>)
-        panels.push(<TabPanel>{JSON.stringify(collection[coll].videos)}</TabPanel>)
+        panels.push(<TabPanel>{videos}</TabPanel>)
     }
     
     return (
