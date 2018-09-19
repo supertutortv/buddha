@@ -24,16 +24,16 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
-                        let sections = []
+                        /* let sections = []
                         Object.keys(data.courses[params.courses].collections).forEach((val) => {
                             sections = <Link>{val.name}</Link>
-                        })
+                        }) */
 
                         return (
                             <React.Fragment>
                                 <Header />
                                 <main id="stAppStage" className='row'>
-                                    <div>{sections}</div>
+                                    <div>{activeObj.type}</div>
                                 </main>
                             </React.Fragment>
                         )
