@@ -62,6 +62,8 @@ export default class Playlist extends React.Component {
             }
             return false
         })
+
+        if (typeof vid.id === 'undefined') throw true
         
         return (
             <section className="stPlaylistRoot">
