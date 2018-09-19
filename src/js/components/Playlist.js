@@ -56,7 +56,11 @@ export default class Playlist extends React.Component {
         var vid = {}
         
         Object.keys(obj.collection).some((val) => {
-            return vid = !(hash in obj.collection[val].videos) || obj.collection[val].videos[hash]
+            if (hash in obj.collection[val].videos) {
+                vid = obj.collection[val].videos[hash]
+                return true
+            }
+            return false
         })
         
         return (
