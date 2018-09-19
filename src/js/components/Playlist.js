@@ -68,7 +68,7 @@ export default class Playlist extends React.Component {
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader"></header>
+                            <header className="stVideoHeader">{Math.floor(vid.time / 60)+':'+vid.time % 60}</header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
