@@ -70,7 +70,11 @@ export default class Playlist extends React.Component {
                         <figure className="stVideoStage">
                             <header className="stVideoHeader"></header>
                             <div className="stVideoContainer">
-                                <div className="stVideoPlayer">{JSON.stringify(vid)}</div>
+                                <div className="stVideoPlayer">
+                                    <article className="stVideoPlayerContainer">
+                                        <iframe src="https://player.vimeo.com/video/230047450?color=882d17&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </article>
+                                </div>
                             </div>
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoTitle">
