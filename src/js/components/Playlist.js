@@ -71,13 +71,13 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        
+        console.log(match)
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader">{Math.floor(vid.time / 60)+':'+String(vid.time % 60).padStart(2,'0')}</header>
+                            <header className="stVideoHeader">{<Link to={}>{'< Back to course'}</Link>}</header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
