@@ -40,11 +40,15 @@ export default class Playlist extends React.Component {
     componentDidMount() {}
 
     render() {
-        console.log(this.props)
         const { loc, hist, match, obj } = this.props
 
         const sbStyle = {
             backgroundColor: obj.color
+        }
+
+        if (!loc.hash) {
+            hist.replace('#introduction')
+            return null
         }
         
         return (
