@@ -11,11 +11,6 @@ const PlSidebar = ({activeColl, collection}) => {
     if ('tips' in collection) {
         var { tips, ...collection } = collection
         ord.push(['tips',tips])
-        /* for (var tipvid in tips.videos) {
-            tipvids.push(<Link to={'#'+tipvid}>{tips.videos[tipvid].name}</Link>)
-        }
-        tabs.push(<Tab className='stCollectionTab'>{tips.name}</Tab>)
-        panels.push(<TabPanel className='stCollectionTabPanel'>{tipvids}</TabPanel>) */
     }
 
     for ( var coll in collection ) {
