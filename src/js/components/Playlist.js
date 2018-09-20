@@ -5,8 +5,8 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 const PlSidebar = ({activeColl, collection}) => {
     let ord = [],
         tabs = [],
-        panels = []
-        Object.keys(collection).indexOf(activeColl)
+        panels = [],
+        ind = 0
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
@@ -22,14 +22,16 @@ const PlSidebar = ({activeColl, collection}) => {
         ord.push([coll,collection[coll]])
     }
 
-    console.log(ord)
+    ord.forEach((el,i) => {
+        let name = el[0],
+            obj = el[1],
+            vids = []
 
-    /* for ( var coll in collection ) {
-        let videos = []
+        if (name === activeColl) ind = i
 
-        for ( var vid in collection[coll].videos) {
-            let vidObj = collection[coll].videos[vid]
-            videos.push(
+        for (var vid in obj.videos) {
+            let vidObj = obj.videos[vid]
+            vids.push(
                 <article className="stCollectionItem">
                     <Link className="stCollectionItemLink" to={'#'+vid}>
                         <figure className="stCollectionItemInner">
@@ -46,10 +48,11 @@ const PlSidebar = ({activeColl, collection}) => {
                 </article>
             )
         }
-        tabs.push(<Tab className='stCollectionTab'>{collection[coll].name}</Tab>)
-        panels.push(<TabPanel className='stCollectionTabPanel'>{videos}</TabPanel>)
-    }
-    
+
+        tabs.push(<Tab className='stCollectionTab'>{obj.name}</Tab>)
+        panels.push(<TabPanel className='stCollectionTabPanel'>{vids}</TabPanel>)
+    })
+
     return (
         <Tabs defaultIndex={ind} onSelect={index => console.log(index)}>
             <TabList className='stCollectionTabs'>
@@ -57,9 +60,8 @@ const PlSidebar = ({activeColl, collection}) => {
             </TabList>
             {panels}
         </Tabs>
-    ) */
+    )
 
-    return null
 }
 
 export default class Playlist extends React.Component {
