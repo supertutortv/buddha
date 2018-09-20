@@ -91,6 +91,7 @@ export default class Playlist extends React.Component {
     }
 
     setNextVid(vid = '') {
+        console.log(vid)
         this.state.nextVid = vid
     }
 
