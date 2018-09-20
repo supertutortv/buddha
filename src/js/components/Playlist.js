@@ -76,9 +76,20 @@ export default class Playlist extends React.Component {
         }
 
         this.setNextVid = this.setNextVid.bind(this)
+        this.triggerVideo = this.triggerVideo.bind(this)
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        document.body.addEventListener('play', this.triggerVideo)
+    }
+
+    componentWillUnmount() {
+        document.body.removeEventListener('play', this.triggerVideo)
+    }
+
+    triggerVideo(e) {
+        console.log(e)
+    }
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
