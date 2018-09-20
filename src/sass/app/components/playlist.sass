@@ -165,13 +165,15 @@
                                 background-clip: padding-box
                                 overflow: visible
                                 position: relative
-                                display: block
+                                display: flex
+                                align-items: center
+                                -webkit-box-align: center
 
                                 .stLinkImageWrapper, figcaption
                                     float: left
 
                                 .stLinkImageWrapper
-                                    width: 8em
+                                    width: 6em
                                     background-clip: padding-box
                                     border-radius: $tiny
                                     position: relative
@@ -196,7 +198,7 @@
 
                                 figcaption
                                     padding-left: 1em
-                                    width: calc(100% - 8em)
+                                    width: calc(100% - 6em)
 
                                     h3
                                         font-weight: 400
