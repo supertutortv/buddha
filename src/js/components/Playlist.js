@@ -50,7 +50,7 @@ const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
     })
 
     return (
-        <Tabs forceRenderTabPanel={true} defaultIndex={ind} onSelect={index => console.log(index)}>
+        <Tabs forceRenderTabPanel={true} defaultIndex={ind} className="stSidebarWrapper">
             <TabList className='stCollectionTabs'>
                 {tabs}
             </TabList>
