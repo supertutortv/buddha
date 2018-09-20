@@ -52,8 +52,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
             )
 
             nextVid = (vid === hash)
-            console.log(ii)
-            //if (ii === Object.keys(obj.videos).length) setNextVid('')
+            if (name === activeColl && ii === Object.keys(obj.videos).length) setNextVid('')
             ii++
         }
 
