@@ -38,13 +38,13 @@ const PlSidebar = ({collection}) => {
                 </article>
             )
         }
-        tabs.push(<Tab>{collection[coll].name}</Tab>)
-        panels.push(<TabPanel className='stCollectionTab'>{videos}</TabPanel>)
+        tabs.push(<Tab className='stCollectionTab'>{collection[coll].name}</Tab>)
+        panels.push(<TabPanel className='stCollectionTabPanel'>{videos}</TabPanel>)
     }
     
     return (
         <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
-            <TabList>
+            <TabList className='stCollectionTabs'>
                 {tabs}
             </TabList>
             {panels}

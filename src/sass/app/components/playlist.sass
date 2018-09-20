@@ -140,7 +140,6 @@
             -moz-align-self: flex-start
             -ms-flex-item-align: start
             align-self: flex-start
-            padding-top: 1em
             background-color: black(.1)
 
             .stPlaylistSidebar
@@ -151,8 +150,21 @@
                 .stPlaylistSidebarInner
                     overflow: hidden
                     font-size: $small
+                    height: 100%
 
-                    .stCollectionTab
+                    .stCollectionTabs
+                        display: flex
+                        flex: 1 1 100%
+                        flex-direction: row
+                        margin: 0
+
+                        .stCollectionTab
+                            flex: 1 1 100%
+                            text-align: center
+                            line-height: 1
+                            padding: 1em 0
+
+                    .stCollectionTabPanel
                         overflow: auto !important
                     
                     .stCollectionItem
