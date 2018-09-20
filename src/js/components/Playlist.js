@@ -26,9 +26,10 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
 
         if (name === activeColl) ind = i
 
-        var ii = 1
+        var ii = 1,
+            keys = Object.keys(obj.videos)
 
-        for (var vid in obj.videos) {
+        keys.forEach((vid) => {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {}
 
@@ -52,9 +53,9 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
             )
 
             nextVid = (vid === hash)
-            if (name === activeColl && ii === Object.keys(obj.videos).length) setNextVid('')
+            if (nextVid && ii === keys.length) setNextVid('')
             ii++
-        }
+        })
 
         tabs.push(<Tab className='stCollectionTab'>{obj.name}</Tab>)
         panels.push(<TabPanel className='stCollectionTabPanel'>{vids}</TabPanel>)
