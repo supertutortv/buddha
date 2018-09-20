@@ -116,7 +116,9 @@ export default class Playlist extends React.Component {
 
         const hash = loc.hash.replace(/^\#/,'')
 
-        var vid = {},
+        var vid = {
+            id: null
+        },
             activeColl = ''
         
         Object.keys(obj.collection).some((val) => {
