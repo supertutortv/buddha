@@ -110,6 +110,10 @@ export default class Playlist extends React.Component {
             backgroundColor: obj.color
         }
 
+        const bckStyle = {
+            color: obj.color
+        }
+
         const hash = loc.hash.replace(/^\#/,'')
 
         var vid = {},
@@ -129,7 +133,7 @@ export default class Playlist extends React.Component {
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader">{<Link to={'/'+match.params.courses}>{'< Back to course'}</Link>}</header>
+                            <header className="stVideoHeader">{<Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>}</header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
