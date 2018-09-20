@@ -1,6 +1,9 @@
 import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import VidPlayer from './VidPlayer'
+
+const VidPlayer 
 
 const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
@@ -76,20 +79,11 @@ export default class Playlist extends React.Component {
         }
 
         this.setNextVid = this.setNextVid.bind(this)
-        this.triggerVideo = this.triggerVideo.bind(this)
     }
 
-    componentDidMount() {
-        document.body.addEventListener('play', this.triggerVideo)
-    }
+    componentDidMount() {}
 
-    componentWillUnmount() {
-        document.body.removeEventListener('play', this.triggerVideo)
-    }
-
-    triggerVideo(e) {
-        console.log(e)
-    }
+    componentWillUnmount() {}
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
@@ -120,7 +114,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(this.state.nextVid)
+
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
@@ -135,7 +129,7 @@ export default class Playlist extends React.Component {
                                             <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_295x166.jpg?r=pad"} />
                                             <div className="stNoAccessOverlay"><h2>This video is not available during the free trial period</h2></div>
                                         </React.Fragment> : 
-                                        <iframe src={'https://player.vimeo.com/video/||ID||?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;autoplay=1'.replace('||ID||', vid.id || '0')} frameBorder="0" webkitAllowFullscreen="" mozAllowFullscreen="" allowFullscreen=""></iframe>
+                                        <VidPlayer video={vid.id} />
                                     }
                                     </article>
                                 </div>
