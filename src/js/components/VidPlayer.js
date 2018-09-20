@@ -4,7 +4,7 @@ import Player from '@vimeo/player'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const events = {
-    'play': (e) => console.log(e),
+    'play': (e) => false,
     'ended': (e, { getNextVid }) => getNextVid()
 }
 

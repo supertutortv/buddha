@@ -123,7 +123,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(this.state.nextVid)
+
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
