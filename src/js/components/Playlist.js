@@ -13,7 +13,7 @@ const PlSidebar = ({collection}) => {
             tipvids.push(<Link to={'#'+tipvid}>{tips.videos[tipvid].name}</Link>)
         }
         tabs.push(<Tab>{tips.name}</Tab>)
-        panels.push(<TabPanel>{tipvids}</TabPanel>)
+        panels.push(<TabPanel className='stCollectionTab'>{tipvids}</TabPanel>)
     }
 
     for ( var coll in collection ) {
@@ -39,7 +39,7 @@ const PlSidebar = ({collection}) => {
             )
         }
         tabs.push(<Tab>{collection[coll].name}</Tab>)
-        panels.push(<TabPanel>{videos}</TabPanel>)
+        panels.push(<TabPanel className='stCollectionTab'>{videos}</TabPanel>)
     }
     
     return (
