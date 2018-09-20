@@ -2,7 +2,7 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
-const PlSidebar = ({activeColl, collection}) => {
+const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
         panels = [],
@@ -20,14 +20,16 @@ const PlSidebar = ({activeColl, collection}) => {
     ord.forEach((el,i) => {
         let name = el[0],
             obj = el[1],
+            stylOb = {},
             vids = []
 
         if (name === activeColl) ind = i
 
         for (var vid in obj.videos) {
             let vidObj = obj.videos[vid]
+            if (vid === hash) stylOb = {style: sbStyle}
             vids.push(
-                <article className="stCollectionItem">
+                <article className="stCollectionItem" {...stylOb}>
                     <Link className="stCollectionItemLink" to={'#'+vid}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
@@ -130,7 +132,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar activeColl={activeColl} collection={obj.collection} />
+                                <PlSidebar sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
                             </div>
                         </section>
                     </div>
