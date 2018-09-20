@@ -2,11 +2,10 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
-const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
+const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
-        panels = [],
-        ind = 0
+        panels = []
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
@@ -20,13 +19,17 @@ const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
     ord.forEach((el,i) => {
         let name = el[0],
             obj = el[1],
-            vids = []
+            vids = [],
+            nextVid = false
 
         if (name === activeColl) ind = i
 
         for (var vid in obj.videos) {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {}
+            
+            if (nextVid) setNextVid(vid)
+
             vids.push(
                 <article className="stCollectionItem" {...stylOb}>
                     <Link className="stCollectionItemLink" to={'#'+vid}>
@@ -43,6 +46,7 @@ const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
                     </Link>
                 </article>
             )
+            nextVid = (vid === hash)
         }
 
         tabs.push(<Tab className='stCollectionTab'>{obj.name}</Tab>)
@@ -69,9 +73,15 @@ export default class Playlist extends React.Component {
         this.state = {
             nextVid: ''
         }
+
+        this.setNextVid = this.setNextVid.bind(this)
     }
 
     componentDidMount() {}
+
+    setNextVid(vid = '') {
+        this.state.nextVid = vid
+    }
 
     render() {
         const { loc, hist, match, obj } = this.props
@@ -98,7 +108,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
+        console.log(this.state.nextVid)
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
@@ -133,7 +143,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
+                                <PlSidebar setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
                             </div>
                         </section>
                     </div>
