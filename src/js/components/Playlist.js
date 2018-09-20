@@ -3,15 +3,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({activeColl, collection}) => {
-    let ind = Object.keys(collection).indexOf(activeColl),
+    let ord = [],
         tabs = [],
         panels = []
-
-        console.log(ind)
+        Object.keys(collection).indexOf(activeColl)
 
     if ('tips' in collection) {
-        var { tips, ...collection } = collection,
-            tipvids = []
+        var { tips, ...collection } = collection
+        ord.push(['tips',tips])
         for (var tipvid in tips.videos) {
             tipvids.push(<Link to={'#'+tipvid}>{tips.videos[tipvid].name}</Link>)
         }
@@ -20,6 +19,12 @@ const PlSidebar = ({activeColl, collection}) => {
     }
 
     for ( var coll in collection ) {
+        ord.push([coll,collection[coll]])
+    }
+
+    console.log(ord)
+
+    /* for ( var coll in collection ) {
         let videos = []
 
         for ( var vid in collection[coll].videos) {
@@ -52,7 +57,9 @@ const PlSidebar = ({activeColl, collection}) => {
             </TabList>
             {panels}
         </Tabs>
-    )
+    ) */
+
+    return null
 }
 
 export default class Playlist extends React.Component {
