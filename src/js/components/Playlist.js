@@ -51,9 +51,11 @@ const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
 
     return (
         <Tabs forceRenderTabPanel={true} defaultIndex={ind} className="stSidebarWrapper">
-            <TabList className='stCollectionTabs'>
-                {tabs}
-            </TabList>
+            <div className="stCollectionTabsWrapper">
+                <TabList className='stCollectionTabs'>
+                    {tabs}
+                </TabList>
+            </div>
             {panels}
         </Tabs>
     )

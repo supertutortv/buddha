@@ -153,84 +153,87 @@
                     .stSidebarWrapper
                         font-size: $small
 
-                    .stCollectionTabs
-                        display: flex
-                        flex-direction: row
-                        margin: 0
-                        text-align: center
-                        border-bottom: 1px solid offwhite(.6)
-
-                        .stCollectionTab
-                            cursor: pointer
-                            flex: 1 1 100%
-                            line-height: 1
-                            padding: $tiny 0
-                            color: offwhite(.6)
-                            font-weight: 200
-                            border-bottom: 3px solid transparent
-                            transition: all 100ms ease-in-out
-
-                            &.react-tabs__tab--selected
-                                color: offwhite()
-                                font-weight: 400
-                                border-bottom: 3px solid offwhite()
-
-                    .stCollectionTabPanel
-                        overflow: auto !important
-                    
-                    .stCollectionItem
-                        width: 100%
-                        display: inline-block
-
-                        .stCollectionItemLink
+                        .stCollectionTabsWrapper
                             display: block
-                            padding: $small 1em
-                            color: inherit
-                            background-color: white(0)
-                            transition: background-color 100ms ease-in-out
 
-                            &:hover
-                                background-color: white(.25)
-
-                            .stCollectionItemInner
-                                background-clip: padding-box
-                                overflow: visible
-                                position: relative
+                            .stCollectionTabs
                                 display: flex
-                                align-items: center
-                                -webkit-box-align: center
+                                flex-direction: row
+                                margin: 0
+                                text-align: center
+                                border-bottom: 1px solid offwhite(.6)
 
-                                .stLinkImageWrapper, figcaption
-                                    float: left
+                                .stCollectionTab
+                                    cursor: pointer
+                                    flex: 1 1 100%
+                                    line-height: 1
+                                    padding: $tiny 0
+                                    color: offwhite(.6)
+                                    font-weight: 200
+                                    border-bottom: 3px solid transparent
+                                    transition: all 100ms ease-in-out
 
-                                .stLinkImageWrapper
-                                    width: 8em
-                                    background-clip: padding-box
-                                    border-radius: $tiny
-                                    position: relative
-                                    overflow: hidden
-
-                                    &:before
-                                        display: block
-                                        content: ''
-                                        width: 100%
-                                        padding-top: 56.25%
-                                    
-                                    picture
-                                        position: absolute
-                                        top: 0
-                                        left: 0
-                                        right: 0
-                                        bottom: 0
-
-                                        img
-                                            display: block
-                                            width: 100%
-
-                                figcaption
-                                    padding-left: 1em
-                                    width: calc(100% - 8em)
-
-                                    h3
+                                    &.react-tabs__tab--selected
+                                        color: offwhite()
                                         font-weight: 400
-                                        font-size: $small
+                                        border-bottom: 3px solid offwhite()
+
+                        .stCollectionTabPanel
+                            overflow: auto !important
+                        
+                        .stCollectionItem
+                            width: 100%
+                            display: inline-block
+
+                            .stCollectionItemLink
+                                display: block
+                                padding: $small 1em
+                                color: inherit
+                                background-color: white(0)
+                                transition: background-color 100ms ease-in-out
+
+                                &:hover
+                                    background-color: white(.25)
+
+                                .stCollectionItemInner
+                                    background-clip: padding-box
+                                    overflow: visible
+                                    position: relative
+                                    display: flex
+                                    align-items: center
+                                    -webkit-box-align: center
+
+                                    .stLinkImageWrapper, figcaption
+                                        float: left
+
+                                    .stLinkImageWrapper
+                                        width: 8em
+                                        background-clip: padding-box
+                                        border-radius: $tiny
+                                        position: relative
+                                        overflow: hidden
+
+                                        &:before
+                                            display: block
+                                            content: ''
+                                            width: 100%
+                                            padding-top: 56.25%
+                                        
+                                        picture
+                                            position: absolute
+                                            top: 0
+                                            left: 0
+                                            right: 0
+                                            bottom: 0
+
+                                            img
+                                                display: block
+                                                width: 100%
+
+                                    figcaption
+                                        padding-left: 1em
+                                        width: calc(100% - 8em)
+
+                                        h3
+                                            font-weight: 400
+                                            font-size: $small
