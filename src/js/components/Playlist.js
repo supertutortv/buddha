@@ -2,7 +2,8 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
-const PlSidebar = ({collection}) => {
+const PlSidebar = ({activeColl, collection}) => {
+    console.log(activeColl)
     let tabs = [],
         panels = []
 
@@ -57,7 +58,7 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            activeVid: ''
+            nextVid: ''
         }
     }
 
@@ -77,11 +78,13 @@ export default class Playlist extends React.Component {
 
         const hash = loc.hash.replace(/^\#/,'')
 
-        var vid = {}
+        var vid = {},
+            activeColl = ''
         
         Object.keys(obj.collection).some((val) => {
             if (hash in obj.collection[val].videos) {
                 vid = obj.collection[val].videos[hash]
+                activeColl = val
                 return true
             }
             return false
@@ -121,7 +124,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar collection={obj.collection} />
+                                <PlSidebar activeColl={activeColl} collection={obj.collection} />
                             </div>
                         </section>
                     </div>
