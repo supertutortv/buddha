@@ -3,8 +3,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({activeColl, collection}) => {
-    console.log(activeColl)
-    let tabs = [],
+    let ind = Object.keys(collection).indefOf(activeColl),
+        tabs = [],
         panels = []
 
     if ('tips' in collection) {
@@ -44,7 +44,7 @@ const PlSidebar = ({activeColl, collection}) => {
     }
     
     return (
-        <Tabs defaultIndex={0} onSelect={index => console.log(index)}>
+        <Tabs defaultIndex={ind} onSelect={index => console.log(index)}>
             <TabList className='stCollectionTabs'>
                 {tabs}
             </TabList>
