@@ -62,10 +62,7 @@ class VidPlayer extends React.Component {
                 case 'autoplay':
                     break
                 case 'video':
-                    if (value)
-                        player.loadVideo(value)
-                    else
-                        player.unload()
+                    player.loadVideo(value || 0)
                     break
             }
         })
