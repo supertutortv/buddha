@@ -5,7 +5,8 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
-        panels = []
+        panels = [],
+        ind = 0
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
