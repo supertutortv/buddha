@@ -73,7 +73,6 @@ class VidPlayer extends React.Component {
     }
 
     render() {
-        console.log(this.props.video)
         return (
             <div className="stVimWrap" ref={this.refContainer} />
         )
