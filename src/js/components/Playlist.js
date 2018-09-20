@@ -20,14 +20,13 @@ const PlSidebar = ({sbStyle, hash, activeColl, collection}) => {
     ord.forEach((el,i) => {
         let name = el[0],
             obj = el[1],
-            stylOb = {},
             vids = []
 
         if (name === activeColl) ind = i
 
         for (var vid in obj.videos) {
-            let vidObj = obj.videos[vid]
-            if (vid === hash) stylOb = {style: sbStyle}
+            let vidObj = obj.videos[vid],
+                stylOb = (vid === hash) ? {style: sbStyle} : {}
             vids.push(
                 <article className="stCollectionItem" {...stylOb}>
                     <Link className="stCollectionItemLink" to={'#'+vid}>
