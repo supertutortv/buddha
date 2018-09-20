@@ -21,8 +21,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     ord.forEach((el,i) => {
         let name = el[0],
             obj = el[1],
-            vids = [],
-            nextVid = false
+            vids = []
 
         if (name === activeColl) ind = i
 
@@ -120,7 +119,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
+        console.log(this.state.nextVid)
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
