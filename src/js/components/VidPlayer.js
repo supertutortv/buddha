@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Player from '@vimeo/player'
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const events = {
-    'play': (e) => console.log(e)
+    'play': (e) => console.log(e),
+    'ended': (e, { nextVid }) => {
+        if (nextVid) return (<Redirect push to={'#'+nextVid} />)
+    }
 }
 
 class VidPlayer extends React.Component {
@@ -45,7 +49,7 @@ class VidPlayer extends React.Component {
     
         Object.keys(events).forEach((ev) => {
             this.player.on(ev, (event) => {
-                events[ev](event)
+                events[ev](event, this.props)
             })
         })
     }
@@ -89,7 +93,8 @@ VidPlayer.defaultProps = {
     muted: false,
     background: false,
     video: 0,
-    playInline: true
+    playInline: true,
+    nextVid: false
 }
 
 export default VidPlayer

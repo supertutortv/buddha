@@ -127,7 +127,7 @@ export default class Playlist extends React.Component {
                                             <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_295x166.jpg?r=pad"} />
                                             <div className="stNoAccessOverlay"><h2>This video is not available during the free trial period</h2></div>
                                         </React.Fragment> : 
-                                        <VidPlayer video={vid.id} />
+                                        <VidPlayer nextVid={this.state.nextVid} video={vid.id} />
                                     }
                                     </article>
                                 </div>
