@@ -76,12 +76,17 @@ export default class Playlist extends React.Component {
             nextVid: ''
         }
 
+        this.getNextVid = this.getNextVid.bind(this)
         this.setNextVid = this.setNextVid.bind(this)
     }
 
     componentDidMount() {}
 
     componentWillUnmount() {}
+
+    getNextVid() {
+        this.props.history.push('#'+this.state.nextVid)
+    }
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
@@ -127,7 +132,7 @@ export default class Playlist extends React.Component {
                                             <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_295x166.jpg?r=pad"} />
                                             <div className="stNoAccessOverlay"><h2>This video is not available during the free trial period</h2></div>
                                         </React.Fragment> : 
-                                        <VidPlayer nextVid={this.state.nextVid} video={vid.id} />
+                                        <VidPlayer getNextVid={this.getNextVid} video={vid.id} />
                                     }
                                     </article>
                                 </div>

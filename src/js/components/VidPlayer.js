@@ -5,9 +5,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const events = {
     'play': (e) => console.log(e),
-    'ended': (e, { nextVid }) => {
-        console.log(e, nextVid)
-    }
+    'ended': (e, { getNextVid }) => getNextVid()
 }
 
 class VidPlayer extends React.Component {
