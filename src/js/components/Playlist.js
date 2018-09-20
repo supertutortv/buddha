@@ -86,7 +86,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(match)
+
         return (
             <section className="stPlaylistRoot">
                 <div className="stPlaylistInner">
