@@ -152,3 +152,39 @@
                     overflow: hidden
                     font-size: $small
                     
+                    .stCollectionItem
+                        width: 100%
+                        display: inline-block
+
+                        .stCollectionItemLink
+                            display: block
+                            padding: $small 1em
+                            color: inherit
+
+                            .stCollectionItemInner
+                                background-clip: padding-box
+                                position: relative
+
+                                .stLinkImageWrapper
+                                    width: 12em
+                                    background-clip: padding-box
+                                    border-radius: $small
+                                    position: relative
+                                    overflow: hidden
+
+                                    &:before
+                                        display: block
+                                        content: ''
+                                        width: 100%
+                                        padding-top: 56.25%
+                                    
+                                    picture
+                                        position: absolute
+                                        top: 0
+                                        left: 0
+                                        right: 0
+                                        bottom: 0
+
+                                        img
+                                            display: block
+                                            width: 100%

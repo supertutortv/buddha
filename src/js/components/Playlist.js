@@ -3,8 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({collection}) => {
-    let len = Object.keys(collection).length,
-        tabs = [],
+    let tabs = [],
         panels = []
 
     if ('tips' in collection) {
@@ -21,7 +20,23 @@ const PlSidebar = ({collection}) => {
         let videos = []
 
         for ( var vid in collection[coll].videos) {
-            videos.push(<Link to={'#'+vid}>{collection[coll].videos[vid].name}</Link>)
+            let vidObj = collection[coll].videos[vid]
+            videos.push(
+                <article className="stCollectionItem">
+                    <Link className="stCollectionItemLink" to={'#'+vid}>
+                        <figure className="stCollectionItemInner">
+                            <div className="stLinkImageWrapper z-depth-1">
+                                <picture>
+                                    <img src={"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F"+vidObj.thumb+"_295x166.jpg&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"} />
+                                </picture>
+                            </div>
+                            <figcaption>
+                                <h3 className="stCollectionItemTitle">{vidObj.name}</h3>
+                            </figcaption>
+                        </figure>
+                    </Link>
+                </article>
+            )
         }
         tabs.push(<Tab>{collection[coll].name}</Tab>)
         panels.push(<TabPanel>{videos}</TabPanel>)
