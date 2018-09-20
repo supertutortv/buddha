@@ -26,11 +26,11 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
 
         if (name === activeColl) ind = i
 
+        var ii = 1
+
         for (var vid in obj.videos) {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {}
-            
-            if (nextVid) setNextVid(vid)
 
             vids.push(
                 <article className="stCollectionItem" {...stylOb}>
@@ -48,7 +48,10 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
                     </Link>
                 </article>
             )
-            nextVid = (vid === hash)
+
+            if ((vid === hash) && ii < Object.keys(obj.videos).length) setNextVid(vid)
+            else if (ii === Object.keys(obj.videos).length) setNextVid('')
+            ii++
         }
 
         tabs.push(<Tab className='stCollectionTab'>{obj.name}</Tab>)
@@ -85,8 +88,7 @@ export default class Playlist extends React.Component {
     componentWillUnmount() {}
 
     getNextVid() {
-        console.log(this.state.nextVid)
-        this.props.hist.push('#'+this.state.nextVid)
+        if (this.state.nextVid) this.props.hist.push('#'+this.state.nextVid)
     }
 
     setNextVid(vid = '') {
