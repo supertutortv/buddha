@@ -160,6 +160,11 @@
                             display: block
                             padding: $small 1em
                             color: inherit
+                            background-color: white(0)
+                            transition: background-color 100ms ease-in-out
+
+                            &:hover
+                                background-color: white(.25)
 
                             .stCollectionItemInner
                                 background-clip: padding-box
