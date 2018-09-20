@@ -85,6 +85,7 @@ export default class Playlist extends React.Component {
     componentWillUnmount() {}
 
     getNextVid() {
+        console.log(this.state.nextVid)
         this.props.history.push('#'+this.state.nextVid)
     }
 
