@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const PlSidebar = ({activeColl, collection}) => {
-    let ind = Object.keys(collection).indefOf(activeColl),
+    let ind = Object.keys(collection).indexOf(activeColl),
         tabs = [],
         panels = []
 
