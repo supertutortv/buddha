@@ -155,16 +155,20 @@
 
                         .stCollectionTabsWrapper
                             display: block
+                            padding-top: 1em
 
                             .stCollectionTabs
                                 display: flex
                                 flex-direction: row
                                 margin: 0
+                                width: 100%
+                                vertical-align: top
+                                position: relative
                                 text-align: center
                                 justify-content: space-between
                                 border-bottom: 1px solid offwhite(.6)
 
-                                .stCollectionTab + .stCollectionTab
+                                .stCollectionTab:not(:last-of-type)
                                     border-right: 1px solid offwhite(.6)
 
                                 .stCollectionTab
