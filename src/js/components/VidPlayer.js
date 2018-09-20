@@ -6,7 +6,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 const events = {
     'play': (e) => console.log(e),
     'ended': (e, { nextVid }) => {
-        if (nextVid) return (<Redirect push to={'#'+nextVid} />)
+        console.log(e, nextVid)
     }
 }
 
