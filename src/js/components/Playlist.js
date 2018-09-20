@@ -7,6 +7,8 @@ const PlSidebar = ({activeColl, collection}) => {
         tabs = [],
         panels = []
 
+        console.log(ind)
+
     if ('tips' in collection) {
         var { tips, ...collection } = collection,
             tipvids = []
