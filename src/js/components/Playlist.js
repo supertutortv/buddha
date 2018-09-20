@@ -21,7 +21,8 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     ord.forEach((el,i) => {
         let name = el[0],
             obj = el[1],
-            vids = []
+            vids = [],
+            nextVid = false
 
         if (name === activeColl) ind = i
 
@@ -30,6 +31,8 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
         for (var vid in obj.videos) {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {}
+
+            if (nextVid && ii < Object.keys(obj.videos).length) setNextVid(vid)
 
             vids.push(
                 <article className="stCollectionItem" {...stylOb}>
@@ -48,8 +51,8 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
                 </article>
             )
 
-            if ((vid === hash) && ii < Object.keys(obj.videos).length) setNextVid(vid)
-            else if (ii === Object.keys(obj.videos).length) setNextVid('')
+            nextVid = (vid === hash)
+            if (ii === Object.keys(obj.videos).length) setNextVid('')
             ii++
         }
 
