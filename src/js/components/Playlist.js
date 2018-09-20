@@ -32,7 +32,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {}
 
-            if (nextVid && ii < Object.keys(obj.videos).length) setNextVid(vid)
+            if (nextVid) setNextVid(vid)
 
             vids.push(
                 <article className="stCollectionItem" {...stylOb}>
@@ -94,7 +94,6 @@ export default class Playlist extends React.Component {
     }
 
     setNextVid(vid = '') {
-        console.log(vid)
         this.state.nextVid = vid
     }
 
