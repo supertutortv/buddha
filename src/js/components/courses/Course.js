@@ -2,6 +2,7 @@ import React from 'react'
 import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
+import STsvg from '../STsvg'
 import ST404 from '../ST404'
 import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
@@ -33,7 +34,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <React.Fragment>
                                 <Header />
                                 <main id="stAppStage" className='row'>
-                                    <div>{activeObj.type}</div>
+                                    <div className="stVectorGraphic">
+                                        <STsvg />
+                                    </div>
                                 </main>
                             </React.Fragment>
                         )
