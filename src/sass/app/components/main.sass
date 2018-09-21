@@ -3,8 +3,30 @@ body.main
     st-app
         background-color: offwhite()
 
-        i[class^="brainy-"]
-            font-size: $large * 2
-            color: white()
-            height: 1em
-            width: 1em
+        .stSectionsSection
+            position: relative
+            display: flex
+            overflow: hidden
+            width: 100%
+            -webkit-box-pack: start
+            justify-content: flex-start
+            align-items: flex-start
+            flex-flow: row nowrap
+            flex: 0 1 auto
+
+            .stSectionBox:not(:last-of-type)
+                margin-right: 1em
+
+            .stSectionBox
+                flex: 0 1 auto
+
+                .stSectionBoxInner
+                    border-radius: $tiny
+                    overflow: hidden
+                    position: relative
+
+                i[class^="brainy-"]
+                    font-size: $large * 2
+                    color: white()
+                    height: 1em
+                    width: 1em

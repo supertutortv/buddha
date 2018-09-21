@@ -25,17 +25,18 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
-                        /* let sections = []
-                        Object.keys(data.courses[params.courses].collections).forEach((val) => {
-                            sections = <Link>{val.name}</Link>
-                        }) */
+                        let sections = [],
+                            collections = data.courses[params.courses].collections
+                        Object.keys(collections).forEach((val) => {
+                            sections.push(<STSectionBox title={collections[val].name} icon="owl" />)
+                        })
 
                         return (
                             <React.Fragment>
                                 <Header />
                                 <main id="stAppStage" className='row'>
-                                    <div className="stVectorGraphic">
-                                        <STSectionBox icon="owl" />
+                                    <div className="stSectionsSection">
+                                        {sections}
                                     </div>
                                 </main>
                             </React.Fragment>
