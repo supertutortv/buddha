@@ -1,3 +1,9 @@
+@font-face
+    font-family: 'Brainy'
+    src: url('/assets/fonts/Brainy/Brainy.woff') format('woff'), url('/assets/fonts/Brainy.ttf') format('truetype')
+    font-style: normal
+    font-weight: normal
+
 @each $theWeight in $weights
 	+fontFace('Texta',$theWeight)
     
@@ -100,5 +106,21 @@ html
             font-weight: 200
 
         @for $i from 1 through 6
-            h#{$i}
+            h#$i
                 margin: 0
+
+        i
+            font-family: 'Brainy' !important
+            speak: none
+            font-style: normal
+            font-weight: normal
+            font-variant: normal
+            text-transform: none
+            line-height: 1
+            -webkit-font-smoothing: antialiased
+            -moz-osx-font-smoothing: grayscale
+
+            @each $key, $val in $brainy
+                .#{$key}
+                    &:before
+                        content: $val
