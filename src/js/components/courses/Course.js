@@ -25,7 +25,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
-                        let sections = [],
+                        var sections = [],
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
                             sections.push(<STSectionBox title={collections[val].name} icon="owl" />)
