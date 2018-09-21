@@ -28,7 +28,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         var sections = [],
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
-                            console.log(collections[val])
+                            if (val === 'practice') return
                             sections.push(<STSectionBox color={collections[val].color} title={collections[val].name} icon="owl" />)
                         })
 
