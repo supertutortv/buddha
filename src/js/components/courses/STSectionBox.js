@@ -3,7 +3,7 @@ import React from 'react'
 const STSectionBox = ({desc = '', icon = 'atom',title = 'boosh',color = '#109fda'}) =>
     <section className="stSectionBoxWrap">
         <div className="stSectionBox">
-            <div className="stSectionBoxInner z-depth-3" style={{border:'1px solid '+color}}>
+            <div className="stSectionBoxInner z-depth-3" style={{border:'3px solid '+color}}>
                 <div className="stSectionBoxContainer">
                     <div>
                         <div><i className={"brainy-"+icon}></i></div>
