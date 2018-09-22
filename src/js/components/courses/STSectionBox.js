@@ -4,7 +4,9 @@ import {Switch,Route,Redirect,Link} from 'react-router-dom'
 const STSectionBox = ({slug, description, icon = 'atom', title, color}) =>
     <section className="stSectionBoxWrap">
         <div className="stSectionBox">
-            <div className="stSectionBoxInner" style={{border:'3px solid '+color}}>
+            <div className="stSectionBoxInner" style={{border:'3px solid '+color}} onClick={(e) => {
+                console.log(e)
+            }}>
                 <div className="stSectionBoxContainer">
                     <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
                     <div className="boxText">
