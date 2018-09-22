@@ -5,8 +5,8 @@ const STSectionBox = ({desc = '', icon = 'atom',title = 'boosh',color = '#109fda
         <div className="stSectionBox">
             <div className="stSectionBoxInner z-depth-3" style={{border:'3px solid '+color}}>
                 <div className="stSectionBoxContainer">
+                    <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
                     <div>
-                        <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
                         <div className="boxTitle">{title}</div>
                         <div className="boxDesc">This is where the Section description will go</div>
                     </div>

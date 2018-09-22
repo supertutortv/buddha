@@ -30,8 +30,7 @@ body.main
                         width: 100%
                         height: 100%
 
-                        & > div
-                            position: absolute
+                        .stSectionBoxContainer
                             width: 100%
                             display: flex
                             -webkit-box-align: center
@@ -43,8 +42,8 @@ body.main
                                 text-align: center
                                 padding: 1em
 
-                                & > .boxHeader
-                                    font-size: $small
+                                &.boxHeader
+                                    font-size: $medium
                                     margin-bottom: $ittybitty
                                     color: offwhite()
 
