@@ -12,22 +12,23 @@ body.main
             align-items: flex-start
             padding-top: 1em
 
-            .stSectionBoxWrap:not(:last-of-type)
-                margin-right: 1em
-
             .stSectionBoxWrap
-                flex: 0 1 auto
+
+                &:not(:last-of-type)
+                    margin-right: 1em
 
                 .stSectionBox
                     width: 8em
+                    height: 100%
 
                     .stSectionBoxInner
+                        border-radius: $ittybitty
                         border-bottom-left-radius: $tiny
                         border-bottom-right-radius: $tiny
-                        overflow: hidden
                         position: relative
                         background-color: white()
                         width: 100%
+                        height: 100%
 
                         & > div
                             position: absolute
@@ -42,16 +43,19 @@ body.main
                                 text-align: center
                                 padding: 1em
 
-                                & > div
+                                & > .boxHeader
+                                    font-size: $small
                                     margin-bottom: $ittybitty
+                                    color: offwhite()
 
                                 & .boxTitle
                                     font-weight: 800
-                                    font-size: $small
 
                                 & .boxDesc
-                                    font-weight: 600
+                                    font-weight: 200
                                     font-size: $small
+                                    font-style: italic
+                                    line-height: 1
 
                             i[class^="brainy-"]
                                 font-size: $large * 2

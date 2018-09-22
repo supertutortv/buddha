@@ -6,7 +6,7 @@ const STSectionBox = ({desc = '', icon = 'atom',title = 'boosh',color = '#109fda
             <div className="stSectionBoxInner z-depth-3" style={{border:'3px solid '+color}}>
                 <div className="stSectionBoxContainer">
                     <div>
-                        <div><i className={"brainy-"+icon}></i></div>
+                        <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
                         <div className="boxTitle">{title}</div>
                         <div className="boxDesc">{desc}</div>
                     </div>
