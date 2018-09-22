@@ -30,7 +30,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
-                            sections.push(<STSectionBox hist={hist} slug={val} {...collections[val]} icon="owl" />)
+                            sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon="owl" />)
                         })
 
                         return (
