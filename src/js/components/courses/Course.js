@@ -28,9 +28,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
-                            sections.push(<STSectionBox {...collections[val]} icon="owl" />)
+                            sections.push(<STSectionBox slug={val} {...collections[val]} icon="owl" />)
                         })
-                        console.log(activeObj)
+
                         return (
                             <React.Fragment>
                                 <Header />
