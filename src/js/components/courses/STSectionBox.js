@@ -1,11 +1,11 @@
 import React from 'react'
 import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
-const STSectionBox = ({hist, slug, description, icon = 'atom', name, color}) =>
+const STSectionBox = ({hist, path, description, icon = 'atom', name, color}) =>
     <section className="stSectionBoxWrap">
         <div className="stSectionBox">
             <div className="stSectionBoxInner" style={{border:'3px solid '+color}} onClick={(e) => {
-                hist.push(slug)
+                hist.push(path)
             }}>
                 <div className="stSectionBoxContainer">
                     <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
