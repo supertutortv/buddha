@@ -24,11 +24,11 @@ body.main
                     width: 8em
 
                     .stSectionBoxInner
-                        border-radius: $tiny
+                        border-bottom-left-radius: $tiny
+                        border-bottom-right-radius: $tiny
                         overflow: hidden
                         position: relative
                         background-color: white()
-                        padding-bottom: 100%
                         width: 100%
 
                         & > div
@@ -49,6 +49,10 @@ body.main
                                     margin-bottom: $ittybitty
 
                                 & .boxTitle
+                                    font-weight: 800
+                                    font-size: $small
+
+                                & .boxDesc
                                     font-weight: 600
                                     font-size: $small
 
