@@ -8,6 +8,7 @@ const STSectionBox = ({desc = '', icon = 'atom',title = 'boosh',color = '#109fda
                     <div>
                         <div><i className={"brainy-"+icon}></i></div>
                         <div className="boxTitle">{title}</div>
+                        <div className="boxDesc">{desc}</div>
                     </div>
                 </div>
             </div>
