@@ -8,7 +8,7 @@ const STSectionBox = ({desc = '', icon = 'atom',title = 'boosh',color = '#109fda
                     <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
                     <div className="boxText">
                         <div className="boxTitle">{title}</div>
-                        <div className="boxDesc">This is where the Section description will go</div>
+                        <div className="boxDesc">{desc}</div>
                     </div>
                 </div>
             </div>
