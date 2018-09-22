@@ -4,7 +4,6 @@ import Header from '../Header'
 import Playlist from '../Playlist'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
-import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
     const { params } = match
@@ -29,9 +28,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
-                            sections.push(<STSectionBox desc={collections[val].description} color={collections[val].color} title={collections[val].name} icon="owl" />)
+                            sections.push(<STSectionBox {...collections[val]} icon="owl" />)
                         })
-
+                        console.log(activeObj)
                         return (
                             <React.Fragment>
                                 <Header />
