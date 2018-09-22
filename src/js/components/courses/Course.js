@@ -6,6 +6,7 @@ import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
+    _st.bodyClass = 'main'
     const { params } = match
     return(
         <DataState.Consumer>
