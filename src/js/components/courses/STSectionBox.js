@@ -8,8 +8,9 @@ const STSectionBox = ({hist, path, description, icon = 'atom', name, color}) =>
                 hist.push(path)
             }}>
                 <div className="stSectionBoxContainer">
-                    <div className="boxHeader" style={{backgroundColor:color}}><i className={"brainy-"+icon}></i></div>
+                    <div className="boxHeader" style={{backgroundColor:color}}></div>
                     <div className="boxText">
+                        <div className="boxIcon"><i className={"brainy-"+icon}></i></div>
                         <div className="boxTitle">{name}</div>
                         <div className="boxDesc">{description}</div>
                     </div>
