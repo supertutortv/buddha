@@ -6,7 +6,7 @@ import Playlist from '../Playlist'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
-const courseNav = () =>
+const CourseNav = () =>
     <ul>
         <li><a href="http://support.supertutortv.com" target="blank"><i className="brainy-question-mark"></i></a></li>
         <li><a href="#" onClick={(e) => {
@@ -46,7 +46,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
 
                         return (
                             <React.Fragment>
-                                <Header courseNav={courseNav} />
+                                <Header courseNav={CourseNav} />
                                 <main id="stAppStage" className='row'>
                                     <div className="stSectionsSection">
                                         {sections}
