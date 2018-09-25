@@ -6,17 +6,6 @@ import Playlist from '../Playlist'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
-const CourseNav = () =>
-    <ul>
-        <li><a href="http://support.supertutortv.com" target="blank"><i className="brainy-question-mark"></i></a></li>
-        <li><a href="#" onClick={(e) => {
-            e.preventDefault()
-            return (
-                <Redirect push to="/dashboard" />
-            )
-        }} ><i className="brainy-pupil"></i></a></li>
-    </ul>
-
 const Course = ({location: loc, history: hist, match, setState}) => {
     _st.bodyClass = 'main'
     const { params } = match
