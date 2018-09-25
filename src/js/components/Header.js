@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
 const CourseNav = () =>
     <ul>
