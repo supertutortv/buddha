@@ -17,7 +17,7 @@ export default class Main extends React.Component {
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
 
-        document.addEventListener( "contextmenu", (e) => e.preventDefault())
+        //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
 
     async componentDidMount() {
