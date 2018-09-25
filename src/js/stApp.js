@@ -12,6 +12,13 @@ import '../sass/stApp.sass'
 
 window._st = STTV
 
+(function() {
+    document.addEventListener( "contextmenu", (e) => {
+        e.preventDefault()
+        console.log(e)
+    })
+})()
+
 ReactDOM.render( 
     <BrowserRouter>
         <Switch>
