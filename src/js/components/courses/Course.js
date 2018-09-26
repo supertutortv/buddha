@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
@@ -34,7 +35,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
 
                         return (
                             <React.Fragment>
-                                <Header />
+                                <Header hist={hist} />
                                 <main id="stAppStage" className='row'>
                                     <div className="stSectionsSection">
                                         {sections}
