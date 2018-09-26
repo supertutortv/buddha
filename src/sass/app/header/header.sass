@@ -16,6 +16,20 @@
     #stHeaderRight
         text-align: right
 
+        .stNavContainer
+            display: flex
+
+            & > li
+                flex: 1 1 100%
+
+                a
+                    color: inherit
+                    opacity: .8
+                    transition: opacity 100ms ease-in-out
+
+                    &:hover
+                        opacity: 1
+
 body.login, body.allYourBase, body.muSignup
 
     #stAppHeader

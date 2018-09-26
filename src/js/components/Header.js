@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Switch,Route,Redirect,Link} from 'react-router-dom'
 
 const Header = ({depth, hist}) => {
     console.log(hist)
@@ -9,7 +8,7 @@ const Header = ({depth, hist}) => {
             <div id="stHeaderLeft" className="col s12 m2 hide-on-small-only"><img src={_st.root+'/assets/img/sttv_logo.png'} /></div>
             <div id="stHeaderMiddle" className="col s12 m8"></div>
             <div id="stHeaderRight" className="col s12 m2">
-                <ul>
+                <ul className="stNavContainer">
                     <li><a href="http://support.supertutortv.com" target="blank"><i className="brainy-question-mark"></i></a></li>
                     <li><a href="#" onClick={(e) => {
                         e.preventDefault()
