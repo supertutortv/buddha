@@ -9,10 +9,10 @@ const Header = ({depth, hist}) => {
             <div id="stHeaderMiddle" className="col s12 m8"></div>
             <div id="stHeaderRight" className="col s12 m2">
                 <ul className="stNavContainer">
-                    <li><a href="#" onClick={(e) => {
+                    <li><FAIco icon="user" onClick={(e) => {
                         e.preventDefault()
                         hist.push('/dashboard')
-                    }} ><FAIco icon="user" /></a></li>
+                    }} /></li>
                     <li><a href="http://support.supertutortv.com" target="blank"><FAIco icon="question" /></a></li>
                     <li><FAIco icon="sign-out-alt" /></li>
                 </ul>
