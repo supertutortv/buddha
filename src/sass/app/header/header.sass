@@ -3,6 +3,7 @@
     flex-direction: row
     height: $headerh
     background-color: white
+    padding: 0 2em
 
     h1
         font-size: 1em
@@ -12,10 +13,9 @@
         flex: 1 1 100%
         display: flex
         align-items: center
-        padding: .25em 2em
 
         img
-            height: 100%
+            height: calc($headerh - .5em)
             width: auto
 
     .stHeaderLeft
