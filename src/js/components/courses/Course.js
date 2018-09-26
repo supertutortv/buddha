@@ -8,7 +8,14 @@ import ST404 from '../ST404'
 
 const Course = ({location: loc, history: hist, match, setState}) => {
     _st.bodyClass = 'main'
-    const { params } = match
+    const { params } = match,
+        icons = {
+            english: 'comment-dots',
+            math: 'calculator',
+            reading: 'book',
+            science: 'microscope',
+            essay: 'edit'
+        }
     return(
         <DataState.Consumer>
             {(data) => {
@@ -30,7 +37,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             collections = data.courses[params.courses].collections
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
-                            sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon="owl" />)
+                            sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
                         })
 
                         return (
