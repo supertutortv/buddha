@@ -1,3 +1,8 @@
+body.login, body.allYourBase, body.muSignup
+
+    .stAppHeader
+        display: none
+    
 .stAppHeader
     display: flex
     flex-direction: row
@@ -48,7 +53,26 @@
                     &:hover
                         opacity: 1
 
-body.login, body.allYourBase, body.muSignup
++MQ($mq-tablet)
+    body.main
 
-    .stAppHeader
-        display: none
+        .stAppHeader
+            flex-wrap: wrap
+
+            & > div
+                flex: 0
+
+            .stHeaderMiddle
+                flex: 1
+
++MQ($mq-tportrait)
+    body.main
+
+        .stAppHeader
+
+            & > div
+                flex: 1
+                flex-basis: 50%
+
+            .stHeaderMiddle
+                order: 1
