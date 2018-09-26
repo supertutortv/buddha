@@ -48,6 +48,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
+                                        <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
                                     </div>
                                 </main>
                             </React.Fragment>
