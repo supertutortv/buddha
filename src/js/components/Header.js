@@ -13,9 +13,7 @@ const Header = ({depth, hist}) => {
                     <li><a href="http://support.supertutortv.com" target="blank"><i className="brainy-question-mark"></i></a></li>
                     <li><a href="#" onClick={(e) => {
                         e.preventDefault()
-                        return (
-                            <Redirect push to="/dashboard" />
-                        )
+                        hist.push('/dashboard')
                     }} ><i className="brainy-pupil"></i></a></li>
                 </ul>
             </div>
