@@ -13,7 +13,10 @@ const Header = ({depth, hist}) => {
                         e.preventDefault()
                         hist.push('/dashboard')
                     }} /></li>
-                    <li><a href="http://support.supertutortv.com" target="blank"><FAIco icon="question" /></a></li>
+                    <li><FAIco icon="question" onClick={(e) => {
+                        e.preventDefault()
+                        window.open("http://support.supertutortv.com")
+                    }}/></li>
                     <li><FAIco icon="sign-out-alt" /></li>
                 </ul>
             </div>
