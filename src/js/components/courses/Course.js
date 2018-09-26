@@ -42,7 +42,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
 
                         return (
                             <React.Fragment>
-                                <Header title={data} hist={hist} />
+                                <Header title={data.courses[params.courses].name} hist={hist} />
                                 <main id="stAppStage" className='row'>
                                     <div className="stSectionsSection">
                                         {sections}
