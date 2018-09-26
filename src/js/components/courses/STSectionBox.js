@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch,Route,Redirect,Link} from 'react-router-dom'
+import FAIco from '../FAIco'
 
 const STSectionBox = ({hist, path, description, icon = 'atom', name, color}) =>
     <section className="stSectionBoxWrap">
@@ -10,7 +11,7 @@ const STSectionBox = ({hist, path, description, icon = 'atom', name, color}) =>
                 <div className="stSectionBoxContainer">
                     <div className="boxHeader" style={{backgroundColor:color}}></div>
                     <div className="boxText">
-                        <div className="boxIcon"><i className={"brainy-"+icon}></i></div>
+                        <div className="boxIcon"><FAIco icon="sign-out" /></div>
                         <div className="boxTitle">{name}</div>
                         <div className="boxDesc">{description}</div>
                     </div>
