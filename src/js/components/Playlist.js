@@ -31,12 +31,13 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
 
         keys.forEach((vid) => {
             let vidObj = obj.videos[vid],
-                stylOb = (vid === hash) ? {style: sbStyle} : {}
+                stylOb = (vid === hash) ? {style: sbStyle} : {},
+                activeClass = vid === hash ? ' active' : ''
 
             if (nextVid) setNextVid(vid)
 
             vids.push(
-                <article className={"stCollectionItem "+ !(vid === hash) || 'active'} {...stylOb}>
+                <article className={"stCollectionItem"+activeClass} {...stylOb}>
                     <Link className="stCollectionItemLink" to={'#'+vid}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
