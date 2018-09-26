@@ -17,6 +17,7 @@ const Header = ({title, depth, hist}) => {
                         e.preventDefault()
                         window.open("http://support.supertutortv.com")
                     }}/></li>
+                    <li><FAIco icon="sync-alt" /></li>
                     <li><FAIco icon="sign-out-alt" /></li>
                 </ul>
             </div>
