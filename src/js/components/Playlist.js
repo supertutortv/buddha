@@ -137,7 +137,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
                             <header className="stVideoHeader">{<Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>}</header>
-                            <div className="stVideoContainer z-depth-3">
+                            <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
                                     {vid.id === 0 ? 
