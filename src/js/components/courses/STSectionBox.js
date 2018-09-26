@@ -11,7 +11,7 @@ const STSectionBox = ({hist, path, description, icon = 'atom', name, color}) =>
                 <div className="stSectionBoxContainer">
                     <div className="boxHeader" style={{backgroundColor:color}}></div>
                     <div className="boxText">
-                        <div className="boxIcon"><FAIco icon="sign-out" /></div>
+                        <div className="boxIcon"><FAIco icon="sign-out-alt" /></div>
                         <div className="boxTitle">{name}</div>
                         <div className="boxDesc">{description}</div>
                     </div>
