@@ -43,14 +43,12 @@ export default class Main extends React.Component {
 
         return(
             <DataState.Provider value={this.state.data}>
-                <div id="stAppInner">
-                    <Switch>
-                        <Route exact path='/dashboard' component={Dashboard} />
-                        <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                        <Route exact path='/:courses/:collections?/:collection?/:videos?/:question?' render={props => <Course setState={this.setState} {...props} />} />
-                        <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route exact path='/dashboard' component={Dashboard} />
+                    <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:videos?/:question?' render={props => <Course setState={this.setState} {...props} />} />
+                    <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
+                </Switch>
             </DataState.Provider>
         )
     }
