@@ -9,16 +9,16 @@ const Header = ({title, depth, hist}) => {
             <div className="stHeaderMiddle"><h1>{title}</h1></div>
             <div className="stHeaderRight">
                 <ul className="stNavContainer">
-                    <li><FAIco icon="user" onClick={(e) => {
+                    <li><FAIco alt="Dashboard" icon="user" onClick={(e) => {
                         e.preventDefault()
                         hist.push('/dashboard')
                     }} /></li>
-                    <li><FAIco icon="question" onClick={(e) => {
+                    <li><FAIco alt="Help" icon="question" onClick={(e) => {
                         e.preventDefault()
                         window.open("http://support.supertutortv.com")
                     }}/></li>
-                    <li><FAIco icon="sync-alt" /></li>
-                    <li><FAIco icon="sign-out-alt" /></li>
+                    <li><FAIco alt="Refresh course" icon="sync-alt" /></li>
+                    <li><FAIco alt="Sign out" icon="sign-out-alt" /></li>
                 </ul>
             </div>
         </header>
