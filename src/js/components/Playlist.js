@@ -36,7 +36,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
             if (nextVid) setNextVid(vid)
 
             vids.push(
-                <article className="stCollectionItem" {...stylOb}>
+                <article className={"stCollectionItem "+ !(vid === hash) || 'active'} {...stylOb}>
                     <Link className="stCollectionItemLink" to={'#'+vid}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">

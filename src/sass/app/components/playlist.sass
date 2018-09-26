@@ -66,7 +66,7 @@
                     width: 100%
                     border-radius: $tiny
                     overflow: hidden
-                    background-color: white(.2)
+                    background-color: black(.5)
 
                     .stVideoPlayer
                         padding-top: 56.25%
@@ -147,6 +147,7 @@
             -ms-flex-item-align: start
             align-self: flex-start
             background-color: black(.1)
+            @extend .z-depth-5
 
             .stPlaylistSidebar
                 display: flex
@@ -171,22 +172,22 @@
                                 vertical-align: top
                                 position: relative
                                 text-align: center
-                                border-bottom: 1px solid offwhite(.6)
+                                border-bottom: 1px solid black(.6)
 
                                 .stCollectionTab
                                     cursor: pointer
                                     flex: 1 1 100%
                                     line-height: 1
                                     padding: $tiny 0
-                                    color: offwhite(.6)
+                                    color: black(.6)
                                     font-weight: 200
                                     border-bottom: 4px solid transparent
                                     transition: all 100ms ease-in-out
 
                                     &.react-tabs__tab--selected
-                                        color: offwhite()
+                                        color: black()
                                         font-weight: 400
-                                        border-bottom: 4px solid offwhite(.6)
+                                        border-bottom: 4px solid black(.6)
 
                         .stCollectionTabPanel
                             height: calc(100vh - 3em)
@@ -196,6 +197,10 @@
                         .stCollectionItem
                             width: 100%
                             display: inline-block
+
+                            &.active
+                                color: offwhite()
+                                text-shadow: 0px 0px 10px black(.6)
 
                             .stCollectionItemLink
                                 display: block
@@ -249,4 +254,3 @@
                                         h3
                                             font-weight: 400
                                             font-size: 1em
-                                            text-shadow: 0px 0px 10px black(.6)
