@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as FA from '@fortawesome/free-solid-svg-icons'
+import FAIco from './FAIco'
 
 const Header = ({depth, hist}) => {
     console.log(FA)
@@ -16,7 +14,7 @@ const Header = ({depth, hist}) => {
                     <li><a href="#" onClick={(e) => {
                         e.preventDefault()
                         hist.push('/dashboard')
-                    }} ><i className="brainy-pupil"></i></a></li>
+                    }} ><FAIco icon="user" /></a></li>
                 </ul>
             </div>
         </header>
