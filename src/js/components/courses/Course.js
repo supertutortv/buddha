@@ -47,10 +47,11 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                 <Header title={data.courses[params.courses].name} hist={hist} />
                                 <main className='stAppStage'>
                                     <div className="stAppStageInner">
-                                        <div className="stSectionsSection">
-                                            <div className="stIntroVideo">
+                                        <div className="stCourseTop">
+                                            <div className="stCourseIntro">
                                                 <VidPlayer video={data.courses[params.courses].intro} />
                                             </div>
+                                            <div className="stCourseActions">Actions</div>
                                         </div>
                                         <div className="stSectionsSection">
                                             {sections}
