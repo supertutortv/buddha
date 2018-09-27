@@ -99,7 +99,22 @@ body.main
                     .stSectionsSection
 
                         .stSectionBoxWrap
-                            flex-basis: 100%
+                            flex-basis: 50%
 
-                            &:not(:last-of-type)
-                                margin: 0
+                            &:nth-of-type(odd):not(:last-of-type)
+                                margin-right: 1em
+
++MQ($mq-mobile)
+    body.main
+
+        st-app
+
+            .stAppStage
+
+                .stAppStageInner
+
+                    .stSectionsSection
+
+                        .stSectionBoxWrap
+                            flex-basis: 100%
+                            margin: 0
