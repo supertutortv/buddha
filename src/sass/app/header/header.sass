@@ -83,9 +83,12 @@ body.login, body.allYourBase, body.muSignup
     body.main
 
         .stAppHeader
+            padding: 0
 
             & > div
-                flex-basis: 100%
+
+                &:not(:nth-of-type(even))
+                    padding: 0 1em
 
             .stHeaderMiddle
                 order: 1
