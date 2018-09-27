@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
+import VidPlayer from '../VidPlayer'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
@@ -46,7 +47,11 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                 <Header title={data.courses[params.courses].name} hist={hist} />
                                 <main className='stAppStage'>
                                     <div className="stAppStageInner">
-                                        <div className="stSectionsSection"></div>
+                                        <div className="stSectionsSection">
+                                            <div className="stIntroVideo">
+                                                <VidPlayer video={data.courses[params.courses].intro} />
+                                            </div>
+                                        </div>
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
