@@ -100,7 +100,9 @@ body.main
 
                         .stSectionBoxWrap
                             flex-basis: 50%
-                            margin-right: 0
+                            
+                            &:not(:last-of-type)
+                                margin-right: 0
 
                             &:nth-of-type(odd):not(:last-of-type)
                                 padding-right: 1em
@@ -118,5 +120,6 @@ body.main
 
                         .stSectionBoxWrap
                             flex-basis: 100%
-                            margin-right: 0
-                            padding-right: 0
+
+                            &:nth-of-type(odd):not(:last-of-type)
+                                padding-right: 0
