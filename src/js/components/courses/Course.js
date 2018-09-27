@@ -41,7 +41,6 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
                         })
 
-                        console.log(data.courses[params.courses].intro)
                         return (
                             <React.Fragment>
                                 <Header title={data.courses[params.courses].name} hist={hist} />
