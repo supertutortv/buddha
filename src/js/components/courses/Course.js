@@ -40,11 +40,13 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
                         })
 
+                        console.log(data.courses[params.courses])
                         return (
                             <React.Fragment>
                                 <Header title={data.courses[params.courses].name} hist={hist} />
                                 <main className='stAppStage'>
                                     <div className="stAppStageInner">
+                                        <div className="stSectionsSection"></div>
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
