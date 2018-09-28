@@ -26,7 +26,12 @@ body.main
 
                     .stCourseActions
                         flex: 0
+                        display: flex
+                        flex-flow: column wrap
                         padding-left: $huge
+
+                        & > div
+                            flex: 1 1 100%
 
                     .stCourseIntro
                         flex: 1

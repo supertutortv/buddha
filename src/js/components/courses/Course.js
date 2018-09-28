@@ -50,7 +50,13 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                             <div className="stCourseIntro">
                                                 <VidPlayer video={data.courses[params.courses].intro} />
                                             </div>
-                                            <div className="stCourseActions">Actions</div>
+                                            <div className="stCourseActions">
+                                                <div className="stCourseAction">Action1</div>
+                                                <div className="stCourseAction">Action2</div>
+                                                <div className="stCourseAction">Action3</div>
+                                                <div className="stCourseAction">Action4</div>
+                                                <div className="stCourseAction">Action5</div>
+                                            </div>
                                         </div>
                                         <div className="stSectionsSection">
                                             {sections}
