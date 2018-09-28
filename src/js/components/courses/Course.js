@@ -52,7 +52,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 <VidPlayer video={data.courses[params.courses].intro} />
                                             </div>
                                             <div className="stCourseActions">
-                                                <div className="stCourseAction"><FAIco title="Downloads" icon="download"/>Downloads</div>
+                                                <div className="stCourseAction"><FAIco title="Downloads" icon="cloud-download-alt"/>Downloads</div>
                                                 <div className="stCourseAction">Action2</div>
                                                 <div className="stCourseAction">Action3</div>
                                                 <div className="stCourseAction">Action4</div>
