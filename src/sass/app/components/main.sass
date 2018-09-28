@@ -24,10 +24,14 @@ body.main
 
                 .stCourseTop
 
+                    & > div
+                        flex: 1 50%
+
                     .stCourseActions
                         padding-left: $huge
 
                     .stCourseIntro
+                        flex: 4
 
                         .stVimWrap
                             position: relative
@@ -111,7 +115,6 @@ body.main
                     .stCourseTop
 
                         .stCourseIntro
-                            flex: 1
 
 +MQ($mq-tablet)
     body.main
@@ -135,9 +138,10 @@ body.main
 
                     .stCourseTop
                         padding-top: 0
+                        flex-direction: column
 
                         & > div
-                            flex-basis: 100%
+                            flex: 1 1 100%
 
                         .stCourseActions
                             padding-left: 0
