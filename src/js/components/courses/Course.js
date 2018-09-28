@@ -4,6 +4,7 @@ import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
 import VidPlayer from '../VidPlayer'
+import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
@@ -51,7 +52,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 <VidPlayer video={data.courses[params.courses].intro} />
                                             </div>
                                             <div className="stCourseActions">
-                                                <div className="stCourseAction">Action1</div>
+                                                <div className="stCourseAction"><FAIco title="Downloads" icon="download"/>Downloads</div>
                                                 <div className="stCourseAction">Action2</div>
                                                 <div className="stCourseAction">Action3</div>
                                                 <div className="stCourseAction">Action4</div>
