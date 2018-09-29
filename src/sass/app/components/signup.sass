@@ -3,6 +3,9 @@ body.signup
     & > st-app
         background-color: offwhite()
 
+        .stSignupDiagSep
+            display: flex
+
         .stSignupStep
             display: flex
             flex-flow: row wrap
@@ -13,18 +16,18 @@ body.signup
                 font-size: $small
 
             & > div
+                display: flex
                 flex: 1 1 100%
                 +centerblock
 
             .stSignupTitle
-                margin-top: 2em
-                margin-bottom: 4em
                 order: 1
 
             .stPlansContainer
                 font-size: $bodytext
                 min-height: $huge * 8
                 padding: 0 1em
+                margin: $huge*2 auto
 
                 .stPlan
                     padding: 0 1em
