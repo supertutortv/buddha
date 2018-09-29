@@ -15,20 +15,20 @@ const Header = ({stripped, title, depth, hist}) => {
             </div>
             <div className="stHeaderRight">
                 <ul className="stNavContainer">
+                    {stripped ? '' :
+                        <React.Fragment>
+                            <li><FAIco title="Dashboard" icon="user" onClick={(e) => {
+                                e.preventDefault()
+                                hist.push('/dashboard')
+                            }} /></li>
+                            <li><FAIco title="Refresh course" icon="sync-alt" /></li>
+                        </React.Fragment>
+                    }
                     <li><FAIco title="Help" icon="question" onClick={(e) => {
                         e.preventDefault()
                         window.open("http://support.supertutortv.com")
                     }}/></li>
-                    <li><FAIco title={stripped ? "Login" : "Dashboard"} icon="user" onClick={(e) => {
-                        e.preventDefault()
-                        hist.push(path)
-                    }} /></li>
-                    {stripped ? '' :
-                        <React.Fragment>
-                            <li><FAIco title="Refresh course" icon="sync-alt" /></li>
-                            <li><FAIco title="Sign out" icon="sign-out-alt" /></li>
-                        </React.Fragment>
-                    }
+                    <li><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
                 </ul>
             </div>
         </header>
