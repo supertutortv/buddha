@@ -17,6 +17,7 @@ body.signup
 
             & > div
                 display: flex
+                flex-flow: row wrap
                 +centerblock
                 margin-top: $huge*2
 
@@ -27,11 +28,12 @@ body.signup
             .stPlansContainer
                 font-size: $bodytext
                 padding: $huge 1em
+                flex-flow: row wrap
 
                 .stPlan
                     padding: 0 1em
                     position: relative
-                    flex: 2
+                    flex: 1
 
                     &.first
                         top: $huge
@@ -179,4 +181,4 @@ body.signup
 
                     .stPlan
                         top: 0 !important
-                        flex-flow: row wrap
+                        flex: 1 1 100%
