@@ -31,14 +31,12 @@ const Plans = ({ setPlan }) => {
             </svg>
         </div>
         <div class="stSignupPlans stSignupStep">
-            <div class="stSignupInner">
-                <div class="stPlansContainer">
-                    <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
-                    <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
-                    <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
-                </div>
+            <div class="stSignupTitle"><h1>Select your plan.</h1></div>
+            <div class="stPlansContainer">
+                <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
+                <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
+                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
             </div>
-            <h1>Select your plan.</h1>
         </div>
     </React.Fragment>
 )}
