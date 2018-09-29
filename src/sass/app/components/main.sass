@@ -111,23 +111,13 @@ body.main
                                             font-style: italic
                                             line-height: 1
 
-+MQ($mq-tablet+1)
-    body.main
-
-        st-app
-
-            .stAppStage
-
-                .stAppStageInner
-
-                    .stCourseTop
-
-                        .stCourseIntro
-
 +MQ($mq-tablet)
     body.main
 
         st-app
+
+            .stAppHeader
+                padding: 0 $tiny
 
             .stAppStage
 
@@ -145,6 +135,17 @@ body.main
     body.main
 
         st-app
+
+            .stAppHeader
+                flex-wrap: wrap
+                height: $headerh * 2
+
+                & > div
+                    flex: 1 50%
+                    height: 50%
+
+                .stHeaderMiddle
+                    order: 1
 
             .stAppStage
 
@@ -181,6 +182,20 @@ body.main
     body.main
 
         st-app
+
+            .stAppHeader
+
+                & > div
+
+                    &:not(:nth-of-type(even))
+                        padding: 0
+                
+                .stHeaderRight
+
+                    .stNavContainer
+
+                        & > li
+                            padding-left: 1em
 
             .stAppStage
 

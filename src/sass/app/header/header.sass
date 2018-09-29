@@ -58,38 +58,8 @@ body.login, body.allYourBase, body.muSignup
                         opacity: 1
 
 +MQ($mq-tablet)
-    body.main
-
-        .stAppHeader
-            padding: 0 $tiny
 
 +MQ($mq-tportrait)
-    body.main
-
-        .stAppHeader
-            flex-wrap: wrap
-            height: $headerh * 2
-
-            & > div
-                flex: 1 50%
-                height: 50%
-
-            .stHeaderMiddle
-                order: 1
 
 +MQ($mq-mobile)
-    body.main
-
-        .stAppHeader
-
-            & > div
-
-                &:not(:nth-of-type(even))
-                    padding: 0
-            
-            .stHeaderRight
-
-                .stNavContainer
-
-                    & > li
-                        padding-left: 1em
+    
