@@ -100,7 +100,7 @@ export default class Signup extends React.Component {
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
-                    <Header stripped={true} depth="0"/>
+                    <Header stripped={true} hist={this.props.history} depth="0"/>
                     <Elements>
                         <SignupStep 
                             state={this.state} 

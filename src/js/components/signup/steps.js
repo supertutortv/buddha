@@ -26,8 +26,8 @@ const Plans = ({ setPlan }) => {
     return (
     <React.Fragment>
     <div id="stSignupDiagSep" className="row">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="100px" viewBox="0 0 1920 100" preserveAspectRatio="none">
-            <polygon points="0,0 0,100 1920,0 "></polygon>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="50px" viewBox="0 0 1920 50" preserveAspectRatio="none">
+            <polygon points="0,0 0,50 1920,0 "></polygon>
         </svg>
     </div>
     <div id="stSignupPlans" class="stSignupStep row">
