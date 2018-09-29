@@ -5,6 +5,7 @@ body.signup
 
         .stSignupStep
             display: flex
+            flex-flow: row wrap
             width: 100%
             +animFadeIn
 
@@ -12,7 +13,7 @@ body.signup
                 font-size: $small
 
             & > div
-                flex-flow: column nowrap
+                flex: 1 1 100%
                 +centerblock
 
             .stSignupTitle
