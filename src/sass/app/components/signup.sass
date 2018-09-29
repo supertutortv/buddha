@@ -4,16 +4,21 @@ body.signup
         background-color: offwhite()
 
         .stSignupStep
-            text-align: center
+            display: flex
+            width: 100%
             +animFadeIn
-            +centerblock
 
             & > span
                 font-size: $small
 
-            .stSignupInner
+            & > div
+                flex-flow: column nowrap
+                +centerblock
+
+            .stSignupTitle
                 margin-top: 2em
                 margin-bottom: 4em
+                order: 1
 
             .stPlansContainer
                 font-size: $bodytext
