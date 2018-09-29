@@ -57,8 +57,6 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 </div>
                                                 <div className="stCourseBar">
                                                     <div className="stCourseAction"><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
-                                                    <div className="stCourseAction"><FAIco title="Rate/Review" icon="star"/><span className="stActionTxt">Rate This Course</span></div>
-                                                    <div className="stCourseAction"><FAIco title="Leave Feedback" icon="comment-alt"/><span className="stActionTxt">Leave Feedback</span></div>
                                                     <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
                                                 </div>
                                             </div>

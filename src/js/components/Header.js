@@ -21,6 +21,8 @@ const Header = ({stripped, title, depth, hist}) => {
                                 e.preventDefault()
                                 hist.push('/dashboard')
                             }} /></li>
+                            <li><FAIco title="Rate/Review" icon="star"/></li>
+                            <li><FAIco title="Leave Feedback" icon="comment-alt"/></li>
                             <li><FAIco title="Refresh course" icon="sync-alt" /></li>
                         </React.Fragment>
                     }
