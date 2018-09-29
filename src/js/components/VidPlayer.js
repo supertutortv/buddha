@@ -84,7 +84,7 @@ VidPlayer.defaultProps = {
     autoplay: true,
     showByline: false,
     showPortrait: false,
-    showTitle: true,
+    showTitle: false,
     muted: false,
     background: false,
     video: 0,
