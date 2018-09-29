@@ -8,6 +8,7 @@ body.signup
 
         .stSignupStep
             display: flex
+            flex: 1 1 100%
             flex-flow: row wrap
             width: 100%
             +animFadeIn
@@ -17,8 +18,6 @@ body.signup
 
             & > div
                 display: flex
-                flex-flow: row wrap
-                flex: 1 1 100%
                 +centerblock
 
             .stSignupTitle
@@ -29,12 +28,12 @@ body.signup
                 font-size: $bodytext
                 min-height: $huge * 8
                 padding: 0 1em
-                margin: $huge*2 auto
+                margin: $huge*2 auto 0
 
                 .stPlan
                     padding: 0 1em
                     position: relative
-                    flex: 1 1 100%
+                    flex: 2
 
                     &.first
                         top: $huge
@@ -49,10 +48,9 @@ body.signup
                         border: 1px solid black(.1)
                         cursor: pointer
                         color: inherit
-                        flex: 1 1 100%
+                        flex-flow: column wrap
                         display: flex
-                        justify-content: center
-                        align-items: center
+                        text-align: center
                         transition: all 250ms ease-in-out
 
                         &:hover
