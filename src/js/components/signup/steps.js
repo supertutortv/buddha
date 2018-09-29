@@ -6,16 +6,16 @@ const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
     let plan = _st.plans[slug],
         hLt = highlight ? ' highlight' : ''
     return (
-        <div className={'col s12 m4 stPlan '+exClass}>
-            <a id={'stPlan_'+slug} data-obj={JSON.stringify(plan)} className={"stPlanInner row z-depth-3"+hLt} onClick={(e) => setPlan(e)}>
-                <div className="stPlanTest row">
+        <div className={'stPlan '+exClass}>
+            <a id={'stPlan_'+slug} data-obj={JSON.stringify(plan)} className={"stPlanInner z-depth-3"+hLt} onClick={(e) => setPlan(e)}>
+                <div className="stPlanTest">
                     <span className="test">{plan.test}</span>
                     <span className="name">{plan.name}</span>
                 </div>
-                <div className="stPlanPrice row">{'$'+plan.price/100}</div>
-                <div className="stPlanItems row">{plan.list.map((li) => {
+                <div className="stPlanPrice">{'$'+plan.price/100}</div>
+                <div className="stPlanItems">{plan.list.map((li) => {
                     let newLi = li.match(/\*(.*)\*(.*)/)
-                    return <div className="stPlanItem row">{newLi ? <span><strong>{newLi[1]}</strong>{newLi[2]}</span> : <span>{li}</span>}</div>
+                    return <div className="stPlanItem">{newLi ? <span><strong>{newLi[1]}</strong>{newLi[2]}</span> : <span>{li}</span>}</div>
                 })}</div>
             </a>
         </div>
@@ -25,21 +25,21 @@ const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
 const Plans = ({ setPlan }) => {
     return (
     <React.Fragment>
-    <div id="stSignupDiagSep" className="row">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="50px" viewBox="0 0 1920 50" preserveAspectRatio="none">
-            <polygon points="0,0 0,50 1920,0 "></polygon>
-        </svg>
-    </div>
-    <div id="stSignupPlans" class="stSignupStep row">
-        <div class="stSignupInner col s12">
-            <div id="stPlansContainer" class="stFormBody col s12">
-                <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
-                <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
-                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
-            </div>
+        <div className="stSignupDiagSep">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="50px" viewBox="0 0 1920 50" preserveAspectRatio="none">
+                <polygon points="0,0 0,50 1920,0 "></polygon>
+            </svg>
         </div>
-        <h1>Select your plan.</h1>
-    </div>
+        <div class="stSignupPlans stSignupStep">
+            <div class="stSignupInner">
+                <div class="stPlansContainer">
+                    <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
+                    <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
+                    <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
+                </div>
+            </div>
+            <h1>Select your plan.</h1>
+        </div>
     </React.Fragment>
 )}
 

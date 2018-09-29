@@ -136,3 +136,24 @@ body.signup
             span
                 font-size: $small
                 font-style: italic
+
++MQ($mq-tportrait)
+    body.signup
+
+        st-app
+
+            .stAppHeader
+
+                & > div
+                    flex: 1
+
+                .stHeaderLeft
+                    display: none
+
+                .stHeaderMiddle
+                    justify-content: flex-start
+
+            .stSignupDiagSep
+                display: none
+
+            .stSignupStep
