@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import FAIco from './FAIco'
 
 const Header = ({stripped, title, depth, hist}) => {
-    var strCls = stripped ? ' stripped' : ''
+    var strCls = stripped ? ' stripped' : '',
+        path = stripped ? '/login' : '/dashboard'
     return(
         <header className={"stAppHeader z-depth-"+depth+strCls}>
             <div className="stHeaderLeft">
@@ -20,7 +21,7 @@ const Header = ({stripped, title, depth, hist}) => {
                     }}/></li>
                     <li><FAIco title={stripped ? "Login" : "Dashboard"} icon="user" onClick={(e) => {
                         e.preventDefault()
-                        hist.push(stripped ? '/login' : '/dashboard')
+                        hist.push(path)
                     }} /></li>
                     {stripped ? '' :
                         <React.Fragment>
