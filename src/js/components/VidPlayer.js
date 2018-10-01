@@ -75,7 +75,7 @@ class VidPlayer extends React.Component {
     render() {
         return (
             <div className="stVimWrap">
-                {this.props.getTitle ? this.player.getVideoTitle().then((t) => <div className="stVimTitle">{t}</div>) : ''}
+                {this.props.showTitle ? this.player.getVideoTitle().then((t) => <div className="stVimTitle">{t}</div>) : ''}
                 <div className="stVimRoot" ref={this.refContainer} />
             </div>
         )
