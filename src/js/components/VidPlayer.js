@@ -55,7 +55,7 @@ class VidPlayer extends React.Component {
             })
         })
 
-        this.player.getVideoTitle().then((t) => this.setState({title: t}))
+        if (this.props.showTitle) this.player.getVideoTitle().then((t) => this.setState({title: t}))
     }
 
     updateProps(names) {
