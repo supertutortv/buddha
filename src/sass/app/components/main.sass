@@ -127,7 +127,7 @@ body.main
                     display: flex
                     width: 100%
                     border-radius: $ittybitty
-                    border: 1px solid black(.5)
+                    border: 1px solid black(.25)
                     position: relative
                     background-color: white()
                     overflow: hidden
@@ -135,9 +135,10 @@ body.main
                     @extend .z-depth-2
 
                     .boxHeader
+                        width: 100%
                         font-size: $tiny
                         padding-top: 1em
-                        background-color: black(.5)
+                        background-color: black(.25)
 
 +MQ($mq-tablet)
     body.main
