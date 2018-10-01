@@ -72,10 +72,12 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="boxTitle">Practice</div>
                                                 </div>
                                                 <div className="stPracticeBody">{() => {
-                                                    let tests = collections.practice.colection
-                                                    return Object.keys(tests).forEach((test) => {
-                                                        return <div>{JSON.stringify(tests[test])}</div>
+                                                    let tests = collections.practice.colection,
+                                                        testDivs = []
+                                                        Object.keys(tests).forEach((test) => {
+                                                        testDivs.push(<div>{JSON.stringify(tests[test])}</div>)
                                                     })
+                                                    return testDivs
                                                 }}</div>
                                             </div>
                                         </div>
