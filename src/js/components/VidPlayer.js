@@ -54,8 +54,6 @@ class VidPlayer extends React.Component {
                 events[ev](event, this.props)
             })
         })
-
-        if (this.props.showTitle) this.player.getVideoTitle().then((t) => this.setState({title: t}))
     }
 
     updateProps(names) {
@@ -68,7 +66,7 @@ class VidPlayer extends React.Component {
                 case 'autoplay':
                     break
                 case 'video':
-                    player.loadVideo(value || 0)
+                    player.loadVideo(value || 0).then(() => {if (this.props.showTitle)  player.getVideoTitle().then((t) => this.state.title = t)}).catch((e) => console.log(e))
                     break
             }
         })
