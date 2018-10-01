@@ -31,6 +31,7 @@ class VidPlayer extends React.Component {
           }
 
         this.refContainer = this.refContainer.bind(this)
+        this.getTitle = this.getTitle.bind(this)
     }
 
     componentDidMount() {
