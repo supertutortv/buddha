@@ -50,7 +50,8 @@ class VidPlayer extends React.Component {
                 events[ev](event, this.props)
             })
         })
-        console.log(this.player)
+
+        this.player.getVideoTitle().then((t) => console.log(t))
     }
 
     updateProps(names) {
