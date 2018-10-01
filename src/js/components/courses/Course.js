@@ -49,7 +49,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                     <div className="stAppStageInner">
                                         <div className="stCourseTop">
                                             <div className="stCourseIntro">
-                                                <VidPlayer showTitle video={data.courses[params.courses].intro} />
+                                                <VidPlayer video={data.courses[params.courses].intro} />
                                             </div>
                                             <div className="stCourseActions">
                                                 <div className="stCourseSearch">
