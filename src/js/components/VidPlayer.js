@@ -31,6 +31,7 @@ class VidPlayer extends React.Component {
           }
 
         this.refContainer = this.refContainer.bind(this)
+        this.setTitle = this.setTitle.bind(this)
     }
 
     componentDidMount() {
@@ -54,6 +55,12 @@ class VidPlayer extends React.Component {
                 events[ev](event, this.props)
             })
         })
+
+        if (this.props.showTitle) this.player.getVideoTitle().then((t) => this.setTitle(t))
+    }
+
+    setTitle(title) {
+        this.setState({title: title})
     }
 
     updateProps(names) {
@@ -66,7 +73,8 @@ class VidPlayer extends React.Component {
                 case 'autoplay':
                     break
                 case 'video':
-                    player.loadVideo(value || 0).then(() => {if (this.props.showTitle)  player.getVideoTitle().then((t) => this.setState({title:t}))}).catch((e) => console.log(e))
+                    player.loadVideo(value || 0)
+                    player.getVideoTitle().then((t) => this.setTitle(t))
                     break
             }
         })
@@ -80,7 +88,7 @@ class VidPlayer extends React.Component {
         return (
             <div className="stVimWrap">
                 <div className="stVimRoot" ref={this.refContainer} />
-                <div className="stVimTitle">{this.state.title || ''}</div>
+                <div className="stVimTitle">{this.state.title}</div>
             </div>
         )
     }
