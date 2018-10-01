@@ -12,6 +12,10 @@ class VidPlayer extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            title: false
+        }
+
         this.initial = {
             id: this.props.video,
             width: 1920,
@@ -50,6 +54,15 @@ class VidPlayer extends React.Component {
                 events[ev](event, this.props)
             })
         })
+
+        if (this.props.showTitle) this.setState({title: true})
+    }
+
+    getTitle() {
+        const titleDiv = ''
+        if (this.state.title && this.player)
+            this.player.getVideoTitle().then((t) => titleDiv = <div className="stVimTitle">{t}</div>)
+        return titleDiv
     }
 
     updateProps(names) {
@@ -73,11 +86,10 @@ class VidPlayer extends React.Component {
     }
 
     render() {
-        const { player } = this
         return (
             <div className="stVimWrap">
-                {this.props.showTitle ? player.getVideoTitle().then((t) => <div className="stVimTitle">{t}</div>) : ''}
                 <div className="stVimRoot" ref={this.refContainer} />
+                {this.getTitle()}
             </div>
         )
     }
