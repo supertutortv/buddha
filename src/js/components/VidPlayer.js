@@ -59,7 +59,7 @@ class VidPlayer extends React.Component {
     }
 
     getTitle() {
-        const titleDiv = ''
+        var titleDiv = ''
         if (this.state.title && this.player)
             this.player.getVideoTitle().then((t) => titleDiv = <div className="stVimTitle">{t}</div>)
         return titleDiv
