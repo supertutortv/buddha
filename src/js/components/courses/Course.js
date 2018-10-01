@@ -36,7 +36,8 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         )
                     else
                         var sections = [],
-                            collections = data.courses[params.courses].collections
+                            collections = data.courses[params.courses].collections,
+                            titleOverlay = ''
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
                             sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
@@ -49,7 +50,8 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                     <div className="stAppStageInner">
                                         <div className="stCourseTop">
                                             <div className="stCourseIntro">
-                                                <VidPlayer showTitle getTitle={(t) => console.log('Heres ur fukkin title: '+t)} video={data.courses[params.courses].intro} />
+                                                <VidPlayer showTitle getTitle={(t) => titleOverlay = t} video={data.courses[params.courses].intro} />
+                                                <div>{titleOverlay}</div>
                                             </div>
                                             <div className="stCourseActions">
                                                 <div className="stCourseSearch">
