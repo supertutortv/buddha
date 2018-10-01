@@ -13,7 +13,7 @@ class VidPlayer extends React.Component {
         super(props)
 
         this.state = {
-            title: false
+            title: ''
         }
 
         this.initial = {
@@ -31,7 +31,6 @@ class VidPlayer extends React.Component {
           }
 
         this.refContainer = this.refContainer.bind(this)
-        this.getTitle = this.getTitle.bind(this)
     }
 
     componentDidMount() {
@@ -56,15 +55,7 @@ class VidPlayer extends React.Component {
             })
         })
 
-        if (this.props.showTitle) this.setState({title: true})
-    }
-
-    getTitle() {
-        var titleDiv = ''
-        if (this.state.title)
-            this.player.getVideoTitle().then((t) => titleDiv = <div className="stVimTitle">{t}</div>)
-        console.log(titleDiv)
-        return titleDiv
+        this.player.getVideoTitle().then((t) => this.setState({title: t}))
     }
 
     updateProps(names) {
@@ -91,6 +82,7 @@ class VidPlayer extends React.Component {
         return (
             <div className="stVimWrap">
                 <div className="stVimRoot" ref={this.refContainer} />
+                <div className="stVimTitle">{this.state.title || ''}</div>
             </div>
         )
     }
