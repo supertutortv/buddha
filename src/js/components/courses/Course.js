@@ -77,7 +77,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                         Object.keys(tests).forEach((test) => {
                                                         testDivs.push(<div>{JSON.stringify(tests[test])}</div>)
                                                     })
-                                                    return testDivs
+                                                    return (
+                                                        <div>{testDivs}</div>
+                                                    )
                                                 }}</div>
                                             </div>
                                         </div>
