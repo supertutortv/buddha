@@ -51,7 +51,7 @@ class VidPlayer extends React.Component {
             })
         })
 
-        this.player.getVideoTitle().then((t) => console.log(t))
+        if (this.props.getTitle) this.player.getVideoTitle().then((t) => console.log(t))
     }
 
     updateProps(names) {
@@ -87,6 +87,7 @@ VidPlayer.defaultProps = {
     showByline: false,
     showPortrait: false,
     showTitle: false,
+    getTitle: false,
     muted: false,
     background: false,
     video: 0,
