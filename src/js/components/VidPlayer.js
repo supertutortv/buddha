@@ -43,7 +43,6 @@ class VidPlayer extends React.Component {
       }
 
     createPlayer() {
-        const getTitle = this.props.getTitle
         this.player = new Player(this.container, this.initial)
     
         Object.keys(events).forEach((ev) => {
@@ -51,8 +50,6 @@ class VidPlayer extends React.Component {
                 events[ev](event, this.props)
             })
         })
-
-        typeof getTitle === 'function' && this.player.getVideoTitle().then((t) => getTitle(t))
     }
 
     updateProps(names) {
@@ -77,7 +74,10 @@ class VidPlayer extends React.Component {
 
     render() {
         return (
-            <div className="stVimWrap" ref={this.refContainer} />
+            <div className="stVimWrap">
+                {this.props.getTitle ? this.player.getVideoTitle().then((t) => <div className="stVimTitle">{t}</div>) : ''}
+                <div className="stVimRoot" ref={this.refContainer} />
+            </div>
         )
     }
 }
