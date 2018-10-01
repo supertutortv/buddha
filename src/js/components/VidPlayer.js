@@ -43,6 +43,7 @@ class VidPlayer extends React.Component {
       }
 
     createPlayer() {
+        const getTitle = this.props.getTitle
         this.player = new Player(this.container, this.initial)
     
         Object.keys(events).forEach((ev) => {
@@ -51,7 +52,7 @@ class VidPlayer extends React.Component {
             })
         })
 
-        if (this.props.getTitle) this.player.getVideoTitle().then((t) => console.log(t))
+        typeof getTitle === 'function' && this.player.getVideoTitle().then((t) => getTitle(t))
     }
 
     updateProps(names) {
