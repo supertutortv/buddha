@@ -67,7 +67,10 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                         <div className="stPracticeSection">
                                             <div className="boxHeader"></div>
                                             <div className="stPracticeSectionInner">
-                                                {JSON.stringify(collections.practice)}
+                                                <div className="stPracticeTop">
+                                                    <FAIco title={collections.practice.name} icon="chart-line"/>
+                                                </div>
+                                                <div className="stPracticeBody">{JSON.stringify(collections.practice)}</div>
                                             </div>
                                         </div>
                                         <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
