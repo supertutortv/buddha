@@ -35,7 +35,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
-                        var sections = practiceTests = [],
+                        var sections, practiceTests = [],
                             collections = data.courses[params.courses].collections,
                             tests = collections.practice.collection
 
