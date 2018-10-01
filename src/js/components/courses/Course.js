@@ -68,7 +68,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                             <div className="boxHeader"></div>
                                             <div className="stPracticeSectionInner">
                                                 <div className="stPracticeTop">
-                                                    <FAIco title={collections.practice.name} icon="chart-line"/>
+                                                    <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
                                                     <div className="boxTitle">Practice</div>
                                                 </div>
                                                 <div className="stPracticeBody">{JSON.stringify(collections.practice)}</div>
