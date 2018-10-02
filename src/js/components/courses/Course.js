@@ -8,6 +8,14 @@ import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
+const Practice = ({obj}) => {
+    let t = []
+    Object.keys(obj).forEach((test) => {
+        t.push(<div>{JSON.stringify(obj[test])}</div>)
+    })
+    return t
+}
+
 const Course = ({location: loc, history: hist, match, setState}) => {
     _st.bodyClass = 'main'
     const { params } = match,
@@ -35,17 +43,12 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                             <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
-                        var sections = [], practiceTests = [],
-                            collections = data.courses[params.courses].collections,
-                            tests = collections.practice.collection
+                        var sections = [],
+                            collections = data.courses[params.courses].collections
 
                         Object.keys(collections).forEach((val) => {
                             if (val === 'practice') return
                             sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
-                        })
-                        
-                        Object.keys(tests).forEach((test) => {
-                            practiceTests.push(<div>{JSON.stringify(tests[test])}</div>)
                         })
 
                         return (
@@ -77,7 +80,9 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
                                                     <div className="boxTitle">Practice</div>
                                                 </div>
-                                                <div className="stPracticeBody">{practiceTests}</div>
+                                                <div className="stPracticeBody">
+                                                    <Practice obj={collections.practice.collection} />
+                                                </div>
                                             </div>
                                         </div>
                                         <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
