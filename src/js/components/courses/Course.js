@@ -8,9 +8,8 @@ import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
-const Practice = ({user,obj}) => {
+const Practice = ({obj}) => {
     let t = []
-    console.log(user)
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
             tests = [],
@@ -94,6 +93,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 <div className="stPracticeTop">
                                                     <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
                                                     <div className="boxTitle">Practice</div>
+                                                    <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                 </div>
                                                 <div className="stPracticeBody">
                                                     <Practice user={data.user} obj={collections.practice.collection} />
