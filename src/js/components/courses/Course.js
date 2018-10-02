@@ -10,7 +10,6 @@ import ST404 from '../ST404'
 
 const Practice = ({hist,path,trialing,obj}) => {
     let t = []
-    console.log(params)
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
             tests = []
