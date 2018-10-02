@@ -10,13 +10,22 @@ import ST404 from '../ST404'
 
 const Practice = ({obj}) => {
     let t = []
-    Object.keys(obj).forEach((test) => {
-        let book = obj[test],
+    Object.keys(obj).forEach((b) => {
+        let book = obj[b],
+            tests = [],
             notInTrial = ''
+
+            Object.keys(book).forEach((test) => {
+                let tTest = book[test]
+                tests.push(<div className="stPracticeTest">{tTest.name}</div>)
+            })
         t.push(
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
-                <div className="stPracticeTests">{JSON.stringify(book)}</div>
+                {notInTrial}
+                <div className="stPracticeTests">
+                
+                </div>
             </section>
         )
     })
