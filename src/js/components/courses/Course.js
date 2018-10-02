@@ -16,7 +16,7 @@ const Practice = ({obj}) => {
         t.push(
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
-                <div className="stPracticeTests">{book}</div>
+                <div className="stPracticeTests">{JSON.stringify(book)}</div>
             </section>
         )
     })
