@@ -8,8 +8,9 @@ import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
-const Practice = ({obj}) => {
+const Practice = ({user,obj}) => {
     let t = []
+    console.log(user)
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
             tests = [],
@@ -95,7 +96,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="boxTitle">Practice</div>
                                                 </div>
                                                 <div className="stPracticeBody">
-                                                    <Practice obj={collections.practice.collection} />
+                                                    <Practice user={data.user} obj={collections.practice.collection} />
                                                 </div>
                                             </div>
                                         </div>
