@@ -8,21 +8,19 @@ import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
-const Practice = ({obj}) => {
+const Practice = ({trialing,obj}) => {
     let t = []
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
-            tests = [],
-            notInTrial = ''
+            tests = []
 
             Object.keys(book.videos).forEach((test) => {
                 let tTest = book.videos[test]
-                tests.push(<div className="stPracticeTest">{tTest.name}</div>)
+                tests.push(<div className={"stPracticeTest"+trialing ? ' inactive' : ''}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
-                <div className="stPracticeNIT">{notInTrial}</div>
                 <div className="stPracticeTests">{tests}</div>
             </section>
         )
@@ -96,7 +94,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                 </div>
                                                 <div className="stPracticeBody">
-                                                    <Practice user={data.user} obj={collections.practice.collection} />
+                                                    <Practice trialing={data.user.trialing} obj={collections.practice.collection} />
                                                 </div>
                                             </div>
                                         </div>
