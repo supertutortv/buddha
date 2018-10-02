@@ -46,7 +46,7 @@ export default class Main extends React.Component {
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                    <Route exact path='/:courses/:collections?/:collection?' render={props => <Course setState={this.setState} {...props} />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:test?' render={props => <Course setState={this.setState} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
                 </Switch>
             </DataState.Provider>
