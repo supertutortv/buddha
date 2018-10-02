@@ -131,7 +131,7 @@ export default class Playlist extends React.Component {
             return false
         })
 
-        console.log(obj)
+        console.log(vid)
 
         return (
             <section className="stPlaylistRoot">
