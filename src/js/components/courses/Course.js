@@ -16,13 +16,13 @@ const Practice = ({hist,path,trialing,obj}) => {
 
             Object.keys(book.videos).forEach((test) => {
                 let tTest = book.videos[test],
-                    unavail = Object.keys(tTest.questions).some((v) => tTest.questions[v].id === 0)
-                path = path+'/'+b+'/'+test
+                    unavail = Object.keys(tTest.questions).some((v) => tTest.questions[v].id === 0),
+                    pPath = path+'/'+b+'/'+test
 
                 if (!trialing && unavail)
                     tests.push(<div className="stPracticeTest inactive">{tTest.name}</div>)
                 else
-                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(path)}>{tTest.name}</div>)
+                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(pPath)}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
