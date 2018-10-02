@@ -17,7 +17,7 @@ const Practice = ({obj}) => {
 
             Object.keys(book).forEach((test) => {
                 let tTest = book[test]
-                tests.push(<div className="stPracticeTest">{tTest.name}</div>)
+                tests.push(<div className="stPracticeTest">{JSON.stringify(tTest)}</div>)
             })
         t.push(
             <section className="stPracticeBook">
