@@ -17,6 +17,7 @@ const Practice = ({hist,path,trialing,obj}) => {
             Object.keys(book.videos).forEach((test) => {
                 let tTest = book.videos[test],
                     unavail = Object.keys(tTest.questions).some((v) => tTest.questions[v].id === 0)
+                path = path+'/'+b+'/'+test
 
                 if (!trialing && unavail)
                     tests.push(<div className="stPracticeTest inactive">{tTest.name}</div>)
@@ -99,7 +100,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                 </div>
                                                 <div className="stPracticeBody">
-                                                    <Practice hist={hist} path={loc.pathname+'/practice/'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                    <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
                                                 </div>
                                             </div>
                                         </div>
