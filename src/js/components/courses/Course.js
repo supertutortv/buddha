@@ -21,9 +21,7 @@ const Practice = ({hist,path,trialing,obj}) => {
                 if (!trialing && unavail)
                     tests.push(<div className="stPracticeTest inactive">{tTest.name}</div>)
                 else
-                    tests.push(<div className="stPracticeTest">
-                        <a href={path} onClick={(e) => hist.push(path)}>{tTest.name}</a>
-                    </div>)
+                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(path)}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
@@ -101,7 +99,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                     <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                 </div>
                                                 <div className="stPracticeBody">
-                                                    <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                    <Practice hist={hist} path={loc.pathname+'/practice/'} trialing={data.user.trialing} obj={collections.practice.collection} />
                                                 </div>
                                             </div>
                                         </div>
