@@ -11,10 +11,12 @@ import ST404 from '../ST404'
 const Practice = ({obj}) => {
     let t = []
     Object.keys(obj).forEach((test) => {
-        let book = obj[test]
+        let book = obj[test],
+            notInTrial = ''
         t.push(
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
+                <div className="stPracticeTests">{book}</div>
             </section>
         )
     })
