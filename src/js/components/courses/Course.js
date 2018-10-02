@@ -16,7 +16,7 @@ const Practice = ({trialing,obj}) => {
 
             Object.keys(book.videos).forEach((test) => {
                 let tTest = book.videos[test]
-                tests.push(<div className={"stPracticeTest"+trialing ? ' inactive' : ''}>{tTest.name}</div>)
+                tests.push(<div className={"stPracticeTest"+(trialing ? ' inactive' : '')}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
