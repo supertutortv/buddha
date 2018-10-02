@@ -14,7 +14,7 @@ const Practice = ({obj}) => {
         let book = obj[test]
         t.push(
             <section className="stPracticeBook">
-                <div className="stPracticeBookName">{book.name}</div>
+                <div className="stPracticeBookName">{"- "+book.name}</div>
             </section>
         )
     })
