@@ -12,13 +12,12 @@ const Practice = ({trialing,obj}) => {
     let t = []
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
-            tests = [],
-            unavail = false
+            tests = []
 
             Object.keys(book.videos).forEach((test) => {
-                let tTest = book.videos[test]
-                console.log(tTest)
-                tests.push(<div className={"stPracticeTest"+(!trialing ? ' inactive' : '')}>{tTest.name}</div>)
+                let tTest = book.videos[test],
+                    unavail = Object.keys(tTest.questions).some((v) => tTest.questions[v].id === 0)
+                tests.push(<div className={"stPracticeTest"+(!trialing && unavail ? ' inactive' : '')}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
