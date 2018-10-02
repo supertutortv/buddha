@@ -15,7 +15,7 @@ const Practice = ({obj}) => {
             tests = [],
             notInTrial = ''
 
-            console.log(book.videos)
+            console.log(Object.keys(book.videos))
 
             /* Object.keys(book.videos).forEach((test) => {
                 let tTest = book[test]
