@@ -15,10 +15,12 @@ const Practice = ({obj}) => {
             tests = [],
             notInTrial = ''
 
-            Object.keys(book.videos).forEach((test) => {
+            console.log(books.videos)
+
+            /* Object.keys(book.videos).forEach((test) => {
                 let tTest = book[test]
                 tests.push(<div className="stPracticeTest">{tTest.name}</div>)
-            })
+            }) */
         t.push(
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
