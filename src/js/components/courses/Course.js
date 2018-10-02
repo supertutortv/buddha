@@ -23,9 +23,7 @@ const Practice = ({obj}) => {
             <section className="stPracticeBook">
                 <div className="stPracticeBookName">{book.name}</div>
                 {notInTrial}
-                <div className="stPracticeTests">
-                
-                </div>
+                <div className="stPracticeTests">{tests}</div>
             </section>
         )
     })
