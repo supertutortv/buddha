@@ -4,6 +4,7 @@ import { DBCourses, DBStats } from './dashboard/components'
 import Header from '../Header'
 
 const Dashboard = (props) => {
+    _st.bodyClass = 'dashboard'
     return(
         <DataState.Consumer>
             {(data) => {
