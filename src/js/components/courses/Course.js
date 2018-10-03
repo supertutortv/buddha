@@ -9,22 +9,22 @@ import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
 const Practice = ({hist,path,trialing,obj}) => {
-    console.log(obj)
-    return null
+
     let t = []
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
             tests = []
 
-            Object.keys(book.videos).forEach((test) => {
-                let tTest = book.videos[test],
-                    unavail = Object.keys(tTest.questions).some((v) => tTest.questions[v].id === 0),
+            Object.keys(book.tests).forEach((test) => {
+                let tTest = book.tests[test]/* ,
+                    unavail = Object.keys(tTest.collection).some((v) => tTest.collection[v].id === 0),
                     pPath = path+'/'+b+'/'+test
 
                 if (!trialing && unavail)
                     tests.push(<div className="stPracticeTest inactive">{tTest.name}</div>)
                 else
-                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(pPath)}>{tTest.name}</div>)
+                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(pPath)}>{tTest.name}</div>) */
+                    console.log(tTest)
             })
         t.push(
             <section className="stPracticeBook">
