@@ -102,7 +102,7 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj } = this.props
 
-        console.log(match)
+        console.log(obj)
 
         return null
 
