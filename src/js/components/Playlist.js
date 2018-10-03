@@ -104,6 +104,8 @@ export default class Playlist extends React.Component {
 
         console.log(match)
 
+        return null
+
         /* if (!loc.hash) {
             hist.replace('#introduction')
             return null
@@ -132,8 +134,6 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
-        console.log(vid)
 
         return (
             <section className="stPlaylistRoot stComponentFade">
