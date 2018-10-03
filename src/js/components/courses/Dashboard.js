@@ -11,8 +11,10 @@ const Dashboard = (props) => {
                 return (
                     <React.Fragment>
                         <Header title="Dashboard"/>
-                        <DBStats />
-                        <DBCourses courses={data.courses} />
+                        <main className="stDashboard stComponentFade">
+                            <DBStats />
+                            <DBCourses courses={data.courses} />
+                        </main>
                     </React.Fragment>
                 )
             }}
