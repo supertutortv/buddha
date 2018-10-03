@@ -134,7 +134,7 @@ export default class Playlist extends React.Component {
         console.log(vid)
 
         return (
-            <section className="stPlaylistRoot">
+            <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
