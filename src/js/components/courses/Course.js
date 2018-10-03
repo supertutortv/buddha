@@ -9,6 +9,8 @@ import STSectionBox from './STSectionBox'
 import ST404 from '../ST404'
 
 const Practice = ({hist,path,trialing,obj}) => {
+    console.log(obj)
+    return null
     let t = []
     Object.keys(obj).forEach((b) => {
         let book = obj[b],
