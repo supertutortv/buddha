@@ -60,9 +60,19 @@ body.main
                             overflow: hidden
                             @extend .z-depth-3
 
+                            &:hover
+
+                                .stVimTitle
+                                    opacity: 1
+
                             iframe, .stVimTitle
                                 position: absolute
                                 top: 0
+                            
+                            .stVimTitle
+                                left: 1em
+                                opacity: 0
+                                transition: opacity 250ms ease-in-out
                             
                             iframe
                                 height: 100%
