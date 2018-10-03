@@ -72,7 +72,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                         return (
                             <React.Fragment>
                                 <Header title={data.courses[params.courses].name} hist={hist} />
-                                <main className='stAppStage'>
+                                <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
                                         <div className="stCourseTop">
                                             <div className="stCourseIntro">
