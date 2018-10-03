@@ -102,10 +102,12 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj } = this.props
 
-        if (!loc.hash) {
+        console.log(match)
+
+        /* if (!loc.hash) {
             hist.replace('#introduction')
             return null
-        }
+        } */
 
         const sbStyle = {
             backgroundColor: obj.color
