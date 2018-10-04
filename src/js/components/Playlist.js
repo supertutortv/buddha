@@ -128,7 +128,7 @@ export default class Playlist extends React.Component {
         var vid = {
             id: null
         },
-            activeColl = ''
+        activeColl = ''
         
         Object.keys(obj.collection).some((val) => {
             if (hash in obj.collection[val].videos) {
