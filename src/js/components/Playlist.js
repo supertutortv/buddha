@@ -138,7 +138,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
+        console.log(obj)
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
