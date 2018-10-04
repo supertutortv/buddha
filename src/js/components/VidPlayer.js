@@ -73,7 +73,7 @@ class VidPlayer extends React.Component {
                 case 'autoplay':
                     break
                 case 'video':
-                    player.loadVideo(value || 0)
+                    player.loadVideo(value)
                     player.getVideoTitle().then((t) => this.setTitle(t))
                     break
             }
