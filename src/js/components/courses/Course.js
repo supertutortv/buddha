@@ -24,7 +24,7 @@ const Practice = ({hist,path,trialing,obj}) => {
                     tests.push(<div className="stPracticeTest inactive">{tTest.name}</div>)
                 else
                     tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(pPath)}>{tTest.name}</div>) */
-                    console.log(tTest)
+                    tests.push(<div className="stPracticeTest" onClick={(e) => hist.push(path)}>{tTest.name}</div>)
             })
         t.push(
             <section className="stPracticeBook">
