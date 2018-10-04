@@ -102,12 +102,18 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj } = this.props
 
-        console.log(obj)
+        var firstVid = '#introduction'
 
-        /* if (!loc.hash) {
-            hist.replace('#introduction')
+        Object.keys(obj.collection).some((val) => {
+            return Object.keys(obj.collection[val].videos).some((v) => {
+                return firstVid = '#'+v
+            })
+        })
+
+        if (!loc.hash) {
+            hist.replace(firstVid)
             return null
-        } */
+        }
 
         const sbStyle = {
             backgroundColor: obj.color
@@ -132,7 +138,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(vid)
+
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
