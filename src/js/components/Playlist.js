@@ -128,17 +128,19 @@ export default class Playlist extends React.Component {
         var vid = {
             id: null
         },
-        activeColl = ''
+        activeColl = '',
+        theBook = ''
         
         Object.keys(obj.collection).some((val) => {
             if (hash in obj.collection[val].videos) {
                 vid = obj.collection[val].videos[hash]
                 activeColl = val
+                theBook = obj.collection[val].parent || ''
                 return true
             }
             return false
         })
-        console.log(obj)
+
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
@@ -161,7 +163,7 @@ export default class Playlist extends React.Component {
                             <figcaption className="stVideoCaption">
                                 <div className="stVideoCaptionWrapper">
                                     <div className="stVideoTitle">
-                                        <h1><span>{obj.parent ? obj.parent+' > ' : ''}</span>{obj.name ? obj.name+' > ' : ''}<span>{vid.name || 'Not Found'}</span></h1>
+                                        <h1><span>{theBook ? theBook+' > ' : ''}</span>{obj.name ? obj.name+' > ' : ''}<span>{vid.name || 'Not Found'}</span></h1>
                                     </div>
                                     <div className="stVideoText">
                                         <span>{vid.text || ''}</span>
