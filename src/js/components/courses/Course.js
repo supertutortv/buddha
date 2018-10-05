@@ -83,6 +83,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 <div className="stCourseSearch">
                                                     <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
                                                 </div>
+                                                <div className="stCourseBarHeading">My Videos</div>
                                                 <div className="stCourseBar">
                                                     <div className="stCourseAction"><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
                                                     <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
