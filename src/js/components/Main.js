@@ -10,9 +10,9 @@ const STModal = ({open,action,orientation,modalActive}) => {
     else
         return (
             <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
-                if (e.target.classList.contains("stModal")) modalActive()
+                if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
-                <div className="stModalInner">{action}</div>
+                <div className="stModalInner"></div>
             </div>
         )
 }
