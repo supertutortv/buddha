@@ -9,7 +9,7 @@ const STModal = ({active,modalActive}) => {
         return null
     else
         return (
-            <div className="stModal centered">
+            <div className="stModal centered" onClick={(e) => console.log(e)}>
                 <div className="stModalInner"></div>
             </div>
         )
