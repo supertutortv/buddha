@@ -9,7 +9,10 @@ const STModal = ({active,modalActive}) => {
         return null
     else
         return (
-            <div className="stModal centered" onClick={(e) => console.log(e.target)}>
+            <div className="stModal centered" onClick={(e) => {
+                let tar = e.target
+                console.log(tar.classList)
+            }}>
                 <div className="stModalInner"></div>
             </div>
         )
