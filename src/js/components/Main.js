@@ -5,12 +5,14 @@ import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
 const STModal = ({active}) => {
-    let aCt = active ? ' active' : ''
-    return (
-        <div className={"stModal"+aCt}>
-            <div className="stModalInner"></div>
-        </div>
-    )
+    if (!active)
+        return null
+    else
+        return (
+            <st-modal>
+                <div className="stModalInner"></div>
+            </st-modal>
+        )
 }
 
 export default class Main extends React.Component {
