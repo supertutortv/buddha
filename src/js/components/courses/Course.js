@@ -85,10 +85,7 @@ const Course = ({location: loc, history: hist, match, modalActive}) => {
                                                 </div>
                                                 <div className="stCourseBarHeading">My Videos</div>
                                                 <div className="stCourseBar">
-                                                    <div className="stCourseAction" onClick={(e) => {
-                                                        e.preventDefault()
-                                                        modalActive(true)
-                                                    }}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
+                                                    <div className="stCourseAction" onClick={() => modalActive(true)}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
                                                     <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
                                                 </div>
                                             </div>
