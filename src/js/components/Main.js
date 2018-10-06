@@ -4,17 +4,15 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
-const STModal = (props) => {
-    console.log(props)
-    return null
-    /* if (!active)
+const STModal = ({active}) => {
+    if (!active)
         return null
     else
         return (
             <st-modal>
                 <div className="stModalInner"></div>
             </st-modal>
-        ) */
+        )
 }
 
 export default class Main extends React.Component {
@@ -26,7 +24,7 @@ export default class Main extends React.Component {
         this.state = {
             data: !sCD || JSON.parse(sCD),
             loading: true,
-            modalActive: false
+            modal: false
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
@@ -63,7 +61,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setState={this.setState} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
                 </Switch>
-                <STModal {...this.state.modalActive} />
+                <STModal active={this.state.modal} />
             </DataState.Provider>
         )
     }
