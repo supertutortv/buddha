@@ -45,10 +45,11 @@ const Course = ({location: loc, history: hist, match, modalActive}) => {
             science: 'microscope',
             essay: 'edit'
         }
+        console.log(modalActive)
     return(
         <DataState.Consumer>
             {(data) => {
-                console.log(modalActive)
+                
                 try {
                     var activeObj = Object.entries(params).reduce((obj,val) => {
                         if (typeof val[1] === 'undefined')
