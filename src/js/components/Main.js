@@ -4,15 +4,15 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
-const STModal = ({active,orientation,modalActive}) => {
-    if (!active)
+const STModal = ({open,action,orientation,modalActive}) => {
+    if (!open)
         return null
     else
         return (
             <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
                 if (e.target.classList.contains("stModal")) modalActive()
             }}>
-                <div className="stModalInner"></div>
+                <div className="stModalInner">{action}</div>
             </div>
         )
 }
@@ -26,7 +26,11 @@ export default class Main extends React.Component {
         this.state = {
             data: !sCD || JSON.parse(sCD),
             loading: true,
-            modal: false
+            modal: {
+                open: false,
+                action: 'downloads',
+                orientation: 'centered'
+            }
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
@@ -53,10 +57,8 @@ export default class Main extends React.Component {
         return localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
     }
 
-    modalActive(active = false) {
-        this.setState({
-            modal: active
-        })
+    modalActive(modal = {}) {
+        this.setState((state) => (Object.assign(state.modal,modal)))
     }
 
     render() {
@@ -70,7 +72,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal active={this.state.modal} modalActive={this.modalActive} />
+                <STModal {...this.state.modal} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }
