@@ -105,7 +105,11 @@ export default class Course extends React.Component {
                                                                 action: 'downloads'
                                                             })
                                                         }><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
-                                                        <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
+                                                        <div className="stCourseAction" onClick={() => 
+                                                            this.modalActive({
+                                                                open: true,
+                                                                action: 'practice'
+                                                            })}><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
                                                     </div>
                                                 </div>
                                             </div>
