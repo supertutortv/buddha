@@ -4,8 +4,8 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
-const STModal = (props) => {
-    console.log(props)
+const STModal = ({active}) => {
+    console.log(active)
     return (
         <div className="stModal"></div>
     )
