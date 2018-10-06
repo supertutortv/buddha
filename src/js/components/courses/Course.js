@@ -87,7 +87,7 @@ const Course = ({location: loc, history: hist, match, setState}) => {
                                                 <div className="stCourseBar">
                                                     <div className="stCourseAction" onClick={(e) => {
                                                         e.preventDefault()
-                                                        setState({modalActive: true})
+                                                        console.log(setState)
                                                     }}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
                                                     <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
                                                 </div>
