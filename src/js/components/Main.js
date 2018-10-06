@@ -28,6 +28,7 @@ export default class Main extends React.Component {
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
+        this.modalActive = this.modalActive.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
@@ -50,6 +51,12 @@ export default class Main extends React.Component {
         return localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
     }
 
+    modalActive(active = false) {
+        this.setState({
+            modal: active
+        })
+    }
+
     render() {
         if (this.state.data === true) return null
 
@@ -59,7 +66,7 @@ export default class Main extends React.Component {
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setState={this.setState} {...props} />} />
-                    <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
+                    <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
                 <STModal active={this.state.modal} />
             </DataState.Provider>
