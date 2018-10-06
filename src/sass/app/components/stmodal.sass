@@ -3,14 +3,17 @@
     width: 100%
     height: 100%
     background-color: black(.75)
+    +animFadeIn
 
     &.centered
         padding: 5%
-        +animFadeIn
 
     &.bottom
+        height: 0px
         padding-top: 15%
-        +growVert
+
+        .stModalInner
+            +growVert
 
     .stModalInner
         background-color: white()
