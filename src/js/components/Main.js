@@ -7,7 +7,9 @@ import Dashboard from './courses/Dashboard'
 const STModal = ({active}) => {
     let aCt = active ? ' active' : ''
     return (
-        <div className={"stModal"+aCt}></div>
+        <div className={"stModal"+aCt}>
+            <div className="stModalInner"></div>
+        </div>
     )
 }
 
