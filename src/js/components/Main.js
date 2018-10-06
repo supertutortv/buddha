@@ -5,8 +5,7 @@ import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
 const STModal = (props) => {
-    console.log(props)
-    let aCt = ''//active ? ' active' : ''
+    let aCt = active ? ' active' : ''
     return (
         <div className={"stModal"+aCt}></div>
     )
