@@ -25,7 +25,7 @@ export default class Main extends React.Component {
             data: !sCD || JSON.parse(sCD),
             loading: true,
             modal: {
-                active: false
+                active: true
             }
         }
 
