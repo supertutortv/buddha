@@ -63,7 +63,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setState={this.setState} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
                 </Switch>
-                <STModal {...modalActive} />
+                <STModal {...this.state.modalActive} />
             </DataState.Provider>
         )
     }
