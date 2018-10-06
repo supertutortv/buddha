@@ -62,7 +62,7 @@ export default class Course extends React.Component {
             <DataState.Consumer>
                 {(data) => {
                     try {
-                        var activeObj = Object.entries(this.props.match.params).reduce((obj,val) => {
+                        var activeObj = Object.entries(this.params).reduce((obj,val) => {
                             if (typeof val[1] === 'undefined')
                                 return obj
                             else
