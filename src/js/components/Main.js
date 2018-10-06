@@ -4,6 +4,13 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
+const STModal = (props) => {
+    console.log(props)
+    return (
+        <div className="stModal"></div>
+    )
+}
+
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
@@ -49,6 +56,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setState={this.setState} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course setState={this.setState} {...props} />} />
                 </Switch>
+                <STModal active />
             </DataState.Provider>
         )
     }
