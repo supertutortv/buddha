@@ -3,19 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
-
-const STModal = ({open,action,orientation,modalActive}) => {
-    if (!open)
-        return null
-    else
-        return (
-            <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
-                if (e.target.classList.contains("stModal")) modalActive({open: false})
-            }}>
-                <div className="stModalInner">{action}</div>
-            </div>
-        )
-}
+import STModal from './modal/STModal'
 
 export default class Main extends React.Component {
     constructor(props) {
