@@ -10,8 +10,7 @@ const STModal = ({active,modalActive}) => {
     else
         return (
             <div className="stModal centered" onClick={(e) => {
-                let tar = e.target
-                console.log(tar.classList)
+                if (e.target.classList.contains("stModal")) modalActive()
             }}>
                 <div className="stModalInner"></div>
             </div>
