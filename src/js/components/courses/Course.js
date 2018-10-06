@@ -35,8 +35,10 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({location: loc, history: hist, match, modalActive}) => {
+const Course = (props) => {
     _st.bodyClass = 'main'
+    console.log(props)
+    return null
     const { params } = match,
         icons = {
             english: 'comment-dots',
