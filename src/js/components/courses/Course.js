@@ -38,10 +38,13 @@ const Practice = ({hist,path,trialing,obj}) => {
 export default class Course extends React.Component {
     constructor(props) {
         super(props)
-        ({location: loc, history: hist, match, modalActive})
 
-        const { params } = this.props.match,
-        icons = {
+        this.params = this.props.match.params
+        this.hist = this.props.history
+        this.loc = this.props.location
+        this.modalActive = this.props.modalActive
+
+        this.icons = {
             english: 'comment-dots',
             math: 'calculator',
             reading: 'book',
@@ -59,7 +62,7 @@ export default class Course extends React.Component {
             <DataState.Consumer>
                 {(data) => {
                     try {
-                        var activeObj = Object.entries(params).reduce((obj,val) => {
+                        var activeObj = Object.entries(this.props.match.params).reduce((obj,val) => {
                             if (typeof val[1] === 'undefined')
                                 return obj
                             else
@@ -69,25 +72,25 @@ export default class Course extends React.Component {
     
                         if (activeObj.type === 'playlist')
                             return (
-                                <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
+                                <Playlist loc={this.loc} hist={this.hist} match={this.match} obj={activeObj} />
                             )
                         else
                             var sections = [],
-                                collections = data.courses[params.courses].collections
+                                collections = data.courses[this.params.courses].collections
     
                             Object.keys(collections).forEach((val) => {
                                 if (val === 'practice') return
-                                sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
+                                sections.push(<STSectionBox hist={this.hist} path={this.loc.pathname+'/'+val} {...collections[val]} icon={this.icons[val]} />)
                             })
     
                             return (
                                 <React.Fragment>
-                                    <Header title={data.courses[params.courses].name} hist={hist} />
+                                    <Header title={data.courses[this.params.courses].name} hist={this.hist} />
                                     <main className="stAppStage stComponentFade">
                                         <div className="stAppStageInner">
                                             <div className="stCourseTop">
                                                 <div className="stCourseIntro">
-                                                    <VidPlayer showTitle video={data.courses[params.courses].intro} />
+                                                    <VidPlayer showTitle video={data.courses[this.params.courses].intro} />
                                                 </div>
                                                 <div className="stCourseActions">
                                                     <div className="stCourseSearch">
@@ -95,7 +98,7 @@ export default class Course extends React.Component {
                                                     </div>
                                                     <div className="stCourseBarHeading">My Videos</div>
                                                     <div className="stCourseBar">
-                                                        <div className="stCourseAction" onClick={() => modalActive(true)}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
+                                                        <div className="stCourseAction" onClick={() => this.modalActive(true)}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
                                                         <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
                                                     </div>
                                                 </div>
@@ -112,7 +115,7 @@ export default class Course extends React.Component {
                                                         <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                     </div>
                                                     <div className="stPracticeBody">
-                                                        <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                        <Practice hist={this.hist} path={this.loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
                                                     </div>
                                                 </div>
                                             </div>
