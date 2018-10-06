@@ -35,9 +35,12 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({location: loc, history: hist, match, modalActive}) => {
-    _st.bodyClass = 'main'
-    const { params } = match,
+export default class Course extends React.Component {
+    constructor(props) {
+        super(props)
+        ({location: loc, history: hist, match, modalActive})
+
+        const { params } = this.props.match,
         icons = {
             english: 'comment-dots',
             math: 'calculator',
@@ -45,83 +48,87 @@ const Course = ({location: loc, history: hist, match, modalActive}) => {
             science: 'microscope',
             essay: 'edit'
         }
-        console.log(modalActive)
-    return(
-        <DataState.Consumer>
-            {(data) => {
-                
-                try {
-                    var activeObj = Object.entries(params).reduce((obj,val) => {
-                        if (typeof val[1] === 'undefined')
-                            return obj
+    }
+
+    componentDidMount() {
+        _st.bodyClass = 'main'
+    }
+    
+    render() {
+        return(
+            <DataState.Consumer>
+                {(data) => {
+                    try {
+                        var activeObj = Object.entries(params).reduce((obj,val) => {
+                            if (typeof val[1] === 'undefined')
+                                return obj
+                            else
+                                if ( !(val[1] in obj[val[0]]) ) throw true
+                                return obj[val[0]][val[1]]
+                        }, data)
+    
+                        if (activeObj.type === 'playlist')
+                            return (
+                                <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
+                            )
                         else
-                            if ( !(val[1] in obj[val[0]]) ) throw true
-                            return obj[val[0]][val[1]]
-                    }, data)
-
-                    if (activeObj.type === 'playlist')
+                            var sections = [],
+                                collections = data.courses[params.courses].collections
+    
+                            Object.keys(collections).forEach((val) => {
+                                if (val === 'practice') return
+                                sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
+                            })
+    
+                            return (
+                                <React.Fragment>
+                                    <Header title={data.courses[params.courses].name} hist={hist} />
+                                    <main className="stAppStage stComponentFade">
+                                        <div className="stAppStageInner">
+                                            <div className="stCourseTop">
+                                                <div className="stCourseIntro">
+                                                    <VidPlayer showTitle video={data.courses[params.courses].intro} />
+                                                </div>
+                                                <div className="stCourseActions">
+                                                    <div className="stCourseSearch">
+                                                        <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
+                                                    </div>
+                                                    <div className="stCourseBarHeading">My Videos</div>
+                                                    <div className="stCourseBar">
+                                                        <div className="stCourseAction" onClick={() => modalActive(true)}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
+                                                        <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="stSectionsSection">
+                                                {sections}
+                                            </div>
+                                            <div className="stPracticeSection">
+                                                <div className="boxHeader"></div>
+                                                <div className="stPracticeSectionInner">
+                                                    <div className="stPracticeTop">
+                                                        <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
+                                                        <div className="boxTitle">Practice</div>
+                                                        <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
+                                                    </div>
+                                                    <div className="stPracticeBody">
+                                                        <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
+                                        </div>
+                                    </main>
+                                </React.Fragment>
+                            )
+                    } catch (e) {
+                        console.log(e)
                         return (
-                            <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
+                            <ST404 />
                         )
-                    else
-                        var sections = [],
-                            collections = data.courses[params.courses].collections
-
-                        Object.keys(collections).forEach((val) => {
-                            if (val === 'practice') return
-                            sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
-                        })
-
-                        return (
-                            <React.Fragment>
-                                <Header title={data.courses[params.courses].name} hist={hist} />
-                                <main className="stAppStage stComponentFade">
-                                    <div className="stAppStageInner">
-                                        <div className="stCourseTop">
-                                            <div className="stCourseIntro">
-                                                <VidPlayer showTitle video={data.courses[params.courses].intro} />
-                                            </div>
-                                            <div className="stCourseActions">
-                                                <div className="stCourseSearch">
-                                                    <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
-                                                </div>
-                                                <div className="stCourseBarHeading">My Videos</div>
-                                                <div className="stCourseBar">
-                                                    <div className="stCourseAction" onClick={() => modalActive(true)}><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
-                                                    <div className="stCourseAction"><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="stSectionsSection">
-                                            {sections}
-                                        </div>
-                                        <div className="stPracticeSection">
-                                            <div className="boxHeader"></div>
-                                            <div className="stPracticeSectionInner">
-                                                <div className="stPracticeTop">
-                                                    <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
-                                                    <div className="boxTitle">Practice</div>
-                                                    <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
-                                                </div>
-                                                <div className="stPracticeBody">
-                                                    <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
-                                    </div>
-                                </main>
-                            </React.Fragment>
-                        )
-                } catch (e) {
-                    console.log(e)
-                    return (
-                        <ST404 />
-                    )
-                }
-            }}
-        </DataState.Consumer>
-    )
+                    }
+                }}
+            </DataState.Consumer>
+        )
+    }
 }
-
-export default Course

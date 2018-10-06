@@ -5,14 +5,16 @@ st-modal
     background-color: black(.75)
     +animFadeIn
 
-    &.centered
-        padding: 5%
-
-    &.bottom
-        padding-top: 15%
-
         .stModalInner, .stModalNotInner
             position: absolute
-            background-color: white()
             width: 100%
             height: 100%
+
+        .stModalInner
+            background-color: white()
+
+            &.centered
+                margin: 5%
+
+            &.bottom
+                margin-top: 15%

@@ -4,13 +4,14 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
-const STModal = ({active}) => {
+const STModal = ({active,modalActive}) => {
     if (!active)
         return null
     else
         return (
             <st-modal>
-                <div className="stModalInner"></div>
+                <div className="stModalNotInner" onClick={() => modalActive()}></div>
+                <div className="stModalInner centered"></div>
             </st-modal>
         )
 }
@@ -68,7 +69,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal active={this.state.modal} />
+                <STModal active={this.state.modal} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }
