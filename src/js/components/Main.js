@@ -4,12 +4,12 @@ import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
 
-const STModal = ({active,modalActive}) => {
+const STModal = ({active,orientation,modalActive}) => {
     if (!active)
         return null
     else
         return (
-            <div className={"stModal "+orientation || 'bottom'} onClick={(e) => {
+            <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
                 if (e.target.classList.contains("stModal")) modalActive()
             }}>
                 <div className="stModalInner"></div>
