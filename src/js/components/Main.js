@@ -65,7 +65,7 @@ export default class Main extends React.Component {
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setState={this.setState} {...props} />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
                 <STModal active={this.state.modal} />
