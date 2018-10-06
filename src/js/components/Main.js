@@ -9,10 +9,9 @@ const STModal = ({active,modalActive}) => {
         return null
     else
         return (
-            <st-modal class="centered">
-                <div className="stModalNotInner" onClick={() => modalActive()}></div>
+            <div className="stModal centered">
                 <div className="stModalInner"></div>
-            </st-modal>
+            </div>
         )
 }
 
