@@ -13,8 +13,14 @@ st-modal
     .stModalInner
         background-color: white()
 
-        &.centered
-            margin: 5%
+    &.centered
+        padding: 5%
 
-        &.bottom
-            margin-top: 15%
+        .stModalNotInner
+            margin: -5%
+
+    &.bottom
+        padding-top: 15%
+
+        .stModalNotInner
+            margin-top: -15%
