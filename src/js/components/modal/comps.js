@@ -1,10 +1,18 @@
 import React from 'react'
 
-const Downloads = (props) => {
-    console.log(props)
+const Downloads = ({data}) => {
     return (
         <div className="stModalDownloads">
             <h1>Downloads</h1>
+            <div className="stModalDownloadsContainer">
+                {data.map(x => {
+                    return (
+                        <section className="stDownloadSection">
+                            <h2>{x.name}</h2>
+                        </section>
+                    )
+                })}
+            </div>
         </div>
     )
 }
