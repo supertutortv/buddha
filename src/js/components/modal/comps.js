@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Downloads = ({data}) => {
-    console.log(data)
+const Downloads = (props) => {
+    console.log(props)
     return (
         <div className="stModalDownloads">
             <h1>Downloads</h1>
