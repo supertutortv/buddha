@@ -85,7 +85,6 @@ export default class Playlist extends React.Component {
 
         this.getNextVid = this.getNextVid.bind(this)
         this.setNextVid = this.setNextVid.bind(this)
-        console.log(props)
     }
 
     componentDidMount() {}
