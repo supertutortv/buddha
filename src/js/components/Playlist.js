@@ -104,6 +104,7 @@ export default class Playlist extends React.Component {
 
         var firstVid = '#introduction'
 
+        console.log(obj)
         Object.keys(obj.collection).some((val) => {
             return Object.keys(obj.collection[val].videos).some((v) => {
                 return firstVid = '#'+v
