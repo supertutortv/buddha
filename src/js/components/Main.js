@@ -18,7 +18,7 @@ export default class Main extends React.Component {
                 open: false,
                 action: 'downloads',
                 orientation: 'centered',
-                data: null
+                mData: null
             }
         }
 
