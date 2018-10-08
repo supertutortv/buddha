@@ -82,7 +82,7 @@ export default class Course extends React.Component {
                                 if (val === 'practice') return
                                 sections.push(<STSectionBox hist={this.hist} path={this.loc.pathname+'/'+val} {...collections[val]} icon={this.icons[val]} />)
                             })
-                            console.log(obj)
+                            console.log(this.hist)
                             return (
                                 <React.Fragment>
                                     <Header title={data.courses[this.params.courses].name} hist={this.hist} />
