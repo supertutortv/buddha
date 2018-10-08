@@ -15,7 +15,12 @@ const Downloads = ({data}) => {
                                         path = emp || f.file.split('/'),
                                         href = emp ? null : 'https://api.supertutortv.com/course-dl.php?test='+path[0]+'&section='+path[1]+'&res='+path[2]+'&hash='+f.hash
                                     return (
-                                        <a href={href} className={"stDownloadLink"+(emp ? ' disabled' : '')} onClick={(e) => {if (emp) e.preventDefault()}}>{f.name}</a>
+                                        <figure href={href} className={"stDownloadLink"+(emp ? ' disabled' : '')} onClick={(e) => {
+                                            if (emp) e.preventDefault()
+                                        }}>
+                                            <img src=""/>
+                                            <figcaption>{f.name}</figcaption>
+                                        </figure>
                                     )
                                 })}
                             </div>
