@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Downloads = ({data}) => {
-    console.log(dls)
+    console.log(data)
     return (
         <div className="stModalDownloads">
             <h1>Downloads</h1>
