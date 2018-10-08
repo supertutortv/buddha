@@ -8,7 +8,7 @@ export default class STModal extends React.Component {
     }
 
     render() {
-        let { open, action, orientation, modalActive } = this.props
+        let { data, open, action, orientation, modalActive } = this.props
 
         if (!open) return null
 
@@ -19,9 +19,7 @@ export default class STModal extends React.Component {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
                 <div className="stModalInner">
-                    <DataState.Consumer>
-                        {(data) => <ModalComp data={data} />}
-                    </DataState.Consumer>
+                    <ModalComp data={data} />
                 </div>
             </div>
         )

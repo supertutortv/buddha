@@ -17,7 +17,8 @@ export default class Main extends React.Component {
             modal: {
                 open: false,
                 action: 'downloads',
-                orientation: 'centered'
+                orientation: 'centered',
+                data: null
             }
         }
 
