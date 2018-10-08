@@ -19,7 +19,9 @@ export default class STModal extends React.Component {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
                 <div className="stModalInner">
-                    <ModalComp />
+                    <DataState.Consumer>
+                        {(data) => <ModalComp data={data} />}
+                    </DataState.Consumer>
                 </div>
             </div>
         )
