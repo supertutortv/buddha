@@ -61,6 +61,7 @@ export default class Course extends React.Component {
         return(
             <DataState.Consumer>
                 {(data) => {
+                    console.log(this.params)
                     try {
                         var activeObj = Object.entries(this.params).reduce((obj,val) => {
                             if (typeof val[1] === 'undefined')
@@ -82,7 +83,7 @@ export default class Course extends React.Component {
                                 if (val === 'practice') return
                                 sections.push(<STSectionBox hist={this.hist} path={this.loc.pathname+'/'+val} {...collections[val]} icon={this.icons[val]} />)
                             })
-                            console.log(activeObj)
+                            
                             return (
                                 <React.Fragment>
                                     <Header title={data.courses[this.params.courses].name} hist={this.hist} />
