@@ -23,3 +23,24 @@
         width: 100%
         height: 100%
         @extend .z-depth-3
+
+        .stModalDownloads
+
+            .stDownloadLinks
+                display: flex
+                flex-flow: row wrap
+                align-content: center
+
+                .stDownloadLink
+                    flex: 1 1 100%
+                    cursor: pointer
+
+                    &.disabled
+                        cursor: not-allowed
+
+                    img
+                        max-height: 78px
+                        width: auto
+
+                    figcaption
+                        padding-left: 1em

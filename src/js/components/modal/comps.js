@@ -9,7 +9,7 @@ const Downloads = ({data}) => {
                     if (x.files.length > 0) return (
                         <section className="stDownloadSection">
                             <h2>{x.name}</h2>
-                            <div className="stDonwloadLinks">
+                            <div className="stDownloadLinks">
                                 {x.files.map(f => {
                                     let emp = (f.file === 0),
                                         path = emp || f.file.split('/'),
