@@ -35,116 +35,102 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-export default class Course extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.params = this.props.match.params
-        this.hist = this.props.history
-        this.loc = this.props.location
-        this.modalActive = this.props.modalActive
-
-        this.icons = {
-            english: 'comment-dots',
-            math: 'calculator',
-            reading: 'book',
-            science: 'microscope',
-            essay: 'edit'
-        }
+const Course = ({match, history: hist, location: loc, modalActive}) => {
+    const {params} = match
+    const icons = {
+        english: 'comment-dots',
+        math: 'calculator',
+        reading: 'book',
+        science: 'microscope',
+        essay: 'edit'
     }
+    _st.bodyClass = 'main'
 
-    componentDidMount() {
-        _st.bodyClass = 'main'
-    }
-    
-    render() {
-        return(
-            <DataState.Consumer>
-                {(data) => {
-                    console.log(this.params)
-                    try {
-                        var activeObj = Object.entries(this.params).reduce((obj,val) => {
-                            if (typeof val[1] === 'undefined')
-                                return obj
-                            else
-                                if ( !(val[1] in obj[val[0]]) ) throw true
-                                return obj[val[0]][val[1]]
-                        }, data)
-    
-                        if (activeObj.type === 'playlist')
-                            return (
-                                <Playlist loc={this.loc} hist={this.hist} match={this.match} obj={activeObj} />
-                            )
+    return(
+        <DataState.Consumer>
+            {(data) => {
+                try {
+                    var activeObj = Object.entries(params).reduce((obj,val) => {
+                        if (typeof val[1] === 'undefined')
+                            return obj
                         else
-                            var sections = [],
-                                collections = data.courses[this.params.courses].collections
-    
-                            Object.keys(collections).forEach((val) => {
-                                if (val === 'practice') return
-                                sections.push(<STSectionBox hist={this.hist} path={this.loc.pathname+'/'+val} {...collections[val]} icon={this.icons[val]} />)
-                            })
-                            
-                            return (
-                                <React.Fragment>
-                                    <Header title={data.courses[this.params.courses].name} hist={this.hist} />
-                                    <main className="stAppStage stComponentFade">
-                                        <div className="stAppStageInner">
-                                            <div className="stCourseTop">
-                                                <div className="stCourseIntro">
-                                                    <VidPlayer showTitle video={data.courses[this.params.courses].intro} />
-                                                </div>
-                                                <div className="stCourseActions">
-                                                    <div className="stCourseSearch">
-                                                        <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
-                                                    </div>
-                                                    <div className="stCourseBarHeading">My Videos</div>
-                                                    <div className="stCourseBar">
-                                                        <div className="stCourseAction" onClick={() => 
-                                                            this.modalActive({
-                                                                open: true,
-                                                                orientation: 'bottom',
-                                                                action: 'Downloads',
-                                                                mData: data.courses[this.params.courses].downloads
-                                                            })
-                                                        }><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
-                                                        <div className="stCourseAction" onClick={() => 
-                                                            this.modalActive({
-                                                                open: true,
-                                                                orientation: 'centered',
-                                                                action: 'Practice'
-                                                            })}><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="stSectionsSection">
-                                                {sections}
-                                            </div>
-                                            <div className="stPracticeSection">
-                                                <div className="boxHeader"></div>
-                                                <div className="stPracticeSectionInner">
-                                                    <div className="stPracticeTop">
-                                                        <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
-                                                        <div className="boxTitle">Practice</div>
-                                                        <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
-                                                    </div>
-                                                    <div className="stPracticeBody">
-                                                        <Practice hist={this.hist} path={this.loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
-                                        </div>
-                                    </main>
-                                </React.Fragment>
-                            )
-                    } catch (e) {
-                        console.log(e)
+                            if ( !(val[1] in obj[val[0]]) ) throw true
+                            return obj[val[0]][val[1]]
+                    }, data)
+
+                    if (activeObj.type === 'playlist')
                         return (
-                            <ST404 />
+                            <Playlist loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
-                    }
-                }}
-            </DataState.Consumer>
-        )
-    }
+                    else
+                        var sections = [],
+                            collections = data.courses[params.courses].collections
+
+                        Object.keys(collections).forEach((val) => {
+                            if (val === 'practice') return
+                            sections.push(<STSectionBox hist={hist} path={loc.pathname+'/'+val} {...collections[val]} icon={icons[val]} />)
+                        })
+                        
+                        return (
+                            <React.Fragment>
+                                <Header title={data.courses[params.courses].name} hist={hist} />
+                                <main className="stAppStage stComponentFade">
+                                    <div className="stAppStageInner">
+                                        <div className="stCourseTop">
+                                            <div className="stCourseIntro">
+                                                <VidPlayer showTitle video={data.courses[params.courses].intro} />
+                                            </div>
+                                            <div className="stCourseActions">
+                                                <div className="stCourseSearch">
+                                                    <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
+                                                </div>
+                                                <div className="stCourseBarHeading">My Videos</div>
+                                                <div className="stCourseBar">
+                                                    <div className="stCourseAction" onClick={() => 
+                                                        modalActive({
+                                                            open: true,
+                                                            orientation: 'bottom',
+                                                            action: 'Downloads',
+                                                            mData: data.courses[params.courses].downloads
+                                                        })
+                                                    }><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
+                                                    <div className="stCourseAction" onClick={() => 
+                                                        modalActive({
+                                                            open: true,
+                                                            orientation: 'centered',
+                                                            action: 'Practice'
+                                                        })}><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="stSectionsSection">
+                                            {sections}
+                                        </div>
+                                        <div className="stPracticeSection">
+                                            <div className="boxHeader"></div>
+                                            <div className="stPracticeSectionInner">
+                                                <div className="stPracticeTop">
+                                                    <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
+                                                    <div className="boxTitle">Practice</div>
+                                                    <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
+                                                </div>
+                                                <div className="stPracticeBody">
+                                                    <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="https://learn.mangolanguages.com/img/layout/eeab0bf6ba36be53e4b4fb450c303305.png"/>
+                                    </div>
+                                </main>
+                            </React.Fragment>
+                        )
+                } catch (e) {
+                    console.log(e)
+                    return (
+                        <ST404 />
+                    )
+                }
+            }}
+        </DataState.Consumer>
+    )
 }
