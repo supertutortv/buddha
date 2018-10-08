@@ -151,7 +151,7 @@ export default class Playlist extends React.Component {
                                 <Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>
                                 <div className="stPlaylistActions">
                                     <a style={bckStyle} title="Downloads" onClick={(e) => console.log(dls)}><FAIco icon="cloud-download-alt"/></a>
-                                    <a style={bckStyle} title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon="heart"/></a>
+                                    <a style={bckStyle} title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
                                 </div>
                             </header>
                             <div className="stVideoContainer">
