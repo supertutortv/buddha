@@ -2,6 +2,7 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import VidPlayer from './VidPlayer'
+import FAIco from './FAIco'
 
 const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
@@ -100,7 +101,7 @@ export default class Playlist extends React.Component {
     }
 
     render() {
-        const { loc, hist, match, obj } = this.props
+        const { loc, hist, match, obj, dls } = this.props
 
         var firstVid = '#introduction'
 
@@ -140,13 +141,16 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(match)
+        
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
-                            <header className="stVideoHeader">{<Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>}</header>
+                            <header className="stVideoHeader">
+                                {<Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>}
+                                {<a style={bckStyle} title="Downloads" onClick={(e) => console.log(dls)}><FAIco icon="cloud-download-alt"/></a>}
+                            </header>
                             <div className="stVideoContainer">
                                 <div className="stVideoPlayer">
                                     <article className="stVideoPlayerContainer">
