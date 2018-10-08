@@ -134,3 +134,5 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
         </DataState.Consumer>
     )
 }
+
+export default Course
