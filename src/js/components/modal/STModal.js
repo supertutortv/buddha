@@ -5,11 +5,12 @@ import * as comps from './comps'
 export default class STModal extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props)
+        
     }
 
     render() {
         let { mData, open, action, orientation, modalActive } = this.props
+        console.log(this.props)
 
         if (!open) return null
 
