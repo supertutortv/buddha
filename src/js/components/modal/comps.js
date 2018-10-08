@@ -1,11 +1,13 @@
 import React from 'react'
 
 const Downloads = ({data}) => {
+    console.log(dls)
     return (
         <div className="stModalDownloads">
             <h1>Downloads</h1>
             <div className="stModalDownloadsContainer">
                 {data.map(x => {
+                    
                     if (x.length > 0) return (
                         <section className="stDownloadSection">
                             <div className="stDownloadLinks">
