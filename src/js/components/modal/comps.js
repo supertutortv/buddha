@@ -11,9 +11,11 @@ const Downloads = ({data}) => {
                             <h2>{x.name}</h2>
                             <div className="stDonwloadLinks">
                                 {x.files.map(f => {
-                                    let emp = (f.file === 0)
+                                    let emp = (f.file === 0),
+                                        path = emp || f.file.split('/'),
+                                        href = emp ? null : 'https://api.supertutortv.com/course-dl.php?test='+path[0]+'&section='+path[1]+'&res='+path[2]+'&hash='+f.hash
                                     return (
-                                        <a href={emp || f.file} className={"stDownloadLink"+(emp ? ' disabled' : '')} onClick={(e) => {if (emp) e.preventDefault()}}>{f.name}</a>
+                                        <a href={href} className={"stDownloadLink"+(emp ? ' disabled' : '')} onClick={(e) => {if (emp) e.preventDefault()}}>{f.name}</a>
                                     )
                                 })}
                             </div>
