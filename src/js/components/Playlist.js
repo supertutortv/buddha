@@ -85,6 +85,7 @@ export default class Playlist extends React.Component {
 
         this.getNextVid = this.getNextVid.bind(this)
         this.setNextVid = this.setNextVid.bind(this)
+        console.log(props)
     }
 
     componentDidMount() {}
@@ -104,7 +105,6 @@ export default class Playlist extends React.Component {
 
         var firstVid = '#introduction'
 
-        console.log(obj)
         Object.keys(obj.collection).some((val) => {
             return Object.keys(obj.collection[val].videos).some((v) => {
                 return firstVid = '#'+v
