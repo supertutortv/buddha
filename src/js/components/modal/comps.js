@@ -18,7 +18,7 @@ const Downloads = ({data}) => {
                                         <figure href={href} className={"stDownloadLink"+(emp ? ' disabled' : '')} onClick={(e) => {
                                             if (emp) e.preventDefault()
                                         }}>
-                                            <img src=""/>
+                                            <img src={f.thumb}/>
                                             <figcaption>{f.name}</figcaption>
                                         </figure>
                                     )
