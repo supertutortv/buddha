@@ -101,7 +101,7 @@ export default class Playlist extends React.Component {
     }
 
     render() {
-        const { loc, hist, match, obj, dls } = this.props
+        const { loc, hist, match, obj, dls, modalActive } = this.props
 
         var firstVid = '#introduction'
 
@@ -150,8 +150,13 @@ export default class Playlist extends React.Component {
                             <header className="stVideoHeader">
                                 <Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>
                                 <div className="stPlaylistActions">
-                                    <a className="stPlaylistAction" style={bckStyle} title="Downloads" onClick={(e) => {
+                                    <a className={"stPlaylistAction"+((dls.length === 0) ? ' disabled' : '')} style={bckStyle} title="Downloads" onClick={(e) => {
                                         if (dls.length === 0) return e.preventDefault()
+                                        modalActive({
+                                            open: true,
+                                            action: 'Downloads',
+                                            mData: dls
+                                        })
                                     }}><FAIco icon="cloud-download-alt"/></a>
                                     <a className="stPlaylistAction" style={bckStyle} title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
                                 </div>
