@@ -6,7 +6,7 @@ const Downloads = ({data}) => {
             <h1>Downloads</h1>
             <div className="stModalDownloadsContainer">
                 {data.map(x => {
-                    return (
+                    if (x.files.length > 0) return (
                         <section className="stDownloadSection">
                             <h2>{x.name}</h2>
                         </section>
