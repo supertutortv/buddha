@@ -6,120 +6,124 @@
 
 @each $theWeight in $weights
 	+fontFace('Texta',$theWeight)
-    
-html, body, .row, .col
+
+/* -------------------------------------------------- */
+
+html
+    box-sizing: border-box
+    -webkit-overflow-scrolling: touch
+
+*, *:before, *:after
+    box-sizing: inherit
     margin: 0
     padding: 0
 
-html
-    -webkit-overflow-scrolling: touch
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+	border: 0
+	font-size: 100%
+	font: inherit
+	vertical-align: baseline
 
-    body
-        overflow: hidden
-        position: relative
-        font-family: 'Texta', sans-serif
-        font-style: normal
-        font-weight: 200
-        font-size: $blockEM
-        color: black(.85)
-        background-color: offwhite()
-        background-image: url('../img/loader.gif')
-        background-size: 15%
-        background-position: center
-        background-repeat: no-repeat
-        width: 100vw
-        height: 100vh
-        box-sizing: border-box
-        transition: color .25s ease-in-out
-        transition: background-color .25s ease-in-out
+body
+    overflow: hidden
+    position: relative
+    font-family: $font-stack
+    font-style: normal
+    font-weight: 200
+    font-size: $blockEM
+    color: black(.85)
+    background-color: offwhite()
+    background-image: url('../img/loader.gif')
+    background-size: 16.66%
+    background-position: center
+    background-repeat: no-repeat
+    width: 100vw
+    height: 100vh
+    transition: color .25s ease-in-out
+    transition: background-color .25s ease-in-out
 
-        &.dark-mode
-            background-color: black(.85)
-            color: white(.85)
+    &.dark-mode
+        background-color: black(.85)
+        color: white(.85)
 
-        label
-            color: inherit !important
+a
+    text-decoration: none
+    color: inherit
+    -webkit-tap-highlight-color: transparent
 
-        [type="checkbox"] + span:not(.lever)
-            line-height: 1em
-            height: 1em
-            padding-left: $huge
+label
+    color: inherit !important
 
-        [type="checkbox"].filled-in:not(:checked) + span:not(.lever)
+[type="checkbox"] + span:not(.lever)
+    line-height: 1em
+    height: 1em
+    padding-left: $huge
 
-            &:after
-                height: 1em
-                width: 1em
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever)
 
-        [type="checkbox"].filled-in:checked + span:not(.lever)
+    &:after
+        height: 1em
+        width: 1em
 
-            &:before
-                top: -2px
-                left: 0
-                width: 6px
-                height: $small
+[type="checkbox"].filled-in:checked + span:not(.lever)
 
-            &:after
-                height: 1em
-                width: 1em
-                border: 2px solid azure()
-                background-color: azure()
+    &:before
+        top: -2px
+        left: 0
+        width: 6px
+        height: $small
 
-        .row, .col, .col .row, .row .col
-            margin-top: 0
-            margin-bottom: 0
-            margin-left: 0
-            margin-right: 0
-            padding-top: 0
-            padding-bottom: 0
-            padding-left: 0
-            padding-right: 0
+    &:after
+        height: 1em
+        width: 1em
+        border: 2px solid azure()
+        background-color: azure()
 
-        .z-depth-1
-            +shadow-1
+.z-depth-1
+    +shadow-1
 
-        .z-depth-2
-            +shadow-2
+.z-depth-2
+    +shadow-2
 
-        .z-depth-3
-            +shadow-3
+.z-depth-3
+    +shadow-3
 
-        .z-depth-4
-            +shadow-4
+.z-depth-4
+    +shadow-4
 
-        .z-depth-5
-            +shadow-5
+.z-depth-5
+    +shadow-5
 
-        h1,h2
-            font-size: $huge
+h1,h2
+    font-size: $huge
 
-        h3,h4
-            font-size: $medium
+h3,h4
+    font-size: $medium
 
-        h1        
-            font-weight: 800
-            text-transform: uppercase
+h1        
+    font-weight: 800
+    text-transform: uppercase
 
-        h3
-            font-weight: 600
+h3
+    font-weight: 600
 
-        h6
-            font-weight: 200
+h6
+    font-weight: 200
 
-        @for $i from 1 through 6
-            h#{$i}
-                margin: 0
+@for $i from 1 through 6
+    h#{$i}
+        margin: 0
 
-        i
-            font-family: 'Brainy' !important
-            speak: none
-            font-style: normal
-            font-weight: normal
-            font-variant: normal
-            text-transform: none
-            line-height: 1
-            -webkit-font-smoothing: antialiased
-            -moz-osx-font-smoothing: grayscale
+i
+    font-family: 'Brainy' !important
+    speak: none
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    line-height: 1
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
 
 @each $key, $val in $brainy
     .#{$key}
