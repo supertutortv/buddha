@@ -32,12 +32,16 @@ body.main
                         border-radius: $ittybitty
                         overflow: hidden
                         @extend .z-depth-3
+
+                        & > div
+                            font-size: $small
                         
                         .stCourseStudyListHeading
                             padding: $tiny
                             font-weight: 600
-                            font-size: $small
+                            line-height: 1
                             border-bottom: 1px solid black(.15)
+                            @extend .z-depth-1
 
                         .stCourseStudyList
                             overflow: auto
