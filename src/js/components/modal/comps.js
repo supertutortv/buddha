@@ -2,7 +2,6 @@ import React from 'react'
 import FAIco from '../FAIco'
 
 const Downloads = ({data}) => {
-    console.log(data)
     return (
         <div className="stModalDownloads">
             <section className="stDownloadLinks">
