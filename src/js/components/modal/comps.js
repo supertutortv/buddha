@@ -17,7 +17,7 @@ const Downloads = ({data}) => {
                                 window.location = href
                         }}>
                             <img src={f.thumb}/>
-                            <figcaption>{f.name}</figcaption>
+                            <figcaption><span>{f.name}</span><span className="stDownloadSize">{f.size}</span></figcaption>
                         </figure>
                     )
                 })}
