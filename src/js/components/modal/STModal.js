@@ -9,17 +9,19 @@ export default class STModal extends React.Component {
     }
 
     render() {
-        let { mData, open, action, orientation, modalActive } = this.props
+        let { mData, open, action, orientation, modalActive, color } = this.props
 
         if (!open) return null
 
         const ModalComp = comps[action] || ''
+
+        var style = color ? {borderColor: color} : {}
         
         return (
             <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
-                <div className="stModalInner">
+                <div className="stModalInner" style={style}>
                     <ModalComp data={mData} />
                 </div>
             </div>

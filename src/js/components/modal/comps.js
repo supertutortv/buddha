@@ -18,7 +18,7 @@ const Downloads = ({data}) => {
                         }}>
                             <img src={f.thumb}/>
                             <figcaption>
-                                <span className="stDownloadName">{f.name}<span className="dld"><FAIco icon="check" /></span></span>
+                                <span className="stDownloadName"><span>{f.name}</span><span className="dld"><FAIco icon="check" /></span></span>
                                 <span className="stDownloadSize">{f.size}</span>
                             </figcaption>
                         </figure>

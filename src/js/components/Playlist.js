@@ -155,7 +155,8 @@ export default class Playlist extends React.Component {
                                         modalActive({
                                             open: true,
                                             action: 'Downloads',
-                                            mData: dls
+                                            mData: dls,
+                                            color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
                                     <a className="stPlaylistAction" title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
