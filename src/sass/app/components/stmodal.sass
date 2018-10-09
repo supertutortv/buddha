@@ -48,12 +48,14 @@
                     cursor: pointer
                     width: auto
                     padding: 0 $large
-                    transition: all .1s ease-in-out
+
+                    &.dld
+                        background-color: rgba(green,.05)
 
                     &.disabled
                         cursor: not-allowed
 
-                    &:not(.disabled):hover
+                    &:not(.disabled):hover, &:not(.dld):hover
 
                             .inner
                                 background-color: black(.05)
@@ -63,6 +65,7 @@
                         height: 100%
                         display: flex
                         align-items: center
+                        transition: all .1s ease-in-out
 
                         img
                             max-height: 100px
