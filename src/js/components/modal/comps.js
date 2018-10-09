@@ -4,7 +4,6 @@ const Downloads = ({data}) => {
     console.log(data)
     return (
         <div className="stModalDownloads">
-            <h1>Downloads</h1>
             <section className="stDownloadLinks">
                 {data.map(f => {
                     let emp = (f.file === 0),
