@@ -115,7 +115,7 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
                                                         <div className="boxTitle">Practice</div>
                                                         <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                     </div>
-                                                    <div><FAIco title="Take a practice test" icon="vial"/>Take a practice test</div>
+                                                    <div><FAIco title="Take a practice test" icon="vial"/><span className="boxPracTest">Take a practice test</span></div>
                                                 </div>
                                                 <div className="stPracticeBody">
                                                     <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />

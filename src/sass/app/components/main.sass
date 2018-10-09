@@ -162,17 +162,21 @@ body.main
                         .stPracticeTop
                             display: flex
                             align-items: center
+
+                            & > div
+                                display: flex
+                                align-items: center
                             
-                            .boxIco
-                                padding-right: 1em
+                                .boxIco
+                                    padding-right: 1em
 
-                            .boxTitle
-                                font-weight: 600
+                                .boxTitle
+                                    font-weight: 600
 
-                            .stPracticeNote
-                                font-size: $small
-                                padding-left: 1em
-                                font-style: italic
+                                .stPracticeNote, .boxPracTest
+                                    font-size: $small
+                                    padding-left: 1em
+                                    font-style: italic
 
                         .stPracticeBody
                             display: flex
