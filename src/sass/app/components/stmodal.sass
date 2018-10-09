@@ -30,7 +30,7 @@
         @extend .z-depth-3
 
         figure
-            margin: 0 0 $tiny
+            margin-bottom: 1em
 
         .stModalDownloads
             height: 100%
@@ -39,7 +39,6 @@
                 display: flex
                 flex-wrap: wrap
                 font-size: $small
-                padding: $large
                 height: 100%
                 width: 100%
                 overflow: auto
@@ -50,6 +49,11 @@
                     width: auto
                     display: flex
                     align-items: center
+                    padding: 0 $large
+                    transition: all .1s ease-in-out
+
+                    &:not(.disabled):hover
+                        @extend .z-depth-1
 
                     &.disabled
                         cursor: not-allowed
