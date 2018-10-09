@@ -1,7 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 
-const Downloads = ({data}) => {
+const Downloads = ({color,data}) => {
     return (
         <div className="stModalDownloads">
             <section className="stDownloadLinks">
