@@ -148,9 +148,9 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColA">
                         <figure className="stVideoStage">
                             <header className="stVideoHeader">
-                                <Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>
+                                <Link to={'/'+match.params.courses}>{'< Back to course'}</Link>
                                 <div className="stPlaylistActions">
-                                    <a className={"stPlaylistAction"+((dls.length === 0) ? ' disabled' : '')} style={bckStyle} title={(dls.length === 0) ? 'No downloads available' : 'Downloads'} onClick={(e) => {
+                                    <a className={"stPlaylistAction"+((dls.length === 0) ? ' disabled' : '')} title={(dls.length === 0) ? 'No downloads available' : 'Downloads'} onClick={(e) => {
                                         if (dls.length === 0) return e.preventDefault()
                                         modalActive({
                                             open: true,
@@ -158,7 +158,7 @@ export default class Playlist extends React.Component {
                                             mData: dls
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <a className="stPlaylistAction" style={bckStyle} title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
+                                    <a className="stPlaylistAction" title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
                                 </div>
                             </header>
                             <div className="stVideoContainer">
