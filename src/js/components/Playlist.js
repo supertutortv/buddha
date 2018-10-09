@@ -150,7 +150,7 @@ export default class Playlist extends React.Component {
                             <header className="stVideoHeader">
                                 <Link style={bckStyle} to={'/'+match.params.courses}>{'< Back to course'}</Link>
                                 <div className="stPlaylistActions">
-                                    <a className={"stPlaylistAction"+((dls.length === 0) ? ' disabled' : '')} style={bckStyle} title="Downloads" onClick={(e) => {
+                                    <a className={"stPlaylistAction"+((dls.length === 0) ? ' disabled' : '')} style={bckStyle} title={(dls.length === 0) ? 'No downloads available' : 'Downloads'} onClick={(e) => {
                                         if (dls.length === 0) return e.preventDefault()
                                         modalActive({
                                             open: true,
