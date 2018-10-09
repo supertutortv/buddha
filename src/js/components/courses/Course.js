@@ -81,9 +81,6 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
                                                 <VidPlayer showTitle video={data.courses[params.courses].intro} />
                                             </div>
                                             <div className="stCourseActions">
-                                                <div className="stCourseSearch">
-                                                    <div className="stCourseAction"><FAIco title="Search this course" icon="search"/><span className="stActionTxt">Search videos</span></div>
-                                                </div>
                                                 <div className="stCourseBarHeading">My Videos</div>
                                                 <div className="stCourseBar">
                                                     <div className="stCourseAction" onClick={() => 
