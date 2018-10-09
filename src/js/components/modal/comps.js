@@ -11,8 +11,6 @@ const Downloads = ({color,data}) => {
                         href = emp ? null : 'https://api.supertutortv.com/course-dl.php?test='+path[0]+'&section='+path[1]+'&res='+path[2]+'&hash='+f.hash
                     return (
                         <figure 
-                            onMouseOver={(e) => e.target.style = {backgroundColor: `rgba(${color},.25)`}} 
-                            onMouseOut={(e) => e.target.style = {backgroundColor: 'transparent'}} 
                             className={"stDownloadLink"+(emp ? ' disabled' : '')} 
                             onClick={(e) => {
                                 if (emp)
