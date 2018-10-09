@@ -18,11 +18,13 @@ const Downloads = ({color,data}) => {
                                 else
                                     window.location = href
                         }}>
-                            <img src={f.thumb}/>
-                            <figcaption>
-                                <span className="stDownloadName"><span>{f.name}</span><span className="dld"><FAIco icon="check" /></span></span>
-                                <span className="stDownloadSize">{f.size}</span>
-                            </figcaption>
+                            <div className="inner">
+                                <img src={f.thumb}/>
+                                <figcaption>
+                                    <span className="stDownloadName"><span>{f.name}</span><span className="dld"><FAIco icon="check" /></span></span>
+                                    <span className="stDownloadSize">{f.size}</span>
+                                </figcaption>
+                            </div>
                         </figure>
                     )
                 })}
