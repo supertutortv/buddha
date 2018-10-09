@@ -1,4 +1,5 @@
 import React from 'react'
+import FAIco from '../FAIco'
 
 const Downloads = ({data}) => {
     console.log(data)
@@ -17,7 +18,10 @@ const Downloads = ({data}) => {
                                 window.location = href
                         }}>
                             <img src={f.thumb}/>
-                            <figcaption><span>{f.name}</span><span className="stDownloadSize">{f.size}</span></figcaption>
+                            <figcaption>
+                                <span className="stDownloadName">{f.name}<span className="dld"><FAIco icon="check" /></span></span>
+                                <span className="stDownloadSize">{f.size}</span>
+                            </figcaption>
                         </figure>
                     )
                 })}
