@@ -25,31 +25,23 @@ body.main
 
                 .stCourseTop
 
-                    .stCourseActions
+                    .stCourseMSL
                         flex: 1
-                        display: flex
-                        flex-flow: column wrap
-                        padding-left: 1em
-
-                        .stCourseSearch
-                            background-color: white
-                            border: 1px solid black(.25)
-                            padding: $ittybitty
+                        margin-left: 1em
+                        background-color: white()
+                        border-radius: $ittybitty
+                        overflow: hidden
+                        @extend .z-depth-3
+                        
+                        .stCourseStudyListHeading
+                            padding: $tiny
+                            font-weight: 600
+                            border-bottom: 2px solid inherit
 
                         .stCourseBar
-                            flex: 1
-                            background-color: white()
-                            border-radius: $ittybitty
-                            margin-top: 1em
-                            @extend .z-depth-3
-
-                        & > div
-                            display: flex
-                            align-items: center
-                            font-size: $small
-
-                            .stActionTxt
-                                padding-left: 1em
+                            overflow: auto
+                            height: 100%
+                            
 
                     .stCourseIntro
                         flex: 3

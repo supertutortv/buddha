@@ -6,6 +6,7 @@ import Playlist from '../Playlist'
 import VidPlayer from '../VidPlayer'
 import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
+import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
 
 const Practice = ({hist,path,trialing,obj}) => {
@@ -80,25 +81,7 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
                                             <div className="stCourseIntro">
                                                 <VidPlayer showTitle video={data.courses[params.courses].intro} />
                                             </div>
-                                            <div className="stCourseActions">
-                                                <div className="stCourseBarHeading">My Videos</div>
-                                                <div className="stCourseBar">
-                                                    <div className="stCourseAction" onClick={() => 
-                                                        modalActive({
-                                                            open: true,
-                                                            orientation: 'bottom',
-                                                            action: 'Downloads',
-                                                            mData: data.courses[params.courses].downloads
-                                                        })
-                                                    }><FAIco title="Downloads" icon="cloud-download-alt"/><span className="stActionTxt">Downloads</span></div>
-                                                    <div className="stCourseAction" onClick={() => 
-                                                        modalActive({
-                                                            open: true,
-                                                            orientation: 'centered',
-                                                            action: 'Practice'
-                                                        })}><FAIco title="Take a practice test" icon="file-alt"/><span className="stActionTxt">Practice Test</span></div>
-                                                </div>
-                                            </div>
+                                            <MyStudyList />
                                         </div>
                                         <div className="stSectionsSection">
                                             {sections}
