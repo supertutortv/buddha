@@ -61,17 +61,13 @@
                     position: relative
                     z-index: 1000
 
-                    & > *
-                        font-size: $small
-                        font-weight: 400
+                    .stPlaylistAction
+                        padding-left: 1em
+                        cursor: pointer
 
-                        .stPlaylistAction
-                            padding-left: 1em
-                            cursor: pointer
-
-                            &.disabled
-                                color: black(.35) !important
-                                cursor: not-allowed
+                        &.disabled
+                            color: black(.35) !important
+                            cursor: not-allowed
                     a
                         color: black(.5)
                         transition: all .1s ease-in-out
