@@ -45,7 +45,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <STDialogCentered error={this.state.error}>
-            <form id="stLoginWrapper" className="stFormWrapper row" onSubmit={this.submit}>
+            <form id="stLoginWrapper" className="stFormWrapper" onSubmit={this.submit}>
                 <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
             </form>
             </STDialogCentered>
