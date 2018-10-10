@@ -104,7 +104,7 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj, dls, modalActive } = this.props
 
-        console.log(match)
+        console.log(loc)
 
         var firstVid = '#introduction'
 
