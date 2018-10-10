@@ -102,16 +102,16 @@ export default class Playlist extends React.Component {
         this.state.nextVid = vid
     }
 
-    updateUdata(patch,vid,loc) {
+    updateUdata(patch,vid,test,loc) {
         this.state.updating = true
-        _st.udata.update(patch,Object.assign(vid,{path:loc.pathname}),(d) => {
+        _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
             console.log(d.data)
             this.setState({updating: false})
         })
     }
 
     render() {
-        const { loc, hist, match, obj, dls, modalActive } = this.props
+        const { test, loc, hist, match, obj, dls, modalActive } = this.props
 
         var firstVid = '#introduction'
 
@@ -169,7 +169,7 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => this.updateUdata('playlist',vid,loc)}><FAIco icon={['far','heart']}/></a>
+                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}><FAIco icon={['far','heart']}/></a>
                                 </div>
                             </header>
                             <div className="stVideoContainer">
