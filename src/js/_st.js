@@ -2,6 +2,7 @@ import config from './config'
 import * as form from './utilities/form'
 import * as http from './utilities/http'
 import auth from './utilities/auth'
+import udata from './utilities/userActions'
 
 const plans = {
     'the-best-act-prep-course-ever': {
@@ -93,7 +94,8 @@ STTV.prototype = {
     auth,
     form,
     http,
-    plans
+    plans,
+    udata
 }
 
 export default new STTV

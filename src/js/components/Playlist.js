@@ -81,7 +81,8 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            nextVid: ''
+            nextVid: '',
+            updating: false
         }
 
         this.getNextVid = this.getNextVid.bind(this)
@@ -159,7 +160,9 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <a className="stPlaylistAction" title="Add to My Videos" onClick={(e) => console.log(dls)}><FAIco icon={['far','heart']}/></a>
+                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => _st.udata.update('bookmarks',vid,(d) => {
+                                        console.log(d)
+                                    })}><FAIco icon={['far','heart']}/></a>
                                 </div>
                             </header>
                             <div className="stVideoContainer">
