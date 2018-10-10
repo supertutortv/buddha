@@ -34,7 +34,9 @@ const Header = ({refreshData, stripped, title, depth, hist}) => {
                         e.preventDefault()
                         window.open("http://support.supertutortv.com")
                     }}/></li>
-                    <li><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
+                    <li onClick={(e) => {
+                        _st.auth.logout(() => refreshData())
+                    }}><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
                 </ul>
             </div>
         </header>
