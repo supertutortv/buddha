@@ -9,6 +9,11 @@ import STSectionBox from './STSectionBox'
 import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
 
+function refreshData() {
+    localStorage.removeItem('stCourseData')
+    window.location.reload(true)
+}
+
 const Practice = ({hist,path,trialing,obj}) => {
 
     let t = []
@@ -74,7 +79,7 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
                         
                         return (
                             <React.Fragment>
-                                <Header title={data.courses[params.courses].name} hist={hist} />
+                                <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
                                         <div className="stCourseTop">

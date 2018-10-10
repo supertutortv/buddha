@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FAIco from './FAIco'
 
-const Header = ({stripped, title, depth, hist}) => {
+const Header = ({refreshData, stripped, title, depth, hist}) => {
     var strCls = stripped ? ' stripped' : '',
         path = stripped ? '/login' : '/dashboard'
     return(
@@ -23,7 +23,11 @@ const Header = ({stripped, title, depth, hist}) => {
                             }} /></li>
                             <li><FAIco title="Rate/Review" icon="star"/></li>
                             <li><FAIco title="Leave Feedback" icon="comment-alt"/></li>
-                            <li><FAIco title="Refresh course" icon="sync-alt" /></li>
+                            <li onClick={(e) => {
+                                let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
+
+                                return result ? refreshData() : null
+                            }}><FAIco title="Refresh course" icon="sync-alt" /></li>
                         </React.Fragment>
                     }
                     <li><FAIco title="Help" icon="question" onClick={(e) => {
