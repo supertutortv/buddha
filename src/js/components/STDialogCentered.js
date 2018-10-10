@@ -6,7 +6,7 @@ const STDialogCentered = ({error,children}) => {
             <header className="stDialogCenteredHeader">
                 <img src="/assets/img/sttv_logo.png" />
             </header>
-            <div className="stDialogCenteredInset z-depth-1">
+            <div className="stDialogCenteredInset">
                 {children}
                 <div className="stFormErrors">{error.message}</div>
             </div>
