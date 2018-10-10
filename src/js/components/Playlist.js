@@ -104,6 +104,8 @@ export default class Playlist extends React.Component {
     render() {
         const { loc, hist, match, obj, dls, modalActive } = this.props
 
+        console.log(match)
+
         var firstVid = '#introduction'
 
         Object.keys(obj.collection).some((val) => {
@@ -160,7 +162,7 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => _st.udata.update('bookmarks',vid,(d) => {
+                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => _st.udata.update('bookmarks',Object.assign(vid,{path:match}),(d) => {
                                         console.log(d)
                                     })}><FAIco icon={['far','heart']}/></a>
                                 </div>
