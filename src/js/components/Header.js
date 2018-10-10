@@ -35,6 +35,7 @@ const Header = ({refreshData, stripped, title, depth, hist}) => {
                         window.open("http://support.supertutortv.com")
                     }}/></li>
                     <li onClick={(e) => {
+                        _st.loading = true
                         _st.auth.logout(() => refreshData())
                     }}><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
                 </ul>
