@@ -71,14 +71,20 @@ label
     color: inherit !important
 
 button
-    color: white(.8)
+    opacity: .8
+    color: white()
     background-color: gray
     font-size: .75em
     text-transform: uppercase
     padding: .5em 1em
     border-radius: .25em
     font-weight: 600
+    cursor: pointer
     @extend .z-depth-2
+    transition: opacity .1s linear
+
+    &:hover
+        opacity: 1
 
 [type="checkbox"] + span:not(.lever)
     line-height: 1em
