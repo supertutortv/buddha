@@ -5,6 +5,10 @@ import VidPlayer from './VidPlayer'
 import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
+function logHist(vidObj) {
+    console.log(vidObj)
+}
+
 const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
@@ -40,7 +44,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
 
             vids.push(
                 <article className={"stCollectionItem"+activeClass} {...stylOb}>
-                    <Link className="stCollectionItemLink" to={'#'+vid}>
+                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => logHist(vidObj)}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
                                 <picture>
