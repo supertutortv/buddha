@@ -9,7 +9,7 @@ function logHist(vidObj) {
     console.log(vidObj)
 }
 
-const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
+const PlSidebar = ({vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
         panels = [],
@@ -44,7 +44,7 @@ const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
 
             vids.push(
                 <article className={"stCollectionItem"+activeClass} {...stylOb}>
-                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => logHist(vidObj)}>
+                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => updateUdata('history',vidObj,test,loc)}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
                                 <picture>
@@ -133,7 +133,10 @@ export default class Playlist extends React.Component {
                 case 'playlist':
                     if (d.code === 'resourceExists') return false
                     this.props.setPlaylist(this.props.match.params.courses,d.data)
-                break
+                    break
+                case 'history':
+                    console.log(d)
+                    break
             }
             this.setState({updating: false})
         })
@@ -229,7 +232,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
+                                <PlSidebar updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
                             </div>
                         </section>
                     </div>
