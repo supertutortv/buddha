@@ -20,8 +20,9 @@ export default class AddFave extends React.Component {
     componentDidMount() {}
 
     render() {
-        const { updateUdata, vid, test, loc } = this.props
+        const { updateUdata, vid, test, loc, playlist } = this.props
         const faved = this.isInPlaylist()
+        console.log(playlist[vid.id])
 
         if (faved || this.state.faved) {
             this.state.faved = false
