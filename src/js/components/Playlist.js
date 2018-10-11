@@ -116,7 +116,7 @@ export default class Playlist extends React.Component {
     }
 
     render() {
-        const { test, loc, hist, match, obj, dls, modalActive } = this.props
+        const { playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
 
         var firstVid = '#introduction'
 
@@ -174,7 +174,14 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}><FAIco icon={['far','heart']}/></a>
+                                    {playlist.hasOwnProperty(vid.id) ?
+                                        <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}>
+                                            <FAIco icon={'heart'}/>
+                                        </a> :
+                                        <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}>
+                                            <FAIco icon={['far','heart']}/>
+                                        </a>
+                                    }
                                 </div>
                             </header>
                             <div className="stVideoContainer">
