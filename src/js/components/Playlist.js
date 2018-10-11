@@ -177,7 +177,7 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <AddFave playlist={playlist} />
+                                    <AddFave updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />
                                 </div>
                             </header>
                             <div className="stVideoContainer">
