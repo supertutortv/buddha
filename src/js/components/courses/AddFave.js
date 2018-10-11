@@ -27,7 +27,7 @@ export default class AddFave extends React.Component {
             this.state.faved = false
             return (
                 <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => 
-                    this.setState({faved: false}, () => deleteUdata('playlist',playlist[vid.id]))
+                    this.setState({faved: false}, () => deleteUdata('playlist',vid,playlist[vid.id]))
                 }>
                     <FAIco icon={'heart'}/>
                 </a>

@@ -104,7 +104,7 @@ export default class Playlist extends React.Component {
         this.state.nextVid = vid
     }
 
-    deleteUdata(patch,dt) {
+    deleteUdata(patch,vid,dt) {
         if (this.state.updating === true) return false
 
         this.state.updating = true
@@ -113,7 +113,7 @@ export default class Playlist extends React.Component {
                 case 'playlist':
                     if (d.code === 'resourceDeleteFail') return false
                     console.log(d.data)
-                    //delete this.props.playlist[d.data.id]
+                    delete this.props.playlist[vid.id]
                 break
             }
             this.setState({updating: false})
