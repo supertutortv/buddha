@@ -1,4 +1,4 @@
-import { put } from './http'
+import { put, del } from './http'
 
 export default {
     updating: false,
