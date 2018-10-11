@@ -105,7 +105,7 @@ export default class Playlist extends React.Component {
     updateUdata(patch,vid,test,loc) {
         this.state.updating = true
         _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
-            console.log(d.data)
+            console.log(d)
             this.setState({updating: false})
         })
     }
