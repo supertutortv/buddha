@@ -23,7 +23,7 @@ export default class AddFave extends React.Component {
         const { deleteUdata, updateUdata, vid, test, loc, playlist } = this.props
         const faved = this.isInPlaylist()
 
-        if (faved || this.state.faved) {
+        if (faved && this.state.faved) {
             this.state.faved = false
             return (
                 <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => 
