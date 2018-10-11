@@ -20,14 +20,15 @@ export default class AddFave extends React.Component {
     componentDidMount() {}
 
     render() {
-        const { updateUdata, vid, test, loc, playlist } = this.props
+        const { deleteUdata, updateUdata, vid, test, loc, playlist } = this.props
         const faved = this.isInPlaylist()
-        console.log(playlist[vid.id])
 
         if (faved || this.state.faved) {
             this.state.faved = false
             return (
-                <a className="stPlaylistAction faved" title="Added to Study List">
+                <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => 
+                    this.setState({faved: false}, () => deleteUdata(playlist[vid.id]))
+                }>
                     <FAIco icon={'heart'}/>
                 </a>
             )

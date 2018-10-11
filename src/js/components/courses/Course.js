@@ -14,6 +14,10 @@ function refreshData() {
     window.location.reload(true)
 }
 
+function deleteUdata(dt,cb) {
+    _st.udata.remove(dt,cb)
+}
+
 const Practice = ({hist,path,trialing,obj}) => {
 
     let t = []
@@ -67,7 +71,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist})
 
                     if (activeObj.type === 'playlist')
                         return (
-                            <Playlist playlist={data.courses[params.courses].playlist} setPlaylist={setPlaylist} test={test} modalActive={modalActive} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
+                            <Playlist deleteUdata={deleteUdata} playlist={data.courses[params.courses].playlist} setPlaylist={setPlaylist} test={test} modalActive={modalActive} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
                         var sections = [],

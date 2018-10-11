@@ -89,6 +89,7 @@ export default class Playlist extends React.Component {
         this.getNextVid = this.getNextVid.bind(this)
         this.setNextVid = this.setNextVid.bind(this)
         this.updateUdata = this.updateUdata.bind(this)
+        this.deleteUdata = this.deleteUdata.bind(this)
     }
 
     componentDidMount() {}
@@ -101,6 +102,21 @@ export default class Playlist extends React.Component {
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
+    }
+
+    deleteUdata(patch,dt) {
+        if (this.state.updating === true) return false
+
+        this.state.updating = true
+        this.props.deleteUdata(dt,(d) => {
+            switch(patch) {
+                case 'playlist':
+                    if (d.code === 'resourceDeleteFail') return false
+                    delete this.props.playlist[d.data.id]
+                break
+            }
+            this.setState({updating: false})
+        })
     }
 
     updateUdata(patch,vid,test,loc) {
@@ -177,7 +193,7 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    <AddFave updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />
+                                    <AddFave deleteUdata={this.deleteUdata} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />
                                 </div>
                             </header>
                             <div className="stVideoContainer">
