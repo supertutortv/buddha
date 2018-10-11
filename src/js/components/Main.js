@@ -26,6 +26,7 @@ export default class Main extends React.Component {
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
+        this.addHistory = this.addHistory.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
@@ -58,6 +59,12 @@ export default class Main extends React.Component {
         }, () => this.dataSaveLocal())
     }
 
+    addHistory(obj) {
+        this.setState((state) => {
+            Object.assign(state.data.courses[course].history,obj)
+        }, () => this.dataSaveLocal())
+    }
+
     render() {
         if (this.state.data === true) return null
 
@@ -66,7 +73,7 @@ export default class Main extends React.Component {
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
                 <STModal {...this.state.modal} modalActive={this.modalActive} />
