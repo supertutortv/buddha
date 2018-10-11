@@ -109,7 +109,6 @@ export default class Playlist extends React.Component {
 
         this.state.updating = true
         this.props.deleteUdata(dt,(d) => {
-            return console.log(d)
             switch(patch) {
                 case 'playlist':
                     if (d.code === 'resourceDeleteFail') return false
