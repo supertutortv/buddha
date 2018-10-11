@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import VidPlayer from './VidPlayer'
 import FAIco from './FAIco'
+import AddFave from './courses/AddFave'
 
 const PlSidebar = ({setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
@@ -103,6 +104,8 @@ export default class Playlist extends React.Component {
     }
 
     updateUdata(patch,vid,test,loc) {
+        if (this.state.updating === true) return false
+
         this.state.updating = true
         _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
             switch (patch) {
@@ -174,14 +177,7 @@ export default class Playlist extends React.Component {
                                             color: obj.color
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
-                                    {playlist.hasOwnProperty(vid.id) ?
-                                        <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}>
-                                            <FAIco icon={'heart'}/>
-                                        </a> :
-                                        <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => this.updateUdata('playlist',vid,test,loc)}>
-                                            <FAIco icon={['far','heart']}/>
-                                        </a>
-                                    }
+                                    <AddFave playlist={playlist} />
                                 </div>
                             </header>
                             <div className="stVideoContainer">
