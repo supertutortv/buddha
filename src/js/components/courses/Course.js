@@ -41,7 +41,7 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({match, history: hist, location: loc, modalActive}) => {
+const Course = ({match, history: hist, location: loc, modalActive, setPlaylist}) => {
     const {params} = match
     const icons = {
         english: 'comment-dots',
@@ -67,7 +67,7 @@ const Course = ({match, history: hist, location: loc, modalActive}) => {
 
                     if (activeObj.type === 'playlist')
                         return (
-                            <Playlist test={test} modalActive={modalActive} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
+                            <Playlist setPlaylist={setPlayslist} test={test} modalActive={modalActive} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
                         var sections = [],
