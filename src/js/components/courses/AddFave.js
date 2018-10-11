@@ -17,16 +17,14 @@ export default class AddFave extends React.Component {
         return playlist.hasOwnProperty(vid.id)
     }
 
-    componentDidMount() {
-        this.setState({faved: this.isInPlaylist()})
-    }
+    componentDidMount() {}
 
     render() {
-        if (this.state.faved === null) return null
-
         const { updateUdata, vid, test, loc } = this.props
+        const faved = this.isInPlaylist()
 
-        if (this.state.faved || this.isInPlaylist()) {
+        if (faved || this.state.faved) {
+            this.state.faved = false
             return (
                 <a className="stPlaylistAction faved" title="Added to Study List">
                     <FAIco icon={'heart'}/>
