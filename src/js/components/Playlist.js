@@ -135,7 +135,7 @@ export default class Playlist extends React.Component {
                     this.props.setPlaylist(this.props.match.params.courses,d.data)
                     break
                 case 'history':
-                    this.props.addHistory(d.data)
+                    this.props.addHistory(this.props.match.params.courses,d.data)
                     break
             }
             this.setState({updating: false})
