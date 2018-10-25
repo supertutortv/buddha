@@ -112,6 +112,7 @@ export default class Playlist extends React.Component {
         if (this.state.updating === true) return false
 
         this.state.updating = true
+        console.log(this.props)
         this.props.deleteUdata(dt,(d) => {
             switch(patch) {
                 case 'playlist':
