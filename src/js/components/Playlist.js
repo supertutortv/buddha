@@ -116,7 +116,7 @@ export default class Playlist extends React.Component {
             switch(patch) {
                 case 'playlist':
                     if (d.code === 'resourceDeleteFail') return false
-                    console.log(this.props.playlist[vid.id])
+                    console.log(this.props.playlist)
                     //delete this.props.playlist[vid.id]
                 break
             }
