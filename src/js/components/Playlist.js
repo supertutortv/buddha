@@ -128,7 +128,8 @@ export default class Playlist extends React.Component {
         if (this.state.updating === true) return false
 
         this.state.updating = true
-        _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
+        console.log(Object.assign(vid,{test:test,path:loc.pathname}))
+        /* _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
             switch (patch) {
                 case 'playlist':
                     if (d.code === 'resourceExists') return false
@@ -139,7 +140,7 @@ export default class Playlist extends React.Component {
                     break
             }
             this.setState({updating: false})
-        })
+        }) */
     }
 
     render() {
