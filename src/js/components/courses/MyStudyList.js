@@ -3,9 +3,8 @@ import FAIco from '../FAIco'
 
 const MyStudyList = ({data}) =>
     <div className="stCourseMSL">
-    {console.log(data)}
         <div className="stCourseStudyListHeading">My Study List</div>
-        <div className="stCourseStudyList"></div>
+        <div className="stCourseStudyList">{JSON.stringify(data)}</div>
     </div>
 
 export default MyStudyList
