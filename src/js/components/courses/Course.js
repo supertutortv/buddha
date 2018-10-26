@@ -91,7 +91,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                             <div className="stCourseIntro">
                                                 <VidPlayer showTitle video={data.courses[params.courses].intro} />
                                             </div>
-                                            <MyStudyList />
+                                            <MyStudyList data={data.courses[params.courses].playlist} />
                                         </div>
                                         <div className="stSectionsSection">
                                             {sections}
