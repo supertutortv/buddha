@@ -55,7 +55,7 @@ export default class Main extends React.Component {
 
     setPlaylist(course,data) {
         this.setState((state) => {
-            Object.assign(state.data.courses[course].playlist,data)
+            state.data.courses[course].playlist.push(data)
         }, () => this.dataSaveLocal())
     }
 
