@@ -14,7 +14,7 @@ export default class AddFave extends React.Component {
 
     isInPlaylist() {
         const { playlist, vid } = this.props
-        return playlist.hasOwnProperty(vid.id)
+        return playlist.some((obj) => obj.vidid === vid.id)
     }
 
     componentDidMount() {}
@@ -22,6 +22,7 @@ export default class AddFave extends React.Component {
     render() {
         const { deleteUdata, updateUdata, vid, test, loc, playlist } = this.props
         const faved = this.isInPlaylist()
+        console.log(faved)
 
         if (faved || this.state.faved) {
             this.state.faved = false
