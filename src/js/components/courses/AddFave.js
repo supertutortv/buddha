@@ -15,7 +15,7 @@ export default class AddFave extends React.Component {
     isInPlaylist() {
         const { playlist, vid } = this.props
         return playlist.some((obj) => {
-            console.log(obj.vidid === vid.id)
+            console.log(obj.vidid,vid.id)
             return obj.vidid === vid.id
         })
     }
