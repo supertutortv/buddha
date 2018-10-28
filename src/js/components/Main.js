@@ -60,9 +60,8 @@ export default class Main extends React.Component {
     }
 
     addHistory(course,obj) {
-        console.log(obj)
         this.setState((state) => {
-            state.data.courses[course].history.push(obj)
+            state.data.courses[course].history.push(obj.vidid)
         }, () => this.dataSaveLocal())
     }
 
