@@ -5,7 +5,9 @@ const MyStudyList = ({data}) =>
     <div className="stCourseMSL">
         <div className="stCourseStudyListHeading">My Study List</div>
         <div className="stCourseStudyList">{
-            () => data.forEach((i) => <div>{JSON.stringify(i)}</div>)
+            () => {
+                return data.forEach((i) => <div>{JSON.stringify(i)}</div>)
+            }
         }</div>
     </div>
 
