@@ -39,8 +39,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {},
                 activeClass = vid === hash ? ' active' : ''
-
-            console.log(vidObj)
+                watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
 
             if (nextVid) setNextVid(vid)
 
@@ -58,6 +57,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
                             </figcaption>
                         </figure>
                     </Link>
+                    {watchd}
                 </article>
             )
 
