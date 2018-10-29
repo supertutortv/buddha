@@ -9,7 +9,8 @@ function logHist(vidObj) {
     console.log(vidObj)
 }
 
-const PlSidebar = ({vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
+const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
+    console.log(vid)
     let ord = [],
         tabs = [],
         panels = [],
@@ -144,8 +145,6 @@ export default class Playlist extends React.Component {
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
 
-        console.log(watchHist)
-
         var firstVid = '#introduction'
 
         Object.keys(obj.collection).some((val) => {
@@ -233,7 +232,7 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
+                                <PlSidebar watchHist={watchHist} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
                             </div>
                         </section>
                     </div>
