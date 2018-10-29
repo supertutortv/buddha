@@ -144,6 +144,8 @@ export default class Playlist extends React.Component {
     render() {
         const { playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
 
+        console.log(obj)
+
         var firstVid = '#introduction'
 
         Object.keys(obj.collection).some((val) => {
