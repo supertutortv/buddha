@@ -10,7 +10,6 @@ function logHist(vidObj) {
 }
 
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
-    console.log(vid)
     let ord = [],
         tabs = [],
         panels = [],
@@ -40,6 +39,8 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {},
                 activeClass = vid === hash ? ' active' : ''
+
+            console.log(vidObj)
 
             if (nextVid) setNextVid(vid)
 
