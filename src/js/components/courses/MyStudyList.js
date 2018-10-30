@@ -14,9 +14,11 @@ const MyStudyList = ({data}) => {
 
     return (
         <div className="stCourseMSL">
-            <div className="stCourseStudyListHeading">My Study List</div>
-            <div className="stCourseStudyList">
-                <div className="stCourseStudyListInner">{list}</div>
+            <div className="stCourseMSLInner">
+                <div className="stCourseStudyListHeading">My Study List</div>
+                <div className="stCourseStudyList">
+                    <div className="stCourseStudyListInner">{list}</div>
+                </div>
             </div>
         </div>
     )
