@@ -55,9 +55,9 @@ export default class Signup extends React.Component {
             }
         }
         this.steps = [
-            'Plans',
-            'Account',
-            'Payment',
+            'SAT',
+            'ACT',
+            'COMBO',
             'ThankYou'
         ]
 
@@ -100,7 +100,7 @@ export default class Signup extends React.Component {
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
-                    <Header stripped={true} hist={this.props.history} depth="0"/>
+                    <Header stripped={true} hist={this.props.history} />
                     <Elements>
                         <SignupStep 
                             state={this.state} 
