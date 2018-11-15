@@ -53,11 +53,10 @@ export default class Signup extends React.Component {
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
             }
         }
-        this.steps = [
-            'SAT',
-            'ACT',
-            'COMBO',
-            'ThankYou'
+        this.plans = [
+            'sat',
+            'act',
+            'combo'
         ]
 
         Object.keys(methods).forEach((method) => {
@@ -95,7 +94,7 @@ export default class Signup extends React.Component {
 
     render() {
         let {plan} = this.props.match.params
-        if (typeof plan === 'undefined' || plan !== this.steps[this.state.step].toLowerCase()) {
+        if (typeof plan === 'undefined' || this.plans.indexOf(plan)+1 ) {
             this.props.history.replace('/login')
             return null 
         }
