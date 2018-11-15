@@ -67,7 +67,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        let plan = this.props.match.params
+        let {plan} = this.props.match.params
         _st.http.get('/signup/'+plan,(d) => {
             console.log(d)
             _st.loading = false
@@ -94,8 +94,7 @@ export default class Signup extends React.Component {
 
     render() {
         let {plan} = this.props.match.params
-        console.log(plan)
-        if (typeof plan === 'undefined' || this.plans.indexOf(plan)+1 ) {
+        if (typeof plan === 'undefined' || this.plans.indexOf(plan) > -1 ) {
             this.props.history.replace('/login')
             return null 
         }
