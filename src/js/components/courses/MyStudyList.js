@@ -34,7 +34,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer showTitle video={data.courses[params.courses].intro} />
+                    <VidPlayer showTitle video={0} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
