@@ -30,11 +30,10 @@ export default class MyStudyList extends React.Component {
                 </picture>
             </div>
         ))
-        console.log(this.state.video)
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer showTitle video={0} />
+                    <VidPlayer showTitle video={this.state.video} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
