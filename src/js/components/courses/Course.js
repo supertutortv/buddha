@@ -52,7 +52,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
         reading: 'book',
         science: 'microscope',
         essay: 'scroll',
-        'writing-and-language':'edit'
+        'writing-and-language': 'edit'
     }
     _st.bodyClass = 'main'
 
