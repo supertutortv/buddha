@@ -41,8 +41,6 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
                 activeClass = vid === hash ? ' active' : '',
                 watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
 
-            console.log(watchHist.indexOf(vidObj.id))
-
             if (nextVid) setNextVid(vid)
 
             vids.push(
