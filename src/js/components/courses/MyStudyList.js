@@ -26,7 +26,7 @@ export default class MyStudyList extends React.Component {
         playlist.forEach((i) => list.push(
             <div className="stCourseStudyListItem">
                 <picture>
-                    <img src={"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F"+i.thumb+"_295x166.jpg&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"} />
+                    <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
                 </picture>
                 <div class="listItemTitle">{i.name}</div>
             </div>
