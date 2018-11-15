@@ -2,16 +2,15 @@ import React from 'react'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import Header from './Header'
 import * as methods from './signup/methods'
-import * as steps from './signup/steps'
 
 export default class Signup extends React.Component {
     constructor(props) {
         super(props)
     
         this.state = {
+            init: false,
             update: true,
             loading: true,
-            step: 0,
             plan: null,
             error: {
                 id: '',
@@ -69,7 +68,11 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        _st.loading = false
+        let plan = this.props.match.params
+        _st.http.get('/signup/'+plan,(d) => {
+            console.log(d)
+            _st.loading = false
+        })
     }
 
     componentDidUpdate() {
@@ -82,7 +85,7 @@ export default class Signup extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        var { history: hist} = nextProps
+        var { history: hist } = nextProps
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
@@ -91,18 +94,22 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {step} = this.props.match.params
-        if (typeof step === 'undefined' || step !== this.steps[this.state.step].toLowerCase()) {
-            this.props.history.replace('/signup/plans')
+        let {plan} = this.props.match.params
+        if (typeof plan === 'undefined' || plan !== this.steps[this.state.step].toLowerCase()) {
+            this.props.history.replace('/login')
             return null 
         }
-        const SignupStep = steps[this.steps[this.state.step]]
+
+        if (this.state.init === false) return null
+
+        const Checkout = () => {}
+        
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
                     <Header stripped={true} hist={this.props.history} />
                     <Elements>
-                        <SignupStep 
+                        <Checkout 
                             state={this.state} 
                             error={this.state.error} 
                             changeStep={this.changeStep} 

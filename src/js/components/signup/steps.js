@@ -2,45 +2,6 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import Payment from './payment'
 
-const STPlan = ({slug, setPlan, exClass='', highlight=false}) => {
-    let plan = _st.plans[slug],
-        hLt = highlight ? ' highlight' : ''
-    return (
-        <div className={'stPlan '+exClass}>
-            <a id={'stPlan_'+slug} data-obj={JSON.stringify(plan)} className={"stPlanInner z-depth-3"+hLt} onClick={(e) => setPlan(e)}>
-                <div className="stPlanTest">
-                    <span className="test">{plan.test}</span>
-                    <span className="name">{plan.name}</span>
-                </div>
-                <div className="stPlanPrice">{'$'+plan.price/100}</div>
-                <div className="stPlanItems">{plan.list.map((li) => {
-                    let newLi = li.match(/\*(.*)\*(.*)/)
-                    return <div className="stPlanItem">{newLi ? <span><strong>{newLi[1]}</strong>{newLi[2]}</span> : <span>{li}</span>}</div>
-                })}</div>
-            </a>
-        </div>
-    )
-}
-
-const Plans = ({ setPlan }) => {
-    return (
-    <React.Fragment>
-        <div className="stSignupDiagSep">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="50px" viewBox="0 0 1920 50" preserveAspectRatio="none">
-                <polygon points="0,0 0,50 1920,0 "></polygon>
-            </svg>
-        </div>
-        <div class="stSignupPlans stSignupStep">
-            <div class="stSignupTitle"><h1>Select your plan.</h1></div>
-            <div class="stPlansContainer">
-                <STPlan exClass="first" slug="the-best-act-prep-course-ever" setPlan={setPlan} />
-                <STPlan slug="sat-act-bundle" setPlan={setPlan} highlight />
-                <STPlan exClass="last" slug="the-best-sat-prep-course-ever" setPlan={setPlan} />
-            </div>
-        </div>
-    </React.Fragment>
-)}
-
 const Account = ({ createAccount, updateInp, error }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
     return (
