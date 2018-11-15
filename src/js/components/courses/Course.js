@@ -3,7 +3,6 @@ import { withRouter } from 'react-router'
 import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
-import VidPlayer from '../VidPlayer'
 import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import MyStudyList from './MyStudyList'
@@ -87,12 +86,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <div className="stCourseTop">
-                                            <div className="stCourseIntro">
-                                                <VidPlayer showTitle video={data.courses[params.courses].intro} />
-                                            </div>
-                                            <MyStudyList data={data.courses[params.courses].playlist} />
-                                        </div>
+                                        <MyStudyList data={data.courses[params.courses].playlist} />
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
