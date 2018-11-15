@@ -47,11 +47,11 @@ const Practice = ({hist,path,trialing,obj}) => {
 const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory}) => {
     const {params} = match
     const icons = {
+        essay: 'scroll',
         english: 'comment-dots',
         math: 'calculator',
         reading: 'book',
         science: 'microscope',
-        essay: 'scroll',
         'writing-and-language': 'edit'
     }
     _st.bodyClass = 'main'
