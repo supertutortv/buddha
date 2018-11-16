@@ -118,7 +118,7 @@ export default class Playlist extends React.Component {
             switch(patch) {
                 case 'playlist':
                     if (d.code === 'resourceDeleteFail') return false
-                    delete this.props.playlist[vid.id]
+                    this.props.playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
                 break
             }
             this.setState({updating: false})
