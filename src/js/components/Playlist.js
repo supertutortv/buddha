@@ -35,7 +35,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
         var ii = 1,
             keys = Object.keys(obj.videos)
 
-        keys.forEach((vid, x) => {
+        keys.forEach((vid) => {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {},
                 activeClass = vid === hash ? ' active' : '',
@@ -184,7 +184,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(vid)
+        
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
