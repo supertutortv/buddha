@@ -12,7 +12,6 @@ export default class MyStudyList extends React.Component {
             video : this.playlist[0].vidid
         }
 
-        this.changeVid = this.changeVid.bind(this)
     }
 
     changeVid(vid) {
