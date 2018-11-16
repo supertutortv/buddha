@@ -35,7 +35,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
         var ii = 1,
             keys = Object.keys(obj.videos)
 
-        keys.forEach((vid) => {
+        keys.forEach((vid, x) => {
             let vidObj = obj.videos[vid],
                 stylOb = (vid === hash) ? {style: sbStyle} : {},
                 activeClass = vid === hash ? ' active' : '',
@@ -146,16 +146,8 @@ export default class Playlist extends React.Component {
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
 
-        var firstVid = '#introduction'
-
-        Object.keys(obj.collection).some((val) => {
-            return Object.keys(obj.collection[val].videos).some((v) => {
-                return firstVid = '#'+v
-            })
-        })
-
         if (!loc.hash) {
-            hist.replace(firstVid)
+            hist.replace('#1!1')
             return null
         }
 
@@ -168,7 +160,7 @@ export default class Playlist extends React.Component {
         }
 
         const hash = loc.hash.replace(/^\#/,'')
-
+        console.log(hash)
         var vid = {
             id: null
         },
@@ -184,7 +176,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(vid)
+
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
