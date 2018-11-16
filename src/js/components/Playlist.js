@@ -159,7 +159,7 @@ export default class Playlist extends React.Component {
             color: obj.color
         }
 
-        const hash = loc.hash.replace(/^\#/,'')
+        const hash = loc.hash.replace(/^\#/,'').split('!')
         console.log(hash)
         var vid = {
             id: null
