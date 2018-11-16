@@ -23,7 +23,7 @@ export default class MyStudyList extends React.Component {
             list = []
 
         playlist.forEach((i) => {
-            let clsHl = (this.state.video === i.vidid) ? 'highlight' : ''
+            let clsHl = (this.state.video === i.vidid) ? ' highlight' : ''
             list.push(
                 <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i.vidid)}>
                     <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
