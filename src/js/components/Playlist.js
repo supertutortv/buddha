@@ -146,8 +146,16 @@ export default class Playlist extends React.Component {
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
 
+        var firstVid = '#introduction'
+
+        Object.keys(obj.collection).some((val) => {
+            return Object.keys(obj.collection[val].videos).some((v) => {
+                return firstVid = '#'+v
+            })
+        })
+
         if (!loc.hash) {
-            hist.replace('#1!1')
+            hist.replace(firstVid)
             return null
         }
 
@@ -159,8 +167,8 @@ export default class Playlist extends React.Component {
             color: obj.color
         }
 
-        const [activeTab, activeVid] = loc.hash.replace(/^\#/,'').split('!')
-        console.log(activeTab,activeVid)
+        const hash = loc.hash.replace(/^\#/,'')
+
         var vid = {
             id: null
         },
@@ -176,7 +184,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-
+        console.log(vid)
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
