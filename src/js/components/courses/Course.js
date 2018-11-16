@@ -97,7 +97,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                                 <div className="stPracticeTop">
                                                     <div>
                                                         <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
-                                                        <div className="boxTitle">Practice</div>
+                                                        <div className="boxTitle">Practice Test Explanations</div>
                                                         <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                     </div>
                                                     {/* <div><FAIco title="Take a practice test" icon="vial"/><span className="boxPracTest">Take a practice test</span></div> */}
