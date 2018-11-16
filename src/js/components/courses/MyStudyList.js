@@ -23,7 +23,10 @@ export default class MyStudyList extends React.Component {
             list = []
 
         playlist.forEach((i) => list.push(
-            <div className="stCourseStudyListItem" onClick={() => this.changeVid(i.vidid)}>
+            <div className={() => {
+                let clsHl = (this.state.video === i.vidid) ? 'highlight' : ''
+                return "stCourseStudyListItem"+clsHl
+            }} onClick={() => this.changeVid(i.vidid)}>
                 <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
                 <div class="listItemTitle">{i.name}</div>
             </div>
@@ -31,7 +34,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer showTitle autoplay={false} video={this.state.video} />
+                    <VidPlayer video={this.state.video} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
