@@ -22,15 +22,15 @@ export default class MyStudyList extends React.Component {
         let { playlist } = this,
             list = []
 
-        playlist.forEach((i) => list.push(
-            <div className={() => {
-                let clsHl = (this.state.video === i.vidid) ? 'highlight' : ''
-                return "stCourseStudyListItem"+clsHl
-            }} onClick={() => this.changeVid(i.vidid)}>
-                <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
-                <div class="listItemTitle">{i.name}</div>
-            </div>
-        ))
+        playlist.forEach((i) => {
+            let clsHl = (this.state.video === i.vidid) ? 'highlight' : ''
+            list.push(
+                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i.vidid)}>
+                    <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
+                    <div class="listItemTitle">{i.name}</div>
+                </div>
+            ) 
+        })
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
