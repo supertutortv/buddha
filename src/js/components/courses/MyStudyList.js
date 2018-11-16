@@ -23,7 +23,7 @@ export default class MyStudyList extends React.Component {
             list = []
 
         playlist.forEach((i) => list.push(
-            <div className="stCourseStudyListItem" onClick={this.changeVid(i.vidid)}>
+            <div className="stCourseStudyListItem" onClick={() => this.changeVid(i.vidid)}>
                 <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
                 <div class="listItemTitle">{i.name}</div>
             </div>
