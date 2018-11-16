@@ -159,8 +159,8 @@ export default class Playlist extends React.Component {
             color: obj.color
         }
 
-        const hash = loc.hash.replace(/^\#/,'').split('!')
-        console.log(hash)
+        [activeTab, activeVid] = loc.hash.replace(/^\#/,'').split('!')
+        console.log(activeTab,activeVid)
         var vid = {
             id: null
         },
