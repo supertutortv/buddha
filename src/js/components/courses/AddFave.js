@@ -8,6 +8,7 @@ export default class AddFave extends React.Component {
         this.state = {
             faved: null
         }
+        this.inPL = null
 
         this.isInPlaylist = this.isInPlaylist.bind(this)
     }
@@ -15,7 +16,7 @@ export default class AddFave extends React.Component {
     isInPlaylist() {
         const { playlist, vid } = this.props
         return playlist.some((obj) => {
-            return obj.vidid === vid.id
+            return obj.vidid === vid.id && (this.inPL = obj)
         })
     }
 
@@ -29,7 +30,7 @@ export default class AddFave extends React.Component {
             this.state.faved = false
             return (
                 <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => 
-                    this.setState({faved: false}, () => deleteUdata('playlist',vid,playlist[vid.id]))
+                    this.setState({faved: false}, () => deleteUdata('playlist',vid,this.inPL))
                 }>
                     <FAIco icon={'heart'}/>
                 </a>
