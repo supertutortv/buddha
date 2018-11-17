@@ -223,9 +223,10 @@ export default class Playlist extends React.Component {
                                                                 <figcaption>
                                                                     <h3 className="stCollectionItemTitle">{vidObj.name}</h3>
                                                                 </figcaption>
+                                                                <div>{watchd}</div>
                                                             </figure>
                                                         </div>
-                                                        <div>{watchd}</div>
+                                                        
                                                     </article>
                                                 )
                                             })
