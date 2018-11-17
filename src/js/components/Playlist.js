@@ -64,7 +64,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
         })
 
         tabs.push()
-        panels.push(<TabPanel className='stCollectionTabPanel'>{vids}</TabPanel>)
+        panels.push()
     })
 
     return (
@@ -215,7 +215,7 @@ export default class Playlist extends React.Component {
                                             {colls.map((col,i) => <Tab className='stCollectionTab'>{obj.collection[col].name}</Tab>)}
                                         </TabList>
                                     </div>
-                                    {panels}
+                                    {vids.map((v,i) => <TabPanel className='stCollectionTabPanel'>{console.log(v)}</TabPanel>)}
                                 </Tabs>
                             </div>
                         </section>
