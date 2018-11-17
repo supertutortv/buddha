@@ -206,10 +206,7 @@ export default class Playlist extends React.Component {
                                         </TabList>
                                     </div>
                                     {colls.map((col,i) => <TabPanel className='stCollectionTabPanel'>{
-                                        (() => {
-                                            console.log(col)
-                                            let vVidz = Object.keys(col.videos)
-                                            vVidz.map((v,ii) => {
+                                            Object.keys(obj.collection[col].videos).map((v,ii) => {
                                                 let vidObj = col.videos[v],
                                                     stylOb = (ii === this.state.vid) ? {style: sbStyle} : {},
                                                     activeClass = ii === this.state.vid ? ' active' : '',
@@ -232,7 +229,7 @@ export default class Playlist extends React.Component {
                                                     </article>
                                                 )
                                             })
-                                        })()
+                                        }
                                     }</TabPanel>)}
                                 </Tabs>
                             </div>
