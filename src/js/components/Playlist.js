@@ -96,9 +96,7 @@ export default class Playlist extends React.Component {
         this.deleteUdata = this.deleteUdata.bind(this)
     }
 
-    componentDidMount() {
-        console.log(this.props)
-    }
+    componentDidMount() {}
 
     componentWillUnmount() {}
 
@@ -145,7 +143,7 @@ export default class Playlist extends React.Component {
 
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
-
+        console.log(obj)
         var firstVid = ''
 
         Object.keys(obj.collection).some((val) => {
@@ -184,7 +182,7 @@ export default class Playlist extends React.Component {
             }
             return false
         })
-        console.log(activeColl)
+
         return (
             <section className="stPlaylistRoot stComponentFade">
                 <div className="stPlaylistInner">
