@@ -84,8 +84,8 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            activeColl: 0,
-            activeVid: 0,
+            coll: 0,
+            vid: 0,
             nextVid: '',
             updating: false
         }
@@ -143,7 +143,7 @@ export default class Playlist extends React.Component {
 
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
-        console.log(obj)
+
         const colls = Object.keys(obj.collection),
             activeColl = obj.collection[colls[this.state.coll]],
             vids = Object.keys(activeColl.videos),
