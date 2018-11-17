@@ -6,11 +6,6 @@ import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
-    console.log(activeColl,vid)
-    let ord = [],
-        tabs = [],
-        panels = [],
-        ind = 0
 
     if ('tips' in collection) {
         var { tips, ...collection } = collection
@@ -91,8 +86,7 @@ export default class Playlist extends React.Component {
             updating: false
         }
 
-        this.getNextVid = this.getNextVid.bind(this)
-        this.setNextVid = this.setNextVid.bind(this)
+        this.nextVid = this.nextVid.bind(this)
         this.updateUdata = this.updateUdata.bind(this)
         this.deleteUdata = this.deleteUdata.bind(this)
     }
@@ -101,12 +95,8 @@ export default class Playlist extends React.Component {
 
     componentWillUnmount() {}
 
-    getNextVid() {
-        if (this.state.nextVid) this.props.hist.push('#'+this.state.nextVid)
-    }
-
-    setNextVid(vid = '') {
-        this.state.nextVid = vid
+    nextVid() {
+        this.setState((state) => {return {vid: state.vid + 1}})
     }
 
     deleteUdata(patch,vid,dt) {
@@ -188,7 +178,7 @@ export default class Playlist extends React.Component {
                                             <img src={"https://i.vimeocdn.com/video/"+vid.thumb+"_295x166.jpg?r=pad"} />
                                             <div className="stNoAccessOverlay"><h2>This video is not available during the free trial period</h2></div>
                                         </React.Fragment> : 
-                                        <VidPlayer getNextVid={this.getNextVid} video={vid.id} />
+                                        <VidPlayer getNextVid={this.nextVid} video={vid.id} />
                                     }
                                     </article>
                                 </div>
@@ -215,7 +205,31 @@ export default class Playlist extends React.Component {
                                             {colls.map((col,i) => <Tab className='stCollectionTab'>{obj.collection[col].name}</Tab>)}
                                         </TabList>
                                     </div>
-                                    {colls.map((col,i) => <TabPanel className='stCollectionTabPanel'>{console.log(obj.collection[col])}</TabPanel>)}
+                                    {colls.map((col,i) => <TabPanel className='stCollectionTabPanel'>{
+                                        Object.keys(col.videos).map((v,ii) => {
+                                            let vidObj = col.videos[v],
+                                                stylOb = (ii === this.state.vid) ? {style: sbStyle} : {},
+                                                activeClass = ii === this.state.vid ? ' active' : '',
+                                                watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
+                                            return (
+                                                <article className={"stCollectionItem"+activeClass} {...stylOb}>
+                                                    <div className="stCollectionItemLink" onClick={() => this.setState({vid: ii},() => this.updateUdata('history',vidObj,test,loc))}>
+                                                        <figure className="stCollectionItemInner">
+                                                            <div className="stLinkImageWrapper z-depth-1">
+                                                                <picture>
+                                                                    <img src={"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F"+vidObj.thumb+"_295x166.jpg&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"} />
+                                                                </picture>
+                                                            </div>
+                                                            <figcaption>
+                                                                <h3 className="stCollectionItemTitle">{vidObj.name}</h3>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
+                                                    <div>{watchd}</div>
+                                                </article>
+                                            )
+                                        })
+                                    }</TabPanel>)}
                                 </Tabs>
                             </div>
                         </section>
