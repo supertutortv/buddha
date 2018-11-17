@@ -230,8 +230,7 @@ export default class Playlist extends React.Component {
                                                     </article>
                                                 )
                                             })
-                                        }
-                                    }</TabPanel>)}
+                                        }</TabPanel>)}
                                 </Tabs>
                             </div>
                         </section>
