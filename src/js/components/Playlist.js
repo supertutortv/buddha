@@ -210,7 +210,7 @@ export default class Playlist extends React.Component {
                                                 let vidObj = obj.collection[col].videos[v],
                                                     stylOb = (ii === this.state.vid) ? {style: sbStyle} : {},
                                                     activeClass = ii === this.state.vid ? ' active' : '',
-                                                    watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
+                                                    watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco title="watched" icon="clock"/> : ''
                                                 return (
                                                     <article className={"stCollectionItem"+activeClass} {...stylOb}>
                                                         <div className="stCollectionItemLink" onClick={() => this.setState({vid: ii},() => this.updateUdata('history',vidObj,test,loc))}>
