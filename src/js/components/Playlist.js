@@ -207,7 +207,7 @@ export default class Playlist extends React.Component {
                                     </div>
                                     {colls.map((col,i) => <TabPanel className='stCollectionTabPanel'>{
                                             Object.keys(obj.collection[col].videos).map((v,ii) => {
-                                                let vidObj = col.videos[v],
+                                                let vidObj = obj.collection[col].videos[v],
                                                     stylOb = (ii === this.state.vid) ? {style: sbStyle} : {},
                                                     activeClass = ii === this.state.vid ? ' active' : '',
                                                     watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
