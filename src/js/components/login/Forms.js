@@ -1,7 +1,7 @@
 import React from 'react'
 
 const LoginForm = ({setLoginState, lostPwGo}) =>
-    (<div>
+    <React.Fragment>
         <div id="stLoginHeader" className="stFormHeader">
             <h1>Welcome! Please sign in.</h1>
         </div>
@@ -19,6 +19,6 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
         <div className="stForgotBlock">
             <span><a onClick={lostPwGo}>Forgot your password?</a></span>
         </div>
-    </div>)
+    </React.Fragment>
 
 export { LoginForm }
