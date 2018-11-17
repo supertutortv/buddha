@@ -8,11 +8,6 @@ import STSectionBox from './STSectionBox'
 import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
 
-function refreshData() {
-    localStorage.removeItem('stCourseData')
-    window.location.reload(true)
-}
-
 function deleteUdata(dt,cb) {
     _st.udata.remove(dt,cb)
 }
@@ -84,7 +79,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                         
                         return (
                             <React.Fragment>
-                                <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
+                                <Header title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
                                         <MyStudyList data={data.courses[params.courses].playlist} />

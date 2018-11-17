@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FAIco from './FAIco'
 
-const Header = ({refreshData, stripped, title, depth, hist}) => {
+function refreshData() {
+    localStorage.removeItem('stCourseData')
+    window.location.reload(true)
+}
+
+const Header = ({stripped, title, depth, hist}) => {
     var strCls = stripped ? ' stripped' : '',
         path = stripped ? '/login' : '/dashboard'
     return(
