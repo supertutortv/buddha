@@ -6,7 +6,6 @@ import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
-    console.log(activeColl,vid)
     let ord = [],
         tabs = [],
         panels = [],
@@ -42,7 +41,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
 
             vids.push(
                 <article className={"stCollectionItem"+activeClass} {...stylOb}>
-                    <Link className="stCollectionItemLink" to={'#'} onClick={() => updateUdata('history',vidObj,test,loc)}>
+                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => updateUdata('history',vidObj,test,loc)}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
                                 <picture>
@@ -85,8 +84,8 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            coll: 0,
-            vid: 0,
+            activeColl: 0,
+            activeVid: 0,
             nextVid: '',
             updating: false
         }
@@ -107,10 +106,6 @@ export default class Playlist extends React.Component {
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
-    }
-
-    setCurrentVid() {
-
     }
 
     deleteUdata(patch,vid,dt) {
@@ -148,12 +143,12 @@ export default class Playlist extends React.Component {
 
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
-        console.log(obj)
 
         const colls = Object.keys(obj.collection),
             activeColl = obj.collection[colls[this.state.coll]],
             vids = Object.keys(activeColl.videos),
-            vid = activeColl.videos[vids[this.state.vid]]
+            vid = activeColl.videos[vids[this.state.vid]],
+            theBook = activeColl.parent || ''
 
         const sbStyle = {
             backgroundColor: obj.color
