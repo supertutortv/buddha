@@ -5,10 +5,6 @@ import VidPlayer from './VidPlayer'
 import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
-function logHist(vidObj) {
-    console.log(vidObj)
-}
-
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
     let ord = [],
         tabs = [],
@@ -88,6 +84,8 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
+            activeColl: 0,
+            activeVid: 0,
             nextVid: '',
             updating: false
         }
@@ -98,7 +96,9 @@ export default class Playlist extends React.Component {
         this.deleteUdata = this.deleteUdata.bind(this)
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        console.log(this.props)
+    }
 
     componentWillUnmount() {}
 
