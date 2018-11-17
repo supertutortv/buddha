@@ -6,6 +6,7 @@ import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
+    console.log(activeColl,vid)
     let ord = [],
         tabs = [],
         panels = [],
