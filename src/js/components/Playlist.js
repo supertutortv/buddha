@@ -215,7 +215,7 @@ export default class Playlist extends React.Component {
                                             {colls.map((col,i) => <Tab className='stCollectionTab'>{obj.collection[col].name}</Tab>)}
                                         </TabList>
                                     </div>
-                                    {vids.map((v,i) => <TabPanel className='stCollectionTabPanel'>{console.log(v)}</TabPanel>)}
+                                    {colls.map((col,i) => <TabPanel className='stCollectionTabPanel'>{console.log(obj.collection[col])}</TabPanel>)}
                                 </Tabs>
                             </div>
                         </section>
