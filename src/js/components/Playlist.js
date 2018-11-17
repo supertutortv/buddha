@@ -63,7 +63,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
             ii++
         })
 
-        tabs.push(<Tab className='stCollectionTab'>{obj.name}</Tab>)
+        tabs.push()
         panels.push(<TabPanel className='stCollectionTabPanel'>{vids}</TabPanel>)
     })
 
@@ -150,7 +150,7 @@ export default class Playlist extends React.Component {
             vids = Object.keys(activeColl.videos),
             vid = activeColl.videos[vids[this.state.vid]],
             theBook = activeColl.parent || '',
-            hash = ''
+            panels = ''
 
         const sbStyle = {
             backgroundColor: obj.color
@@ -208,7 +208,15 @@ export default class Playlist extends React.Component {
                     <div className="stPlaylistColB">
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
-                                <PlSidebar watchHist={watchHist} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} />
+                                {/* <PlSidebar watchHist={watchHist} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} /> */}
+                                <Tabs className="stSidebarWrapper" selectedIndex={ind} onSelect={ind => this.setState({ coll: ind })}>
+                                    <div className="stCollectionTabsWrapper">
+                                        <TabList className='stCollectionTabs'>
+                                            {colls.map((col,i) => <Tab className='stCollectionTab'>{obj.collection[col].name}</Tab>)}
+                                        </TabList>
+                                    </div>
+                                    {panels}
+                                </Tabs>
                             </div>
                         </section>
                     </div>
