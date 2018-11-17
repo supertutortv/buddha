@@ -6,6 +6,7 @@ import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
 const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
+    console.log(activeColl,vid)
     let ord = [],
         tabs = [],
         panels = [],
@@ -41,7 +42,7 @@ const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle,
 
             vids.push(
                 <article className={"stCollectionItem"+activeClass} {...stylOb}>
-                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => updateUdata('history',vidObj,test,loc)}>
+                    <Link className="stCollectionItemLink" to={'#'} onClick={() => updateUdata('history',vidObj,test,loc)}>
                         <figure className="stCollectionItemInner">
                             <div className="stLinkImageWrapper z-depth-1">
                                 <picture>
@@ -84,8 +85,8 @@ export default class Playlist extends React.Component {
         super(props)
 
         this.state = {
-            activeColl: 0,
-            activeVid: 0,
+            coll: 0,
+            vid: 0,
             nextVid: '',
             updating: false
         }
@@ -106,6 +107,10 @@ export default class Playlist extends React.Component {
 
     setNextVid(vid = '') {
         this.state.nextVid = vid
+    }
+
+    setCurrentVid() {
+
     }
 
     deleteUdata(patch,vid,dt) {
@@ -144,18 +149,11 @@ export default class Playlist extends React.Component {
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
         console.log(obj)
-        var firstVid = ''
 
-        Object.keys(obj.collection).some((val) => {
-            return Object.keys(obj.collection[val].videos).some((v) => {
-                return firstVid = '#'+v
-            })
-        })
-
-        if (!loc.hash) {
-            hist.replace(firstVid)
-            return null
-        }
+        const colls = Object.keys(obj.collection),
+            activeColl = obj.collection[colls[this.state.coll]],
+            vids = Object.keys(activeColl.videos),
+            vid = activeColl.videos[vids[this.state.vid]]
 
         const sbStyle = {
             backgroundColor: obj.color
@@ -164,24 +162,6 @@ export default class Playlist extends React.Component {
         const bckStyle = {
             color: obj.color
         }
-
-        const hash = loc.hash.replace(/^\#/,'')
-
-        var vid = {
-            id: null
-        },
-        activeColl = '',
-        theBook = ''
-        
-        Object.keys(obj.collection).some((val) => {
-            if (hash in obj.collection[val].videos) {
-                vid = obj.collection[val].videos[hash]
-                activeColl = val
-                theBook = obj.collection[val].parent || ''
-                return true
-            }
-            return false
-        })
 
         return (
             <section className="stPlaylistRoot stComponentFade">
