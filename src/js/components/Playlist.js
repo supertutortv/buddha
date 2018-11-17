@@ -199,7 +199,7 @@ export default class Playlist extends React.Component {
                         <section className="stPlaylistSidebar">
                             <div className="stPlaylistSidebarInner">
                                 {/* <PlSidebar watchHist={watchHist} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} setNextVid={this.setNextVid} sbStyle={sbStyle} hash={hash} activeColl={activeColl} collection={obj.collection} /> */}
-                                <Tabs className="stSidebarWrapper" selectedIndex={this.state.coll} onSelect={ind => this.setState({ coll: ind })}>
+                                <Tabs className="stSidebarWrapper" selectedIndex={this.state.coll} onSelect={ind => this.setState({ vid: 0, coll: ind })}>
                                     <div className="stCollectionTabsWrapper">
                                         <TabList className='stCollectionTabs'>
                                             {colls.map((col,i) => <Tab className='stCollectionTab'>{obj.collection[col].name}</Tab>)}
