@@ -148,7 +148,8 @@ export default class Playlist extends React.Component {
             activeColl = obj.collection[colls[this.state.coll]],
             vids = Object.keys(activeColl.videos),
             vid = activeColl.videos[vids[this.state.vid]],
-            theBook = activeColl.parent || ''
+            theBook = activeColl.parent || '',
+            hash = ''
 
         const sbStyle = {
             backgroundColor: obj.color
