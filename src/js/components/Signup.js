@@ -58,7 +58,7 @@ export default class Signup extends React.Component {
 
         this.steps = [
             'Account',
-            'Pay',
+            'Payment',
             'ThankYou'
         ]
 
