@@ -45,16 +45,16 @@ const Account = ({ createAccount, updateInp, error }) => {
 
 const ThankYou = ({state}) => {
     return (
-        <div id="stSignupThankYou" class="stSignupStep row">
+        <div id="stSignupThankYou" class="stSignupStep">
             <h1>Thank you!</h1>
-            <div class="stSignupInner stFormWrapper col s12">
+            <div class="stSignupInner stFormWrapper">
                 <div className="row">Your order code is <strong>{state.thankYou.id}</strong>. Keep this for your records.</div>
                 <div className="row">
-                    <div className="col s12 m6 offset-m3">
+                    <div className="stuff">
                         <span>You will receive a payment receipt when your card is charged, either after your trial expires or very soon if you skipped the trial. You will also receive a welcome email with instructions for using the course. Or if you'd like to get started right now, just click the button below.</span>
                     </div>
                 </div>
-                <div className="stFormButtons row">
+                <div className="stFormButtons">
                     <Link id="stBtn_thankyou" className="stFormButton btn waves-effect waves-light" to="/dashboard" >Go to dashboard</Link>
                 </div>
             </div>
