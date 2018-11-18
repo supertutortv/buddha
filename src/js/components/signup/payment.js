@@ -9,8 +9,8 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
     trialDate.setDate(trialDate.getDate() + 5)
     return (
         <div id="stSignupPayment" className="stSignupStep row">
-            <div className="stSignupInner row">
-                <div className="stInfoWrap row">
+            <div className="stSignupInner">
+                <div className="stInfoWrap">
                     <form className="stFormWrapper" onSubmit={(e) => submitPayment(e,stripe)}>
                         <div id="stSignupPaymentForm" className="col s12 m8">
                             <div id="stSignupFormShipping" className="row">
@@ -63,7 +63,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                 </fieldset>
                             </div>
                         </div>
-                        <div id="stSignupPricing" className="col s12 m4 z-depth-3">
+                        <div className="stSignupPricing">
                             <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
                             <div className="input-field required row">
                                 <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
@@ -82,10 +82,10 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                         </div>
                     </form>
                 </div>
-                <div id="stSignupPaymentBottom" className="stStepBottom row">
-                    <h1>Set up your payment.</h1>
-                    <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
-                </div>
+            </div>
+            <div id="stSignupPaymentBottom" className="stStepBottom row">
+                <h1>Set up your payment.</h1>
+                <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
             </div>
         </div>
     )
