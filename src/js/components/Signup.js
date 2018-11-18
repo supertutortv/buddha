@@ -109,7 +109,7 @@ export default class Signup extends React.Component {
                 <React.Fragment>
                     <Header stripped={true} hist={this.props.history} />
                     <Elements>
-                        <Checkout 
+                        {/* <Checkout 
                             state={this.state} 
                             error={this.state.error} 
                             changeStep={this.changeStep} 
@@ -123,7 +123,7 @@ export default class Signup extends React.Component {
                             toPrice={this.toPrice} 
                             submitPayment={this.submitPayment} 
                             validate={this.validate}
-                        />
+                        /> */}
                         <div>{JSON.stringify(this.state.plan)}</div>
                     </Elements>
                 </React.Fragment>
