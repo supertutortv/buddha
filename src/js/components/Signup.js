@@ -9,6 +9,7 @@ export default class Signup extends React.Component {
     
         this.state = {
             init: false,
+            step: 0,
             update: true,
             loading: true,
             plan: null,
@@ -37,11 +38,6 @@ export default class Signup extends React.Component {
             pricing: {
                 total: 0,
                 shipping: 0,
-                taxable: 0,
-                tax: {
-                    id: '',
-                    value: 0
-                },
                 coupon: {
                     id: '',
                     value: ''
@@ -57,6 +53,12 @@ export default class Signup extends React.Component {
             'sat',
             'act',
             'combo'
+        ]
+
+        this.steps = [
+            'Account',
+            'Pay',
+            'ThankYou'
         ]
 
         Object.keys(methods).forEach((method) => {
@@ -102,14 +104,14 @@ export default class Signup extends React.Component {
 
         if (this.state.init === false) return null
 
-        const Checkout = () => {}
+        const Checkout = () => steps[this.steps[this.state.step]]
         
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
                     <Header stripped={true} hist={this.props.history} />
                     <Elements>
-                        {/* <Checkout 
+                        <Checkout 
                             state={this.state} 
                             error={this.state.error} 
                             changeStep={this.changeStep} 
@@ -123,8 +125,7 @@ export default class Signup extends React.Component {
                             toPrice={this.toPrice} 
                             submitPayment={this.submitPayment} 
                             validate={this.validate}
-                        /> */}
-                        <div>{JSON.stringify(this.state.plan)}</div>
+                        />
                     </Elements>
                 </React.Fragment>
             </StripeProvider>
