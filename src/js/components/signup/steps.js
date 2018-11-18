@@ -62,4 +62,4 @@ const ThankYou = ({state}) => {
     )
 }
 
-export { Plans, Account, Payment, ThankYou }
+export { Account, Payment, ThankYou }
