@@ -36,15 +36,11 @@ export function changeStep(inc = true,e) {
     var obj = (typeof inc === 'object') ? inc : {},
         prevState
     this.setState((prev) => {
-        prevState = prev
         return {
-            step : (inc) ? this.state.step + 1 : this.state.step - 1,
+            step : prev.step + 1,
             ...obj
         }
-    }, () => this.props.history.push({
-        pathname:'/signup/'+this.steps[this.state.step].toLowerCase(),
-        state: prevState
-    }))
+    })
     return null
 }
 
