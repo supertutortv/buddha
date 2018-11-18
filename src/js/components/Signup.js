@@ -105,7 +105,7 @@ export default class Signup extends React.Component {
 
         if (this.state.init === false) return null
 
-        const Checkout = () => steps[this.steps[this.state.step]]
+        const Checkout = steps[this.steps[this.state.step]]
         
         return(
             <StripeProvider apiKey={_st.stripe}>
