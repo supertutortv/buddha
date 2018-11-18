@@ -5,7 +5,6 @@ export function calculatePricing() {
         pricing = this.state.pricing
 
     pricing.total = parseInt(plan.price)
-    pricing.taxable = parseInt(plan.taxable)
     items.push({name: plan.name, amt: plan.price})
 
     var disc = pricing.coupon.value.match(/\\$([0-9]+)/) || ['0','0'],
