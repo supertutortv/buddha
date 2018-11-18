@@ -2,6 +2,7 @@ import React from 'react'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import Header from './Header'
 import * as methods from './signup/methods'
+import * as steps from './signup/steps'
 
 export default class Signup extends React.Component {
     constructor(props) {
