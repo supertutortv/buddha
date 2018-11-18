@@ -70,7 +70,7 @@ export default class Signup extends React.Component {
         let {plan} = this.props.match.params
         _st.http.get('/signup/'+plan,(d) => {
             console.log(d)
-            _st.loading = false
+            this.setState({init: true, plan: d.data}, () => _st.loading = false)
         })
     }
 
@@ -124,6 +124,7 @@ export default class Signup extends React.Component {
                             submitPayment={this.submitPayment} 
                             validate={this.validate}
                         />
+                        <div>{JSON.stringify(this.state.plan)}</div>
                     </Elements>
                 </React.Fragment>
             </StripeProvider>
