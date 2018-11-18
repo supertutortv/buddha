@@ -81,9 +81,15 @@ body.signup
                                 font-weight: 600
 
             .stAccountForm
-                padding: $huge $huge 0
                 border-radius: $tiny
                 width: 50%
+                @extend .zdepth-3
+
+                .heading
+                    padding: 1em
+                    font-weight: 600
+                    line-height: 1
+                    border-bottom: 1px solid black(.15)
 
         #stSignupPayment
             text-align: left

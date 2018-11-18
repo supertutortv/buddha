@@ -8,11 +8,12 @@ const Account = ({ createAccount, updateInp, error }) => {
         <React.Fragment>
         <div className="stSignupStep stSignupAccount">
             <div className="stSignupTitle">
-                <h1>Create your account.</h1>
+                <h1>.</h1>
                 <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div clasNames="stSignupInner">
                 <form className="stAccountForm stFormWrapper" onSubmit={createAccount}>
+                    <div className="heading">Create your account</div>
                     <div id="stSignupDetails" className="stFormBody row">
                         <div className="input-field required">
                             <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
