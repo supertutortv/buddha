@@ -9,7 +9,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
         <React.Fragment>
         <div className="stSignupStep stSignupAccount">
             <div className="stSignupTitle">
-                <h1>{plan.name}</h1>
+                <h1>Signup - {plan.name}</h1>
                 <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div clasNames="stSignupInner">
