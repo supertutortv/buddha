@@ -6,11 +6,6 @@ const Account = ({ createAccount, updateInp, error }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
     return (
         <React.Fragment>
-        <div className="stSignupDiagSep">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#ffffff" width="100%" height="50px" viewBox="0 0 1920 50" preserveAspectRatio="none">
-                <polygon points="0,0 0,50 1920,0 "></polygon>
-            </svg>
-        </div>
         <div className="stSignupStep stSignupAccount">
             <div className="stSignupTitle">
                 <h1>Create your account.</h1>
@@ -19,23 +14,23 @@ const Account = ({ createAccount, updateInp, error }) => {
             <div clasNames="stSignupInner">
                 <form className="stAccountForm stFormWrapper" onSubmit={createAccount}>
                     <div id="stSignupDetails" className="stFormBody row">
-                        <div className="input-field required col s12 m6 stInputHalfLeft">
+                        <div className="input-field required">
                             <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                         </div>
-                        <div className="input-field required col s12 m6 stInputHalfRight">
+                        <div className="input-field required">
                             <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
                         </div>
-                        <div className="input-field required col s12">
+                        <div className="input-field required">
                             <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={updateInp} required/>
                         </div>
-                        <div className="input-field required col s12">
+                        <div className="input-field required">
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
                     </div>
-                    <div className="stFormButtons row">
+                    <div className="stFormButtons">
                         <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
                     </div>
-                    <div className="stFormErrors row">{msg}</div>
+                    <div className="stFormErrors">{msg}</div>
                 </form>
             </div>
         </div>
