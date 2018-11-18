@@ -2,13 +2,14 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import Payment from './payment'
 
-const Account = ({ createAccount, updateInp, error }) => {
+const Account = ({ createAccount, updateInp, error, state }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
+    let { plan } = state
     return (
         <React.Fragment>
         <div className="stSignupStep stSignupAccount">
             <div className="stSignupTitle">
-                <h1>.</h1>
+                <h1>{plan.name}</h1>
                 <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div clasNames="stSignupInner">
