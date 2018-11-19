@@ -187,6 +187,7 @@ export function toPrice(amt = 0) {
 
 // updateInp
 export function updateInp({target: el}) {
+    console.log(el)
     this.state.update = false
     this.setState(prev => {
         var params = el.name.split('|'),
