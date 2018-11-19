@@ -2,12 +2,12 @@ import React from 'react'
 
 const PricingTable = ({state,setChecker,toPrice}) => {
     return (
-        <div id="stSignupPricingTable" className="row">
+        <div className="stSignupPricingTable">
             <div id="stPricingHeading" className="row">
                 <div className="col s8">ITEM</div>
                 <div className="col s4 right-al">PRICE</div>
             </div>
-            <div id="stPricingItems" className="row">
+            <div className="stPricingItems">
                 {state.items.map((item) => {
                     return (
                         <div className="item row">
@@ -17,7 +17,7 @@ const PricingTable = ({state,setChecker,toPrice}) => {
                     )
                 })}
             </div>
-            <div id="stPricingTotals" className="row">
+            <div className="stPricingTotals">
                 <div className="input-field couponInp col s8">
                     <input class="browser-default validate coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker} />
                 </div>

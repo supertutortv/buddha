@@ -8,7 +8,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
-        <div id="stSignupPayment" className="stSignupStep row">
+        <div className="stSignupStep stSignupPayment">
             <div className="stSignupInner">
                 <div className="stInfoWrap">
                     <form className="stFormWrapper" onSubmit={(e) => submitPayment(e,stripe)}>
