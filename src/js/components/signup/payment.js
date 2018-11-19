@@ -22,22 +22,22 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormShipping">
                                 <fieldset>
                                     <legend>Shipping</legend>
-                                    <div className="input-field required col s12">
+                                    <div className="input-field required">
                                         <input className="browser-default validate shipping address_line1" type="text" name="customer|shipping|address|line1" placeholder="Address 1" onBlur={updateInp} required/>
                                     </div>
-                                    <div className="input-field col s12">
+                                    <div className="input-field">
                                         <input className="browser-default validate shipping address_line2" type="text" name="customer|shipping|address|line2" placeholder="Address 2" onBlur={updateInp} />
                                     </div>
-                                    <div className="input-field required col s12 m6 stInputHalfLeft">
+                                    <div className="input-field required">
                                         <input className="browser-default validate shipping address_city" type="text" name="customer|shipping|address|city" placeholder="City" onBlur={updateInp} required/>
                                     </div>
-                                    <div className="input-field required col s12 m6 stInputHalfRight">
+                                    <div className="input-field required">
                                         <input className="browser-default validate shipping address_state" type="text" name="customer|shipping|address|state" placeholder="State" onBlur={updateInp} required/>
                                     </div>
-                                    <div className="input-field required col s12 m6 stInputHalfLeft">
+                                    <div className="input-field required">
                                         <input className="browser-default validate shipping address_zip tax" type="text" name="customer|shipping|address|postal_code" placeholder="Postal Code" onBlur={setChecker} required/>
                                     </div>
-                                    <div className="input-field required col s12 m6 stInputHalfRight">
+                                    <div className="input-field required">
                                         <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                                     </div>
                                 </fieldset>
