@@ -18,11 +18,12 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
                                     <div className="input-field required">
-                                        <select className="browser-default validate shipping address_country" name="customer|shipping|address|country" onChange={updateInp} required>
+                                        <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp} required>
                                             {state.plan.plans.map((p,i) => {
                                                 console.log(p)
+                                                let selected = i === 0 ? {selected: true} : {}
                                                 return (
-                                                    <option value="">Test</option>
+                                                    <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+p.amount.toString(2)}</option>
                                                 )
                                             })}
                                         </select>
