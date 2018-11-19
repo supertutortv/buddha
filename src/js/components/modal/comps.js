@@ -2,6 +2,7 @@ import React from 'react'
 import FAIco from '../FAIco'
 
 const Downloads = ({reportDl,color,data}) => {
+    console.log(data)
     return (
         <div className="stModalDownloads">
             <section className="stDownloadLinks">
@@ -16,7 +17,10 @@ const Downloads = ({reportDl,color,data}) => {
                                 if (emp)
                                     return e.preventDefault()
                                 else
-                                    reportDl()
+                                    _st.udata.update('downloads',(d) => {
+                                        console.log(d)
+                                        //reportDl(d.data)
+                                    })
                                     window.location = href
                         }}>
                             <div className="inner">
