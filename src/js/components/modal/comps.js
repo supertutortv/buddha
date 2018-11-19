@@ -27,7 +27,7 @@ const Downloads = ({refDls,dls,reportDl,color,data}) => {
                                 <figcaption>
                                     <span className="stDownloadName">
                                         <span>{f.name}</span>
-                                        <span className="dld">{(dls.indexOf(f.file) > -1) ? <FAIco icon="check" /> : null}</span>
+                                        {/* <span className="dld">{(dls.indexOf(f.file) > -1) ? <FAIco icon="check" /> : null}</span> */}
                                     </span>
                                     <span className="stDownloadSize">{f.size}</span>
                                 </figcaption>
