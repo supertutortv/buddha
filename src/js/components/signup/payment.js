@@ -20,7 +20,6 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                     <div className="input-field required">
                                         <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp} required>
                                             {state.plan.plans.map((p,i) => {
-                                                console.log(p)
                                                 let selected = i === 0 ? {selected: true} : {}
                                                 return (
                                                     <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}</option>
