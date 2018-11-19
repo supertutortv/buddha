@@ -20,7 +20,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                         <div className="stSignupPaymentForm">
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
-                                <div className="input-field required">
+                                <div className="input-field">
                                     <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp}>
                                         {state.plan.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}

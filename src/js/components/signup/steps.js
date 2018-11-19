@@ -12,7 +12,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                 <h1>Signup - {plan.name}</h1>
                 <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
-            <div clasNames="stSignupInner">
+            <div className="stSignupInner">
                 <form className="stAccountForm stFormWrapper" onSubmit={createAccount}>
                     <div className="heading">Create your account</div>
                     <div id="stSignupDetails" className="stFormBody row">
