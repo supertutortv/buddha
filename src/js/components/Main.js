@@ -20,7 +20,8 @@ export default class Main extends React.Component {
                 orientation: 'centered',
                 color: false,
                 mData: null,
-                refr: null
+                refr: null,
+                test: ''
             }
         }
 
