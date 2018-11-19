@@ -8,7 +8,7 @@ import STModal from './modal/STModal'
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.props)
+
         let sCD = localStorage.getItem('stCourseData') || false
 
         this.state = {
@@ -83,7 +83,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal dls={this.state.data.courses[course].downloads} {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
+                <STModal state={this.state.data} params={this.props.match.params} {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }
