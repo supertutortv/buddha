@@ -26,6 +26,7 @@ export default class Main extends React.Component {
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
+        this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
@@ -82,7 +83,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal {...this.state.modal} modalActive={this.modalActive} />
+                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }
