@@ -28,11 +28,11 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                         </select>
                                     </div>
                                     <div className="input-field">
-                                        <label><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
+                                        <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
                                         <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
                                     </div>
                                     <div className="input-field">
-                                        <label><span>Skip the trial period and start immediately</span></label>
+                                        <label for="customer|options|skipTrial"><span>Skip the trial period and start immediately</span></label>
                                         <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
                                     </div>
                                 </fieldset>
