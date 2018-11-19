@@ -115,9 +115,6 @@ body.signup
                     @extend .z-depth-3
                     transition: all 250ms ease-in-out
 
-                    .stTermsRow
-                        margin-bottom: 1em
-
                     #stSignupPricingTable
                         font-size: $small
                         margin-bottom: 1em
@@ -148,6 +145,9 @@ body.signup
 
                     .stTermsRow, .stMailList
 
+                        label
+                            padding-left: 1em
+
                         input
                             width: auto !important
 
@@ -156,6 +156,9 @@ body.signup
                     flex: 3
 
                     .stSignupFormOptions
+
+                        legend
+                            margin-bottom: $large
 
                         .input-field
                             padding: 0 $huge
