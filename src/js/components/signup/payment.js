@@ -16,22 +16,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormOptions">
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
-                                    <div class="st-checkout-spaced col s12">
-                                        <label><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
-                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
-                                    </div>
-                                    <div className="st-checkout-spaced col s12">
-                                        <label>
-                                            <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                            <span>Skip the trial period and start immediately</span>
-                                        </label>
-                                    </div>
-                                    <div class="st-checkout-spaced col s12">
-                                        <label>
-                                            <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                            <span>Add me to the SupertutorTV mailing list for future discounts and offers</span>
-                                        </label>
-                                    </div>
+                                    
                                 </fieldset>
                             </div>
                             <div className="stSignupFormShipping">
@@ -55,22 +40,38 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                     <div className="input-field required col s12 m6 stInputHalfRight">
                                         <CountryDD className="browser-default validate shipping address_country" name="customer|shipping|address|country" onBlur={updateInp} required/>
                                     </div>
-                                    <div className="input-field col s12 m6 offset-m3">
-                                        <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
-                                    </div>
                                 </fieldset>
                             </div>
                         </div>
                         <div className="stSignupPricing">
                             <PricingTable state={state} toPrice={toPrice} setChecker={setChecker} />
-                            <div className="input-field required row">
+                            <div className="input-field required">
                                 <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
+                            </div>
+                            <div className="input-field required">
+                                <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
                             </div>
                             <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
                             <div className="stTermsRow row">
                                 <label>
                                     <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
                                     <span>I have read SupertutorTV's Terms & Conditions</span>
+                                </label>
+                            </div>
+                            <div class="st-checkout-spaced col s12">
+                                <label><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
+                                <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
+                            </div>
+                            <div className="st-checkout-spaced col s12">
+                                <label>
+                                    <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                    <span>Skip the trial period and start immediately</span>
+                                </label>
+                            </div>
+                            <div class="st-checkout-spaced col s12">
+                                <label>
+                                    <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                    <span>Add me to the SupertutorTV mailing list for future discounts and offers</span>
                                 </label>
                             </div>
                             <div className="stFormButtons row">
