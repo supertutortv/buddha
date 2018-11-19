@@ -1,33 +1,17 @@
 // calculatePricing
-export function calculatePricing() {
-    var items = [],
-        plan = this.state.plan,
+export function calculatePricing(ind = 0) {
+    var plan = this.state.plan.plans[ind],
         pricing = this.state.pricing
 
-    pricing.total = parseInt(plan.price)
-    items.push({name: plan.name, amt: plan.price})
+    pricing.total = plan.amount
 
     var disc = pricing.coupon.value.match(/\\$([0-9]+)/) || ['0','0'],
     discp = pricing.coupon.value.match(/([0-9]+)%/) || ['0','0'],
     discprice = pricing.total*(parseInt(discp[1])/100) || parseInt(disc[1])
 
-    if ( discprice > 0 ) {
-        pricing.total -= discprice
-        items.push({name: 'Discount ('+pricing.coupon.id+')', amt: '-'+discprice})
-    }
+    if ( discprice > 0 ) pricing.total -= discprice
 
-    if ( pricing.tax.value > 0 ) {
-        let taxxx = (pricing.taxable*pricing.tax.value)/100
-        pricing.total += taxxx
-        items.push({name: pricing.tax.id, amt: taxxx})
-    }
-
-    if ( pricing.shipping > 0 ) {
-        pricing.total += pricing.shipping
-        items.push({name: 'Priority Shipping', amt: pricing.shipping})
-    }
-
-    this.state.items = items
+    if ( pricing.shipping > 0 ) pricing.total += pricing.shipping
 }
 
 // changeStep
@@ -187,7 +171,22 @@ export function toPrice(amt = 0) {
 
 // updateInp
 export function updateInp({target: el}) {
-    console.log(el)
+    this.state.update = false
+    this.setState(prev => {
+        var params = el.name.split('|'),
+            newObj = {[params[0]] : {...prev[params[0]]}}
+
+            params.reduce((obj,key,i,arr) => {
+                if (i+1 === arr.length) obj[key] = el.value
+                else return obj[key]
+            },newObj)
+        return Object.assign(prev,newObj)
+    },() => this.state.update = true)
+}
+
+// updateInp
+export function updatePrice({target: el}) {
+    return console.log(el)
     this.state.update = false
     this.setState(prev => {
         var params = el.name.split('|'),

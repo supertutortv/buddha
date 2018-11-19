@@ -3,10 +3,10 @@ import {injectStripe, CardElement} from 'react-stripe-elements'
 import CountryDD from './pieces/CountryDD'
 import PricingTable from './pieces/PricingTable'
 
-const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setChecker, setShipping, calculatePricing, setOutcome}) => {
-    
+const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error, stripe, setChecker, setShipping, calculatePricing, setOutcome}) => {
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
+    calculatePricing()
     return (
         <div className="stSignupStep stSignupPayment">
             <div className="stSignupPaymentBottom">
@@ -20,7 +20,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
                                 <div className="input-field">
-                                    <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp}>
+                                    <select className="browser-default " name="subPlan" onChange={updatePrice}>
                                         {state.plan.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
                                             return (
@@ -81,7 +81,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                     <label><span>Add me to your mailing list for future discounts and offers</span></label>
                                 </div>
                                 <div className="stFormButtons">
-                                    <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay {}</button>
+                                    <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay ${state.pricing.total}</button>
                                 </div>
                                 <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
                             </div>
