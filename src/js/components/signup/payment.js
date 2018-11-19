@@ -63,8 +63,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             </div>
                         </div>
                         <div className="stSignupPricing">
-                            
-                            <hr />
+                            <legend>Payment</legend>
                             <div className="input-field required">
                                 <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
                             </div>
