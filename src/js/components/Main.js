@@ -19,7 +19,8 @@ export default class Main extends React.Component {
                 action: 'downloads',
                 orientation: 'centered',
                 color: false,
-                mData: null
+                mData: null,
+                ref: null
             }
         }
 
@@ -83,7 +84,7 @@ export default class Main extends React.Component {
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal state={this.state.data} {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
+                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }

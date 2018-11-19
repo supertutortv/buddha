@@ -5,76 +5,6 @@ import VidPlayer from './VidPlayer'
 import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
-const PlSidebar = ({watchHist, vid, test, loc, updateUdata, setNextVid, sbStyle, hash, activeColl, collection}) => {
-
-    if ('tips' in collection) {
-        var { tips, ...collection } = collection
-        ord.push(['tips',tips])
-    }
-
-    for ( var coll in collection ) {
-        ord.push([coll,collection[coll]])
-    }
-
-    ord.forEach((el,i) => {
-        let name = el[0],
-            obj = el[1],
-            vids = [],
-            nextVid = false
-
-        if (name === activeColl) ind = i
-
-        var ii = 1,
-            keys = Object.keys(obj.videos)
-
-        keys.forEach((vid) => {
-            let vidObj = obj.videos[vid],
-                stylOb = (vid === hash) ? {style: sbStyle} : {},
-                activeClass = vid === hash ? ' active' : '',
-                watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco icon="clock"/> : ''
-
-            if (nextVid) setNextVid(vid)
-
-            vids.push(
-                <article className={"stCollectionItem"+activeClass} {...stylOb}>
-                    <Link className="stCollectionItemLink" to={'#'+vid} onClick={() => updateUdata('history',vidObj,test,loc)}>
-                        <figure className="stCollectionItemInner">
-                            <div className="stLinkImageWrapper z-depth-1">
-                                <picture>
-                                    <img src={"https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F"+vidObj.thumb+"_295x166.jpg&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"} />
-                                </picture>
-                            </div>
-                            <figcaption>
-                                <h3 className="stCollectionItemTitle">{vidObj.name}</h3>
-                            </figcaption>
-                        </figure>
-                    </Link>
-                    {watchd}
-                </article>
-            )
-
-            nextVid = (vid === hash)
-            if (nextVid && ii === keys.length) setNextVid('')
-            ii++
-        })
-
-        tabs.push()
-        panels.push()
-    })
-
-    return (
-        <Tabs defaultIndex={ind} className="stSidebarWrapper">
-            <div className="stCollectionTabsWrapper">
-                <TabList className='stCollectionTabs'>
-                    {tabs}
-                </TabList>
-            </div>
-            {panels}
-        </Tabs>
-    )
-
-}
-
 export default class Playlist extends React.Component {
     constructor(props) {
         super(props)
@@ -133,7 +63,7 @@ export default class Playlist extends React.Component {
     }
 
     render() {
-        const { watchHist, playlist, test, loc, hist, match, obj, dls, modalActive } = this.props
+        const { watchHist, playlist, test, loc, hist, match, obj, refDls, dls, modalActive } = this.props
 
         const colls = Object.keys(obj.collection),
             activeColl = obj.collection[colls[this.state.coll]],
@@ -164,7 +94,8 @@ export default class Playlist extends React.Component {
                                             open: true,
                                             action: 'Downloads',
                                             mData: dls,
-                                            color: obj.color
+                                            color: obj.color,
+                                            ref: refDls
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
                                     {vid.id === 0 ? '' : <AddFave deleteUdata={this.deleteUdata} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />}

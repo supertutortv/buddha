@@ -66,7 +66,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
 
                     if (activeObj.type === 'playlist')
                         return (
-                            <Playlist addHistory={addHistory} deleteUdata={deleteUdata} playlist={data.courses[params.courses].playlist} watchHist={data.courses[params.courses].history} setPlaylist={setPlaylist} test={test} modalActive={modalActive} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
+                            <Playlist addHistory={addHistory} deleteUdata={deleteUdata} playlist={data.courses[params.courses].playlist} watchHist={data.courses[params.courses].history} setPlaylist={setPlaylist} test={test} modalActive={modalActive} refDls={data.courses[params.courses].downloads} dls={data.courses[params.courses].collections[params.collections].downloads} loc={loc} hist={hist} match={match} obj={activeObj} />
                         )
                     else
                         var sections = [],
