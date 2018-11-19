@@ -20,7 +20,7 @@ export default class Main extends React.Component {
                 orientation: 'centered',
                 color: false,
                 mData: null,
-                ref: null
+                refr: null
             }
         }
 
@@ -75,7 +75,7 @@ export default class Main extends React.Component {
 
     render() {
         if (this.state.data === true) return null
-        let course = 'the-best-act-prep-course-ever'
+
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>

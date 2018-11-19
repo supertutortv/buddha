@@ -9,7 +9,7 @@ export default class STModal extends React.Component {
     }
 
     render() {
-        let { mData, open, action, orientation, addDl, ref, modalActive, color } = this.props
+        let { mData, open, action, orientation, addDl, refr, modalActive, color } = this.props
 
         console.log(this.props)
         if (!open) return null

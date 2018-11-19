@@ -95,7 +95,7 @@ export default class Playlist extends React.Component {
                                             action: 'Downloads',
                                             mData: dls,
                                             color: obj.color,
-                                            ref: refDls
+                                            refr: refDls
                                         })
                                     }}><FAIco icon="cloud-download-alt"/></a>
                                     {vid.id === 0 ? '' : <AddFave deleteUdata={this.deleteUdata} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />}
