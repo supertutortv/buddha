@@ -18,17 +18,27 @@
             align-items: center
 
             .course
+                padding: $tiny
                 width: $huge * 3
 
-                img
-                    width: 100%
-                    height: auto
+                & > a
                     display: block
-                
-                .title
-                    padding: 1em
-                    font-weight: 600
-                    line-height: 1
+                    overflow: hidden
+                    border-radius: $tiny
+                    @extend .z-depth-1
 
-                    span
-                        font-size: $small
+                    &:hover
+                        @extend .z-depth-3
+
+                    img
+                        width: 100%
+                        height: auto
+                        display: block
+                    
+                    .title
+                        padding: $tiny
+                        font-weight: 600
+                        line-height: 1
+
+                        span
+                            font-size: $small
