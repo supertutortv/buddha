@@ -22,7 +22,7 @@ export default class STModal extends React.Component {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
                 <div className="stModalInner" style={style}>
-                    <ModalComp color={color} data={mData} />
+                    <ModalComp reportDl={} color={color} data={mData} />
                 </div>
             </div>
         )

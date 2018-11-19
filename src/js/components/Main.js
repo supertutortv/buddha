@@ -59,6 +59,12 @@ export default class Main extends React.Component {
         }, () => this.dataSaveLocal())
     }
 
+    addDl(course,data) {
+        this.setState((state) => {
+            state.data.courses[course].downloads.push(data)
+        }, () => this.dataSaveLocal())
+    }
+
     addHistory(course,obj) {
         this.setState((state) => {
             state.data.courses[course].history.push(obj.vidid)
