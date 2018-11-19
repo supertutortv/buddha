@@ -5,7 +5,7 @@ import FAIco from '../FAIco'
 const STSectionBox = ({hist, path, description, icon, name, color}) =>
     <section className="stSectionBoxWrap">
         <div className="stSectionBox">
-            <div className="stSectionBoxInner" style={{border:'1px solid '+color}} onClick={(e) => {
+            <div className="stSectionBoxInner" onClick={(e) => {
                 hist.push(path)
             }}>
                 <div className="stSectionBoxContainer">
