@@ -15,27 +15,25 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                     <form className="stFormWrapper stSignupBlock" onSubmit={(e) => submitPayment(e,stripe)}>
                         <div className="stSignupPaymentForm">
                             <div className="stSignupFormOptions">
-                                <fieldset className="stCard">
-                                    <legend>Options</legend>
-                                    <div className="input-field required">
-                                        <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp} required>
-                                            {state.plan.plans.map((p,i) => {
-                                                let selected = i === 0 ? {selected: true} : {}
-                                                return (
-                                                    <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </div>
-                                    <div className="input-field">
-                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
-                                        <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
-                                    </div>
-                                    <div className="input-field">
-                                        <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                        <label for="customer|options|skipTrial"><span>Skip the trial period and start immediately</span></label>
-                                    </div>
-                                </fieldset>
+                                <legend>Options</legend>
+                                <div className="input-field required">
+                                    <select className="browser-default " name="customer|shipping|address|country" onChange={updateInp} required>
+                                        {state.plan.plans.map((p,i) => {
+                                            let selected = i === 0 ? {selected: true} : {}
+                                            return (
+                                                <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                                <div className="input-field">
+                                    <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
+                                    <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
+                                </div>
+                                <div className="input-field">
+                                    <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                    <label for="customer|options|skipTrial"><span>Skip the trial period and start immediately</span></label>
+                                </div>
                             </div>
                             <div className="stSignupFormShipping">
                                 <fieldset>
@@ -72,19 +70,15 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                 <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
                             </div>
                             <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
-                            <div className="stTermsRow row">
-                                <label>
-                                    <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
-                                    <span>I have read SupertutorTV's Terms & Conditions</span>
-                                </label>
+                            <div className="stTermsRow">
+                                <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
+                                <label><span>I have read SupertutorTV's Terms & Conditions</span></label>
                             </div>
-                            <div class="st-checkout-spaced col s12">
-                                <label>
-                                    <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                    <span>Add me to the SupertutorTV mailing list for future discounts and offers</span>
-                                </label>
+                            <div className="stMailList">
+                                <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                <label><span>Add me to the SupertutorTV mailing list for future discounts and offers</span></label>
                             </div>
-                            <div className="stFormButtons row">
+                            <div className="stFormButtons">
                                 <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Submit payment</button>
                             </div>
                             <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
