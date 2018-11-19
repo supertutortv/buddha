@@ -5,7 +5,7 @@ import PricingTable from './pieces/PricingTable'
 
 const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setChecker, setShipping, calculatePricing, setOutcome}) => {
     //calculatePricing()
-    console.log(state)
+    
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
     return (
@@ -17,7 +17,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormOptions">
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
-                                    
+                                    {state.plan.plans.map(p => <div>{JSON.stringify(p)}</div>)}
                                 </fieldset>
                             </div>
                             <div className="stSignupFormShipping">
