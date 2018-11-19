@@ -64,25 +64,27 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                         </div>
                         <div className="stSignupPricing">
                             <legend>Payment</legend>
-                            <div className="input-field required">
-                                <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
+                            <div className="formBuffer">
+                                <div className="input-field required">
+                                    <input className="browser-default validate" type="text" name="customer|nameOnCard" placeholder="Name on card" onBlur={updateInp} required/>
+                                </div>
+                                <div className="input-field required">
+                                    <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
+                                </div>
+                                <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
+                                <div className="stTermsRow">
+                                    <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
+                                    <label><span>I have read SupertutorTV's Terms & Conditions</span></label>
+                                </div>
+                                <div className="stMailList">
+                                    <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                    <label><span>Add me to your mailing list for future discounts and offers</span></label>
+                                </div>
+                                <div className="stFormButtons">
+                                    <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay {}</button>
+                                </div>
+                                <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
                             </div>
-                            <div className="input-field required">
-                                <input className="browser-default validate required" type="tel" name="customer|shipping|phone" placeholder="Phone #" onBlur={updateInp} required />
-                            </div>
-                            <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
-                            <div className="stTermsRow">
-                                <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
-                                <label><span>I have read SupertutorTV's Terms & Conditions</span></label>
-                            </div>
-                            <div className="stMailList">
-                                <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                <label><span>Add me to your mailing list for future discounts and offers</span></label>
-                            </div>
-                            <div className="stFormButtons">
-                                <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay {}</button>
-                            </div>
-                            <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
                         </div>
                     </form>
                 </div>
