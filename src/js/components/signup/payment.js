@@ -17,8 +17,16 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormOptions">
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
-                                    <div className="input-field required"></div>
-                                    {state.plan.plans.map((p,i) => <div>{i}</div>)}
+                                    <div className="input-field required">
+                                        <select className="browser-default validate shipping address_country" name="customer|shipping|address|country" onChange={updateInp} required>
+                                            {state.plan.plans.map((p,i) => {
+                                                console.log(p)
+                                                return (
+                                                    <option value="">Test</option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div>
                                 </fieldset>
                             </div>
                             <div className="stSignupFormShipping">
