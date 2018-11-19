@@ -17,7 +17,7 @@ const Downloads = ({reportDl,color,data}) => {
                                 if (emp)
                                     return e.preventDefault()
                                 else
-                                    _st.udata.update('downloads',(d) => {
+                                    _st.udata.update('downloads',f,(d) => {
                                         console.log(d)
                                         //reportDl(d.data)
                                     })
