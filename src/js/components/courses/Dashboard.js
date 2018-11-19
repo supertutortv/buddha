@@ -3,14 +3,14 @@ import { DataState } from './StateContext'
 import { DBCourses, DBStats } from './dashboard/components'
 import Header from '../Header'
 
-const Dashboard = (props) => {
+const Dashboard = ({history: hist}) => {
     _st.bodyClass = 'dashboard'
     return(
         <DataState.Consumer>
             {(data) => {
                 return (
                     <React.Fragment>
-                        <Header title="Dashboard"/>
+                        <Header title="Dashboard" hist={hist}/>
                         <main className="stDashboard stComponentFade">
                             <DBStats />
                             <DBCourses courses={data.courses} />
