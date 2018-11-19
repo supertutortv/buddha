@@ -10,9 +10,15 @@ export const DBCourses = ({courses}) => {
             <div className="myCoursesHeader heading">My Courses</div>
             <div className="myCoursesBody">
                 {Object.keys(courses).map((course) => {
+                    let crs = courses[course]
                     return (
                         <div className="course">
-                            <Link to={'/'+course} >{courses[course].name}</Link>
+                            <Link to={'/'+course} >
+                                <img src={crs.thumb} />
+                                <div className="title">
+                                    <span>{crs.name}</span>
+                                </div>
+                            </Link>
                         </div>
                     )}
                 )}
