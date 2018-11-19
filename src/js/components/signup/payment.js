@@ -17,10 +17,8 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
                                     <div class="st-checkout-spaced col s12">
-                                        <label>
-                                            <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
-                                            <span>I want Priority Shipping (+$7.95, U.S. only)</span>
-                                        </label>
+                                        <label><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
+                                        <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
                                     </div>
                                     <div className="st-checkout-spaced col s12">
                                         <label>
