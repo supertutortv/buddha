@@ -8,7 +8,7 @@ import STModal from './modal/STModal'
 export default class Main extends React.Component {
     constructor(props) {
         super(props)
-
+        console.log(this.props)
         let sCD = localStorage.getItem('stCourseData') || false
 
         this.state = {
@@ -74,7 +74,7 @@ export default class Main extends React.Component {
 
     render() {
         if (this.state.data === true) return null
-
+        let course = 'the-best-act-prep-course-ever'
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
