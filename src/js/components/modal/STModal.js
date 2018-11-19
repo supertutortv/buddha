@@ -11,7 +11,6 @@ export default class STModal extends React.Component {
     render() {
         let { mData, open, action, orientation, addDl, refr, modalActive, color, test } = this.props
 
-        console.log(this.props)
         if (!open) return null
 
         const ModalComp = comps[action] || ''
