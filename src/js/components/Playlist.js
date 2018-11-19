@@ -65,8 +65,6 @@ export default class Playlist extends React.Component {
     render() {
         const { watchHist, playlist, test, loc, hist, match, obj, refDls, dls, modalActive } = this.props
 
-        console.log(refDls)
-
         const colls = Object.keys(obj.collection),
             activeColl = obj.collection[colls[this.state.coll]],
             vids = Object.keys(activeColl.videos),
