@@ -1,8 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 
-const Downloads = ({reportDl,color,data}) => {
-    console.log(data)
+const Downloads = ({dls,reportDl,color,data}) => {
     return (
         <div className="stModalDownloads">
             <section className="stDownloadLinks">
@@ -18,15 +17,17 @@ const Downloads = ({reportDl,color,data}) => {
                                     return e.preventDefault()
                                 else
                                     _st.udata.update('downloads',f,(d) => {
-                                        console.log(d)
-                                        //reportDl(d.data)
+                                        reportDl(d.data.vidid)
                                     })
                                     window.location = href
                         }}>
                             <div className="inner">
                                 <img src={f.thumb}/>
                                 <figcaption>
-                                    <span className="stDownloadName"><span>{f.name}</span><span className="dld"><FAIco icon="check" /></span></span>
+                                    <span className="stDownloadName">
+                                        <span>{f.name}</span>
+                                        <span className="dld">{(dls.indexOf(f.file) > -1) ? <FAIco icon="check" /> : null}</span>
+                                    </span>
                                     <span className="stDownloadSize">{f.size}</span>
                                 </figcaption>
                             </div>
