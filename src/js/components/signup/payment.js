@@ -10,6 +10,10 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
     trialDate.setDate(trialDate.getDate() + 5)
     return (
         <div className="stSignupStep stSignupPayment">
+            <div id="stSignupPaymentBottom" className="stStepBottom row">
+                <h1>Set up your payment.</h1>
+                <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
+            </div>
             <div className="stSignupInner">
                 <div className="stInfoWrap">
                     <form className="stFormWrapper stSignupBlock" onSubmit={(e) => submitPayment(e,stripe)}>
@@ -84,10 +88,6 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                         </div>
                     </form>
                 </div>
-            </div>
-            <div id="stSignupPaymentBottom" className="stStepBottom row">
-                <h1>Set up your payment.</h1>
-                <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
             </div>
         </div>
     )
