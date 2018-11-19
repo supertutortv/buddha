@@ -104,12 +104,16 @@ body.signup
             padding: 0 1em
             
             .stInfoWrap
-                margin: $huge 0 $huge * 1.5
+                width: 100%
+
+                .stSignupBlock
+                    display: flex
 
                 .stSignupPricing
                     background-color: white()
+                    flex: 2
                     padding: $large
-                    border-radius: $tiny
+                    border-radius: $ittybitty
                     @extend .z-depth-3
                     transition: all 250ms ease-in-out
 
@@ -144,8 +148,18 @@ body.signup
                     #stPricingCardElement
                         margin-bottom: 1em
 
-                #stSignupPaymentForm
+                .stSignupPaymentForm
                     padding-right: 2em
+                    flex: 3
+
+                    & > div
+                        border-radius: $ittybitty
+                        @extend .z-depth-3
+
+                        legend
+                            display: block
+                            padding: 1em
+                            font-weight: 600
 
             #stSignupPaymentBottom
                 text-align: center
