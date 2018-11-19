@@ -7,7 +7,7 @@ export const DBStats = () =>
 export const DBCourses = ({courses}) => {
     return (
         <div className="stDashboardCourses">
-            <div className="myCoursesHeader">My Courses</div>
+            <div className="myCoursesHeader heading">My Courses</div>
             <div className="myCoursesBody">
                 {Object.keys(courses).map((course) => {
                     return (
