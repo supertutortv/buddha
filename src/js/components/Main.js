@@ -73,6 +73,7 @@ export default class Main extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         if (this.state.data === true) return null
         let course = 'the-best-act-prep-course-ever'
         return(
