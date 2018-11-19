@@ -77,7 +77,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             </div>
                             <div className="stMailList">
                                 <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
-                                <label><span>Add me to the SupertutorTV mailing list for future discounts and offers</span></label>
+                                <label><span>Add me to your mailing list for future discounts and offers</span></label>
                             </div>
                             <div className="stFormButtons">
                                 <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay {}</button>
