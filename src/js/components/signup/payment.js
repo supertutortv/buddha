@@ -17,7 +17,8 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                             <div className="stSignupFormOptions">
                                 <fieldset className="stCard">
                                     <legend>Options</legend>
-                                    {state.plan.plans.map(p => <div>{JSON.stringify(p)}</div>)}
+                                    <div className="input-field required"></div>
+                                    {state.plan.plans.map((p,i) => <div>{i}</div>)}
                                 </fieldset>
                             </div>
                             <div className="stSignupFormShipping">
