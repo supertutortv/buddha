@@ -23,7 +23,7 @@ const _Payment = ({updateInp, submitPayment, state, toPrice, error, stripe, setC
                                                 console.log(p)
                                                 let selected = i === 0 ? {selected: true} : {}
                                                 return (
-                                                    <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+p.amount.toString(2)}</option>
+                                                    <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString(2)}</option>
                                                 )
                                             })}
                                         </select>
