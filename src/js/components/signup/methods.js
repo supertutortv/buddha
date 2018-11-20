@@ -2,6 +2,7 @@
 export function calculatePricing() {
     var plan = this.state.plan || this.state.item.plans[0],
         pricing = this.state.pricing
+        console.log(plan)
 
     pricing.total = plan.amount
 
@@ -134,6 +135,8 @@ export function submitPayment(e,stripe) {
 
         cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
         cus.token = t.id
+
+        console.log(this.state)
 
         return _st.http.post('/signup/pay',this.state,(d) => {
             
