@@ -189,6 +189,7 @@ export function updatePrice({target: el}) {
     this.state.update = false
     this.setState(prev => {
         let plan = prev.plan.plans[el.value]
+        console.log(plan)
         return Object.assign(prev.pricing,{total: plan.amount})
     },() => this.state.update = true)
 }
