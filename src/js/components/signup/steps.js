@@ -42,7 +42,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
 
 const ThankYou = ({state}) => {
     return (
-        <div id="stSignupThankYou" class="stSignupStep">
+        <div className="stSignupThankYou stSignupStep">
             <h1>Thank you!</h1>
             <div class="stSignupInner stFormWrapper">
                 <div className="row">Your order code is <strong>{state.thankYou.id}</strong>. Keep this for your records.</div>
