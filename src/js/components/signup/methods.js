@@ -119,7 +119,7 @@ export function setShipping(el) {
 // submitPayment
 export function submitPayment(e,stripe) {
     e.preventDefault()
-    console.log(e,stripe)
+    return console.log(this.state)
     if (typeof stripe === 'undefined') return false
     _st.loading = true
 
