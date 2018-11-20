@@ -89,7 +89,6 @@ export function setChecker(el) {
 
         this.updateInp(el)
     }
-    this.validate()
     return true
 }
 
