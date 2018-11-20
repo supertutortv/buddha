@@ -20,7 +20,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                         <div className="stSignupPaymentForm">
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
-                                <div className="input-field half">
+                                <div className="input-field">
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
                                         {state.item.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
@@ -30,10 +30,10 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                         })}
                                     </select>
                                 </div>
-                                <div className="input-field half couponInp">
+                                {/* <div className="input-field half couponInp">
                                     <input class="browser-default validate coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker}/>
                                     <label></label>
-                                </div>
+                                </div> */}
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
                                     <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
