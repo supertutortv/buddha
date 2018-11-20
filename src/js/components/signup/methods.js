@@ -186,18 +186,9 @@ export function updateInp({target: el}) {
 
 // updateInp
 export function updatePrice({target: el}) {
-    return console.log(el.value)
     this.state.update = false
-    this.setState(prev => {
-        var params = el.name.split('|'),
-            newObj = {[params[0]] : {...prev[params[0]]}}
-
-            params.reduce((obj,key,i,arr) => {
-                if (i+1 === arr.length) obj[key] = el.value
-                else return obj[key]
-            },newObj)
-        return Object.assign(prev,newObj)
-    },() => this.state.update = true)
+    this.calculatePricing(el.value)
+    this.setState(prev => Object.assign(prev.pricing,{}),() => this.state.update = true)
 }
 
 // validate
