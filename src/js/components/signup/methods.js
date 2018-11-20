@@ -26,6 +26,7 @@ export function changeStep(inc = true,e) {
             ...obj
         }
     })
+    console.log(this.state)
     return null
 }
 
