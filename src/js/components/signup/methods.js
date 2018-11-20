@@ -91,14 +91,6 @@ export function setChecker(el) {
     return true
 }
 
-// setPlan
-export function setPlan(e) {
-    e.preventDefault()
-    return this.changeStep({
-        plan: JSON.parse(e.currentTarget.getAttribute('data-obj'))
-    })
-}
-
 // setOutcome
 export function setOutcome( result ) {
     if (typeof result !== 'undefined') {
@@ -120,7 +112,7 @@ export function setShipping(el) {
     this.setChecker(el)
     this.state.update = true
     this.setState({
-        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 705 : 0})
+        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 795 : 0})
     })
 }
 
