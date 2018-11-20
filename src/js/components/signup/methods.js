@@ -176,7 +176,6 @@ export function updateInp({target: el}) {
             },newObj)
         return Object.assign(prev,newObj)
     },() => this.state.update = true)
-    this.validate()
 }
 
 // updateInp
