@@ -186,7 +186,7 @@ export function updateInp({target: el}) {
 
 // updateInp
 export function updatePrice({target: el}) {
-    return console.log(el)
+    return console.log(el.value)
     this.state.update = false
     this.setState(prev => {
         var params = el.name.split('|'),
