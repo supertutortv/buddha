@@ -1,6 +1,7 @@
 // calculatePricing
 export function calculatePricing() {
-    var plan = this.state.plan || this.state.item.plans[0],
+    if (this.state.plan === null) this.state.plan = this.state.item.plans[0]
+    var plan = this.state.plan,
         pricing = this.state.pricing
         console.log(plan)
 
