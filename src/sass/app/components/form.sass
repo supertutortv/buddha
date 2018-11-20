@@ -87,6 +87,10 @@
 
         .stFormButton
             background-color: azure()
+
+            &[disabled]
+                background-color: gray
+                cursor: not-allowed
         
     span
         font-size: $small
@@ -96,10 +100,6 @@
             text-decoration: underline
             cursor: pointer
             color: inherit
-
-button[disabled]
-    background-color: gray
-    cursor: not-allowed
 
 footer
 
