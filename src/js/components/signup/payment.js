@@ -6,6 +6,7 @@ import PricingTable from './pieces/PricingTable'
 const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error, stripe, setChecker, setShipping, calculatePricing, setOutcome}) => {
     var trialDate = new Date()
     trialDate.setDate(trialDate.getDate() + 5)
+    if (state.plan === null) state.plan = state.item.plans[0]
     calculatePricing()
     return (
         <div className="stSignupStep stSignupPayment">
