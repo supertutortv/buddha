@@ -18,7 +18,6 @@ export function calculatePricing() {
 // changeStep
 export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
-    console.log(inc)
     var obj = (typeof inc === 'object') ? inc : {},
         prevState
     this.setState((prev) => {
