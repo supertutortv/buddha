@@ -32,6 +32,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 </div>
                                 <div className="input-field half couponInp">
                                     <input class="browser-default validate coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker}/>
+                                    <label></label>
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
