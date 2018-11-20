@@ -40,7 +40,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
     )
 }
 
-const ThankYou = ({state}) => {
+const ThankYou = ({state,hist}) => {
     return (
         <div className="stSignupThankYou stSignupStep">
             <h1>Thank you!</h1>
@@ -52,7 +52,7 @@ const ThankYou = ({state}) => {
                     </div>
                 </div>
                 <div className="stFormButtons">
-                    <Link id="stBtn_thankyou" className="stFormButton btn waves-effect waves-light" to="/dashboard" >Go to dashboard</Link>
+                    <button id="stBtn_thankyou" className="stFormButton btn waves-effect waves-light" onClick={() => hist.replace('/dashboard')}>Go to dashboard</button>
                 </div>
             </div>
         </div>

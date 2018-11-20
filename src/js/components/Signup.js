@@ -112,6 +112,7 @@ export default class Signup extends React.Component {
                     <Header stripped={true} hist={this.props.history} />
                     <Elements>
                         <Checkout 
+                            hist={this.props.history}
                             state={this.state} 
                             error={this.state.error} 
                             changeStep={this.changeStep} 
