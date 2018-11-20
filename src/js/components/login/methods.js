@@ -22,6 +22,7 @@ export function setLoginState(e) {
 
 export function submit(e) {
     e.preventDefault()
+    return console.log(this.state.creds)
     _st.loading = true
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
