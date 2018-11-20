@@ -119,7 +119,7 @@ export function setShipping(el) {
 // submitPayment
 export function submitPayment(e,stripe) {
     e.preventDefault()
-    return console.log(this.state)
+
     if (typeof stripe === 'undefined') return false
     _st.loading = true
 
@@ -136,6 +136,7 @@ export function submitPayment(e,stripe) {
         cus.token = t.id
 
         return _st.http.post('/signup/pay',this.state,(d) => {
+            return console.log(d)
             if (d.code === 'stripeError') {
                 var ecode = d.data.decline_code || d.data.code
                 return this.setState({
