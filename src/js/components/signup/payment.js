@@ -20,7 +20,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                         <div className="stSignupPaymentForm">
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
-                                <div className="input-field">
+                                <div className="input-field half">
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
                                         {state.item.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
@@ -29,6 +29,9 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                             )
                                         })}
                                     </select>
+                                </div>
+                                <div className="input-field half couponInp">
+                                    <input class="browser-default validate coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker}/>
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" value="1" type="checkbox" onChange={setShipping}/>
