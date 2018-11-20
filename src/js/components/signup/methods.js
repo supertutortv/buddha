@@ -18,6 +18,7 @@ export function calculatePricing() {
 // changeStep
 export function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
+    console.log(inc)
     var obj = (typeof inc === 'object') ? inc : {},
         prevState
     this.setState((prev) => {
@@ -42,7 +43,7 @@ export function createAccount(e) {
         })
 
         return this.changeStep({
-            customer: Object.assign(this.state.customer,d.update)
+            customer: Object.assign(this.state.customer.account,d.update)
         })
     })
 }
