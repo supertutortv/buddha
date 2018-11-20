@@ -35,7 +35,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                     <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
                                 </div>
                                 <div className="input-field">
-                                    <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
+                                    <input name="customer|options|skipTrial" className="filled-in" value="1" type="checkbox" onChange={updateInp} />
                                     <label for="customer|options|skipTrial"><span>Skip the trial period and start immediately</span></label>
                                 </div>
                             </div>

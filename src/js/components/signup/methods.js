@@ -3,7 +3,6 @@ export function calculatePricing() {
     if (this.state.plan === null) this.state.plan = this.state.item.plans[0]
     var plan = this.state.plan,
         pricing = this.state.pricing
-        console.log(plan)
 
     pricing.total = plan.amount
 
@@ -89,6 +88,7 @@ export function setChecker(el) {
 
         this.updateInp(el)
     }
+    this.validate()
     return true
 }
 
@@ -109,9 +109,6 @@ export function setOutcome( result ) {
 }
 
 export function setShipping(el) {
-    this.state.update = false
-    this.setChecker(el)
-    this.state.update = true
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 795 : 0})
     })
