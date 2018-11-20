@@ -178,10 +178,9 @@ export function updateInp({target: el}) {
 
 // updateInp
 export function updatePrice({target: el}) {
-    this.state.update = false
     this.setState(prev => {
         return Object.assign(prev,{plan: prev.item.plans[el.value]})
-    },() => this.state.update = true)
+    })
 }
 
 // validate
