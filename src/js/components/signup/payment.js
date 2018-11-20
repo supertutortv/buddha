@@ -83,7 +83,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 <div className="stFormButtons">
                                     <button id="stBtn_payment" type="submit" className="stFormButton btn waves-effect waves-light" disabled={!state.valid} >Pay ${toPrice(state.pricing.total)}</button>
                                 </div>
-                                <div id="stFormErrors" className="row"><strong>{error.message}</strong></div>
+                                <div className="stFormErrors"><strong>{error.message}</strong></div>
                             </div>
                         </div>
                     </form>
