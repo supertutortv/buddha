@@ -44,7 +44,7 @@ export default class Signup extends React.Component {
                     value: ''
                 }
             },
-            items: [],
+            item: null,
             session: {
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
@@ -73,7 +73,7 @@ export default class Signup extends React.Component {
         let {plan} = this.props.match.params
         _st.http.get('/signup/'+plan,(d) => {
             console.log(d)
-            this.setState({init: true, plan: d.data}, () => _st.loading = false)
+            this.setState({init: true, item: d.data}, () => _st.loading = false)
         })
     }
 

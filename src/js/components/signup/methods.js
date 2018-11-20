@@ -1,6 +1,6 @@
 // calculatePricing
-export function calculatePricing(ind = 0) {
-    var plan = this.state.plan.plans[ind],
+export function calculatePricing() {
+    var plan = this.state.plan || this.state.item.plans[0],
         pricing = this.state.pricing
 
     pricing.total = plan.amount
@@ -180,9 +180,7 @@ export function updateInp({target: el}) {
 export function updatePrice({target: el}) {
     this.state.update = false
     this.setState(prev => {
-        let plan = prev.plan.plans[el.value]
-        console.log(prev)
-        return Object.assign(prev.pricing,{total: plan.amount})
+        return Object.assign(prev,{plan: prev.item.plans[el.value]})
     },() => this.state.update = true)
 }
 
