@@ -79,7 +79,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 <div id="stPricingCardElement" className="row"><CardElement onChange={setOutcome} /></div>
                                 <div className="stTermsRow">
                                     <input id="stTermsBox" name="customer|options|terms" className="filled-in" value="1" type="checkbox" onChange={setChecker} required/>
-                                    <label><span>I have read SupertutorTV's Terms & Conditions</span></label>
+                                    <label><span>I have read SupertutorTV's <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms & Conditions</a></span></label>
                                 </div>
                                 <div className="stMailList">
                                     <input name="customer|options|mailingList" className="filled-in" value="1" type="checkbox" onChange={setChecker} />
