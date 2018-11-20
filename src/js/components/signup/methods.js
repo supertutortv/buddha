@@ -135,8 +135,10 @@ export function submitPayment(e,stripe) {
         cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
         cus.token = t.id
 
+        return console.log(this.state)
+
         return _st.http.post('/signup/pay',this.state,(d) => {
-            return console.log(d)
+            
             if (d.code === 'stripeError') {
                 var ecode = d.data.decline_code || d.data.code
                 return this.setState({
