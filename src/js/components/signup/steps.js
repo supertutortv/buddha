@@ -4,12 +4,12 @@ import Payment from './payment'
 
 const Account = ({ createAccount, updateInp, error, state }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
-    let { plan } = state
+    let { item } = state
     return (
         <React.Fragment>
         <div className="stSignupStep stSignupAccount">
             <div className="stSignupTitle">
-                <h1>Signup - {plan.name}</h1>
+                <h1>Signup - {item.name}</h1>
                 <span>Don't worry, we do not and will not abuse, misuse, or sell your information. Read our <a target="_blank" href="https://supertutortv.com/privacy-policy">privacy policy</a> for more info.</span>
             </div>
             <div className="stSignupInner">
