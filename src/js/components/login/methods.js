@@ -17,7 +17,7 @@ export function lostPwGo() {
 }
 
 export function setLoginState(e) {
-    _st.form.setState(this.state.creds,e.target)
+    console.log(e.name)
 }
 
 export function submit(e) {
