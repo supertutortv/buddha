@@ -26,3 +26,8 @@ export const DBCourses = ({courses}) => {
         </div>
     )
 }
+
+export const DBStats = ({d}) => {
+    console.log(d)
+    return null
+}

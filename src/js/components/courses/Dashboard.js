@@ -1,6 +1,6 @@
 import React from 'react'
 import { DataState } from './StateContext'
-import { DBCourses, DBStats } from './dashboard/components'
+import { DBCourses, DBStats, DBActions } from './dashboard/components'
 import Header from '../Header'
 
 const Dashboard = ({history: hist}) => {
@@ -14,6 +14,7 @@ const Dashboard = ({history: hist}) => {
                         <main className="stDashboard stComponentFade">
                             <DBStats />
                             <DBCourses courses={data.courses} />
+                            <DBActions d={data.user} />
                         </main>
                     </React.Fragment>
                 )
