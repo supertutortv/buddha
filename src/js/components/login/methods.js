@@ -32,7 +32,6 @@ export function submit(e) {
         }
     }
 
-    console.log(this.state.creds)
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':
