@@ -25,11 +25,9 @@ export function submit(e) {
     e.preventDefault()
     _st.loading = true
 
-    if (this.state.creds.username == '' || this.state.creds.password == '') {
-        let creds = e.target.getElementsByTagName('input')
-        for (var i = 0; i < creds.length; i++) { 
-            Object.assign(this.state.creds,{[creds[i].name]: creds[i].value})
-        }
+    let creds = e.target.getElementsByTagName('input')
+    for (var i = 0; i < creds.length; i++) { 
+        Object.assign(this.state.creds,{[creds[i].name]: creds[i].value})
     }
 
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
