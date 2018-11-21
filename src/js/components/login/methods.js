@@ -26,7 +26,7 @@ export function submit(e) {
     _st.loading = true
 
     if (this.state.creds.username == '' || this.state.creds.password == '')
-    console.log(e.target)
+    console.log(e.target.getElementsByTagName('input'))
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':
