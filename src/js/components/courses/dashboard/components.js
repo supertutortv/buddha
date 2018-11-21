@@ -27,12 +27,20 @@ export const DBCourses = ({courses}) => {
     )
 }
 
-export const DBActions = ({d}) => {
-    console.log(d)
-    return !d.trialing ? null : (
+export const DBActions = ({d,cancellation}) => {
+    return d.trialing ? null : (
         <div className="stDashboardActions">
             <div className="heading">Actions</div>
-            <div className="stDBActionsBody"></div>
+            <div className="stDBActionsBody">
+                <button className="stTrialCancelButton" onClick={() => cancellation({
+                    action: 'trial',
+                    ...d
+                })}>End trial period</button>
+                <button className="stTrialCancelButton" onClick={() => cancellation({
+                    action: 'subscription',
+                    ...d
+                })}>Cancel Account</button>
+            </div>
         </div>
     )
 }

@@ -6,11 +6,19 @@ import Header from '../Header'
 export default class Dashboard extends React.Component {
     constructor(props){
         super(props)
+
+        this.state = {}
+
+        this.cancellation = this.cancellation.bind(this)
     }
 
     componentDidMount() {
         _st.bodyClass = 'dashboard'
         _st.loading = false
+    }
+
+    cancellation(d) {
+        console.log(d)
     }
 
     render() {
@@ -23,7 +31,7 @@ export default class Dashboard extends React.Component {
                             <main className="stDashboard stComponentFade">
                                 <DBStats />
                                 <DBCourses courses={data.courses} />
-                                <DBActions d={data.user} />
+                                <DBActions cancellation={this.cancellation} d={data.user} />
                             </main>
                         </React.Fragment>
                     )
