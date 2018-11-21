@@ -7,7 +7,7 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
         </div>
         <div className="stLoginCredentials">
             <div className="input-field">
-                <input className="browser-default validate email" type="email" name="username" placeholder="Email Address" onBlur={setLoginState}/>
+                <input className="browser-default validate" type="email" name="username" placeholder="Email Address" onBlur={setLoginState}/>
             </div>
             <div className="input-field">
                 <input className="browser-default validate" type="password" name="password" placeholder="Password" onBlur={setLoginState}/>

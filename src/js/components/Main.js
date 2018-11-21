@@ -30,6 +30,7 @@ export default class Main extends React.Component {
         this.setPlaylist = this.setPlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
+        this.refreshData = this.refreshData.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
@@ -74,15 +75,20 @@ export default class Main extends React.Component {
         }, () => this.dataSaveLocal())
     }
 
+    refreshData() {
+        localStorage.removeItem('stCourseData')
+        window.location.reload(true)
+    }
+
     render() {
         if (this.state.data === true) return null
 
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
-                    <Route exact path='/dashboard' component={Dashboard} />
+                    <Route exact path='/dashboard' render={props => <Dashboard refreshData={this.refreshData}/>} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course refreshData={this.refreshData} addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
                 <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />

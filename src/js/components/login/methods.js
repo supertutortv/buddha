@@ -24,6 +24,9 @@ export function setLoginState(e) {
 export function submit(e) {
     e.preventDefault()
     _st.loading = true
+
+    if (this.state.creds.username == '' || this.state.creds.password == '')
+    console.log(e.target)
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':

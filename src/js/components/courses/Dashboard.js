@@ -7,7 +7,9 @@ export default class Dashboard extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = {}
+        this.state = {
+            error: {}
+        }
 
         this.cancellation = this.cancellation.bind(this)
     }
@@ -20,7 +22,14 @@ export default class Dashboard extends React.Component {
     cancellation(d) {
         let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course or courses. Are you sure you wish to proceed?")
 
-        if (result) _st.http.post('/signup/cancel',d,(resp) => console.log(resp))
+        if (result) _st.http.post('/signup/cancel',d,(resp) => {
+            if (resp.code === 'signupError')
+                return this.setState({error: {...resp}}, () => console.log(this.state.error))
+            else {
+                alert(resp.message)
+                _st.auth.logout(() => this.props.refreshData())
+            }
+        })
     }
 
     render() {
@@ -29,7 +38,7 @@ export default class Dashboard extends React.Component {
                 {(data) => {
                     return (
                         <React.Fragment>
-                            <Header title="Dashboard" hist={this.props.history}/>
+                            <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
                                 <DBStats />
                                 <DBCourses courses={data.courses} />

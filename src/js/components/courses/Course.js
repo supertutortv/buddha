@@ -39,7 +39,7 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory}) => {
+const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory, refreshData}) => {
     const {params} = match
     const icons = {
         essay: 'scroll',
@@ -79,7 +79,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                         
                         return (
                             <React.Fragment>
-                                <Header title={data.courses[params.courses].name} hist={hist} />
+                                <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
                                         <MyStudyList data={data.courses[params.courses].playlist} />
