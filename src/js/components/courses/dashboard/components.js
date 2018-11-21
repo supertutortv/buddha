@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 export const DBStats = () => 
-    <div className="stDashboardStats">If you'd like to end your trial period and start with the full course right away, or cancel your subscription before being charged, please email us at info@supertutortv.com</div>
+    <div className="stDashboardStats">If you'd like to end your trial or cancel your subscription before being charged and you don't see the buttons below (in the "Actions" section), please email us at info@supertutortv.com</div>
 
 export const DBCourses = ({courses}) => {
     return (
