@@ -38,7 +38,7 @@ export function submit(e) {
                         id: d.code,
                         message: d.message
                     }
-                })
+                }, () => _st.loading = false)
             case 'loginSuccess':
                 return this.props.setLoggedIn()
         }

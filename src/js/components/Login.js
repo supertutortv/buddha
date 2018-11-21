@@ -33,9 +33,7 @@ export default class Login extends React.Component {
         _st.loading = false
     }
 
-    componentDidUpdate() {
-        _st.loading = false
-    }
+    componentDidUpdate() {}
 
     componentWillReceiveProps(nextProps) {
         var { history: hist, location: loc } = nextProps
