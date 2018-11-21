@@ -27,7 +27,9 @@ export function submit(e) {
 
     if (this.state.creds.username == '' || this.state.creds.password == '') {
         let creds = e.target.getElementsByTagName('input')
-        creds.forEach((o,i) => console.log(o))
+        for (var i = 0; i < creds.length; i++) { 
+            console.log(creds[i])
+        }
     }
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
