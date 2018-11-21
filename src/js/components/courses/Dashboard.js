@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
                 {(data) => {
                     return (
                         <React.Fragment>
-                            <Header title="Dashboard" hist={this.props.hist}/>
+                            <Header title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
                                 <DBStats />
                                 <DBCourses courses={data.courses} />
