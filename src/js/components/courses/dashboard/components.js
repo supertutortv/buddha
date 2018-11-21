@@ -32,7 +32,7 @@ export const DBActions = ({d,cancellation}) => {
         <div className="stDashboardActions">
             <div className="heading">Actions</div>
             <div className="stDBActionsBody">
-            {d.trialing ? <span>No actions currently available</span> : (
+            {!d.trialing ? <span>No actions currently available</span> : (
                 <React.Fragment>
                     <button className="stTrialCancelButton" onClick={() => cancellation({
                         action: 'trial',
