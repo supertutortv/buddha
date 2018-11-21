@@ -1,5 +1,5 @@
 export default {
-    env : 'development',
+    env : 'production',
     production : {
         stripe : {
             publicKey : 'pk_live_ns71ckv2wHyLaP7CCyxp3DS7'
