@@ -26,7 +26,6 @@ export function changeStep(inc = true,e) {
             ...obj
         }
     })
-    console.log(this.state)
     return null
 }
 
@@ -133,8 +132,6 @@ export function submitPayment(e,stripe) {
 
         cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
         cus.token = t.id
-
-        console.log(this.state)
 
         return _st.http.post('/signup/pay',this.state,(d) => {
             
