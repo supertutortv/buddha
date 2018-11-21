@@ -27,7 +27,7 @@ export const DBCourses = ({courses}) => {
     )
 }
 
-export const DBStats = ({d}) => {
+export const DBActions = ({d}) => {
     console.log(d)
     return null
 }
