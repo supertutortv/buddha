@@ -28,18 +28,22 @@ export const DBCourses = ({courses}) => {
 }
 
 export const DBActions = ({d,cancellation}) => {
-    return d.trialing ? null : (
+    return (
         <div className="stDashboardActions">
             <div className="heading">Actions</div>
             <div className="stDBActionsBody">
-                <button className="stTrialCancelButton" onClick={() => cancellation({
-                    action: 'trial',
-                    ...d
-                })}>End trial period</button>
-                <button className="stTrialCancelButton" onClick={() => cancellation({
-                    action: 'subscription',
-                    ...d
-                })}>Cancel Account</button>
+            {d.trialing ? <span>No actions currently available</span> : (
+                <React.Fragment>
+                    <button className="stTrialCancelButton" onClick={() => cancellation({
+                        action: 'trial',
+                        ...d
+                    })}>End trial period</button>
+                    <button className="stTrialCancelButton" onClick={() => cancellation({
+                        action: 'subscription',
+                        ...d
+                    })}>Cancel Account</button>
+                </React.Fragment>
+            )}
             </div>
         </div>
     )
