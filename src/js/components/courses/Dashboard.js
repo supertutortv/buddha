@@ -40,10 +40,3 @@ export default class Dashboard extends React.Component {
         )
     }
 }
-
-const Dashboard = ({history: hist}) => {
-    _st.bodyClass = 'dashboard'
-    
-}
-
-export default Dashboard
