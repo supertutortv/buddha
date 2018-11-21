@@ -29,5 +29,7 @@ export const DBCourses = ({courses}) => {
 
 export const DBActions = ({d}) => {
     console.log(d)
-    return null
+    return !d.trialing ? null : (
+        <div className="stuff"></div>
+    )
 }
