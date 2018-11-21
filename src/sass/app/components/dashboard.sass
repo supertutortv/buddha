@@ -2,7 +2,8 @@
     padding: $huge
     +centerblock
 
-    .stDashboardCourses
+    & > div
+        margin-bottom: 1em
         border-radius: $ittybitty
         @extend .z-depth-3
 
@@ -11,6 +12,8 @@
             font-weight: 600
             line-height: 1
             border-bottom: 1px solid black(.15)
+
+    .stDashboardCourses
         
         .myCoursesBody
             padding: 1em
@@ -42,3 +45,8 @@
 
                         span
                             font-size: $small
+
+    .stDashboardActions
+        
+        .stDBActionsBody
+            padding: 1em
