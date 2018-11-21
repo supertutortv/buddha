@@ -28,9 +28,11 @@ export function submit(e) {
     if (this.state.creds.username == '' || this.state.creds.password == '') {
         let creds = e.target.getElementsByTagName('input')
         for (var i = 0; i < creds.length; i++) { 
-            console.log(creds[i])
+            Object.assign(this.state.creds,{[creds[i].name]: creds[i].value})
         }
     }
+
+    console.log(this.state.creds)
     _st.auth.submit('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':
