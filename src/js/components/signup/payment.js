@@ -8,6 +8,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
     trialDate.setDate(trialDate.getDate() + 5)
     if (state.plan === null) state.plan = state.item.plans[0]
     calculatePricing()
+    console.log('rerendered')
     return (
         <div className="stSignupStep stSignupPayment">
             <div className="stSignupPaymentBottom">
