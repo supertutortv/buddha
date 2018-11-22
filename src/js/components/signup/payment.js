@@ -12,7 +12,6 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
         <div className="stSignupStep stSignupPayment">
             <div className="stSignupPaymentBottom">
                 <h1>Set up your payment.</h1>
-                <span>5 day free trial expires <strong>{trialDate.toLocaleDateString()}</strong></span>
             </div>
             <div className="stSignupInner">
                 <div className="stInfoWrap">
@@ -40,7 +39,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|doTrial" className="filled-in" type="checkbox" onChange={updateInp} />
-                                    <label for="customer|options|doTrial"><span>Check this box for a 5 day free trial</span></label>
+                                    <label for="customer|options|doTrial"><span>Check this box for a 5 day free trial <span>(expires <strong>{trialDate.toLocaleDateString()})</strong></span></span></label>
                                 </div>
                             </div>
                             <div className="stSignupFormShipping">
