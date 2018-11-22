@@ -72,6 +72,7 @@ export default class Signup extends React.Component {
     componentDidMount() {
         let {plan} = this.props.match.params
         _st.http.get('/signup/'+plan,(d) => {
+            console.log(d)
             this.setState({init: true, item: d.data}, () => _st.loading = false)
         })
     }
