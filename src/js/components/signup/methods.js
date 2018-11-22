@@ -2,8 +2,7 @@
 export function calculatePricing() {
     if (this.state.plan === null) this.state.plan = this.state.item.plans[0]
     var plan = this.state.plan,
-        pricing = this.state.pricing,
-        shipping = parseInt(pricing.shipping)
+        pricing = this.state.pricing
 
     pricing.total = plan.amount
 
@@ -13,7 +12,7 @@ export function calculatePricing() {
 
     if ( discprice > 0 ) pricing.total -= discprice
 
-    if ( shipping > 0 ) pricing.total += shipping
+    if ( pricing.shipping > 0 ) pricing.total += pricing.shipping
 }
 
 // changeStep
@@ -111,7 +110,7 @@ export function setOutcome( result ) {
 
 export function setShipping(el) {
     this.setState({
-        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? this.state.item.metadata.priship : 0})
+        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0})
     })
     this.updateInp(el)
     console.log(this.state)
