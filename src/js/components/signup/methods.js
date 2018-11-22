@@ -110,9 +110,10 @@ export function setOutcome( result ) {
 
 export function setShipping(el) {
     this.setState({
-        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? 795 : 0})
+        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? this.state.item.metadata.priship : 0})
     })
     this.updateInp(el)
+    console.log(this.state)
 }
 
 // submitPayment
