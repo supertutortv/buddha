@@ -113,6 +113,7 @@ export function setShipping(el) {
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0})
     })
+    console.log(this.state)
 }
 
 // submitPayment
