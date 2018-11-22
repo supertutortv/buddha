@@ -109,9 +109,10 @@ export function setOutcome( result ) {
 }
 
 export function setShipping(el) {
+    this.updateInp(el)
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0})
-    }, () => this.updateInp(el))
+    })
 }
 
 // submitPayment
