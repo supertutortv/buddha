@@ -35,7 +35,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 </div> */}
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" type="checkbox" onChange={setShipping}/>
-                                    <label for="customer|options|priorityShip"><span>I want Priority Shipping (+$7.95, U.S. only)</span></label>
+                                    <label for="customer|options|priorityShip"><span>I want Priority Shipping (+${state.item.metadata.priship}, U.S. only)</span></label>
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|doTrial" className="filled-in" type="checkbox" onChange={updateInp} />
