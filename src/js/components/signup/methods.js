@@ -2,7 +2,8 @@
 export function calculatePricing() {
     if (this.state.plan === null) this.state.plan = this.state.item.plans[0]
     var plan = this.state.plan,
-        pricing = this.state.pricing
+        pricing = this.state.pricing,
+        shipping = parseInt(pricing.shipping)
 
     pricing.total = plan.amount
 
@@ -12,7 +13,7 @@ export function calculatePricing() {
 
     if ( discprice > 0 ) pricing.total -= discprice
 
-    if ( pricing.shipping > 0 ) pricing.total += pricing.shipping
+    if ( shipping > 0 ) pricing.total += shipping
 }
 
 // changeStep
