@@ -10,8 +10,7 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                     let emp = (f.file === 0),
                         path = emp || f.file.split('/'),
                         href = emp ? null : 'https://api.supertutortv.com/course-dl.php?test='+path[0]+'&section='+path[1]+'&res='+path[2]+'&hash='+f.hash
-
-                        f.test = path[0].toUpperCase()
+                        
                     return (
                         <figure 
                             className={"stDownloadLink"+(emp ? ' disabled' : '')} 
@@ -20,7 +19,7 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                                     return e.preventDefault()
                                 else
                                     _st.udata.update('downloads',f,(d) => {
-                                        reportDl(test,d.data.vidid)
+                                        reportDl(path[0].toUpperCase(),d.data.vidid)
                                     })
                                     window.location = href
                         }}>
