@@ -7,7 +7,7 @@ const appConfig = {
     entry: ['babel-polyfill','./src/js/stApp.js'],
     output: {
         path: path.resolve(__dirname, 'web'),
-        filename: './assets/js/stApp.js',
+        filename: 'assets/js/stApp.js',
         publicPath: '/'
     },
     devServer: {
@@ -62,13 +62,16 @@ const appConfig = {
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: './assets/css/stApp.min.css',
+            filename: 'assets/css/stApp.min.css',
             disable: false,
             allChunks: true
         }),
         new HtmlWebpackPlugin({
-            template: 'web/app.html',
-            inject : false
+            filename: 'app.html',
+            template: 'templates/app.html',
+            title: 'SupertutorTV Courses',
+            inject : true,
+            hash: true
         })
     ]
 }
