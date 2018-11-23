@@ -166,14 +166,13 @@ export function toPrice(amt = 0) {
 // updateInp
 export function updateInp({target: el}) {
     this.state.update = false
-    if (el.type === 'checkbox') el.value = el.checked
     
     this.setState(prev => {
         var params = el.name.split('|'),
             newObj = {[params[0]] : {...prev[params[0]]}}
 
             params.reduce((obj,key,i,arr) => {
-                if (i+1 === arr.length) obj[key] = el.value
+                if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
                 else return obj[key]
             },newObj)
         return Object.assign(prev,newObj)
