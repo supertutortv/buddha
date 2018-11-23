@@ -109,11 +109,9 @@ export function setOutcome( result ) {
 }
 
 export function setShipping(el) {
-    this.setState(prev => {
-        return {
-            pricing: Object.assign(prev.pricing,{shipping: el.target.checked ? parseInt(prev.item.metadata.priship) : 0}),
-            update: true
-        }
+    this.setState({
+        pricing: Object.assign(prev.pricing,{shipping: el.target.checked ? parseInt(prev.item.metadata.priship) : 0}),
+        update: true
     })
 }
 
