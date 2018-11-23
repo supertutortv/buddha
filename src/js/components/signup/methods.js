@@ -111,9 +111,9 @@ export function setOutcome( result ) {
 export function setShipping(el) {
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0}),
-        update: true
-    })
-    this.updateInp(el)
+        update: true,
+        customer: Object.assign(this.state.customer,Object.assign(this.state.customer.options,{priorityShip: el.target.checked}))
+    }, () => console.log(this.state))
 }
 
 // submitPayment
