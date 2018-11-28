@@ -64,6 +64,7 @@ export default class Main extends React.Component {
     }
 
     addDl(course,data) {
+        console.log(course)
         this.setState((state) => {
             state.data.courses[course].downloads.push(data)
         }, () => this.dataSaveLocal())
