@@ -9,20 +9,34 @@ body.login
         justify-content: center
 
         .stDialogCentered
+            max-width: 400px
 
-            #stStrippedInset
+            header
 
-                #stStrippedSpacer
+                img
+                    width: 100%
+                    height: auto
 
-                    #stLoginWrapper
-                        padding: 0
+            .stDialogCenteredInset
+
+                #stLoginWrapper
+                    padding: 0
+
+                    #stLoginHeader
 
                         h1, h2
-                            color: $domcolor
+                            font-weight: 600
+                            font-size: $medium
 
-                        .stFormButtons
+                    .stFormButtons
+                        display: flex
+                        align-items: center
 
-                            .stFormButton
-                                background-color: $domcolor
-                                display: block
-                                width: 100%
+                        .stFormButton
+                            flex: 1
+                            background-color: $domcolor
+                            display: block
+                            width: 100%
+                        
+                        .stForgotBlock
+                            flex: 1

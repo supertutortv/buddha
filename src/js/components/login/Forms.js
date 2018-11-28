@@ -15,9 +15,9 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
         </div>
         <div className="stFormButtons">
             <button className="stFormButton btn waves-effect waves-light">Sign In</button>
-        </div>
-        <div className="stForgotBlock">
-            <span><a onClick={lostPwGo}>Forgot your password?</a></span>
+            <div className="stForgotBlock">
+                <span><a onClick={lostPwGo}>Forgot your password?</a></span>
+            </div>
         </div>
     </React.Fragment>
 
