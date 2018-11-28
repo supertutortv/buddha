@@ -2,7 +2,7 @@ import React from 'react'
 import FAIco from '../FAIco'
 
 const Downloads = ({refDls,test,reportDl,color,data}) => {
-    console.log(test,data)
+
     return (
         <div className="stModalDownloads">
             <section className="stDownloadLinks">
@@ -20,7 +20,7 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                                     return e.preventDefault()
                                 else
                                     _st.udata.update('downloads',f,(d) => {
-                                        reportDl(path[0].toUpperCase(),d.data.vidid)
+                                        reportDl(test,d.data.vidid)
                                     })
                                     window.location = href
                         }}>
