@@ -50,6 +50,7 @@ export default class Main extends React.Component {
     }
 
     dataSaveLocal() {
+        console.log(this.state.data)
         return localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
     }
 
