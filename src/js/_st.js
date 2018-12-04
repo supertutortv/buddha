@@ -59,8 +59,8 @@ function STTV() {
 
 STTV.prototype = {
     stripe : config[config.env].stripe.publicKey,
-    root : 'https://courses.supertutortv.com',
-    api : 'https://api.supertutortv.com/v2',
+    root : config[config.env].root,
+    api : config[config.env].api,
     _state : {
         lang: 'EN',
         loading: false,
