@@ -52,7 +52,6 @@ STTV.prototype = {
     auth,
     form,
     http,
-    plans,
     udata
 }
 
