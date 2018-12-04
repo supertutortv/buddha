@@ -9,7 +9,7 @@ export async function request(route = '/',obj = {}) {
             }
         }
     if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
-    const response = await fetch(this.api+route, atts)
+    const response = await fetch(_st.api+route, atts)
     const d = await response.json()
     return d
 }
