@@ -1,4 +1,4 @@
-import config from './config'
+import config from './config' // don't forget to scp this file to the repo on the server (DO NOT COMMIT this file)
 import * as form from './utilities/form'
 import * as http from './utilities/http'
 import auth from './utilities/auth'
