@@ -1,4 +1,4 @@
-import config from './config' // don't forget to scp this file to the repo on the server (DO NOT COMMIT this file)
+import config from './config'
 import * as form from './utilities/form'
 import * as http from './utilities/http'
 import auth from './utilities/auth'
@@ -9,6 +9,8 @@ const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').ma
   return ({ ...obj, [key]: value })
 }, {});
 
+const env = process.env.APP_MODE
+
 // FUNCTION START //
 
 function STTV() {
@@ -16,9 +18,9 @@ function STTV() {
 }
 
 STTV.prototype = {
-    stripe : config[config.env].stripe.publicKey,
-    root : config[config.env].root,
-    api : config[config.env].api,
+    stripe : config[env].stripe.publicKey,
+    root : config[env].root,
+    api : config[env].api,
     _state : {
         lang: 'EN',
         loading: false,
