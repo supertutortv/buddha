@@ -30,7 +30,7 @@ export function submit(e) {
         Object.assign(this.state.creds,{[creds[i].name]: creds[i].value})
     }
 
-    _st.auth.submit('/auth/token',this.state.creds,(d) => {
+    _st.http.post('/auth/token',this.state.creds,(d) => {
         switch (d.code) {
             case 'loginFail':
                 return this.setState({
