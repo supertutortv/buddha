@@ -10,6 +10,7 @@ const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').ma
 }, {});
 
 const env = process.env.APP_MODE
+console.log(http)
 
 // FUNCTION START //
 
