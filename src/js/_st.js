@@ -1,6 +1,6 @@
 import config from './config'
 import * as form from './utilities/form'
-import {http} from './utilities/http'
+import Http from './utilities/http'
 import auth from './utilities/auth'
 import udata from './utilities/userActions'
 
@@ -52,7 +52,7 @@ STTV.prototype = {
     },
     objectifyURLParams,
     form,
-    http: http(config[env].api),
+    http: new Http(config[env].api),
     udata
 }
 
