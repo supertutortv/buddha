@@ -47,6 +47,9 @@ export async function del(rt,data,cb) {
 export function http(api) {
     console.log(api)
     return {
+        obj: ((t) => {
+            return t
+        })(this),
         request: async function(route = '/',obj = {}) {
             var {method,data} = obj,
                 atts = {
