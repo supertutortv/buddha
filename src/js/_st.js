@@ -53,7 +53,7 @@ STTV.prototype = {
     objectifyURLParams,
     auth,
     form,
-    http: http(this.api),
+    http: http(config[env].api),
     udata
 }
 
