@@ -45,7 +45,7 @@ export async function del(rt,data,cb) {
 } */
 export default class Http {
     constructor(api) {
-        console.log(api)
+        this.api = api
     }
 
     async request(route = '/',obj = {}) {
@@ -59,7 +59,7 @@ export default class Http {
                 }
             }
         if (atts.method !== 'GET') atts['body'] = JSON.stringify(data || {})
-        const response = await fetch(api+route, atts)
+        const response = await fetch(this.api+route, atts)
         const d = await response.json()
         return d
     }
