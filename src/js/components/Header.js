@@ -36,7 +36,7 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                     }}/></li>
                     <li onClick={(e) => {
                         _st.loading = true
-                        _st.auth.logout(() => refreshData())
+                        _st.http.post('/auth/logout',{},() => refreshData())
                     }}><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
                 </ul>
             </div>
