@@ -1,6 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 import VidPlayer from '../VidPlayer'
+import ToggleSwitch from '../pieces/toggleSwitch'
 
 export default class MyStudyList extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class MyStudyList extends React.Component {
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
-                        <div className="stCourseStudyListHeading">My Study List</div>
+                        <div className="stCourseStudyListHeading">My Study List<ToggleSwitch on/></div>
                         <div className="stCourseStudyList">
                             <div className="stCourseStudyListInner">{list}</div>
                         </div>

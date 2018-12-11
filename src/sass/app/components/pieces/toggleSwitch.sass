@@ -1,0 +1,26 @@
+.stSwitch
+    border: 1px solid black(.40)
+    width: 3em
+    height: 1em
+    border-radius: 1em
+    background: black(.1)
+    cursor: pointer
+    display: inline-block
+    transition: background .1s ease-in-out
+
+.stToggle
+    border: 1px solid black(.25)
+    width: 1em
+    height: 1em
+    left: 0
+    border-radius: 50%
+    background: white()
+    position: relative
+    @extend .z-depth-1
+    transition: left .1s ease-in-out
+
+.stSwitch.on
+    background: azure()
+
+.stSwitch.on .stToggle
+    left: 2em
