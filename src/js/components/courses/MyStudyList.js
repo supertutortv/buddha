@@ -11,7 +11,7 @@ export default class MyStudyList extends React.Component {
 
         this.state = {
             video : this.playlist[0].vidid,
-            autoplay: false
+            autoplay: this.props.autoplay
         }
 
     }
@@ -21,7 +21,6 @@ export default class MyStudyList extends React.Component {
     }
 
     render() {
-        console.log(this.props.autoplay)
         let { playlist } = this,
             list = []
 
