@@ -16,7 +16,6 @@ const defaultProps = {
 }
 
 const ToggleSwitch = ({label, on, onClick, className, children}) => {
-    console.log(on)
     let classes = ['stSwitch',className,(on ? 'on':'')].join(' ')
     return (
         <React.Fragment>

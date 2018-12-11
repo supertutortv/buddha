@@ -22,6 +22,7 @@ export default class MyStudyList extends React.Component {
 
     render() {
         let { playlist } = this,
+            { updateSettings } = this.props,
             list = []
 
         playlist.forEach((i) => {
@@ -45,10 +46,9 @@ export default class MyStudyList extends React.Component {
                             <div className="stCourseStudyListInner">{list}</div>
                         </div>
                         <div className="stCourseStudyListFooter">
-                            <ToggleSwitch label="autoplay" on={this.state.autoplay} onClick={(e) => {
-                                this.setState((prev) => {
-                                    return {autoplay: !prev.autoplay}
-                                })
+                            <ToggleSwitch label="autoplay" on={this.state.autoplay.msl} onClick={(e) => {
+                                let obj = Object.assign(this.state.autoplay,{'msl':!this.state.autoplay.msl})
+                                updateSettings('autoplay',obj)
                             }}/>
                         </div>
                     </div>
