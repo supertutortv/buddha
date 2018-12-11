@@ -49,7 +49,7 @@ export default class Playlist extends React.Component {
         if (vid.id === 0) return false
 
         this.state.updating = true
-        _st.udata.update(patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
+        _st.http.put('/courses/data/'+patch,Object.assign(vid,{test:test,path:loc.pathname}),(d) => {
             switch (patch) {
                 case 'playlist':
                     if (d.code === 'resourceExists') return false

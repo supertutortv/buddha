@@ -9,7 +9,7 @@ import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
 
 function deleteUdata(dt,cb) {
-    _st.udata.remove(dt,cb)
+    _st.http.del('/courses/data',dt,cb)
 }
 
 const Practice = ({hist,path,trialing,obj}) => {
