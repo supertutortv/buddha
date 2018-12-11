@@ -45,7 +45,7 @@ export default class MyStudyList extends React.Component {
                             <div className="stCourseStudyListInner">{list}</div>
                         </div>
                         <div className="stCourseStudyListFooter">
-                            <ToggleSwitch label="autoplay" on={this.state.autoplay} onClick={(e) => {
+                            <ToggleSwitch on={this.state.autoplay} onClick={(e) => {
                                 this.setState((prev) => {
                                     return {autoplay: !prev.autoplay}
                                 })
