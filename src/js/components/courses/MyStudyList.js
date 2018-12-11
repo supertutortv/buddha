@@ -47,8 +47,11 @@ export default class MyStudyList extends React.Component {
                         </div>
                         <div className="stCourseStudyListFooter">
                             <ToggleSwitch label="autoplay" on={this.state.autoplay.msl} onClick={(e) => {
-                                let obj = Object.assign(this.state.autoplay,{'msl':!this.state.autoplay.msl})
-                                updateSettings('autoplay',obj)
+                                this.setState((prev) => {
+                                    let obj = Object.assign(prev.autoplay,{'msl':!prev.autoplay.msl})
+                                    updateSettings('autoplay',obj)
+                                    return obj
+                                })
                             }}/>
                         </div>
                     </div>
