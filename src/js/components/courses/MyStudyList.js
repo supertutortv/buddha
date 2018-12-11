@@ -50,7 +50,7 @@ export default class MyStudyList extends React.Component {
                                     return {autoplay: !prev.autoplay}
                                 })
                             }}/>
-                            <span>Autoplay</span>
+                            <span>autoplay</span>
                         </div>
                     </div>
                 </div>
