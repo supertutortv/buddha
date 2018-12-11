@@ -9,7 +9,7 @@ const propTypes = {
   
 const defaultProps = {
     on: false,
-    className: '',
+    className: 'default',
     onClick: () => {}
 }
 
