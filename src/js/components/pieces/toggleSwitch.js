@@ -14,6 +14,7 @@ const defaultProps = {
 }
 
 const ToggleSwitch = ({on, onClick, className, children}) => {
+    console.log(on)
     let classes = ['stSwitch',className,(on ? 'on':'')].join(' ')
     return (
         <div className={classes} onClick={(e) => onClick(e)}>

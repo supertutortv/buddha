@@ -10,7 +10,8 @@ export default class MyStudyList extends React.Component {
         this.playlist = this.props.data
 
         this.state = {
-            video : this.playlist[0].vidid
+            video : this.playlist[0].vidid,
+            autoplay: false
         }
 
     }
@@ -39,7 +40,11 @@ export default class MyStudyList extends React.Component {
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
-                        <div className="stCourseStudyListHeading">My Study List<ToggleSwitch on/></div>
+                        <div className="stCourseStudyListHeading">My Study List<ToggleSwitch on={this.state.autoplay} onClick={(e) => {
+                            this.setState((prev) => {
+                                return {autoplay: !prev.autoplay}
+                            })
+                        }}/></div>
                         <div className="stCourseStudyList">
                             <div className="stCourseStudyListInner">{list}</div>
                         </div>
