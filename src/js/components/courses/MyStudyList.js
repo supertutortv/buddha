@@ -37,7 +37,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer video={this.state.video} />
+                    <VidPlayer autoplay={this.state.autoplay.msl} video={this.state.video} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
