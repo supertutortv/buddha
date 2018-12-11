@@ -21,6 +21,7 @@ export default class MyStudyList extends React.Component {
     }
 
     render() {
+        console.log(this.props.autoplay)
         let { playlist } = this,
             list = []
 
