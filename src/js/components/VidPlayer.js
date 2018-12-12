@@ -43,9 +43,9 @@ class VidPlayer extends React.Component {
     }
 
     componentDidUpdate(prev) {
-        const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name]);
-        this.updateProps(changes);
-      }
+        const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name])
+        this.updateProps(changes)
+    }
 
     createPlayer() {
         this.player = new Player(this.container, this.initial)
