@@ -70,8 +70,8 @@ class VidPlayer extends React.Component {
 
             switch (name) {
                 case 'autoplay':
-                    player.unload().then((u) => {
-                        console.log(u)
+                    player.destroy().then((u) => {
+                        this.createPlayer()
                     }).catch(function(error) {
                         console.log(error)
                     })
