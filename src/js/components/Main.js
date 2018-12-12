@@ -77,7 +77,7 @@ export default class Main extends React.Component {
     }
 
     updateSettings(setting,val) {
-        _st.http.put('/courses/data',val,(d) => {
+        _st.http.put('/courses/data/settings',val,(d) => {
             console.log(d)
             /* this.setState((state) => {
                 state.data.user.settings[setting] = val
