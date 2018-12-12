@@ -77,10 +77,11 @@ export default class Main extends React.Component {
     }
 
     updateSettings(setting,val) {
-        _st.http.put('/courses/data/settings',val,(d) => {
+        let obj = {[setting]:val}
+        _st.http.put('/courses/data/settings',obj,(d) => {
             console.log(d)
             /* this.setState((state) => {
-                state.data.user.settings[setting] = val
+                return Object.assign(state.data.user.settings,obj)
             }, () => this.dataSaveLocal()) */
         })
     }
