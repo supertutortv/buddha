@@ -15,9 +15,11 @@ export default class MyStudyList extends React.Component {
             autoplay: this.props.autoplay
         }
 
+        this.changeVid = this.changeVid.bind(this)
     }
 
     changeVid(i) {
+        console.log('vidchanged')
         this.setState((state) => {return {vindex: (typeof i === 'undefined') ? state.vindex + 1 : i}})
     }
 
