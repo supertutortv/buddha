@@ -66,12 +66,14 @@ class VidPlayer extends React.Component {
         const { player } = this
 
         names.forEach((name) => {
-            const value = this.props[name]
+            const value = this.props[name],
+                ob = {[name]:value}
 
             switch (name) {
                 case 'autoplay':
                     player.destroy().then((u) => {
-                        this.createPlayer(Object.assign(this.initial,{[name]:value}))
+                        this.props.ind(0)
+                        this.createPlayer(Object.assign(this.initial,ob))
                     }).catch(function(error) {
                         console.log(error)
                     })
