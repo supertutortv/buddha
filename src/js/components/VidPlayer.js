@@ -43,6 +43,7 @@ class VidPlayer extends React.Component {
     }
 
     componentDidUpdate(prev) {
+        console.log(prev)
         const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name])
         this.updateProps(changes)
     }
