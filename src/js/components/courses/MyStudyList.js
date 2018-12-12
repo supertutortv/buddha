@@ -35,12 +35,11 @@ export default class MyStudyList extends React.Component {
                 </div>
             ) 
         })
-        console.log(playlist)
-        return null
+
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer autoplay={this.state.autoplay.msl} video={this.state.video} />
+                    <VidPlayer autoplay={this.state.autoplay.msl} getNextVid={this.nextVid} video={playlist[this.state.vindex].vidid} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
