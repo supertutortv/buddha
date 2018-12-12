@@ -19,7 +19,6 @@ export default class MyStudyList extends React.Component {
     }
 
     changeVid(i) {
-        console.log('vidchanged')
         this.setState((state) => {return {vindex: (typeof i === 'undefined') ? state.vindex + 1 : i}})
     }
 
@@ -41,7 +40,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer autoplay={this.state.autoplay.msl} getNextVid={this.nextVid} video={playlist[this.state.vindex].vidid} />
+                    <VidPlayer autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={playlist[this.state.vindex].vidid} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
