@@ -37,8 +37,6 @@ export default class MyStudyList extends React.Component {
             ) 
         })
 
-        console.log(this.state.autoplay)
-
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
