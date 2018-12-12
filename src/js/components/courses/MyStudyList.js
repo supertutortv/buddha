@@ -10,14 +10,15 @@ export default class MyStudyList extends React.Component {
         this.playlist = this.props.data
 
         this.state = {
+            vindex : 0,
             video : this.playlist[0].vidid,
             autoplay: this.props.autoplay
         }
 
     }
 
-    changeVid(vid) {
-        this.setState({video: vid})
+    changeVid(i) {
+        this.setState((state) => {return {vindex: (typeof i === 'undefined') ? state.vindex + 1 : i}})
     }
 
     render() {
@@ -25,15 +26,17 @@ export default class MyStudyList extends React.Component {
             { updateSettings } = this.props,
             list = []
 
-        playlist.forEach((i) => {
-            let clsHl = (this.state.video === i.vidid) ? ' highlight' : ''
+        playlist.forEach((o,i) => {
+            let clsHl = (this.state.vindex === i) ? ' highlight' : ''
             list.push(
-                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i.vidid)}>
-                    <img src={"https://i.vimeocdn.com/video/"+i.thumb+"_295x166.jpg?r=pad"} />
-                    <div class="listItemTitle">{i.name}</div>
+                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i)}>
+                    <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
+                    <div class="listItemTitle">{o.name}</div>
                 </div>
             ) 
         })
+        console.log(playlist)
+        return null
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
