@@ -48,8 +48,8 @@ class VidPlayer extends React.Component {
         this.updateProps(changes)
     }
 
-    createPlayer() {
-        this.player = new Player(this.container, this.initial)
+    createPlayer(ob = this.initial) {
+        this.player = new Player(this.container, ob)
         Object.keys(events).forEach((ev) => {
             this.player.on(ev, (event) => {
                 events[ev](event, this.props)
