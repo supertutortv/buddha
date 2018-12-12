@@ -49,7 +49,7 @@ class VidPlayer extends React.Component {
 
     createPlayer() {
         this.player = new Player(this.container, this.initial)
-    
+        console.log(this.player)
         Object.keys(events).forEach((ev) => {
             this.player.on(ev, (event) => {
                 events[ev](event, this.props)
@@ -85,7 +85,6 @@ class VidPlayer extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="stVimWrap">
                 <div className="stVimRoot" ref={this.refContainer} />
