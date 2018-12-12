@@ -43,7 +43,6 @@ class VidPlayer extends React.Component {
     }
 
     componentDidUpdate(prev) {
-        console.log(prev)
         const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name])
         this.updateProps(changes)
     }
@@ -72,7 +71,7 @@ class VidPlayer extends React.Component {
             switch (name) {
                 case 'autoplay':
                     player.destroy().then((u) => {
-                        this.createPlayer()
+                        this.createPlayer(Object.assign(this.initial,{[name]:value}))
                     }).catch(function(error) {
                         console.log(error)
                     })
