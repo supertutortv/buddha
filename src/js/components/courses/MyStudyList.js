@@ -37,7 +37,7 @@ export default class MyStudyList extends React.Component {
                         e.stopPropagation()
                         let el = e.target.parentNode
                         if (window.confirm('Are you sure you want to delete this video?')) {
-                            
+                            console.log(o)
                             el.style = "opacity:0"
                             window.setTimeout(() => el.style = 'display:none',100)
                         }
