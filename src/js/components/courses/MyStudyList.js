@@ -35,8 +35,11 @@ export default class MyStudyList extends React.Component {
                     <div class="listItemTitle">{o.name}</div>
                     <div class="listRemoveItem" onClick={(e) => {
                         e.stopPropagation()
-                        alert('clicked')}
-                    }>x</div>
+                        if (window.confirm('Are you sure you want to delete this video?')) {
+                            e.target.style.opacity = 0
+                            setTimeout(() => e.target.style.display = 'none',100)
+                        }
+                    }}>x</div>
                 </div>
             ) 
         })
