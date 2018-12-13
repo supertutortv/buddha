@@ -39,7 +39,7 @@ export default class MyStudyList extends React.Component {
                         if (window.confirm('Are you sure you want to delete this video?')) {
                             
                             el.style = "opacity:0"
-                            setTimeout(() => e.style = 'display:none',100)
+                            window.setTimeout(() => e.style = 'display:none',100)
                         }
                     }}>x</div>
                 </div>
