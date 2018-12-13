@@ -70,6 +70,8 @@ class VidPlayer extends React.Component {
                 ob = {[name]:value}
 
             switch (name) {
+                case 'autopause':
+                    break
                 case 'autoplay':
                     player.destroy().then((u) => {
                         this.props.ind(0)
