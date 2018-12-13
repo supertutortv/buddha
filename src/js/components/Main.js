@@ -56,7 +56,8 @@ export default class Main extends React.Component {
     }
 
     hashSaveLocal(hashes) {
-        if (hashes.indexOf(stVersionHash) < 0) localStorage.setItem('stVersionHashes',JSON.stringify(hashes.push(stVersionHash)))
+        if (hashes.indexOf(stVersionHash) < 0) hashes.push(stVersionHash)
+        localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
         return this
     }
 
