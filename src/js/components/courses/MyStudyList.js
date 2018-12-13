@@ -20,7 +20,7 @@ export default class MyStudyList extends React.Component {
     }
 
     changeVid(i) {
-        this.setState((state) => {return {vindex: (typeof i === 'undefined') ? state.vindex + 1 : i}})
+        this.setState((state) => {return {vindex: (typeof i === 'undefined') ? (this.playlist.length-1 === state.vindex ? 0 : state.vindex + 1) : i}})
     }
 
     render() {
@@ -30,9 +30,8 @@ export default class MyStudyList extends React.Component {
 
         playlist.forEach((o,i) => {
             let clsHl = (this.state.vindex === i) ? ' highlight' : ''
-
             list.push(
-                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid((playlist.length-1 === i) ? 0 : i)}>
+                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i)}>
                     <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
                     <div class="listItemTitle">{o.name}</div>
                     <div class="listRemoveItem" onClick={(e) => {
