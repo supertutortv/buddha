@@ -14,6 +14,9 @@
   <meta name="theme-color" content="#ffffff">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stVersionHash = <%= htmlWebpackPlugin.options.hash %>;
+  </script>
 </head>
 <body>
   <st-app class="loading"></st-app>
