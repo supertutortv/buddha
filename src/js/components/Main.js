@@ -47,7 +47,7 @@ export default class Main extends React.Component {
 
         if (upd) await _st.http.get('/courses/data',(h) => obj.data = h.data)
 
-        this.setState(obj,() => this.dataSaveLocal() && this.hashSaveLocal(vers))
+        this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
     }
 
     componentDidUpdate() {
@@ -57,10 +57,12 @@ export default class Main extends React.Component {
 
     hashSaveLocal(hashes) {
         if (hashes.indexOf(stVersionHash) < 0) localStorage.setItem('stVersionHashes',JSON.stringify(hashes.push(stVersionHash)))
+        return this
     }
 
     dataSaveLocal() {
-        return localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
+        localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
+        return this
     }
 
     modalActive(modal = {}) {
