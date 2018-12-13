@@ -44,7 +44,7 @@ export default class MyStudyList extends React.Component {
                                 if (this.state.updating === true) return false
                                 el.style = 'display:none'
                                 this.state.updating = true
-                                removePL(dt,(d) => {
+                                removePL(o,(d) => {
                                     switch(patch) {
                                         case 'playlist':
                                             if (d.code === 'resourceDeleteFail') return false
