@@ -74,7 +74,8 @@ module.exports = (env) => {
                 template: 'templates/app.html',
                 title: 'SupertutorTV Courses',
                 inject : true,
-                hash: true
+                hash: true,
+                theHash: [contenthash]
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
         ]
