@@ -33,7 +33,10 @@ export default class MyStudyList extends React.Component {
                 <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i)}>
                     <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
                     <div class="listItemTitle">{o.name}</div>
-                    <div class="listRemoveItem" onClick={() => alert('clicked')}>x</div>
+                    <div class="listRemoveItem" onClick={(e) => {
+                        e.stopPropagation()
+                        alert('clicked')}
+                    }>x</div>
                 </div>
             ) 
         })
