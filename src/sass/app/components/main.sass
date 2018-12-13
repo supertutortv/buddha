@@ -78,6 +78,17 @@ body.main
                                             display: flex
                                             align-items: center
 
+                                        .listRemoveItem
+                                            line-height: 1
+                                            padding: 1em
+                                            visibility: hidden
+                                            opacity: 0
+                                            transition: opacity .1s ease-in-out
+
+                                            &:hover
+                                                visibility: visible
+                                                opacity: 1
+
                             .stCourseStudyListFooter
                                 padding: 1em
                                 line-height: 1
