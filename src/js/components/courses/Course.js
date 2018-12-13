@@ -39,7 +39,7 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory, refreshData, updateSettings}) => {
+const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory, refreshData, updateSettings, removePL}) => {
     const {params} = match
     const icons = {
         essay: 'scroll',
@@ -82,7 +82,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <MyStudyList updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
+                                        <MyStudyList removePL={deleteUdata} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>

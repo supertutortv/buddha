@@ -12,7 +12,8 @@ export default class MyStudyList extends React.Component {
         this.state = {
             vindex : 0,
             video : this.playlist[0].vidid,
-            autoplay: this.props.autoplay
+            autoplay: this.props.autoplay,
+            updating: false
         }
 
         this.changeVid = this.changeVid.bind(this)
@@ -24,7 +25,7 @@ export default class MyStudyList extends React.Component {
 
     render() {
         let { playlist } = this,
-            { updateSettings } = this.props,
+            { updateSettings, removePL } = this.props,
             list = []
 
         playlist.forEach((o,i) => {
@@ -39,7 +40,20 @@ export default class MyStudyList extends React.Component {
                         if (window.confirm('Are you sure you want to delete this video?')) {
                             console.log(o)
                             el.style = "opacity:0"
-                            window.setTimeout(() => el.style = 'display:none',100)
+                            window.setTimeout(() => {
+                                if (this.state.updating === true) return false
+                                el.style = 'display:none'
+                                this.state.updating = true
+                                removePL(dt,(d) => {
+                                    switch(patch) {
+                                        case 'playlist':
+                                            if (d.code === 'resourceDeleteFail') return false
+                                            playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
+                                        break
+                                    }
+                                    this.setState({updating: false})
+                                })
+                            },100)
                         }
                     }}>x</div>
                 </div>
