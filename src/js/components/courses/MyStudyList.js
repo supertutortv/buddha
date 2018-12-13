@@ -38,19 +38,14 @@ export default class MyStudyList extends React.Component {
                         e.stopPropagation()
                         let el = e.target.parentNode
                         if (window.confirm('Are you sure you want to delete this video?')) {
-                            console.log(o)
+                            if (this.state.updating === true) return false
                             el.style = "opacity:0"
                             window.setTimeout(() => {
-                                if (this.state.updating === true) return false
                                 el.style = 'display:none'
                                 this.state.updating = true
                                 removePL(o,(d) => {
-                                    switch(patch) {
-                                        case 'playlist':
-                                            if (d.code === 'resourceDeleteFail') return false
-                                            playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
-                                        break
-                                    }
+                                    if (d.code === 'resourceDeleteFail') return false
+                                    playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
                                     this.setState({updating: false})
                                 })
                             },100)
