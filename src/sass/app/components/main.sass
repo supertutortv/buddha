@@ -61,6 +61,12 @@ body.main
                                         cursor: pointer
                                         display: flex
 
+                                        &:hover
+                                            
+                                            .listRemoveItem
+                                                visibility: visible
+                                                opacity: 1
+
                                         &.highlight
                                             background-color: black(.05)
                                             font-weight: 600
@@ -84,10 +90,6 @@ body.main
                                             visibility: hidden
                                             opacity: 0
                                             transition: opacity .1s ease-in-out
-
-                                            &:hover
-                                                visibility: visible
-                                                opacity: 1
 
                             .stCourseStudyListFooter
                                 padding: 1em
