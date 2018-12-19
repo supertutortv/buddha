@@ -78,7 +78,6 @@ export default class Main extends React.Component {
     }
 
     splicePlaylist(course,dt,ind) {
-        console.log(ind)
         _st.http.del('/courses/data',dt,(d) => {
             if (d.code === 'resourceDeleteFail') return false
             this.setState(
