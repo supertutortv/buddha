@@ -20,23 +20,18 @@ export default class MyStudyList extends React.Component {
         this.removeVid = this.removeVid.bind(this)
     }
 
-    removeVid(e,i,o) {
-        if (this.state.updating === true) return false
-        return console.log(i)
+    removeVid(test,e,i,o) {
         let el = e.target.parentNode
-        if (window.confirm('Are you sure you want to delete this video?')) {
-            
-            el.style = "opacity:0"
-            window.setTimeout(() => {
-                el.style = 'display:none'
-                this.state.updating = true
-                removePL(o,(d) => {
-                    if (d.code === 'resourceDeleteFail') return false
-                    playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
-                    this.setState({updating: false})
-                })
-            },100)
-        }
+        
+        el.style = "opacity:0"
+        window.setTimeout(() => {
+            el.style = 'display:none'
+            this.state.updating = true
+            this.props.removePL(o,(d) => {
+                if (d.code === 'resourceDeleteFail') return false
+                this.setState({updating: false})
+            })
+        },100)
     }
 
     changeVid(i) {
@@ -45,7 +40,7 @@ export default class MyStudyList extends React.Component {
 
     render() {
         let { playlist } = this,
-            { updateSettings, removePL } = this.props,
+            { updateSettings, test } = this.props,
             list = []
 
         playlist.forEach((o,i) => {
@@ -56,7 +51,7 @@ export default class MyStudyList extends React.Component {
                     <div class="listItemTitle">{o.name}</div>
                     <div class="listRemoveItem" onClick={(e) => {
                         e.stopPropagation()
-                        this.removeVid(e,i,o)
+                        if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
                     }}>x</div>
                 </div>
             ) 

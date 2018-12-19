@@ -54,6 +54,8 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
     return(
         <DataState.Consumer>
             {(data) => {
+                data = {}
+                return data
                 try {
                     var activeObj = Object.entries(params).reduce((obj,val) => {
                         if (typeof val[1] === 'undefined')
@@ -82,7 +84,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <MyStudyList removePL={deleteUdata} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
+                                        <MyStudyList test={test} removePL={deleteUdata} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
