@@ -85,7 +85,7 @@ export default class Main extends React.Component {
             }, () => {
                 this.dataSaveLocal()
             })
-            console.log(state.data.courses[course].playlist)
+            console.log(this.state.data.courses[course].playlist)
         })
     }
 
