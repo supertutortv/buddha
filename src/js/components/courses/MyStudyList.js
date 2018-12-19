@@ -20,8 +20,9 @@ export default class MyStudyList extends React.Component {
 
     removeVid(test,e,i,o) {
         let el = e.target.parentNode
-        console.log(e)
-        //el.style = "opacity:0;height:0px"
+        el.classList.add('remove')
+        console.log(typeof el)
+        
         window.setTimeout(() => {
             this.state.updating = true
             this.props.removePL(test,o,i)
