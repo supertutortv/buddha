@@ -55,7 +55,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
         <DataState.Consumer>
             {(data) => {
                 data = {}
-                return data
+                return null
                 try {
                     var activeObj = Object.entries(params).reduce((obj,val) => {
                         if (typeof val[1] === 'undefined')
