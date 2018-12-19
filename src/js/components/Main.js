@@ -82,8 +82,8 @@ export default class Main extends React.Component {
             if (d.code === 'resourceDeleteFail') return false
         })
         this.setState((state) => {
-            state.data.courses[course].playlist.filter((val,i) => i !== ind)
-            return {data: {...state.data}}
+            /* state.data.courses[course].playlist.filter((val,i) => i !== ind) */
+            return Object.assign(state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)})
         }, () => this.dataSaveLocal())
     }
 
