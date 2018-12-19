@@ -54,7 +54,6 @@ export default class Main extends React.Component {
     componentDidUpdate() {
         _st.loading = false
         {/* <div id="stAppVidBlock" className="z-depth-2"></div> */}
-        console.log('main component updated')
     }
 
     hashSaveLocal(hashes) {
@@ -86,7 +85,6 @@ export default class Main extends React.Component {
                 state.data.courses[course].playlist.splice(ind)
             }, () => {
                 this.dataSaveLocal()
-                console.log(this.state.data.courses[course].playlist)
             })
         })
     }
