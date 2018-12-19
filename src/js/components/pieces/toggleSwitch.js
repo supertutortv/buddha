@@ -22,7 +22,7 @@ const ToggleSwitch = ({label, on, onClick, className, children}) => {
             <div className={classes} onClick={(e) => onClick(e)}>
                 <div className="stToggle">{children}</div>
             </div>
-            {label ? <span className="label">{label}</span> : null}
+            {label ? <span className="stToggleLabel">{label}</span> : null}
         </React.Fragment>
     )
 }
