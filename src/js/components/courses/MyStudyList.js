@@ -25,6 +25,7 @@ export default class MyStudyList extends React.Component {
             el.style = 'display:none'
             this.state.updating = true
             this.props.removePL(test,o,i)
+            console.log(el)
         },100)
     }
 
