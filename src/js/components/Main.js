@@ -83,7 +83,7 @@ export default class Main extends React.Component {
         })
         this.setState((state) => {
             /* state.data.courses[course].playlist.filter((val,i) => i !== ind) */
-            return Object.assign(state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)})
+            return Object.assign(this.state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)})
         }, () => this.dataSaveLocal())
     }
 
