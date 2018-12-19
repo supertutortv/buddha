@@ -81,11 +81,11 @@ export default class Main extends React.Component {
         _st.http.del('/courses/data',dt,(d) => {
             if (d.code === 'resourceDeleteFail') return false
             this.setState((state) => {
+                console.log(ind)
                 state.data.courses[course].playlist.filter((val,i) => i !== ind)
             }, () => {
                 this.dataSaveLocal()
             })
-            console.log(this.state.data.courses[course].playlist)
         })
     }
 
