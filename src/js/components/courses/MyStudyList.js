@@ -7,8 +7,6 @@ export default class MyStudyList extends React.Component {
     constructor(props) {
         super(props)
 
-        this.playlist = this.props.data
-
         this.state = {
             vindex : 0,
             video : this.playlist[0].vidid,
@@ -31,12 +29,11 @@ export default class MyStudyList extends React.Component {
     }
 
     changeVid(i) {
-        this.setState((state) => {return {vindex: (typeof i === 'undefined') ? (this.playlist.length-1 === state.vindex ? 0 : state.vindex + 1) : i}})
+        this.setState((state) => {return {vindex: (typeof i === 'undefined') ? (this.props.data.length-1 === state.vindex ? 0 : state.vindex + 1) : i}})
     }
 
     render() {
-        let { playlist } = this,
-            { updateSettings, test } = this.props,
+        let { data: playlist, updateSettings, test } = this.props,
             list = []
 
         playlist.forEach((o,i) => {
