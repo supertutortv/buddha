@@ -14,7 +14,10 @@ const env = process.env.APP_MODE
 // FUNCTION START //
 
 function STTV() {
+    let sCD = localStorage.getItem('stCourseData') || false
+
     this._appStart = Math.floor(Date.now()/1000)
+    this.data = !sCD || JSON.parse(sCD)
 }
 
 STTV.prototype = {
