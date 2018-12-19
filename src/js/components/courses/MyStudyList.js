@@ -9,7 +9,7 @@ export default class MyStudyList extends React.Component {
 
         this.state = {
             vindex : 0,
-            video : this.playlist[0].vidid,
+            video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
             updating: false
         }
