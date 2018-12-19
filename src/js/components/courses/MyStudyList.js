@@ -11,7 +11,8 @@ export default class MyStudyList extends React.Component {
             vindex : 0,
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
-            updating: false
+            updating: false,
+            remove: false
         }
 
         this.changeVid = this.changeVid.bind(this)
@@ -19,10 +20,6 @@ export default class MyStudyList extends React.Component {
     }
 
     removeVid(test,e,i,o) {
-        let el = e.target.parentNode
-        //el.classList.add('remove')
-        console.log(e)
-        return null
         
         window.setTimeout(() => {
             this.state.updating = true
@@ -36,22 +33,19 @@ export default class MyStudyList extends React.Component {
 
     render() {
         let { data: playlist, updateSettings, test } = this.props,
-            list = []
-            console.log(playlist)
-
-        playlist.forEach((o,i) => {
-            let clsHl = (this.state.vindex === i) ? ' highlight' : ''
-            list.push(
-                <div className={"stCourseStudyListItem"+clsHl} onClick={() => this.changeVid(i)}>
-                    <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
-                    <div class="listItemTitle">{o.name}</div>
-                    <div class="listRemoveItem" onClick={(e) => {
-                        e.stopPropagation()
-                        if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
-                    }}>x</div>
-                </div>
-            )
-        })
+            list = playlist.map((o,i) => {
+                let clsHl = (this.state.vindex === i) ? ' highlight' : ''
+                list.push(
+                    <div className={["stCourseStudyListItem",clsHl].join(' ')} onClick={() => this.changeVid(i)}>
+                        <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
+                        <div class="listItemTitle">{o.name}</div>
+                        <div class="listRemoveItem" onClick={(e) => {
+                            e.stopPropagation()
+                            if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
+                        }}>x</div>
+                    </div>
+                )
+            })
 
         return (
             <div className="stCourseTop">
