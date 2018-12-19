@@ -20,7 +20,6 @@ export default class MyStudyList extends React.Component {
 
     removeVid(test,e,i,o) {
         let el = e.target.parentNode
-        return console.log(el)
         el.style = "opacity:0"
         window.setTimeout(() => {
             el.style = 'display:none'
