@@ -31,6 +31,7 @@ export default class Main extends React.Component {
         this.hashSaveLocal = this.hashSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
+        this.splicePlaylist = this.splicePlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
         this.refreshData = this.refreshData.bind(this)
@@ -77,6 +78,18 @@ export default class Main extends React.Component {
         }, () => this.dataSaveLocal())
     }
 
+    splicePlaylist(course,dt,ind) {
+        _st.http.del('/courses/data',dt,(d) => {
+            if (d.code === 'resourceDeleteFail') return false
+            this.setState((state) => {
+                state.data.courses[course].playlist.splice(ind)
+            }, () => {
+                this.dataSaveLocal()
+                console.log(this.state.data.courses[course].playlist)
+            })
+        })
+    }
+
     addDl(course,data) {
         this.setState((state) => {
             state.data.courses[course].downloads.push(data)
@@ -115,6 +128,7 @@ export default class Main extends React.Component {
                         refreshData={this.refreshData} 
                         addHistory={this.addHistory} 
                         setPlaylist={this.setPlaylist} 
+                        splicePlaylist={this.splicePlaylist} 
                         modalActive={this.modalActive} 
                         updateSettings={this.updateSettings} 
                         {...props} 

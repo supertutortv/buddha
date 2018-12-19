@@ -22,15 +22,11 @@ export default class MyStudyList extends React.Component {
 
     removeVid(test,e,i,o) {
         let el = e.target.parentNode
-        
         el.style = "opacity:0"
         window.setTimeout(() => {
             el.style = 'display:none'
             this.state.updating = true
-            this.props.removePL(o,(d) => {
-                if (d.code === 'resourceDeleteFail') return false
-                this.setState({updating: false})
-            })
+            this.props.removePL(test,o,i)
         },100)
     }
 
