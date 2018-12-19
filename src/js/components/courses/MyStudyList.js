@@ -17,6 +17,26 @@ export default class MyStudyList extends React.Component {
         }
 
         this.changeVid = this.changeVid.bind(this)
+        this.removeVid = this.removeVid.bind(this)
+    }
+
+    removeVid(e,i,o) {
+        if (this.state.updating === true) return false
+        return console.log(i)
+        let el = e.target.parentNode
+        if (window.confirm('Are you sure you want to delete this video?')) {
+            
+            el.style = "opacity:0"
+            window.setTimeout(() => {
+                el.style = 'display:none'
+                this.state.updating = true
+                removePL(o,(d) => {
+                    if (d.code === 'resourceDeleteFail') return false
+                    playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
+                    this.setState({updating: false})
+                })
+            },100)
+        }
     }
 
     changeVid(i) {
@@ -36,20 +56,7 @@ export default class MyStudyList extends React.Component {
                     <div class="listItemTitle">{o.name}</div>
                     <div class="listRemoveItem" onClick={(e) => {
                         e.stopPropagation()
-                        let el = e.target.parentNode
-                        if (window.confirm('Are you sure you want to delete this video?')) {
-                            if (this.state.updating === true) return false
-                            el.style = "opacity:0"
-                            window.setTimeout(() => {
-                                el.style = 'display:none'
-                                this.state.updating = true
-                                removePL(o,(d) => {
-                                    if (d.code === 'resourceDeleteFail') return false
-                                    playlist.some((obj,i,a) => d.data.id === obj.id && (a.splice(i)))
-                                    this.setState({updating: false})
-                                })
-                            },100)
-                        }
+                        this.removeVid(e,i,o)
                     }}>x</div>
                 </div>
             ) 
