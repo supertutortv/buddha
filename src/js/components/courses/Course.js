@@ -83,7 +83,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <MyStudyList test={test} removePL={splicePlaylist} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
+                                        <MyStudyList test={params.courses} removePL={splicePlaylist} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
