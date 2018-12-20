@@ -40,7 +40,7 @@ export default class MyStudyList extends React.Component {
                         this.state.updating = true
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    this.setState({updating: false},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
+                                    this.setState({vindex: this.state.vindex-1 || 0},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
                                 }
                             } else {
                                 this.changeVid(i)
