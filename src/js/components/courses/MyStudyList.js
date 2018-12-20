@@ -11,8 +11,7 @@ export default class MyStudyList extends React.Component {
             vindex : 0,
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
-            updating: false,
-            remove: null
+            updating: false
         }
 
         this.changeVid = this.changeVid.bind(this)
@@ -38,9 +37,10 @@ export default class MyStudyList extends React.Component {
                     rmv = (this.state.remove === i) ? 'remove' : ''
                 return (
                     <div id={"item"+i} className={["stCourseStudyListItem",clsHl,rmv].join(' ')} onClick={(e) => {
+                        this.state.updating = true
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    this.setState({remove: i},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
+                                    this.setState({updating: false},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
                                 }
                             } else {
                                 this.changeVid(i)

@@ -79,11 +79,11 @@ export default class Main extends React.Component {
 
     splicePlaylist(course,dt,ind) {
         _st.http.del('/courses/data',dt,(d) => {
-            if (d.code === 'resourceDeleteFail') return false
-            this.setState(
-                state => Object.assign(this.state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)}
-            ), () => this.dataSaveLocal())
+            if (d.code === 'resourceDeleteFail') return console.log(d)
         })
+        this.setState(
+            state => Object.assign(this.state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)}
+        ), () => this.dataSaveLocal())
     }
 
     addDl(course,data) {
