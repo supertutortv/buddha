@@ -17,6 +17,8 @@ export default class MyStudyList extends React.Component {
         this.changeVid = this.changeVid.bind(this)
         this.removeVid = this.removeVid.bind(this)
         this.resetIndex = this.resetIndex.bind(this)
+
+        console.log('msl init')
     }
 
     componentDidUpdate() {
@@ -37,16 +39,16 @@ export default class MyStudyList extends React.Component {
     }
 
     render() {
-        console.log(this.state.vindex)
         let { data: playlist, updateSettings, test } = this.props,
+            indx = (this.state.vindex === playlist.length) ? this.state.vindex-1 : this.state.vindex,
             list = playlist.map((o,i) => {
-                let clsHl = (this.state.vindex === i) ? 'highlight' : ''
+                let clsHl = (indx === i) ? 'highlight' : ''
                 return (
                     <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
                         this.state.updating = true
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    this.removeVid(test,e,i,o,() => i > playlist.length-1 ? this.resetIndex : null)
+                                    this.removeVid(test,e,i,o)
                                 }
                             } else {
                                 this.changeVid(i)
@@ -63,7 +65,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={playlist[this.state.vindex].vidid} />
+                    <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={playlist[indx].vidid} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
