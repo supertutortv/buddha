@@ -12,7 +12,7 @@ export default class MyStudyList extends React.Component {
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
             updating: false,
-            remove: 0
+            remove: null
         }
 
         this.changeVid = this.changeVid.bind(this)
