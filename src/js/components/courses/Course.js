@@ -9,7 +9,7 @@ import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
 
 function deleteUdata(dt,cb) {
-    _st.udata.remove(dt,cb)
+    _st.http.del('/courses/data',dt,cb)
 }
 
 const Practice = ({hist,path,trialing,obj}) => {
@@ -39,7 +39,7 @@ const Practice = ({hist,path,trialing,obj}) => {
     return t
 }
 
-const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, addHistory, refreshData}) => {
+const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, splicePlaylist, addHistory, refreshData, updateSettings}) => {
     const {params} = match
     const icons = {
         essay: 'scroll',
@@ -54,6 +54,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
     return(
         <DataState.Consumer>
             {(data) => {
+
                 try {
                     var activeObj = Object.entries(params).reduce((obj,val) => {
                         if (typeof val[1] === 'undefined')
@@ -82,7 +83,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <MyStudyList data={data.courses[params.courses].playlist} />
+                                        <MyStudyList test={params.courses} removePL={splicePlaylist} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} />
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>

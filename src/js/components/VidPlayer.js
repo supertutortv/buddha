@@ -5,7 +5,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const events = {
     'play': (e) => false,
-    'ended': (e, { getNextVid }) => getNextVid()
+    'ended': (e, { getNextVid, autoplay }) => autoplay ? getNextVid() : false
 }
 
 class VidPlayer extends React.Component {
@@ -43,13 +43,12 @@ class VidPlayer extends React.Component {
     }
 
     componentDidUpdate(prev) {
-        const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name]);
-        this.updateProps(changes);
-      }
+        const changes = Object.keys(this.props).filter(name => this.props[name] !== prev[name])
+        this.updateProps(changes)
+    }
 
-    createPlayer() {
-        this.player = new Player(this.container, this.initial)
-    
+    createPlayer(ob = this.initial) {
+        this.player = new Player(this.container, ob)
         Object.keys(events).forEach((ev) => {
             this.player.on(ev, (event) => {
                 events[ev](event, this.props)
@@ -67,10 +66,19 @@ class VidPlayer extends React.Component {
         const { player } = this
 
         names.forEach((name) => {
-            const value = this.props[name]
+            const value = this.props[name],
+                ob = {[name]:value}
 
             switch (name) {
+                case 'autopause':
+                    break
                 case 'autoplay':
+                    player.destroy().then((u) => {
+                        this.props.ind(0)
+                        this.createPlayer(Object.assign(this.initial,ob))
+                    }).catch(function(error) {
+                        console.log(error)
+                    })
                     break
                 case 'video':
                     player.loadVideo(value)

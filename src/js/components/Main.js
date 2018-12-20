@@ -11,6 +11,8 @@ export default class Main extends React.Component {
 
         let sCD = localStorage.getItem('stCourseData') || false
 
+        this.vers = localStorage.getItem('stVersionHashes') || '[]'
+
         this.state = {
             data: !sCD || JSON.parse(sCD),
             loading: true,
@@ -26,22 +28,27 @@ export default class Main extends React.Component {
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
+        this.hashSaveLocal = this.hashSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
+        this.splicePlaylist = this.splicePlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
         this.refreshData = this.refreshData.bind(this)
+        this.updateSettings = this.updateSettings.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
 
     async componentDidMount() {
         _st.bodyClass = 'main'
-        var obj = { loading: false }
+        var obj = { loading: false },
+            vers = JSON.parse(this.vers),
+            upd = (vers.indexOf(stVersionHash) < 0 || this.state.data === true)
 
-        if (this.state.data === true) await _st.http.get('/courses/data',(h) => obj.data = h.data)
+        if (upd) await _st.http.get('/courses/data',(h) => obj.data = h.data)
 
-        this.setState(obj,() => this.dataSaveLocal())
+        this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
     }
 
     componentDidUpdate() {
@@ -49,8 +56,15 @@ export default class Main extends React.Component {
         {/* <div id="stAppVidBlock" className="z-depth-2"></div> */}
     }
 
+    hashSaveLocal(hashes) {
+        if (hashes.indexOf(stVersionHash) < 0) hashes.push(stVersionHash)
+        localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
+        return this
+    }
+
     dataSaveLocal() {
-        return localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
+        localStorage.setItem('stCourseData',JSON.stringify(this.state.data))
+        return this
     }
 
     modalActive(modal = {}) {
@@ -63,6 +77,15 @@ export default class Main extends React.Component {
         }, () => this.dataSaveLocal())
     }
 
+    splicePlaylist(course,dt,ind) {
+        _st.http.del('/courses/data',dt,(d) => {
+            if (d.code === 'resourceDeleteFail') return console.log(d)
+        })
+        this.setState(
+            state => Object.assign(this.state.data.courses[course],{playlist: state.data.courses[course].playlist.filter((val,i) => i !== ind)}
+        ), () => this.dataSaveLocal())
+    }
+
     addDl(course,data) {
         this.setState((state) => {
             state.data.courses[course].downloads.push(data)
@@ -73,6 +96,15 @@ export default class Main extends React.Component {
         this.setState((state) => {
             state.data.courses[course].history.push(obj.vidid)
         }, () => this.dataSaveLocal())
+    }
+
+    updateSettings(setting,val) {
+        let obj = {[setting]:val}
+        _st.http.put('/courses/data/settings',obj,(d) => {
+            this.setState((state) => {
+                return Object.assign(state.data.user.settings,obj)
+            }, () => this.dataSaveLocal())
+        })
     }
 
     refreshData() {
@@ -88,7 +120,15 @@ export default class Main extends React.Component {
                 <Switch>
                     <Route exact path='/dashboard' render={props => <Dashboard refreshData={this.refreshData}/>} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
-                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course refreshData={this.refreshData} addHistory={this.addHistory} setPlaylist={this.setPlaylist} modalActive={this.modalActive} {...props} />} />
+                    <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
+                        refreshData={this.refreshData} 
+                        addHistory={this.addHistory} 
+                        setPlaylist={this.setPlaylist} 
+                        splicePlaylist={this.splicePlaylist} 
+                        modalActive={this.modalActive} 
+                        updateSettings={this.updateSettings} 
+                        {...props} 
+                    />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
                 <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
