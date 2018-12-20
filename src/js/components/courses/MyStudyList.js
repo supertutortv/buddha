@@ -39,7 +39,8 @@ export default class MyStudyList extends React.Component {
                     <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    e.currentTarget.classList.add('remove')
+                                    let parnt = document.getElementById("item"+i)
+                                    parnt.classList.add('remove')
                                     window.setTimeout(() => this.removeVid(test,e,i,o),100)
                                 }
                             } else {
