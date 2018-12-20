@@ -12,7 +12,7 @@ export default class MyStudyList extends React.Component {
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
             updating: false,
-            remove: false
+            remove: 0
         }
 
         this.changeVid = this.changeVid.bind(this)
@@ -34,14 +34,13 @@ export default class MyStudyList extends React.Component {
     render() {
         let { data: playlist, updateSettings, test } = this.props,
             list = playlist.map((o,i) => {
-                let clsHl = (this.state.vindex === i) ? 'highlight' : ''
+                let clsHl = (this.state.vindex === i) ? 'highlight' : '',
+                    rmv = (this.state.remove === i) ? 'remove' : ''
                 return (
-                    <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
+                    <div id={"item"+i} className={["stCourseStudyListItem",clsHl,rmv].join(' ')} onClick={(e) => {
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    let parnt = document.getElementById("item"+i)
-                                    parnt.classList.add('remove')
-                                    window.setTimeout(() => this.removeVid(test,e,i,o),100)
+                                    this.setState({remove: i},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
                                 }
                             } else {
                                 this.changeVid(i)
