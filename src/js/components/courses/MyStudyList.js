@@ -34,8 +34,8 @@ export default class MyStudyList extends React.Component {
     render() {
         let { data: playlist, updateSettings, test } = this.props,
             list = playlist.map((o,i) => {
-                let clsHl = (this.state.vindex === i) ? ' highlight' : ''
-                list.push(
+                let clsHl = (this.state.vindex === i) ? 'highlight' : ''
+                return (
                     <div className={["stCourseStudyListItem",clsHl].join(' ')} onClick={() => this.changeVid(i)}>
                         <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
                         <div class="listItemTitle">{o.name}</div>
