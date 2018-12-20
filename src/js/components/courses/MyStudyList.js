@@ -37,7 +37,7 @@ export default class MyStudyList extends React.Component {
                 let clsHl = (this.state.vindex === i) ? 'highlight' : ''
                 return (
                     <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
-                            console.log(e.target)
+                            console.log(e.currentTarget)
                             /* if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
                             this.changeVid(i) */
                         }
