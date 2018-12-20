@@ -36,13 +36,15 @@ export default class MyStudyList extends React.Component {
             list = playlist.map((o,i) => {
                 let clsHl = (this.state.vindex === i) ? 'highlight' : ''
                 return (
-                    <div className={["stCourseStudyListItem",clsHl].join(' ')} onClick={() => this.changeVid(i)}>
+                    <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
+                            console.log(e.target)
+                            /* if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
+                            this.changeVid(i) */
+                        }
+                        }>
                         <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
-                        <div class="listItemTitle">{o.name}</div>
-                        <div class="listRemoveItem" onClick={(e) => {
-                            e.stopPropagation()
-                            if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
-                        }}>x</div>
+                        <div className="listItemTitle">{o.name}</div>
+                        <div className="listRemoveItem" onClick={(e) => {}}>x</div>
                     </div>
                 )
             })
