@@ -25,7 +25,7 @@ export default class MyStudyList extends React.Component {
     }
 
     resetIndex() {
-        this.setState(prev => Object.assign({},{vindex: prev.vindex-1}))
+        this.setState({vindex: 0})
     }
 
     changeVid(i) {
