@@ -17,12 +17,6 @@ export default class MyStudyList extends React.Component {
         this.changeVid = this.changeVid.bind(this)
         this.removeVid = this.removeVid.bind(this)
         this.resetIndex = this.resetIndex.bind(this)
-
-        console.log('msl init')
-    }
-
-    componentDidUpdate() {
-        //console.log(this.state)
     }
 
     removeVid(test,e,i,o,cb) {
@@ -61,7 +55,6 @@ export default class MyStudyList extends React.Component {
                     </div>
                 )
             })
-            console.log(playlist)
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
