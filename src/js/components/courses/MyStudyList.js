@@ -19,6 +19,10 @@ export default class MyStudyList extends React.Component {
         this.resetIndex = this.resetIndex.bind(this)
     }
 
+    componentDidUpdate() {
+        console.log(this.state)
+    }
+
     removeVid(test,e,i,o,cb) {
         this.props.removePL(test,o,i)
         typeof cb === 'function' && cb()
