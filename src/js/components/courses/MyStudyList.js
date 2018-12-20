@@ -20,7 +20,7 @@ export default class MyStudyList extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.state)
+        //console.log(this.state)
     }
 
     removeVid(test,e,i,o,cb) {
@@ -58,7 +58,7 @@ export default class MyStudyList extends React.Component {
                     </div>
                 )
             })
-
+            console.log(playlist)
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
