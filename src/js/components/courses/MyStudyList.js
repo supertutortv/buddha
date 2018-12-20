@@ -37,6 +37,7 @@ export default class MyStudyList extends React.Component {
     }
 
     render() {
+        console.log(this.state.vindex)
         let { data: playlist, updateSettings, test } = this.props,
             list = playlist.map((o,i) => {
                 let clsHl = (this.state.vindex === i) ? 'highlight' : ''
