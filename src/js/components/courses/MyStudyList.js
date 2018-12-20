@@ -16,14 +16,16 @@ export default class MyStudyList extends React.Component {
 
         this.changeVid = this.changeVid.bind(this)
         this.removeVid = this.removeVid.bind(this)
+        this.resetIndex = this.resetIndex.bind(this)
     }
 
-    removeVid(test,e,i,o) {
-        
-        window.setTimeout(() => {
-            this.state.updating = true
-            this.props.removePL(test,o,i)
-        },100)
+    removeVid(test,e,i,o,cb) {
+        this.props.removePL(test,o,i)
+        typeof cb === 'function' && cb()
+    }
+
+    resetIndex() {
+        this.setState(prev => Object.assign({},{vindex: prev.vindex-1}))
     }
 
     changeVid(i) {
@@ -33,14 +35,13 @@ export default class MyStudyList extends React.Component {
     render() {
         let { data: playlist, updateSettings, test } = this.props,
             list = playlist.map((o,i) => {
-                let clsHl = (this.state.vindex === i) ? 'highlight' : '',
-                    rmv = (this.state.remove === i) ? 'remove' : ''
+                let clsHl = (this.state.vindex === i) ? 'highlight' : ''
                 return (
-                    <div id={"item"+i} className={["stCourseStudyListItem",clsHl,rmv].join(' ')} onClick={(e) => {
+                    <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
                         this.state.updating = true
                             if (e.target.classList.contains('listRemoveItem')) {
                                 if (window.confirm('Are you sure you want to delete this video?')) {
-                                    this.setState({vindex: this.state.vindex-1 || 0},() => window.setTimeout(() => this.removeVid(test,e,i,o),100))
+                                    this.removeVid(test,e,i,o,() => playlist.length === i+1 ? this.resetIndex : null)
                                 }
                             } else {
                                 this.changeVid(i)
