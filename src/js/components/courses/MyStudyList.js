@@ -37,9 +37,14 @@ export default class MyStudyList extends React.Component {
                 let clsHl = (this.state.vindex === i) ? 'highlight' : ''
                 return (
                     <div id={"item"+i} className={["stCourseStudyListItem",clsHl].join(' ')} onClick={(e) => {
-                            console.log(e.currentTarget)
-                            /* if (window.confirm('Are you sure you want to delete this video?')) this.removeVid(test,e,i,o)
-                            this.changeVid(i) */
+                            if (e.target.classList.contains('listRemoveItem')) {
+                                if (window.confirm('Are you sure you want to delete this video?')) {
+                                    e.currentTarget.classList.add('remove')
+                                    window.setTimeout(() => this.removeVid(test,e,i,o),100)
+                                }
+                            } else {
+                                this.changeVid(i)
+                            }
                         }
                         }>
                         <img src={"https://i.vimeocdn.com/video/"+o.thumb+"_295x166.jpg?r=pad"} />
