@@ -35,6 +35,7 @@ export default class MyStudyList extends React.Component {
     render() {
         let { data: playlist, updateSettings, test } = this.props,
             indx = (this.state.vindex === playlist.length) ? this.state.vindex-1 : this.state.vindex,
+            theVid = playlist.length === 0 ? 0 : playlist[indx].vidid,
             list = playlist.map((o,i) => {
                 let clsHl = (indx === i) ? 'highlight' : ''
                 return (
@@ -58,7 +59,7 @@ export default class MyStudyList extends React.Component {
         return (
             <div className="stCourseTop">
                 <div className="stCourseIntro">
-                    <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={playlist[indx].vidid} />
+                    <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={theVid} />
                 </div>
                 <div className="stCourseMSL">
                     <div className="stCourseMSLInner">
