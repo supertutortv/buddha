@@ -57,7 +57,6 @@ export default class Main extends React.Component {
 
     componentDidUpdate() {
         _st.loading = false
-        {/* <div id="stAppVidBlock" className="z-depth-2"></div> */}
     }
 
     hashSaveLocal(hashes) {
