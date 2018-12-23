@@ -19,7 +19,7 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                                 if (emp)
                                     return e.preventDefault()
                                 else
-                                    _st.udata.update('downloads',f,(d) => {
+                                    _st.http.put('/courses/data/downloads',f,(d) => {
                                         reportDl(test,d.data.vidid)
                                     })
                                     window.location = href
