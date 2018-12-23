@@ -41,14 +41,18 @@ export default class Main extends React.Component {
     }
 
     async componentDidMount() {
-        _st.bodyClass = 'main'
-        var obj = { loading: false },
-            vers = JSON.parse(this.vers),
-            upd = (vers.indexOf(stVersionHash) < 0 || this.state.data === true)
+        let vers = JSON.parse(this.vers)
+
+        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
+        
+        let obj = { loading: false },
+            upd = (this.state.data === true)
 
         if (upd) await _st.http.get('/courses/data',(h) => obj.data = h.data)
 
         this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
+        _st.bodyClass = 'main'
+        _st.loading = false
     }
 
     componentDidUpdate() {
@@ -69,6 +73,7 @@ export default class Main extends React.Component {
 
     modalActive(modal = {}) {
         this.setState((state) => (Object.assign(state.modal,modal)))
+        return this
     }
 
     setPlaylist(course,data) {
