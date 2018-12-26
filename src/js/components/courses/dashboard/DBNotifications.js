@@ -44,7 +44,7 @@ export default class DBNotifications extends React.Component {
                                     <div className="stNotification">
                                         <div className="stNoteDate">{o.date}</div>
                                         <div className="stNoteTitle"><span onClick={() => this.openNote(o.id)}>{o.title}</span></div>
-                                        <div className="stNoteDismiss"><span onClick={() => this.dismissNote(o.id)}>{o.title}</span></div>
+                                        <div className="stNoteDismiss"><span onClick={() => this.dismissNote(o.id)}>x</span></div>
                                     </div>
                             )}</div>
                     }
