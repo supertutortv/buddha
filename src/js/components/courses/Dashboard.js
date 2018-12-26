@@ -40,8 +40,8 @@ export default class Dashboard extends React.Component {
                         <React.Fragment>
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
-                                <DBStats />
                                 <DBCourses courses={data.courses} />
+                                <DBStats />
                                 <DBActions cancellation={this.cancellation} d={data.user} />
                             </main>
                         </React.Fragment>

@@ -21,6 +21,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 <legend>Options</legend>
                                 <div className="input-field">
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
+                                        <option value disabled selected>Choose One...</option>
                                         {state.item.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
                                             return (
@@ -29,10 +30,6 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                         })}
                                     </select>
                                 </div>
-                                {/* <div className="input-field half couponInp">
-                                    <input class="browser-default validate coupon" name="pricing|coupon|value" type="text" placeholder="Coupon code" onBlur={setChecker}/>
-                                    <label></label>
-                                </div> */}
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" type="checkbox" onChange={setShipping}/>
                                     <label for="customer|options|priorityShip"><span>I want Priority Shipping (+${(state.item.metadata.priship/100).toFixed(2)}, U.S. only)</span></label>
