@@ -35,7 +35,7 @@ export default class DBNotifications extends React.Component {
         return (
             <div className="stDashboardNotifications">
                 <div className="heading">Notifications</div>
-                <div className="stNotificationsBody">
+                <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
                     {!fetched ? null : 
                         (notifications.length === 0) ? 
                             <div className="noNotes">No notifications to display</div> : 
