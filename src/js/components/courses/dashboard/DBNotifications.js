@@ -8,6 +8,9 @@ export default class DBNotifications extends React.Component {
             fetched : false,
             notifications : []
         }
+
+        this.openNote = this.openNote.bind(this)
+        this.dismissNote = this.dismissNote.bind(this)
     }
 
     componentDidMount() {
@@ -19,9 +22,16 @@ export default class DBNotifications extends React.Component {
         })
     }
 
+    openNote(id) {
+        console.log(id)
+    }
+
+    dismissNote(id) {
+        console.log(id)
+    }
+
     render() {
-        let {fetched, notifications} = this.state,
-            notes = notifications.map((o) => JSON.stringify(o) )
+        let {fetched, notifications} = this.state
         return (
             <div className="stDashboardNotifications">
                 <div className="heading">Notifications</div>
@@ -29,7 +39,14 @@ export default class DBNotifications extends React.Component {
                     {!fetched ? null : 
                         (notifications.length === 0) ? 
                             <div className="noNotes">No notifications to display</div> : 
-                            <div className="stNotes">{notes}</div>
+                            <div className="stNotes">{
+                                notifications.map((o) => 
+                                    <div className="stNotification">
+                                        <div className="stNoteDate">{o.date}</div>
+                                        <div className="stNoteTitle"><span onClick={() => this.openNote(o.id)}>{o.title}</span></div>
+                                        <div className="stNoteDismiss"><span onClick={() => this.dismissNote(o.id)}>{o.title}</span></div>
+                                    </div>
+                            )}</div>
                     }
                 </div>
             </div>
