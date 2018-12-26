@@ -1,6 +1,7 @@
 import React from 'react'
 import { DataState } from './StateContext'
 import { DBCourses, DBStats, DBActions } from './dashboard/components'
+import DBNotifications from './dashboard/DBNotifications'
 import Header from '../Header'
 
 export default class Dashboard extends React.Component {
@@ -41,7 +42,7 @@ export default class Dashboard extends React.Component {
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
                                 <DBCourses courses={data.courses} />
-                                <DBStats />
+                                <DBNotifications />
                                 <DBActions cancellation={this.cancellation} d={data.user} />
                             </main>
                         </React.Fragment>
