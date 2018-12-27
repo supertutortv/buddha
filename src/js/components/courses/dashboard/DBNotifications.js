@@ -28,7 +28,7 @@ export default class DBNotifications extends React.Component {
 
     dismissNote(id) {
         this.setState(prev => {
-            let obj = {id: prev.notifications}
+            let obj = {id: prev.notifications.filter(note => note.id !== id)}
             console.log(obj)
             return obj
         })
