@@ -66,8 +66,10 @@ export default class Dashboard extends React.Component {
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
                                 <DBCourses courses={data.courses} />
-                                <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
-                                <DBActions cancellation={this.cancellation} d={data.user} />
+                                <div className="stNotesActions">
+                                    <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
+                                    <DBActions cancellation={this.cancellation} d={data.user} />
+                                </div>
                             </main>
                         </React.Fragment>
                     )

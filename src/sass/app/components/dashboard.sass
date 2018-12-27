@@ -46,43 +46,47 @@
                         span
                             font-size: $small
 
-    .stDashboardStats
-        padding: $huge
+    .stNotesActions
+        width: 100%
+        display: flex
+        align-items: center
 
-    .stDashboardNotifications
+        .stDashboardNotifications
+            flex: 1
 
-        .stNotificationsBody
-            padding: 1em
+            .stNotificationsBody
+                padding: 1em
 
-            .stNotes
-                width: 100%
+                .stNotes
+                    width: 100%
 
-                .stNotification
-                    font-size: $small
-                    background: white()
-                    display: flex
-                    align-items: center
+                    .stNotification
+                        font-size: $small
+                        background: white()
+                        display: flex
+                        align-items: center
 
-                    & > div
-                        padding: 1em
+                        & > div
+                            padding: 1em
 
-                        span
-                            cursor: pointer
+                            span
+                                cursor: pointer
 
-                    .stNoteDate
-                        font-weight: 600
+                        .stNoteDate
+                            font-weight: 600
 
-                    .stNoteTitle
-                        flex: 1
-                        font-style: italic
+                        .stNoteTitle
+                            flex: 1
+                            font-style: italic
 
-    .stDashboardActions
-        
-        .stDBActionsBody
-            padding: 1em
-
-            span
-                font-style: italic
+        .stDashboardActions
+            flex: 1
             
-            button
-                background-color: azure()
+            .stDBActionsBody
+                padding: 1em
+
+                span
+                    font-style: italic
+                
+                button
+                    background-color: azure()
