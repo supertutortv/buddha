@@ -28,7 +28,7 @@ export default class Dashboard extends React.Component {
                 return this.setState({error: {...resp}}, () => console.log(this.state.error))
             else {
                 alert(resp.message)
-                _st.auth.logout(() => this.props.refreshData())
+                _st.http.post('/auth/logout',{},() => this.props.refreshData())
             }
         })
     }
