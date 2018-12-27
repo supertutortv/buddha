@@ -53,7 +53,7 @@ export default class Dashboard extends React.Component {
     dismissNote(id) {
         this.setState(
             prev => Object.assign(prev.notifications,{notes: prev.notifications.notes.filter(note => note.id !== id)}),
-            () => _st.http.post('/courses/notifications',{id: id})
+            () => _st.http.post('/courses/notification',{id: id})
         )
     }
 
