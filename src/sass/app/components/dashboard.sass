@@ -2,19 +2,9 @@
     padding: $huge 0
     +centerblock
 
-    & > div
-        margin-bottom: 1em
-        border-radius: $ittybitty
-        @extend .z-depth-3
-
-        .heading
-            padding: 1em
-            font-weight: 600
-            line-height: 1
-            border-bottom: 1px solid black(.15)
-
     .stDashboardCourses
         padding: 0 1em
+        @extend .stShadowBox
         
         .myCoursesBody
             padding: 1em
@@ -53,8 +43,11 @@
         align-items: center
 
         .stDashboardNotifications
-            padding: 0 1em
+            margin: 0 1em
             flex: 1
+
+            & > section
+                @extend .stShadowBox
 
             .stNotificationsBody
                 padding: 1em
@@ -82,8 +75,11 @@
                             font-style: italic
 
         .stDashboardActions
-            padding: 0 1em
+            margin: 0 1em
             flex: 1
+
+            & > section
+                @extend .stShadowBox
             
             .stDBActionsBody
                 padding: 1em
