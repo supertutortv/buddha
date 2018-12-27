@@ -27,7 +27,10 @@ export default class DBNotifications extends React.Component {
     }
 
     dismissNote(id) {
-        console.log(id)
+        this.setState(prev => {
+            console.log(prev)
+            return false
+        })
     }
 
     render() {
