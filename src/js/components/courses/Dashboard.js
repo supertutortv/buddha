@@ -1,7 +1,6 @@
 import React from 'react'
 import { DataState } from './StateContext'
-import { DBCourses, DBStats, DBActions } from './dashboard/components'
-import DBNotifications from './dashboard/DBNotifications'
+import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
 
 export default class Dashboard extends React.Component {
@@ -9,15 +8,29 @@ export default class Dashboard extends React.Component {
         super(props)
 
         this.state = {
-            error: {}
+            error: {},
+            notifications: {
+                fetched: false,
+                notes: []
+            }
         }
 
         this.cancellation = this.cancellation.bind(this)
+        this.openNote = this.openNote.bind(this)
+        this.dismissNote = this.dismissNote.bind(this)
     }
 
     componentDidMount() {
         _st.bodyClass = 'dashboard'
         _st.loading = false
+        if (!this.state.notifications.fetched) _st.http.get('/courses/notifications',(d) => {
+            this.setState({
+                notifications: {
+                    fetched: true,
+                    notes: d.data
+                }
+            })
+        })
     }
 
     cancellation(d) {
@@ -33,6 +46,14 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    openNote(id) {
+        console.log(id)
+    }
+
+    dismissNote(id) {
+        this.setState(prev => Object.assign(prev.notifications,{notes: prev.notifications.notes.filter(note => note.id !== id)}))
+    }
+
     render() {
         return(
             <DataState.Consumer>
@@ -42,7 +63,7 @@ export default class Dashboard extends React.Component {
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
                                 <DBCourses courses={data.courses} />
-                                <DBNotifications />
+                                <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
                                 <DBActions cancellation={this.cancellation} d={data.user} />
                             </main>
                         </React.Fragment>

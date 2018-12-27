@@ -1,8 +1,24 @@
 import React from 'react'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
-export const DBStats = () => 
-    <div className="stDashboardStats">If you'd like to unlock the full course or cancel your subscription before being charged and you don't see the buttons below (in the "Actions" section), please email us at info@supertutortv.com</div>
+export const DBNotifications = ({fetched, notes, openNote, dismissNote}) => 
+    <div className="stDashboardNotifications">
+        <div className="heading">Notifications</div>
+        <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
+            {!fetched ? null : 
+                (notes.length === 0) ? 
+                    <div className="noNotes">No notifications to display</div> : 
+                    <div className="stNotes">{
+                        notes.map((o) => 
+                            <div className="stNotification">
+                                <div className="stNoteDate">{o.date}</div>
+                                <div className="stNoteTitle"><span onClick={() => openNote(o.id)}>{o.title}</span></div>
+                                <div className="stNoteDismiss"><span onClick={() => dismissNote(o.id)}>x</span></div>
+                            </div>
+                    )}</div>
+            }
+        </div>
+    </div>
 
 export const DBCourses = ({courses}) => {
     return (
