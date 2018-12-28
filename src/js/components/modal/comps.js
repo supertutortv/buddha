@@ -25,7 +25,7 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                                     window.location = href
                         }}>
                             <div className="inner">
-                                <img src={f.thumb} onerror="this.onerror=null;this.src='/assets/img/pdfplaceholder.png';" />
+                                <img src={f.thumb} onError="this.onerror=null;this.src='/assets/img/pdfplaceholder.png';" />
                                 <figcaption>
                                     <span className="stDownloadName">
                                         <span>{f.name}</span>
