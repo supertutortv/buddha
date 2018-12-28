@@ -11,7 +11,7 @@ export default class Dashboard extends React.Component {
             error: {},
             notifications: {
                 active: false,
-                fetched: false,
+                fetched: true,
                 notes: []
             }
         }
@@ -49,7 +49,6 @@ export default class Dashboard extends React.Component {
     }
 
     openNote(id) {
-        
         _st.http.post('/courses/notification',{id: id},(d) => {
             this.setState(
                 prev => Object.assign(prev.notifications,{active: d.data})
