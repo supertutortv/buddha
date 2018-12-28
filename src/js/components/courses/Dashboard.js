@@ -47,7 +47,7 @@ export default class Dashboard extends React.Component {
     }
 
     openNote(id) {
-        () => _st.http.post('/courses/notification',{id: id})
+        console.log(_st.http.post('/courses/notification',{id: id}))
     }
 
     dismissNote(id) {
