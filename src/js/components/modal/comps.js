@@ -25,7 +25,10 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
                                     window.location = href
                         }}>
                             <div className="inner">
-                                <img src={f.thumb}/>
+                                <img src={f.thumb} onError={(e) => {
+                                    e.target.onerror = null
+                                    e.target.src = '/assets/img/pdfplaceholder.png'
+                                }} />
                                 <figcaption>
                                     <span className="stDownloadName">
                                         <span>{f.name}</span>
@@ -44,4 +47,8 @@ const Downloads = ({refDls,test,reportDl,color,data}) => {
 
 const Practice = () => <div>Practice</div>
 
-export { Downloads, Practice }
+const Notifications = () => {
+
+}
+
+export { Downloads, Practice, Notifications }

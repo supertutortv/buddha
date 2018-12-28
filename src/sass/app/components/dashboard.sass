@@ -1,19 +1,10 @@
 .stDashboard
-    padding: $huge
+    padding: $huge 0
     +centerblock
 
-    & > div
-        margin-bottom: 1em
-        border-radius: $ittybitty
-        @extend .z-depth-3
-
-        .heading
-            padding: 1em
-            font-weight: 600
-            line-height: 1
-            border-bottom: 1px solid black(.15)
-
     .stDashboardCourses
+        margin: 0 1em 1em
+        @extend .stShadowBox
         
         .myCoursesBody
             padding: 1em
@@ -46,16 +37,59 @@
                         span
                             font-size: $small
 
-    .stDashboardStats
-        padding: $huge
+    .stNotesActions
+        width: 100%
+        display: flex
+        margin: 0 0 1em
 
-    .stDashboardActions
-        
-        .stDBActionsBody
-            padding: 1em
+        .stDashboardNotifications
+            margin: 0 1em
+            flex: 1
 
-            span
-                font-style: italic
+            & > section
+                height: 100%
+                @extend .stShadowBox
+
+            .stNotificationsBody
+                padding: 1em
+
+                .noNotes
+                    font-style: italic
+
+                .stNotes
+                    width: 100%
+
+                    .stNotification
+                        font-size: $small
+                        background: white()
+                        display: flex
+                        align-items: center
+
+                        & > div
+                            padding: 1em
+
+                            span
+                                cursor: pointer
+
+                        .stNoteDate
+                            font-weight: 600
+
+                        .stNoteTitle
+                            flex: 1
+                            font-style: italic
+
+        .stDashboardActions
+            margin: 0 1em
+            flex: 1
+
+            & > section
+                @extend .stShadowBox
             
-            button
-                background-color: azure()
+            .stDBActionsBody
+                padding: 1em
+
+                span
+                    font-style: italic
+                
+                button
+                    background-color: azure()

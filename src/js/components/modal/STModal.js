@@ -9,7 +9,7 @@ export default class STModal extends React.Component {
     }
 
     render() {
-        let { mData, open, action, orientation, addDl, refr, modalActive, color, test } = this.props
+        let { mData, open, action, orientation = 'bottom', addDl, refr, modalActive, color, test } = this.props
 
         if (!open) return null
 
@@ -18,7 +18,7 @@ export default class STModal extends React.Component {
         var style = color ? {borderColor: color} : {}
         
         return (
-            <div className={"stModal "+(orientation || 'bottom')} onClick={(e) => {
+            <div className={['stModal',orientation].join(' ')} onClick={(e) => {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
                 <div className="stModalInner" style={style}>

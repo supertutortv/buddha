@@ -1,6 +1,6 @@
 import React from 'react'
 import { DataState } from './StateContext'
-import { DBCourses, DBStats, DBActions } from './dashboard/components'
+import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
 
 export default class Dashboard extends React.Component {
@@ -8,15 +8,31 @@ export default class Dashboard extends React.Component {
         super(props)
 
         this.state = {
-            error: {}
+            error: {},
+            notifications: {
+                active: false,
+                fetched: true,
+                notes: []
+            }
         }
 
         this.cancellation = this.cancellation.bind(this)
+        this.openNote = this.openNote.bind(this)
+        this.dismissNote = this.dismissNote.bind(this)
     }
 
     componentDidMount() {
         _st.bodyClass = 'dashboard'
         _st.loading = false
+        if (!this.state.notifications.fetched) _st.http.get('/courses/notifications',(d) => {
+            this.setState({
+                notifications: {
+                    active: false,
+                    fetched: true,
+                    notes: d.data
+                }
+            })
+        })
     }
 
     cancellation(d) {
@@ -27,12 +43,28 @@ export default class Dashboard extends React.Component {
                 return this.setState({error: {...resp}}, () => console.log(this.state.error))
             else {
                 alert(resp.message)
-                _st.auth.logout(() => this.props.refreshData())
+                _st.http.post('/auth/logout',{},() => this.props.refreshData())
             }
         })
     }
 
+    openNote(id) {
+        _st.http.post('/courses/notification',{id: id},(d) => {
+            this.setState(
+                prev => Object.assign(prev.notifications,{active: d.data})
+            )
+        })
+    }
+
+    dismissNote(id) {
+        this.setState(
+            prev => Object.assign(prev.notifications,{notes: prev.notifications.notes.filter(note => note.id !== id)}),
+            () => _st.http.put('/courses/notifications',{id: id})
+        )
+    }
+
     render() {
+        if (this.state.notifications.active) console.log(this.state.notifications.active)
         return(
             <DataState.Consumer>
                 {(data) => {
@@ -40,9 +72,11 @@ export default class Dashboard extends React.Component {
                         <React.Fragment>
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
-                                <DBStats />
                                 <DBCourses courses={data.courses} />
-                                <DBActions cancellation={this.cancellation} d={data.user} />
+                                <div className="stNotesActions">
+                                    <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
+                                    <DBActions cancellation={this.cancellation} d={data.user} />
+                                </div>
                             </main>
                         </React.Fragment>
                     )
