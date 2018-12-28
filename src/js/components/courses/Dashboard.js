@@ -10,6 +10,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             error: {},
             notifications: {
+                active: false,
                 fetched: false,
                 notes: []
             }
@@ -26,6 +27,7 @@ export default class Dashboard extends React.Component {
         if (!this.state.notifications.fetched) _st.http.get('/courses/notifications',(d) => {
             this.setState({
                 notifications: {
+                    active: false,
                     fetched: true,
                     notes: d.data
                 }
@@ -47,7 +49,12 @@ export default class Dashboard extends React.Component {
     }
 
     openNote(id) {
-        _st.http.post('/courses/notification',{id: id},(d) => console.log(d))
+        
+        _st.http.post('/courses/notification',{id: id},(d) => {
+            this.setState(
+                prev => Object.assign(prev.notifications,{active: d.data})
+            )
+        })
     }
 
     dismissNote(id) {
@@ -58,6 +65,7 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
+        if (this.state.notifications.active) console.log(this.state.notifications.active)
         return(
             <DataState.Consumer>
                 {(data) => {
