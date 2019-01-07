@@ -32,7 +32,7 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                     }
                     <li><FAIco title="Help" icon="question" onClick={(e) => {
                         e.preventDefault()
-                        window.open("http://support.supertutortv.com")
+                        window.open("https://supertutortv.zendesk.com")
                     }}/></li>
                     <li onClick={(e) => {
                         _st.loading = true
