@@ -3,7 +3,9 @@
 	"presets": [
 		["@babel/preset-env",{
 			"useBuiltIns": "usage",
-			"debug": true
+			"shippedProposals": true,
+			"targets": "> 0.25%, not dead",
+			"debug": false
 		}],
 		["@babel/preset-react",{}]
 	]
