@@ -124,6 +124,8 @@ export default class ResetPassword extends React.Component {
             obj = this.state.reset ? {key: this.state.key} : {},
             method = this.state.reset ? 'put' : 'post'
 
+            console.log(typeof formData)
+
         for(var pair of formData.entries()) {
             obj[pair[0]] = pair[1]
         }
