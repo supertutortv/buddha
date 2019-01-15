@@ -127,7 +127,6 @@ export default class ResetPassword extends React.Component {
         for(let el of formData) {
             obj[el.name] = el.value
         }
-        return console.log(obj)
         
         _st.http[method]('/auth/reset',obj,(d) => {
             if (d.code === 'resetError') return this.setState({
