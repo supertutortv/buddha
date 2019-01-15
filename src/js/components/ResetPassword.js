@@ -120,7 +120,7 @@ export default class ResetPassword extends React.Component {
             id: '',
             message: ''
         }
-        var formData = new FormData(e.target),
+        var formData = e.target.querySelectorAll('input'),
             obj = this.state.reset ? {key: this.state.key} : {},
             method = this.state.reset ? 'put' : 'post'
             console.log(formData)
