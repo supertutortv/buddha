@@ -31,7 +31,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                             let checked = i === 0 ? {checked: true} : {}
                                             return (
                                                 <label>
-                                                    <input type="radio" value={i} name="subPlan" {...checked} />
+                                                    <input type="radio" value={i} name="subPlan" onChange={updatePrice} {...checked} />
                                                     {p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}
                                                 </label>
                                             )
