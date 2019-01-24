@@ -20,8 +20,8 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
                                 <div className="input-field">
-                                    <select className="browser-default " name="subPlan" onChange={updatePrice}>
-                                        <option disabled selected>Choose Your Plan...</option>
+                                    <select defaultValue="" className="browser-default " name="subPlan" onChange={updatePrice}>
+                                        <option value="" disabled>Choose Your Plan...</option>
                                         {state.item.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
                                             return (
