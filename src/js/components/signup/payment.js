@@ -20,16 +20,27 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
                                 <div className="input-field">
+<<<<<<< HEAD
                                     <div class="dddesc">Choose your plan (dropdown menu):</div>
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
                                         <option disabled selected>Choose Your Plan...</option>
+=======
+                                    <fieldset id="subPlan">
+>>>>>>> testing radio buttons instead of dropdown (select)
                                         {state.item.plans.map((p,i) => {
-                                            let selected = i === 0 ? {selected: true} : {}
+                                            let checked = i === 0 ? {checked: true} : {}
                                             return (
-                                                <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}</option>
+                                                <label>
+                                                    <input type="radio" value={i} name="subPlan" {...checked} />
+                                                    {p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}
+                                                </label>
                                             )
                                         })}
-                                    </select>
+                                    </fieldset>
+                                    {/* <select defaultValue="" className="browser-default " name="subPlan" onChange={updatePrice}>
+                                        <option value="" disabled>Choose Your Plan...</option>
+                                        
+                                    </select> */}
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" type="checkbox" onChange={setShipping}/>
