@@ -22,7 +22,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                 <div className="input-field">
                                     <div class="dddesc">Choose your plan (dropdown menu):</div>
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
-                                        <option value disabled selected>Choose One...</option>
+                                        <option value disabled selected>Choose Your Plan...</option>
                                         {state.item.plans.map((p,i) => {
                                             let selected = i === 0 ? {selected: true} : {}
                                             return (
