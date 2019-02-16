@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import allYourBase from './components/allYourBase'
 import Signup from './components/Signup'
+import Header from './components/Header'
 import MU from './components/MU'
 import ResetPassword from './components/ResetPassword'
 import STSecured from './components/STSecured'
@@ -16,6 +17,7 @@ window._st = STTV
 
 ReactDOM.render( 
     <BrowserRouter>
+        <Header />
         <Switch>
             <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
             <Route exact path='/signup/:plan?' component={Signup} />
