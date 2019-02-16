@@ -1,12 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import allYourBase from './components/allYourBase'
-import Signup from './components/Signup'
-import Header from './components/Header'
-import MU from './components/MU'
-import ResetPassword from './components/ResetPassword'
-import STSecured from './components/STSecured'
+import allYourBase from './allYourBase'
+import Signup from './Signup'
+import Header from './Header'
+import MU from './MU'
+import ResetPassword from './ResetPassword'
+import STSecured from './STSecured'
 
 export default class STApp extends React.Component {
 
