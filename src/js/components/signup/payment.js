@@ -20,7 +20,16 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
                                 <div className="input-field">
-                                    <fieldset id="subPlan">
+                                    <select className="browser-default " name="subPlan" onChange={updatePrice}>
+                                        <option value disabled selected>Choose One...</option>
+                                        {state.item.plans.map((p,i) => {
+                                            let selected = i === 0 ? {selected: true} : {}
+                                            return (
+                                                <option value={i} {...selected}>{p.product+'/'+p.nickname+' - $'+(p.amount/100).toString()}</option>
+                                            )
+                                        })}
+                                    </select>
+                                    {/* <fieldset id="subPlan">
                                         {state.item.plans.map((p,i) => {
                                             let checked = i === 0 ? {checked: true} : {}
                                             return (
@@ -30,7 +39,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                                 </label>
                                             )
                                         })}
-                                    </fieldset>
+                                    </fieldset> */}
                                     {/* <select defaultValue="" className="browser-default " name="subPlan" onChange={updatePrice}>
                                         <option value="" disabled>Choose Your Plan...</option>
                                         
