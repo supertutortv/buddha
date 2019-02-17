@@ -1,5 +1,5 @@
 st-app
-    display: block
+    display: flex
     position: relative
     flex-direction: column
     box-sizing: border-box
@@ -15,6 +15,9 @@ st-app
 
     .stComponentFade
         +animFadeIn
+    
+    .stRightPanel
+        flex: 1
 
 @import './header/**/*.sass'
 @import './sidebar/**/*.sass'
