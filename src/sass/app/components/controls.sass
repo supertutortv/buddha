@@ -1,8 +1,15 @@
 .stControlBar
 	height: 100%
 	background-color: azure()
-	color: white(.85)
+	color: white(.9)
 	padding-top: $large
 
 	& > div
 		padding: 1em
+
+		a
+			transition: color 100ms ease-in-out
+
+			&:hover
+				cursor: pointer
+				color: white()
