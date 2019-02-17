@@ -6,6 +6,7 @@
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
     "scripts": {
         "build": "webpack --env.APP_MODE=development --mode=production",
+        "buildp": "webpack --env.APP_MODE=production --mode=production",
         "devpush": "git add -A && git commit -a && git push"
     },
     "repository": {
