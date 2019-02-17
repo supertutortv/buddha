@@ -193,7 +193,7 @@ export function validate() {
         inp = Array.from(document.querySelectorAll('input, select'))
 
     inp.some((el) => {
-        if ( (el.hasAttribute('required') && ( !el.value || el.classList.contains('invalid') )) || el.classList.contains('invalid') ) {
+        if ((el.hasAttribute('required') && !el.value)) {
             el.classList.add('invalid')
             return err = true
         }
