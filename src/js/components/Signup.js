@@ -111,7 +111,6 @@ export default class Signup extends React.Component {
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
-                    <Header stripped={true} hist={this.props.history} />
                     <Elements>
                         <Checkout 
                             hist={this.props.history}
