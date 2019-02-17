@@ -194,6 +194,7 @@ export function validate() {
 
     inp.some((el) => {
         if ((el.hasAttribute('required') && !el.value)) {
+            console.log(el.value)
             el.classList.add('invalid')
             return err = true
         }
