@@ -1,6 +1,6 @@
 {
     "name": "buddha",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
@@ -67,8 +67,8 @@
         "@hapi/hoek": "^6.0.0",
         "node-gyp": "^3.8.0",
         "node-sass": "^4.11.0",
-        "npm": "^6.5.0",
-        "react-player": "^1.8.0",
+        "npm": "^6.8.0",
+        "react-player": "^1.9.3",
         "regenerator": "^0.13.3",
         "request": "^2.88.0",
         "@hapi/sntp": "^3.0.2"
