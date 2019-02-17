@@ -10,19 +10,29 @@ export default class Controls extends React.Component {
 		return (
 			<div className="stControlBar">
 				<div>
-					<FAIco icon="cloud-download-alt"/>
+					<a class="stControlBarLink">
+						<FAIco icon="cloud-download-alt"/>
+					</a>
 				</div>
 				<div>
-					<FAIco icon="cloud-download-alt"/>
+					<a class="stControlBarLink">
+						<FAIco icon="cloud-download-alt"/>
+					</a>
 				</div>
 				<div>
-					<FAIco icon="cloud-download-alt"/>
+					<a class="stControlBarLink">
+						<FAIco icon="cloud-download-alt"/>
+					</a>
 				</div>
 				<div>
-					<FAIco icon="cloud-download-alt"/>
+					<a class="stControlBarLink">
+						<FAIco icon="cloud-download-alt"/>
+					</a>
 				</div>
 				<div>
-					<FAIco icon="cloud-download-alt"/>
+					<a class="stControlBarLink">
+						<FAIco icon="cloud-download-alt"/>
+					</a>
 				</div>
 			</div>
 		)
