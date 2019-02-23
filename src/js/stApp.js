@@ -6,7 +6,7 @@ import STTV from './_st'
 
 import '../sass/stApp.sass'
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.APP_MODE)
 
 window._st = STTV
 
