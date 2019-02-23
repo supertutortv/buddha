@@ -19,8 +19,8 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                         <div className="stSignupPaymentForm">
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
+                                <span class="dddesc">Choose your plan (dropdown menu):</span>
                                 <div className="input-field">
-                                    <span class="dddesc">Choose your plan (dropdown menu):</span>
                                     <select className="browser-default " name="subPlan" onChange={updatePrice}>
                                         <option value disabled selected>Choose One...</option>
                                         {state.item.plans.map((p,i) => {
