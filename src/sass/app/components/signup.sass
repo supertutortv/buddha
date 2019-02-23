@@ -94,7 +94,8 @@ body.signup
 
             .stAccountForm
                 border-radius: $tiny
-                width: 50%
+                width: 90%
+                max-width: $bodyw / 2
                 @extend .z-depth-3
 
                 .heading
@@ -177,6 +178,11 @@ body.signup
                     flex: 3
 
                     .stSignupFormOptions
+
+                        .dddesc
+                            font-size: $small
+                            font-style: italic
+                            margin-bottom: $small
 
                         legend
                             margin-bottom: $large
@@ -282,3 +288,43 @@ body.signup
                         top: 0 !important
                         flex: 1 1 100%
                         padding: 0 0 1em 0
+
++MQ($mq-mobile)
+    body.signup
+
+        st-app
+
+            .stSignupStep
+
+                & > div
+                    margin-top: 1em !important
+
+                .stAccountForm
+
+                    .stFormBody
+                        padding: 1em 1em 0
+
+            .stSignupPayment
+            
+                .stInfoWrap
+
+                    .stSignupBlock
+                        display: block
+
+                        .stSignupPaymentForm
+                            padding-right: 0px !important
+
+                            & > div
+                                padding-bottom: 1em
+
+                            .input-field
+                                padding: 0 1em !important
+
+                            .stSignupFormShipping
+
+                                .formBuffer
+                                    padding: 1em 0
+
+                                    .input-field
+                                        width: 100%
+                                        padding: 0 1em
