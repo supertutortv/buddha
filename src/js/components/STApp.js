@@ -11,9 +11,18 @@ import STSecured from './STSecured'
 export default class STApp extends React.Component {
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			modal: {
+				open: false,
+				type: '',
+				component: null
+			}
+		}
 	}
 
 	render() {
+		let { modal } = this.state
 		return (
 			<React.Fragment>
 				<Controls />
@@ -28,6 +37,7 @@ export default class STApp extends React.Component {
 						<Route path='/' render={(p) => <STSecured {...p} />} />
 					</Switch>
 				</div>
+				{!modal.open ? <div className={["stModal",modal.type].join(' ')}>{modal.component}</div> : null }
 			</React.Fragment>
 		)
 	}
