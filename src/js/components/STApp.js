@@ -37,7 +37,7 @@ export default class STApp extends React.Component {
 						<Route path='/' render={(p) => <STSecured {...p} />} />
 					</Switch>
 				</div>
-				{modal.open ? <div className={["stModal",modal.type].join(' ')}>this one</div> : null }
+				{!modal.open ? <div className={["stModal",modal.type].join(' ')}>this one</div> : null }
 			</React.Fragment>
 		)
 	}
