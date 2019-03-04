@@ -14,7 +14,8 @@ class STModal extends React.Component {
     }
 
     render() {
-        let { typeClass } = this.state
+        let { typeClass } = this.state,
+            { children } = this.props
         return (
             <div className={['stModal',typeClass].join(' ')} onClick={(e) => e.target.classList.contains("stModal") && closer()}>
                 <div className="stModalInner">
