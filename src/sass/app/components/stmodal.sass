@@ -16,17 +16,15 @@
         background-color: white()
         border-radius: $ittybitty
         overflow: hidden
-        opacity: 0
-        transform: scale(0)
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.5s
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.5s
         @extend .z-depth-2
 
     &.default
 
         .stModalInner
             width: 360px
-            opacity: 1
-            transform: scale(1)
+            -webkit-animation: 300ms ease-in-out 0s both grow
+            animation: 300ms ease-in-out 0s both grow
 
     &.top
         padding-top: 15%
