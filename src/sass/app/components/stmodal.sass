@@ -15,6 +15,7 @@
     .stModalInner
         background-color: white()
         border-radius: $ittybitty
+        opacity: 0
         overflow: hidden
         transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0.5s
         @extend .z-depth-2
@@ -23,8 +24,8 @@
 
         .stModalInner
             width: 360px
-            -webkit-animation: 300ms ease 1s normal forwards 1 grow
-            animation: 300ms ease 1s normal forwards 1 grow
+            -webkit-animation: 300ms ease .1s normal forwards 1 grow
+            animation: 300ms ease .1s normal forwards 1 grow
 
     &.top
         padding-top: 15%
