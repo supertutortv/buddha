@@ -24,6 +24,11 @@ export default class STApp extends React.Component {
 		this.modalActive = this.modalActive.bind(this)
 	}
 
+	modalActive(modal = {}) {
+        this.setState((state) => (Object.assign(state.modal,modal)))
+        return this
+    }
+
 	render() {
 		let { modal } = this.state
 		return (

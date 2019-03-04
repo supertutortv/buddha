@@ -68,11 +68,6 @@ export default class Main extends React.Component {
         return this
     }
 
-    modalActive(modal = {}) {
-        this.setState((state) => (Object.assign(state.modal,modal)))
-        return this
-    }
-
     setPlaylist(course,data) {
         this.setState((state) => {
             state.data.courses[course].playlist.push(data)
