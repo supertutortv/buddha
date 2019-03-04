@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { DataState } from './courses/StateContext'
 import Course from './courses/Course'
 import Dashboard from './courses/Dashboard'
-import STModal from './modal/STModal'
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -29,7 +28,6 @@ export default class Main extends React.Component {
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
         this.hashSaveLocal = this.hashSaveLocal.bind(this)
-        this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
         this.splicePlaylist = this.splicePlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
@@ -135,7 +133,6 @@ export default class Main extends React.Component {
                     />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
             </DataState.Provider>
         )
     }

@@ -7,6 +7,7 @@ import Controls from './Controls'
 import MU from './MU'
 import ResetPassword from './ResetPassword'
 import STSecured from './STSecured'
+import STModal from './modal/STModal'
 
 export default class STApp extends React.Component {
 	constructor(props) {
@@ -19,6 +20,8 @@ export default class STApp extends React.Component {
 				component: null
 			}
 		}
+
+		this.modalActive = this.modalActive.bind(this)
 	}
 
 	render() {
@@ -37,7 +40,10 @@ export default class STApp extends React.Component {
 						<Route path='/' render={(p) => <STSecured {...p} />} />
 					</Switch>
 				</div>
-				{!modal.open ? <div className={["stModal",modal.type].join(' ')}>this one</div> : null }
+				{modal.open 
+					? <STModal {...modal} addDl={this.addDl} modalActive={this.modalActive} />
+					: null
+				}
 			</React.Fragment>
 		)
 	}
