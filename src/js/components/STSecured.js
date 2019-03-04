@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './Login'
 import Main from './Main'
+import STModal from './STModal'
 
 export default class STSecured extends React.Component {
     constructor(props) {
@@ -41,7 +42,9 @@ export default class STSecured extends React.Component {
             localStorage.removeItem('stCourseData')
             if (loc.pathname !== '/login' && loc.pathname !== '/password/reset') hist.replace('/login')
             return (
-                <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
+                <STModal>
+                    <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
+                </STModal>
             )
         }
     }
