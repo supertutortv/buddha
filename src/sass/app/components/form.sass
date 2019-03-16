@@ -29,7 +29,7 @@
         &.stInputHalfRight
             padding-left: $tiny
 
-    input, select, #stPricingCardElement
+    input:not([type='submit']), select, #stPricingCardElement
         padding: $tiny $small
         margin-bottom: 1em
         width: 100%
@@ -72,7 +72,6 @@
             right: 1.5em
 
     .stFormHeader
-        padding-bottom: 1em
         line-height: $small
 
     .stFormBody
@@ -80,7 +79,6 @@
 
     .stFormButtons
         text-align: center
-        padding: 0 0 $large !important
 
         .stFormButton
             background-color: azure()

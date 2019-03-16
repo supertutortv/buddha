@@ -8,7 +8,6 @@ const STDialogCentered = ({error,children}) => {
             </header>
             <div className="stDialogCenteredInset">
                 {children}
-                <div className="stFormErrors">{error.message}</div>
             </div>
         </section>
     )

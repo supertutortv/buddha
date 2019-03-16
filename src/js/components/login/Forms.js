@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LoginForm = ({setLoginState, lostPwGo}) =>
+const LoginForm = ({error, setLoginState, lostPwGo}) =>
     <React.Fragment>
         <div id="stLoginHeader" className="stFormHeader">
             <h1>Welcome! Please sign in</h1>
@@ -15,9 +15,10 @@ const LoginForm = ({setLoginState, lostPwGo}) =>
             <div className="stForgotBlock">
                 <span><a onClick={lostPwGo}>Forgot your password?</a></span>
             </div>
+            {error.message ? <div className="stFormErrors">{error.message}</div> : null}
         </div>
         <div className="stFormButtons">
-            <input type="submit" value="Sign In" className="stFormButton btn waves-effect waves-light"/>
+            <input type="submit" value="Sign In" className="stFormButton btn"/>
         </div>
     </React.Fragment>
 
