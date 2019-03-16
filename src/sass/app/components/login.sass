@@ -9,11 +9,12 @@ body.login
         justify-content: center
 
         .stDialogCentered
-            max-width: 400px
 
             header
+                padding: 0 $huge*2
 
                 img
+                    display: block
                     width: 100%
                     height: auto
 
@@ -25,20 +26,17 @@ body.login
                     #stLoginHeader
 
                         h1, h2
+                            font-size: 1em
                             font-weight: 600
+                            text-transform: uppercase
 
                     .stLoginCredentials
-                        padding-bottom: 1em
+                        padding: 0 1em 1em
 
                     .stFormButtons
-                        display: flex
-                        align-items: center
+                        text-align: center
 
                         .stFormButton
-                            flex: 1
                             background-color: $domcolor
                             display: block
                             width: 100%
-                        
-                        .stForgotBlock
-                            flex: 1
