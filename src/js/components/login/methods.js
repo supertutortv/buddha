@@ -22,11 +22,10 @@ export function setLoginState(e) {
 }
 
 export function submit(e) {
-    return console.log(e.target.closest('form'))
     e.preventDefault()
     _st.loading = true
 
-    let creds = e.target.getElementsByTagName('input')
+    let creds = e.target.closest('form').getElementsByTagName('input')
     for (var i = 0; i < creds.length; i++) { 
         Object.assign(this.state.creds,{[creds[i].name]: creds[i].value})
     }
