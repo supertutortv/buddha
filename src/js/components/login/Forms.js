@@ -1,4 +1,5 @@
 import React from 'react'
+import FAIco from '../FAIco'
 
 const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
     <React.Fragment>
@@ -18,7 +19,7 @@ const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
             {error.message ? <div className="stFormErrors">{error.message}</div> : null}
         </div>
         <div className="stFormButtons">
-            <a href="#" className="stFormButton btn" onClick={submit}>Sign In</a>
+            <a href="#" className="stFormButton btn" onClick={submit}>Sign In<FAIco icon="sign-in-alt"/></a>
         </div>
     </React.Fragment>
 
