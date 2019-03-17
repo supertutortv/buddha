@@ -18,7 +18,10 @@ const LoginForm = ({error, setLoginState, lostPwGo}) =>
             {error.message ? <div className="stFormErrors">{error.message}</div> : null}
         </div>
         <div className="stFormButtons">
-            <input type="submit" value="Sign In" className="stFormButton btn"/>
+            <a href="#" className="stFormButton btn" onClick={(e) => {
+                e.preventDefault()
+                document.getElementById('stLoginWrapper').submit()
+            }}>Sign In</a>
         </div>
     </React.Fragment>
 
