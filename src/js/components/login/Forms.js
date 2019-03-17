@@ -19,7 +19,7 @@ const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
             {error.message ? <div className="stFormErrors">{error.message}</div> : null}
         </div>
         <div className="stFormButtons">
-            <a href="#" className="stFormButton btn" onClick={submit}>Sign In<FAIco icon="sign-in-alt"/></a>
+            <a href="#" className="stFormButton btn" onClick={submit}><span>Sign In</span><FAIco icon="sign-in-alt"/></a>
         </div>
     </React.Fragment>
 
