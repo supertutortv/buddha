@@ -22,6 +22,7 @@ export function setLoginState(e) {
 }
 
 export function submit(e) {
+    return console.log(e.target)
     e.preventDefault()
     _st.loading = true
 
