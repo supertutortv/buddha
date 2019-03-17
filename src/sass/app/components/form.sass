@@ -33,18 +33,17 @@
         padding: $tiny $small
         margin-bottom: 1em
         width: 100%
-        border: 0
-        border-bottom: 1px solid black(.25)
+        border: 1px solid black(.25)
         transition: all .1s linear
 
         &.invalid
-            border-bottom: 1px solid red
+            border: 1px solid red
         
         &.valid
-            border-bottom: 1px solid green
+            border: 1px solid green
 
         &:focus:not(.invalid)
-            border-bottom: 1px solid azure()
+            border: 1px solid azure()
 
         &::placeholder
             opacity: 1
