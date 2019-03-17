@@ -22,7 +22,7 @@ export function setLoginState(e) {
 }
 
 export function submit(e) {
-    return console.log(e.target)
+    return console.log(e.target.closest('form'))
     e.preventDefault()
     _st.loading = true
 
