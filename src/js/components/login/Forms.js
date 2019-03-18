@@ -21,7 +21,7 @@ const SendForm = ({error, sent, sentMsg, sendReset}) => {
                 {error.message ? <div className="stFormErrors">{error.message}</div> : null}
             </div>
             <div className="stFormButtons">
-                <a href="#" className="stFormButton btn" onClick={sendReset}>
+                <a href="_" className="stFormButton btn" onClick={sendReset}>
                     <em>Send reset link</em>
                     <FAIco icon="share-square"/>
                 </a>
@@ -54,7 +54,7 @@ const ResetForm = ({error,sendReset,passMatch,sent,sentMsg}) => {
                     {error.message ? <div className="stFormErrors">{error.message}</div> : null}
                 </div>
                 <div className="stFormButtons">
-                    <a href="#" className="stFormButton btn" onClick={sendReset}><em>Change password</em><FAIco icon="key"/></a>
+                    <a href="_" className="stFormButton btn" onClick={sendReset}><em>Change password</em><FAIco icon="key"/></a>
                 </div>
             </React.Fragment>
         )
@@ -79,7 +79,7 @@ const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
             </div>
         </div>
         <div className="stFormButtons">
-            <a href="#" className="stFormButton btn" onClick={submit}><em>Sign In</em><FAIco icon="sign-in-alt"/></a>
+            <a href="_" className="stFormButton btn" onClick={submit}><em>Sign In</em><FAIco icon="sign-in-alt"/></a>
         </div>
     </React.Fragment>
 
