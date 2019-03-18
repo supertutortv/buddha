@@ -5,7 +5,6 @@ export function lostPwGo(e) {
         prevState = prev
         return {
             init: 'pwd',
-            reset: true,
             error: {
                 id: '',
                 message: ''
@@ -47,7 +46,6 @@ export function submit(e) {
 }
 
 export function sendReset(e) {
-    _st.loading = true
     e.preventDefault()
 
     this.state.error = {
