@@ -7,6 +7,8 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
+        let {} = props
+
         this.state = {
             lostPw : false,
             resetSent : false,
@@ -41,11 +43,12 @@ export default class Login extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <STDialogCentered>
-            <form id="stLoginWrapper" className="stFormWrapper">
-                <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-            </form>
+                <form id="stLoginWrapper" className="stFormWrapper">
+                    <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
+                </form>
             </STDialogCentered>
         )
     }

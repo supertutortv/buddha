@@ -5,7 +5,6 @@ import Signup from './Signup'
 import Header from './Header'
 import Controls from './Controls'
 import MU from './MU'
-import ResetPassword from './ResetPassword'
 import STSecured from './STSecured'
 
 export default class STApp extends React.Component {
@@ -39,8 +38,7 @@ export default class STApp extends React.Component {
 						<Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
 						<Route exact path='/signup/:plan?' component={Signup} />
 						<Route exact path='/mu/:teacher' component={MU} />
-						<Route exact path='/password/reset/:key?' component={ResetPassword} />
-						<Route exact path='/login' component={STSecured} />
+						<Route exact path={['/login','/password/reset/:key?']} component={STSecured} />
 						<Route path='/' render={(p) => <STSecured {...p} />} />
 					</Switch>
 				</div>
