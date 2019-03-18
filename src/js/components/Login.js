@@ -1,6 +1,6 @@
 import React from 'react'
 import STDialogCentered from './STDialogCentered'
-import { LoginForm } from './login/Forms'
+import { LoginForm, ResetForm, SendForm } from './login/Forms'
 import * as methods from './login/methods'
 
 export default class Login extends React.Component {
