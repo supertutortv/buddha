@@ -50,7 +50,7 @@ export default class Login extends React.Component {
             }
 
             this.setState({
-                init:'pwd',
+                init: 'pwd',
                 reset: true,
                 key: key
             })
