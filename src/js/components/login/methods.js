@@ -1,10 +1,10 @@
 export function lostPwGo() {
     _st.loading = true
-    var prevState = {}
+    let prevState = {}
     this.setState((prev) => {
         prevState = prev
         return {
-            lostPw : true,
+            init : 'pwd',
             error : {
                 id : '',
                 message : ''
