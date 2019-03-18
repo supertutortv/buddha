@@ -1,7 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 
-const SendForm = ({sent, sentMsg, sendReset}) => {
+const SendForm = ({error, sent, sentMsg, sendReset}) => {
     if (sent) {
         return (
             <div className="stResetSent">
@@ -31,7 +31,7 @@ const SendForm = ({sent, sentMsg, sendReset}) => {
     }
 }
 
-const ResetForm = ({sendReset,passMatch,sent,sentMsg}) => {
+const ResetForm = ({error,sendReset,passMatch,sent,sentMsg}) => {
     if (sent) {
         return (
             <div className="stResetSent">
