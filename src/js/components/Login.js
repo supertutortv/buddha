@@ -8,12 +8,16 @@ export default class Login extends React.Component {
         super(props)
 
         this.state = {
-            lostPw : false,
-            resetSent : false,
             creds : {
                 username : '',
                 password : ''
             },
+            init: false,
+            sent: false,
+            reset: false,
+            resetSent : false,
+            key: props.match.params.key || null,
+            sentMsg: '',
             error : {
                 id : '',
                 message : ''
@@ -29,8 +33,31 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
-        _st.bodyClass = 'login'
-        _st.loading = false
+        let {match, history: hist} = this.props
+
+        if (match.path === '/password/reset/:key?') {
+            _st.bodyClass = 'passwordReset'
+            if (this.state.key !== null) {
+                _st.http.get('/auth/reset?key='+match.params.key,(d) => {
+                    if (d.code === 'pwError') {
+                        alert('The reset link is invalid. Please click "OK" and try again.')
+                        hist.replace('/password/reset')
+                        return window.location.reload(true)
+                    }
+
+                    this.setState({
+                        init: 'pwd',
+                        reset: true,
+                        key: match.params.key
+                    })
+                })
+            } else {
+                this.setState({init:'pwd'})
+            }
+        } else {
+            _st.bodyClass = 'login'
+            this.setState({init:'login'})
+        }
     }
 
     componentDidUpdate() {}
@@ -41,12 +68,19 @@ export default class Login extends React.Component {
     }
 
     render() {
-        console.log(this.props)
+        let {key,init} = this.state
+        if (false === init) return null
+
         return (
             <STDialogCentered>
-                <form id="stLoginWrapper" className="stFormWrapper">
-                    <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-                </form>
+                {init === 'pwd' ?
+                    <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
+                        {key ? <ResetForm {...this.state} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+                    </form> :
+                    <form id="stLoginWrapper" className="stFormWrapper">
+                        <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
+                    </form>
+                }
             </STDialogCentered>
         )
     }

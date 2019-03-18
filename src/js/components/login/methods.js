@@ -44,3 +44,47 @@ export function submit(e) {
         }
     })
 }
+
+export function sendReset(e) {
+    _st.loading = true
+    e.preventDefault()
+
+    this.state.error = {
+        id: '',
+        message: ''
+    }
+    var formData = e.target.querySelectorAll('input'),
+        obj = this.state.reset ? {key: this.state.key} : {},
+        method = this.state.reset ? 'put' : 'post'
+
+    for(let el of formData) {
+        obj[el.name] = el.value
+    }
+    
+    _st.http[method]('/auth/reset',obj,(d) => {
+        if (d.code === 'resetError') return this.setState({
+            error: {
+                id: d.code,
+                message: d.message
+            }
+        })
+
+        this.setState({
+            sent: true,
+            sentMsg: d.message
+        })
+    })
+}
+
+export function passMatch() {
+    let p1 = document.getElementById('password1'),
+        p2 = document.getElementById('password2')
+    p2.classList.remove('invalid')
+
+    if (p2.value !== p1.value) return this.setState({
+        error: {
+            id: 'passNoMatch',
+            message: 'The passwords do not match'
+        }
+    }, () => p2.classList.add('invalid'))
+}
