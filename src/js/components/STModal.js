@@ -15,9 +15,11 @@ class STModal extends React.Component {
 
     render() {
         let { typeClass } = this.state,
-            { children } = this.props
+            { children, closer } = this.props
         return (
-            <div className={['stModal',typeClass].join(' ')} onClick={(e) => e.target.classList.contains("stModal") && closer()}>
+            <div className={['stModal',typeClass].join(' ')} onClick={(e) => 
+                e.target.classList.contains("stModal") && (typeof closer === 'function' && closer())
+            }>
                 <div className="stModalInner">
                     {children}
                 </div>
@@ -27,7 +29,8 @@ class STModal extends React.Component {
 }
 
 STModal.defaultProps = {
-    type: 'default'
+    type: 'default',
+    closer: null
 }
 
 export default STModal
