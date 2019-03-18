@@ -47,12 +47,11 @@ export function submit(e) {
 
 export function sendReset(e) {
     e.preventDefault()
-
     this.state.error = {
         id: '',
         message: ''
     }
-    var formData = e.target.querySelectorAll('input'),
+    var formData = e.target.closest('form').getElementsByTagName('input'),
         obj = this.state.reset ? {key: this.state.key} : {},
         method = this.state.reset ? 'put' : 'post'
 
