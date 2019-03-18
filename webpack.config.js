@@ -1,8 +1,9 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const globImporter = require('node-sass-glob-importer')
+const webpack = require('webpack'),
+    path = require('path'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    globImporter = require('node-sass-glob-importer')
 
 module.exports = (env) => {
 
@@ -75,6 +76,10 @@ module.exports = (env) => {
                 title: 'SupertutorTV Courses',
                 inject : true,
                 hash: true
+            }),
+            new ScriptExtHtmlWebpackPlugin({
+                async: 'stApp.js',
+                defer: 'stApp.js'
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
         ]

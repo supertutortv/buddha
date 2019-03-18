@@ -7,8 +7,6 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        let {} = props
-
         this.state = {
             lostPw : false,
             resetSent : false,
