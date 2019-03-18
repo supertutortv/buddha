@@ -1,7 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 
-const SendForm = ({sent, sentMsg}) => {
+const SendForm = ({sent, sentMsg, sendReset}) => {
     if (sent) {
         return (
             <div className="stResetSent">
@@ -11,16 +11,19 @@ const SendForm = ({sent, sentMsg}) => {
     } else {
         return (
         <React.Fragment>
-            <div className="stPasswordHeader">
+            <div className="stPasswordHeader stFormHeader">
                 <h1>Forgot your password?</h1>
             </div>
-            <div className="stPasswordCredentials">
+            <div className="stFormCredentials">
                 <div className="input-field">
                     <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
                 </div>
             </div>
             <div className="stFormButtons">
-                <button className="stFormButton btn waves-effect waves-light">Send reset link</button>
+                <a href="#" className="stFormButton btn" onClick={sendReset}>
+                    <em>Send reset link</em>
+                    <FAIco icon="share-square"/>
+                </a>
             </div>
         </React.Fragment>
         )
@@ -37,10 +40,10 @@ const ResetForm = ({sendReset,passMatch,sent,sentMsg}) => {
     } else {
         return (
             <React.Fragment>
-                <div className="stPasswordHeader">
+                <div className="stPasswordHeader stFormHeader">
                     <h1>Enter your new password</h1>
                 </div>
-                <div className="stPasswordCredentials">
+                <div className="stFormCredentials">
                     <div className="input-field">
                         <input className="browser-default validate" id="password1" type="password" name="password1" placeholder="New Password" required />
                     </div>
@@ -61,7 +64,7 @@ const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
         <div id="stLoginHeader" className="stFormHeader">
             <h1>Welcome! Please sign in</h1>
         </div>
-        <div className="stLoginCredentials">
+        <div className="stFormCredentials">
             <div className="input-field">
                 <input className="browser-default validate" type="email" name="username" placeholder="Email Address" onBlur={setLoginState}/>
             </div>

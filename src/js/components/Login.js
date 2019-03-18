@@ -33,10 +33,10 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
+        _st.bodyClass = 'login'
         let {match, history: hist} = this.props
 
         if (match.path === '/password/reset/:key?') {
-            _st.bodyClass = 'passwordReset'
             let key = null
             if (this.state.key !== null) {
                 _st.http.get('/auth/reset?key='+match.params.key,(d) => {
@@ -48,14 +48,13 @@ export default class Login extends React.Component {
                     key = match.params.key
                 })
             }
-            
+
             this.setState({
                 init:'pwd',
                 reset: true,
                 key: key
             })
         } else {
-            _st.bodyClass = 'login'
             this.setState({init:'login'})
         }
     }
@@ -75,7 +74,7 @@ export default class Login extends React.Component {
             <STDialogCentered>
                 {init === 'pwd' ?
                     <form id="stPasswordWrapper" className="stFormWrapper">
-                        {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+                        {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm sendReset={this.sendReset} {...this.state} />}
                     </form> :
                     <form id="stLoginWrapper" className="stFormWrapper">
                         <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
