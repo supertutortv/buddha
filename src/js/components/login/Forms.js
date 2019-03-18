@@ -18,6 +18,7 @@ const SendForm = ({sent, sentMsg, sendReset}) => {
                 <div className="input-field">
                     <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
                 </div>
+                {error.message ? <div className="stFormErrors">{error.message}</div> : null}
             </div>
             <div className="stFormButtons">
                 <a href="#" className="stFormButton btn" onClick={sendReset}>
@@ -50,6 +51,7 @@ const ResetForm = ({sendReset,passMatch,sent,sentMsg}) => {
                     <div className="input-field">
                         <input className="browser-default validate" id="password2" type="password" name="password2" placeholder="Confirm Password" onBlur={passMatch} required />
                     </div>
+                    {error.message ? <div className="stFormErrors">{error.message}</div> : null}
                 </div>
                 <div className="stFormButtons">
                     <a href="#" className="stFormButton btn" onClick={sendReset}><em>Change password</em><FAIco icon="key"/></a>
