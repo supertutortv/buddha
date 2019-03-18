@@ -27,7 +27,7 @@ const SendForm = ({sent, sentMsg}) => {
     }
 }
 
-const ResetForm = ({passMatch,sent,sentMsg}) => {
+const ResetForm = ({sendReset,passMatch,sent,sentMsg}) => {
     if (sent) {
         return (
             <div className="stResetSent">
@@ -49,7 +49,7 @@ const ResetForm = ({passMatch,sent,sentMsg}) => {
                     </div>
                 </div>
                 <div className="stFormButtons">
-                    <button className="stFormButton btn waves-effect waves-light">Change password</button>
+                    <a href="#" className="stFormButton btn" onClick={sendReset}><em>Change password</em><FAIco icon="key"/></a>
                 </div>
             </React.Fragment>
         )
@@ -70,7 +70,7 @@ const LoginForm = ({submit, error, setLoginState, lostPwGo}) =>
             </div>
             {error.message ? <div className="stFormErrors">{error.message}</div> : null}
             <div className="stForgotBlock">
-                <span><a onClick={lostPwGo}>Forgot your password?</a></span>
+                <span><a href="#" onClick={lostPwGo}>Forgot your password?</a></span>
             </div>
         </div>
         <div className="stFormButtons">

@@ -1,13 +1,14 @@
-export function lostPwGo() {
-    _st.loading = true
+export function lostPwGo(e) {
+    e.preventDefault()
     let prevState = {}
     this.setState((prev) => {
         prevState = prev
         return {
-            init : 'pwd',
-            error : {
-                id : '',
-                message : ''
+            init: 'pwd',
+            reset: true,
+            error: {
+                id: '',
+                message: ''
             }
         }
     }, () => this.props.history.push({

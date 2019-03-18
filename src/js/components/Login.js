@@ -37,6 +37,7 @@ export default class Login extends React.Component {
 
         if (match.path === '/password/reset/:key?') {
             _st.bodyClass = 'passwordReset'
+            let key = null
             if (this.state.key !== null) {
                 _st.http.get('/auth/reset?key='+match.params.key,(d) => {
                     if (d.code === 'pwError') {
@@ -44,16 +45,15 @@ export default class Login extends React.Component {
                         hist.replace('/password/reset')
                         return window.location.reload(true)
                     }
-
-                    this.setState({
-                        init: 'pwd',
-                        reset: true,
-                        key: match.params.key
-                    })
+                    key = match.params.key
                 })
-            } else {
-                this.setState({init:'pwd'})
             }
+            
+            this.setState({
+                init:'pwd',
+                reset: true,
+                key: key
+            })
         } else {
             _st.bodyClass = 'login'
             this.setState({init:'login'})
@@ -74,8 +74,8 @@ export default class Login extends React.Component {
         return (
             <STDialogCentered>
                 {init === 'pwd' ?
-                    <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                        {key ? <ResetForm {...this.state} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+                    <form id="stPasswordWrapper" className="stFormWrapper">
+                        {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
                     </form> :
                     <form id="stLoginWrapper" className="stFormWrapper">
                         <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
