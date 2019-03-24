@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FAIco from '../FAIco'
 
 const SendForm = ({error, sent, sentMsg, sendReset, backToLogin}) => {
