@@ -7,7 +7,7 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        let key = props.match.params.key
+        let key = this.props.match.params.key
 
         this.state = {
             creds : {
@@ -71,7 +71,7 @@ export default class Login extends React.Component {
     render() {
         let {key,init} = this.state,
             {match,history: hist} = this.props
-            console.log(match.params.key)
+            console.log(match.params.key, key)
 
         if (0 > match.path.indexOf('/login') && 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
         if (false === init) return null
