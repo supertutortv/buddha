@@ -1,7 +1,7 @@
 import React from 'react'
 import FAIco from '../FAIco'
 
-const SendForm = ({error, sent, sentMsg, sendReset}) => {
+const SendForm = ({error, sent, sentMsg, sendReset, backToLogin}) => {
     if (sent) {
         return (
             <div className="stResetSent">
@@ -21,6 +21,10 @@ const SendForm = ({error, sent, sentMsg, sendReset}) => {
                 {error.message ? <div className="stFormErrors">{error.message}</div> : null}
             </div>
             <div className="stFormButtons">
+                <a href="_" className="stFormButton btn" onClick={backToLogin}>
+                    <FAIco icon="arrow-alt-circle-left"/>
+                    <em>Sign in</em>
+                </a>
                 <a href="_" className="stFormButton btn" onClick={sendReset}>
                     <em>Send reset link</em>
                     <FAIco icon="share-square"/>
