@@ -78,7 +78,7 @@ export default class Login extends React.Component {
             <STDialogCentered>
                 {init === 'pwd' ?
                     <form id="stPasswordWrapper" className="stFormWrapper">
-                        {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm sendReset={this.sendReset} backToLogin={() => hist.replace('/login')} {...this.state} />}
+                        {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm sendReset={this.sendReset} backToLogin={hist.replace('/login')} {...this.state} />}
                     </form> :
                     <form id="stLoginWrapper" className="stFormWrapper">
                         <LoginForm submit={this.submit} error={this.state.error} setLoginState={this.setLoginState} lostPwGo={this.lostPwGo}/>
