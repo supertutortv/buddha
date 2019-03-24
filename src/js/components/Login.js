@@ -80,7 +80,7 @@ export default class Login extends React.Component {
                     <form id="stPasswordWrapper" className="stFormWrapper">
                         {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm sendReset={this.sendReset} backToLogin={(e) => {
                             e.preventDefault()
-                            hist.replace('/login')
+                            this.setState({init:'login'}, () => hist.replace('/login'))
                         }} {...this.state} />}
                     </form> :
                     <form id="stLoginWrapper" className="stFormWrapper">

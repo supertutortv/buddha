@@ -21,11 +21,11 @@ const SendForm = ({error, sent, sentMsg, sendReset, backToLogin}) => {
                 {error.message ? <div className="stFormErrors">{error.message}</div> : null}
             </div>
             <div className="stFormButtons">
-                <a href="/" className="stFormButton btn" onClick={backToLogin}>
+                <a href="/" className="stFormButton left btn" onClick={backToLogin}>
                     <FAIco icon="arrow-alt-circle-left"/>
                     <em>Sign in</em>
                 </a>
-                <a href="/" className="stFormButton btn" onClick={sendReset}>
+                <a href="/" className="stFormButton right btn" onClick={sendReset}>
                     <em>Send reset link</em>
                     <FAIco icon="share-square"/>
                 </a>
