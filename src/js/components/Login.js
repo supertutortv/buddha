@@ -71,6 +71,7 @@ export default class Login extends React.Component {
     render() {
         let {key,init} = this.state,
             {match,history: hist} = this.props
+            console.log(match.params.key)
 
         if (0 > match.path.indexOf('/login') && 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
         if (false === init) return null
@@ -79,7 +80,6 @@ export default class Login extends React.Component {
             <STDialogCentered>
                 {init === 'pwd' ?
                     <form id="stPasswordWrapper" className="stFormWrapper">
-                        {console.log(key)}
                         {key ? <ResetForm {...this.state} sendReset={this.sendReset} passMatch={this.passMatch}/> : <SendForm sendReset={this.sendReset} {...this.state} />}
                     </form> :
                     <form id="stLoginWrapper" className="stFormWrapper">
