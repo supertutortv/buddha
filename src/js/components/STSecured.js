@@ -31,6 +31,7 @@ export default class STSecured extends React.Component {
 
     render() {
         const {history: hist, location: loc} = this.props;
+        console.log(loc.pathname)
         if (this.state.loggedIn === null) return null
 
         if (this.state.loggedIn) {
