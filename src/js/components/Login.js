@@ -7,8 +7,6 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        let key = this.props.match.params.key
-
         this.state = {
             creds : {
                 username : '',
@@ -18,7 +16,7 @@ export default class Login extends React.Component {
             sent: false,
             reset: false,
             resetSent : false,
-            key: key || null,
+            key: this.props.match.params.key || null,
             sentMsg: '',
             error : {
                 id : '',
@@ -39,8 +37,8 @@ export default class Login extends React.Component {
         let {match, history: hist} = this.props
 
         if (match.path === '/password/reset/:key?') {
-            let key = null
-            if (this.state.key !== null) {
+            let key = this.state.key
+            if (key !== null) {
                 _st.http.get('/auth/reset?key='+match.params.key,(d) => {
                     if (d.code === 'pwError') {
                         alert('The reset link is invalid. Please click "OK" and try again.')
