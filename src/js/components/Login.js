@@ -67,9 +67,12 @@ export default class Login extends React.Component {
     }
 
     render() {
-        let {key,init} = this.state
-        if (false === init) return null
+        let {key,init} = this.state,
+            {match} = this.props
 
+        if (0 > match.path.indexOf('/login') || 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
+        if (false === init) return null
+        
         return (
             <STDialogCentered>
                 {init === 'pwd' ?
