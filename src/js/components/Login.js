@@ -62,13 +62,13 @@ export default class Login extends React.Component {
     componentDidUpdate() {}
 
     componentWillReceiveProps(nextProps) {
-        var { history: hist, location: loc } = nextProps
+        let { history: hist, location: loc } = nextProps
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
     render() {
         let {key,init} = this.state,
-            {match} = this.props
+            {match,history: hist} = this.props
 
         if (0 > match.path.indexOf('/login') || 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
         if (false === init) return null
