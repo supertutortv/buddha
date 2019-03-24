@@ -7,6 +7,8 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
+        let key = props.match.params.key
+
         this.state = {
             creds : {
                 username : '',
@@ -16,7 +18,7 @@ export default class Login extends React.Component {
             sent: false,
             reset: false,
             resetSent : false,
-            key: props.match.params.key || null,
+            key: key || null,
             sentMsg: '',
             error : {
                 id : '',
