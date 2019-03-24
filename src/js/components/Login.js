@@ -70,7 +70,7 @@ export default class Login extends React.Component {
         let {key,init} = this.state,
             {match,history: hist} = this.props
 
-        if (0 > match.path.indexOf('/login') || 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
+        if (0 > match.path.indexOf('/login') && 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
         if (false === init) return null
         
         return (
