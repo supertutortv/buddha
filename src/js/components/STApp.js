@@ -31,9 +31,7 @@ export default class STApp extends React.Component {
 		let { modal } = this.state
 		return (
 			<React.Fragment>
-				<Controls />
 				<div className="stRightPanel">
-					<Header />
 					<Switch>
 						<Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
 						<Route exact path='/signup/:plan?' component={Signup} />

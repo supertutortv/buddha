@@ -30,7 +30,7 @@ export default class STSecured extends React.Component {
     }
 
     render() {
-        const {history: hist, location: loc} = this.props;
+        const {history: hist, location: loc, match} = this.props;
         if (this.state.loggedIn === null) return null
 
         if (this.state.loggedIn) {
@@ -40,6 +40,7 @@ export default class STSecured extends React.Component {
             )
         } else {
             localStorage.removeItem('stCourseData')
+            if (0 > match.path.indexOf('/login') && 0 > match.path.indexOf('/password/reset')) hist.replace('/login')
             return (
                 <STModal>
                     <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
