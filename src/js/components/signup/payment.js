@@ -20,13 +20,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                             <div className="stSignupFormOptions">
                                 <legend>Options</legend>
                                 <div className="input-field">
-<<<<<<< HEAD
-                                    <div class="dddesc">Choose your plan (dropdown menu):</div>
-                                    <select className="browser-default " name="subPlan" onChange={updatePrice}>
-                                        <option disabled selected>Choose Your Plan...</option>
-=======
                                     <fieldset id="subPlan">
->>>>>>> testing radio buttons instead of dropdown (select)
                                         {state.item.plans.map((p,i) => {
                                             let checked = i === 0 ? {checked: true} : {}
                                             return (
