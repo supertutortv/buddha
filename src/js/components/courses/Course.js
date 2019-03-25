@@ -88,18 +88,20 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                             {sections}
                                         </div>
                                         <div className="stPracticeSection">
-                                            <div className="boxHeader"></div>
-                                            <div className="stPracticeSectionInner">
-                                                <div className="stPracticeTop">
-                                                    <div>
-                                                        <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
-                                                        <div className="boxTitle">Practice Test Explanations</div>
-                                                        <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
+                                            <div>
+                                                <div className="boxHeader"></div>
+                                                <div className="stPracticeSectionInner">
+                                                    <div className="stPracticeTop">
+                                                        <div>
+                                                            <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
+                                                            <div className="boxTitle">Practice Test Explanations</div>
+                                                            <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
+                                                        </div>
+                                                        {/* <div><FAIco title="Take a practice test" icon="vial"/><span className="boxPracTest">Take a practice test</span></div> */}
                                                     </div>
-                                                    {/* <div><FAIco title="Take a practice test" icon="vial"/><span className="boxPracTest">Take a practice test</span></div> */}
-                                                </div>
-                                                <div className="stPracticeBody">
-                                                    <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                    <div className="stPracticeBody">
+                                                        <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
