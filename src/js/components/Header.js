@@ -21,8 +21,8 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                                 e.preventDefault()
                                 hist.push('/dashboard')
                             }} /></li>
-                            <li><FAIco title="Rate/Review" icon="star"/></li>
-                            <li><FAIco title="Leave Feedback" icon="comment-alt"/></li>
+                            {/* <li><FAIco title="Rate/Review" icon="star"/></li>
+                            <li><FAIco title="Leave Feedback" icon="comment-alt"/></li> */}
                             <li onClick={(e) => {
                                 let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
 

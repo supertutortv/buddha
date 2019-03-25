@@ -18,12 +18,12 @@ body.main
                     height: auto
 
                 & > div
-                    display: flex
-                    flex-wrap: wrap
                     width: 100%
                     margin-top: 1em
 
                 .stCourseTop
+                    display: flex
+                    flex-wrap: wrap
 
                     .stCourseMSL
                         flex: 1
@@ -139,10 +139,10 @@ body.main
                                 width: 100%
 
                 .stSectionsSection
-                    justify-content: center
+                    display: flex
 
                     .stSectionBoxWrap
-                        flex: 1
+                        flex: 1 1 20%
 
                         &:not(:last-of-type)
                             margin-right: 1em
@@ -195,15 +195,17 @@ body.main
                                             line-height: 1
 
                 .stPracticeSection
-                    display: flex
-                    width: 100%
-                    border-radius: $ittybitty
-                    border: 1px solid black(.25)
-                    position: relative
-                    background-color: white()
-                    overflow: hidden
-                    width: 100%
-                    @extend .z-depth-3
+                    margin-bottom: 1em
+
+                    & > div
+                        display: flex
+                        flex-wrap: wrap
+                        border-radius: $ittybitty
+                        border: 1px solid black(.25)
+                        position: relative
+                        background-color: white()
+                        overflow: hidden
+                        @extend .z-depth-3
 
                     .boxHeader
                         width: 100%
@@ -261,6 +263,9 @@ body.main
                                             font-style: italic
                                             text-decoration: line-through
 
+                img
+                    display: block
+
 +MQ($mq-tablet)
     body.main
 
@@ -286,23 +291,13 @@ body.main
 
         st-app
 
-            .stAppHeader
-                flex-wrap: wrap
-                height: $headerh * 2
-
-                & > div
-                    flex: 1 50%
-                    height: 50%
-
-                .stHeaderMiddle
-                    order: 1
-
             .stAppStage
 
                 .stAppStageInner
                     padding: 0
 
                     .stCourseTop
+                        margin-top: 0
                         padding-top: 0
 
                         & > div
@@ -315,37 +310,34 @@ body.main
 
                             .stVimWrap
                                 border-radius: unset
+                        
+                        .stCourseMSL
+                            margin: 1em 1em 0
+
+                            .stCourseMSLInner
+
+                                .stCourseStudyList
+
+                                    .stCourseStudyListInner
+                                        position: relative
 
                     .stSectionsSection
+                        display: grid
+                        grid-gap: 1em
                         padding: 0 1em
 
                         .stSectionBoxWrap
-                            flex-basis: 50%
                             
                             &:not(:last-of-type)
                                 margin-right: 0
 
-                            &:nth-of-type(odd):not(:last-of-type)
-                                padding-right: 1em
+                    .stPracticeSection
+                        padding: 1em
 
 +MQ($mq-mobile)
     body.main
 
         st-app
-
-            .stAppHeader
-
-                & > div
-
-                    &:not(:nth-of-type(even))
-                        padding: 0
-                
-                .stHeaderRight
-
-                    .stNavContainer
-
-                        & > li
-                            padding-left: 1em
 
             .stAppStage
 
@@ -354,7 +346,6 @@ body.main
                     .stSectionsSection
 
                         .stSectionBoxWrap
-                            flex-basis: 100%
 
                             &:nth-of-type(odd):not(:last-of-type)
                                 padding-right: 0

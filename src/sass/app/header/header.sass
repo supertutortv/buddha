@@ -5,35 +5,32 @@ body.login, body.allYourBase, body.muSignup
     
 .stAppHeader
     display: flex
-    flex-direction: row
-    height: $headerh
+    flex-wrap: wrap
     background-color: white
     padding: 0 1em
 
-    h1
-        font-size: 1em
-        +animFadeIn
-
     & > div
-        height: 100%
-        flex: 1
+        padding: $tiny 0
         display: flex
         align-items: center
-        box-sizing: border-box
+        justify-content: flex-end
 
         img
             height: calc(#{$headerh} - 1em)
             width: auto
 
     .stHeaderLeft
-        justify-content: flex-start
 
     .stHeaderMiddle
-        justify-content: center
-        flex: 1.5
+        justify-content: flex-start
+        flex: 1
+
+        h1
+            padding-left: 1em
+            font-size: 1em
+            +animFadeIn
 
     .stHeaderRight
-        justify-content: flex-end
 
         .stNavContainer
             display: flex
@@ -61,6 +58,26 @@ body.login, body.allYourBase, body.muSignup
 +MQ($mq-tablet)
 
 +MQ($mq-tportrait)
+    .stAppHeader
+
+        .stHeaderLeft
+
+        .stHeaderMiddle
+            
 
 +MQ($mq-mobile)
+    .stAppHeader
+
+        .stHeaderLeft
+
+        .stHeaderMiddle
+            flex: 1 1 100%
+            justify-content: center
+            order: 1
+
+            h1
+                padding-left: 0
+        
+        .stHeaderRight
+            flex: 1
     
