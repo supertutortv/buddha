@@ -18,12 +18,12 @@ body.main
                     height: auto
 
                 & > div
-                    display: flex
-                    flex-wrap: wrap
                     width: 100%
                     margin-top: 1em
 
                 .stCourseTop
+                    display: flex
+                    flex-wrap: wrap
 
                     .stCourseMSL
                         flex: 1
@@ -139,7 +139,8 @@ body.main
                                 width: 100%
 
                 .stSectionsSection
-                    justify-content: center
+                    display: grid
+                    grid-gap: 1em
 
                     .stSectionBoxWrap
                         flex: 1
@@ -196,13 +197,13 @@ body.main
 
                 .stPracticeSection
                     display: flex
+                    flex-wrap: wrap
                     width: 100%
                     border-radius: $ittybitty
                     border: 1px solid black(.25)
                     position: relative
                     background-color: white()
                     overflow: hidden
-                    width: 100%
                     @extend .z-depth-3
 
                     .boxHeader
@@ -283,7 +284,6 @@ body.main
 
 +MQ($mq-tportrait)
     body.main
-        overflow: auto
 
         st-app
 
@@ -331,7 +331,6 @@ body.main
 
 +MQ($mq-mobile)
     body.main
-        overflow: auto
 
         st-app
 
