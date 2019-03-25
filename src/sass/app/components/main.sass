@@ -197,12 +197,12 @@ body.main
                 .stPracticeSection
                     display: flex
                     flex-wrap: wrap
-                    width: 100%
                     border-radius: $ittybitty
                     border: 1px solid black(.25)
                     position: relative
                     background-color: white()
                     overflow: hidden
+                    margin: 1em
                     @extend .z-depth-3
 
                     .boxHeader
@@ -261,6 +261,9 @@ body.main
                                             font-style: italic
                                             text-decoration: line-through
 
+                img
+                    display: block
+
 +MQ($mq-tablet)
     body.main
 
@@ -303,6 +306,7 @@ body.main
                     padding: 0
 
                     .stCourseTop
+                        margin-top: 0
                         padding-top: 0
 
                         & > div
@@ -315,18 +319,22 @@ body.main
 
                             .stVimWrap
                                 border-radius: unset
+                        
+                        .stCourseMSL
+                            margin: 1em 1em 0
 
                     .stSectionsSection
+                        display: grid
+                        grid-gap: 1em
                         padding: 0 1em
 
                         .stSectionBoxWrap
-                            flex-basis: 50%
                             
                             &:not(:last-of-type)
                                 margin-right: 0
 
-                            &:nth-of-type(odd):not(:last-of-type)
-                                padding-right: 1em
+                    .stPracticeSection
+                        margin: 1em 1em 0
 
 +MQ($mq-mobile)
     body.main
@@ -354,7 +362,6 @@ body.main
                     .stSectionsSection
 
                         .stSectionBoxWrap
-                            flex-basis: 100%
 
                             &:nth-of-type(odd):not(:last-of-type)
                                 padding-right: 0
