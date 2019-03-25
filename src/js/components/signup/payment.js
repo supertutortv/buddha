@@ -31,10 +31,6 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
                                             )
                                         })}
                                     </fieldset>
-                                    {/* <select defaultValue="" className="browser-default " name="subPlan" onChange={updatePrice}>
-                                        <option value="" disabled>Choose Your Plan...</option>
-                                        
-                                    </select> */}
                                 </div>
                                 <div className="input-field">
                                     <input name="customer|options|priorityShip" className="filled-in" type="checkbox" onChange={setShipping}/>
