@@ -63,10 +63,7 @@ body.login, body.allYourBase, body.muSignup
         .stHeaderLeft
 
         .stHeaderMiddle
-            justify-content: center
-
-            h1
-                padding-left: 0
+            
 
 +MQ($mq-mobile)
     .stAppHeader
@@ -74,5 +71,13 @@ body.login, body.allYourBase, body.muSignup
         .stHeaderLeft
 
         .stHeaderMiddle
+            flex: 1 1 100%
+            justify-content: center
             order: 1
+
+            h1
+                padding-left: 0
+        
+        .stHeaderRight
+            flex: 1
     
