@@ -291,17 +291,6 @@ body.main
 
         st-app
 
-            .stAppHeader
-                flex-wrap: wrap
-                height: $headerh * 2
-
-                & > div
-                    flex: 1 50%
-                    height: 50%
-
-                .stHeaderMiddle
-                    order: 1
-
             .stAppStage
 
                 .stAppStageInner
@@ -325,6 +314,13 @@ body.main
                         .stCourseMSL
                             margin: 1em 1em 0
 
+                            .stCourseMSLInner
+
+                                .stCourseStudyList
+
+                                    .stCourseStudyListInner
+                                        position: relative
+
                     .stSectionsSection
                         display: grid
                         grid-gap: 1em
@@ -342,20 +338,6 @@ body.main
     body.main
 
         st-app
-
-            .stAppHeader
-
-                & > div
-
-                    &:not(:nth-of-type(even))
-                        padding: 0
-                
-                .stHeaderRight
-
-                    .stNavContainer
-
-                        & > li
-                            padding-left: 1em
 
             .stAppStage
 
