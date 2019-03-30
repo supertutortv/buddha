@@ -8,7 +8,7 @@ const webpack = require('webpack'),
 module.exports = (env) => {
 
     return {
-        entry: ['@babel/polyfill','./src/js/stApp.js'],
+        entry: ['@babel/polyfill','./src/js/stApp.js','./src/sass/stApp.sass'],
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/stApp.js',
@@ -25,24 +25,29 @@ module.exports = (env) => {
             rules: [
                 {
                     test: /\.sass$/,
-                    use: [
-                        {
-                            loader: 'style-loader'
-                        },
-                        {
-                            loader: 'css-loader'
-                        },
-                        {
-                            loader: 'resolve-url-loader'
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true,
-                                importer: globImporter()
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    url: false,
+                                    minimize: true,
+                                    sourceMap: true
+                                }
+                            },
+                            {
+                                loader: 'resolve-url-loader'
+                            },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    sourceMap: true,
+                                    importer: globImporter()
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    })
                 },
                 {
                     test: /\.(js)$/,
@@ -78,8 +83,8 @@ module.exports = (env) => {
                 hash: true
             }),
             new ScriptExtHtmlWebpackPlugin({
-                async: 'stApp.js',
-                defer: 'stApp.js'
+                async: /\.js$/,
+                defaultAttribute: 'async'
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
         ]
