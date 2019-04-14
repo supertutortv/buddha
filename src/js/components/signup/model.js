@@ -1,4 +1,4 @@
-export default model = {
+export default {
 	init: false,
 	step: 0,
 	update: true,
