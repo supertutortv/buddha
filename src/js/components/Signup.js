@@ -65,13 +65,11 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log(typeof this.state.plan)
-        /* if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
-            this.props.history.replace('/login')
-            return null 
-        } */
+        let {plan} = this.state
 
-        //if (this.state.init === false) return null
+        if (typeof plan === 'string' && this.plans.indexOf(plan) < 0 ) {
+            return <div>Plan not found</div>
+        }
 
         const Checkout = steps[this.steps[this.state.step]]
         return(
