@@ -3,53 +3,21 @@ import { StripeProvider, Elements } from 'react-stripe-elements'
 import Header from './Header'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
+import model from './signup/model'
 
 export default class Signup extends React.Component {
     constructor(props) {
         super(props)
     
         this.state = {
-            init: false,
-            step: 0,
-            update: true,
-            loading: true,
-            plan: null,
-            error: {
-                id: '',
-                message: ''
-            },
-            card: false,
-            valid: false,
-            customer: {
-                account: {
-                    email: '',
-                    firstname: '',
-                    lastname: '',
-                    password: ''
-                },
-                shipping: {
-                    phone: '',
-                    name: '',
-                    address: {}
-                },
-                options: {},
-                token: '',
-                nameOnCard: ''
-            },
-            pricing: {
-                total: 0,
-                shipping: 0,
-                coupon: {
-                    id: '',
-                    value: ''
-                }
-            },
-            item: null,
+            ...model,
+            plan: this.props.match.params || null,
             session: {
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
             }
         }
+
         this.plans = [
             'sat',
             'act',
@@ -97,9 +65,8 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {plan} = this.props.match.params
 
-        console.log(plan)
+        console.log(typeof this.state.plan)
         /* if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
             this.props.history.replace('/login')
             return null 
