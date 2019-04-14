@@ -11,12 +11,16 @@ export default class Signup extends React.Component {
     
         this.state = {
             ...model,
-            plan: this.props.match.params || null,
+            plan: this.props.match.params.plan || null,
             session: {
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
             }
         }
+
+        Object.keys(methods).forEach((method) => {
+            this[method] = methods[method].bind(this)
+        })
 
         this.plans = [
             'sat',
@@ -29,10 +33,6 @@ export default class Signup extends React.Component {
             'Payment',
             'ThankYou'
         ]
-
-        Object.keys(methods).forEach((method) => {
-            this[method] = methods[method].bind(this)
-        })
 
         _st.bodyClass = 'signup'
     }
@@ -65,8 +65,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-
-        console.log(this.props.match.params)
+        console.log(this.state.plan)
         /* if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
             this.props.history.replace('/login')
             return null 
