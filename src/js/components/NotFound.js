@@ -6,7 +6,7 @@ const NotFound = () => {
 	return (
 		<st-notfound>
 			<st-frownyface>
-				<FAIco icon="frown-open"/>
+				<FAIco icon={["far","frown-open"]}/>
 			</st-frownyface>
 			<span>Oops</span>
 		</st-notfound>
