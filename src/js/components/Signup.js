@@ -100,7 +100,7 @@ export default class Signup extends React.Component {
                 </StripeProvider>
             )
         } catch (e) {
-            <ErrorPage error={e}/>
+            return <ErrorPage error={e}/>
         }
     }
 }
