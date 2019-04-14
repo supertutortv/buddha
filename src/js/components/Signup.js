@@ -71,7 +71,7 @@ export default class Signup extends React.Component {
             return null 
         } */
 
-        if (this.state.init === false) return null
+        //if (this.state.init === false) return null
 
         const Checkout = steps[this.steps[this.state.step]]
         return(
