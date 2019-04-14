@@ -4,6 +4,7 @@ import allYourBase from './allYourBase'
 import Signup from './Signup'
 import Header from './Header'
 import Controls from './Controls'
+import ErrorPage from './ErrorPage'
 import MU from './MU'
 import STSecured from './STSecured'
 
@@ -29,18 +30,22 @@ export default class STApp extends React.Component {
 
 	render() {
 		let { modal } = this.state
-		return (
-			<React.Fragment>
-				<div className="stRightPanel">
-					<Switch>
-						<Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-						<Route exact path='/signup/:plan?' component={Signup} />
-						<Route exact path='/mu/:teacher' component={MU} />
-						<Route exact path={['/login','/password/reset/:key?']} component={STSecured} />
-						<Route path='/' render={(p) => <STSecured {...p} />} />
-					</Switch>
-				</div>
-			</React.Fragment>
-		)
+		try {
+			return (
+				<React.Fragment>
+					<div className="stRightPanel">
+						<Switch>
+							<Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
+							<Route exact path='/signup/:plan?' component={Signup} />
+							<Route exact path='/mu/:teacher' component={MU} />
+							<Route exact path={['/login','/password/reset/:key?']} component={STSecured} />
+							<Route path='/' render={(p) => <STSecured {...p} />} />
+						</Switch>
+					</div>
+				</React.Fragment>
+			)
+		} catch (e) {
+			<ErrorPage error={e}/>
+		}
 	}
 }

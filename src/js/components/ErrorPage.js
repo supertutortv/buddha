@@ -1,18 +1,19 @@
 import React from 'react'
 import FAIco from './FAIco'
 
-const NotFound = () => {
-	_st.bodyClass = 'notfound'
+const ErrorPage = ({error}) => {
+	_st.bodyClass = 'errorpage'
 	return (
-		<st-notfound>
+		<st-errorpage>
 			<st-fragment>
 				<st-frownyface>
 					<FAIco icon={["far","frown-open"]}/>
 				</st-frownyface>
 				<h1>Oops</h1>
+				<h6>{error || null}</h6>
 			</st-fragment>
-		</st-notfound>
+		</st-errorpage>
 	)
 }
 
-export default NotFound
+export default ErrorPage

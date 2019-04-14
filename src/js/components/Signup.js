@@ -1,7 +1,7 @@
 import React from 'react'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import Header from './Header'
-import NotFound from './NotFound'
+import ErrorPage from './ErrorPage'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
 import model from './signup/model'
@@ -69,7 +69,7 @@ export default class Signup extends React.Component {
         let {plan} = this.state
 
         if (typeof plan === 'string' && this.plans.indexOf(plan) < 0 ) {
-            return <NotFound/>
+            return <ErrorPage/>
         }
 
         const Checkout = steps[this.steps[this.state.step]]
