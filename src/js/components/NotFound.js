@@ -1,9 +1,15 @@
 import React from 'react'
+import FAIco from './FAIco'
 
 const NotFound = () => {
 	_st.bodyClass = 'notfound'
 	return (
-		<st-notfound>Not found</st-notfound>
+		<st-notfound>
+			<st-frownyface>
+				<FAIco icon="frown-open"/>
+			</st-frownyface>
+			<span>Oops</span>
+		</st-notfound>
 	)
 }
 
