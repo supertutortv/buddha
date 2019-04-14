@@ -3,7 +3,7 @@ import React from 'react'
 const NotFound = () => {
 	_st.bodyClass = 'notfound'
 	return (
-		<div>Not found</div>
+		<st-notfound>Not found</st-notfound>
 	)
 }
 
