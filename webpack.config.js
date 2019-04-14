@@ -8,7 +8,7 @@ const webpack = require('webpack'),
 module.exports = (env) => {
 
     return {
-        entry: ['@babel/polyfill','./src/js/stApp.js','./src/sass/stApp.sass'],
+        entry: ['./src/js/stApp.js','./src/sass/stApp.sass'],
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/stApp.js',
