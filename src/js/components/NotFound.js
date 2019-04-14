@@ -9,7 +9,7 @@ const NotFound = () => {
 				<st-frownyface>
 					<FAIco icon={["far","frown-open"]}/>
 				</st-frownyface>
-				<span>Oops</span>
+				<h1>Oops</h1>
 			</st-fragment>
 		</st-notfound>
 	)
