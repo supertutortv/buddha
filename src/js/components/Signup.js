@@ -66,7 +66,7 @@ export default class Signup extends React.Component {
 
     render() {
 
-        console.log(this.state)
+        console.log(this.props.match.params)
         /* if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
             this.props.history.replace('/login')
             return null 
