@@ -1,4 +1,4 @@
-var model = {
+export default model = {
 	init: false,
 	step: 0,
 	update: true,
@@ -35,5 +35,3 @@ var model = {
 		}
 	}
 }
-
-export default model
