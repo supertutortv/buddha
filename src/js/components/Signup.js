@@ -73,34 +73,31 @@ export default class Signup extends React.Component {
         }
 
         const Checkout = steps[this.steps[this.state.step]]
-        try {
-            return(
-                <StripeProvider apiKey={_st.stripe}>
-                    <React.Fragment>
-                        <Elements>
-                            <Checkout 
-                                hist={this.props.history}
-                                state={this.state} 
-                                error={this.state.error} 
-                                changeStep={this.changeStep} 
-                                createAccount={this.createAccount} 
-                                calculatePricing={this.calculatePricing} 
-                                updateInp={this.updateInp} 
-                                updatePrice={this.updatePrice} 
-                                setChecker={this.setChecker} 
-                                setOutcome={this.setOutcome} 
-                                setPlan={this.setPlan} 
-                                setShipping={this.setShipping} 
-                                toPrice={this.toPrice} 
-                                submitPayment={this.submitPayment} 
-                                validate={this.validate}
-                            />
-                        </Elements>
-                    </React.Fragment>
-                </StripeProvider>
-            )
-        } catch (e) {
-            return <ErrorPage error={e}/>
-        }
+
+        return(
+            <StripeProvider apiKey={_st.stripe}>
+                <React.Fragment>
+                    <Elements>
+                        <Checkout 
+                            hist={this.props.history}
+                            state={this.state} 
+                            error={this.state.error} 
+                            changeStep={this.changeStep} 
+                            createAccount={this.createAccount} 
+                            calculatePricing={this.calculatePricing} 
+                            updateInp={this.updateInp} 
+                            updatePrice={this.updatePrice} 
+                            setChecker={this.setChecker} 
+                            setOutcome={this.setOutcome} 
+                            setPlan={this.setPlan} 
+                            setShipping={this.setShipping} 
+                            toPrice={this.toPrice} 
+                            submitPayment={this.submitPayment} 
+                            validate={this.validate}
+                        />
+                    </Elements>
+                </React.Fragment>
+            </StripeProvider>
+        )
     }
 }
