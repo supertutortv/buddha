@@ -13,6 +13,7 @@ export default class Signup extends React.Component {
         this.state = {
             ...model,
             plan: this.props.match.params.plan || null,
+            stripe: null,
             session: {
                 id: Date.now(),
                 signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
@@ -39,7 +40,9 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        _st.loading = false
+        let key = _st.stripe
+        console.log('mounted')
+        //_st.loading = false
         /* let {plan} = this.props.match.params
         _st.http.get('/signup/'+plan,(d) => {
             console.log(d.data)
@@ -74,10 +77,12 @@ export default class Signup extends React.Component {
 
         const Checkout = steps[this.steps[this.state.step]]
 
+        console.log('pre-render')
+        return null
         return(
             <React.Fragment>
                 <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
-                <StripeProvider apiKey={_st.stripe}>
+                <StripeProvider stripe={this.state.stripe}>
                     <Elements>
                         <Checkout 
                             hist={this.props.history}
