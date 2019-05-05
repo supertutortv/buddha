@@ -80,16 +80,14 @@ export default class Signup extends React.Component {
         else
             console.log(stripe)
 
-        console.log(step)
-
-        const Checkout = steps[this.steps[this.state.step]]
+        //const Checkout = steps[this.steps[this.state.step]]
 
         return(
             <React.Fragment>
                 <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
                 <StripeProvider stripe={this.state.stripe}>
                     <Elements>
-                        <Checkout 
+                        {/* <Checkout 
                             hist={this.props.history}
                             state={this.state} 
                             error={this.state.error} 
@@ -105,7 +103,7 @@ export default class Signup extends React.Component {
                             toPrice={this.toPrice} 
                             submitPayment={this.submitPayment} 
                             validate={this.validate}
-                        />
+                        /> */}
                     </Elements>
                 </StripeProvider>
             </React.Fragment>
