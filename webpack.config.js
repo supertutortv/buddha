@@ -15,10 +15,10 @@ module.exports = (env) => {
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/stApp.js',
-            publicPath: 'http://localhost:9000/'
+            publicPath: '/'
         },
         devServer: {
-            publicPath: 'http://localhost:9000/',
+            publicPath: '/',
             contentBase: 'web',
             index: 'app.html',
             compress: true,
