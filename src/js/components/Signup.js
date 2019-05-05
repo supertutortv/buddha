@@ -69,7 +69,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {plan,stripe} = this.state
+        let {plan,stripe,step} = this.state
 
         if (typeof plan === 'string' && this.plans.indexOf(plan) < 0 ) {
             return <ErrorPage/>
@@ -79,6 +79,8 @@ export default class Signup extends React.Component {
             console.log('Stripe not loaded')
         else
             console.log(stripe)
+
+        console.log(step)
 
         const Checkout = steps[this.steps[this.state.step]]
 
