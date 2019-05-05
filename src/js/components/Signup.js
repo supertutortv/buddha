@@ -69,11 +69,16 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {plan} = this.state
+        let {plan,stripe} = this.state
 
         if (typeof plan === 'string' && this.plans.indexOf(plan) < 0 ) {
             return <ErrorPage/>
         }
+
+        if (stripe === null)
+            console.log('Stripe not loaded')
+        else
+            console.log(stripe)
 
         const Checkout = steps[this.steps[this.state.step]]
 
