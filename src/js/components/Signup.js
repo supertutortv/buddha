@@ -87,6 +87,7 @@ export default class Signup extends React.Component {
                 <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
                 <StripeProvider stripe={this.state.stripe}>
                     <Elements>
+                        <ErrorPage/>
                         {/* <Checkout 
                             hist={this.props.history}
                             state={this.state} 
