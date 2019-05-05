@@ -206,3 +206,14 @@ export function validate() {
         valid: this.state.card && this.state.customer.options.terms && !err
     })
 }
+
+export function createStripeScript() {
+    if (window.Stripe) return false
+    
+    const s = document.createElement('script')
+        s.type = 'text/javascript'
+        s.id = 'stStripeScript'
+        s.async = true
+        s.src = 'https://js.stripe.com/v3/'
+    document.body.appendChild(s)
+}

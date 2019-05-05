@@ -36,12 +36,7 @@ export default class Signup extends React.Component {
             'ThankYou'
         ]
 
-        const s = document.createElement('script')
-        s.type = 'text/javascript'
-        s.id = 'stStripeScript'
-        s.async = true
-        s.src = 'https://js.stripe.com/v3/'
-        document.body.appendChild(s)
+        this.createStripeScript()
 
         _st.bodyClass = 'signup'
     }
@@ -110,7 +105,6 @@ export default class Signup extends React.Component {
                             toPrice={this.toPrice} 
                             submitPayment={this.submitPayment} 
                             validate={this.validate}
-                            <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
                         /> */}
                     </Elements>
                 </StripeProvider>
