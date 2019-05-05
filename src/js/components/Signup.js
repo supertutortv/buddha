@@ -77,6 +77,7 @@ export default class Signup extends React.Component {
         return(
             <StripeProvider apiKey={_st.stripe}>
                 <React.Fragment>
+                    <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
                     <Elements>
                         <Checkout 
                             hist={this.props.history}

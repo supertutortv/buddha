@@ -7,7 +7,8 @@
     "scripts": {
         "build": "webpack --env.APP_MODE=development --mode=production",
         "buildp": "webpack --env.APP_MODE=production --mode=production",
-        "devpush": "git add -A && git commit -a && git push"
+        "devpush": "git add -A && git commit -m 'commit from local npm repo' && git push",
+        "server": "webpack-dev-server --env.APP_MODE=development --progress --colors"
     },
     "repository": {
         "type": "git",
@@ -47,7 +48,7 @@
         "react-dom": "^16.8.4",
         "react-materialize": "^2.6.0",
         "react-modal": "^3.8.1",
-        "react-router-dom": "^4.4.0",
+        "react-router-dom": "^5.0.0",
         "react-stripe-elements": "^2.0.3",
         "react-tabs": "^2.3.0",
         "react-transition-group": "^2.6.1",

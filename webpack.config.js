@@ -8,15 +8,21 @@ const webpack = require('webpack'),
 module.exports = (env) => {
 
     return {
-        entry: ['./src/js/stApp.js','./src/sass/stApp.sass'],
+        entry: [
+            './src/js/stApp.js',
+            './src/sass/stApp.sass'
+        ],
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/stApp.js',
-            publicPath: '/'
+            publicPath: 'http://localhost:9000/'
         },
         devServer: {
-            publicPath: '/',
-            port: 8888
+            publicPath: 'http://localhost:9000/',
+            contentBase: 'web',
+            index: 'app.html',
+            compress: true,
+            port: 9000
         },
         externals: {
             materialize: 'M'
@@ -65,9 +71,6 @@ module.exports = (env) => {
         },
         performance: {
             hints: false
-        },
-        devServer: {
-            historyApiFallback: true,
         },
         plugins: [
             new ExtractTextPlugin({
