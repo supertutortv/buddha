@@ -75,9 +75,9 @@ export default class Signup extends React.Component {
         const Checkout = steps[this.steps[this.state.step]]
 
         return(
-            <StripeProvider apiKey={_st.stripe}>
-                <React.Fragment>
-                    <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
+            <React.Fragment>
+                <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
+                <StripeProvider apiKey={_st.stripe}>
                     <Elements>
                         <Checkout 
                             hist={this.props.history}
@@ -97,8 +97,8 @@ export default class Signup extends React.Component {
                             validate={this.validate}
                         />
                     </Elements>
-                </React.Fragment>
-            </StripeProvider>
+                </StripeProvider>
+            </React.Fragment>
         )
     }
 }
