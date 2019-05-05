@@ -41,13 +41,13 @@ export default class Signup extends React.Component {
 
     componentDidMount() {
         let key = _st.stripe
-        console.log('mounted')
-        //_st.loading = false
-        /* let {plan} = this.props.match.params
-        _st.http.get('/signup/'+plan,(d) => {
-            console.log(d.data)
-            this.setState({init: true, item: d.data}, () => {})
-        }) */
+        if (window.Stripe) {
+            this.setState({stripe: window.Stripe(key)})
+        } else {
+            document.querySelector('#stStripeScript').addEventListener('load', () => {
+                this.setState({stripe: window.Stripe(key)})
+            })
+        }
     }
 
     componentDidUpdate() {
@@ -77,8 +77,6 @@ export default class Signup extends React.Component {
 
         const Checkout = steps[this.steps[this.state.step]]
 
-        console.log('pre-render')
-        return null
         return(
             <React.Fragment>
                 <script id="stStripeScript" src="https://js.stripe.com/v3/"></script>
