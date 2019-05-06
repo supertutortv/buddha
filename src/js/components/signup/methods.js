@@ -214,7 +214,6 @@ export function createStripeScript() {
         s.type = 'text/javascript'
         s.id = 'stStripeScript'
         s.async = true
-        s.defer = true
         s.src = 'https://js.stripe.com/v3/'
     document.body.appendChild(s)
 }
