@@ -50,6 +50,7 @@ export default class Signup extends React.Component {
                 this.setState({stripe: window.Stripe(key)})
             })
         }
+        _st.loading = false
     }
 
     componentDidUpdate() {
