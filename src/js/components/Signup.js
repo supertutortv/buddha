@@ -83,9 +83,9 @@ export default class Signup extends React.Component {
 
         return(
             <React.Fragment>
+                <div>{step}</div>
                 <StripeProvider stripe={this.state.stripe}>
                     <Elements>
-                        <div>{step}</div>
                         {/* <Checkout 
                             hist={this.props.history}
                             state={this.state} 
