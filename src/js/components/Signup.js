@@ -102,7 +102,7 @@ export default class Signup extends React.Component {
                         /> */}
                     </Elements>
                 </StripeProvider>
-                <script id='stStripeScript' type='text/javascript' src='https://js.stripe.com/v3/' async defer/>
+                <script id='stStripeScript' type='text/javascript' src='https://js.stripe.com/v3/' async={true} defer={true}/>
             </React.Fragment>
         )
     }
