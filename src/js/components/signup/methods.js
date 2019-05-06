@@ -209,12 +209,12 @@ export function validate() {
 
 export function createStripeScript() {
     if (window.Stripe) return null
-    else return <script id='stStripeScript' type='text/javascript' src='https://js.stripe.com/v3/' async defer/>
     
-    /* const s = document.createElement('script')
+    const s = document.createElement('script')
         s.type = 'text/javascript'
         s.id = 'stStripeScript'
         s.async = true
+        s.defer = true
         s.src = 'https://js.stripe.com/v3/'
-    document.body.appendChild(s) */
+    document.body.appendChild(s)
 }
