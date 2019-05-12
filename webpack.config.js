@@ -20,7 +20,7 @@ module.exports = (env) => {
         module: {
             rules: [
                 {
-                    test: /\.(sa|sc|c)ss$/,
+                    test: /\.sass$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: [
@@ -76,7 +76,8 @@ module.exports = (env) => {
                 template: 'templates/app.html',
                 title: 'SupertutorTV Courses',
                 inject : true,
-                hash: true
+                hash: true,
+                minify: true
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
         ]
