@@ -1,8 +1,9 @@
 import React from 'react'
 import { StripeProvider, Elements } from 'react-stripe-elements'
-import Footer from './signup/Footer'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
+
+const thedate = new Date
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -142,7 +143,9 @@ export default class Signup extends React.Component {
                             validate={this.validate}
                         />
                     </Elements>
-                    <Footer/>
+                    <footer>
+                        <div>© {thedate.getFullYear()} Supertutor Media, Inc.</div>
+                    </footer>
                 </React.Fragment>
             </StripeProvider>
         )
