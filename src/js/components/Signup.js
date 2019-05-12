@@ -14,7 +14,7 @@ export default class Signup extends React.Component {
             step: 0,
             update: true,
             loading: true,
-            plan: null,
+            plan: this.props.match.params || null,
             error: {
                 id: '',
                 message: ''
