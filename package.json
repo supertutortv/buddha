@@ -63,15 +63,16 @@
     "dependencies": {
         "@babel/polyfill": "^7.2.5",
         "@hapi/boom": "^7.3.0",
-        "core-js": "^2.6.2",
         "@hapi/hawk": "^7.0.10",
         "@hapi/hoek": "^6.0.0",
+        "@hapi/sntp": "^3.0.2",
+        "core-js": "^2.6.2",
+        "mini-css-extract-plugin": "^0.6.0",
         "node-gyp": "^3.8.0",
         "node-sass": "^4.11.0",
         "npm": "^6.5.0",
         "react-player": "^1.8.0",
         "regenerator": "^0.13.3",
-        "request": "^2.88.0",
-        "@hapi/sntp": "^3.0.2"
+        "request": "^2.88.0"
     }
 }

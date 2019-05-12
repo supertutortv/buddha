@@ -17,31 +17,33 @@ module.exports = (env) => {
             publicPath: '/',
             port: 8888
         },
-        externals: {
-            materialize: 'M'
-        },
         module: {
             rules: [
                 {
-                    test: /\.sass$/,
-                    use: [
-                        {
-                            loader: 'style-loader'
-                        },
-                        {
-                            loader: 'css-loader'
-                        },
-                        {
-                            loader: 'resolve-url-loader'
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true,
-                                importer: globImporter()
+                    test: /\.(sa|sc|c)ss$/,
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    url: false,
+                                    minimize: true,
+                                    sourceMap: true
+                                }
+                            },
+                            {
+                                loader: 'resolve-url-loader'
+                            },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    sourceMap: true,
+                                    importer: globImporter()
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    })
                 },
                 {
                     test: /\.(js)$/,
