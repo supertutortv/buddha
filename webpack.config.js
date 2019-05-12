@@ -38,7 +38,8 @@ module.exports = (env) => {
                             {
                                 loader: 'sass-loader',
                                 options: {
-                                    sourceMap: true,
+                                    sourceMap: false,
+                                    minimize: true,
                                     importer: globImporter()
                                 }
                             }
