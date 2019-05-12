@@ -4,7 +4,9 @@ const theyear = new Date
 
 const Footer = () => {
     return (
-        <footer>©{theyear.getFullYear()}</footer>
+        <footer>
+            <div>© {theyear.getFullYear()} Supertutor Media, Inc.</div>
+        </footer>
     )
 }
 
