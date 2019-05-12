@@ -8,8 +8,6 @@ import ResetPassword from './components/ResetPassword'
 import STSecured from './components/STSecured'
 import STTV from './_st'
 
-//import '../sass/stApp.sass'
-
 console.log(process.env.APP_MODE)
 
 window._st = STTV
