@@ -7,7 +7,8 @@
     "scripts": {
         "build": "webpack --env.APP_MODE=development --mode=production",
         "buildp": "webpack --env.APP_MODE=production --mode=production",
-        "devpush": "git add -A && git commit -a && git push"
+        "devpush": "git add -A && git commit -m 'commit from local npm repo' && git push && ssh buddha@192.155.82.130 'cd coursedev/buddha && git pull'",
+        "server": "webpack-dev-server --env.APP_MODE=development --progress --colors"
     },
     "repository": {
         "type": "git",
