@@ -93,17 +93,24 @@ body.signup
                                 font-weight: 600
 
             .stAccountForm
-                border-radius: $tiny
-                width: 90%
-                max-width: $bodyw / 2.25
+                border-radius: $ittybitty
+                width: 100%
+                max-width: 360px
                 background-color: white
                 @extend .z-depth-1
 
                 .heading
                     padding: 1em
                     font-weight: 600
-                    line-height: 1
-                    border-bottom: 1px solid black(.15)
+                    line-height: 1.5
+
+                    h1
+                        text-indent: 110%
+                        overflow: hidden
+                        background-image: url("/assets/img/sttv_logo.png")
+                        background-position: center
+                        background-size: contain
+                        background-repeat: no-repeat
 
         .stSignupPayment
             text-align: left

@@ -1734,17 +1734,25 @@ body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPla
 }
 
 body.signup > st-app .stSignupStep .stAccountForm {
-  border-radius: 0.5em;
-  width: 90%;
-  max-width: 533.33333px;
+  border-radius: 0.25em;
+  width: 100%;
+  max-width: 360px;
   background-color: white;
 }
 
 body.signup > st-app .stSignupStep .stAccountForm .heading {
   padding: 1em;
   font-weight: 600;
-  line-height: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  line-height: 1.5;
+}
+
+body.signup > st-app .stSignupStep .stAccountForm .heading h1 {
+  text-indent: 110%;
+  overflow: hidden;
+  background-image: url("/assets/img/sttv_logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 body.signup > st-app .stSignupPayment {
