@@ -20,6 +20,7 @@ export default class Signup extends React.Component {
             },
             card: false,
             valid: false,
+            stripe: null,
             customer: {
                 account: {
                     email: '',
@@ -70,10 +71,19 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        let {plan} = this.props.match.params
+        let {plan} = this.props.match.params,
+            key = _st.stripe
+            
         _st.http.get('/signup/'+plan,(d) => {
             console.log(d.data)
-            this.setState({init: true, item: d.data}, () => {
+            this.setState({
+                init: true,
+                item: d.data,
+                stripe: (window.Stripe) ? window.Stripe(key) : null
+            }, () => {
+                if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
+                    this.setState({stripe: window.Stripe(key)})
+                })
                 _st.loading = false
             })
         })
@@ -109,7 +119,7 @@ export default class Signup extends React.Component {
 
         const Checkout = steps[this.steps[this.state.step]]
         return(
-            <StripeProvider apiKey={_st.stripe}>
+            <StripeProvider stripe={this.state.stripe}>
                 <React.Fragment>
                     <Header stripped={true} hist={this.props.history} />
                     <Elements>
