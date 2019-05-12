@@ -157,12 +157,6 @@ i
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
 
-@each $key, $val in $brainy
-    .#{$key}
-        
-        &:before
-            content: $val
-
 +MQ($mq-tportrait)
     body
         overflow: auto
