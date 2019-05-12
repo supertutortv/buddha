@@ -1736,7 +1736,8 @@ body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPla
 body.signup > st-app .stSignupStep .stAccountForm {
   border-radius: 0.5em;
   width: 90%;
-  max-width: 600px;
+  max-width: 533.33333px;
+  background-color: white;
 }
 
 body.signup > st-app .stSignupStep .stAccountForm .heading {
