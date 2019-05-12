@@ -67,6 +67,8 @@ export default class Signup extends React.Component {
             this[method] = methods[method].bind(this)
         })
 
+        this.createStripeScript()
+
         _st.bodyClass = 'signup'
     }
 
