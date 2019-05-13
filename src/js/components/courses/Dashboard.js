@@ -68,6 +68,7 @@ export default class Dashboard extends React.Component {
         return(
             <DataState.Consumer>
                 {(data) => {
+                    console.log(data.courses.length)
                     return (
                         <React.Fragment>
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
