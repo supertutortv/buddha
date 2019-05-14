@@ -6,10 +6,9 @@ const Account = ({ createAccount, updateInp, error, state }) => {
     var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
     let { item } = state
     return (
-        <React.Fragment>
-        <div className="stSignupStep stSignupAccount">
+        <main className="stSignupAccount">
             <div className="stSignupInner">
-                <form className="stAccountForm stFormWrapper" onSubmit={createAccount}>
+                <form className="stAccountForm stForm" onSubmit={createAccount}>
                     <header className="heading">
                         <h1>SupertutorTV</h1>
                     </header>
@@ -33,8 +32,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     <div className="stFormErrors">{msg}</div>
                 </form>
             </div>
-        </div>
-        </React.Fragment>
+        </main>
     )
 }
 

@@ -337,7 +337,7 @@ button:hover {
 .z-depth-1,
 .stDashboard .stDashboardCourses .myCoursesBody .course > a,
 .stToggle,
-body.signup > st-app .stSignupStep .stAccountForm {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -373,7 +373,7 @@ body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm > div,
 }
 
 .z-depth-5,
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner:hover {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner:hover {
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.05), 0 9px 46px 8px rgba(0, 0, 0, 0.05), 0 11px 15px -7px rgba(0, 0, 0, 0.05);
 }
 
@@ -1603,7 +1603,7 @@ body.passwordReset st-app #stPasswordWrapper .stPasswordCredentials {
   padding-bottom: 1em;
 }
 
-body.signup > st-app .stSignupStep {
+body.signup > st-app .stSignupAccount {
   width: 100%;
   height: calc(100% - 2.5em);
   padding-bottom: 2em !important;
@@ -1612,59 +1612,70 @@ body.signup > st-app .stSignupStep {
   animation: 250ms ease 0s normal forwards 1 fadein;
 }
 
-body.signup > st-app .stSignupStep > span {
-  font-size: 0.75em;
-}
-
-body.signup > st-app .stSignupStep > div {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  margin-top: 2em;
-}
-
-body.signup > st-app .stSignupStep .stSignupInner {
+body.signup > st-app .stSignupAccount .stSignupInner {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-body.signup > st-app .stSignupStep .stSignupTitle {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
+  border-radius: 0.25em;
+  width: 100%;
+  max-width: 360px;
+  background-color: white;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading {
+  padding: 1em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 {
+  text-indent: 110%;
+  overflow: hidden;
+  background-image: url("/assets/img/sttv_logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+body.signup > st-app .stSignupAccount .stSignupTitle {
   order: 1;
   text-align: center;
 }
 
-body.signup > st-app .stSignupStep .stSignupTitle span {
+body.signup > st-app .stSignupAccount .stSignupTitle span {
   font-style: italic;
   font-size: 0.75em;
 }
 
-body.signup > st-app .stSignupStep .stSignupTitle span a {
+body.signup > st-app .stSignupAccount .stSignupTitle span a {
   text-decoration: underline;
   color: #109fda;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer {
+body.signup > st-app .stSignupAccount .stPlansContainer {
   font-size: calc(1rem - 4px);
   padding: 2em 1em;
   flex-flow: row wrap;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan {
   padding: 0 1em;
   position: relative;
   flex: 1;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan.first {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan.first {
   top: 2em;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan.last {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan.last {
   top: -2em;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner {
   background-color: white;
   padding: 12%;
   border-radius: 0.5em;
@@ -1677,59 +1688,37 @@ body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner {
   transition: all 250ms ease-in-out;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner:hover {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner:hover {
   border: 1px solid #109fda;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanTest > span {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest > span {
   display: block;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanTest .test {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest .test {
   font-size: 1.5em;
   font-weight: 600;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanTest .name {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest .name {
   font-size: 0.75em;
   font-style: italic;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanPrice {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanPrice {
   color: #109fda;
   font-size: 3em;
   font-weight: 600;
   padding: 0.25em 0;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanItems {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanItems {
   font-size: 0.75em;
 }
 
-body.signup > st-app .stSignupStep .stPlansContainer .stPlan .stPlanInner .stPlanItems strong {
+body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanItems strong {
   font-weight: 600;
-}
-
-body.signup > st-app .stSignupStep .stAccountForm {
-  border-radius: 0.25em;
-  width: 100%;
-  max-width: 360px;
-  background-color: white;
-}
-
-body.signup > st-app .stSignupStep .stAccountForm .heading {
-  padding: 1em;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-body.signup > st-app .stSignupStep .stAccountForm .heading h1 {
-  text-indent: 110%;
-  overflow: hidden;
-  background-image: url("/assets/img/sttv_logo.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 body.signup > st-app .stSignupPayment {
