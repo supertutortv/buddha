@@ -13,22 +13,22 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                         <h1>SupertutorTV</h1>
                     </header>
                     <section className="stC2A">
-                        <h2>Sign up now to get started on your test prep journey</h2>
+                        <h2>Sign up for free right now to get started on your test prep journey!</h2>
                     </section>
                     <fieldset className="stAccountBody">
-                        <div className="input-field required">
+                        <div className="stIfR99">
                             <label for="customer|account|firstname">Student First Name</label>
                             <input type="text" name="customer|account|firstname" onBlur={updateInp} required />
                         </div>
-                        <div className="input-field required">
+                        <div className="stIfR99">
                             <label for="customer|account|lastname">Student Last Name</label>
                             <input className="browser-default validate" type="text" name="customer|account|lastname" onBlur={updateInp} required/>
                         </div>
-                        <div className="input-field required">
+                        <div className="stIfR99">
                             <label for="customer|account|email">Student Email</label>
                             <input className="browser-default validate email" type="email" name="customer|account|email" onBlur={updateInp} required/>
                         </div>
-                        <div className="input-field required">
+                        <div className="stIfR99">
                             <label for="customer|account|password">Password</label>
                             <input className="browser-default validate" type="password" name="customer|account|password" onBlur={updateInp} required/>
                         </div>

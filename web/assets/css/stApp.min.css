@@ -54,10 +54,6 @@
   }
 }
 
-.input-field {
-  position: relative;
-}
-
 @font-face {
   font-family: "Texta";
   src: url("/assets/fonts/Texta/Norm/Texta-200.woff") format("woff"), url("/assets/fonts/Texta-200.ttf") format("truetype");
@@ -1552,18 +1548,19 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
   padding: 0 1.5rem;
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99 {
+  position: relative;
   margin-bottom: 1em;
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) {
   position: relative;
-  background-color: aecolor(#fff, 0.65);
+  background-color: whitesmoke;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: .125rem;
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) > label.floating {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) > label {
   font-size: calc(1rem - 4px);
   padding: 1em;
   position: absolute;
@@ -1573,8 +1570,8 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
   transition: all .1s ease-in-out;
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]),
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea {
   display: block;
   position: relative;
   box-sizing: border-box;
@@ -1586,17 +1583,17 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
   transition: all .25s ease-in-out;
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):focus,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):valid,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:focus,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:valid {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):focus + label.floating,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):valid + label.floating,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:focus + label.floating,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:valid + label.floating {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid + label,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
   top: 0;
   font-size: calc(1rem - 4px);
 }
