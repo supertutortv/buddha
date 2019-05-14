@@ -337,7 +337,8 @@ button:hover {
 .z-depth-1,
 .stDashboard .stDashboardCourses .myCoursesBody .course > a,
 .stToggle,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm,
+body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -1632,6 +1633,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   width: 100%;
   max-width: 360px;
   background-color: white;
+  margin-bottom: .5rem;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading {
@@ -1647,6 +1649,14 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
+  border-radius: 0.25em;
+  width: 100%;
+  max-width: 360px;
+  background-color: white;
+  margin-bottom: .5rem;
 }
 
 body.signup > st-app footer {
