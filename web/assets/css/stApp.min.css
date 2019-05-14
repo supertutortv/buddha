@@ -1604,13 +1604,13 @@ body.passwordReset st-app #stPasswordWrapper .stPasswordCredentials {
 body.signup > st-app {
   display: flex;
   flex-flow: column nowrap;
-  flex-flow-align-items: stretch;
+  align-items: stretch;
 }
 
 body.signup > st-app .stSignupAccount {
   display: flex;
   flex-flow: column nowrap;
-  flex-flow-align-items: stretch;
+  align-items: stretch;
   flex: 1 0 auto;
   order: 1;
   width: 100%;
