@@ -79,8 +79,7 @@ export default class Signup extends React.Component {
 
         let {history, match} = this.props,
             {plan} = match.params || '',
-            {qstring} = history.location.search,
-            query = (qstring.indexOf('?') > -1) ? '&'+qstring.substring(1) : '',
+            query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : '',
             pln = (plan) ? '?crs='+plan : ''
 
         history.replace(history.location.pathname+pln+query)
@@ -112,7 +111,7 @@ export default class Signup extends React.Component {
 
     componentWillUnmount() {
         let el = document.getElementById('stStripeScript')
-        el.parentNode.removeChild(el)
+        if (el) el.parentNode.removeChild(el)
     }
 
     componentWillReceiveProps(nextProps) {
