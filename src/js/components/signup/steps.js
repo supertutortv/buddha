@@ -12,7 +12,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     <header className="heading">
                         <h1>SupertutorTV</h1>
                     </header>
-                    <div id="stSignupDetails" className="stFormBody row">
+                    <fieldset className="stFormBody">
                         <div className="input-field required">
                             <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                         </div>
@@ -25,12 +25,13 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                         <div className="input-field required">
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
-                    </div>
+                    </fieldset>
                     <div className="stFormButtons">
                         <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
                     </div>
                     <div className="stFormErrors">{msg}</div>
                 </form>
+                <code>Already have an account? Log In</code>
             </div>
         </main>
     )

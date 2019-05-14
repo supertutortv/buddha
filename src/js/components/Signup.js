@@ -70,6 +70,8 @@ export default class Signup extends React.Component {
 
         this.createStripeScript()
 
+        console.log(this.props.history)
+
         _st.bodyClass = 'signup'
     }
 
@@ -78,7 +80,6 @@ export default class Signup extends React.Component {
             key = _st.stripe
             
         _st.http.get('/signup/'+plan,(d) => {
-            console.log(d.data)
             this.setState({
                 init: true,
                 item: d.data,
