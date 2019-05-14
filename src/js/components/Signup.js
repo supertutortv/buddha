@@ -70,7 +70,7 @@ export default class Signup extends React.Component {
 
         //this.createStripeScript()
 
-        console.log(this.props.match)
+        console.log(this.props.history.location)
 
         _st.bodyClass = 'signup'
     }
@@ -79,10 +79,9 @@ export default class Signup extends React.Component {
 
         let {history, match} = this.props,
             {plan} = match.params || '',
-            query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : '',
-            pln = (plan) ? '?crs='+plan : ''
+            query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : ''
 
-        history.replace('/signup/'+pln+query)
+        history.replace('/signup/?'+plan)
         
         /* let {plan} = this.props.match.params,
             key = _st.stripe
