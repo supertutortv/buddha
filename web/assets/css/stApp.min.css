@@ -1544,6 +1544,10 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stC2A {
   transform: scale3d(1, 1.1, 1);
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stC2A > h2 {
+  all: inherit;
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
 }
