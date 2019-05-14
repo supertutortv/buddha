@@ -1653,6 +1653,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
+  text-align: center;
   border-radius: 0.25em;
   width: 100%;
   max-width: 360px;
@@ -1661,9 +1662,10 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   padding: 1rem;
   font-size: calc(1rem - 4px);
   font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 }
 
-body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a {
+body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a:hover {
   color: #109fda;
 }
 

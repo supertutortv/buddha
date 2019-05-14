@@ -42,6 +42,7 @@ body.signup
                             background-repeat: no-repeat
 
                 .insteadLogin
+                    text-align: center
                     border-radius: $ittybitty
                     width: 100%
                     max-width: 360px
@@ -50,10 +51,13 @@ body.signup
                     padding: 1rem
                     font-size: $bodytext
                     font-weight: 600
+                    color: black(.5)
                     @extend .z-depth-1
 
                     a
-                        color: azure()
+                        
+                        &:hover
+                            color: azure()
 
         footer
             font-size: $smalltext
