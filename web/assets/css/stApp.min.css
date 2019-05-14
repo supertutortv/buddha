@@ -1621,7 +1621,7 @@ body.signup > st-app .stSignupAccount {
 
 body.signup > st-app .stSignupAccount .stSignupInner {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   flex: 1;
