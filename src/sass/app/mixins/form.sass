@@ -1,3 +1,7 @@
+.input-field
+    margin: 0
+    position: relative
+
 @mixin stFormBody
     padding: 0 1.5rem
 
@@ -11,64 +15,17 @@
     a
         text-decoration: underline
 
-.input-field
-    margin: 0
-    position: relative
+@mixin stFormHeader
+    padding-bottom: 1em
+    line-height: $small
 
-    input, select, #stPricingCardElement
-        padding: $tiny $small
-        margin-bottom: 1em
-        width: 100%
-        border: 1px solid black(.15)
-        transition: all .1s linear
+@mixin stFormButtons
+    text-align: center
+    padding: 0 0 $large !important
 
-        &.invalid
-            border: 1px solid red
-        
-        &.valid
-            border: 1px solid green
+@mixin stFormButton
+    background-color: azure()
 
-        &:focus:not(.invalid)
-            border: 1px solid azure()
-
-        &::placeholder
-            opacity: 1
-            color: black(.25)
-            font-style: italic
-
-    select
-        -webkit-appearance: none
-        -moz-appearance: none
-        appearance: none
-
-        &.selector, option:selected
-            color: black(.6)
-
-    .stFormHeader
-        padding-bottom: 1em
-        line-height: $small
-
-    .stFormButtons
-        text-align: center
-        padding: 0 0 $large !important
-
-        .stFormButton
-            background-color: azure()
-
-            &[disabled]
-                background-color: gray
-                cursor: not-allowed
-        
-    span
-        font-size: $small
-        font-style: italic
-
-        a
-            text-decoration: underline
-            cursor: pointer
-            color: inherit
-
-    label
-
-        strong
-            font-weight: 600
+    &[disabled]
+        background-color: gray
+        cursor: not-allowed

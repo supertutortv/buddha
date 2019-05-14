@@ -59,87 +59,6 @@
   position: relative;
 }
 
-.input-field input,
-.input-field select,
-.input-field #stPricingCardElement {
-  padding: 0.5em 0.75em;
-  margin-bottom: 1em;
-  width: 100%;
-  border: 1px solid black(0.15);
-  transition: all .1s linear;
-}
-
-.input-field input.invalid,
-.input-field select.invalid,
-.input-field #stPricingCardElement.invalid {
-  border: 1px solid red;
-}
-
-.input-field input.valid,
-.input-field select.valid,
-.input-field #stPricingCardElement.valid {
-  border: 1px solid green;
-}
-
-.input-field input:focus:not(.invalid),
-.input-field select:focus:not(.invalid),
-.input-field #stPricingCardElement:focus:not(.invalid) {
-  border: 1px solid azure();
-}
-
-.input-field input::placeholder,
-.input-field select::placeholder,
-.input-field #stPricingCardElement::placeholder {
-  opacity: 1;
-  color: black(0.25);
-  font-style: italic;
-}
-
-.input-field select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.input-field select.selector,
-.input-field select option:selected {
-  color: black(0.6);
-}
-
-.input-field .stFormHeader {
-  padding-bottom: 1em;
-  line-height: 0.75em;
-}
-
-.input-field .stFormButtons {
-  text-align: center;
-  padding: 0 0 1.5em !important;
-}
-
-.input-field .stFormButtons .stFormButton {
-  background-color: azure();
-}
-
-.input-field .stFormButtons .stFormButton[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.input-field span {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
-.input-field span a {
-  text-decoration: underline;
-  cursor: pointer;
-  color: inherit;
-}
-
-.input-field label strong {
-  font-weight: 600;
-}
-
 @font-face {
   font-family: "Texta";
   src: url("/assets/fonts/Texta/Norm/Texta-200.woff") format("woff"), url("/assets/fonts/Texta-200.ttf") format("truetype");
@@ -362,12 +281,58 @@ table {
 input,
 select,
 textarea {
-  font-size: calc(1rem - 8px);
   outline: none !important;
 }
 
-label {
-  color: inherit !important;
+input,
+select,
+#stPricingCardElement {
+  padding: 0.5em 0.75em;
+  margin-bottom: 1em;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  transition: all .1s linear;
+}
+
+input.invalid,
+select.invalid,
+#stPricingCardElement.invalid {
+  border: 1px solid red;
+}
+
+input.valid,
+select.valid,
+#stPricingCardElement.valid {
+  border: 1px solid green;
+}
+
+input:focus:not(.invalid),
+select:focus:not(.invalid),
+#stPricingCardElement:focus:not(.invalid) {
+  border: 1px solid #109fda;
+}
+
+input::placeholder,
+select::placeholder,
+#stPricingCardElement::placeholder {
+  opacity: 1;
+  color: rgba(0, 0, 0, 0.25);
+  font-style: italic;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.selector,
+select option:selected {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+label strong {
+  font-weight: 600;
 }
 
 button {
@@ -1603,81 +1568,6 @@ body.signup > st-app footer > div {
   text-transform: uppercase;
   font-weight: 800;
   background-color: whitesmoke;
-}
-
-@media only screen and (max-width: 992px) {
-  body.signup st-app .stAppHeader > div {
-    flex: 1;
-  }
-
-  body.signup st-app .stAppHeader .stHeaderLeft {
-    display: none;
-  }
-
-  body.signup st-app .stAppHeader .stHeaderMiddle {
-    justify-content: flex-start;
-  }
-
-  body.signup st-app .stSignupDiagSep {
-    display: none;
-  }
-
-  body.signup st-app .stSignupStep {
-    flex: 1;
-  }
-
-  body.signup st-app .stSignupStep .stSignupTitle {
-    order: 0;
-    font-size: 0.75em;
-    margin: 2em 0;
-    padding: 0 1em;
-  }
-
-  body.signup st-app .stSignupStep .stPlansContainer {
-    margin: 0;
-    padding: 0 1em;
-  }
-
-  body.signup st-app .stSignupStep .stPlansContainer .stPlan {
-    top: 0 !important;
-    flex: 1 1 100%;
-    padding: 0 0 1em 0;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  body.signup st-app .stSignupStep > div {
-    margin-top: 1em !important;
-  }
-
-  body.signup st-app .stSignupStep .stAccountForm .stFormBody {
-    padding: 1em 1em 0;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock {
-    display: block;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock .stSignupPaymentForm {
-    padding-right: 0px !important;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock .stSignupPaymentForm > div {
-    padding-bottom: 1em;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock .stSignupPaymentForm .input-field {
-    padding: 0 1em !important;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock .stSignupPaymentForm .stSignupFormShipping .formBuffer {
-    padding: 1em 0;
-  }
-
-  body.signup st-app .stSignupPayment .stInfoWrap .stSignupBlock .stSignupPaymentForm .stSignupFormShipping .formBuffer .input-field {
-    width: 100%;
-    padding: 0 1em;
-  }
 }
 
 .stDialogCentered {

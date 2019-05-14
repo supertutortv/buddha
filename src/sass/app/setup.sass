@@ -60,11 +60,41 @@ table
     border-spacing: 0
 
 input, select, textarea
-    font-size: $smalltext
     outline: none !important
 
+input, select, #stPricingCardElement
+    padding: $tiny $small
+    margin-bottom: 1em
+    width: 100%
+    border: 1px solid black(.15)
+    transition: all .1s linear
+
+    &.invalid
+        border: 1px solid red
+    
+    &.valid
+        border: 1px solid green
+
+    &:focus:not(.invalid)
+        border: 1px solid azure()
+
+    &::placeholder
+        opacity: 1
+        color: black(.25)
+        font-style: italic
+
+select
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+    &.selector, option:selected
+        color: black(.6)
+
 label
-    color: inherit !important
+
+    strong
+        font-weight: 600
 
 button
     opacity: .9
