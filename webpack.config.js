@@ -7,7 +7,7 @@ const globImporter = require('node-sass-glob-importer')
 module.exports = (env) => {
 
     return {
-        entry: ['@babel/polyfill','./src/sass/stApp.sass','./src/js/stApp.js'],
+        entry: ['./src/sass/stApp.sass','./src/js/stApp.js'],
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/stApp.js',
