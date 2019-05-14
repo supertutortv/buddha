@@ -29,7 +29,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </fieldset>
                     <div className="stAccountErrors">{msg}</div>
                     <div className="stAccountButtons">
-                        <button type="submit" className="stAccountButton btn" >Create Your Account</button>
+                        <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
                     </div>
                 </form>
                 <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>

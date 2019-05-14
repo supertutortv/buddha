@@ -1515,7 +1515,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   font-size: calc(1rem - 4px);
   border-radius: 0.25em;
   width: 100%;
-  max-width: 360px;
+  max-width: 450px;
   background-color: white;
   margin-bottom: .5rem;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
@@ -1602,6 +1602,10 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBu
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton[disabled] {
   background-color: gray;
   cursor: not-allowed;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton span {
+  font-size: calc(1rem - 10px);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
