@@ -70,12 +70,17 @@ export default class Signup extends React.Component {
 
         //this.createStripeScript()
 
-        console.log(this.props.history.location.search)
+        console.log(this.props.history.location)
 
         _st.bodyClass = 'signup'
     }
 
     componentDidMount() {
+
+        let {history, match} = this.props,
+            {plan} = match.params,
+            {qstring} = history.location.search
+        
         /* let {plan} = this.props.match.params,
             key = _st.stripe
             
