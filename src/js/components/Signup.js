@@ -124,15 +124,6 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let {plan} = this.props.match.params
-
-        if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
-            this.props.history.replace('/login')
-            return null 
-        }
-
-        if (this.state.init === false) return null
-
         const Checkout = steps[this.steps[this.state.step]]
 
         return(

@@ -31,7 +31,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </div>
                     <div className="stFormErrors">{msg}</div>
                 </form>
-                <code className="insteadLogin">Already have an account? Log In</code>
+                <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
             </div>
         </main>
     )
