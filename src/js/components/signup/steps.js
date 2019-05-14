@@ -8,7 +8,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
     return (
         <main className="stSignupAccount">
             <div className="stSignupInner">
-                <form className="stAccountForm stForm" onSubmit={createAccount}>
+                <form className="stAccountForm" onSubmit={createAccount}>
                     <header className="heading">
                         <h1>SupertutorTV</h1>
                     </header>

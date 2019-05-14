@@ -1513,6 +1513,7 @@ body.signup > st-app .stSignupAccount .stSignupInner {
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
+  font-size: calc(1rem - 10px);
   border-radius: 0.25em;
   width: 100%;
   max-width: 360px;
@@ -1538,7 +1539,6 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
-  font-size: calc(1rem - 10px);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div {
