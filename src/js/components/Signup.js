@@ -68,9 +68,11 @@ export default class Signup extends React.Component {
             this[method] = methods[method].bind(this)
         })
 
-        this.createStripeScript()
+        //this.createStripeScript()
 
-        console.log(this.props.history)
+        let {hist: history} = this.props
+
+        cons
 
         _st.bodyClass = 'signup'
     }
@@ -122,6 +124,31 @@ export default class Signup extends React.Component {
         if (this.state.init === false) return null
 
         const Checkout = steps[this.steps[this.state.step]]
+
+        return(
+            <React.Fragment>
+                <Checkout 
+                    hist={this.props.history}
+                    state={this.state} 
+                    error={this.state.error} 
+                    changeStep={this.changeStep} 
+                    createAccount={this.createAccount} 
+                    calculatePricing={this.calculatePricing} 
+                    updateInp={this.updateInp} 
+                    updatePrice={this.updatePrice} 
+                    setChecker={this.setChecker} 
+                    setOutcome={this.setOutcome} 
+                    setPlan={this.setPlan} 
+                    setShipping={this.setShipping} 
+                    toPrice={this.toPrice} 
+                    submitPayment={this.submitPayment} 
+                    validate={this.validate}
+                />
+                <footer>
+                    <div>© {thedate.getFullYear()} Supertutor Media, Inc.</div>
+                </footer>
+            </React.Fragment>
+        )
         return(
             <StripeProvider stripe={this.state.stripe}>
                 <React.Fragment>

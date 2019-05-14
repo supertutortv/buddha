@@ -1659,6 +1659,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   background-color: white;
   margin-bottom: .5rem;
   padding: 1rem;
+  font-size: calc(1rem - 4px);
 }
 
 body.signup > st-app footer {
