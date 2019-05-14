@@ -340,7 +340,6 @@ button {
   opacity: .9;
   color: white;
   background-color: gray;
-  font-size: calc(1rem - 8px);
   text-transform: uppercase;
   padding: .5em 1em;
   border: 0;
@@ -1592,10 +1591,11 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons {
   text-align: center;
-  padding-bottom: 1rem;
+  padding: 0 1.5rem 1rem;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton {
+  width: 100%;
   background-color: #109fda;
 }
 
