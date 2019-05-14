@@ -337,6 +337,7 @@ label strong {
 }
 
 button {
+  font-size: inherit;
   opacity: .9;
   color: white;
   background-color: gray;
@@ -1537,7 +1538,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
-  font-size: calc(1rem - 8px);
+  font-size: calc(1rem - 10px);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div {
@@ -1627,7 +1628,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a:hover {
 }
 
 body.signup > st-app footer {
-  font-size: calc(1rem - 8px);
+  font-size: calc(1rem - 10px);
   min-height: 5rem;
   order: 2;
   padding: 1rem 0;
