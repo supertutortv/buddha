@@ -81,7 +81,7 @@ export default class Signup extends React.Component {
             {plan} = match.params || '',
             query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : ''
 
-        history.replace('/signup/?'+plan)
+        if (plan) history.replace('/signup/?'+plan+query)
         
         /* let {plan} = this.props.match.params,
             key = _st.stripe
