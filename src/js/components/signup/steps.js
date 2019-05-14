@@ -17,22 +17,26 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </section>
                     <fieldset className="stAccountBody">
                         <div className="input-field required">
-                            <input type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
+                            <label for="customer|account|firstname">Student First Name</label>
+                            <input type="text" name="customer|account|firstname" onBlur={updateInp} required />
                         </div>
                         <div className="input-field required">
-                            <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
+                            <label for="customer|account|lastname">Student Last Name</label>
+                            <input className="browser-default validate" type="text" name="customer|account|lastname" onBlur={updateInp} required/>
                         </div>
                         <div className="input-field required">
-                            <input className="browser-default validate email" type="email" name="customer|account|email" placeholder="Email Address" onBlur={updateInp} required/>
+                            <label for="customer|account|email">Student Email</label>
+                            <input className="browser-default validate email" type="email" name="customer|account|email" onBlur={updateInp} required/>
                         </div>
                         <div className="input-field required">
-                            <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
+                            <label for="customer|account|password">Password</label>
+                            <input className="browser-default validate" type="password" name="customer|account|password" onBlur={updateInp} required/>
                         </div>
                     </fieldset>
-                    <div className="stAccountErrors">{msg}</div>
                     <div className="stAccountButtons">
                         <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
                     </div>
+                    <div className="stAccountErrors">{msg}</div>
                 </form>
                 <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
             </div>
