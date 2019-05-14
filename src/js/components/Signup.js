@@ -79,7 +79,7 @@ export default class Signup extends React.Component {
 
         let {history, match} = this.props,
             {plan} = match.params || '',
-            {qstring} = history.location.search || ''
+            {qstring} = history.location.search
 
         if (qstring.indexOf('?') > -1) qstring = '&'+qstring.substring(1)
 
