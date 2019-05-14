@@ -253,6 +253,7 @@ a {
   text-decoration: none;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
+  transition: color .1s ease-in-out;
 }
 
 ol,
@@ -1540,9 +1541,54 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
   font-size: calc(1rem - 4px);
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) {
+  position: relative;
+  background-color: aecolor(#fff, 0.65);
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) > label.floating {
+  font-size: calc(1rem - 4px);
+  padding: 1em;
+  position: absolute;
+  display: block;
+  top: .25rem;
+  left: 0;
+  transition: all .1s ease-in-out;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]),
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  background-color: transparent;
+  transition: all .25s ease-in-out;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):focus,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):valid,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:focus,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:valid {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):focus + label.floating,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) input:not([type="checkbox"]):valid + label.floating,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:focus + label.floating,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) textarea:valid + label.floating {
+  top: 0;
+  font-size: calc(1rem - 4px);
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons {
   text-align: center;
-  padding: 0 0 1.5em !important;
+  padding-bottom: 1rem;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton {

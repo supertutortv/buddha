@@ -21,7 +21,7 @@
 
 @mixin stFormButtons
     text-align: center
-    padding: 0 0 $large !important
+    padding-bottom: 1rem
 
 @mixin stFormButton
     background-color: azure()
@@ -29,3 +29,37 @@
     &[disabled]
         background-color: gray
         cursor: not-allowed
+
+@mixin stFormInput
+    &:not(.no-bg)
+        position: relative
+        background-color: aecolor(#fff,.65)
+        overflow: hidden
+        border-radius: 3px
+
+        & > label.floating
+            font-size: $bodytext
+            padding: 1em
+            position: absolute
+            display: block
+            top: .25rem
+            left: 0
+            transition: all .1s ease-in-out
+
+        input:not([type="checkbox"]), textarea
+            display: block
+            position: relative
+            box-sizing: border-box
+            overflow: hidden
+            border-radius: 3px
+            border: 1px solid black(.1)
+            z-index: 1
+            background-color: transparent
+            transition: all .25s ease-in-out
+
+            &:focus, &:valid
+                border: 1px solid black(.5)
+
+                & + label.floating
+                    top: 0
+                    font-size: $bodytext
