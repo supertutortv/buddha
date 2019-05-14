@@ -70,9 +70,7 @@ export default class Signup extends React.Component {
 
         //this.createStripeScript()
 
-        let {hist: history} = this.props
-
-        console.log(hist)
+        console.log(this.props.history)
 
         _st.bodyClass = 'signup'
     }
