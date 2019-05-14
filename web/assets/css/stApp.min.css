@@ -282,6 +282,7 @@ table {
 input,
 select,
 textarea {
+  font-size: inherit;
   outline: none !important;
 }
 
@@ -289,7 +290,6 @@ input,
 select,
 #stPricingCardElement {
   padding: 0.5em 0.75em;
-  margin-bottom: 1em;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.15);
   transition: all .1s linear;
@@ -1539,6 +1539,10 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
   font-size: calc(1rem - 4px);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div {
+  margin-bottom: 1em;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div:not(.no-bg) {
