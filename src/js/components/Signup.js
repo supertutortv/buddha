@@ -81,7 +81,7 @@ export default class Signup extends React.Component {
             {plan} = match.params || '',
             {qstring} = history.location.search || ''
 
-        if (qstring.indexOf('?')) qstring = '&'+qstring.substring(1)
+        if (qstring.indexOf('?') > -1) qstring = '&'+qstring.substring(1)
 
         if (plan) plan = '?crs='+plan
 
