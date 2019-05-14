@@ -95,9 +95,10 @@ export default class Signup extends React.Component {
                 if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
                     this.setState({stripe: window.Stripe(key)})
                 })
-                _st.loading = false
+                
             })
         }) */
+        _st.loading = false
     }
 
     componentDidUpdate() {
