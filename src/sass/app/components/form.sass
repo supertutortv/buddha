@@ -19,15 +19,9 @@
             line-height: 1
             padding: 0 $tiny
 
-    .input-field
-        margin: 0
-        position: relative
-
-        &.stInputHalfLeft
-            padding-right: $tiny
-
-        &.stInputHalfRight
-            padding-left: $tiny
+.input-field
+    margin: 0
+    position: relative
 
     input, select, #stPricingCardElement
         padding: $tiny $small
@@ -58,18 +52,6 @@
 
         &.selector, option:selected
             color: black(.6)
-
-    .input-field.required:before, .input-field.required [type="checkbox"]:required+label:after
-        color: red
-        display: block
-        height: 0
-        position: absolute
-        top: 20%
-        right: 1em
-        content: "*"
-
-        &.stInputHalfLeft
-            right: 1.5em
 
     .stFormHeader
         padding-bottom: 1em

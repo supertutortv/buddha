@@ -124,6 +124,7 @@ html {
   line-height: 1;
   -webkit-overflow-scrolling: touch;
   height: 100%;
+  font-size: 24px;
 }
 
 *,
@@ -239,7 +240,7 @@ body {
   font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 24px;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.85);
   background-color: whitesmoke;
   background-image: url("../img/loader.gif");
@@ -685,7 +686,7 @@ body.muSignup .stAppHeader {
 }
 
 .stFormWrapper {
-  font-size: 20px;
+  font-size: calc(1rem - 4px);
 }
 
 .stFormWrapper fieldset {
@@ -698,22 +699,14 @@ body.muSignup .stAppHeader {
   padding: 0 0.5em;
 }
 
-.stFormWrapper .input-field {
+.input-field {
   margin: 0;
   position: relative;
 }
 
-.stFormWrapper .input-field.stInputHalfLeft {
-  padding-right: 0.5em;
-}
-
-.stFormWrapper .input-field.stInputHalfRight {
-  padding-left: 0.5em;
-}
-
-.stFormWrapper input,
-.stFormWrapper select,
-.stFormWrapper #stPricingCardElement {
+.input-field input,
+.input-field select,
+.input-field #stPricingCardElement {
   padding: 0.5em 0.75em;
   margin-bottom: 1em;
   width: 100%;
@@ -722,94 +715,78 @@ body.muSignup .stAppHeader {
   transition: all .1s linear;
 }
 
-.stFormWrapper input.invalid,
-.stFormWrapper select.invalid,
-.stFormWrapper #stPricingCardElement.invalid {
+.input-field input.invalid,
+.input-field select.invalid,
+.input-field #stPricingCardElement.invalid {
   border-bottom: 1px solid red;
 }
 
-.stFormWrapper input.valid,
-.stFormWrapper select.valid,
-.stFormWrapper #stPricingCardElement.valid {
+.input-field input.valid,
+.input-field select.valid,
+.input-field #stPricingCardElement.valid {
   border-bottom: 1px solid green;
 }
 
-.stFormWrapper input:focus:not(.invalid),
-.stFormWrapper select:focus:not(.invalid),
-.stFormWrapper #stPricingCardElement:focus:not(.invalid) {
+.input-field input:focus:not(.invalid),
+.input-field select:focus:not(.invalid),
+.input-field #stPricingCardElement:focus:not(.invalid) {
   border-bottom: 1px solid #109fda;
 }
 
-.stFormWrapper input::placeholder,
-.stFormWrapper select::placeholder,
-.stFormWrapper #stPricingCardElement::placeholder {
+.input-field input::placeholder,
+.input-field select::placeholder,
+.input-field #stPricingCardElement::placeholder {
   opacity: 1;
   color: rgba(0, 0, 0, 0.25);
   font-style: italic;
 }
 
-.stFormWrapper select {
+.input-field select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.stFormWrapper select.selector,
-.stFormWrapper select option:selected {
+.input-field select.selector,
+.input-field select option:selected {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.stFormWrapper .input-field.required:before,
-.stFormWrapper .input-field.required [type="checkbox"]:required + label:after {
-  color: red;
-  display: block;
-  height: 0;
-  position: absolute;
-  top: 20%;
-  right: 1em;
-  content: "*";
-}
-
-.stFormWrapper .input-field.required:before.stInputHalfLeft,
-.stFormWrapper .input-field.required [type="checkbox"]:required + label:after.stInputHalfLeft {
-  right: 1.5em;
-}
-
-.stFormWrapper .stFormHeader {
+.input-field .stFormHeader {
   padding-bottom: 1em;
   line-height: 0.75em;
 }
 
-.stFormWrapper .stFormBody {
+.input-field .stFormBody {
   padding: 2em 3em 0;
 }
 
-.stFormWrapper .stFormButtons {
+.input-field .stFormButtons {
   text-align: center;
   padding: 0 0 1.5em !important;
 }
 
-.stFormWrapper .stFormButtons .stFormButton {
+.input-field .stFormButtons .stFormButton {
   background-color: #109fda;
 }
 
-.stFormWrapper .stFormButtons .stFormButton[disabled] {
+.input-field .stFormButtons .stFormButton[disabled] {
   background-color: gray;
   cursor: not-allowed;
 }
 
-.stFormWrapper span {
+.input-field span {
   font-size: 0.75em;
   font-style: italic;
 }
 
-.stFormWrapper span a {
+.input-field span a {
   text-decoration: underline;
   cursor: pointer;
   color: inherit;
 }
 
-.stFormWrapper label strong {
+.input-field label strong {
   font-weight: 600;
 }
 
@@ -1668,7 +1645,7 @@ body.signup > st-app .stSignupStep .stSignupTitle span a {
 }
 
 body.signup > st-app .stSignupStep .stPlansContainer {
-  font-size: 20px;
+  font-size: calc(1rem - 4px);
   padding: 2em 1em;
   flex-flow: row wrap;
 }
