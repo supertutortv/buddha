@@ -1541,7 +1541,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stC2A {
   text-align: center;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
-  transform: scale3d(1.1, 1, 1);
+  color-transform: scale3d(1, 1.1, 1);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
@@ -1622,6 +1622,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   font-size: calc(1rem - 4px);
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
+  color-transform: scale3d(1, 1.1, 1);
   border-radius: 0.25em;
   width: 100%;
   max-width: 400px;
