@@ -70,13 +70,13 @@ export default class Signup extends React.Component {
 
         //this.createStripeScript()
 
-        console.log(this.props.history)
+        console.log(this.props.history.search)
 
         _st.bodyClass = 'signup'
     }
 
     componentDidMount() {
-        let {plan} = this.props.match.params,
+        /* let {plan} = this.props.match.params,
             key = _st.stripe
             
         _st.http.get('/signup/'+plan,(d) => {
@@ -90,6 +90,10 @@ export default class Signup extends React.Component {
                 })
                 _st.loading = false
             })
+        }) */
+
+        this.setState({
+            init: true
         })
     }
 
