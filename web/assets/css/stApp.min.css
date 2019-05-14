@@ -1538,7 +1538,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
-  font-size: calc(1rem - 4px);
+  font-size: calc(1rem - 8px);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody > div {
