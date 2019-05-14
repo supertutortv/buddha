@@ -1537,6 +1537,21 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
   padding: 0 1.5rem;
+  font-size: calc(1rem - 4px);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons {
+  text-align: center;
+  padding: 0 0 1.5em !important;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton {
+  background-color: #109fda;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons .stAccountButton[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {

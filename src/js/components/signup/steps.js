@@ -26,10 +26,10 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                             <input className="browser-default validate" type="password" name="customer|account|password" placeholder="Password" onBlur={updateInp} required/>
                         </div>
                     </fieldset>
-                    <div className="stFormButtons">
-                        <button id="stBtn_account" type="submit" className="stFormButton btn waves-effect waves-light" >Next >></button>
+                    <div className="stAccountButtons">
+                        <button type="submit" className="stAccountButton btn waves-effect waves-light" >Next >></button>
                     </div>
-                    <div className="stFormErrors">{msg}</div>
+                    <div className="stAccountErrors">{msg}</div>
                 </form>
                 <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
             </div>
