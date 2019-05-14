@@ -360,8 +360,6 @@ body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWr
 body.main st-app .stAppStage .stAppStageInner .stPracticeSection > div,
 .stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer,
 .stPlaylistRoot .stPlaylistInner .stPlaylistColB,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm > div,
 .stModal .stModalInner,
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.disabled):hover .inner,
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.dld):hover .inner {
@@ -372,8 +370,7 @@ body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm > div,
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.05), 0 6px 30px 5px rgba(0, 0, 0, 0.05), 0 8px 10px -7px rgba(0, 0, 0, 0.05);
 }
 
-.z-depth-5,
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner:hover {
+.z-depth-5 {
   box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.05), 0 9px 46px 8px rgba(0, 0, 0, 0.05), 0 11px 15px -7px rgba(0, 0, 0, 0.05);
 }
 
@@ -1603,10 +1600,20 @@ body.passwordReset st-app #stPasswordWrapper .stPasswordCredentials {
   padding-bottom: 1em;
 }
 
+body.signup > st-app {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-flow-align-items: stretch;
+}
+
 body.signup > st-app .stSignupAccount {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-flow-align-items: stretch;
+  flex: 1 0 auto;
+  order: 1;
   width: 100%;
-  height: calc(100% - 2.5em);
-  padding-bottom: 2em !important;
+  padding-bottom: 2em;
   overflow: auto;
   -webkit-animation: 250ms ease 0s normal forwards 1 fadein;
   animation: 250ms ease 0s normal forwards 1 fadein;
@@ -1616,6 +1623,7 @@ body.signup > st-app .stSignupAccount .stSignupInner {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
@@ -1640,267 +1648,8 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
   background-repeat: no-repeat;
 }
 
-body.signup > st-app .stSignupAccount .stSignupTitle {
-  order: 1;
-  text-align: center;
-}
-
-body.signup > st-app .stSignupAccount .stSignupTitle span {
-  font-style: italic;
-  font-size: 0.75em;
-}
-
-body.signup > st-app .stSignupAccount .stSignupTitle span a {
-  text-decoration: underline;
-  color: #109fda;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer {
-  font-size: calc(1rem - 4px);
-  padding: 2em 1em;
-  flex-flow: row wrap;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan {
-  padding: 0 1em;
-  position: relative;
-  flex: 1;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan.first {
-  top: 2em;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan.last {
-  top: -2em;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner {
-  background-color: white;
-  padding: 12%;
-  border-radius: 0.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  color: inherit;
-  flex-flow: column wrap;
-  display: flex;
-  text-align: center;
-  transition: all 250ms ease-in-out;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner:hover {
-  border: 1px solid #109fda;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest > span {
-  display: block;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest .test {
-  font-size: 1.5em;
-  font-weight: 600;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanTest .name {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanPrice {
-  color: #109fda;
-  font-size: 3em;
-  font-weight: 600;
-  padding: 0.25em 0;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanItems {
-  font-size: 0.75em;
-}
-
-body.signup > st-app .stSignupAccount .stPlansContainer .stPlan .stPlanInner .stPlanItems strong {
-  font-weight: 600;
-}
-
-body.signup > st-app .stSignupPayment {
-  text-align: left;
-  padding: 0 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap {
-  width: 100%;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupBlock {
-  display: flex;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing {
-  background-color: white;
-  flex: 2;
-  border-radius: 0.25em;
-  transition: all 250ms ease-in-out;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing legend {
-  display: block;
-  padding: 1em;
-  font-weight: 600;
-  font-size: 0.75em;
-  width: 100%;
-  line-height: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .formBuffer {
-  padding: 2em 1em;
-  overflow: hidden;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable {
-  font-size: 0.75em;
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable #stPricingItems {
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable .right-al {
-  text-align: right;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable .item {
-  margin-bottom: 0.5em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable input.coupon {
-  width: 80%;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable #stPricingHeading,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable #stPricingTotal {
-  font-weight: 800;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable #stPricingHeading {
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stSignupPricingTable #stPricingTotal {
-  color: green;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing #stPricingCardElement {
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stTermsRow label,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stMailList label {
-  padding-left: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stTermsRow input,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stMailList input {
-  width: auto !important;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stTermsRow a,
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPricing .stMailList a {
-  color: #109fda;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm {
-  padding-right: 2em;
-  flex: 3;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions .dddesc {
-  font-size: 0.75em;
-  font-style: italic;
-  margin-bottom: 0.75em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions legend {
-  margin-bottom: 1.5em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions .input-field {
-  padding: 0 2em;
-  overflow: hidden;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions .input-field.half {
-  width: 50%;
-  float: left;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions .input-field input {
-  width: auto !important;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormOptions .input-field label {
-  padding-left: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormShipping .formBuffer {
-  padding: 1em;
-  overflow: hidden;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormShipping .input-field {
-  width: 50%;
-  float: left;
-  padding: 0 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm .stSignupFormShipping .input-field input {
-  width: 100%;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm > div {
-  border-radius: 0.5em;
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupPayment .stInfoWrap .stSignupPaymentForm > div legend {
-  display: block;
-  padding: 1em;
-  font-weight: 600;
-  font-size: 0.75em;
-  width: 100%;
-  line-height: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-body.signup > st-app .stSignupPayment .stSignupPaymentBottom {
-  order: 1;
-  text-align: center;
-}
-
-body.signup > st-app .stSignupPayment .stSignupPaymentBottom span {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
-body.signup > st-app .stSignupPayment .stSignupPaymentBottom span strong {
-  font-weight: 600;
-}
-
-body.signup > st-app .stSignupThankYou {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  margin-top: 2em;
-}
-
-body.signup > st-app .stSignupThankYou .row {
-  margin-bottom: 1em;
-}
-
-body.signup > st-app .stSignupThankYou span {
-  font-size: 0.75em;
-  font-style: italic;
+body.signup > st-app footer {
+  order: 2;
 }
 
 body.signup > st-app footer > div {

@@ -1,11 +1,14 @@
 body.signup
 
     & > st-app
+        +flexvert
         
         .stSignupAccount
+            +flexvert
+            flex: 1 0 auto
+            order: 1
             width: 100%
-            height: calc(100% - #{$headerh})
-            padding-bottom: $huge !important
+            padding-bottom: $huge
             overflow: auto
             +animFadeIn
 
@@ -13,6 +16,7 @@ body.signup
                 display: flex
                 flex-flow: row wrap
                 justify-content: center
+                align-items: center
 
                 .stAccountForm
                     border-radius: $ittybitty
@@ -34,224 +38,8 @@ body.signup
                             background-size: contain
                             background-repeat: no-repeat
 
-            .stSignupTitle
-                order: 1
-                text-align: center
-
-                span
-                    font-style: italic
-                    font-size: $small
-
-                    a
-                        text-decoration: underline
-                        color: azure()
-
-            .stPlansContainer
-                font-size: $bodytext
-                padding: $huge 1em
-                flex-flow: row wrap
-
-                .stPlan
-                    padding: 0 1em
-                    position: relative
-                    flex: 1
-
-                    &.first
-                        top: $huge
-
-                    &.last
-                        top: -$huge
-
-                    .stPlanInner
-                        background-color: white()
-                        padding: 12%
-                        border-radius: $tiny
-                        border: 1px solid black(.1)
-                        cursor: pointer
-                        color: inherit
-                        flex-flow: column wrap
-                        display: flex
-                        text-align: center
-                        transition: all 250ms ease-in-out
-
-                        &:hover
-                            border: 1px solid azure()
-                            @extend .z-depth-5
-
-                        .stPlanTest
-
-                            & > span
-                                display: block
-
-                            .test
-                                font-size: $large
-                                font-weight: 600
-
-                            .name
-                                font-size: $small
-                                font-style: italic
-                        
-                        .stPlanPrice
-                            color: azure()
-                            font-size: $huge * 1.5
-                            font-weight: 600
-                            padding: $ittybitty 0
-
-                        .stPlanItems
-                            font-size: $small
-
-                            strong
-                                font-weight: 600
-
-        .stSignupPayment
-            text-align: left
-            padding: 0 1em
-            
-            .stInfoWrap
-                width: 100%
-
-                .stSignupBlock
-                    display: flex
-
-                .stSignupPricing
-                    background-color: white()
-                    flex: 2
-                    border-radius: $ittybitty
-                    @extend .z-depth-3
-                    transition: all 250ms ease-in-out
-
-                    legend
-                        display: block
-                        padding: 1em
-                        font-weight: 600
-                        font-size: $small
-                        width: 100%
-                        line-height: 1
-                        border-bottom: 1px solid black(.15)
-                    
-                    .formBuffer
-                        padding: $huge 1em
-                        overflow: hidden
-
-                    #stSignupPricingTable
-                        font-size: $small
-                        margin-bottom: 1em
-
-                        #stPricingItems
-                            margin-bottom: 1em
-
-                        .right-al
-                            text-align: right
-
-                        .item
-                            margin-bottom: $tiny
-
-                        input.coupon
-                            width: 80%
-
-                        #stPricingHeading, #stPricingTotal
-                            font-weight: 800
-                        
-                        #stPricingHeading
-                            margin-bottom: 1em
-
-                        #stPricingTotal
-                            color: green
-                    
-                    #stPricingCardElement
-                        margin-bottom: 1em
-
-                    .stTermsRow, .stMailList
-
-                        label
-                            padding-left: 1em
-
-                        input
-                            width: auto !important
-
-                        a
-                            color: azure()
-
-                .stSignupPaymentForm
-                    padding-right: 2em
-                    flex: 3
-
-                    .stSignupFormOptions
-
-                        .dddesc
-                            font-size: $small
-                            font-style: italic
-                            margin-bottom: $small
-
-                        legend
-                            margin-bottom: $large
-
-                        .input-field
-                            padding: 0 $huge
-                            overflow: hidden
-
-                            &.half
-                                width: 50%
-                                float: left
-
-                            input
-                                width: auto !important
-
-                            label
-                                padding-left: 1em
-
-                    .stSignupFormShipping
-
-                        .formBuffer
-                            padding: 1em
-                            overflow: hidden
-
-                        .input-field
-                            width: 50%
-                            float: left
-                            padding: 0 1em
-
-                            input
-                                width: 100%
-
-                    & > div
-                        border-radius: $tiny
-                        margin-bottom: 1em
-                        @extend .z-depth-3
-
-                        legend
-                            display: block
-                            padding: 1em
-                            font-weight: 600
-                            font-size: $small
-                            width: 100%
-                            line-height: 1
-                            border-bottom: 1px solid black(.15)
-
-            .stSignupPaymentBottom
-                order: 1
-                text-align: center
-
-                span
-                    font-size: $small
-                    font-style: italic
-
-                    strong
-                        font-weight: 600
-
-        .stSignupThankYou
-            +centerblock
-            text-align: center
-            margin-top: $huge
-
-            .row
-                margin-bottom: 1em
-
-            span
-                font-size: $small
-                font-style: italic
-
         footer
+            order: 2
 
             & > div
                 font-size: 15px
