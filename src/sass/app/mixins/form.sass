@@ -1,4 +1,7 @@
-.stFormErrors
+@mixin stFormBody
+    padding: 0 1.5rem
+
+@mixin stFormErrors
     color: red
     font-weight: 600
     font-size: $small
@@ -8,17 +11,6 @@
     a
         text-decoration: underline
 
-.stFormWrapper
-    font-size: $bodytext
-
-    fieldset
-        padding-top: 1em !important
-        border-radius: $tiny
-
-        legend
-            line-height: 1
-            padding: 0 $tiny
-
 .input-field
     margin: 0
     position: relative
@@ -27,18 +19,17 @@
         padding: $tiny $small
         margin-bottom: 1em
         width: 100%
-        border: 0
-        border-bottom: 1px solid black(.25)
+        border: 1px solid black(.15)
         transition: all .1s linear
 
         &.invalid
-            border-bottom: 1px solid red
+            border: 1px solid red
         
         &.valid
-            border-bottom: 1px solid green
+            border: 1px solid green
 
         &:focus:not(.invalid)
-            border-bottom: 1px solid azure()
+            border: 1px solid azure()
 
         &::placeholder
             opacity: 1
@@ -56,9 +47,6 @@
     .stFormHeader
         padding-bottom: 1em
         line-height: $small
-
-    .stFormBody
-        padding: $huge $huge*1.5 0
 
     .stFormButtons
         text-align: center
@@ -84,10 +72,3 @@
 
         strong
             font-weight: 600
-
-footer
-
-    img
-        display: block
-        width: 100%
-        height: auto

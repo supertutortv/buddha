@@ -1,0 +1,38 @@
+@mixin border($color,$size: 1px,$borders: top left right bottom)
+	@each $border in $borders
+		border-#{$border}: #{$size} solid #{$color}
+	
+@mixin borderbtm
+	height: 5px
+	background: $borderimg no-repeat
+	background-size: 100% 5px
+	
+@mixin widebtn
+	padding: $small
+	margin-bottom: $tiny
+	
+@mixin btncolor
+	background: $azure
+	color: white
+
+@mixin loading
+    visibility: hidden
+    opacity: 0
+
+@mixin z-depth-1
+	box-shadow: 0 2px 2px 0 black(.05), 0 3px 1px -2px black(.05), 0 1px 5px 0 black(.05)
+
+@mixin z-depth-2
+	box-shadow: 0 4px 5px 0 black(.05), 0 1px 10px -2px black(.05), 0 2px 4px 0 black(.05)
+
+@mixin z-depth-3
+	box-shadow: 0 8px 17px 2px black(.05), 0 3px 14px 2px black(.05), 0 5px 5px -3px black(.05)
+
+@mixin z-depth-4
+	box-shadow: 0 16px 24px 2px black(.05), 0 6px 30px 5px black(.05), 0 8px 10px -7px black(.05)
+
+@mixin z-depth-5
+	box-shadow: 0 24px 38px 3px black(.05), 0 9px 46px 8px black(.05), 0 11px 15px -7px black(.05)
+
+@mixin shadow-top
+	box-shadow: 0px -10px 45px 1px black(.4) !important

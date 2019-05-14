@@ -82,8 +82,6 @@ export default class Signup extends React.Component {
             query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : ''
 
         if (plan) history.replace('/signup/?crs='+plan+query)
-
-        console.log(this.props.history.location)
         
         /* let {plan} = this.props.match.params,
             key = _st.stripe
@@ -100,10 +98,6 @@ export default class Signup extends React.Component {
                 _st.loading = false
             })
         }) */
-
-        this.setState({
-            init: true
-        })
     }
 
     componentDidUpdate() {

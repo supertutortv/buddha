@@ -54,11 +54,90 @@
   }
 }
 
-@font-face {
-  font-family: 'Brainy';
-  src: url("/assets/fonts/Brainy/Brainy.woff") format("woff"), url("/assets/fonts/Brainy.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
+.input-field {
+  margin: 0;
+  position: relative;
+}
+
+.input-field input,
+.input-field select,
+.input-field #stPricingCardElement {
+  padding: 0.5em 0.75em;
+  margin-bottom: 1em;
+  width: 100%;
+  border: 1px solid black(0.15);
+  transition: all .1s linear;
+}
+
+.input-field input.invalid,
+.input-field select.invalid,
+.input-field #stPricingCardElement.invalid {
+  border: 1px solid red;
+}
+
+.input-field input.valid,
+.input-field select.valid,
+.input-field #stPricingCardElement.valid {
+  border: 1px solid green;
+}
+
+.input-field input:focus:not(.invalid),
+.input-field select:focus:not(.invalid),
+.input-field #stPricingCardElement:focus:not(.invalid) {
+  border: 1px solid azure();
+}
+
+.input-field input::placeholder,
+.input-field select::placeholder,
+.input-field #stPricingCardElement::placeholder {
+  opacity: 1;
+  color: black(0.25);
+  font-style: italic;
+}
+
+.input-field select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-field select.selector,
+.input-field select option:selected {
+  color: black(0.6);
+}
+
+.input-field .stFormHeader {
+  padding-bottom: 1em;
+  line-height: 0.75em;
+}
+
+.input-field .stFormButtons {
+  text-align: center;
+  padding: 0 0 1.5em !important;
+}
+
+.input-field .stFormButtons .stFormButton {
+  background-color: azure();
+}
+
+.input-field .stFormButtons .stFormButton[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.input-field span {
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+.input-field span a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: inherit;
+}
+
+.input-field label strong {
+  font-weight: 600;
 }
 
 @font-face {
@@ -302,6 +381,7 @@ button {
   border-radius: .25em;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
   transition: opacity .1s linear;
 }
 
@@ -332,47 +412,6 @@ button:hover {
   width: 1em;
   border: 2px solid #109fda;
   background-color: #109fda;
-}
-
-.z-depth-1,
-button,
-.stDashboard .stDashboardCourses .myCoursesBody .course > a,
-.stToggle,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm,
-body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
-}
-
-.z-depth-2,
-body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner,
-.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-}
-
-.z-depth-3,
-.stDashboard .stDashboardCourses .myCoursesBody .course > a:hover,
-.stShadowBox,
-.stDashboard .stDashboardCourses,
-.stDashboard .stNotesActions .stDashboardNotifications > section,
-.stDashboard .stNotesActions .stDashboardActions > section,
-body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseMSL,
-body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap,
-body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner:hover,
-body.main st-app .stAppStage .stAppStageInner .stPracticeSection > div,
-.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer,
-.stPlaylistRoot .stPlaylistInner .stPlaylistColB,
-.stModal .stModalInner,
-.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.disabled):hover .inner,
-.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.dld):hover .inner {
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
-}
-
-.z-depth-4 {
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.05), 0 6px 30px 5px rgba(0, 0, 0, 0.05), 0 8px 10px -7px rgba(0, 0, 0, 0.05);
-}
-
-.z-depth-5 {
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.05), 0 9px 46px 8px rgba(0, 0, 0, 0.05), 0 11px 15px -7px rgba(0, 0, 0, 0.05);
 }
 
 h1,
@@ -420,18 +459,6 @@ h5 {
 
 h6 {
   margin: 0;
-}
-
-i {
-  font-family: 'Brainy' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 @media only screen and (max-width: 992px) {
@@ -571,6 +598,11 @@ body.muSignup .stAppHeader {
   display: block;
   overflow: hidden;
   border-radius: 0.25em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.stDashboard .stDashboardCourses .myCoursesBody .course > a:hover {
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stDashboard .stDashboardCourses .myCoursesBody .course > a img {
@@ -662,6 +694,7 @@ body.muSignup .stAppHeader {
 .stDashboard .stNotesActions .stDashboardNotifications > section,
 .stDashboard .stNotesActions .stDashboardActions > section {
   border-radius: 0.25em;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stBoxHeading {
@@ -669,129 +702,6 @@ body.muSignup .stAppHeader {
   font-weight: 600;
   line-height: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.stFormErrors {
-  color: red;
-  font-weight: 600;
-  font-size: 0.75em;
-  text-align: center;
-  padding: 0 1.5em 1.5em;
-}
-
-.stFormErrors a {
-  text-decoration: underline;
-}
-
-.stFormWrapper {
-  font-size: calc(1rem - 4px);
-}
-
-.stFormWrapper fieldset {
-  padding-top: 1em !important;
-  border-radius: 0.5em;
-}
-
-.stFormWrapper fieldset legend {
-  line-height: 1;
-  padding: 0 0.5em;
-}
-
-.input-field {
-  margin: 0;
-  position: relative;
-}
-
-.input-field input,
-.input-field select,
-.input-field #stPricingCardElement {
-  padding: 0.5em 0.75em;
-  margin-bottom: 1em;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  transition: all .1s linear;
-}
-
-.input-field input.invalid,
-.input-field select.invalid,
-.input-field #stPricingCardElement.invalid {
-  border-bottom: 1px solid red;
-}
-
-.input-field input.valid,
-.input-field select.valid,
-.input-field #stPricingCardElement.valid {
-  border-bottom: 1px solid green;
-}
-
-.input-field input:focus:not(.invalid),
-.input-field select:focus:not(.invalid),
-.input-field #stPricingCardElement:focus:not(.invalid) {
-  border-bottom: 1px solid #109fda;
-}
-
-.input-field input::placeholder,
-.input-field select::placeholder,
-.input-field #stPricingCardElement::placeholder {
-  opacity: 1;
-  color: rgba(0, 0, 0, 0.25);
-  font-style: italic;
-}
-
-.input-field select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.input-field select.selector,
-.input-field select option:selected {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.input-field .stFormHeader {
-  padding-bottom: 1em;
-  line-height: 0.75em;
-}
-
-.input-field .stFormBody {
-  padding: 2em 3em 0;
-}
-
-.input-field .stFormButtons {
-  text-align: center;
-  padding: 0 0 1.5em !important;
-}
-
-.input-field .stFormButtons .stFormButton {
-  background-color: #109fda;
-}
-
-.input-field .stFormButtons .stFormButton[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.input-field span {
-  font-size: 0.75em;
-  font-style: italic;
-}
-
-.input-field span a {
-  text-decoration: underline;
-  cursor: pointer;
-  color: inherit;
-}
-
-.input-field label strong {
-  font-weight: 600;
-}
-
-footer img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 body.login st-app {
@@ -878,6 +788,7 @@ body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseMSL {
   background-color: white;
   border-radius: 0.25em;
   overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseMSL .stCourseMSLInner {
@@ -972,6 +883,7 @@ body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVim
   padding-top: 56.25%;
   border-radius: 0.25em;
   overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap:hover .stVimTitle {
@@ -1024,10 +936,12 @@ body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWr
   width: 100%;
   height: 100%;
   opacity: .85;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   transition: all 100ms ease-in-out;
 }
 
 body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner:hover {
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   opacity: 1;
 }
 
@@ -1076,6 +990,7 @@ body.main st-app .stAppStage .stAppStageInner .stPracticeSection > div {
   position: relative;
   background-color: white;
   overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 body.main st-app .stAppStage .stAppStageInner .stPracticeSection .boxHeader {
@@ -1244,6 +1159,7 @@ body.main st-app .stAppStage .stAppStageInner img {
   border-radius: 50%;
   background: white;
   position: absolute;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
   transition: left .1s ease-in-out;
 }
 
@@ -1340,6 +1256,7 @@ span.stToggleLabel {
   border-radius: 0.25em;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer {
@@ -1423,6 +1340,7 @@ span.stToggleLabel {
   -ms-flex-item-align: start;
   align-self: flex-start;
   background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar {
@@ -1634,11 +1552,11 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   max-width: 360px;
   background-color: white;
   margin-bottom: .5rem;
-  padding: 1rem;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading {
-  padding: 1em;
+  padding: 1rem 3rem;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -1652,6 +1570,10 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
   background-repeat: no-repeat;
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody {
+  padding: 0 1.5rem;
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   text-align: center;
   border-radius: 0.25em;
@@ -1663,6 +1585,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   font-size: calc(1rem - 4px);
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a:hover {
@@ -1822,6 +1745,7 @@ body.signup > st-app footer > div {
   width: 100%;
   height: 100%;
   border: 0.5em solid transparent;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stModal .stModalInner figure {
@@ -1859,6 +1783,7 @@ body.signup > st-app footer > div {
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.disabled):hover .inner,
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.dld):hover .inner {
   background-color: rgba(0, 0, 0, 0.025);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner {
@@ -1866,6 +1791,7 @@ body.signup > st-app footer > div {
   height: 100%;
   display: flex;
   align-items: center;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   transition: all .1s ease-in-out;
 }
 
