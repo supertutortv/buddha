@@ -283,7 +283,7 @@ table {
 input,
 select,
 textarea {
-  font-size: 1em;
+  font-size: calc(1rem - 8px);
   outline: none !important;
 }
 
@@ -295,7 +295,7 @@ button {
   opacity: .9;
   color: white;
   background-color: gray;
-  font-size: .75em;
+  font-size: calc(1rem - 8px);
   text-transform: uppercase;
   padding: .5em 1em;
   border: 0;
@@ -335,6 +335,7 @@ button:hover {
 }
 
 .z-depth-1,
+button,
 .stDashboard .stDashboardCourses .myCoursesBody .course > a,
 .stToggle,
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm,
@@ -343,7 +344,6 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
 }
 
 .z-depth-2,
-button,
 body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner,
 .stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
