@@ -1634,6 +1634,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   max-width: 360px;
   background-color: white;
   margin-bottom: .5rem;
+  padding: 1rem;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading {
@@ -1657,6 +1658,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   max-width: 360px;
   background-color: white;
   margin-bottom: .5rem;
+  padding: 1rem;
 }
 
 body.signup > st-app footer {
