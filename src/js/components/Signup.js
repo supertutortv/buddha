@@ -78,8 +78,14 @@ export default class Signup extends React.Component {
     componentDidMount() {
 
         let {history, match} = this.props,
-            {plan} = match.params,
-            {qstring} = history.location.search
+            {plan} = match.params || '',
+            {qstring} = history.location.search || ''
+
+        if (qstring.indexOf('?')) qstring = '&'+qstring.substring(1)
+
+        if (plan) plan = '?crs='+plan
+
+        history.replace(history.location.pathname+plan+qstring)
         
         /* let {plan} = this.props.match.params,
             key = _st.stripe
