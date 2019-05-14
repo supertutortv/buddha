@@ -1650,11 +1650,12 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .heading h1 
 }
 
 body.signup > st-app footer {
+  font-size: calc(1rem - 8px);
+  min-height: 3em;
   order: 2;
 }
 
 body.signup > st-app footer > div {
-  font-size: 15px;
   text-transform: uppercase;
   font-weight: 800;
   background-color: whitesmoke;
