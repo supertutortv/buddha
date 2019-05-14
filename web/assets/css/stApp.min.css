@@ -1664,8 +1664,9 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
 
 body.signup > st-app footer {
   font-size: calc(1rem - 8px);
-  min-height: 3em;
+  min-height: 5rem;
   order: 2;
+  padding: 1rem 0;
 }
 
 body.signup > st-app footer > div {
