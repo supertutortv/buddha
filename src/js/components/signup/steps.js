@@ -14,7 +14,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </header>
                     <fieldset className="stAccountBody">
                         <div className="input-field required">
-                            <input className="browser-default validate" type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
+                            <input type="text" name="customer|account|firstname" placeholder="First Name" onBlur={updateInp} required />
                         </div>
                         <div className="input-field required">
                             <input className="browser-default validate" type="text" name="customer|account|lastname" placeholder="Last Name" onBlur={updateInp} required/>
