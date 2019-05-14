@@ -72,7 +72,7 @@ export default class Signup extends React.Component {
 
         let {hist: history} = this.props
 
-        cons
+        console.log(hist)
 
         _st.bodyClass = 'signup'
     }
