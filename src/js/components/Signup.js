@@ -83,21 +83,6 @@ export default class Signup extends React.Component {
 
         if (plan) history.replace('/signup/?crs='+plan+query)
         
-        /* let {plan} = this.props.match.params,
-            key = _st.stripe
-            
-        _st.http.get('/signup/'+plan,(d) => {
-            this.setState({
-                init: true,
-                item: d.data,
-                stripe: (window.Stripe) ? window.Stripe(key) : null
-            }, () => {
-                if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
-                    this.setState({stripe: window.Stripe(key)})
-                })
-                
-            })
-        }) */
         _st.loading = false
     }
 

@@ -31,7 +31,7 @@ export function changeStep(inc = true,e) {
 
 // createAccount
 export function createAccount(e) {
-    e.preventDefault()
+    return console.log(e) || e.preventDefault()
     _st.loading = true
     _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
