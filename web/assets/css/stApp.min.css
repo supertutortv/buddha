@@ -211,6 +211,8 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  vertical-align-background: none;
+  vertical-align-color: inherit;
 }
 
 article,
@@ -1685,20 +1687,18 @@ body.signup > st-app footer {
   font-size: calc(1rem - 10px);
   order: 2;
   padding: 1rem 0;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 body.signup > st-app footer > * {
   min-height: 2rem;
   text-transform: uppercase;
   font-weight: 800;
-}
-
-body.signup > st-app footer mark {
-  background: none;
-  color: inherit;
 }
 
 .stDialogCentered {
