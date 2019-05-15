@@ -1,5 +1,4 @@
 import React from 'react'
-import FAIco from '../FAIco'
 import VidPlayer from '../VidPlayer'
 import ToggleSwitch from '../pieces/toggleSwitch'
 
