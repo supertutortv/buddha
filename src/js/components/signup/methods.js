@@ -33,11 +33,10 @@ export function changeStep(inc = true,e) {
 export function createAccount(e) {
     e.preventDefault()
     _st.loading = true
-    let form = e.target.querySelectorAll('input'),
-        obj = null
+    let form = Array.from(e.target.querySelectorAll('input')),
+        obj = {}
 
-    Array.from(form,this.updateInp)
-    console.log(JSON.stringify(this.state.customer.account))
+    console.log(form)
 
     /* _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
