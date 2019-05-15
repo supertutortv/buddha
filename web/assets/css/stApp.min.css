@@ -1632,6 +1632,11 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountEr
   text-decoration: underline;
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaimer {
+  padding: 2rem 2rem 0;
+  text-align: center;
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   text-align: center;
   padding: 1rem;

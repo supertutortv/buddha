@@ -37,6 +37,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                         <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
                     </div>
                     {(error.message) ? msg : null}
+                    <section className="stDisclaimer">By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></section>
                 </form>
                 <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
             </div>
