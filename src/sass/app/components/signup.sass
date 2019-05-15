@@ -65,6 +65,17 @@ body.signup
                     .stDisclaimer
                         +stFormButtons
 
+                        span
+                            font-size: $smalltext
+
+                            a
+                                transition: all 250ms ease-in-out
+                                color: azure(.75)
+                                
+                                &:hover
+                                    color: azure()
+
+
                 .insteadLogin
                     text-align: center
                     padding: 1rem
@@ -73,6 +84,7 @@ body.signup
                     +stcard
 
                     a
+                        transition: all 250ms ease-in-out
                         color: azure(.75)
                         
                         &:hover

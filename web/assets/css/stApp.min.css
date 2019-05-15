@@ -1637,6 +1637,19 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaime
   padding: 0 1.5rem 1rem;
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaimer span {
+  font-size: calc(1rem - 10px);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaimer span a {
+  transition: all 250ms ease-in-out;
+  color: rgba(16, 159, 218, 0.75);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaimer span a:hover {
+  color: #109fda;
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   text-align: center;
   padding: 1rem;
@@ -1653,6 +1666,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a {
+  transition: all 250ms ease-in-out;
   color: rgba(16, 159, 218, 0.75);
 }
 
