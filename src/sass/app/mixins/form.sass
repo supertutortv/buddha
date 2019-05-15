@@ -59,8 +59,16 @@
             background-color: transparent
             transition: all .25s ease-in-out
 
-            &:focus, &:valid
+            &:focus
                 border: 1px solid azure(.5)
+            
+            &:valid
+                border: 1px solid green
+
+            &:invalid
+                border: 1px solid red
+
+            &:focus, &:valid, &:invalid
 
                 & + label
                     font-size: $smalltext

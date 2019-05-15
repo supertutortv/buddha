@@ -1584,16 +1584,26 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus {
   border: 1px solid rgba(16, 159, 218, 0.5);
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid {
+  border: 1px solid green;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):invalid,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:invalid {
+  border: 1px solid red;
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid + label,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):invalid + label,
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
-body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label,
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:invalid + label {
   font-size: calc(1rem - 10px);
 }
 

@@ -8,7 +8,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
     return (
         <main className="stSignupAccount">
             <div className="stSignupInner">
-                <form className="stAccountForm" onSubmit={createAccount}>
+                <form role="form" className="stAccountForm" onSubmit={createAccount}>
                     <header className="heading">
                         <h1>SupertutorTV</h1>
                     </header>
@@ -17,20 +17,20 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </section>
                     <fieldset className="stAccountBody">
                         <div className="stIfR99">
-                            <label for="customer|account|firstname">Student First Name</label>
-                            <input type="text" name="customer|account|firstname" onBlur={updateInp} required />
+                            <input aria-label="Student First Name" type="text" name="customer|account|firstname" onBlur={updateInp} required />
+                            <label aria-hidden="true" for="customer|account|firstname">Student First Name</label>
                         </div>
                         <div className="stIfR99">
-                            <label for="customer|account|lastname">Student Last Name</label>
-                            <input className="browser-default validate" type="text" name="customer|account|lastname" onBlur={updateInp} required/>
+                            <input aria-label="Student Last Name" className="browser-default validate" type="text" name="customer|account|lastname" onBlur={updateInp} required/>
+                            <label aria-hidden="true" for="customer|account|lastname">Student Last Name</label>
                         </div>
                         <div className="stIfR99">
-                            <label for="customer|account|email">Student Email</label>
-                            <input className="browser-default validate email" type="email" name="customer|account|email" onBlur={updateInp} required/>
+                            <input aria-label="Student Email" className="browser-default validate email" type="email" name="customer|account|email" onBlur={updateInp} required validation="email"/>
+                            <label aria-hidden="true" for="customer|account|email">Student Email</label>
                         </div>
                         <div className="stIfR99">
-                            <label for="customer|account|password">Password</label>
-                            <input className="browser-default validate" type="password" name="customer|account|password" onBlur={updateInp} required/>
+                            <input aria-label="Password" className="browser-default validate" type="password" name="customer|account|password" onBlur={updateInp} required/>
+                            <label aria-hidden="true" for="customer|account|password">Password</label>
                         </div>
                     </fieldset>
                     <div className="stAccountButtons">
