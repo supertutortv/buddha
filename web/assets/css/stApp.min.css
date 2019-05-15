@@ -1696,6 +1696,11 @@ body.signup > st-app footer > * {
   font-weight: 800;
 }
 
+body.signup > st-app footer mark {
+  background: none;
+  color: inherit;
+}
+
 .stDialogCentered {
   text-align: center;
   border-radius: 0.5em;
