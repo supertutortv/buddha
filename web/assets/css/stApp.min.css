@@ -210,9 +210,9 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-  vertical-align-background: none;
-  vertical-align-color: inherit;
+  font-vertical-align: baseline;
+  font-background: none;
+  font-color: inherit;
 }
 
 article,
