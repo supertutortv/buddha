@@ -1483,6 +1483,7 @@ body.signup {
 }
 
 body.signup > st-app {
+  background-color: initial;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
@@ -1689,7 +1690,6 @@ body.signup > st-app footer {
 body.signup > st-app footer > div {
   text-transform: uppercase;
   font-weight: 800;
-  background-color: whitesmoke;
 }
 
 .stDialogCentered {
