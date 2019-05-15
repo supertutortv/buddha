@@ -32,7 +32,10 @@ export function changeStep(inc = true,e) {
 // createAccount
 export function createAccount(e) {
     e.preventDefault()
-    _st.loading = true
+    let {history: hist} = this.props
+    hist.replace('/login/'+hist.location.search)
+    console.log(e)
+    /* _st.loading = true
     let form = Array.from(e.target.querySelectorAll('input')),
         obj = {}
 
@@ -48,7 +51,7 @@ export function createAccount(e) {
         })
         _st.loading = false
         console.log(d)
-    })
+    }) */
 }
 
 // setChecker
