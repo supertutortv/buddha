@@ -425,7 +425,6 @@ h6 {
 @media only screen and (max-width: 992px) {
   body {
     overflow: auto;
-    height: auto;
     background-size: 40%;
   }
 }

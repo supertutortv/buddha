@@ -10,7 +10,7 @@ module.exports = (env) => {
         entry: ['./src/sass/stApp.sass','./src/js/stApp.js'],
         output: {
             path: path.resolve(__dirname, 'web'),
-            filename: 'assets/js/stApp.js',
+            filename: 'assets/js/[contenthash].js',
             publicPath: '/'
         },
         devServer: {
