@@ -34,9 +34,12 @@ export function createAccount(e) {
     e.preventDefault()
     _st.loading = true
     let form = e.target.querySelectorAll('input'),
-        obj = Array.from(form,this.updateInp)
+        obj = null
 
-    _st.http.post('/signup/account',this.state.customer.account,(d) => {
+    Array.from(form,this.updateInp)
+    console.log(this.state.customer.account)
+
+    /* _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
                 id: d.code,
@@ -45,7 +48,7 @@ export function createAccount(e) {
         })
         _st.loading = false
         console.log(d)
-    })
+    }) */
 }
 
 // setChecker
