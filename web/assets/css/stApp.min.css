@@ -1683,12 +1683,15 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin a:hover {
 
 body.signup > st-app footer {
   font-size: calc(1rem - 10px);
-  min-height: 4rem;
   order: 2;
   padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-body.signup > st-app footer > div {
+body.signup > st-app footer > * {
+  min-height: 2rem;
   text-transform: uppercase;
   font-weight: 800;
 }

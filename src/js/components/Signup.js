@@ -126,8 +126,9 @@ export default class Signup extends React.Component {
                     submitPayment={this.submitPayment} 
                     validate={this.validate}
                 />
-                <footer>
-                    <div>© {thedate.getFullYear()} Supertutor Media, Inc.</div>
+                <footer role="contentinfo">
+                    <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
+                    <nav>Some links</nav>
                 </footer>
             </React.Fragment>
         )
