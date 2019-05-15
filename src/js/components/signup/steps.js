@@ -3,7 +3,7 @@ import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import Payment from './payment'
 
 const Account = ({ createAccount, updateInp, error, state }) => {
-    var msg = (error.message.match(/already in use/)) ? <strong>{error.message}<Link to='/login'>{'Sign in'}</Link></strong> : <strong>{error.message}</strong>
+    var msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
     let { item } = state
     return (
         <main className="stSignupAccount">
@@ -36,7 +36,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     <div className="stAccountButtons">
                         <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
                     </div>
-                    <div className="stAccountErrors">{msg}</div>
+                    {(error.message) ? msg : null}
                 </form>
                 <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
             </div>
