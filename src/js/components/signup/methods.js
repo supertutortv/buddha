@@ -31,8 +31,17 @@ export function changeStep(inc = true,e) {
 
 // createAccount
 export function createAccount(e) {
-    return console.log(e.target) || e.preventDefault()
-    _st.loading = true
+    e.preventDefault()
+    let form = new FormData(e.target),
+        obj = {}
+
+    for (var pair of form.entries()) {
+        obj[pair[0]] = pair[1]
+    }
+
+    return console.log(obj)
+
+    /* _st.loading = true
     _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
@@ -44,7 +53,7 @@ export function createAccount(e) {
         return this.changeStep({
             customer: Object.assign(this.state.customer,d.update)
         })
-    })
+    }) */
 }
 
 // setChecker
