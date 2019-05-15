@@ -37,7 +37,7 @@ export function createAccount(e) {
         obj = null
 
     Array.from(form,this.updateInp)
-    console.log(this.state.customer.account)
+    console.log(JSON.stringify(this.state.customer.account))
 
     /* _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
