@@ -35,7 +35,7 @@ export function createAccount(e) {
     let form = e.target.querySelectorAll('input'),
         obj = {}
 
-    form.map(this.updateInp)
+    Array.from(form,this.updateInp)
     /* for (var pair of form.entries()) {
         obj[pair[0]] = pair[1]
     } */
