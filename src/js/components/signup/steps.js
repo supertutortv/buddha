@@ -18,19 +18,19 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     <fieldset className="stAccountBody">
                         <div className="stIfR99">
                             <input autocomplete="off" aria-label="Student First Name" type="text" name="customer|account|firstname" required />
-                            <label aria-hidden="true" for="customer|account|firstname">Student First Name</label>
+                            <label aria-hidden="true" for="firstname">Student First Name</label>
                         </div>
                         <div className="stIfR99">
                             <input autocomplete="off" aria-label="Student Last Name" className="browser-default validate" type="text" name="customer|account|lastname" required/>
-                            <label aria-hidden="true" for="customer|account|lastname">Student Last Name</label>
+                            <label aria-hidden="true" for="lastname">Student Last Name</label>
                         </div>
                         <div className="stIfR99">
                             <input autocomplete="off" aria-label="Student Email" className="browser-default validate email" type="email" name="customer|account|email" required validation="email"/>
-                            <label aria-hidden="true" for="customer|account|email">Student Email</label>
+                            <label aria-hidden="true" for="email">Student Email</label>
                         </div>
                         <div className="stIfR99">
                             <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="customer|account|password" required/>
-                            <label aria-hidden="true" for="customer|account|password">Password</label>
+                            <label aria-hidden="true" for="password">Password</label>
                         </div>
                     </fieldset>
                     <div className="stAccountButtons">
