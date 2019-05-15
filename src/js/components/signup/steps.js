@@ -17,19 +17,19 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                     </section>
                     <fieldset className="stAccountBody">
                         <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Student First Name" type="text" name="customer|account|firstname" required />
+                            <input autocomplete="off" aria-label="Student First Name" type="text" name="firstname" required />
                             <label aria-hidden="true" for="firstname">Student First Name</label>
                         </div>
                         <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Student Last Name" className="browser-default validate" type="text" name="customer|account|lastname" required/>
+                            <input autocomplete="off" aria-label="Student Last Name" className="browser-default validate" type="text" name="lastname" required/>
                             <label aria-hidden="true" for="lastname">Student Last Name</label>
                         </div>
                         <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Student Email" className="browser-default validate email" type="email" name="customer|account|email" required validation="email"/>
+                            <input autocomplete="off" aria-label="Student Email" className="browser-default validate email" type="email" name="email" required validation="email"/>
                             <label aria-hidden="true" for="email">Student Email</label>
                         </div>
                         <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="customer|account|password" required/>
+                            <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
                             <label aria-hidden="true" for="password">Password</label>
                         </div>
                     </fieldset>
