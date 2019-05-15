@@ -1562,7 +1562,6 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) > label {
   font-size: calc(1rem - 4px);
-  font-style: italic;
   padding: .75em 1em;
   position: absolute;
   display: block;
