@@ -1507,7 +1507,7 @@ body.signup > st-app .stSignupAccount .stSignupInner {
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm {
   margin-top: .5rem;
-  font-size: calc(1rem - 4px);
+  font-size: calc(1rem - 7px);
   border-radius: 0.25em;
   width: 100%;
   max-width: 400px;
@@ -1561,7 +1561,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) > label {
-  font-size: calc(1rem - 4px);
+  font-size: calc(1rem - 7px);
   padding: .75em 1em;
   position: absolute;
   display: block;
@@ -1598,7 +1598,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBo
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid + label,
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
-  font-size: calc(1rem - 12px);
+  font-size: calc(1rem - 14px);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountButtons {
@@ -1642,6 +1642,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaime
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stDisclaimer span a {
+  font-weight: 600;
   transition: all 250ms ease-in-out;
   color: rgba(16, 159, 218, 0.75);
 }
