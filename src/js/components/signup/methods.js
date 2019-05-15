@@ -32,17 +32,10 @@ export function changeStep(inc = true,e) {
 // createAccount
 export function createAccount(e) {
     e.preventDefault()
+    _st.loading = true
     let form = e.target.querySelectorAll('input'),
-        obj = {}
+        obj = Array.from(form,this.updateInp)
 
-    Array.from(form,this.updateInp)
-    /* for (var pair of form.entries()) {
-        obj[pair[0]] = pair[1]
-    } */
-
-    return console.log(this.state.customer.account)
-
-    /* _st.loading = true
     _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
@@ -50,11 +43,8 @@ export function createAccount(e) {
                 message: d.message
             }
         })
-
-        return this.changeStep({
-            customer: Object.assign(this.state.customer,d.update)
-        })
-    }) */
+        console.log(obj)
+    })
 }
 
 // setChecker
