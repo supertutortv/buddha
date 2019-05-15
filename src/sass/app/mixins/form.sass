@@ -41,6 +41,7 @@
 
         & > label
             font-size: $bodytext
+            font-style: italic
             padding: .75em 1em
             position: absolute
             display: block
@@ -65,10 +66,7 @@
             &:valid
                 border: 1px solid green
 
-            &:invalid
-                border: 1px solid red
-
-            &:focus, &:valid, &:invalid
+            &:focus, &:valid
 
                 & + label
                     font-size: $smalltext
