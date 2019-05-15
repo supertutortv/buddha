@@ -1621,6 +1621,18 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountBu
   font-size: calc(1rem - 10px);
 }
 
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountErrors {
+  color: red;
+  font-weight: 600;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 0 1.5em 1.5em;
+}
+
+body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stAccountErrors a {
+  text-decoration: underline;
+}
+
 body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   text-align: center;
   padding: 1rem;
