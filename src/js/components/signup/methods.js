@@ -35,11 +35,12 @@ export function createAccount(e) {
     let form = e.target.querySelectorAll('input'),
         obj = {}
 
+    form.map(this.updateInp)
     /* for (var pair of form.entries()) {
         obj[pair[0]] = pair[1]
     } */
 
-    return console.log(form)
+    return console.log(this.state.customer.account)
 
     /* _st.loading = true
     _st.http.post('/signup/account',this.state.customer.account,(d) => {
@@ -174,7 +175,7 @@ export function toPrice(amt = 0) {
 }
 
 // updateInp
-export function updateInp({target: el}) {
+export function updateInp(el) {
     this.state.update = false
     
     this.setState(prev => {
