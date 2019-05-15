@@ -36,6 +36,7 @@ export function createAccount(e) {
     let form = e.target.querySelectorAll('input'),
         obj = Array.from(form,this.updateInp)
 
+        console.log(obj)
     _st.http.post('/signup/account',this.state.customer.account,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
