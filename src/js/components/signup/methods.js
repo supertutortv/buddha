@@ -39,9 +39,7 @@ export function createAccount(e) {
     for (let i = 0; form.length > i; i++)
         obj[form[i].name] = form[i].value
 
-    console.log(obj)
-
-    /* _st.http.post('/signup/account',this.state.customer.account,(d) => {
+    _st.http.post('/signup/account',obj,(d) => {
         if (d.code === 'signupError') return this.setState({
             error: {
                 id: d.code,
@@ -50,7 +48,7 @@ export function createAccount(e) {
         })
         _st.loading = false
         console.log(d)
-    }) */
+    })
 }
 
 // setChecker
