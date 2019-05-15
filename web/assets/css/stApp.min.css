@@ -284,7 +284,6 @@ textarea {
 input,
 select,
 #stPricingCardElement {
-  padding: 0.5em 0.75em;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.15);
   transition: all .1s linear;
@@ -1537,7 +1536,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stC2A {
   text-align: center;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
-  transform: scale3d(1, 1.1, 1);
+  transform: scale3d(1, 1.2, 1);
 }
 
 body.signup > st-app .stSignupAccount .stSignupInner .stAccountForm .stC2A > h2 {
@@ -1627,7 +1626,7 @@ body.signup > st-app .stSignupAccount .stSignupInner .insteadLogin {
   font-size: calc(1rem - 4px);
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
-  transform: scale3d(1, 1.1, 1);
+  transform: scale3d(1, 1.2, 1);
   border-radius: 0.25em;
   width: 100%;
   max-width: 400px;
