@@ -2,7 +2,7 @@ import React from 'react'
 import {Link,Route,Switch,Redirect} from 'react-router-dom'
 import Payment from './payment'
 
-const Account = ({ createAccount, updateInp, error, state }) => {
+const Account = ({ hist, createAccount, error, state }) => {
     var msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
     let { item } = state
     return (
@@ -41,7 +41,7 @@ const Account = ({ createAccount, updateInp, error, state }) => {
                         <span>By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></span>
                     </section>
                 </form>
-                <code className="insteadLogin">Already have an account? <Link to='/login'>{'Log In'}</Link></code>
+                <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>'Log In'</Link></code>
             </div>
         </main>
     )

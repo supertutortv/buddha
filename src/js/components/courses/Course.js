@@ -3,7 +3,6 @@ import { withRouter } from 'react-router'
 import { DataState } from './StateContext'
 import Header from '../Header'
 import Playlist from '../Playlist'
-import FAIco from '../FAIco'
 import STSectionBox from './STSectionBox'
 import MyStudyList from './MyStudyList'
 import ST404 from '../ST404'
@@ -93,11 +92,11 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                                 <div className="stPracticeSectionInner">
                                                     <div className="stPracticeTop">
                                                         <div>
-                                                            <div className="boxIco"><FAIco title={collections.practice.name} icon="chart-line"/></div>
+                                                            <div className="boxIco" title={collections.practice.name}><i class="fas fa-chart-line"></i></div>
                                                             <div className="boxTitle">Practice Test Explanations</div>
                                                             <div className="stPracticeNote">{!data.user.trialing ? '(Note: some sections may not be available during the trial period.)' : ''}</div>
                                                         </div>
-                                                        {/* <div><FAIco title="Take a practice test" icon="vial"/><span className="boxPracTest">Take a practice test</span></div> */}
+                                                        {/* <div title="Take a practice test"><i className="fas fa-vial"></i><span className="boxPracTest">Take a practice test</span></div> */}
                                                     </div>
                                                     <div className="stPracticeBody">
                                                         <Practice hist={hist} path={loc.pathname+'/practice'} trialing={data.user.trialing} obj={collections.practice.collection} />

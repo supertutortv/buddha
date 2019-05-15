@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FAIco from './FAIco'
 
 const Header = ({stripped, title, depth, hist, refreshData}) => {
     var strCls = stripped ? ' stripped' : '',
@@ -17,27 +16,27 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                 <ul className="stNavContainer">
                     {stripped ? '' :
                         <React.Fragment>
-                            <li><FAIco title="Dashboard" icon="user" onClick={(e) => {
+                            <li title="Dashboard" onClick={(e) => {
                                 e.preventDefault()
                                 hist.push('/dashboard')
-                            }} /></li>
-                            {/* <li><FAIco title="Rate/Review" icon="star"/></li>
-                            <li><FAIco title="Leave Feedback" icon="comment-alt"/></li> */}
-                            <li onClick={(e) => {
+                            }}><i className="fas fa-user" ></i></li>
+                            {/* <li title="Rate/Review"><i className="fas fa-star"></i></li>
+                            <li title="Leave Feedback"><i className="fas fa-comment-alt"></i></li> */}
+                            <li title="Reload" onClick={(e) => {
                                 let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
 
                                 return result ? refreshData() : null
-                            }}><FAIco title="Refresh course" icon="sync-alt" /></li>
+                            }}><i className="fas fa-sync-alt" /></li>
                         </React.Fragment>
                     }
-                    <li><FAIco title="Help" icon="question" onClick={(e) => {
+                    <li title="Help" onClick={(e) => {
                         e.preventDefault()
                         window.open("https://supertutortv.zendesk.com")
-                    }}/></li>
-                    <li onClick={(e) => {
+                    }}><i className="fas fa-question"></i></li>
+                    <li title={stripped ? "Log in" : "Log out"} onClick={(e) => {
                         _st.loading = true
                         _st.http.post('/auth/logout',{},() => refreshData())
-                    }}><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
+                    }}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i></li>
                 </ul>
             </div>
         </header>

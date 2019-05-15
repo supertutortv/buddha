@@ -1,5 +1,4 @@
 import React from 'react'
-import FAIco from '../FAIco'
 
 export default class AddFave extends React.Component {
     constructor(props) {
@@ -32,7 +31,7 @@ export default class AddFave extends React.Component {
                 <a className="stPlaylistAction faved" title="Added to Study List" onClick={(e) => 
                     this.setState({faved: false}, () => deleteUdata('playlist',vid,this.inPL))
                 }>
-                    <FAIco icon={'heart'}/>
+                    <i class="fas fa-heart"></i>
                 </a>
             )
         } else {
@@ -40,7 +39,7 @@ export default class AddFave extends React.Component {
                 <a className="stPlaylistAction" title="Add to My Study List" onClick={(e) => 
                     this.setState({faved: true}, () => updateUdata('playlist',vid,test,loc))
                 }>
-                    <FAIco icon={['far','heart']}/>
+                    <i class="far fa-heart"></i>
                 </a>
             )
         }

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Switch,Route,Redirect,Link} from 'react-router-dom'
-import FAIco from '../FAIco'
 
 const STSectionBox = ({hist, path, description, icon, name, color}) =>
     <section className="stSectionBoxWrap">
@@ -11,7 +10,7 @@ const STSectionBox = ({hist, path, description, icon, name, color}) =>
                 <div className="stSectionBoxContainer">
                     <div className="boxHeader" style={{backgroundColor:color}}></div>
                     <div className="boxText">
-                        <div className="boxIcon"><FAIco icon={icon} /></div>
+                        <div className="boxIcon"><i className={"fas fa-"+icon}></i></div>
                         <div className="boxTitle">{name}</div>
                         <div className="boxDesc">{description}</div>
                     </div>
