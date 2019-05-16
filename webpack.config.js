@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const globImporter = require('node-sass-glob-importer')
 
 module.exports = (env) => {
@@ -10,7 +10,7 @@ module.exports = (env) => {
         entry: ['./src/sass/stApp.sass','./src/js/stApp.js'],
         output: {
             path: path.resolve(__dirname, 'web'),
-            filename: 'assets/js/[contenthash].js',
+            filename: 'assets/js/[hash].js',
             publicPath: '/'
         },
         devServer: {
@@ -21,30 +21,31 @@ module.exports = (env) => {
             rules: [
                 {
                     test: /\.sass$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: [
-                            {
-                                loader: 'css-loader',
-                                options: {
-                                    url: false,
-                                    minimize: true,
-                                    sourceMap: true
-                                }
-                            },
-                            {
-                                loader: 'resolve-url-loader'
-                            },
-                            {
-                                loader: 'sass-loader',
-                                options: {
-                                    sourceMap: false,
-                                    minimize: true,
-                                    importer: globImporter()
-                                }
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {}
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false,
+                                minimize: true,
+                                sourceMap: true
                             }
-                        ]
-                    })
+                        },
+                        {
+                            loader: 'resolve-url-loader'
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: false,
+                                minimize: true,
+                                importer: globImporter()
+                            }
+                        }
+                    ]
                 },
                 {
                     test: /\.(js)$/,
@@ -67,17 +68,14 @@ module.exports = (env) => {
             historyApiFallback: true,
         },
         plugins: [
-            new ExtractTextPlugin({
-                filename: 'assets/css/stApp.min.css',
-                disable: false,
-                allChunks: true
+            new MiniCssExtractPlugin({
+                filename: 'assets/css/[hash].css'
             }),
             new HtmlWebpackPlugin({
                 filename: 'app.html',
                 template: 'templates/app.html',
                 title: 'SupertutorTV Courses',
                 inject : true,
-                hash: true,
                 minify: true
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
