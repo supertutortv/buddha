@@ -13,9 +13,11 @@ module.exports = (env) => {
             filename: 'assets/js/[hash].js',
             publicPath: '/'
         },
-        devServer: {
-            publicPath: '/',
-            port: 8888
+        resolve: {
+            alias: {
+                "react": "preact-compat",
+                "react-dom": "preact-compat"
+            }
         },
         module: {
             rules: [
