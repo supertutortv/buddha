@@ -41,7 +41,7 @@ const Account = ({ hist, createAccount, error, state }) => {
                         <span>By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></span>
                     </section>
                 </form>
-                <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>'Log In'</Link></code>
+                <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>Log In</Link></code>
             </div>
         </main>
     )
