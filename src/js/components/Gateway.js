@@ -18,8 +18,14 @@ export default class Gateway extends React.Component {
         _st.loading = false
     }
 
+    logEmIn = () => {
+        this.setState({
+            loggedIn: true
+        })
+    }
+
     render() {
-        console.log(this.props)
+        if (this.state.loggedIn === null) return null
         return (
             <h1>{"The logged in state is: "+this.state.loggedIn}</h1>
         )
