@@ -6,6 +6,7 @@ export default class Gateway extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <h1>{"The logged in state is: "+this.state.loggedIn}</h1>
         )
