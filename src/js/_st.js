@@ -38,10 +38,11 @@ STTV.prototype = {
         return this._state.bodyClass
     },
     set bodyClass(val) {
-        this._state.bodyClass = val
-        let bCls = document.body.className
-        if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(...bCls.split(' '))
+        console.log(val)
+        /* this._state.bodyClass = val
+        let bCls = document.body.className.split(' ')
+        if (bCls) document.body.classList.remove(...bCls)
+        document.body.classList.add(...bCls) */
     },
     get loggedIn() {
         return this._state.loggedIn
