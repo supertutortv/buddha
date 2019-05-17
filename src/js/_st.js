@@ -38,7 +38,8 @@ STTV.prototype = {
         return this._state.bodyClass
     },
     set bodyClass(val) {
-        console.log(...val.split(' '))
+        const v = val.split(' ')
+        console.log(...v)
         /* this._state.bodyClass = val
         let bCls = document.body.className.split(' ')
         if (bCls) document.body.classList.remove(...bCls)
