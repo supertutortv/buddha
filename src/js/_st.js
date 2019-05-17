@@ -41,7 +41,7 @@ STTV.prototype = {
         this._state.bodyClass = val
         let bCls = document.body.className
         if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(this._state.bodyClass)
+        document.body.classList.add(...bCls.split(' '))
     },
     get loggedIn() {
         return this._state.loggedIn
