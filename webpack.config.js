@@ -19,6 +19,11 @@ module.exports = (env) => {
                 "react-dom": "preact-compat"
             }
         }, */
+        optimization: {
+            splitChunks: {
+              chunks: 'async'
+            }
+        },
         module: {
             rules: [
                 {
