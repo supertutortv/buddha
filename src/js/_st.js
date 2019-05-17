@@ -39,11 +39,11 @@ STTV.prototype = {
     },
     set bodyClass(val) {
         const v = val.split(' ')
-        console.log(...v)
+        document.body.classList.add(...v)
         /* this._state.bodyClass = val
         let bCls = document.body.className.split(' ')
         if (bCls) document.body.classList.remove(...bCls)
-        document.body.classList.add(...bCls) */
+         */
     },
     get loggedIn() {
         return this._state.loggedIn
