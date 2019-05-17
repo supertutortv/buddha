@@ -11,6 +11,7 @@ module.exports = (env) => {
         output: {
             path: path.resolve(__dirname, 'web'),
             filename: 'assets/js/[hash].js',
+            chunkFilename: 'assets/js/[hash].js',
             publicPath: '/'
         },
         /* resolve: {
