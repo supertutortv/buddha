@@ -13,12 +13,12 @@ module.exports = (env) => {
             filename: 'assets/js/[hash].js',
             publicPath: '/'
         },
-        resolve: {
+        /* resolve: {
             alias: {
                 "react": "preact-compat",
                 "react-dom": "preact-compat"
             }
-        },
+        }, */
         module: {
             rules: [
                 {
