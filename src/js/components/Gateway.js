@@ -5,6 +5,19 @@ export default class Gateway extends React.Component {
         loggedIn: null
     }
 
+    componentDidMount() {
+        if (this.state.loggedIn === null) {
+            _st.http.post('/auth/verify',{},(d) => {
+                this.setState({
+                    loggedIn: d.data
+                })
+            })
+        }
+
+        _st.bodyClass = 'gateway signup'
+        _st.loading = false
+    }
+
     render() {
         console.log(this.props)
         return (
