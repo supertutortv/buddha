@@ -6,10 +6,15 @@ export default class Gateway extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: null
+            loggedIn: null,
+            transition: {}
         }
 
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
+
+        _st.bodyClass = 'login'
+
+        console.log(this.props)
     }
 
     componentDidMount() {

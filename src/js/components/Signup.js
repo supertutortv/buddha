@@ -58,7 +58,7 @@ export default class Signup extends React.Component {
                     message: d.message
                 }
             })
-            hist.replace('/login/'+hist.location.search)
+            hist.replace('/dashboard'+hist.location.search)
         })
     }
 
