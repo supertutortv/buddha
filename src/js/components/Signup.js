@@ -18,7 +18,7 @@ export default class Signup extends React.Component {
 
         this.createAccount = this.createAccount.bind(this)
 
-        _st.bodyClass = 'signup'
+        _st.bodyClass = 'gateway signup'
     }
 
     componentDidMount() {
@@ -71,8 +71,8 @@ export default class Signup extends React.Component {
         )
         else return (
             <React.Fragment>
-                <main className="stSignupAccount">
-                    <div className="stSignupInner">
+                <main className="stGatewayForm">
+                    <div className="stGatewayFormInner">
                         <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
                             <header className="heading">
                                 <h1>SupertutorTV</h1>
