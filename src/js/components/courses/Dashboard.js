@@ -65,8 +65,9 @@ export default class Dashboard extends React.Component {
     }
 
     triggerPurchase() {
+        let plan = this.props.plan || 'supertutortv'
 
-        alert('Buy the '+this.props.plan || 'supertutortv'+' course')
+        alert('Buy the '+plan+' course')
         return null
     }
 
