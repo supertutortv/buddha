@@ -39,7 +39,6 @@ export default class Main extends React.Component {
         this.getData = this.getData.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
-        console.log(this.props.location.state)
     }
 
     async componentDidMount() {
@@ -127,7 +126,7 @@ export default class Main extends React.Component {
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
-                    <Route exact path='/dashboard' render={props => <Dashboard refreshData={this.refreshData}/>} />
+                    <Route exact path='/dashboard' render={props => <Dashboard {...props} {...this.props.location.state} refreshData={this.refreshData}/>} />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
                         refreshData={this.refreshData} 

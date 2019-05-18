@@ -19,6 +19,7 @@ export default class Dashboard extends React.Component {
         this.cancellation = this.cancellation.bind(this)
         this.openNote = this.openNote.bind(this)
         this.dismissNote = this.dismissNote.bind(this)
+        this.triggerPurchase = this.triggerPurchase.bind(this)
     }
 
     componentDidMount() {
@@ -63,6 +64,10 @@ export default class Dashboard extends React.Component {
         )
     }
 
+    triggerPurchase() {
+        console.log(this.props.plan)
+    }
+
     render() {
         if (this.state.notifications.active) console.log(this.state.notifications.active)
         return(
@@ -72,7 +77,7 @@ export default class Dashboard extends React.Component {
                         <React.Fragment>
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
-                                <DBCourses courses={data.courses} />
+                                <DBCourses triggerPurchase={this.triggerPurchase} courses={data.courses} />
                                 <div className="stNotesActions">
                                     <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
                                     <DBActions cancellation={this.cancellation} d={data.user} />
