@@ -7,7 +7,7 @@ export default class Gateway extends React.Component {
         super(props)
         this.state = {
             loggedIn: null,
-            transition: this.props.location.search || false
+            transition: this.props.history.location.search || false
         }
 
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)

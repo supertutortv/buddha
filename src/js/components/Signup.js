@@ -12,7 +12,8 @@ export default class Signup extends React.Component {
                 id: '',
                 message: ''
             },
-            signed: false
+            signed: false,
+            plan: this.props.match.params || ''
         }
 
         this.createAccount = this.createAccount.bind(this)
@@ -21,13 +22,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-
-        let {history, match} = this.props,
-            {plan} = match.params || '',
-            query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : ''
-
-        if (plan) history.replace('/signup?crs='+plan+query)
-        
+        history.replace('/signup'+this.props.history.location.search)
         _st.loading = false
     }
 
@@ -42,7 +37,6 @@ export default class Signup extends React.Component {
 
     createAccount(e) {
         e.preventDefault()
-        let {history: hist} = this.props
         
         _st.loading = true
         let form = Array.from(e.target.querySelectorAll('input')),
@@ -67,11 +61,14 @@ export default class Signup extends React.Component {
 
     render() {
         let { error, signed } = this.state,
-            {history: hist} = this.props,
-            msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
+            { history: hist } = this.props
 
         if (signed) return (
-            <Redirect to={'/dashboard'+hist.location.search}/>
+            <Redirect to={{
+                pathname: '/dashboard',
+                search: hist.location.search,
+                state: {}
+            }}/>
         )
         else return (
             <React.Fragment>
@@ -105,7 +102,10 @@ export default class Signup extends React.Component {
                             <div className="stAccountButtons">
                                 <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
                             </div>
-                            {(error.message) ? msg : null}
+                            {(error.message)
+                                ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                : null
+                            }
                             <section className="stDisclaimer">
                                 <span>By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></span>
                             </section>
