@@ -18,9 +18,9 @@ export default class Gateway extends React.Component {
         _st.bodyClass = 'gateway '+this.props.location.pathname.split('/')[0]
     }
 
-    async authCheck() {
+    authCheck() {
         if (this.state.loggedIn === null) {
-            await _st.http.post('/auth/verify',{},(d) => {
+            _st.http.post('/auth/verify',{},(d) => {
                 this.setState({
                     loggedIn: d.data
                 })
