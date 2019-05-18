@@ -36,6 +36,7 @@ export default class Main extends React.Component {
         this.addHistory = this.addHistory.bind(this)
         this.refreshData = this.refreshData.bind(this)
         this.updateSettings = this.updateSettings.bind(this)
+        this.getData = this.getData.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
         console.log(this.props.location.state)
@@ -47,10 +48,11 @@ export default class Main extends React.Component {
         if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
         
         let obj = { loading: false },
-            upd = (this.state.data === true)
+            upd = (this.state.data === true),
+            data = null
 
-        if (upd) await _st.http.get('/courses/data',(h) => obj.data = h.data)
-
+        if (upd) data = await _st.http.get('/courses/data',(h) => obj.data = h.data)
+        console.log(data)
         this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
         _st.bodyClass = 'main'
         _st.loading = false
@@ -64,6 +66,10 @@ export default class Main extends React.Component {
         if (hashes.indexOf(stVersionHash) < 0) hashes.push(stVersionHash)
         localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
         return this
+    }
+
+    async getData() {
+        return null
     }
 
     dataSaveLocal() {
