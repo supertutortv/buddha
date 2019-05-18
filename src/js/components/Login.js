@@ -29,7 +29,7 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
-        _st.bodyClass = 'login'
+        _st.bodyClass = 'gateway login'
         _st.loading = false
     }
 
