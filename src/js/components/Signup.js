@@ -24,7 +24,7 @@ export default class Signup extends React.Component {
             {plan} = match.params || '',
             query = (history.location.search.indexOf('?') > -1) ? '&'+history.location.search.substring(1) : ''
 
-        if (plan) history.replace('/signup/?crs='+plan+query)
+        if (plan) history.replace('/signup?crs='+plan+query)
         
         _st.loading = false
     }
