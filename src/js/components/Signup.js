@@ -13,7 +13,7 @@ export default class Signup extends React.Component {
                 message: ''
             },
             signed: false,
-            plan: this.props.match.params || ''
+            plan: this.props.match.params.plan || ''
         }
 
         this.createAccount = this.createAccount.bind(this)
@@ -22,7 +22,6 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        this.props.history.replace('/signup'+this.props.history.location.search)
         _st.loading = false
     }
 
@@ -67,7 +66,7 @@ export default class Signup extends React.Component {
             <Redirect to={{
                 pathname: '/dashboard',
                 search: hist.location.search,
-                state: {plan: plan}
+                state: { plan: plan }
             }}/>
         )
         else return (
