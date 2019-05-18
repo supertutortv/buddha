@@ -12,8 +12,6 @@ export default class Gateway extends React.Component {
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
 
         _st.bodyClass = 'login'
-
-        console.log(this.props.location.state)
     }
 
     componentDidMount() {
@@ -39,7 +37,7 @@ export default class Gateway extends React.Component {
         if (this.state.loggedIn) {
             if (loc.pathname === '/login' || (loc.pathname === '/dashboard' && loc.search)) hist.replace('/dashboard')
             return (
-                <Main {...this.state} {...this.props} />
+                <Main {...this.props} />
             )
         } else {
             localStorage.removeItem('stCourseData')
