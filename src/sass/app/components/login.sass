@@ -1,44 +1,23 @@
 $domcolor: azure()
 
-body.login
+body.gateway
 
     st-app
-        display: flex
-        flex-direction: row
-        align-items: center
-        justify-content: center
 
-        .stDialogCentered
-            max-width: 400px
-
-            header
-
-                img
-                    width: 100%
-                    height: auto
-
-            .stDialogCenteredInset
-
-                #stLoginWrapper
-                    padding: 0
-
-                    #stLoginHeader
-
-                        h1, h2
-                            font-weight: 600
-
-                    .stLoginCredentials
-                        padding-bottom: 1em
-
-                    .stFormButtons
-                        display: flex
-                        align-items: center
-
-                        .stFormButton
-                            flex: 1
-                            background-color: $domcolor
-                            display: block
-                            width: 100%
-                        
-                        .stForgotBlock
-                            flex: 1
+        .stForgotBlock
+            position: absolute
+            z-index: 1
+            top: 0
+            right: 0
+            padding: .75em 1em
+            display: flex
+            align-items: center
+            
+            a
+                font-weight: 600
+                font-size: $smalltext
+                transition: all 250ms ease-in-out
+                color: azure(.75)
+                
+                &:hover
+                    color: azure()
