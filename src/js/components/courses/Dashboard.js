@@ -66,6 +66,7 @@ export default class Dashboard extends React.Component {
 
     triggerPurchase() {
         console.log(this.props.plan)
+        return null
     }
 
     render() {
