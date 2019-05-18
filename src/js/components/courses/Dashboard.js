@@ -68,7 +68,7 @@ export default class Dashboard extends React.Component {
         return(
             <DataState.Consumer>
                 {(data) => {
-                    console.log(data)
+                    console.log(data.courses.length)
                     return null
                     return (
                         <React.Fragment>
