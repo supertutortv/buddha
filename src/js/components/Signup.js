@@ -58,8 +58,10 @@ export default class Signup extends React.Component {
                     message: d.message
                 }
             })
-            let search = hist.location.search
-            console.log(search,d)
+
+            if (200 === d.data.status) this.setState({signed: true},
+                () => sessionStorage.setItem('STSUTransition',JSON.stringify(d.account))
+            )
         })
     }
 
@@ -69,7 +71,7 @@ export default class Signup extends React.Component {
             msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
 
         if (signed) return (
-            <Redirect to='/dashboard'/>
+            <Redirect to={'/dashboard'+hist.location.search}/>
         )
         else return (
             <React.Fragment>
