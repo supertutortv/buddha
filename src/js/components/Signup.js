@@ -15,6 +15,8 @@ export default class Signup extends React.Component {
             init: false
         }
 
+        this.createAccount = this.createAccount.bind(this)
+
         _st.bodyClass = 'signup'
     }
 
