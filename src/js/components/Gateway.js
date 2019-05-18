@@ -38,7 +38,7 @@ export default class Gateway extends React.Component {
         const {history: hist, location: loc} = this.props
 
         if (this.state.loggedIn) {
-            if (loc.pathname === '/login') hist.replace('/dashboard')
+            if (loc.pathname === '/login' || (loc.pathname === '/dashboard' && loc.search)) hist.replace('/dashboard')
             return (
                 <Main {...this.state} {...this.props} />
             )
