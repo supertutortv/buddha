@@ -63,7 +63,7 @@ export default class Login extends React.Component {
                                 <div className="stIfR99">
                                     <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
                                     <label aria-hidden="true" for="password">Password</label>
-                                    <section className="stForgotBlock">Forgot?</section>
+                                    <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
                                 </div>
                             </fieldset>
                             <div className="stAccountButtons">
