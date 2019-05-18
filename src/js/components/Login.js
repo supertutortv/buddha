@@ -63,6 +63,7 @@ export default class Login extends React.Component {
                                 <div className="stIfR99">
                                     <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
                                     <label aria-hidden="true" for="password">Password</label>
+                                    <section className="stForgotBlock">Forgot?</section>
                                 </div>
                             </fieldset>
                             <div className="stAccountButtons">
@@ -72,7 +73,6 @@ export default class Login extends React.Component {
                                 ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
                                 : null
                             }
-                            <section className="stForgotBlock">Forgot?</section>
                         </form>
                         <code className="insteadLogin">Don't have an account? <Link to={'/signup'+hist.location.search}>Sign Up</Link></code>
                     </div>
