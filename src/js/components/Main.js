@@ -51,7 +51,7 @@ export default class Main extends React.Component {
             upd = (this.state.data === true),
             data = null
 
-        if (upd) data = await _st.http.get('/courses/data',(h) => obj.data = h.data)
+        if (upd) data = await this.getData()
         console.log(data)
         this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
         _st.bodyClass = 'main'
@@ -69,7 +69,7 @@ export default class Main extends React.Component {
     }
 
     async getData() {
-        return null
+        return await _st.http.get('/courses/data',(h) => (h.code === 'dataInvalid') ? setTimeout(this.getData(),h.retry) : h.data)
     }
 
     dataSaveLocal() {
