@@ -43,6 +43,9 @@ export default class Login extends React.Component {
     }
 
     render() {
+        let {error} = this.state,
+            {history: hist} = this.props
+            
         return (
             <React.Fragment>
                 <main className="stGatewayForm">
