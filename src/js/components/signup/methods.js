@@ -29,32 +29,6 @@ export function changeStep(inc = true,e) {
     return null
 }
 
-// createAccount
-export function createAccount(e) {
-    e.preventDefault()
-    let {history: hist} = this.props
-    
-    _st.loading = true
-    let form = Array.from(e.target.querySelectorAll('input')),
-        obj = {}
-
-    for (let i = 0; form.length > i; i++)
-        obj[form[i].name] = form[i].value
-
-    _st.http.post('/signup/account',obj,(d) => {
-        if (d.code === 'signupError') return this.setState({
-            error: {
-                id: d.code,
-                message: d.message
-            }
-        })
-        _st.loading = false
-        console.log(d)
-    })
-
-    //hist.replace('/login/'+hist.location.search)
-}
-
 // setChecker
 export function setChecker(el) {
     var tar = el.target, 

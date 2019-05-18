@@ -1,74 +1,19 @@
 import React from 'react'
-import { StripeProvider, Elements } from 'react-stripe-elements'
-import * as methods from './signup/methods'
-import * as steps from './signup/steps'
+import { Link } from 'react-router-dom'
 
 const thedate = new Date
 
 export default class Signup extends React.Component {
     constructor(props) {
         super(props)
-    
+
         this.state = {
-            init: false,
-            step: 0,
-            update: true,
-            loading: true,
-            plan: this.props.match.params || null,
             error: {
                 id: '',
                 message: ''
             },
-            card: false,
-            valid: false,
-            stripe: null,
-            customer: {
-                account: {
-                    email: '',
-                    firstname: '',
-                    lastname: '',
-                    password: ''
-                },
-                shipping: {
-                    phone: '',
-                    name: '',
-                    address: {}
-                },
-                options: {},
-                token: '',
-                nameOnCard: ''
-            },
-            pricing: {
-                total: 0,
-                shipping: 0,
-                coupon: {
-                    id: '',
-                    value: ''
-                }
-            },
-            item: null,
-            session: {
-                id: Date.now(),
-                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
-            }
+            init: false
         }
-        this.plans = [
-            'sat',
-            'act',
-            'combo'
-        ]
-
-        this.steps = [
-            'Account',
-            'Payment',
-            'ThankYou'
-        ]
-
-        Object.keys(methods).forEach((method) => {
-            this[method] = methods[method].bind(this)
-        })
-
-        //this.createStripeScript()
 
         _st.bodyClass = 'signup'
     }
@@ -88,75 +33,83 @@ export default class Signup extends React.Component {
         _st.loading = false
     }
 
-    componentWillUnmount() {
-        let el = document.getElementById('stStripeScript')
-        if (el) el.parentNode.removeChild(el)
-    }
-
     componentWillReceiveProps(nextProps) {
         var { history: hist } = nextProps
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
-    shouldComponentUpdate() {
-        return this.state.update
+    createAccount(e) {
+        e.preventDefault()
+        let {history: hist} = this.props
+        
+        _st.loading = true
+        let form = Array.from(e.target.querySelectorAll('input')),
+            obj = {}
+    
+        for (let i = 0; form.length > i; i++)
+            obj[form[i].name] = form[i].value
+    
+        _st.http.post('/signup/account',obj,(d) => {
+            if (d.code === 'signupError') return this.setState({
+                error: {
+                    id: d.code,
+                    message: d.message
+                }
+            })
+            hist.replace('/login/'+hist.location.search)
+        })
     }
 
     render() {
-        const Checkout = steps[this.steps[this.state.step]]
+        let { error } = this.state,
+            {history: hist} = this.props,
+            msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
 
         return(
             <React.Fragment>
-                <Checkout 
-                    hist={this.props.history}
-                    state={this.state} 
-                    error={this.state.error} 
-                    changeStep={this.changeStep} 
-                    createAccount={this.createAccount} 
-                    calculatePricing={this.calculatePricing} 
-                    updateInp={this.updateInp} 
-                    updatePrice={this.updatePrice} 
-                    setChecker={this.setChecker} 
-                    setOutcome={this.setOutcome} 
-                    setPlan={this.setPlan} 
-                    setShipping={this.setShipping} 
-                    toPrice={this.toPrice} 
-                    submitPayment={this.submitPayment} 
-                    validate={this.validate}
-                />
+                <main className="stSignupAccount">
+                    <div className="stSignupInner">
+                        <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
+                            <header className="heading">
+                                <h1>SupertutorTV</h1>
+                            </header>
+                            <section className="stC2A">
+                                <h2>Sign up for free right now to get started on your test prep journey!</h2>
+                            </section>
+                            <fieldset className="stAccountBody">
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Student First Name" type="text" name="firstname" required />
+                                    <label aria-hidden="true" for="firstname">Student First Name</label>
+                                </div>
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Student Last Name" className="browser-default validate" type="text" name="lastname" required/>
+                                    <label aria-hidden="true" for="lastname">Student Last Name</label>
+                                </div>
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Student Email" className="browser-default validate email" type="email" name="email" required validation="email"/>
+                                    <label aria-hidden="true" for="email">Student Email</label>
+                                </div>
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                                    <label aria-hidden="true" for="password">Password</label>
+                                </div>
+                            </fieldset>
+                            <div className="stAccountButtons">
+                                <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
+                            </div>
+                            {(error.message) ? msg : null}
+                            <section className="stDisclaimer">
+                                <span>By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></span>
+                            </section>
+                        </form>
+                        <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>Log In</Link></code>
+                    </div>
+                </main>
                 <footer role="contentinfo">
                     <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
                     <nav>Some links</nav>
                 </footer>
             </React.Fragment>
-        )
-        return(
-            <StripeProvider stripe={this.state.stripe}>
-                <React.Fragment>
-                    <Elements>
-                        <Checkout 
-                            hist={this.props.history}
-                            state={this.state} 
-                            error={this.state.error} 
-                            changeStep={this.changeStep} 
-                            createAccount={this.createAccount} 
-                            calculatePricing={this.calculatePricing} 
-                            updateInp={this.updateInp} 
-                            updatePrice={this.updatePrice} 
-                            setChecker={this.setChecker} 
-                            setOutcome={this.setOutcome} 
-                            setPlan={this.setPlan} 
-                            setShipping={this.setShipping} 
-                            toPrice={this.toPrice} 
-                            submitPayment={this.submitPayment} 
-                            validate={this.validate}
-                        />
-                    </Elements>
-                    <footer>
-                        <div>© {thedate.getFullYear()} Supertutor Media, Inc.</div>
-                    </footer>
-                </React.Fragment>
-            </StripeProvider>
         )
     }
 }
