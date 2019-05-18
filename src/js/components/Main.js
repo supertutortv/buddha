@@ -48,11 +48,9 @@ export default class Main extends React.Component {
         if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
         
         let obj = { loading: false },
-            upd = (this.state.data === true),
-            data = null
+            upd = (this.state.data === true)
 
-        if (upd) data = await this.getData()
-        console.log(data)
+        if (upd) obj.data = await this.getData()
         this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
         _st.bodyClass = 'main'
         _st.loading = false
