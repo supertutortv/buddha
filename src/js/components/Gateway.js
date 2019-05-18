@@ -1,8 +1,15 @@
 import React from 'react'
+import Login from './Login'
+import Main from './Main'
 
 export default class Gateway extends React.Component {
-    state = {
-        loggedIn: null
+    constructor(props) {
+        super(props)
+        this.state = {
+            loggedIn: null
+        }
+
+        this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
     }
 
     componentDidMount() {
@@ -13,22 +20,29 @@ export default class Gateway extends React.Component {
                 })
             })
         }
-
-        _st.bodyClass = 'gateway signup'
-        _st.loading = false
     }
 
-    logEmIn = () => {
+    logThatFuckerIn() {
         this.setState({
             loggedIn: true
         })
     }
 
     render() {
-        console.log(this.props)
         if (this.state.loggedIn === null) return null
-        return (
-            <h1>{"The logged in state is: "+this.state.loggedIn}</h1>
-        )
+        const {history: hist, location: loc} = this.props
+
+        if (this.state.loggedIn) {
+            if (loc.pathname === '/login') hist.replace('/dashboard')
+            return (
+                <Main {...this.props} />
+            )
+        } else {
+            localStorage.removeItem('stCourseData')
+            if (loc.pathname !== '/login' && loc.pathname !== '/password/reset') hist.replace('/login')
+            return (
+                <Login setLoggedIn={this.logThatFuckerIn} {...this.props} />
+            )
+        }
     }
 }
