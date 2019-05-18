@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import STDialogCentered from './STDialogCentered'
 import { LoginForm } from './login/Forms'
 import * as methods from './login/methods'
@@ -45,7 +46,7 @@ export default class Login extends React.Component {
     render() {
         let {error} = this.state,
             {history: hist} = this.props
-            
+
         return (
             <React.Fragment>
                 <main className="stGatewayForm">
