@@ -60,9 +60,7 @@ export default class Signup extends React.Component {
 
     render() {
         let { error, signed, plan } = this.state,
-            { history: hist, location: loc } = this.props
-
-        console.log(loc.pathname)
+            { history: hist } = this.props
 
         if (signed) return (
             <Redirect to={{

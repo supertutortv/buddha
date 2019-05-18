@@ -1,5 +1,6 @@
 import React from 'react'
 import Login from './Login'
+import Signup from './Signup'
 import Main from './Main'
 
 export default class Gateway extends React.Component {
@@ -10,18 +11,22 @@ export default class Gateway extends React.Component {
         }
 
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
-
-        _st.bodyClass = 'login'
+        this.authCheck = this.authCheck.bind(this)
     }
 
     componentDidMount() {
+        _st.bodyClass = 'gateway '+this.props.location.pathname.split('/')[0]
+    }
+
+    async authCheck() {
         if (this.state.loggedIn === null) {
-            _st.http.post('/auth/verify',{},(d) => {
+            await _st.http.post('/auth/verify',{},(d) => {
                 this.setState({
                     loggedIn: d.data
                 })
             })
         }
+        return null
     }
 
     logThatFuckerIn() {
@@ -33,10 +38,7 @@ export default class Gateway extends React.Component {
     render() {
         const {history: hist, location: loc} = this.props
 
-        if (loc.pathname.indexOf('signup') > -1) {
-
-        }
-        if (this.state.loggedIn === null) return null
+        if (this.state.loggedIn === null) return this.authCheck()
 
         if (this.state.loggedIn) {
             if (loc.pathname === '/login' || (loc.pathname === '/dashboard' && loc.search)) hist.replace('/dashboard')
