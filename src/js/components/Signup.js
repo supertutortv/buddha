@@ -22,7 +22,7 @@ export default class Signup extends React.Component {
     }
 
     componentDidMount() {
-        history.replace('/signup'+this.props.history.location.search)
+        this.props.history.replace('/signup'+this.props.history.location.search)
         _st.loading = false
     }
 
