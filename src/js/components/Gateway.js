@@ -13,7 +13,7 @@ export default class Gateway extends React.Component {
 
         _st.bodyClass = 'login'
 
-        console.log(...this.props.location.state)
+        console.log(this.props.location.state)
     }
 
     componentDidMount() {
