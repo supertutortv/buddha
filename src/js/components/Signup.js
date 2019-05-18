@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const thedate = new Date
 
@@ -12,7 +12,7 @@ export default class Signup extends React.Component {
                 id: '',
                 message: ''
             },
-            init: false
+            signed: false
         }
 
         this.createAccount = this.createAccount.bind(this)
@@ -58,17 +58,21 @@ export default class Signup extends React.Component {
                     message: d.message
                 }
             })
-            hist.replace('/dashboard'+hist.location.search)
+            let search = hist.location.search
+            console.log(d)
         })
+        console.log('waited')
     }
 
     render() {
-        let { error } = this.state,
+        let { error, signed } = this.state,
             {history: hist} = this.props,
             msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
 
-            console.log(this.props)
-        return(
+        if (signed) return (
+            <Redirect to='/dashboard'/>
+        )
+        else return (
             <React.Fragment>
                 <main className="stSignupAccount">
                     <div className="stSignupInner">
