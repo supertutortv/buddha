@@ -3,6 +3,8 @@ import STDialogCentered from './STDialogCentered'
 import { LoginForm } from './login/Forms'
 import * as methods from './login/methods'
 
+const thedate = new Date
+
 export default class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -45,7 +47,7 @@ export default class Login extends React.Component {
             <React.Fragment>
                 <main className="stGatewayForm">
                     <div className="stGatewayFormInner">
-                        <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
+                        <form role="form" className="stAccountForm" onSubmit={this.submit}>
                             <header className="heading">
                                 <h1>SupertutorTV</h1>
                             </header>
