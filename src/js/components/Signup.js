@@ -59,9 +59,8 @@ export default class Signup extends React.Component {
                 }
             })
             let search = hist.location.search
-            console.log(d)
+            console.log(search,d)
         })
-        console.log('waited')
     }
 
     render() {
