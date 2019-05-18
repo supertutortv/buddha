@@ -38,6 +38,7 @@ export default class Main extends React.Component {
         this.updateSettings = this.updateSettings.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
+        console.log(this.props.transition)
     }
 
     async componentDidMount() {
