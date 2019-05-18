@@ -67,6 +67,7 @@ export default class Signup extends React.Component {
             {history: hist} = this.props,
             msg = <div className="stAccountErrors"><strong>{error.message}</strong></div>
 
+            console.log(this.props)
         return(
             <React.Fragment>
                 <main className="stSignupAccount">
