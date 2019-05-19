@@ -5,8 +5,8 @@
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
     "scripts": {
-        "build": "webpack --env.APP_MODE=development --mode=production",
-        "buildp": "webpack --env.APP_MODE=production --mode=production",
+        "build": "rm -rf web/assets/js/* && rm -rf web/assets/css/* && webpack --env.APP_MODE=development --mode=production",
+        "buildp": "rm -rf web/assets/js/* && rm -rf web/assets/css/* && webpack --env.APP_MODE=production --mode=production",
         "devpush": "git add -A && git commit -m 'devpush from remote' && git push && ssh buddha@192.155.82.130 'cd coursedev/buddha && git pull'",
         "server": "webpack-dev-server --env.APP_MODE=development --progress --colors"
     },
