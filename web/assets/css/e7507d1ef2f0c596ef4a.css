@@ -503,15 +503,13 @@ body.muSignup .stAppHeader {
   align-items: center;
 }
 
-.stAppHeader .stHeaderRight .stNavContainer > li svg {
-  height: 0.75em;
-  width: 0.75em;
+.stAppHeader .stHeaderRight .stNavContainer > li i {
   cursor: pointer;
   opacity: .6;
   transition: opacity 100ms ease-in-out;
 }
 
-.stAppHeader .stHeaderRight .stNavContainer > li svg:hover {
+.stAppHeader .stHeaderRight .stNavContainer > li i:hover {
   opacity: 1;
 }
 
