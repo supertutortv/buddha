@@ -452,8 +452,7 @@ st-app .stComponentFade {
 }
 
 body.login .stAppHeader,
-body.allYourBase .stAppHeader,
-body.muSignup .stAppHeader {
+body.allYourBase .stAppHeader {
   display: none;
 }
 
@@ -462,6 +461,7 @@ body.muSignup .stAppHeader {
   flex-wrap: wrap;
   background-color: white;
   padding: 0 1em;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .stAppHeader > div {
@@ -539,6 +539,7 @@ body.muSignup .stAppHeader {
 
 .stDashboard .stDashboardCourses {
   margin: 0 1em 1em;
+  background-color: white;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -593,6 +594,8 @@ body.muSignup .stAppHeader {
 
 .stDashboard .stNotesActions .stDashboardNotifications > section {
   height: 100%;
+  background-color: white;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
 .stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody {
@@ -636,6 +639,11 @@ body.muSignup .stAppHeader {
   flex: 1;
 }
 
+.stDashboard .stNotesActions .stDashboardActions > section {
+  background-color: white;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
 .stDashboard .stNotesActions .stDashboardActions .stDBActionsBody {
   padding: 1em;
 }
@@ -648,9 +656,7 @@ body.muSignup .stAppHeader {
   background-color: #109fda;
 }
 
-.stShadowBox,
-.stDashboard .stNotesActions .stDashboardNotifications > section,
-.stDashboard .stNotesActions .stDashboardActions > section {
+.stShadowBox {
   border-radius: 0.25em;
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
