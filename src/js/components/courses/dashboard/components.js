@@ -22,8 +22,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
         </section>
     </div>
 
-export const DBCourses = ({courses, triggerPurchase}) => {
-    if (courses.length === 0) return triggerPurchase()
+export const DBCourses = ({courses}) => {
     return (
         <div className="stDashboardCourses">
             <div className="myCoursesHeader stBoxHeading">My Courses</div>

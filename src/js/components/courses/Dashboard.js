@@ -76,11 +76,12 @@ export default class Dashboard extends React.Component {
         return(
             <DataState.Consumer>
                 {(data) => {
+                    if (data.courses.length === 0) return triggerPurchase()
                     return (
                         <React.Fragment>
                             <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
                             <main className="stDashboard stComponentFade">
-                                <DBCourses triggerPurchase={this.triggerPurchase} courses={data.courses} />
+                                <DBCourses courses={data.courses} />
                                 <div className="stNotesActions">
                                     <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
                                     <DBActions cancellation={this.cancellation} d={data.user} />
