@@ -27,7 +27,7 @@ export const DBCourses = ({courses}) => {
         <div className="stDashboardCourses">
             <div className="myCoursesHeader stBoxHeading">My Courses</div>
             <div className="myCoursesBody">
-                {Object.keys(courses).map((course) => {
+                {/*Object.keys(courses).map((course) => {
                     let crs = courses[course]
                     return (
                         <div className="course">
@@ -39,7 +39,7 @@ export const DBCourses = ({courses}) => {
                             </Link>
                         </div>
                     )}
-                )}
+                )*/}
             </div>
         </div>
     )
