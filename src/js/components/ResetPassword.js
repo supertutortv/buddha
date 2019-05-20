@@ -123,8 +123,8 @@ export default class ResetPassword extends React.Component {
                                             </div>
                                         </React.Fragment>
                                         : <div className="stIfR99">
-                                            <input autocomplete="off" aria-label="Email" className="validate email" type="email" name="email" required validation="email"/>
-                                            <label aria-hidden="true" for="email">Email</label>
+                                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
+                                            <label aria-hidden="true" for="email">Email Address</label>
                                         </div>
                                     }
                                 </fieldset>
