@@ -97,49 +97,55 @@ export default class ResetPassword extends React.Component {
         if (!init) return null
         
         return (
-            <main className="stGatewayForm">
-                <div className="stGatewayFormInner">
-                    <form role="form" className="stAccountForm" onSubmit={this.sendReset}>
-                        <header className="heading">
-                            <h1>SupertutorTV</h1>
-                        </header>
-                        {sent ? 
-                            <section className="stC2A">
-                                <h2>{sentMsg} <Link to="/login">{key ? 'L' : '<< Back to l'}ogin</Link></h2>
-                            </section>
-                            : <React.Fragment>
+            <React.Fragment>
+                <main className="stGatewayForm">
+                    <div className="stGatewayFormInner">
+                        <form role="form" className="stAccountForm" onSubmit={this.sendReset}>
+                            <header className="heading">
+                                <h1>SupertutorTV</h1>
+                            </header>
+                            {sent ? 
                                 <section className="stC2A">
-                                    <h2>{key ? 'Enter your new password' : 'Forgot your password?'}</h2>
+                                    <h2>{sentMsg} <Link to="/login">{key ? 'L' : '<< Back to l'}ogin</Link></h2>
                                 </section>
-                                <fieldset className="stAccountBody">
-                                    {key ? <React.Fragment>
-                                            <div className="stIfR99">
-                                                <input autocomplete="off" aria-label="New Password" className="validate" type="password" id="password1" name="password1" required/>
-                                                <label aria-hidden="true" for="password1">New Password</label>
+                                : <React.Fragment>
+                                    <section className="stC2A">
+                                        <h2>{key ? 'Enter your new password' : 'Forgot your password?'}</h2>
+                                    </section>
+                                    <fieldset className="stAccountBody">
+                                        {key ? <React.Fragment>
+                                                <div className="stIfR99">
+                                                    <input autocomplete="off" aria-label="New Password" className="validate" type="password" id="password1" name="password1" required/>
+                                                    <label aria-hidden="true" for="password1">New Password</label>
+                                                </div>
+                                                <div className="stIfR99">
+                                                    <input autocomplete="off" aria-label="Confirm Password" className="validate" type="password" id="password2" name="password2" onBlur={this.passMatch} required/>
+                                                    <label aria-hidden="true" for="password2">Confirm Password</label>
+                                                </div>
+                                            </React.Fragment>
+                                            : <div className="stIfR99">
+                                                <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
+                                                <label aria-hidden="true" for="email">Email Address</label>
                                             </div>
-                                            <div className="stIfR99">
-                                                <input autocomplete="off" aria-label="Confirm Password" className="validate" type="password" id="password2" name="password2" onBlur={this.passMatch} required/>
-                                                <label aria-hidden="true" for="password2">Confirm Password</label>
-                                            </div>
-                                        </React.Fragment>
-                                        : <div className="stIfR99">
-                                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
-                                            <label aria-hidden="true" for="email">Email Address</label>
-                                        </div>
-                                    }
-                                </fieldset>
-                                <div className="stAccountButtons">
-                                    <button type="submit" className="stAccountButton btn" ><span>{key ? 'Change Password' : 'Send Reset Link'}</span></button>
-                                </div>
-                            </React.Fragment>
-                        }
-                        {(error.message)
-                            ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                            : null
-                        }
-                    </form>
-                </div>
-            </main>
+                                        }
+                                    </fieldset>
+                                    <div className="stAccountButtons">
+                                        <button type="submit" className="stAccountButton btn" ><span>{key ? 'Change Password' : 'Send Reset Link'}</span></button>
+                                    </div>
+                                </React.Fragment>
+                            }
+                            {(error.message)
+                                ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                : null
+                            }
+                        </form>
+                    </div>
+                </main>
+                <footer role="contentinfo">
+                    <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
+                    <nav>Some links</nav>
+                </footer>
+            </React.Fragment>
         )
     }
 }
