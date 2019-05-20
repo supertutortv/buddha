@@ -105,7 +105,7 @@ export default class ResetPassword extends React.Component {
                         </header>
                         {sent ? 
                             <section className="stC2A">
-                                <h2>{sentMsg} {key ? '' : <Link to="/login">Log In</Link>}</h2>
+                                <h2>{sentMsg} <Link to="/login">{key ? 'L' : 'Back to l'}og In</Link></h2>
                             </section>
                             : <React.Fragment>
                                 <section className="stC2A">
@@ -114,11 +114,11 @@ export default class ResetPassword extends React.Component {
                                 <fieldset className="stAccountBody">
                                     {key ? <React.Fragment>
                                             <div className="stIfR99">
-                                                <input autocomplete="off" aria-label="New Password" className="validate" type="password" name="password1" required/>
+                                                <input autocomplete="off" aria-label="New Password" className="validate" type="password" id="password1" name="password1" required/>
                                                 <label aria-hidden="true" for="password1">New Password</label>
                                             </div>
                                             <div className="stIfR99">
-                                                <input autocomplete="off" aria-label="Confirm Password" className="validate" type="password" name="password2" required/>
+                                                <input autocomplete="off" aria-label="Confirm Password" className="validate" type="password" id="password2" name="password2" onBlur={this.passMatch} required/>
                                                 <label aria-hidden="true" for="password2">Confirm Password</label>
                                             </div>
                                         </React.Fragment>
