@@ -105,7 +105,7 @@ export default class ResetPassword extends React.Component {
                         </header>
                         {sent ? 
                             <section className="stC2A">
-                                <h2>{sentMsg} <Link to="/login">{key ? 'L' : 'Back to l'}og In</Link></h2>
+                                <h2>{sentMsg} <Link to="/login">{key ? 'L' : '<< Back to l'}ogin</Link></h2>
                             </section>
                             : <React.Fragment>
                                 <section className="stC2A">
