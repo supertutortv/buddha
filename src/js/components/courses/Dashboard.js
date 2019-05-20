@@ -25,7 +25,7 @@ export default class Dashboard extends React.Component {
     componentDidMount() {
         _st.bodyClass = 'dashboard'
         _st.loading = false
-        if (!this.state.notifications.fetched) _st.http.get('/courses/notifications',(d) => {
+        /* if (!this.state.notifications.fetched) _st.http.get('/courses/notifications',(d) => {
             this.setState({
                 notifications: {
                     active: false,
@@ -33,7 +33,7 @@ export default class Dashboard extends React.Component {
                     notes: d.data
                 }
             })
-        })
+        }) */
     }
 
     cancellation(d) {
