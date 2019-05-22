@@ -3,8 +3,9 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import allYourBase from './allYourBase'
 import Gateway from './Gateway'
 import Signup from './Signup'
-import Main from './Main'
 import ResetPassword from './ResetPassword'
+import Login from './Login'
+import Main from './Main'
 
 export default class STApp extends React.Component {
     constructor(props) {
