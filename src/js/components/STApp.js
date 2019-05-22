@@ -33,11 +33,12 @@ export default class STApp extends React.Component {
     logThatFuckerIn() {
         this.setState({
             loggedIn: true
-        }, () => this.props.history.replace('/dashboard'))
+        })
         return true
     }
 
     render () {
+        let { loggedIn } = this.state
         return (
             <BrowserRouter>
                 <Switch>
@@ -49,13 +50,14 @@ export default class STApp extends React.Component {
                                 <Gateway className={'st'+p.location.key}>
                                     <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} {...p}/>}/>
                                     <Route exact path='/password/reset/:key?' component={ResetPassword}/>
-                                    <Route exact path='/login' render={() => <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                    <Route exact path='/login' render={() => 
+                                        loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
                                 </Gateway>
                             </Switch>
                         )
                     }} />
                     <Route path='/' render={(p) => 
-                        this.state.loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                        loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
                     }/>
                 </Switch>
             </BrowserRouter>
