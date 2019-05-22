@@ -53,7 +53,7 @@ export default class STApp extends React.Component {
                             </Switch>
                         )
                     }} />
-                    <Route path='/' render={() => 
+                    <Route path='/' render={(p) => 
                         this.state.loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
                     }/>
                 </Switch>
