@@ -5,7 +5,22 @@ import Signup from './Signup'
 import ResetPassword from './ResetPassword'
 import Main from './Main'
 
-export default class Gateway extends React.Component {
+const thedate = new Date
+
+const Gateway = (p) =>
+    <React.Fragment>
+        <main className="stGatewayForm">
+            <div className="stGatewayFormInner">{JSON.stringify(p)}</div>
+        </main>
+        <footer role="contentinfo">
+            <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
+            <nav>Some links</nav>
+        </footer>
+    </React.Fragment>
+
+export default Gateway
+
+/* export default class Gateway extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -55,4 +70,4 @@ export default class Gateway extends React.Component {
             )
         }
     }
-}
+} */
