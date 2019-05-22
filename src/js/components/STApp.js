@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import allYourBase from './allYourBase'
 import Gateway from './Gateway'
 import Signup from './Signup'
+import Main from './Main'
 import ResetPassword from './ResetPassword'
 
 export default class STApp extends React.Component {
@@ -39,14 +40,18 @@ export default class STApp extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                    <Route exact path={['/auth','/login','/password/reset/:key?','/signup/:plan?']} render={(p) => {
+                    <Route render={(p) => {
                         if (this.state.loggedIn === null) return this.authCheck()
                         return (
                             <Switch>
-                                <Route exact path='/auth' render={(p) => console.log(p) || null}/>
                                 <Gateway>
                                     <Route exact path='/signup/:plan?' component={Signup}/>
+                                    <Route exact path='/password/reset/:key?' component={ResetPassword}/>
+                                    <Route exact path='/login' component={Login}/>
                                 </Gateway>
+                                <Route path='/' render={() => 
+                                    this.state.loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                                }/>
                             </Switch>
                         )
                     }} />

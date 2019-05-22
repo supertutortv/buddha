@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
-import STDialogCentered from './STDialogCentered'
-import { LoginForm } from './login/Forms'
+import { Link } from 'react-router-dom'
 import * as methods from './login/methods'
 
 const thedate = new Date
@@ -49,46 +47,31 @@ export default class Login extends React.Component {
 
         return (
             <React.Fragment>
-                <main className="stGatewayForm">
-                    <div className="stGatewayFormInner">
-                        <form role="form" className="stAccountForm" onSubmit={this.submit}>
-                            <header className="heading">
-                                <h1>SupertutorTV</h1>
-                            </header>
-                            <fieldset className="stAccountBody">
-                                <div className="stIfR99">
-                                    <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
-                                    <label aria-hidden="true" for="email">Email Address</label>
-                                </div>
-                                <div className="stIfR99">
-                                    <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
-                                    <label aria-hidden="true" for="password">Password</label>
-                                    <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
-                                </div>
-                            </fieldset>
-                            <div className="stAccountButtons">
-                                <button type="submit" className="stAccountButton btn" ><span>Log in</span></button>
-                            </div>
-                            {(error.message)
-                                ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                                : null
-                            }
-                        </form>
-                        <code className="insteadLogin">Don't have an account? <Link to={'/signup'+hist.location.search}>Sign Up</Link></code>
+                <form role="form" className="stAccountForm" onSubmit={this.submit}>
+                    <header className="heading">
+                        <h1>SupertutorTV</h1>
+                    </header>
+                    <fieldset className="stAccountBody">
+                        <div className="stIfR99">
+                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
+                            <label aria-hidden="true" for="email">Email Address</label>
+                        </div>
+                        <div className="stIfR99">
+                            <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                            <label aria-hidden="true" for="password">Password</label>
+                            <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
+                        </div>
+                    </fieldset>
+                    <div className="stAccountButtons">
+                        <button type="submit" className="stAccountButton btn" ><span>Log in</span></button>
                     </div>
-                </main>
-                <footer role="contentinfo">
-                    <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
-                    <nav>Some links</nav>
-                </footer>
+                    {(error.message)
+                        ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                        : null
+                    }
+                </form>
+                <code className="insteadLogin">Don't have an account? <Link to={'/signup'+hist.location.search}>Sign Up</Link></code>
             </React.Fragment>
-        )
-        return (
-            <STDialogCentered error={this.state.error}>
-            <form id="stLoginWrapper" className="stFormWrapper" onSubmit={this.submit}>
-                <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-            </form>
-            </STDialogCentered>
         )
     }
 }
