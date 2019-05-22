@@ -1,13 +1,16 @@
 {
     "name": "buddha",
-    "version": "1.0.0",
+    "version": "1.0.510",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
     "scripts": {
+        "it": "npm --no-git-tag-version version patch",
+        "preversion": "npm test",
+        "version": "npm run build && git add -A",
+        "postversion": "git commit -m 'devpush from remote' && git push && ssh buddha@192.155.82.130 'cd coursedev/buddha && git pull'",
         "build": "rm -rf web/assets/js/* && rm -rf web/assets/css/* && webpack --env.APP_MODE=development --mode=production",
         "buildp": "rm -rf web/assets/js/* && rm -rf web/assets/css/* && webpack --env.APP_MODE=production --mode=production",
-        "devpush": "git add -A && git commit -m 'devpush from remote' && git push && ssh buddha@192.155.82.130 'cd coursedev/buddha && git pull'",
         "server": "webpack-dev-server --env.APP_MODE=development --progress --colors"
     },
     "repository": {

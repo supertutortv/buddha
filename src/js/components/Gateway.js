@@ -1,6 +1,8 @@
 import React from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Signup from './Signup'
+import ResetPassword from './ResetPassword'
 import Main from './Main'
 
 export default class Gateway extends React.Component {
