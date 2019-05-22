@@ -53,8 +53,8 @@ export default class Login extends React.Component {
                     </header>
                     <fieldset className="stAccountBody">
                         <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
-                            <label aria-hidden="true" for="email">Email Address</label>
+                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="username" required validation="email"/>
+                            <label aria-hidden="true" for="username">Email Address</label>
                         </div>
                         <div className="stIfR99">
                             <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
