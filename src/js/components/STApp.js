@@ -33,7 +33,7 @@ export default class STApp extends React.Component {
     logThatFuckerIn() {
         this.setState({
             loggedIn: true
-        })
+        }, () => <Redirect to='/dashboard'/>)
         return true
     }
 
