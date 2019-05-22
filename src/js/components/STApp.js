@@ -42,11 +42,10 @@ export default class STApp extends React.Component {
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
                     <Route render={(p) => {
-                        console.log(p)
                         if (this.state.loggedIn === null) return this.authCheck()
                         return (
                             <Switch>
-                                <Gateway className=''>
+                                <Gateway className={p.location.key}>
                                     <Route exact path='/signup/:plan?' component={Signup}/>
                                     <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                     <Route exact path='/login' component={Login}/>
