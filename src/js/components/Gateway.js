@@ -7,10 +7,10 @@ import Main from './Main'
 
 const thedate = new Date
 
-const Gateway = (p) =>
+const Gateway = ({children}) =>
     <React.Fragment>
         <main className="stGatewayForm">
-            <div className="stGatewayFormInner">{JSON.stringify(p)}</div>
+            <div className="stGatewayFormInner">{children}</div>
         </main>
         <footer role="contentinfo">
             <mark>© {thedate.getFullYear()} Supertutor Media, Inc.</mark>
