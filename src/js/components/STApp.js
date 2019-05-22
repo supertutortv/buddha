@@ -20,7 +20,6 @@ export default class STApp extends React.Component {
     authCheck() {
         if (this.state.loggedIn === null) {
             _st.http.post('/auth/verify',{},(d) => {
-                console.log(d.data)
                 this.setState({
                     loggedIn: d.data
                 })
@@ -44,7 +43,7 @@ export default class STApp extends React.Component {
                     <Route exact path={['/auth','/login','/password/reset/:key?','/signup/:plan?']} render={(p) => {
                         console.log(p)
                         if (this.state.loggedIn === null) return this.authCheck()
-
+                        return null
                     }} />
                     <Route path='/' render={(p) => <Gateway {...p} />} />
                 </Switch>
