@@ -2,9 +2,9 @@ import React from 'react'
 
 const thedate = new Date
 
-const Gateway = ({children}) =>
+const Gateway = ({children, className}) =>
     <React.Fragment>
-        <main className="stGatewayForm">
+        <main className={"stGatewayForm "+className}>
             <div className="stGatewayFormInner">{children}</div>
         </main>
         <footer role="contentinfo">
