@@ -41,7 +41,7 @@ export default class STApp extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                    <Route render={(p) => {
+                    <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
                         if (this.state.loggedIn === null) return this.authCheck()
                         return (
                             <Switch>
@@ -50,13 +50,12 @@ export default class STApp extends React.Component {
                                     <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                     <Route exact path='/login' component={Login}/>
                                 </Gateway>
-                                <Route path='/' render={() => 
-                                    this.state.loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
-                                }/>
                             </Switch>
                         )
                     }} />
-                    <Redirect from="*" to="/auth" />
+                    <Route path='/' render={() => 
+                        this.state.loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                    }/>
                 </Switch>
             </BrowserRouter>
         )
