@@ -39,15 +39,16 @@ export default class STApp extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                    {/* <Route exact path='/signup/:plan?' component={Signup} /> */}
                     <Route exact path={['/auth','/login','/password/reset/:key?','/signup/:plan?']} render={(p) => {
                         return (
                             <Switch>
-                                <Route exact path='/signup/:plan?' component={Signup}/>
+                                <div className="holla">
+                                    <Route exact path='/signup/:plan?' component={Signup}/>
+                                </div>
                             </Switch>
                         )
                     }} />
-                    <Route path='/' render={(p) => <Gateway {...p} />} />
+                    <Redirect from="*" to="/auth" />} />
                 </Switch>
             </BrowserRouter>
         )
