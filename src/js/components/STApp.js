@@ -34,6 +34,7 @@ export default class STApp extends React.Component {
         this.setState({
             loggedIn: true
         })
+        return true
     }
 
     render () {
@@ -46,7 +47,7 @@ export default class STApp extends React.Component {
                         return (
                             <Switch>
                                 <Gateway className={'st'+p.location.key}>
-                                    <Route exact path='/signup/:plan?' component={Signup}/>
+                                    <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} {...p}/>}/>
                                     <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                     <Route exact path='/login' component={Login}/>
                                 </Gateway>

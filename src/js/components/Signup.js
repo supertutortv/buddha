@@ -15,6 +15,7 @@ export default class Signup extends React.Component {
         }
 
         this.createAccount = this.createAccount.bind(this)
+        this.logIn = this.logIn.bind(this)
 
         _st.bodyClass = 'gateway signup'
     }
@@ -30,6 +31,10 @@ export default class Signup extends React.Component {
     componentWillReceiveProps(nextProps) {
         var { history: hist } = nextProps
         if (hist.action === 'POP') this.setState(this.props.location.state)
+    }
+
+    logIn() {
+        return this.props.logIn()
     }
 
     createAccount(e) {
@@ -50,7 +55,7 @@ export default class Signup extends React.Component {
                 }
             })
 
-            if (200 === d.data.status) this.setState({signed: true},
+            if (200 === d.data.status) return this.logIn && this.setState({signed: true},
                 () => sessionStorage.setItem('STSUTransition',JSON.stringify(d.account))
             )
         })
