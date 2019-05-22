@@ -1,13 +1,9 @@
 @keyframes fadein {
-  0% {
+  from {
     opacity: 0;
   }
 
-  66% {
-    opacity: 0;
-  }
-
-  100% {
+  to {
     opacity: 1;
   }
 }
