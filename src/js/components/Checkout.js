@@ -1,5 +1,5 @@
 import React from 'react'
-import { StripeProvider, Elements, injectStripe, CardElement } from 'react-stripe-elements'
+import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
 import * as methods from './signup/methods'
 import { AuthContext } from '../context'
 
