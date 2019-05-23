@@ -1723,8 +1723,8 @@ body.gateway > st-app footer > * {
 
 .stModal.bottom .stModalInner {
   box-shadow: 0px -10px 45px 1px rgba(0, 0, 0, 0.4) !important;
-  -webkit-animation: 350ms ease 0s normal forwards 1 growvert;
-  animation: 350ms ease 0s normal forwards 1 growvert;
+  -webkit-animation: 250ms ease 0s normal forwards 1 growvert;
+  animation: 250ms ease 0s normal forwards 1 growvert;
 }
 
 .stModal.top {

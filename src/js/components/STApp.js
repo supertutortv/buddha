@@ -17,6 +17,7 @@ export default class STApp extends React.Component {
 
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
         this.authCheck = this.authCheck.bind(this)
+        console.log(props)
     }
 
     authCheck() {
@@ -44,7 +45,6 @@ export default class STApp extends React.Component {
                 <Switch>
                     <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
                     <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
-                        console.log(p)
                         if (this.state.loggedIn === null) return this.authCheck()
                         return (
                             <Switch>

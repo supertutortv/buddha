@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Player from '@vimeo/player'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const events = {
     'play': (e) => false,
