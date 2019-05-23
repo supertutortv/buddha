@@ -22,6 +22,10 @@ export default class STApp extends React.Component {
         this.setPlan = this.setPlan.bind(this)
     }
 
+    componentDidMount() {
+        this.authCheck()
+    }
+
     authCheck() {
         if (this.state.loggedIn === null) {
             _st.http.post('/auth/verify',{},(d) => {
@@ -54,14 +58,20 @@ export default class STApp extends React.Component {
                     <Switch>
                         <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
                         <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
-                            if (this.state.loggedIn === null) return this.authCheck()
                             return (
                                 <Switch>
                                     <Gateway className={'st'+p.location.key}>
                                         <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>}/>
-                                        <Route exact path='/password/reset/:key?' component={ResetPassword}/>
-                                        <Route exact path='/login' render={() => 
-                                            loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                        <Route render={() => {
+                                            if (this.state.loggedIn === null) return null
+                                            return (
+                                                <Switch>
+                                                    <Route exact path='/password/reset/:key?' component={ResetPassword}/>
+                                                    <Route exact path='/login' render={() => 
+                                                        loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                                </Switch>
+                                            )
+                                        }} />
                                     </Gateway>
                                 </Switch>
                             )
