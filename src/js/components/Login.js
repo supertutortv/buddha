@@ -1,4 +1,5 @@
 import React from 'react'
+import { AuthContext } from '../context'
 import { Link } from 'react-router-dom'
 import * as methods from './login/methods'
 
