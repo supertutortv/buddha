@@ -1614,6 +1614,9 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer {
   text-align: center;
   padding: 0 1.5rem 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  transform: scale3d(1, 1.15, 1);
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer span {
