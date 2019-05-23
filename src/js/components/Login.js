@@ -46,32 +46,36 @@ export default class Login extends React.Component {
             {history: hist} = this.props
 
         return (
-            <React.Fragment>
-                <form role="form" className="stAccountForm" onSubmit={this.submit}>
-                    <header className="heading">
-                        <h1>SupertutorTV</h1>
-                    </header>
-                    <fieldset className="stAccountBody">
-                        <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="username" required validation="email"/>
-                            <label aria-hidden="true" for="username">Email Address</label>
-                        </div>
-                        <div className="stIfR99">
-                            <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
-                            <label aria-hidden="true" for="password">Password</label>
-                            <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
-                        </div>
-                    </fieldset>
-                    <div className="stAccountButtons">
-                        <button type="submit" className="stAccountButton btn" ><span>Log in</span></button>
-                    </div>
-                    {(error.message)
-                        ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                        : null
-                    }
-                </form>
-                <code className="insteadLogin">Don't have an account? <Link to={'/signup'+hist.location.search}>Sign Up</Link></code>
-            </React.Fragment>
+            <AuthContext.Consumer>
+                {auth => (
+                    <React.Fragment>
+                        <form role="form" className="stAccountForm" onSubmit={this.submit}>
+                            <header className="heading">
+                                <h1>SupertutorTV</h1>
+                            </header>
+                            <fieldset className="stAccountBody">
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="username" required validation="email"/>
+                                    <label aria-hidden="true" for="username">Email Address</label>
+                                </div>
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                                    <label aria-hidden="true" for="password">Password</label>
+                                    <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
+                                </div>
+                            </fieldset>
+                            <div className="stAccountButtons">
+                                <button type="submit" className="stAccountButton btn" ><span>Log in</span></button>
+                            </div>
+                            {(error.message)
+                                ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                : null
+                            }
+                        </form>
+                        <code className="insteadLogin">Don't have an account? <Link to={'/signup'+(auth.plan ? '/'+auth.plan : '')+hist.location.search}>Sign Up</Link></code>
+                    </React.Fragment>
+                )}
+            </AuthContext.Consumer>
         )
     }
 }
