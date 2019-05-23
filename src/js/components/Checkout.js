@@ -62,7 +62,6 @@ export default class Checkout extends React.Component {
         let key = _st.stripe
         this.setState({
             init: true,
-            item: d.data,
             stripe: (window.Stripe) ? window.Stripe(key) : null
         }, () => {
             if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
