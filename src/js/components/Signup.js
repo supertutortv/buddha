@@ -56,7 +56,7 @@ export default class Signup extends React.Component {
                 }
             })
 
-            if (200 === d.data.status) return this.logIn && this.setState({signed: true},
+            if (200 === d.data.status) return this.logIn() && this.setState({signed: true},
                 () => sessionStorage.setItem('STSUTransition',JSON.stringify(d.account))
             )
         })
