@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { AuthContext } from '../context'
 import allYourBase from './allYourBase'
 import Gateway from './Gateway'
 import Signup from './Signup'
@@ -12,12 +13,13 @@ export default class STApp extends React.Component {
         super(props)
 
         this.state = {
-            loggedIn: null
+            loggedIn: null,
+            plan: null
         }
 
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
         this.authCheck = this.authCheck.bind(this)
-        console.log(props)
+        this.setPlan = this.setPlan.bind(this)
     }
 
     authCheck() {
@@ -31,6 +33,12 @@ export default class STApp extends React.Component {
         return null
     }
 
+    setPlan(plan=null) {
+        this.setState({
+            plan: plan
+        })
+    }
+
     logThatFuckerIn() {
         this.setState({
             loggedIn: true
@@ -41,27 +49,29 @@ export default class STApp extends React.Component {
     render () {
         let { loggedIn } = this.state
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                    <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
-                        if (this.state.loggedIn === null) return this.authCheck()
-                        return (
-                            <Switch>
-                                <Gateway className={'st'+p.location.key}>
-                                    <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} {...p}/>}/>
-                                    <Route exact path='/password/reset/:key?' component={ResetPassword}/>
-                                    <Route exact path='/login' render={() => 
-                                        loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
-                                </Gateway>
-                            </Switch>
-                        )
-                    }} />
-                    <Route path='/' render={(p) => 
-                        loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
-                    }/>
-                </Switch>
-            </BrowserRouter>
+            <AuthContext.Provider value={this.state}>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
+                        <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
+                            if (this.state.loggedIn === null) return this.authCheck()
+                            return (
+                                <Switch>
+                                    <Gateway className={'st'+p.location.key}>
+                                        <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>}/>
+                                        <Route exact path='/password/reset/:key?' component={ResetPassword}/>
+                                        <Route exact path='/login' render={() => 
+                                            loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                    </Gateway>
+                                </Switch>
+                            )
+                        }} />
+                        <Route path='/' render={(p) => 
+                            loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                        }/>
+                    </Switch>
+                </BrowserRouter>
+            </AuthContext.Provider>
         )
     }
 }
