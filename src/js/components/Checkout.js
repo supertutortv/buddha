@@ -1,9 +1,9 @@
 import React from 'react'
-import { StripeProvider, Elements } from 'react-stripe-elements'
+import { StripeProvider, Elements, injectStripe, CardElement } from 'react-stripe-elements'
 import * as methods from './signup/methods'
 import { AuthContext } from '../context'
 
-export default class Checkout extends React.Component {
+class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
@@ -93,3 +93,5 @@ export default class Checkout extends React.Component {
         )
     }
 }
+
+export default injectStripe(Checkout)
