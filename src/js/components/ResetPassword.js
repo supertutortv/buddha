@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const thedate = new Date
-
 export default class ResetPassword extends React.Component {
     constructor(props) {
         super(props)
