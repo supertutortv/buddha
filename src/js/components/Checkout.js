@@ -1,6 +1,7 @@
 import React from 'react'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import * as methods from './signup/methods'
+import { AuthContext } from '../context'
 
 export default class Checkout extends React.Component {
     constructor(props) {
@@ -8,10 +9,10 @@ export default class Checkout extends React.Component {
 
         this.state = {
             init: false,
-            step: 0,
+            step: this.props.step,
             update: true,
             loading: true,
-            plan: this.props.match.params || null,
+            plan: this.props.plan,
             error: {
                 id: '',
                 message: ''
@@ -54,7 +55,21 @@ export default class Checkout extends React.Component {
             this[method] = methods[method].bind(this)
         })
 
-        //this.createStripeScript()
+        this.createStripeScript()
+    }
+
+    componentDidMount() {
+        let key = _st.stripe
+        this.setState({
+            init: true,
+            item: d.data,
+            stripe: (window.Stripe) ? window.Stripe(key) : null
+        }, () => {
+            if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
+                this.setState({stripe: window.Stripe(key)})
+            })
+            _st.loading = false
+        })
     }
 
     componentWillUnmount() {
@@ -63,33 +78,19 @@ export default class Checkout extends React.Component {
     }
 
     render() {
+        if (!this.state.init) return null
         return(
-            <StripeProvider stripe={this.state.stripe}>
-                <React.Fragment>
-                    <Elements>
-                        <Checkout 
-                            hist={this.props.history}
-                            state={this.state} 
-                            error={this.state.error} 
-                            changeStep={this.changeStep} 
-                            createAccount={this.createAccount} 
-                            calculatePricing={this.calculatePricing} 
-                            updateInp={this.updateInp} 
-                            updatePrice={this.updatePrice} 
-                            setChecker={this.setChecker} 
-                            setOutcome={this.setOutcome} 
-                            setPlan={this.setPlan} 
-                            setShipping={this.setShipping} 
-                            toPrice={this.toPrice} 
-                            submitPayment={this.submitPayment} 
-                            validate={this.validate}
-                        />
-                    </Elements>
-                    <footer>
-                        <div>© {thedate.getFullYear()} Supertutor Media, Inc.</div>
-                    </footer>
-                </React.Fragment>
-            </StripeProvider>
+            <AuthContext.Consumer>
+                {auth => {
+                    return (
+                        <StripeProvider stripe={this.state.stripe}>
+                            <Elements>
+                                <CardElement onChange={(e)=>console.log(e, auth.plan)} />
+                            </Elements>
+                        </StripeProvider>
+                    )
+                }}
+            </AuthContext.Consumer>
         )
     }
 }

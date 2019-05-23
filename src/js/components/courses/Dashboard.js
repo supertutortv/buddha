@@ -1,7 +1,9 @@
 import React from 'react'
 import { DataState } from './StateContext'
+import { AuthContext } from '../../context'
 import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
+import Checkout from '../Checkout'
 
 export default class Dashboard extends React.Component {
     constructor(props){
@@ -65,32 +67,37 @@ export default class Dashboard extends React.Component {
     }
 
     triggerPurchase() {
-        let plan = this.props.plan || 'supertutortv'
-
-        alert('Buy the '+plan+' course')
-        return null
+        return (
+            <Checkout />
+        )
     }
 
     render() {
         if (this.state.notifications.active) console.log(this.state.notifications.active)
         return(
-            <DataState.Consumer>
-                {(data) => {
-                    if (data.courses.length === 0) this.triggerPurchase()
+            <AuthContext.Consumer>
+                {auth => {
                     return (
-                        <React.Fragment>
-                            <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
-                            <main className="stDashboard stComponentFade">
-                                <DBCourses courses={data.courses} />
-                                <div className="stNotesActions">
-                                    <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
-                                    <DBActions cancellation={this.cancellation} d={data.user} />
-                                </div>
-                            </main>
-                        </React.Fragment>
+                        <DataState.Consumer>
+                            {data => {
+                                if (data.courses.length === 0) return this.triggerPurchase()
+                                return (
+                                    <React.Fragment>
+                                        <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
+                                        <main className="stDashboard stComponentFade">
+                                            <DBCourses courses={data.courses} />
+                                            <div className="stNotesActions">
+                                                <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
+                                                <DBActions cancellation={this.cancellation} d={data.user} />
+                                            </div>
+                                        </main>
+                                    </React.Fragment>
+                                )
+                            }}
+                        </DataState.Consumer>
                     )
                 }}
-            </DataState.Consumer>
+            </AuthContext.Consumer>
         )
     }
 }
