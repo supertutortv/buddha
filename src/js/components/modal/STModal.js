@@ -7,7 +7,7 @@ const STModal = (props) => {
 
     let { xtraClass, mData, action, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = this.props
 
-    const ModalComp = children || comps[action] || ''
+    const ModalComp = comps[action] || ''
 
     var style = color ? {borderColor: color} : {}
     
@@ -16,7 +16,7 @@ const STModal = (props) => {
             if (e.target.classList.contains("stModal")) modalActive({open: false})
         }}>
             <div className="stModalInner" style={style}>
-                <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />
+                {children || <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />}
             </div>
         </aside>
     )
