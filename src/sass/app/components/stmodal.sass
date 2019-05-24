@@ -1,12 +1,21 @@
 .stModal
+    background-color: whitesmoke(.75)
     position: absolute
     width: 100%
     height: 100%
     top: 0
-    background-color: black(.65)
+    display: flex
+    justify-content: center
     +animFadeIn
 
-    &.centered
+    &.checkout
+
+        .stModalInner
+            margin-top: 4%
+            min-height: 20em
+            +stcardwide
+
+    &.centered:not(.checkout)
         padding: 5%
 
         .stModalInner
@@ -20,7 +29,7 @@
             +growVert
 
     &.top
-        padding-top: 15%
+        padding-top: 55%
 
     .stModalInner
         background-color: white()

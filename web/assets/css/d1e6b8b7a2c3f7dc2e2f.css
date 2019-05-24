@@ -525,27 +525,8 @@ body.allYourBase .stAppHeader {
   }
 }
 
-.boosh {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-color: rgba(245, 245, 245, 0.75);
-}
-
-.boosh .booshInner {
-  margin-top: 4%;
-  min-height: 20em;
-  border-radius: 0.25em;
-  width: 95%;
-  max-width: 900px;
-  background-color: white;
-  margin-bottom: .5rem;
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+.stCheckoutWindow {
+  font-size: .5em;
 }
 
 .stDashboard {
@@ -1703,19 +1684,32 @@ body.gateway > st-app footer > * {
 }
 
 .stModal {
+  background-color: rgba(245, 245, 245, 0.75);
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
   animation: fadein 100ms ease-in-out 0s both;
 }
 
-.stModal.centered {
+.stModal.checkout .stModalInner {
+  margin-top: 4%;
+  min-height: 20em;
+  border-radius: 0.25em;
+  width: 95%;
+  max-width: 900px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stModal.centered:not(.checkout) {
   padding: 5%;
 }
 
-.stModal.centered .stModalInner {
+.stModal.centered:not(.checkout) .stModalInner {
   border-radius: 0.5em;
 }
 
@@ -1730,7 +1724,7 @@ body.gateway > st-app footer > * {
 }
 
 .stModal.top {
-  padding-top: 15%;
+  padding-top: 55%;
 }
 
 .stModal .stModalInner {
