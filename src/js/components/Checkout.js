@@ -75,7 +75,9 @@ export default class Checkout extends React.Component {
                     return (
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
-                                <h1><i class="fas fa-lock"></i> Checkout</h1>
+                                    <div className="booshInner" onClick={(e) => e.stopPropagation()}>
+                                        <h1><i class="fas fa-lock"></i> Checkout</h1>
+                                    </div>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                             </Elements>
                         </StripeProvider>
