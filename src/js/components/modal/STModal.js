@@ -1,20 +1,16 @@
 import React from 'react'
 import * as comps from './comps'
 
-export default class STModal extends React.Component {
-    constructor(props) {
-        super(props)
-        
-    }
-
-    render() {
-        let { mData, open, action, orientation = 'bottom', addDl, refr, modalActive, color, test } = this.props
-
-        if (!open) return null
+const STModal = ({ mData, open, action, orientation = 'bottom', addDl, refr, modalActive, color, test, children }) => {
+    //if (!open) return null
 
         const ModalComp = comps[action] || ''
 
         var style = color ? {borderColor: color} : {}
+
+        console.log(children)
+
+        return null
         
         return (
             <div className={['stModal',orientation].join(' ')} onClick={(e) => {
@@ -25,5 +21,6 @@ export default class STModal extends React.Component {
                 </div>
             </div>
         )
-    }
 }
+
+export default STModal
