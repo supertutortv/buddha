@@ -541,7 +541,7 @@ body.allYourBase .stAppHeader {
   margin-top: 4%;
   min-height: 20em;
   border-radius: 0.25em;
-  width: 100%;
+  width: 95%;
   max-width: 900px;
   background-color: white;
   margin-bottom: .5rem;
@@ -1509,7 +1509,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm {
   margin-top: .5rem;
   font-size: calc(1rem - 7px);
   border-radius: 0.25em;
-  width: 100%;
+  width: 98%;
   max-width: 400px;
   background-color: white;
   margin-bottom: .5rem;
@@ -1667,7 +1667,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .insteadLogin {
   color: rgba(0, 0, 0, 0.5);
   transform: scale3d(1, 1.15, 1);
   border-radius: 0.25em;
-  width: 100%;
+  width: 98%;
   max-width: 400px;
   background-color: white;
   margin-bottom: .5rem;
