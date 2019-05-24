@@ -77,7 +77,9 @@ export default class Checkout extends React.Component {
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
                                 <div className="boosh">
-                                    <div className="booshInner"></div>
+                                    <div className="booshInner">
+                                        <h1>Checkout</h1>
+                                    </div>
                                 </div>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                             </Elements>
