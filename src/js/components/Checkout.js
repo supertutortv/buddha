@@ -76,7 +76,7 @@ export default class Checkout extends React.Component {
                     return (
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
-                                <div className="boosh">
+                                <div className="boosh" onClick={(e) => console.log(e)}>
                                     <div className="booshInner">
                                         <h1>Checkout</h1>
                                     </div>
