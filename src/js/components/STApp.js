@@ -77,6 +77,7 @@ export default class STApp extends React.Component {
                             )
                         }} />
                         <Route path='/' render={(p) => 
+                            loggedIn === null ? null :
                             loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
                         }/>
                     </Switch>
