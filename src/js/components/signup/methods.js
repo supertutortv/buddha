@@ -199,3 +199,16 @@ export function createStripeScript() {
         s.src = 'https://js.stripe.com/v3/'
     document.body.appendChild(s)
 }
+
+export function newCard() {
+    let key = _st.stripe
+    this.setState({
+        init: true,
+        stripe: (window.Stripe) ? window.Stripe(key) : null
+    }, () => {
+        if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
+            this.setState({stripe: window.Stripe(key)})
+        })
+        
+    })
+}

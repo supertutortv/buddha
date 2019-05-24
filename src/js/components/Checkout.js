@@ -59,16 +59,7 @@ export default class Checkout extends React.Component {
     }
 
     componentDidMount() {
-        let key = _st.stripe
-        this.setState({
-            init: true,
-            stripe: (window.Stripe) ? window.Stripe(key) : null
-        }, () => {
-            if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
-                this.setState({stripe: window.Stripe(key)})
-            })
-            _st.loading = false
-        })
+        _st.loading = false
     }
 
     componentWillUnmount() {
@@ -77,7 +68,7 @@ export default class Checkout extends React.Component {
     }
 
     render() {
-        if (!this.state.init) return null
+        //if (!this.state.init) return null
         return(
             <AuthContext.Consumer>
                 {auth => {
