@@ -7,7 +7,7 @@ const STModal = (props) => {
 
     let { xtraClass, mData, action, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = this.props
 
-    const ModalComp = comps[action] || children || ''
+    const ModalComp = children || comps[action] || ''
 
     var style = color ? {borderColor: color} : {}
     
