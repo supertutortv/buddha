@@ -77,7 +77,7 @@ export default class Checkout extends React.Component {
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
                                 <div className="boosh" onClick={(e) => console.log(e)}>
-                                    <div className="booshInner">
+                                    <div className="booshInner" onClick={(e) => e.stopPropagation()}>
                                         <h1>Checkout</h1>
                                     </div>
                                 </div>
