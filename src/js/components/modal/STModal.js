@@ -7,17 +7,13 @@ const STModal = ({ mData, open, action, orientation = 'bottom', addDl, refr, mod
         const ModalComp = comps[action] || ''
 
         var style = color ? {borderColor: color} : {}
-
-        console.log(children)
-
-        return null
         
         return (
             <div className={['stModal',orientation].join(' ')} onClick={(e) => {
                 if (e.target.classList.contains("stModal")) modalActive({open: false})
             }}>
                 <div className="stModalInner" style={style}>
-                    <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />
+                    {children || <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />}
                 </div>
             </div>
         )
