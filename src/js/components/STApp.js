@@ -57,28 +57,28 @@ export default class STApp extends React.Component {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path='/all-your-base-are-belong-to-us' component={allYourBase} />
-                        <Route exact path={['/signup/:plan?','/password/reset/:key?','/login']} render={(p) => {
-                            return (
-                                <Switch>
-                                    <Gateway className={'st-'+(p.location.key || 'el6s42m')}>
-                                        <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>}/>
-                                        <Route render={() => {
-                                            if (this.state.loggedIn === null) return null
-                                            return (
-                                                <Switch>
-                                                    <Route exact path='/password/reset/:key?' component={ResetPassword}/>
-                                                    <Route exact path='/login' render={() => 
-                                                        loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
-                                                </Switch>
-                                            )
-                                        }} />
-                                    </Gateway>
-                                </Switch>
-                            )
-                        }} />
-                        <Route path='/' render={(p) => 
-                            loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
-                        }/>
+                        <Route render={(p) =>
+                            <Switch>
+                                <Gateway className={'st-'+(p.location.key || 'el6s42m')}>
+                                    <Route exact path='/signup/:plan?' render={() => 
+                                        <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>
+                                    }/>
+                                    <Route render={() => {
+                                        if (loggedIn === null) return null
+                                        return (
+                                            <Switch>
+                                                <Route exact path='/password/reset/:key?' component={ResetPassword}/>
+                                                <Route exact path='/login' render={() => 
+                                                    loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                                <Route path='/' render={(p) => 
+                                                    loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                                                }/>
+                                            </Switch>
+                                        )
+                                    }} />
+                                </Gateway>
+                            </Switch>
+                        } />
                     </Switch>
                 </BrowserRouter>
             </AuthContext.Provider>
