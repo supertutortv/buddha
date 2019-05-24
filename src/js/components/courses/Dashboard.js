@@ -79,21 +79,19 @@ export default class Dashboard extends React.Component {
                 {auth => {
                     return (
                         <DataState.Consumer>
-                            {data => {
-                                if (data.courses.length === 0) return this.triggerPurchase()
-                                return (
-                                    <React.Fragment>
-                                        <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
-                                        <main className="stDashboard stComponentFade">
-                                            <DBCourses courses={data.courses} />
-                                            <div className="stNotesActions">
-                                                <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
-                                                <DBActions cancellation={this.cancellation} d={data.user} />
-                                            </div>
-                                        </main>
-                                    </React.Fragment>
-                                )
-                            }}
+                            {data =>
+                                <React.Fragment>
+                                    <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
+                                    <main className="stDashboard stComponentFade">
+                                        <DBCourses courses={data.courses} />
+                                        <div className="stNotesActions">
+                                            <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
+                                            <DBActions cancellation={this.cancellation} d={data.user} />
+                                        </div>
+                                    </main>
+                                    {data.courses.length === 0 ? this.triggerPurchase() : null}
+                                </React.Fragment>
+                            }
                         </DataState.Consumer>
                     )
                 }}
