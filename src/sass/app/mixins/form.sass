@@ -40,6 +40,9 @@
         border-radius: .125rem
 
         & > label
+            transform: translateZ(0)
+            backface-visibility: hidden
+            -webkit-font-smoothing: subpixel-antialiased
             font-size: $medtext
             font-weight: 400
             padding: .75em 1em
@@ -59,7 +62,7 @@
             border: 1px solid black(.1)
             z-index: 1
             background-color: transparent
-            transition: all .25s ease-in-out
+            transition: all .1s ease-in-out
 
             &:focus
                 border: 1px solid azure(.5)

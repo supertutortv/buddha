@@ -1469,7 +1469,7 @@ body.gateway > st-app .stGatewayForm {
   flex: 1 0 auto;
   order: 1;
   width: 100%;
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   overflow: auto;
   animation: fadein 100ms ease-in-out 0s both;
 }
@@ -1539,6 +1539,9 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) > label {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
   font-size: calc(1rem - 7px);
   font-weight: 400;
   padding: .75em 1em;
@@ -1560,7 +1563,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 1;
   background-color: transparent;
-  transition: all .25s ease-in-out;
+  transition: all .1s ease-in-out;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
