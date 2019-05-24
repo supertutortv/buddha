@@ -51,7 +51,6 @@ export default class Main extends React.Component {
 
         if (upd) obj.data = await this.getData()
         this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
-        _st.bodyClass = 'main'
         _st.loading = false
     }
 
