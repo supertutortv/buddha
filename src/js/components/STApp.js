@@ -63,20 +63,21 @@ export default class STApp extends React.Component {
                                     <Route exact path='/signup/:plan?' render={() => 
                                         <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>
                                     }/>
-                                    <Route render={() => {
-                                        if (loggedIn === null) return null
-                                        return (
+                                    <Route exact path={['/password/reset/:key?','/login']} render={() =>
+                                        <React.Fragment>
+                                            {loggedIn === null ? null : 
                                             <Switch>
                                                 <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                                 <Route exact path='/login' render={() => 
                                                     loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
-                                                <Route path='/' render={(p) => 
-                                                    loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
-                                                }/>
-                                            </Switch>
-                                        )
-                                    }} />
+                                            </Switch>}
+                                        </React.Fragment>
+                                    } />
                                 </Gateway>
+                                {loggedIn === null ? null : 
+                                <Route path='/' render={(p) => 
+                                    loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                                }/>}
                             </Switch>
                         } />
                     </Switch>
