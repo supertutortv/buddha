@@ -138,7 +138,7 @@ export default class Main extends React.Component {
                     />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
                 </Switch>
-                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
+                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} ></STModal>
             </DataState.Provider>
         )
     }
