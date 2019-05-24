@@ -78,7 +78,7 @@ export default class Checkout extends React.Component {
                             <Elements>
                                 <div className="boosh" onClick={(e) => console.log(e)}>
                                     <div className="booshInner" onClick={(e) => e.stopPropagation()}>
-                                        <h1>Checkout</h1>
+                                        <h1><i class="fas fa-lock"></i> Checkout</h1>
                                     </div>
                                 </div>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
