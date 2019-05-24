@@ -1,7 +1,6 @@
 import React from 'react'
 import * as comps from './comps'
 
-
 export default class STModal extends React.Component {
     constructor(props) {
         super(props)
