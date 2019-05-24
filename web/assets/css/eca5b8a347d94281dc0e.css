@@ -1702,33 +1702,6 @@ body.gateway > st-app footer > * {
   font-weight: 800;
 }
 
-.stDialogCentered {
-  text-align: center;
-  border-radius: 0.5em;
-  padding: 1.5em 1.5em 1em;
-  max-width: 500px;
-  width: 98%;
-  animation: fadein 100ms ease-in-out 0s both;
-}
-
-.stDialogCentered header img {
-  height: 3em;
-  width: auto;
-}
-
-.stDialogCentered .stDialogCenteredInset {
-  width: 100%;
-  background-color: white;
-}
-
-.stDialogCentered .stDialogCenteredInset h1 {
-  font-weight: 400;
-  font-size: 1.5em;
-  text-transform: none;
-  line-height: 1;
-  padding: 1.25em 0;
-}
-
 .stModal {
   position: absolute;
   width: 100%;

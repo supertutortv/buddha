@@ -72,15 +72,10 @@ export default class Checkout extends React.Component {
         return(
             <AuthContext.Consumer>
                 {auth => {
-                    console.log(auth)
                     return (
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
-                                <div className="boosh" onClick={(e) => console.log(e)}>
-                                    <div className="booshInner" onClick={(e) => e.stopPropagation()}>
-                                        <h1><i class="fas fa-lock"></i> Checkout</h1>
-                                    </div>
-                                </div>
+                                <h1><i class="fas fa-lock"></i> Checkout</h1>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                             </Elements>
                         </StripeProvider>

@@ -23,7 +23,8 @@ export default class Main extends React.Component {
                 color: false,
                 mData: null,
                 refr: null,
-                test: ''
+                test: '',
+                xtraClass: ''
             }
         }
 
@@ -125,7 +126,9 @@ export default class Main extends React.Component {
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
-                    <Route exact path='/dashboard' render={props => <Dashboard {...props} {...this.props.location.state} refreshData={this.refreshData}/>} />
+                    <Route exact path='/dashboard' render={
+                        props => <Dashboard {...props} {...this.props.location.state} modalActive={this.modalActive} refreshData={this.refreshData}/>
+                    } />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
                         refreshData={this.refreshData} 
@@ -137,8 +140,11 @@ export default class Main extends React.Component {
                         {...props} 
                     />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
+                    <Route path="*" component={null} />
                 </Switch>
-                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} ><div><a></a></div></STModal>
+                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} >
+                    {this.state.modal.mData}
+                </STModal>
             </DataState.Provider>
         )
     }

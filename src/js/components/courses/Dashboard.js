@@ -68,9 +68,13 @@ export default class Dashboard extends React.Component {
     }
 
     triggerPurchase() {
-        return (
-            <Checkout />
-        )
+        this.props.modalActive({
+            open: true,
+            action: null,
+            mData: <Checkout />,
+            xtraClass: 'checkout'
+        })
+        return null
     }
 
     render() {

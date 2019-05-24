@@ -3,7 +3,7 @@ import * as comps from './comps'
 
 const STModal = (props) => {
     let { open } = props
-    //if (!open) return null
+    if (!open) return null
 
     let { xtraClass, mData, action, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = props
 
