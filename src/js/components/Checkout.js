@@ -7,16 +7,14 @@ export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
-        let savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
-
-        console.log(savedSU)
+        let savedSU = JSON.parse(localStorage.getItem('_stT-siignup'))
 
         this.state = {
             init: false,
             step: 0,
             update: true,
             loading: true,
-            plan: null,
+            plan: savedSU.plan || 'nocourse',
             error: {
                 id: '',
                 message: ''
@@ -73,7 +71,7 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
-        console.log(this.props.plan)
+        console.log(this.state.plan)
         return(
             <AuthContext.Consumer>
                 {auth => {
