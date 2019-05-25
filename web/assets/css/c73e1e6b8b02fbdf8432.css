@@ -550,12 +550,14 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow .stepSide h1 {
   font-size: calc(1rem - 7px);
+  font-weight: 600;
   line-height: 0;
 }
 
-.stCheckoutWindow .stepSide h1 i {
-  width: calc(1rem - 7px);
-  height: calc(1rem - 7px);
+.stCheckoutWindow .stepSide h1 i.far,
+.stCheckoutWindow .stepSide h1 i.fas,
+.stCheckoutWindow .stepSide h1 i.fa {
+  font-size: 0.75em;
 }
 
 .stCheckoutWindow .checkSide {
