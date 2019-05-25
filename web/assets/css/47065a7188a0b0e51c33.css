@@ -558,6 +558,7 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .stepSide h1 i.fas,
 .stCheckoutWindow .stepSide h1 i.fa {
   font-size: 0.75em;
+  margin-right: 0.25em;
 }
 
 .stCheckoutWindow .checkSide {
