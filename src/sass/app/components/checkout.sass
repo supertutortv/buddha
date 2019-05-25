@@ -1,6 +1,6 @@
 .stCheckoutWindow
     display: flex
-    flex-wrap: wrap
+    flex-flow: row wrap
     flex: 1
 
     .stepSide
@@ -19,4 +19,15 @@
                 height: $medtext
 
     .checkSide
+        flex: 6
         padding: $huge
+
++MQ($mq-tportrait)
+    .stCheckoutWindow
+        flex-flow: column wrap
+
+        .stepSide
+            flex: 3
+
+        .checkSide
+            flex: 7

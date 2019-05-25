@@ -527,7 +527,7 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   flex: 1;
 }
 
@@ -550,7 +550,22 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .checkSide {
+  flex: 6;
   padding: 2em;
+}
+
+@media only screen and (max-width: 992px) {
+  .stCheckoutWindow {
+    flex-flow: column wrap;
+  }
+
+  .stCheckoutWindow .stepSide {
+    flex: 3;
+  }
+
+  .stCheckoutWindow .checkSide {
+    flex: 7;
+  }
 }
 
 .stDashboard {
