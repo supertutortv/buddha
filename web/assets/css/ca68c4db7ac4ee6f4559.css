@@ -538,6 +538,16 @@ body.allYourBase .stAppHeader {
   background-color: #109fda;
 }
 
+.stCheckoutWindow .stepSide h1 {
+  font-size: 1rem;
+  line-height: 0;
+}
+
+.stCheckoutWindow .stepSide h1 i {
+  width: 1rem;
+  height: 1rem;
+}
+
 .stDashboard {
   padding: 2em 0;
   font-size: calc(1rem - 7px);
@@ -1709,6 +1719,7 @@ body.gateway > st-app footer > * {
   display: flex;
   margin-top: 4%;
   min-height: 20em;
+  overflow: hidden;
   border-radius: 0.25em;
   width: 95%;
   max-width: 900px;
