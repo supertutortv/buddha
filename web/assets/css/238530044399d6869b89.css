@@ -536,7 +536,7 @@ body.allYourBase .stAppHeader {
   background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg");
   background-size: cover;
   background-position: top center;
-  flex: 4;
+  flex: 3;
   display: flex;
   flex-flow: column nowrap;
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
@@ -559,21 +559,13 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .checkSide {
-  flex: 6;
+  flex: 7;
   padding: 2em;
 }
 
 @media only screen and (max-width: 767px) {
   .stCheckoutWindow {
     flex-flow: column wrap;
-  }
-
-  .stCheckoutWindow .stepSide {
-    flex: 3;
-  }
-
-  .stCheckoutWindow .checkSide {
-    flex: 7;
   }
 }
 

@@ -8,7 +8,7 @@
         background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg")
         background-size: cover
         background-position: top center
-        flex: 4
+        flex: 3
         display: flex
         flex-flow: column nowrap
         +z-depth-3
@@ -27,15 +27,9 @@
                 height: $medtext
 
     .checkSide
-        flex: 6
+        flex: 7
         padding: $huge
 
 +MQ($mq-mobile)
     .stCheckoutWindow
         flex-flow: column wrap
-
-        .stepSide
-            flex: 3
-
-        .checkSide
-            flex: 7

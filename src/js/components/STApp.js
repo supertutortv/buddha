@@ -20,6 +20,7 @@ export default class STApp extends React.Component {
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
         this.authCheck = this.authCheck.bind(this)
         this.setPlan = this.setPlan.bind(this)
+        this.refresh = this.refresh.bind(this)
     }
 
     componentDidMount() {
@@ -50,6 +51,11 @@ export default class STApp extends React.Component {
         return true
     }
 
+    refresh() {
+        localStorage.removeItem('stCourseData')
+        return window.location.reload(true)
+    }
+
     render () {
         let { loggedIn } = this.state
         return (
@@ -63,7 +69,7 @@ export default class STApp extends React.Component {
                                     <Gateway className={'st-'+(p.location.key || 'el6s42m')}>
                                         <Route exact path='/signup/:plan?' render={() => <Signup logIn={this.logThatFuckerIn} setPlan={this.setPlan} {...p}/>}/>
                                         <Route render={() =>
-                                            loggedIn === null ? null :
+                                            loggedIn === null ? this.refresh() :
                                             <Switch>
                                                 <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                                 <Route exact path='/login' render={() => 
@@ -76,7 +82,7 @@ export default class STApp extends React.Component {
                         }} />
                         <Route path='/' render={(p) => 
                             loggedIn === null ? null :
-                            loggedIn ? <Main {...p}/> : <Redirect to='/login'/>
+                            loggedIn ? <Main refresh={this.refresh} {...p}/> : <Redirect to='/login'/>
                         }/>
                     </Switch>
                 </BrowserRouter>

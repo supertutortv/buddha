@@ -35,7 +35,6 @@ export default class Main extends React.Component {
         this.splicePlaylist = this.splicePlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
-        this.refreshData = this.refreshData.bind(this)
         this.updateSettings = this.updateSettings.bind(this)
         this.getData = this.getData.bind(this)
 
@@ -45,7 +44,7 @@ export default class Main extends React.Component {
     async componentDidMount() {
         let vers = JSON.parse(this.vers)
 
-        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
+        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).props.refresh()
         
         let obj = { loading: false },
             upd = (this.state.data === true)
@@ -115,11 +114,6 @@ export default class Main extends React.Component {
         })
     }
 
-    refreshData() {
-        localStorage.removeItem('stCourseData')
-        window.location.reload(true)
-    }
-
     render() {
         if (this.state.data === true) return null
 
@@ -127,7 +121,7 @@ export default class Main extends React.Component {
             <DataState.Provider value={this.state.data}>
                 <Switch>
                     <Route exact path='/dashboard' render={
-                        props => <Dashboard {...props} {...this.props.location.state} modalActive={this.modalActive} refreshData={this.refreshData}/>
+                        props => <Dashboard {...props} {...this.props.location.state} modalActive={this.modalActive} refreshData={this.props.refresh}/>
                     } />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
