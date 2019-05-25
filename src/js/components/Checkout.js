@@ -59,6 +59,7 @@ export default class Checkout extends React.Component {
     }
 
     componentDidMount() {
+        this.newCard()
         _st.loading = false
     }
 
@@ -68,7 +69,7 @@ export default class Checkout extends React.Component {
     }
 
     render() {
-        //if (!this.state.init) return null
+        if (!this.state.init) return null
         return(
             <AuthContext.Consumer>
                 {auth => {
