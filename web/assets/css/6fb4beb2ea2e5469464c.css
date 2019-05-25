@@ -527,8 +527,9 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 20% 1fr;
   grid-template-rows: 1fr;
+  flex: 1;
 }
 
 .stCheckoutWindow .stepSide {
@@ -1705,6 +1706,7 @@ body.gateway > st-app footer > * {
 }
 
 .stModal.checkout .stModalInner {
+  display: flex;
   margin-top: 4%;
   min-height: 20em;
   border-radius: 0.25em;
@@ -1722,6 +1724,7 @@ body.gateway > st-app footer > * {
   width: 100%;
   height: 100%;
   border-radius: 0.5em;
+  border: 0.5em solid transparent;
 }
 
 .stModal.bottom {
@@ -1742,7 +1745,6 @@ body.gateway > st-app footer > * {
 
 .stModal .stModalInner {
   background-color: white;
-  border: 0.5em solid transparent;
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
