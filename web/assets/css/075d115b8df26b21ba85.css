@@ -544,6 +544,7 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow .stepSide > div {
   padding: 1em;
+  width: 100%;
   flex: 1;
   background-color: rgba(16, 159, 218, 0.85);
 }
