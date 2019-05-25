@@ -70,6 +70,7 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
+        console.log(this.props.plan)
         return(
             <AuthContext.Consumer>
                 {auth => {
