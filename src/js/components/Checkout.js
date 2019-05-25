@@ -84,7 +84,7 @@ export default class Checkout extends React.Component {
                                             <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
                                             <div></div>
                                         </div>
-                                        <div className="checkSide"><pre>{JSON.stringify(this.state)}</pre></div>
+                                        <div className="checkSide"><pre>{JSON.stringify(this.state.customer)}</pre></div>
                                     </section>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                             </Elements>
