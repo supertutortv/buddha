@@ -532,7 +532,6 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .stepSide {
-  padding: 1em;
   color: white;
   background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg");
   background-size: cover;
@@ -544,6 +543,7 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .stepSide > div {
+  padding: 1em;
   flex: 1;
   background-color: rgba(16, 159, 218, 0.75);
 }
