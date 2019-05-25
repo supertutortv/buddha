@@ -84,6 +84,7 @@ export default class Dashboard extends React.Component {
         return(
             <AuthContext.Consumer>
                 {auth => {
+                    console.log(auth)
                     return (
                         <DataState.Consumer>
                             {data =>
