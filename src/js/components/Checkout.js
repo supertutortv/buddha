@@ -7,7 +7,9 @@ export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
-        let savedSU = localStorage.getItem('_stT-signup')
+        let savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
+
+        console.log(savedSU)
 
         this.state = {
             init: false,
