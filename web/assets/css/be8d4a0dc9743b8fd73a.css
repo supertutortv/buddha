@@ -549,6 +549,10 @@ body.allYourBase .stAppHeader {
   height: 1rem;
 }
 
+.stCheckoutWindow .checkSide {
+  padding: 2em;
+}
+
 .stDashboard {
   padding: 2em 0;
   font-size: calc(1rem - 7px);
