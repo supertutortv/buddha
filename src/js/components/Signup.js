@@ -63,7 +63,7 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        let { error, signed, plan } = this.state,
+        let { error, signed } = this.state,
             { history: hist } = this.props
 
         if (signed) return (
@@ -77,6 +77,7 @@ export default class Signup extends React.Component {
             <AuthContext.Consumer>
                 {auth => (
                     <React.Fragment>
+                        {() => console.log(auth) || null}
                         <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
                             <header className="heading">
                                 <h1>SupertutorTV</h1>
