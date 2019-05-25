@@ -11,8 +11,6 @@ export default class Main extends React.Component {
 
         let sCD = localStorage.getItem('stCourseData') || false
 
-        this.vers = localStorage.getItem('stVersionHashes') || '[]'
-
         this.state = {
             data: !sCD || JSON.parse(sCD),
             loading: true,
@@ -29,7 +27,6 @@ export default class Main extends React.Component {
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
-        this.hashSaveLocal = this.hashSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
         this.splicePlaylist = this.splicePlaylist.bind(this)
@@ -42,26 +39,17 @@ export default class Main extends React.Component {
     }
 
     async componentDidMount() {
-        let vers = JSON.parse(this.vers)
-
-        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).props.refresh(true)
         
         let obj = { loading: false },
             upd = (this.state.data === true)
 
         if (upd) obj.data = await this.getData()
-        this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
+        this.setState(obj,() => this.dataSaveLocal())
         _st.loading = false
     }
 
     componentDidUpdate() {
         _st.loading = false
-    }
-
-    hashSaveLocal(hashes) {
-        if (hashes.indexOf(stVersionHash) < 0) hashes.push(stVersionHash)
-        localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
-        return this
     }
 
     async getData() {
