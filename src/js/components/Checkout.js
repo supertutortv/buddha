@@ -7,14 +7,14 @@ export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
-        let savedSU = JSON.parse(localStorage.getItem('_stT-siignup'))
+        let savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
 
         this.state = {
             init: false,
             step: 0,
             update: true,
             loading: true,
-            plan: savedSU ? savedSU.plan : 'nocourse',
+            plan: savedSU ? savedSU.plan : savedSU,
             error: {
                 id: '',
                 message: ''
@@ -23,10 +23,12 @@ export default class Checkout extends React.Component {
             valid: false,
             stripe: null,
             customer: {
+                uid: savedSU ? savedSU.id : '',
+                stripeid: savedSU ? savedSU.customer.id : '',
                 account: {
-                    email: '',
-                    firstname: '',
-                    lastname: ''
+                    email: savedSU ? savedSU.email : '',
+                    firstname: savedSU ? savedSU.firstname : '',
+                    lastname: savedSU ? savedSU.lastname : ''
                 },
                 shipping: {
                     phone: '',
