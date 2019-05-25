@@ -7,12 +7,14 @@ export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
+        let savedSU = localStorage.getItem('_stT-signup')
+
         this.state = {
             init: false,
             step: 0,
             update: true,
             loading: true,
-            plan: this.props.plan,
+            plan: null,
             error: {
                 id: '',
                 message: ''
@@ -24,8 +26,7 @@ export default class Checkout extends React.Component {
                 account: {
                     email: '',
                     firstname: '',
-                    lastname: '',
-                    password: ''
+                    lastname: ''
                 },
                 shipping: {
                     phone: '',
