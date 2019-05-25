@@ -82,11 +82,9 @@ export default class Checkout extends React.Component {
                                     <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
                                         <div className="stepSide">
                                             <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
-                                            <div>
-                                                <pre>{JSON.stringify(this.state)}</pre>
-                                            </div>
+                                            <div></div>
                                         </div>
-                                        <div className="checkSide"></div>
+                                        <div className="checkSide"><pre>{JSON.stringify(this.state)}</pre></div>
                                     </section>
                                 {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                             </Elements>
