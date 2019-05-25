@@ -45,7 +45,7 @@ export default class Main extends React.Component {
     async componentDidMount() {
         let vers = JSON.parse(this.vers)
 
-        //if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
+        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
         
         let obj = { loading: false },
             upd = (this.state.data === true)

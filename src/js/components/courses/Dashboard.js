@@ -67,13 +67,13 @@ export default class Dashboard extends React.Component {
         )
     }
 
-    triggerPurchase() {
+    triggerPurchase(plan=null) {
         this.setState({
             checkout: true
         },() => this.props.modalActive({
             open: true,
             action: null,
-            mData: <Checkout />,
+            mData: <Checkout plan={plan} />,
             xtraClass: 'checkout'
         }))
         return null
@@ -96,7 +96,7 @@ export default class Dashboard extends React.Component {
                                             <DBActions cancellation={this.cancellation} d={data.user} />
                                         </div>
                                     </main>
-                                    {data.courses.length === 0 && this.state.checkout === false ? this.triggerPurchase() : null}
+                                    {data.courses.length === 0 && this.state.checkout === false ? this.triggerPurchase(auth.plan) : null}
                                 </React.Fragment>
                             }
                         </DataState.Consumer>

@@ -9,7 +9,7 @@ export default class Checkout extends React.Component {
 
         this.state = {
             init: false,
-            step: this.props.step,
+            step: 0,
             update: true,
             loading: true,
             plan: this.props.plan,
@@ -70,6 +70,7 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
+        console.log(this.state.plan)
         return(
             <AuthContext.Consumer>
                 {auth => {
