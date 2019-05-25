@@ -51,9 +51,10 @@ export default class STApp extends React.Component {
         return true
     }
 
-    refresh() {
+    refresh(hard=false) {
         localStorage.removeItem('stCourseData')
-        return window.location.reload(true)
+        if (hard) window.location.reload(true)
+        return null
     }
 
     render () {

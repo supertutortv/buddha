@@ -25,7 +25,7 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                             <li title="Reload" onClick={(e) => {
                                 let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
 
-                                return result ? refreshData() : null
+                                return result ? refreshData(true) : null
                             }}><i className="fas fa-sync-alt" /></li>
                         </React.Fragment>
                     }
@@ -35,7 +35,7 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                     }}><i className="fas fa-question"></i></li>
                     <li title={stripped ? "Log in" : "Log out"} onClick={(e) => {
                         _st.loading = true
-                        _st.http.post('/auth/logout',{},() => refreshData())
+                        _st.http.post('/auth/logout',{},() => refreshData(true))
                     }}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i></li>
                 </ul>
             </div>
