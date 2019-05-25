@@ -526,7 +526,15 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow {
-  font-size: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.stCheckoutWindow .stepSide {
+  padding: 1em;
+  color: white;
+  background-color: #109fda;
 }
 
 .stDashboard {
