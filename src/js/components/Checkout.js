@@ -73,7 +73,6 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
-        console.log(this.state.plan)
         return(
             <AuthContext.Consumer>
                 {auth => {
@@ -83,7 +82,9 @@ export default class Checkout extends React.Component {
                                     <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
                                         <div className="stepSide">
                                             <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
-                                            <div></div>
+                                            <div>
+                                                <pre>{JSON.stringify(this.state)}</pre>
+                                            </div>
                                         </div>
                                         <div className="checkSide"></div>
                                     </section>
