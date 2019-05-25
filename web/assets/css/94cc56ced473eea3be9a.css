@@ -535,7 +535,7 @@ body.allYourBase .stAppHeader {
   color: white;
   background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
   flex: 4;
   display: flex;
   flex-flow: column nowrap;
@@ -563,7 +563,7 @@ body.allYourBase .stAppHeader {
   padding: 2em;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 767px) {
   .stCheckoutWindow {
     flex-flow: column wrap;
   }
