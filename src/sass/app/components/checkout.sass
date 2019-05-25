@@ -6,9 +6,17 @@
     .stepSide
         padding: 1em
         color: white
-        background-color: azure()
+        background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg")
+        background-size: cover
+        background-position: center center
         flex: 4
+        display: flex
+        flex-flow: column nowrap
         +z-depth-3
+
+        & > div
+            flex: 1
+            background-color: azure(.75)
 
         h1
             font-size: $medtext

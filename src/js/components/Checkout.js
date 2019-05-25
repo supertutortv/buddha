@@ -78,7 +78,8 @@ export default class Checkout extends React.Component {
                             <Elements>
                                     <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
                                         <div className="stepSide">
-                                            <h1><i class="fas fa-lock"></i> Checkout</h1>
+                                            <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
+                                            <div></div>
                                         </div>
                                         <div className="checkSide"></div>
                                     </section>

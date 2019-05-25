@@ -534,9 +534,18 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .stepSide {
   padding: 1em;
   color: white;
-  background-color: #109fda;
+  background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg");
+  background-size: cover;
+  background-position: center center;
   flex: 4;
+  display: flex;
+  flex-flow: column nowrap;
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stCheckoutWindow .stepSide > div {
+  flex: 1;
+  background-color: rgba(16, 159, 218, 0.75);
 }
 
 .stCheckoutWindow .stepSide h1 {
