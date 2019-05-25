@@ -14,7 +14,7 @@ export default class Checkout extends React.Component {
             step: 0,
             update: true,
             loading: true,
-            plan: savedSU.plan || 'nocourse',
+            plan: savedSU ? savedSU.plan : 'nocourse',
             error: {
                 id: '',
                 message: ''
