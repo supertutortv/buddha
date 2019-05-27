@@ -19,7 +19,7 @@ const Course = () => {
                 e.target.classList.add('selected')
             }}>
                 <button value="sat" className="selected">SAT</button>
-                <button value="act" disabled>ACT</button>
+                <button value="act">ACT</button>
                 <button value="combo">Both</button>
             </div>
         </fieldset>

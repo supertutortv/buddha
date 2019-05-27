@@ -601,6 +601,7 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button[disabled] {
   background-color: gray;
+  color: white;
 }
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button:not(:disabled):hover {
