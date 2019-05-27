@@ -584,6 +584,16 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow .checkSide > form .st-btnGroup button {
   min-width: 250px;
+  background-color: #109fda;
+}
+
+.stCheckoutWindow .checkSide > form .st-btnGroup button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.stCheckoutWindow .checkSide > form .st-btnGroup button span {
+  font-size: calc(1rem - 10px);
 }
 
 @media only screen and (max-width: 767px) {
