@@ -190,6 +190,7 @@ export function validate() {
 }
 
 export function initSession() {
+    const key = _st.stripe
     this.session = {
         id: Date.now(),
         signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
@@ -205,8 +206,7 @@ export function initSession() {
     }
 
     this.setState((state) => {
-        let key = _st.stripe,
-        obj = {
+        let obj = {
             init: true,
             stripe: (window.Stripe) ? window.Stripe(key) : null
         },
