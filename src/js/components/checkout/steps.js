@@ -8,6 +8,8 @@ const Course = () => {
             <h3>Choose your course:</h3>
             <div className="st-crsgrp btns" onClick={(e) => {
                 e.preventDefault()
+                if (e.target.classList.contains('selected') || e.target.hasAttribute('disabled')) return false
+
                 let buttons = e.currentTarget.querySelectorAll('button')
 
                 for (let i=0; i < buttons.length; i++) {
@@ -17,7 +19,7 @@ const Course = () => {
                 e.target.classList.add('selected')
             }}>
                 <button value="sat" className="selected">SAT</button>
-                <button value="act" >ACT</button>
+                <button value="act" disabled>ACT</button>
                 <button value="combo">Both</button>
             </div>
         </fieldset>
