@@ -5,16 +5,26 @@ export default class CourseSelect extends React.Component{
         super(props)
 
         this.state = {
-            active: props.plan
+            active: props.plan,
+            option: false
         }
 
         this.setActive = this.setActive.bind(this)
+        this.setOption = this.setOption.bind(this)
     }
 
     setActive(e) {
         e.preventDefault()
         this.setState({
-            active: e.target.value
+            active: e.target.value,
+            option: false
+        })
+    }
+
+    setOption(e,op) {
+        e.preventDefault()
+        this.setState({
+            option: op
         })
     }
 
@@ -35,10 +45,10 @@ export default class CourseSelect extends React.Component{
                 </div>
                 <h3>Choose your course length:</h3>
                 <div className="st-crsGrp ln">
-                    {plans[this.state.active].options.map((pl) => {
-                        let selected = 'selected'
+                    {plans[this.state.active].options.map((pl,i,arr) => {
+                        let selected = arr.length === 1 || this.state.option === i ? 'selected' : ''
                         return (
-                            <button value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
+                            <button onClick={(e) => this.setOption(e,i)} className={selected} value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
                         )
                     })}
                 </div>
