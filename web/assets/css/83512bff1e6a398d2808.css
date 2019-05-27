@@ -592,7 +592,7 @@ body.allYourBase .stAppHeader {
   transition: all 250ms ease-in-out;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button[selected] {
+.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button.selected {
   color: white;
   background-color: #109fda;
 }

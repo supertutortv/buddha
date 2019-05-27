@@ -9,7 +9,7 @@ const Course = () => {
             <div className="st-crsgrp btns" onClick={(e) => {
                 e.preventDefault()
             }}>
-                <button selected>SAT</button>
+                <button className="selected">SAT</button>
                 <button>ACT</button>
                 <button>Both</button>
             </div>
