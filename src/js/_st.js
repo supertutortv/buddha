@@ -1,7 +1,7 @@
 import config from './config'
 import * as form from './utilities/form'
 import Http from './utilities/http'
-import auth from './utilities/auth'
+import plans from './data/static/plans'
 import udata from './utilities/userActions'
 
 const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
@@ -18,6 +18,7 @@ function STTV() {
 }
 
 STTV.prototype = {
+    plans: plans,
     stripe : config[env].stripe.publicKey,
     root : config[env].root,
     api : config[env].api,

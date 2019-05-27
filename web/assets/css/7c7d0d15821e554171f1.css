@@ -640,6 +640,7 @@ body.allYourBase .stAppHeader {
   }
 
   .stCheckoutWindow .checkSide {
+    padding: 1em;
     flex: 1;
   }
 }
