@@ -581,7 +581,6 @@ body.allYourBase .stAppHeader {
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp {
   display: inline-block;
-  font-size: calc(1rem - 7px);
   border: 1px solid rgba(0, 0, 0, 0.75);
   border-radius: 0.25em;
   overflow: hidden;
@@ -591,7 +590,7 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
   all: unset;
   font-size: 1rem;
-  padding: 1em;
+  padding: 0.75em;
   transition: all 250ms ease-in-out;
 }
 
