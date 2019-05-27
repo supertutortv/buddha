@@ -3,7 +3,18 @@ import React from 'react'
 import Payment from './payment'
 
 const Course = () => {
-    return <fieldset>Course</fieldset>
+    return (
+        <fieldset>
+            <h3>Choose you course:</h3>
+            <div className="st-crsgrp btns" onClick={(e) => {
+                e.preventDefault()
+            }}>
+                <button>SAT</button>
+                <button>ACT</button>
+                <button>Both</button>
+            </div>
+        </fieldset>
+    )
 }
 
 const Details = () => {
