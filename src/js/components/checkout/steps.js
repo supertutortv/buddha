@@ -1,31 +1,7 @@
 import React from 'react'
 
 import Payment from './payment'
-
-const Course = ({plan}) => {
-    console.log(plan)
-    return (
-        <fieldset>
-            <h3>Choose your course:</h3>
-            <div className="st-crsgrp btns" onClick={(e) => {
-                e.preventDefault()
-                if (e.target.classList.contains('selected') || e.target.hasAttribute('disabled')) return false
-
-                let buttons = e.currentTarget.querySelectorAll('button')
-
-                for (let i=0; i < buttons.length; i++) {
-                    buttons[i].classList.remove('selected')
-                }
-
-                e.target.classList.add('selected')
-            }}>
-                <button value="sat" className="selected">SAT</button>
-                <button value="act">ACT</button>
-                <button value="combo">Both</button>
-            </div>
-        </fieldset>
-    )
-}
+import Course from './CourseSelect'
 
 const Details = () => {
     return <fieldset>Details</fieldset>
