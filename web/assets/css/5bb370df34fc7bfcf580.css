@@ -595,12 +595,16 @@ body.allYourBase .stAppHeader {
 
 @media only screen and (max-width: 767px) {
   .stCheckoutWindow {
-    display: block;
+    flex-flow: column nowrap;
   }
 
   .stCheckoutWindow .stepSide,
   .stCheckoutWindow .checkSide {
     width: 100%;
+  }
+
+  .stCheckoutWindow .checkSide {
+    flex: 1;
   }
 }
 
