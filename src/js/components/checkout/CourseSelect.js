@@ -14,7 +14,7 @@ export default class CourseSelect extends React.Component{
     }
 
     render() {
-        console.log(_st.plans)
+        let plans = _st.plans
         return (
             <fieldset>
                 <h3>Choose your course:</h3>
@@ -30,6 +30,11 @@ export default class CourseSelect extends React.Component{
     
                     e.target.classList.add('selected')
                 }}>
+                    {() => {
+                        Object.keys(plans).map((pl) => {
+                            console.log(plans[pl])
+                        })
+                    }}
                     <button value="sat" className="selected">SAT</button>
                     <button value="act">ACT</button>
                     <button value="combo">Both</button>
