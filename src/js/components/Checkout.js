@@ -12,7 +12,7 @@ export default class Checkout extends React.Component {
             step: 0,
             update: true,
             loading: true,
-            plan: savedSU ? savedSU.plan : savedSU,
+            plan: null,
             card: false,
             valid: false,
             stripe: null

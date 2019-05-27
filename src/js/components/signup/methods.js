@@ -213,6 +213,7 @@ export function initSession() {
         savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
 
         if (savedSU) {
+            obj.plan = savedSU.plan
             obj.customer = Object.assign(state.customer,{
                 uid: savedSU.id,
                 stripeid: savedSU.customer.id,
