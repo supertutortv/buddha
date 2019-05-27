@@ -5,12 +5,11 @@
     flex: 1
 
     .stepSide
-        max-width: 100%
+        width: 30%
         color: white
         background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg")
         background-size: cover
         background-position: top center
-        flex: 3 0 auto
         display: flex
         flex-flow: column nowrap
         +z-depth-3
@@ -30,10 +29,12 @@
                 margin-right: $ittybitty
 
     .checkSide
-        max-width: 100%
-        flex: 7 0 100%
+        width: 70%
         padding: $huge
 
 +MQ($mq-mobile)
     .stCheckoutWindow
         display: block
+
+        .stepSide, .checkSide
+            width: 100%
