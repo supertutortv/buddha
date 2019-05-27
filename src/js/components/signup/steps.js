@@ -3,15 +3,15 @@ import React from 'react'
 import Payment from './payment'
 
 const Course = () => {
-    return 'Course'
+    return <fieldset>Course</fieldset>
 }
 
 const Details = () => {
-    return 'Details'
+    return <fieldset>Details</fieldset>
 }
 
 const Shipping = () => {
-    return 'Shipping'
+    return <fieldset>Shipping</fieldset>
 }
 
 const ThankYou = ({state,hist}) => {

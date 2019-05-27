@@ -82,8 +82,10 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <Step />
-                                <Buttons steps={this.steps.length} count={count} step={step}/>
+                                <form action="/" onSubmit={null}>
+                                    <Step />
+                                    <Buttons steps={this.steps.length} count={count} step={step}/>
+                                </form>
                             </div>
                         </section>
                     {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}

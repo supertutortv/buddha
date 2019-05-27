@@ -567,6 +567,25 @@ body.allYourBase .stAppHeader {
   padding: 2em;
 }
 
+.stCheckoutWindow .checkSide > form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.stCheckoutWindow .checkSide > form fieldset {
+  flex: 1;
+}
+
+.stCheckoutWindow .checkSide > form .st-btnGroup {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.stCheckoutWindow .checkSide > form .st-btnGroup button {
+  min-width: 250px;
+}
+
 @media only screen and (max-width: 767px) {
   .stCheckoutWindow {
     display: block;

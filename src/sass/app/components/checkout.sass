@@ -32,6 +32,21 @@
         width: 70%
         padding: $huge
 
+        & > form
+            display: flex
+            flex-flow: column nowrap
+
+            fieldset
+                flex: 1
+
+            .st-btnGroup
+                display: flex
+                justify-content: center
+                padding: 1em
+
+                button
+                    min-width: 250px
+
 +MQ($mq-mobile)
     .stCheckoutWindow
         display: block
