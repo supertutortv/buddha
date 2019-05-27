@@ -17,17 +17,14 @@ export default class STApp extends React.Component {
             plan: null
         }
 
-        this.vers = JSON.parse(localStorage.getItem('stVersionHashes') || '[]')
-
         this.logThatFuckerIn = this.logThatFuckerIn.bind(this)
-        this.hashSaveLocal = this.hashSaveLocal.bind(this)
         this.authCheck = this.authCheck.bind(this)
         this.setPlan = this.setPlan.bind(this)
         this.refresh = this.refresh.bind(this)
     }
 
     componentDidMount() {
-        this.hashSaveLocal(this.vers).authCheck()
+        this.authCheck()
     }
 
     authCheck() {
@@ -39,15 +36,6 @@ export default class STApp extends React.Component {
             })
         }
         return null
-    }
-
-    hashSaveLocal(hashes) {
-        if (hashes.indexOf(stVersionHash) < 0) {
-            hashes.push(stVersionHash)
-            localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
-            this.refresh(true)
-        }
-        return this
     }
 
     setPlan(plan=null) {
