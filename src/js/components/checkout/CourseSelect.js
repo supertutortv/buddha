@@ -20,7 +20,6 @@ export default class CourseSelect extends React.Component{
 
     render() {
         let plans = _st.plans
-        console.log(this.state.active)
         return (
             <fieldset>
                 <h3>Choose your course:</h3>
@@ -33,6 +32,15 @@ export default class CourseSelect extends React.Component{
                             )
                         })
                     }
+                </div>
+                <h3>Choose your course length:</h3>
+                <div className="st-crsGrp ln">
+                    {plans[this.state.active].options.map((pl) => {
+                        let selected = 'selected'
+                        return (
+                            <button value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
+                        )
+                    })}
                 </div>
             </fieldset>
         )
