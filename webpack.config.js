@@ -14,12 +14,12 @@ module.exports = (env) => {
             chunkFilename: 'assets/js/[hash].js',
             publicPath: '/'
         },
-        resolve: {
+        /* resolve: {
             alias: {
                 "react": "preact-compat",
                 "react-dom": "preact-compat"
             }
-        },
+        }, */
         /* optimization: {
             splitChunks: {
               chunks: 'async'
