@@ -8,7 +8,6 @@ const Course = () => {
             <h3>Choose your course:</h3>
             <div className="st-crsgrp btns" onClick={(e) => {
                 e.preventDefault()
-                console.log(e.target, e.currentTarget)
                 let buttons = e.currentTarget.querySelectorAll('button')
 
                 for (let i=0; i < buttons.length; i++) {
