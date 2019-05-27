@@ -2,8 +2,16 @@ import React from 'react'
 
 import Payment from './payment'
 
-const Account = () => {
-    return true
+const Course = () => {
+    return 'Course'
+}
+
+const Details = () => {
+    return 'Details'
+}
+
+const Shipping = () => {
+    return 'Shipping'
 }
 
 const ThankYou = ({state,hist}) => {
@@ -25,4 +33,4 @@ const ThankYou = ({state,hist}) => {
     )
 }
 
-export { Account, Payment, ThankYou }
+export { Course, Details, Shipping, Payment, ThankYou }

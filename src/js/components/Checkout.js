@@ -2,7 +2,6 @@ import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
 import * as methods from './signup/methods'
 import * as steps from './signup/steps'
-import { AuthContext } from '../context'
 
 export default class Checkout extends React.Component {
     constructor(props) {
@@ -42,6 +41,14 @@ export default class Checkout extends React.Component {
             nameOnCard: ''
         }
 
+        this.steps = [
+            'Course',
+            'Details',
+            'Shipping',
+            'Payment',
+            'ThankYou'
+        ]
+
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
@@ -59,26 +66,26 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
-        console.log(steps)
+
+        let {step} = this.state,
+            count = step + 1,
+            Step = steps[this.steps[step]]
+
         return(
-            <AuthContext.Consumer>
-                {auth => {
-                    return (
-                        <StripeProvider stripe={this.state.stripe}>
-                            <Elements>
-                                    <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
-                                        <div className="stepSide">
-                                            <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
-                                            <div></div>
-                                        </div>
-                                        <div className="checkSide"><pre>{JSON.stringify(this.state.customer)}</pre></div>
-                                    </section>
-                                {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
-                            </Elements>
-                        </StripeProvider>
-                    )
-                }}
-            </AuthContext.Consumer>
+            <StripeProvider stripe={this.state.stripe}>
+                <Elements>
+                        <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
+                            <div className="stepSide">
+                                <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
+                                <div>{count}</div>
+                            </div>
+                            <div className="checkSide">
+                                <Step />
+                            </div>
+                        </section>
+                    {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
+                </Elements>
+            </StripeProvider>
         )
     }
 }
