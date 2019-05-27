@@ -1,6 +1,7 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
 import * as methods from './signup/methods'
+import * as steps from './signup/steps'
 import { AuthContext } from '../context'
 
 export default class Checkout extends React.Component {
@@ -58,6 +59,7 @@ export default class Checkout extends React.Component {
 
     render() {
         if (!this.state.init) return null
+        console.log(steps)
         return(
             <AuthContext.Consumer>
                 {auth => {

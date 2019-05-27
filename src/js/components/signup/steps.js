@@ -2,6 +2,10 @@ import React from 'react'
 
 import Payment from './payment'
 
+const Account = () => {
+    return true
+}
+
 const ThankYou = ({state,hist}) => {
     return (
         <div className="stSignupThankYou stSignupStep">
