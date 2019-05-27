@@ -13,8 +13,9 @@ export default class CourseSelect extends React.Component{
 
     setActive(e) {
         e.preventDefault()
-        let plans = _st.plans
-        console.log(plans[e.target.value])
+        this.setState({
+            active: e.target.value
+        })
     }
 
     render() {
