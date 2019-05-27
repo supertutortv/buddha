@@ -9,6 +9,7 @@ export default class Checkout extends React.Component {
 
         this.state = {
             init: false,
+            completed: false,
             step: 0,
             update: true,
             loading: true,
@@ -67,7 +68,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {step} = this.state,
+        let {step, completed} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]]
 
@@ -81,6 +82,7 @@ export default class Checkout extends React.Component {
                             </div>
                             <div className="checkSide">
                                 <Step />
+                                <Buttons steps={this.steps.length} count={count} step={step}/>
                             </div>
                         </section>
                     {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
