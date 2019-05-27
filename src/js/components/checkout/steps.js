@@ -8,6 +8,7 @@ const Course = () => {
             <h3>Choose your course:</h3>
             <div className="st-crsgrp btns" onClick={(e) => {
                 e.preventDefault()
+                console.log(e.target, e.currentTarget)
             }}>
                 <button className="selected">SAT</button>
                 <button>ACT</button>
