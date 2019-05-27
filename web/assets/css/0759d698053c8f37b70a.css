@@ -591,7 +591,7 @@ body.allYourBase .stAppHeader {
   all: unset;
   font-size: 1rem;
   padding: 0.5em 1em;
-  transition: all 100ms ease-in-out;
+  transition: all 50ms ease-in-out;
 }
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsGrp button.selected {
