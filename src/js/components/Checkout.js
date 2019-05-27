@@ -44,11 +44,10 @@ export default class Checkout extends React.Component {
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
-
-        this.initSession()
     }
 
     componentDidMount() {
+        this.initSession()
         _st.loading = false
     }
 
@@ -58,6 +57,7 @@ export default class Checkout extends React.Component {
     }
 
     render() {
+        if (!this.state.init) return null
         return(
             <AuthContext.Consumer>
                 {auth => {
