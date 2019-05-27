@@ -568,18 +568,15 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .checkSide > form {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.stCheckoutWindow .checkSide > form fieldset {
-  flex: 1;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-gap: 1em;
 }
 
 .stCheckoutWindow .checkSide > form .st-btnGroup {
   display: flex;
   justify-content: center;
-  padding: 1em;
 }
 
 .stCheckoutWindow .checkSide > form .st-btnGroup button {

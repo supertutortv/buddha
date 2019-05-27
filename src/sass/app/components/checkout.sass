@@ -33,16 +33,14 @@
         padding: $huge
 
         & > form
-            display: flex
-            flex-flow: column nowrap
-
-            fieldset
-                flex: 1
+            height: 100%
+            display: grid
+            grid-template-rows: 1fr auto
+            grid-gap: 1em
 
             .st-btnGroup
                 display: flex
                 justify-content: center
-                padding: 1em
 
                 button
                     min-width: 250px
