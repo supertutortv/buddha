@@ -189,26 +189,47 @@ export function validate() {
     })
 }
 
-export function createStripeScript() {
-    if (window.Stripe) return null
-    
-    const s = document.createElement('script')
+export function initSession() {
+    this.session = {
+        id: Date.now(),
+        signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
+    }
+
+    if (!window.Stripe) {
+        const s = document.createElement('script')
         s.type = 'text/javascript'
         s.id = 'stStripeScript'
         s.async = true
         s.src = 'https://js.stripe.com/v3/'
-    document.body.appendChild(s)
-}
+        document.body.appendChild(s)
+    }
 
-export function newCard() {
-    let key = _st.stripe
-    this.setState({
-        init: true,
-        stripe: (window.Stripe) ? window.Stripe(key) : null
+    this.setState((state) => {
+        let key = _st.stripe,
+        obj = {
+            init: true,
+            stripe: (window.Stripe) ? window.Stripe(key) : null
+        },
+        savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
+
+        if (savedSU) {
+            obj.customer = Object.assign(state.customer,{
+                uid: savedSU.id,
+                stripeid: savedSU.customer.id,
+                accoutn: Object.assign(state.customer.account,{
+                    email: savedSU.email,
+                    firstname: savedSU.firstname,
+                    lastname: savedSU.lastname
+                })
+            })
+        }
+
+        return obj
     }, () => {
         if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
             this.setState({stripe: window.Stripe(key)})
         })
-        
     })
+
+    return this
 }

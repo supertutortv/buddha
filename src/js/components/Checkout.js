@@ -7,62 +7,48 @@ export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
 
-        let savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
-
         this.state = {
             init: false,
             step: 0,
             update: true,
             loading: true,
             plan: savedSU ? savedSU.plan : savedSU,
-            error: {
-                id: '',
-                message: ''
-            },
             card: false,
             valid: false,
-            stripe: null,
-            customer: {
-                uid: savedSU ? savedSU.id : '',
-                stripeid: savedSU ? savedSU.customer.id : '',
-                account: {
-                    email: savedSU ? savedSU.email : '',
-                    firstname: savedSU ? savedSU.firstname : '',
-                    lastname: savedSU ? savedSU.lastname : ''
-                },
-                shipping: {
-                    phone: '',
-                    name: '',
-                    address: {}
-                },
-                options: {},
-                token: '',
-                nameOnCard: ''
+            stripe: null
+        }
+
+        this.state.error = {
+            id: '',
+            message: ''
+        }
+
+        this.state.customer = {
+            uid: '',
+            stripeid: '',
+            account: {
+                email: '',
+                firstname: '',
+                lastname: ''
             },
-            pricing: {
-                total: 0,
-                shipping: 0,
-                coupon: {
-                    id: '',
-                    value: ''
-                }
+            shipping: {
+                phone: '',
+                name: '',
+                address: {}
             },
-            item: null,
-            session: {
-                id: Date.now(),
-                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
-            }
+            options: {},
+            token: '',
+            nameOnCard: ''
         }
 
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
 
-        this.createStripeScript()
+        this.initSession()
     }
 
     componentDidMount() {
-        this.newCard()
         _st.loading = false
     }
 
@@ -72,7 +58,6 @@ export default class Checkout extends React.Component {
     }
 
     render() {
-        if (!this.state.init) return null
         return(
             <AuthContext.Consumer>
                 {auth => {
