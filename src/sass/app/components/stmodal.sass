@@ -8,13 +8,13 @@
     display: flex
     justify-content: center
     align-items: flex-start
+    padding: 4%
     +animFadeIn
 
     &.checkout
 
         .stModalInner
             display: flex
-            margin-top: 4%
             min-height: 20em
             overflow: hidden
             +stcardwide
@@ -105,3 +105,13 @@
                             .dld
                                 color: green
                                 padding-left: 1em
+
++MQ($mq-mobile)
+    .stModal
+        padding: 1em
+
+        &.checkout
+
+            .stModalInner
+                height: 100%
+                width: 100%
