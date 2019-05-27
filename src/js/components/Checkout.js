@@ -61,6 +61,7 @@ export default class Checkout extends React.Component {
         return(
             <AuthContext.Consumer>
                 {auth => {
+                    console.log(auth)
                     return (
                         <StripeProvider stripe={this.state.stripe}>
                             <Elements>
