@@ -590,7 +590,7 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
   all: unset;
   font-size: 1rem;
-  padding: 0.75em 1em;
+  padding: 0.5em 1em;
   transition: all 250ms ease-in-out;
 }
 
