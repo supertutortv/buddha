@@ -9,8 +9,12 @@ export default class CourseSelect extends React.Component{
         }
     }
 
+    setActive() {
+
+    }
+
     render() {
-        console.log(this.state.active)
+        console.log(_st.plans)
         return (
             <fieldset>
                 <h3>Choose your course:</h3>
