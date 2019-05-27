@@ -49,6 +49,16 @@
                     button
                         all: unset
                         padding: 1em
+                        transition: all 250ms ease-in-out
+
+                        &[selected]
+                            color: white()
+                            background-color: azure()
+
+                        &:hover
+                            cursor: pointer
+                            color: white()
+                            background-color: azure(.75)
 
             .st-btnGroup
                 display: flex

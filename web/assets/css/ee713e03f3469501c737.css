@@ -589,6 +589,18 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
   all: unset;
   padding: 1em;
+  transition: all 250ms ease-in-out;
+}
+
+.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button[selected] {
+  color: white;
+  background-color: #109fda;
+}
+
+.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgba(16, 159, 218, 0.75);
 }
 
 .stCheckoutWindow .checkSide > form .st-btnGroup {
