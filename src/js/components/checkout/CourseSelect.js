@@ -30,11 +30,10 @@ export default class CourseSelect extends React.Component{
     
                     e.target.classList.add('selected')
                 }}>
-                    {() => {
-                        Object.keys(plans).map((pl) => {
+                    {() => Object.keys(plans).map((pl) => {
                             console.log(plans[pl])
                         })
-                    }}
+                    }
                     <button value="sat" className="selected">SAT</button>
                     <button value="act">ACT</button>
                     <button value="combo">Both</button>
