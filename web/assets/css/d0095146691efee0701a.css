@@ -580,15 +580,14 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp {
-  display: flex;
   border: 1px solid rgba(0, 0, 0, 0.75);
   border-radius: 0.25em;
   overflow: hidden;
+  margin-top: 1em;
 }
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
-  background-color: unset;
-  color: unset;
+  all: unset;
   padding: 1em;
 }
 
