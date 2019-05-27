@@ -82,9 +82,11 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/" onSubmit={null}>
+                                <form action="/" onSubmit={(e) => {
+                                    e.preventDefault()
+                                }}>
                                     <Step />
-                                    <Buttons steps={this.steps.length} count={count} step={step}/>
+                                    <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
                             </div>
                         </section>
