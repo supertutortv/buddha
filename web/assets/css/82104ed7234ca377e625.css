@@ -579,7 +579,7 @@ body.allYourBase .stAppHeader {
   grid-gap: 1em;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp {
+.stCheckoutWindow .checkSide > form fieldset .st-crsGrp {
   display: inline-block;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25em;
@@ -587,24 +587,24 @@ body.allYourBase .stAppHeader {
   margin-top: 1em;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
+.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button {
   all: unset;
   font-size: 1rem;
   padding: 0.5em 1em;
   transition: all 100ms ease-in-out;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button.selected {
+.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button.selected {
   color: white;
   background-color: #109fda;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button[disabled] {
+.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button[disabled] {
   background-color: gray;
   color: white;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsgrp button:not(:disabled):hover {
+.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button:not(:disabled):hover {
   cursor: pointer;
   color: white;
   background-color: rgba(16, 159, 218, 0.75);

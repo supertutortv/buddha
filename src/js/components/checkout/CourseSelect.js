@@ -7,10 +7,14 @@ export default class CourseSelect extends React.Component{
         this.state = {
             active: props.plan
         }
+
+        this.setActive = this.setActive.bind(this)
     }
 
-    setActive() {
-
+    setActive(e) {
+        e.preventDefault()
+        let plans = _st.plans
+        console.log(plans[e.target.value])
     }
 
     render() {
@@ -18,25 +22,15 @@ export default class CourseSelect extends React.Component{
         return (
             <fieldset>
                 <h3>Choose your course:</h3>
-                <div className="st-crsgrp btns" onClick={(e) => {
-                    e.preventDefault()
-                    if (e.target.classList.contains('selected') || e.target.hasAttribute('disabled')) return false
-    
-                    let buttons = e.currentTarget.querySelectorAll('button')
-    
-                    for (let i=0; i < buttons.length; i++) {
-                        buttons[i].classList.remove('selected')
-                    }
-    
-                    e.target.classList.add('selected')
-                }}>
+                <div className="st-crsGrp">
                     {() => Object.keys(plans).map((pl) => {
-                            console.log(plans[pl])
+                            let pln = plans[pl],
+                                selected = this.state.active === pl ? 'selected' : ''
+                            return (
+                                <button className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
+                            )
                         })
                     }
-                    <button value="sat" className="selected">SAT</button>
-                    <button value="act">ACT</button>
-                    <button value="combo">Both</button>
                 </div>
             </fieldset>
         )
