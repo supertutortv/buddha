@@ -587,7 +587,8 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow .checkSide > form fieldset .st-crsgrp button {
-  all: unset;
+  background-color: unset;
+  color: unset;
   padding: 1em;
 }
 
