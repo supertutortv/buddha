@@ -2,7 +2,8 @@ import React from 'react'
 
 import Payment from './payment'
 
-const Course = () => {
+const Course = ({plan}) => {
+    console.log(plan)
     return (
         <fieldset>
             <h3>Choose your course:</h3>

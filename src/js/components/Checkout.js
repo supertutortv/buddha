@@ -69,7 +69,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {step, completed} = this.state,
+        let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]]
 
@@ -82,10 +82,10 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/" onSubmit={(e) => {
+                                <form action="/checkout" onSubmit={(e) => {
                                     e.preventDefault()
                                 }}>
-                                    <Step />
+                                    <Step {...this.state} />
                                     <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
                             </div>
