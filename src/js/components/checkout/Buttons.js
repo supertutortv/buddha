@@ -6,7 +6,7 @@ const Buttons = ({count, step, steps}) =>
             <button type="submit" className="stAccountButton btn" disabled>Get Started!</button> :
             <React.Fragment>
                 {step === 0 ? null : <button type="submit" className="stAccountButton btn">← <span>Previous Step</span></button>}
-                <button type="submit" className="stAccountButton btn"><span>Next Step</span> →</button>
+                <button type="submit" className="stAccountButton btn"><span style={{marginRight: '1em'}}>Next Step</span> →</button>
             </React.Fragment>
         }
     </div>
