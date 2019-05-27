@@ -1,8 +1,16 @@
 import React from 'react'
 
 export default class CourseSelect extends React.Component{
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            active: props.plan
+        }
+    }
 
     render() {
+        console.log(this.state.active)
         return (
             <fieldset>
                 <h3>Choose your course:</h3>
