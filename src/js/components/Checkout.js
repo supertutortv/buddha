@@ -1,7 +1,7 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
 import Buttons from './checkout/Buttons'
-import * as methods from './checkout/methods'
+import methods from './checkout/methods'
 import * as steps from './checkout/steps'
 
 export default class Checkout extends React.Component {
