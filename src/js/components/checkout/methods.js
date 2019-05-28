@@ -217,7 +217,6 @@ function step1(e) {
 
 function step2(e) {
     e.preventDefault()
-    this.nextStep()
 }
 
 function step3(e) {
