@@ -189,32 +189,50 @@ function validate() {
     })
 }
 
-/* export function nextStep() {
+function nextStep() {
     this.setState((state) => ({
         step: state.step + 1
     }))
 }
 
-export function prevStep() {
+function prevStep() {
     this.setState((state) => ({
         step: state.step - 1 || 0
     }))
-} */
+}
 
-export default [
-    (e) => {
-        e.preventDefault()
+function step0(e) {
+    e.preventDefault()
         let choices = e.target.querySelectorAll('button.selected'),
             obj = {}
     
-        for (let i = 0; i < choices.length; i++) {
-            obj[choices[i].name] = choices[i].value
-        }
+    for (let i = 0; i < choices.length; i++) {
+        obj[choices[i].name] = choices[i].value
+    }
 
-        console.log(obj, this)
-    },
-    (e) => {},
-    (e) => {},
-    (e) => {},
-    (e) => {}
-]
+    console.log(obj, this)
+}
+
+function step1(e) {
+
+}
+
+function step2(e) {
+    
+}
+
+function step3(e) {
+
+}
+
+function step4(e) {
+    
+}
+
+export default {
+    step0,
+    step1,
+    step2,
+    step3,
+    step4
+}
