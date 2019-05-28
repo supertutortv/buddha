@@ -15,6 +15,7 @@ export default class Checkout extends React.Component {
             update: true,
             loading: true,
             plan: null,
+            item: null,
             card: false,
             valid: false,
             stripe: null

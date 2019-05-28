@@ -38,7 +38,7 @@ export default class CourseSelect extends React.Component{
                             let pln = plans[pl],
                                 selected = this.state.active === pl ? 'selected' : ''
                             return (
-                                <button className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
+                                <button name="item" className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
                             )
                         })
                     }
@@ -48,7 +48,7 @@ export default class CourseSelect extends React.Component{
                     {plans[this.state.active].options.map((pl,i,arr) => {
                         let selected = arr.length === 1 || this.state.option === i ? 'selected' : ''
                         return (
-                            <button onClick={(e) => this.setOption(e,i)} className={selected} value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
+                            <button name="option" onClick={(e) => this.setOption(e,i)} className={selected} value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
                         )
                     })}
                 </div>

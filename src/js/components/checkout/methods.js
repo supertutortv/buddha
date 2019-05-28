@@ -249,5 +249,12 @@ export function prevStep() {
 
 export function advance(e) {
     e.preventDefault()
-    console.log(e.target, e.currentTarget)
+    let choices = e.target.querySelectorAll('button.selected'),
+        obj = {}
+
+        for (let i = 0; i < choices.length; i++) {
+            obj[i] = choices[i].value
+        }
+
+        console.log(obj)
 }

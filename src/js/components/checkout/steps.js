@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Payment from './payment'
 import Course from './CourseSelect'
 
