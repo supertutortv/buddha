@@ -112,9 +112,8 @@ export default class Checkout extends React.Component {
 
         let {step, completed, plan} = this.state,
             count = step + 1,
-            Step = steps[this.steps[step]]
-            //ಠ_ಠ = methods[step]
-            console.log(methods[step])
+            Step = steps[this.steps[step]],
+            ಠ_ಠ = methods[step]
 
         return(
             <StripeProvider stripe={this.state.stripe}>
@@ -125,7 +124,7 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/checkout" onSubmit={null}>
+                                <form action="/checkout" onSubmit={ಠ_ಠ}>
                                     <Step {...this.state} />
                                     <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>

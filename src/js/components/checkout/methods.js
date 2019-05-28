@@ -207,11 +207,14 @@ export default [
         let choices = e.target.querySelectorAll('button.selected'),
             obj = {}
     
-            for (let i = 0; i < choices.length; i++) {
-                obj[choices[i].name] = choices[i].value
-            }
-    
-            console.log(obj)
+        for (let i = 0; i < choices.length; i++) {
+            obj[choices[i].name] = choices[i].value
+        }
+
+        console.log(obj, this)
     },
-    () => {}
+    (e) => {},
+    (e) => {},
+    (e) => {},
+    (e) => {}
 ]
