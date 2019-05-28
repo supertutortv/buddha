@@ -212,10 +212,12 @@ function step0(e) {
 
 function step1(e) {
     e.preventDefault()
+    this.nextStep()
 }
 
 function step2(e) {
     e.preventDefault()
+    this.nextStep()
 }
 
 function step3(e) {
