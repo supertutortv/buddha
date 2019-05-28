@@ -52,6 +52,7 @@ export default class Checkout extends React.Component {
             'ThankYou'
         ]
 
+        console.log(methods)
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
