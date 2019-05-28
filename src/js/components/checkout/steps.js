@@ -3,11 +3,25 @@ import Payment from './payment'
 import Course from './CourseSelect'
 
 const Details = () => {
-    return <fieldset>Details</fieldset>
+    let {ಠ_ಠ,children} = this.props,
+    randGen = _st.randKey()
+        return (
+            <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+                <fieldset>Details</fieldset>
+                {children}
+            </form>
+        )
 }
 
 const Shipping = () => {
-    return <fieldset>Shipping</fieldset>
+    let {ಠ_ಠ,children} = this.props,
+    randGen = _st.randKey()
+    return (
+        <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+            <fieldset>Shipping</fieldset>
+            {children}
+        </form>
+    )
 }
 
 const ThankYou = ({state,hist}) => {
