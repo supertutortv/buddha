@@ -3,6 +3,7 @@ export default {
         title: "The Best SAT Prep Course Ever",
         label: "SAT",
         value: "sat",
+        shipping: 795,
         options: [
             {
                 length: 6,
@@ -18,6 +19,7 @@ export default {
         title: "The Best ACT Prep Course Ever",
         label: "ACT",
         value: "act",
+        shipping: 795,
         options: [
             {
                 length: 6,
@@ -33,6 +35,7 @@ export default {
         title: "Both ACT and SAT Prep Courses",
         label: "Both",
         value: "combo",
+        shipping: 1590,
         options: [
             {
                 length: 12,

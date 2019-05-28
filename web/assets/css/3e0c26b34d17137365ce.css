@@ -551,7 +551,7 @@ body.allYourBase .stAppHeader {
 .stCheckoutWindow .stepSide > div {
   padding: 1em;
   flex: 1;
-  background-color: rgba(16, 159, 218, 0.85);
+  background-color: rgba(16, 159, 218, 0.5);
 }
 
 .stCheckoutWindow .stepSide h1 {
