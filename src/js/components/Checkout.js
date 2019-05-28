@@ -76,21 +76,18 @@ export default class Checkout extends React.Component {
         return(
             <StripeProvider stripe={this.state.stripe}>
                 <Elements>
-                        <section className="stCheckoutWindow" onClick={(e) => e.stopPropagation()}>
+                        <section className="stCheckoutWindow">
                             <div className="stepSide">
                                 <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/checkout" onSubmit={(e) => {
-                                    e.preventDefault()
-                                }}>
+                                <form action="/checkout" onSubmit={this.advance}>
                                     <Step {...this.state} />
                                     <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
                             </div>
                         </section>
-                    {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
                 </Elements>
             </StripeProvider>
         )

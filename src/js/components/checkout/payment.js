@@ -10,6 +10,7 @@ const _Payment = ({updateInp, updatePrice, submitPayment, state, toPrice, error,
     calculatePricing()
     return (
         <div className="stSignupStep stSignupPayment">
+            {/* <CardElement onChange={(e)=>console.log(e, auth.plan)} /> */}
             <div className="stSignupPaymentBottom">
                 <h1>Set up your payment.</h1>
             </div>

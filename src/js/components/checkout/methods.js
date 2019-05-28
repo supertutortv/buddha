@@ -234,3 +234,20 @@ export function initSession() {
 
     return this
 }
+
+export function nextStep() {
+    this.setState((state) => ({
+        step: state.step + 1
+    }))
+}
+
+export function prevStep() {
+    this.setState((state) => ({
+        step: state.step - 1 || 0
+    }))
+}
+
+export function advance(e) {
+    e.preventDefault()
+    console.log(e.target)
+}
