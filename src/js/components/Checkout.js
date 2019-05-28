@@ -122,7 +122,7 @@ export default class Checkout extends React.Component {
                     else return obj[key]
                 },newObj)
             return Object.assign(prev,newObj,{update: false})
-        },() => this.state.update = true && console.log(this.state))
+        },() => this.state.update = console.log(this.state) || true)
     }
 
     render() {
