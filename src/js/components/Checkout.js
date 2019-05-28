@@ -125,7 +125,7 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/checkout" onSubmit={ಠ_ಠ}>
+                                <form action="/checkout" onSubmit={null}>
                                     <Step {...this.state} />
                                     <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
