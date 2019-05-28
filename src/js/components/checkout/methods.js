@@ -173,19 +173,19 @@ function validate() {
     })
 }
 
-const nextStep = () => {
+function nextStep() {
     this.setState((state) => ({
         step: state.step + 1
     }))
 }
 
-const prevStep = () => {
+function prevStep() {
     this.setState((state) => ({
         step: state.step - 1 || 0
     }))
 }
 
-const updateVals = (el) => {
+function updateVals(el) {
     this.setState(prev => {
         var params = el.name.split('|'),
             newObj = {[params[0]] : {...prev[params[0]]}}
