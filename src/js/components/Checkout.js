@@ -117,7 +117,7 @@ export default class Checkout extends React.Component {
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]],
-            randGen = Math.floor(Math.random()*1000000000).toString(36),
+            randGen = Math.floor(Math.random()*1000000000000).toString(36),
             ಠ_ಠ = this['step'+step]
 
         return(
@@ -129,7 +129,7 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form id={"st"+randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+                                <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
                                     <Step {...this.state} />
                                     <Buttons back={this.prevStep} completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
