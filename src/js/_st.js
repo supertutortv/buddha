@@ -48,6 +48,7 @@ STTV.prototype = {
         this._state.loggedIn = val
         return this._state.loggedIn
     },
+    randKey: () => Math.floor(Math.random()*1000000000000).toString(36),
     objectifyURLParams,
     form,
     http: new Http(config[env].api),

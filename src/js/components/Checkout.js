@@ -117,7 +117,7 @@ export default class Checkout extends React.Component {
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]],
-            randGen = Math.floor(Math.random()*1000000000000).toString(36),
+            randGen = _st.randKey,
             ಠ_ಠ = this['step'+step]
 
         return(
