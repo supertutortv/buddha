@@ -110,12 +110,11 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        console.log(methods)
-
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]]
             //ಠ_ಠ = methods[step]
+            console.log(methods[step])
 
         return(
             <StripeProvider stripe={this.state.stripe}>

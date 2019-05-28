@@ -201,19 +201,17 @@ export function prevStep() {
     }))
 } */
 
-export function step0(e) {
-    e.preventDefault()
-    let choices = e.target.querySelectorAll('button.selected'),
-        obj = {}
-
-        for (let i = 0; i < choices.length; i++) {
-            obj[choices[i].name] = choices[i].value
-        }
-
-        console.log(obj)
-}
-
 export default [
-    () => {},
+    (e) => {
+        e.preventDefault()
+        let choices = e.target.querySelectorAll('button.selected'),
+            obj = {}
+    
+            for (let i = 0; i < choices.length; i++) {
+                obj[choices[i].name] = choices[i].value
+            }
+    
+            console.log(obj)
+    },
     () => {}
 ]
