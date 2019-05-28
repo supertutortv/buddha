@@ -211,19 +211,19 @@ function step0(e) {
 }
 
 function step1(e) {
-
+    e.preventDefault()
 }
 
 function step2(e) {
-    
+    e.preventDefault()
 }
 
 function step3(e) {
-
+    e.preventDefault()
 }
 
 function step4(e) {
-    
+    e.preventDefault()
 }
 
 export default {nextStep,prevStep,updateVals,step0,step1,step2,step3,step4}
