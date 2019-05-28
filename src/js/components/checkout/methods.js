@@ -146,20 +146,6 @@ function toPrice(amt = 0) {
     return (Math.round(amt)/100).toFixed(2)
 }
 
-// updateVals
-const updateVals = (el) => {
-    this.setState(prev => {
-        var params = el.name.split('|'),
-            newObj = {[params[0]] : {...prev[params[0]]}}
-
-            params.reduce((obj,key,i,arr) => {
-                if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
-                else return obj[key]
-            },newObj)
-        return Object.assign(prev,newObj,{update: false})
-    },() => this.state.update = true && console.log(this.state))
-}
-
 // updateInp
 function updatePrice({target: el}) {
     this.setState(prev => {
@@ -204,7 +190,7 @@ function step0(e) {
         let choices = e.target.querySelectorAll('button.selected')
     
     for (let i = 0; i < choices.length; i++) {
-        updateVals(choices[i])
+        this.updateVals(choices[i])
     }
 }
 
