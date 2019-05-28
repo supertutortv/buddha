@@ -195,7 +195,7 @@ function updateVals(el) {
                 else return obj[key]
             },newObj)
         return Object.assign(prev,newObj,{update: false})
-    },() => this.state.update = console.log(this.state) || true)
+    },() => this.state.update = true)
 }
 
 function step0(e) {
