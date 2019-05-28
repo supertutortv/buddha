@@ -1,6 +1,5 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
-import crypto from 'crypto'
 import Buttons from './checkout/Buttons'
 import methods from './checkout/methods'
 import * as steps from './checkout/steps'
@@ -118,7 +117,7 @@ export default class Checkout extends React.Component {
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]],
-            randGen = crypto.randomBytes(4).toString('hex'),
+            randGen = window.crypto.getRandomValues(new Uint8Array(1)),//.toString('hex'),
             ಠ_ಠ = this['step'+step]
 
         return(
