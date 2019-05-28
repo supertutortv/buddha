@@ -2,9 +2,8 @@ import React from 'react'
 import Payment from './payment'
 import Course from './CourseSelect'
 
-const Details = () => {
-    let {ಠ_ಠ,children} = this.props,
-    randGen = _st.randKey()
+const Details = ({ಠ_ಠ,children}) => {
+    let randGen = _st.randKey()
         return (
             <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
                 <fieldset>Details</fieldset>
@@ -13,9 +12,8 @@ const Details = () => {
         )
 }
 
-const Shipping = () => {
-    let {ಠ_ಠ,children} = this.props,
-    randGen = _st.randKey()
+const Shipping = ({ಠ_ಠ,children}) => {
+    let randGen = _st.randKey()
     return (
         <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
             <fieldset>Shipping</fieldset>
