@@ -102,6 +102,10 @@ export default class Checkout extends React.Component {
         _st.loading = false
     }
 
+    shouldComponentUpdate(np, ns) {
+        return ns.update;
+      }
+
     componentWillUnmount() {
         let el = document.getElementById('stStripeScript')
         if (el) el.parentNode.removeChild(el)

@@ -146,10 +146,8 @@ function toPrice(amt = 0) {
     return (Math.round(amt)/100).toFixed(2)
 }
 
-// updateInp
-function updateInp(el) {
-    this.state.update = false
-    
+// updateVals
+const updateVals = (el) => {
     this.setState(prev => {
         var params = el.name.split('|'),
             newObj = {[params[0]] : {...prev[params[0]]}}
@@ -158,8 +156,8 @@ function updateInp(el) {
                 if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
                 else return obj[key]
             },newObj)
-        return Object.assign(prev,newObj)
-    },() => this.state.update = true)
+        return Object.assign(prev,newObj,{update: false})
+    },() => this.state.update = true && console.log(this.state))
 }
 
 // updateInp
@@ -189,13 +187,13 @@ function validate() {
     })
 }
 
-function nextStep() {
+const nextStep = () => {
     this.setState((state) => ({
         step: state.step + 1
     }))
 }
 
-function prevStep() {
+const prevStep = () => {
     this.setState((state) => ({
         step: state.step - 1 || 0
     }))
@@ -203,14 +201,11 @@ function prevStep() {
 
 function step0(e) {
     e.preventDefault()
-        let choices = e.target.querySelectorAll('button.selected'),
-            obj = {}
+        let choices = e.target.querySelectorAll('button.selected')
     
     for (let i = 0; i < choices.length; i++) {
-        obj[choices[i].name] = choices[i].value
+        updateVals(choices[i])
     }
-
-    console.log(obj, this)
 }
 
 function step1(e) {
@@ -229,10 +224,4 @@ function step4(e) {
     
 }
 
-export default {
-    step0,
-    step1,
-    step2,
-    step3,
-    step4
-}
+export default {step0,step1,step2,step3,step4}
