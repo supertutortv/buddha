@@ -113,7 +113,7 @@ export default class Checkout extends React.Component {
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]],
-            ಠ_ಠ = ("step"+step)()
+            ಠ_ಠ = ("this.step"+step)()
 
         return(
             <StripeProvider stripe={this.state.stripe}>
