@@ -249,5 +249,5 @@ export function prevStep() {
 
 export function advance(e) {
     e.preventDefault()
-    console.log(e.target)
+    console.log(e.target, e.currentTarget)
 }
