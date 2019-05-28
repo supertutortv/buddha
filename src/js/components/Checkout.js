@@ -118,7 +118,7 @@ export default class Checkout extends React.Component {
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]],
-            randArr = new Uint8Array(2048/8),
+            randArr = new Uint16Array(2),
             randGen = crypto.getRandomValues(randArr).toString('hex'),
             ಠ_ಠ = this['step'+step]
 
