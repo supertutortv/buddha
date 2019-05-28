@@ -1,5 +1,5 @@
 // calculatePricing
-export function calculatePricing() {
+function calculatePricing() {
     if (this.state.plan === null) this.state.plan = this.state.item.plans[0]
     var plan = this.state.plan,
         pricing = this.state.pricing
@@ -16,7 +16,7 @@ export function calculatePricing() {
 }
 
 // changeStep
-export function changeStep(inc = true,e) {
+function changeStep(inc = true,e) {
     if (typeof e !== 'undefined') e.preventDefault()
     var obj = (typeof inc === 'object') ? inc : {},
         prevState
@@ -30,7 +30,7 @@ export function changeStep(inc = true,e) {
 }
 
 // setChecker
-export function setChecker(el) {
+function setChecker(el) {
     var tar = el.target, 
         val = tar.value,
         p = tar.classList.contains('tax') ? 'tax' : 'coupon'
@@ -75,7 +75,7 @@ export function setChecker(el) {
 }
 
 // setOutcome
-export function setOutcome( result ) {
+function setOutcome( result ) {
     if (typeof result !== 'undefined') {
         if (typeof result.error !== 'undefined') return this.setState({
             card: false,
@@ -90,7 +90,7 @@ export function setOutcome( result ) {
     this.validate()
 }
 
-export function setShipping(el) {
+function setShipping(el) {
     let cus = Object.assign(this.state.customer.options,{priorityShip: el.target.checked})
     this.setState({
         pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0}),
@@ -100,7 +100,7 @@ export function setShipping(el) {
 }
 
 // submitPayment
-export function submitPayment(e,stripe) {
+function submitPayment(e,stripe) {
     e.preventDefault()
 
     if (typeof stripe === 'undefined') return false
@@ -142,12 +142,12 @@ export function submitPayment(e,stripe) {
 }
 
 // toPrice
-export function toPrice(amt = 0) {
+function toPrice(amt = 0) {
     return (Math.round(amt)/100).toFixed(2)
 }
 
 // updateInp
-export function updateInp(el) {
+function updateInp(el) {
     this.state.update = false
     
     this.setState(prev => {
@@ -163,14 +163,14 @@ export function updateInp(el) {
 }
 
 // updateInp
-export function updatePrice({target: el}) {
+function updatePrice({target: el}) {
     this.setState(prev => {
         return Object.assign(prev,{plan: prev.item.plans[el.value]})
     })
 }
 
 // validate
-export function validate() {
+function validate() {
     var err = false,
         inp = Array.from(document.querySelectorAll('input, select'))
 
@@ -189,53 +189,7 @@ export function validate() {
     })
 }
 
-export function initSession() {
-    const key = _st.stripe
-    this.session = {
-        id: Date.now(),
-        signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
-    }
-
-    if (!window.Stripe) {
-        const s = document.createElement('script')
-        s.type = 'text/javascript'
-        s.id = 'stStripeScript'
-        s.async = true
-        s.src = 'https://js.stripe.com/v3/'
-        document.body.appendChild(s)
-    }
-
-    this.setState((state) => {
-        let obj = {
-            init: true,
-            stripe: (window.Stripe) ? window.Stripe(key) : null
-        },
-        savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
-
-        if (savedSU) {
-            obj.plan = savedSU.plan
-            obj.customer = Object.assign(state.customer,{
-                uid: savedSU.id,
-                stripeid: savedSU.customer.id,
-                accoutn: Object.assign(state.customer.account,{
-                    email: savedSU.email,
-                    firstname: savedSU.firstname,
-                    lastname: savedSU.lastname
-                })
-            })
-        }
-
-        return obj
-    }, () => {
-        if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
-            this.setState({stripe: window.Stripe(key)})
-        })
-    })
-
-    return this
-}
-
-export function nextStep() {
+/* export function nextStep() {
     this.setState((state) => ({
         step: state.step + 1
     }))
@@ -245,9 +199,9 @@ export function prevStep() {
     this.setState((state) => ({
         step: state.step - 1 || 0
     }))
-}
+} */
 
-export function advance(e) {
+export function step0(e) {
     e.preventDefault()
     let choices = e.target.querySelectorAll('button.selected'),
         obj = {}
@@ -258,3 +212,8 @@ export function advance(e) {
 
         console.log(obj)
 }
+
+export default [
+    () => {},
+    () => {}
+]

@@ -52,13 +52,53 @@ export default class Checkout extends React.Component {
             'ThankYou'
         ]
 
-        Object.keys(methods).forEach((method) => {
+        /* Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
-        })
+        }) */
     }
 
     componentDidMount() {
-        this.initSession()
+        const key = _st.stripe
+        this.session = {
+            id: Date.now(),
+            signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
+        }
+
+        if (!window.Stripe) {
+            const s = document.createElement('script')
+            s.type = 'text/javascript'
+            s.id = 'stStripeScript'
+            s.async = true
+            s.src = 'https://js.stripe.com/v3/'
+            document.body.appendChild(s)
+        }
+
+        this.setState((state) => {
+            let obj = {
+                init: true,
+                stripe: (window.Stripe) ? window.Stripe(key) : null
+            },
+            savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
+
+            if (savedSU) {
+                obj.plan = savedSU.plan
+                obj.customer = Object.assign(state.customer,{
+                    uid: savedSU.id,
+                    stripeid: savedSU.customer.id,
+                    accoutn: Object.assign(state.customer.account,{
+                        email: savedSU.email,
+                        firstname: savedSU.firstname,
+                        lastname: savedSU.lastname
+                    })
+                })
+            }
+
+            return obj
+        }, () => {
+            if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
+                this.setState({stripe: window.Stripe(key)})
+            })
+        })
         _st.loading = false
     }
 
@@ -70,9 +110,12 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
+        console.log(methods)
+
         let {step, completed, plan} = this.state,
             count = step + 1,
             Step = steps[this.steps[step]]
+            //ಠ_ಠ = methods[step]
 
         return(
             <StripeProvider stripe={this.state.stripe}>
@@ -83,7 +126,7 @@ export default class Checkout extends React.Component {
                                 <div>{count}</div>
                             </div>
                             <div className="checkSide">
-                                <form action="/checkout" onSubmit={this.advance}>
+                                <form action="/checkout" onSubmit={ಠ_ಠ}>
                                     <Step {...this.state} />
                                     <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
