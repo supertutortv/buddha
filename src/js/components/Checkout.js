@@ -1,6 +1,6 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
-import crypto from 'crypto-js/core'
+import crypto from 'crypto'
 import Buttons from './checkout/Buttons'
 import methods from './checkout/methods'
 import * as steps from './checkout/steps'
