@@ -119,10 +119,10 @@ export default class Checkout extends React.Component {
             count = step + 1,
             Step = steps[this.steps[step]],
             randArr = new Uint16Array(1),
-            randGen = crypto.getRandomValues(randArr).toString('hex'),
+            randGen = crypto.getRandomValues(randArr),//.toString('hex'),
             ಠ_ಠ = this['step'+step]
 
-            console.log(randArr)
+            console.log(randGen)
 
         return(
             <StripeProvider stripe={this.state.stripe}>
