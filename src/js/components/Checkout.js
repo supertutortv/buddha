@@ -55,7 +55,6 @@ export default class Checkout extends React.Component {
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
-        this.updateVals = this.updateVals.bind(this)
     }
 
     componentDidMount() {
@@ -112,19 +111,6 @@ export default class Checkout extends React.Component {
         if (el) el.parentNode.removeChild(el)
     }
 
-    updateVals(el) {
-        this.setState(prev => {
-            var params = el.name.split('|'),
-                newObj = {[params[0]] : {...prev[params[0]]}}
-    
-                params.reduce((obj,key,i,arr) => {
-                    if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
-                    else return obj[key]
-                },newObj)
-            return Object.assign(prev,newObj,{update: false})
-        },() => this.state.update = console.log(this.state) || true)
-    }
-
     render() {
         if (!this.state.init) return null
 
@@ -144,7 +130,7 @@ export default class Checkout extends React.Component {
                             <div className="checkSide">
                                 <form action="/checkout" onSubmit={ಠ_ಠ}>
                                     <Step {...this.state} />
-                                    <Buttons completed={completed} steps={this.steps.length} count={count} step={step}/>
+                                    <Buttons back={this.prevStep} completed={completed} steps={this.steps.length} count={count} step={step}/>
                                 </form>
                             </div>
                         </section>

@@ -185,6 +185,19 @@ const prevStep = () => {
     }))
 }
 
+const updateVals = (el) => {
+    this.setState(prev => {
+        var params = el.name.split('|'),
+            newObj = {[params[0]] : {...prev[params[0]]}}
+
+            params.reduce((obj,key,i,arr) => {
+                if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
+                else return obj[key]
+            },newObj)
+        return Object.assign(prev,newObj,{update: false})
+    },() => this.state.update = console.log(this.state) || true)
+}
+
 function step0(e) {
     e.preventDefault()
         let choices = e.target.querySelectorAll('button.selected')
@@ -192,6 +205,7 @@ function step0(e) {
     for (let i = 0; i < choices.length; i++) {
         this.updateVals(choices[i])
     }
+    this.nextStep()
 }
 
 function step1(e) {
@@ -210,4 +224,4 @@ function step4(e) {
     
 }
 
-export default {step0,step1,step2,step3,step4}
+export default {nextStep,prevStep,updateVals,step0,step1,step2,step3,step4}
