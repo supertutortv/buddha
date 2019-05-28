@@ -1,6 +1,6 @@
 {
     "name": "buddha",
-    "version": "1.0.715",
+    "version": "1.0.716",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
