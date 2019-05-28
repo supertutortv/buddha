@@ -253,7 +253,7 @@ export function advance(e) {
         obj = {}
 
         for (let i = 0; i < choices.length; i++) {
-            obj[i] = choices[i].value
+            obj[choices[i].name] = choices[i].value
         }
 
         console.log(obj)
