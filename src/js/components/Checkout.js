@@ -52,7 +52,6 @@ export default class Checkout extends React.Component {
             'ThankYou'
         ]
 
-        console.log(methods)
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
         })
@@ -111,10 +110,11 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
+        console.log(this)
         let {step, completed, plan} = this.state,
             count = step + 1,
-            Step = steps[this.steps[step]],
-            ಠ_ಠ = ("this.step"+step)()
+            Step = steps[this.steps[step]]
+            //ಠ_ಠ = ("this.step"+step)()
 
         return(
             <StripeProvider stripe={this.state.stripe}>
