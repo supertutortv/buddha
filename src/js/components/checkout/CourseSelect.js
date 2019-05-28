@@ -29,30 +29,35 @@ export default class CourseSelect extends React.Component{
     }
 
     render() {
-        let plans = _st.plans
+        let plans = _st.plans,
+            {ಠ_ಠ,children} = this.props,
+            randGen = _st.randKey()
         return (
-            <fieldset>
-                <h3>Choose your course:</h3>
-                <div className="st-crsGrp">
-                    {Object.keys(plans).map((pl) => {
-                            let pln = plans[pl],
-                                selected = this.state.active === pl ? 'selected' : ''
+            <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+                <fieldset>
+                    <h3>Choose your course:</h3>
+                    <div className="st-crsGrp">
+                        {Object.keys(plans).map((pl) => {
+                                let pln = plans[pl],
+                                    selected = this.state.active === pl ? 'selected' : ''
+                                return (
+                                    <button name="item|value" className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
+                                )
+                            })
+                        }
+                    </div>
+                    <h3>Choose your course length:</h3>
+                    <div className="st-crsGrp ln">
+                        {plans[this.state.active].options.map((pl,i,arr) => {
+                            let selected = arr.length === 1 || this.state.option === i ? 'selected' : ''
                             return (
-                                <button name="item|value" className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
+                                <button name="item|option" onClick={(e) => this.setOption(e,i)} className={selected} value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
                             )
-                        })
-                    }
-                </div>
-                <h3>Choose your course length:</h3>
-                <div className="st-crsGrp ln">
-                    {plans[this.state.active].options.map((pl,i,arr) => {
-                        let selected = arr.length === 1 || this.state.option === i ? 'selected' : ''
-                        return (
-                            <button name="item|option" onClick={(e) => this.setOption(e,i)} className={selected} value={pl.length}>{pl.length+" months - $"+Math.trunc(pl.price/100)}</button>
-                        )
-                    })}
-                </div>
-            </fieldset>
+                        })}
+                    </div>
+                </fieldset>
+                {children}
+            </form>
         )
     }
 }
