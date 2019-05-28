@@ -1,6 +1,6 @@
 {
     "name": "buddha",
-    "version": "1.0.716",
+    "version": "1.0.717",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
@@ -40,6 +40,7 @@
         "@vimeo/player": "^2.9.1",
         "ajax": "0.0.4",
         "babel-loader": "^8.0.6",
+        "crypto-js": "^3.1.9-1",
         "css-loader": "^1.0.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
