@@ -175,12 +175,14 @@ function validate() {
 
 function nextStep() {
     this.setState((state) => ({
+        update: true,
         step: state.step + 1
     }))
 }
 
 function prevStep() {
     this.setState((state) => ({
+        update: true,
         step: state.step - 1 || 0
     }))
 }
