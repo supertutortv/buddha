@@ -5,7 +5,7 @@ import Course from './CourseSelect'
 const Details = ({ಠ_ಠ,children}) => {
     let randGen = _st.randKey()
         return (
-            <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+            <form className={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
                 <fieldset>Details</fieldset>
                 {children}
             </form>
@@ -15,7 +15,7 @@ const Details = ({ಠ_ಠ,children}) => {
 const Shipping = ({ಠ_ಠ,children}) => {
     let randGen = _st.randKey()
     return (
-        <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+        <form className={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
             <fieldset>Shipping</fieldset>
             {children}
         </form>
