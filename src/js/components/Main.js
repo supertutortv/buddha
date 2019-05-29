@@ -104,7 +104,6 @@ export default class Main extends React.Component {
 
     render() {
         if (this.state.data === true) return null
-        console.log(this.props.refresh)
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
@@ -113,7 +112,7 @@ export default class Main extends React.Component {
                     } />
                     <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
-                        refreshData={this.refreshData} 
+                        refreshData={this.props.refresh} 
                         addHistory={this.addHistory} 
                         setPlaylist={this.setPlaylist} 
                         splicePlaylist={this.splicePlaylist} 
