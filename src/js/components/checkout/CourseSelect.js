@@ -33,7 +33,7 @@ export default class CourseSelect extends React.Component{
             {ಠ_ಠ,children} = this.props,
             randGen = _st.randKey()
         return (
-            <form id={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
+            <form className={randGen} action="/checkout" onSubmit={ಠ_ಠ}>
                 <fieldset>
                     <h3>Choose your course:</h3>
                     <div className="st-crsGrp">
@@ -47,7 +47,7 @@ export default class CourseSelect extends React.Component{
                         }
                     </div>
                     <h3>Choose your course length:</h3>
-                    <div className="st-crsGrp ln">
+                    <div className={"st-crsGrp ln "+randGen}>
                         {plans[this.state.active].options.map((pl,i,arr) => {
                             let selected = arr.length === 1 || this.state.option === i ? 'selected' : ''
                             return (
