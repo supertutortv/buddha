@@ -104,7 +104,7 @@ export default class Main extends React.Component {
 
     render() {
         if (this.state.data === true) return null
-
+        console.log(this.props.refresh)
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
