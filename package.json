@@ -1,11 +1,12 @@
 {
     "name": "buddha",
-    "version": "1.0.747",
+    "version": "1.1.0",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
     "scripts": {
-        "it": "npm --no-git-tag-version version patch",
+        "minor": "npm --no-git-tag-version version minor",
+        "patch": "npm --no-git-tag-version version patch",
         "preversion": "npm test",
         "version": "npm run build && git add -A",
         "postversion": "git commit -m 'devpush from remote' && git push && ssh buddha@192.155.82.130 'cd coursedev/buddha && git pull'",
