@@ -51,8 +51,7 @@ STTV.prototype = {
     randKey: () => Math.floor(Math.random()*1000000000000).toString(36),
     objectifyURLParams,
     form,
-    http: new Http(config[env].api),
-    udata
+    http: new Http(config[env].api)
 }
 
 export default new STTV
