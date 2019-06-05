@@ -75,7 +75,7 @@ export default class Signup extends React.Component {
 
                     if (signed) return (
                         <Redirect to={{
-                            pathname: '/dashboard',
+                            pathname: '/',
                             search: hist.location.search,
                             state: { plan: plan }
                         }}/>

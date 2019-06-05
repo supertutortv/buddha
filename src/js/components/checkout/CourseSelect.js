@@ -5,7 +5,7 @@ export default class CourseSelect extends React.Component{
         super(props)
 
         this.state = {
-            active: props.plan,
+            active: props.plan || 'act',
             option: false
         }
 
