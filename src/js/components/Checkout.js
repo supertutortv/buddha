@@ -104,7 +104,7 @@ export default class Checkout extends React.Component {
 
     shouldComponentUpdate(np, ns) {
         return ns.update;
-      }
+    }
 
     componentWillUnmount() {
         let el = document.getElementById('stStripeScript')
@@ -123,10 +123,6 @@ export default class Checkout extends React.Component {
             <StripeProvider stripe={this.state.stripe}>
                 <Elements>
                         <section className="stCheckoutWindow">
-                            <div className="stepSide">
-                                <div><h1><i class="fas fa-lock"></i> Checkout</h1></div>
-                                <div>{count}</div>
-                            </div>
                             <div className="checkSide">
                                 <Step {...this.state} ಠ_ಠ={ಠ_ಠ}>
                                     <Buttons back={this.prevStep} completed={completed} steps={this.steps.length} count={count} step={step}/>
