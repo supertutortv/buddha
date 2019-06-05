@@ -67,14 +67,15 @@ export default class Dashboard extends React.Component {
         )
     }
 
-    triggerPurchase(plan=null) {
+    triggerPurchase() {
         this.setState({
             checkout: true
         })
-        return <Checkout plan={plan} />
+        return null
     }
 
     render() {
+        let {notifications,checkout} = this.state
         if (this.state.notifications.active) console.log(this.state.notifications.active)
         return(
             <AuthContext.Consumer>
@@ -84,14 +85,19 @@ export default class Dashboard extends React.Component {
                             {data =>
                                 <React.Fragment>
                                     <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
-                                    <main className="stDashboard stComponentFade">
-                                        <DBCourses courses={data.courses} />
-                                        <div className="stNotesActions">
-                                            <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...this.state.notifications} />
-                                            <DBActions cancellation={this.cancellation} d={data.user} />
-                                        </div>
-                                    </main>
-                                    {data.courses.length === 0 && this.state.checkout === false ? this.triggerPurchase() : null}
+                                    {checkout ? <Checkout plan={auth.plan} /> : 
+                                        <React.Fragment>
+                                            {data.courses.length === 0 ? this.triggerPurchase() : 
+                                                <main className="stDashboard stComponentFade">
+                                                    <DBCourses courses={data.courses} />
+                                                    <div className="stNotesActions">
+                                                        <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
+                                                        <DBActions cancellation={this.cancellation} d={data.user} />
+                                                    </div>
+                                                </main>
+                                            }
+                                        </React.Fragment>
+                                    }
                                 </React.Fragment>
                             }
                         </DataState.Consumer>
