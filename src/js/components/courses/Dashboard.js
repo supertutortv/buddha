@@ -76,7 +76,7 @@ export default class Dashboard extends React.Component {
 
     render() {
         let {notifications,checkout} = this.state
-        if (this.state.notifications.active) console.log(this.state.notifications.active)
+        if (notifications.active) console.log(notifications.active)
         return(
             <AuthContext.Consumer>
                 {auth => {
@@ -84,7 +84,7 @@ export default class Dashboard extends React.Component {
                         <DataState.Consumer>
                             {data =>
                                 <React.Fragment>
-                                    <Header refreshData={this.props.refreshData} title="Dashboard" hist={this.props.history}/>
+                                    <Header refreshData={this.props.refreshData} title={checkout ? "Checkout" : "Dashboard"} hist={this.props.history}/>
                                     {checkout ? <Checkout plan={auth.plan} /> : 
                                         <React.Fragment>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
