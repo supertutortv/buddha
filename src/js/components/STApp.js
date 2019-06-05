@@ -74,7 +74,7 @@ export default class STApp extends React.Component {
                                             <Switch>
                                                 <Route exact path='/password/reset/:key?' component={ResetPassword}/>
                                                 <Route exact path='/login' render={() => 
-                                                    loggedIn ? <Redirect to='/dashboard'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
+                                                    loggedIn ? <Redirect to='/'/> : <Login logIn={this.logThatFuckerIn} {...p}/>}/>
                                             </Switch>
                                         } />
                                     </Gateway>

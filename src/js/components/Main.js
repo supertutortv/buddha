@@ -107,10 +107,9 @@ export default class Main extends React.Component {
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
-                    <Route exact path='/dashboard' render={
+                    <Route exact path='/' render={
                         props => <Dashboard {...props} {...this.props.location.state} modalActive={this.modalActive} refreshData={this.props.refresh}/>
                     } />
-                    <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
                         refreshData={this.props.refresh} 
                         addHistory={this.addHistory} 
