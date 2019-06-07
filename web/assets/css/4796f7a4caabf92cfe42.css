@@ -1248,7 +1248,8 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .bothColumn button {
-  background-color: #882d17;
+  background-color: red;
+  width: 40%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stChoiceGap {
@@ -1292,11 +1293,11 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   margin-bottom: 1em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat i {
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat {
   color: #109fda;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act i {
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act {
   color: #e8c825;
 }
 
