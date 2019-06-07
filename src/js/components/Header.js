@@ -17,9 +17,9 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                     {stripped ? '' :
                         <React.Fragment>
                             <li title="Dashboard" onClick={(e) => {
-                                e.preventDefault()
-                                hist.push('/dashboard')
-                            }}><i className="fas fa-user" ></i></li>
+                                hist.push('/')
+                                return false
+                            }}><i className="fas fa-home" ></i></li>
                             {/* <li title="Rate/Review"><i className="fas fa-star"></i></li>
                             <li title="Leave Feedback"><i className="fas fa-comment-alt"></i></li> */}
                             <li title="Reload" onClick={(e) => {
