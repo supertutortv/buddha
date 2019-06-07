@@ -473,7 +473,7 @@ body.allYourBase .stAppHeader {
 }
 
 .stAppHeader > div img {
-  height: calc(2.5em - 1em);
+  height: calc(2.6em - 1em);
   width: auto;
 }
 
@@ -812,7 +812,7 @@ body.main st-app {
 
 body.main st-app .stAppStage {
   width: 100%;
-  height: calc(100% - 2.5em);
+  height: calc(100% - 2.6em);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -1188,6 +1188,10 @@ body.main st-app .stAppStage .stAppStageInner img {
   body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap:nth-of-type(odd):not(:last-of-type) {
     padding-right: 0;
   }
+}
+
+body.onboarding st-app .stOnboardingWindow {
+  min-height: calc(100% - 2.6em);
 }
 
 .stSmallLoader {
