@@ -1196,11 +1196,26 @@ body.onboarding st-app .stOnboardingWindow {
 }
 
 body.onboarding st-app .stOnboardingWindow .step {
-  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner {
+  background-color: #109fda;
+  height: 25%;
+  margin-bottom: -20%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner img {
+  opacity: .25;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h1,
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h2,
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h3 {
+  color: white;
 }
 
 .stSmallLoader {
