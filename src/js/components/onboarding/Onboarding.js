@@ -51,17 +51,19 @@ export default class Onboarding extends React.Component{
 						<div>
 							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 							<div className="stOnboardingPlans">
-								{Object.keys(plans).map((pl) => {
-									let pln = plans[pl],
-										selected = this.state.active === pl ? 'selected' : ''
-									return (
-										<div className="stOnboardingPlan" data-value={pln.value} onClick={null}>
-											<div className="planInner">
-												{pln.label}
-											</div>
-										</div>
-									)
-								})}
+								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
+									<div className="planInner">
+										<span>SAT</span>
+										<i class="fas fa-plus"></i>
+									</div>
+								</div>
+								<div className="stChoiceGap">OR</div>
+								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
+									<div className="planInner">
+										<span>SAT</span>
+										<i class="fas fa-plus"></i>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

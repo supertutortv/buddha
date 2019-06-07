@@ -39,13 +39,29 @@ body.onboarding
 						display: grid
 						grid-template-columns: repeat(3,max-content)
 						grid-gap: 5px
+						margin-top: $huge
+
+						.stChoiceGap
+							padding: 1em
+							display: flex
+							justify-content: center
+							align-items: center
 
 						.stOnboardingPlan
 							position: relative
-							+stcard
+							border-radius: $ittybitty
+							min-width: 300px
+							background-color: white
+							+z-depth-1
+							transition: all 100ms ease-in-out
+
+							&:hover
+								+z-depth-3
 
 							.planInner
 								position: absolute
 								top: 0
 								width: 100%
 								display: flex
+								justify-content: center
+								align-items: center
