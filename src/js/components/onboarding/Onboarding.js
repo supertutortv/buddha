@@ -53,14 +53,14 @@ export default class Onboarding extends React.Component{
 							<div className="stOnboardingPlans">
 								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
 									<div className="planInner sat">
-										<h2>SAT</h2>
+										<h2>The Best SAT Prep Course Ever</h2>
 										<i class="fas fa-plus"></i>
 									</div>
 								</div>
 								<div className="stChoiceGap">OR</div>
 								<div className="stOnboardingPlan" data-value="act" onClick={null}>
 									<div className="planInner act">
-										<h2>ACT</h2>
+										<h2>The Best ACT Prep Course Ever</h2>
 										<i class="fas fa-plus"></i>
 									</div>
 								</div>
