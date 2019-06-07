@@ -56,7 +56,9 @@ export default class Onboarding extends React.Component{
 										selected = this.state.active === pl ? 'selected' : ''
 									return (
 										<div className="stOnboardingPlan" data-value={pln.value} onClick={null}>
-											{pln.label}
+											<div className="planInner">
+												{pln.label}
+											</div>
 										</div>
 									)
 								})}
