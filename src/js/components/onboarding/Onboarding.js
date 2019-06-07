@@ -48,16 +48,18 @@ export default class Onboarding extends React.Component{
 						<TextureImg/>
 					</div>
 					<div className="stStepContent">
-						<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
-						{Object.keys(plans).map((pl) => {
-							let pln = plans[pl],
-								selected = this.state.active === pl ? 'selected' : ''
-							return (
-								<div className={selected} data-value={pln.value} onClick={null}>
-									{pln.label}
-								</div>
-							)
-						})}
+						<div>
+							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
+							{Object.keys(plans).map((pl) => {
+								let pln = plans[pl],
+									selected = this.state.active === pl ? 'selected' : ''
+								return (
+									<div className={selected} data-value={pln.value} onClick={null}>
+										{pln.label}
+									</div>
+								)
+							})}
+						</div>
 					</div>
 				</section>
 			</main>

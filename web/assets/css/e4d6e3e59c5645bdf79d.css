@@ -1207,23 +1207,22 @@ body.onboarding st-app .stOnboardingWindow #step1 {
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner {
-  background-color: #109fda;
   height: 350px;
-  margin-bottom: -280px;
+  margin-bottom: -200px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner img {
   opacity: .25;
+  height: 100%;
+  width: 100%;
+  transform: rotateZ(180deg);
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent {
   position: relative;
-}
-
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h1,
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h2,
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h3 {
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stSmallLoader {
