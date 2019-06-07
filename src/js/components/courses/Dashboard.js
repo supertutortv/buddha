@@ -3,7 +3,7 @@ import { DataState } from './StateContext'
 import { AuthContext } from '../../context'
 import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
-import Checkout from '../Checkout'
+import Onboarding from '../onboarding/Onboarding'
 
 export default class Dashboard extends React.Component {
     constructor(props){
@@ -11,7 +11,7 @@ export default class Dashboard extends React.Component {
 
         this.state = {
             error: {},
-            checkout: false,
+            hasCourses: true,
             notifications: {
                 active: false,
                 fetched: true,
@@ -69,13 +69,13 @@ export default class Dashboard extends React.Component {
 
     triggerPurchase() {
         this.setState({
-            checkout: true
+            hasCourses: false
         })
         return null
     }
 
     render() {
-        let {notifications,checkout} = this.state
+        let {notifications,hasCourses} = this.state
         if (notifications.active) console.log(notifications.active)
         return(
             <AuthContext.Consumer>
@@ -84,8 +84,8 @@ export default class Dashboard extends React.Component {
                         <DataState.Consumer>
                             {data =>
                                 <React.Fragment>
-                                    <Header refreshData={this.props.refreshData} title={checkout ? "" : "Dashboard"} hist={this.props.history}/>
-                                    {checkout ? <Checkout plan={auth.plan} /> : 
+                                    <Header refreshData={this.props.refreshData} hist={this.props.history}/>
+                                    {!hasCourses ? <Onboarding plan={auth.plan} /> : 
                                         <React.Fragment>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
                                                 <main className="stDashboard stComponentFade">
