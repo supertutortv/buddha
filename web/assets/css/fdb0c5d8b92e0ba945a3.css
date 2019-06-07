@@ -1285,6 +1285,7 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   align-items: center;
   flex-flow: column nowrap;
   padding: 1em;
+  color: #109fda;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner h2 {
@@ -1294,14 +1295,6 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   margin-bottom: .5em;
   text-align: center;
   text-transform: uppercase;
-}
-
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat h2 {
-  color: #109fda;
-}
-
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act h2 {
-  color: #e8c825;
 }
 
 .stSmallLoader {
