@@ -1235,9 +1235,7 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h3 {
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-gap: 5px;
+  display: flex;
   margin-top: 2em;
 }
 
@@ -1250,6 +1248,7 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan {
   position: relative;
+  flex: 1;
   border-radius: 0.25em;
   min-width: 300px;
   background-color: white;
@@ -1280,8 +1279,12 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   margin-bottom: 1em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner i {
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat i {
   color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act i {
+  color: #e8c825;
 }
 
 .stSmallLoader {

@@ -52,14 +52,14 @@ export default class Onboarding extends React.Component{
 							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 							<div className="stOnboardingPlans">
 								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
-									<div className="planInner">
+									<div className="planInner sat">
 										<strong>SAT</strong>
 										<i class="fas fa-plus"></i>
 									</div>
 								</div>
 								<div className="stChoiceGap">OR</div>
 								<div className="stOnboardingPlan" data-value="act" onClick={null}>
-									<div className="planInner">
+									<div className="planInner act">
 										<strong>ACT</strong>
 										<i class="fas fa-plus"></i>
 									</div>

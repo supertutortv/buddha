@@ -39,9 +39,7 @@ body.onboarding
 						text-align: center
 
 					.stOnboardingPlans
-						display: grid
-						grid-template-columns: auto 1fr auto
-						grid-gap: 5px
+						display: flex
 						margin-top: $huge
 
 						.stChoiceGap
@@ -52,6 +50,7 @@ body.onboarding
 
 						.stOnboardingPlan
 							position: relative
+							flex: 1
 							border-radius: $ittybitty
 							min-width: 300px
 							background-color: white
@@ -77,6 +76,13 @@ body.onboarding
 									font-weight: 800
 									display: block
 									margin-bottom: 1em
+								
+								&.sat
 
-								i
-									color: azure()
+									i
+										color: azure()
+
+								&.act
+
+									i
+										color: goldenrod()
