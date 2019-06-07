@@ -1293,13 +1293,14 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   display: block;
   margin-bottom: .5em;
   text-align: center;
+  text-transform: uppercase;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat {
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.sat h2 {
   color: #109fda;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act {
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.act h2 {
   color: #e8c825;
 }
 
