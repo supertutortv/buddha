@@ -1202,14 +1202,22 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
+body.onboarding st-app .stOnboardingWindow #step1 {
+  display: block;
+}
+
 body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner {
   background-color: #109fda;
-  height: 25%;
-  margin-bottom: -20%;
+  height: 350px;
+  margin-bottom: -280px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stOnboardBanner img {
   opacity: .25;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent {
+  position: relative;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent h1,
