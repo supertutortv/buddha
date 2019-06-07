@@ -35,6 +35,9 @@ body.onboarding
 						width: 98%
 						max-width: 800px
 
+					h3
+						text-align: center
+
 					.stOnboardingPlans
 						display: grid
 						grid-template-columns: repeat(3,max-content)
@@ -52,6 +55,8 @@ body.onboarding
 							border-radius: $ittybitty
 							min-width: 300px
 							background-color: white
+							cursor: pointer
+							padding-top: 66.67%
 							+z-depth-1
 							transition: all 100ms ease-in-out
 
@@ -61,7 +66,11 @@ body.onboarding
 							.planInner
 								position: absolute
 								top: 0
+								bottom: 0
 								width: 100%
 								display: flex
 								justify-content: center
 								align-items: center
+
+								& > *
+									display: block
