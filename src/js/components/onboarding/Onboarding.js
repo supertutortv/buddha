@@ -2,11 +2,14 @@ import React from 'react'
 
 export default class Onboarding extends React.Component{
     constructor(props) {
-        super(props)
+		super(props)
+		
+		let saved = JSON.parse(localStorage.getItem('_stT-signup') || {})
 
         this.state = {
             active: props.plan || '',
-            option: false
+			option: false,
+			...saved
         }
 
         this.setActive = this.setActive.bind(this)
@@ -30,11 +33,12 @@ export default class Onboarding extends React.Component{
 
     render() {
         let plans = _st.plans,
-            {ಠ_ಠ,children} = this.props,
-            randGen = _st.randKey()
+			{ಠ_ಠ,children} = this.props,
+			{firstname} = this.state
+			
         return (
-			<section className="stCheckoutWindow">
-				<h2>Welcome, [name]! Choose your course.</h2>
+			<section id={_st.randKey()} className="stOnboardingWindow">
+				<h1>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h1>
 				{Object.keys(plans).map((pl) => {
 					let pln = plans[pl],
 						selected = this.state.active === pl ? 'selected' : ''
