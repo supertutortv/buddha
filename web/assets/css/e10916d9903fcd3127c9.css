@@ -1271,10 +1271,11 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column nowrap;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner > * {
-  display: block;
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner strong {
+  font-weight: 800;
 }
 
 .stSmallLoader {
