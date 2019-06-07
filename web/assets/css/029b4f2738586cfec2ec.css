@@ -1225,6 +1225,26 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent {
   align-items: center;
 }
 
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent > div {
+  width: 98%;
+  max-width: 800px;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-gap: 5px;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan {
+  border-radius: 0.25em;
+  width: 98%;
+  max-width: 400px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
 .stSmallLoader {
   display: flex;
 }

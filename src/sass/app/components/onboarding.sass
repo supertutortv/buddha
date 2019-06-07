@@ -30,3 +30,15 @@ body.onboarding
 					display: flex
 					justify-content: center
 					align-items: center
+
+					& > div
+						width: 98%
+						max-width: 800px
+
+					.stOnboardingPlans
+						display: grid
+						grid-template-columns: repeat(3,max-content)
+						grid-gap: 5px
+
+						.stOnboardingPlan
+							+stcard
