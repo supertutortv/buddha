@@ -1276,6 +1276,8 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner strong {
   font-weight: 800;
+  display: block;
+  margin-bottom: 1em;
 }
 
 .stSmallLoader {
