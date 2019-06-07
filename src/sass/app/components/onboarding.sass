@@ -42,6 +42,11 @@ body.onboarding
 						display: flex
 						margin-top: $huge
 
+						.bothColumn
+							flex: 1 1 100%
+							display: flex
+							justify-content: center
+
 						.stChoiceGap
 							padding: 1em
 							display: flex
@@ -55,7 +60,7 @@ body.onboarding
 							min-width: 300px
 							background-color: white
 							cursor: pointer
-							padding-top: 66.67%
+							padding-top: 30%
 							+z-depth-1
 							transition: all 100ms ease-in-out
 
@@ -73,6 +78,7 @@ body.onboarding
 								flex-flow: column nowrap
 
 								strong
+									font-size: 2rem
 									font-weight: 800
 									display: block
 									margin-bottom: 1em

@@ -64,6 +64,9 @@ export default class Onboarding extends React.Component{
 										<i class="fas fa-plus"></i>
 									</div>
 								</div>
+								<div className="bothColumn">
+									<button>I want both!</button>
+								</div>
 							</div>
 						</div>
 					</div>
