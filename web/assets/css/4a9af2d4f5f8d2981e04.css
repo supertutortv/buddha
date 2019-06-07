@@ -1280,6 +1280,10 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   margin-bottom: 1em;
 }
 
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner i {
+  color: #109fda;
+}
+
 .stSmallLoader {
   display: flex;
 }
