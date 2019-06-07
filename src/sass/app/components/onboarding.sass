@@ -40,12 +40,17 @@ body.onboarding
 
 					.stOnboardingPlans
 						display: flex
+						flex-wrap: wrap
 						margin-top: $huge
 
 						.bothColumn
 							flex: 1 1 100%
 							display: flex
 							justify-content: center
+							padding: 1em
+
+							button
+								background-color: sunrise()
 
 						.stChoiceGap
 							padding: 1em
@@ -77,8 +82,8 @@ body.onboarding
 								align-items: center
 								flex-flow: column nowrap
 
-								strong
-									font-size: 2rem
+								h2
+									font-size: 1.5rem
 									font-weight: 800
 									display: block
 									margin-bottom: 1em
