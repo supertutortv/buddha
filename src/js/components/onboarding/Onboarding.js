@@ -43,14 +43,15 @@ export default class Onboarding extends React.Component{
 			
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
-				<section id="step1">
-					<TextureImg/>
+				<section id="step1" className="step">
 					<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 					{Object.keys(plans).map((pl) => {
 						let pln = plans[pl],
 							selected = this.state.active === pl ? 'selected' : ''
 						return (
-							<button name="item|value" className={selected} value={pln.value} onClick={this.setActive}>{pln.label}</button>
+							<div className={selected} data-value={pln.value} onClick={null}>
+								{pln.label}
+							</div>
 						)
 					})}
 				</section>
