@@ -1,6 +1,10 @@
 import React from 'react'
 import TextureImg from './texture'
 
+const Options = (...props) => {
+	console.log(props)
+}
+
 export default class Onboarding extends React.Component{
     constructor(props) {
 		super(props)
@@ -18,7 +22,14 @@ export default class Onboarding extends React.Component{
 	}
 	
 	componentDidMount() {
-		console.log(this.state.plan)
+		let obj = {init: true}
+
+		if (this.state.plan !== 'undefined') Object.assign(obj,{
+			step: 1,
+			plan: _st.plans[this.state.plan]
+		})
+		
+		this.setState(obj)
 		_st.bodyClass = 'onboarding'
 	}
 
@@ -31,7 +42,6 @@ export default class Onboarding extends React.Component{
 		if (!init) return null
 
 		let plans = _st.plans
-		console.log(this.state)
 
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
@@ -72,8 +82,8 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
-				{this.state.plan !== 'undefined' ? '' : null}
-				{this.state.option}
+				{this.state.plan !== 'undefined' ? <Options {...this.state.plan} nextStep={this.nextStep} /> : null}
+				{this.state.option === false ? null : ''}
 			</main>
         )
     }
