@@ -1,9 +1,13 @@
 import React from 'react'
 import TextureImg from './texture'
 
-const PlnOptions = (...props) => {
-	//console.log(props)
-	return null
+const PlnOptions = ({nextStep, plan}) => {
+	console.log(plan.options)
+	return (
+		<section id="step1" className="step">
+			Step 1
+		</section>
+	)
 }
 
 export default class Onboarding extends React.Component{
@@ -85,7 +89,7 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
-				{this.state.plan ? <PlnOptions nextStep={this.nextStep} /> : null}
+				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? null : null}
 			</main>
         )
