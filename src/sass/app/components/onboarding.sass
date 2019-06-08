@@ -44,21 +44,11 @@ body.onboarding
 						flex-wrap: wrap
 						margin-top: $huge
 
-						.bothColumn
+						.ctaColumn
 							flex: 1 1 100%
 							display: flex
 							justify-content: center
 							padding: 1em
-
-							button
-								background-color: red
-								width: 40%
-
-						.stChoiceGap
-							padding: 1em
-							display: flex
-							justify-content: center
-							align-items: center
 
 						.stOnboardingPlan
 							position: relative
@@ -66,7 +56,6 @@ body.onboarding
 							border-radius: $ittybitty
 							width: 320px
 							padding: $large
-							cursor: pointer
 							transition: all 100ms ease-in-out
 
 							.planInner
@@ -77,10 +66,16 @@ body.onboarding
 								&:hover
 									background-color: azure()
 
-								h2
-									font-size: 1rem
+								span
+									font-size: .75rem
 									font-weight: 600
 									display: block
 									margin-bottom: .5em
 									text-align: center
 									text-transform: uppercase
+
+								&.combo
+									background-color: rgba(255, 0, 0, .8)
+
+									&:hover
+										background-color: rgba(255, 0, 0, 1)

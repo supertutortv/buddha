@@ -52,19 +52,16 @@ export default class Onboarding extends React.Component{
 						<div>
 							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 							<div className="stOnboardingPlans">
+								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
 									<button className="planInner sat">
-										<span>The Best SAT Prep Course Ever</span>
+										<span>SAT</span>
 									</button>
 								</div>
-								<div className="stChoiceGap">OR</div>
 								<div className="stOnboardingPlan" data-value="act" onClick={null}>
 									<button className="planInner act">
-										<span>The Best ACT Prep Course Ever</span>
+										<span>ACT</span>
 									</button>
-								</div>
-								<div className="bothColumn">
-									<button>I want both!</button>
 								</div>
 							</div>
 						</div>
