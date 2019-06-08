@@ -5,7 +5,13 @@ const PlnOptions = ({nextStep, plan}) => {
 	console.log(plan.options)
 	return (
 		<section id="step1" className="step">
-			Step 1
+			<div className="stStepContent">
+				<div>
+					<div className="stOnboardingOptions">
+						You chose: {plan.title}
+					</div>
+				</div>
+			</div>
 		</section>
 	)
 }
@@ -47,8 +53,6 @@ export default class Onboarding extends React.Component{
 		if (!init) return null
 
 		let plans = _st.plans
-
-		console.log(this.state)
 
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
