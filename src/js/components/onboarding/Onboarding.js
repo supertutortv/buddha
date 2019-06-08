@@ -8,6 +8,7 @@ export default class Onboarding extends React.Component{
 		let saved = JSON.parse(localStorage.getItem('_stT-signup') || {})
 
         this.state = {
+			step: 0,
             active: props.plan || '',
 			option: false,
 			...saved
