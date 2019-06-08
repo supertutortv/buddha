@@ -1206,6 +1206,15 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
+body.onboarding st-app .stOnboardingWindow #step1 {
+  padding-top: 2em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 strong {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 body.onboarding st-app .stOnboardingWindow #step0 {
   display: block;
 }
