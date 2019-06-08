@@ -1272,6 +1272,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
   border-radius: 0.25em;
   width: 320px;
   padding: 1em;
+  text-align: center;
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner,
@@ -1283,6 +1284,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner {
   width: 100%;
+  max-width: 400px;
   background-color: rgba(16, 159, 218, 0.8);
   transition: all 100ms ease-in-out;
 }
