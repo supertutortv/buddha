@@ -1204,7 +1204,6 @@ body.onboarding st-app .stOnboardingWindow .step {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadein 100ms ease-in-out 0s both;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 {
@@ -1213,7 +1212,7 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner {
   height: 350px;
-  margin-bottom: -400px;
+  margin-bottom: -200px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
@@ -1285,10 +1284,6 @@ body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPl
 
 body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover {
   background-color: red;
-}
-
-body.onboarding st-app .stOnboardingWindow #step1 {
-  padding: 2em;
 }
 
 .stSmallLoader {
