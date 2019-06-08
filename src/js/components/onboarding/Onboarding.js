@@ -19,7 +19,11 @@ const PlnOptions = ({nextStep, plan}) => {
 								<div className="stOnboardingOption">
 									<button className="optionInner" onClick={(e) => {
 										e.preventDefault()
-										nextStep({step: 2, option: opt})
+										nextStep({
+											step: 2,
+											loc: false,
+											option: opt
+										})
 									}}>
 										<span>
 											{opt.length+' months - $'+(opt.price/100).toFixed(0)}
@@ -119,7 +123,12 @@ export default class Onboarding extends React.Component{
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, option: false, plan: plans['sat']})
+									this.nextStep({
+										step: 1,
+										loc: false,
+										option: false,
+										plan: plans['sat']
+									})
 									e.preventDefault()
 								}}>
 									<button className="planInner sat">
@@ -127,7 +136,12 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, option: false, plan: plans['act']})
+									this.nextStep({
+										step: 1,
+										loc: false,
+										option: false,
+										plan: plans['act']
+									})
 									e.preventDefault()
 								}}>
 									<button className="planInner act">
@@ -135,7 +149,12 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, option: false, plan: plans['combo']})
+									this.nextStep({
+										step: 1,
+										loc: false,
+										option: false,
+										plan: plans['combo']
+									})
 									e.preventDefault()
 								}}>
 									<button className="planInner combo">
