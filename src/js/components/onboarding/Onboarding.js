@@ -10,6 +10,9 @@ const PlnOptions = ({nextStep, plan}) => {
 						<div className="ctaColumn">
 							<span>You chose:</span><strong className="planTitle">{plan.title}</strong>
 						</div>
+						<div className="ctaColumn">
+							<span>Now, choose the subscription length you want:</span>
+						</div>
 						{plan.options.map((opt) => {
 							return (
 								<div className="stOnboardingOption">
