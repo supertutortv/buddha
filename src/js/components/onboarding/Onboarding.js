@@ -42,7 +42,7 @@ export default class Onboarding extends React.Component{
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: 'sat'})
+									this.nextStep({plan: plans['sat']})
 									e.preventDefault()
 								}}>
 									<button className="planInner sat">
@@ -50,7 +50,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: 'act'})
+									this.nextStep({plan: plans['act']})
 									e.preventDefault()
 								}}>
 									<button className="planInner act">
@@ -58,7 +58,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: 'combo'})
+									this.nextStep({plan: plans['combo']})
 									e.preventDefault()
 								}}>
 									<button className="planInner combo">
