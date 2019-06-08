@@ -2,8 +2,7 @@ import React from 'react'
 import TextureImg from './texture'
 
 const PlnOptions = (...props) => {
-	console.log(props)
-
+	//console.log(props)
 	return null
 }
 
@@ -45,6 +44,8 @@ export default class Onboarding extends React.Component{
 
 		let plans = _st.plans
 
+		console.log(this.state)
+
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
 				<section id="step0" className="step">
@@ -84,8 +85,8 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
-				{this.state.plan !== 'undefined' ? <PlnOptions {...this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option === false ? null : null}
+				{this.state.plan ? <PlnOptions nextStep={this.nextStep} /> : null}
+				{this.state.option ? null : null}
 			</main>
         )
     }
