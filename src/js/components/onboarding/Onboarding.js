@@ -2,13 +2,21 @@ import React from 'react'
 import TextureImg from './texture'
 
 const PlnOptions = ({nextStep, plan}) => {
-	console.log(plan.options)
 	return (
 		<section id="step1" className="step">
 			<div className="stStepContent">
 				<div>
 					<div className="stOnboardingOptions">
-						<span>You chose: </span><strong className="planTitle">{plan.title}</strong>
+						<div className="ctaColumn">
+							<span>You chose: </span><strong className="planTitle">{plan.title}</strong>
+						</div>
+						{plan.options.map((opt) => {
+							return (
+								<div className="stOnboardingOption">
+									<button>{opt.length+' months - $'+(opt.price/100).toFixed(0)}</button>
+								</div>
+							)
+						})}
 					</div>
 				</div>
 			</div>

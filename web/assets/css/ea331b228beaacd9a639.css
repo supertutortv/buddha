@@ -1206,10 +1206,6 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
-body.onboarding st-app .stOnboardingWindow #step1 {
-  padding-top: 2em;
-}
-
 body.onboarding st-app .stOnboardingWindow #step1 strong {
   text-transform: uppercase;
   font-weight: 800;
@@ -1231,36 +1227,41 @@ body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
   transform: rotateZ(180deg);
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent {
+body.onboarding st-app .stOnboardingWindow .stStepContent {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent > div {
+body.onboarding st-app .stOnboardingWindow .stStepContent > div {
   width: 98%;
   max-width: 700px;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent h3 {
+body.onboarding st-app .stOnboardingWindow .stStepContent h3 {
   text-align: center;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .ctaColumn {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .ctaColumn,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .ctaColumn {
   flex: 1 1 100%;
   display: flex;
   justify-content: center;
   padding: 1em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption {
   position: relative;
   flex: 1;
   border-radius: 0.25em;
@@ -1268,18 +1269,27 @@ body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPl
   padding: 1em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner {
   width: 100%;
   color: white;
   background-color: rgba(16, 159, 218, 0.8);
   transition: all 100ms ease-in-out;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner:hover {
   background-color: #109fda;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner span {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner span {
   font-size: .75rem;
   font-weight: 600;
   display: block;
@@ -1287,11 +1297,17 @@ body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPl
   text-transform: uppercase;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo {
   background-color: rgba(255, 0, 0, 0.8);
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo:hover {
   background-color: red;
 }
 
