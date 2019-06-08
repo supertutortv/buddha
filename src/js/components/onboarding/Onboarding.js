@@ -52,7 +52,7 @@ const Shipping = ({nextStep}) => {
 
 const Finalize = () => {
 	return (
-		<section id="step2" className="step">
+		<section id="step3" className="step">
 			<div className="stStepContent">
 				<div>yada yada</div>
 			</div>
