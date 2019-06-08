@@ -1218,7 +1218,6 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner {
   height: 300px;
-  margin-bottom: -125px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
