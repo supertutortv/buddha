@@ -96,7 +96,9 @@ export default class Onboarding extends React.Component{
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? null : null}
 				{() => {
-					document.getElementById("step"+this.state.step).scrollIntoView({
+					let el = document.getElementById("step"+this.state.step)
+					console.log(el)
+					el.scrollIntoView({
 						behavior: 'smooth'
 					})
 				}}
