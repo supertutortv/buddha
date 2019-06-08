@@ -72,6 +72,14 @@ export default class Onboarding extends React.Component{
 		_st.bodyClass = 'onboarding'
 	}
 
+	componentDidUpdate(prevProps,prevState) {
+		let el = document.getElementById("step"+this.state.step)
+
+		if (el !== null) el.scrollIntoView({
+			behavior: 'smooth'
+		})
+	}
+
 	nextStep(data={}) {
 		this.setState(Object.assign({},data))
 	}
@@ -81,12 +89,6 @@ export default class Onboarding extends React.Component{
 		if (!init) return null
 
 		let plans = _st.plans
-
-		let el = document.getElementById("step"+this.state.step)
-
-		if (el !== null) el.scrollIntoView({
-			behavior: 'smooth'
-		})
 
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
