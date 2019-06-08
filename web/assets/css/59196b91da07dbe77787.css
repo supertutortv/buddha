@@ -1217,15 +1217,15 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner {
-  height: 350px;
-  margin-bottom: -200px;
+  height: 300px;
+  margin-bottom: -125px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
   opacity: .25;
-  height: 100%;
+  height: auto;
   width: 100%;
-  transform: rotateZ(180deg);
+  transform: rotateZ(0deg);
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent {
