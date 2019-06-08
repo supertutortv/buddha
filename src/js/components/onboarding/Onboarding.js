@@ -95,6 +95,11 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? null : null}
+				{() => {
+					document.getElementById("step"+this.state.step).scrollIntoView({
+						behavior: 'smooth'
+					})
+				}}
 			</main>
         )
     }

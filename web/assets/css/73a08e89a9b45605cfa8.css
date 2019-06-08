@@ -243,7 +243,7 @@ body {
   background-size: 16.66%;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
   height: 100%;
 }
 
@@ -1188,6 +1188,10 @@ body.main st-app .stAppStage .stAppStageInner img {
   body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap:nth-of-type(odd):not(:last-of-type) {
     padding-right: 0;
   }
+}
+
+body.onboarding {
+  overflow: auto;
 }
 
 body.onboarding st-app .stOnboardingWindow {
