@@ -56,7 +56,7 @@ export default class Onboarding extends React.Component{
 
 		let el = document.getElementById("step"+this.state.step)
 		console.log(el)
-		el.scrollIntoView({
+		if (el !== null) el.scrollIntoView({
 			behavior: 'smooth'
 		})
 
