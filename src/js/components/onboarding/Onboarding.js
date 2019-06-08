@@ -63,6 +63,11 @@ export default class Onboarding extends React.Component{
 										<span>ACT</span>
 									</button>
 								</div>
+								<div className="stOnboardingPlan" data-value="combo" onClick={null}>
+									<button className="planInner combo">
+										<span>Both</span>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
