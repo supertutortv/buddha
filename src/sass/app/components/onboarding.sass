@@ -23,49 +23,6 @@ body.onboarding
 					& > div
 						width: 98%
 						max-width: 700px
-
-					h3
-						text-align: center
-
-					.stOnboardingPlans
-						display: flex
-						flex-wrap: wrap
-						margin-top: $huge
-
-						.ctaColumn
-							flex: 1 1 100%
-							display: flex
-							justify-content: center
-							padding: 1em
-
-						.stOnboardingPlan
-							position: relative
-							flex: 1
-							border-radius: $ittybitty
-							width: 320px
-							padding: 1em
-
-							.planInner
-								width: 100%
-								color: white()
-								background-color: azure(.8)
-								transition: all 100ms ease-in-out
-								
-								&:hover
-									background-color: azure()
-
-								span
-									font-size: .75rem
-									font-weight: 600
-									display: block
-									text-align: center
-									text-transform: uppercase
-
-								&.combo
-									background-color: rgba(255, 0, 0, .8)
-
-									&:hover
-										background-color: rgba(255, 0, 0, 1)
 			#step0
 				display: block
 
@@ -78,10 +35,51 @@ body.onboarding
 						height: 100%
 						width: 100%
 						transform: rotateZ(180deg)
-						
+
+				h3
+					text-align: center
+
+				.stOnboardingPlans
+					display: flex
+					flex-wrap: wrap
+					margin-top: $huge
+
+					.ctaColumn
+						flex: 1 1 100%
+						display: flex
+						justify-content: center
+						padding: 1em
+
+					.stOnboardingPlan
+						position: relative
+						flex: 1
+						border-radius: $ittybitty
+						width: 320px
+						padding: 1em
+
+						.planInner
+							width: 100%
+							color: white()
+							background-color: azure(.8)
+							transition: all 100ms ease-in-out
+							
+							&:hover
+								background-color: azure()
+
+							span
+								font-size: .75rem
+								font-weight: 600
+								display: block
+								text-align: center
+								text-transform: uppercase
+
+							&.combo
+								background-color: rgba(255, 0, 0, .8)
+
+								&:hover
+									background-color: rgba(255, 0, 0, 1)
+
 			#step1
 				padding: $huge
 
 				.stOnboardingOptions
-					width: 98%
-					max-width: 700px
