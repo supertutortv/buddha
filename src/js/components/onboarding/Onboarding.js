@@ -14,34 +14,22 @@ export default class Onboarding extends React.Component{
 			...saved
         }
 
-        this.setActive = this.setActive.bind(this)
-        this.setOption = this.setOption.bind(this)
+        this.nextStep = this.nextStep.bind(this)
 	}
 	
 	componentDidMount() {
 		_st.bodyClass = 'onboarding'
 	}
 
-    setActive(e) {
-        e.preventDefault()
-        this.setState({
-            active: e.target.value,
-            option: false
-        })
-    }
-
-    setOption(e,op) {
-        e.preventDefault()
-        this.setState({
-            option: op
-        })
-    }
+	nextStep(data={}) {
+		this.setState(state => Object.assign({step: state.step++},data))
+	}
 
     render() {
         let plans = _st.plans,
-			{ಠ_ಠ,children} = this.props,
+			{ಠ_ಠ} = this.props,
 			{firstname} = this.state
-			
+			console.log(this.state)
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
 				<section id="step1" className="step">
@@ -53,17 +41,26 @@ export default class Onboarding extends React.Component{
 							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
-								<div className="stOnboardingPlan" data-value="sat" onClick={null}>
+								<div className="stOnboardingPlan" onClick={(e) => {
+									this.nextStep({plan: 'sat'})
+									e.preventDefault()
+								}}>
 									<button className="planInner sat">
 										<span>SAT</span>
 									</button>
 								</div>
-								<div className="stOnboardingPlan" data-value="act" onClick={null}>
+								<div className="stOnboardingPlan" onClick={(e) => {
+									this.nextStep({plan: 'act'})
+									e.preventDefault()
+								}}>
 									<button className="planInner act">
 										<span>ACT</span>
 									</button>
 								</div>
-								<div className="stOnboardingPlan" data-value="combo" onClick={null}>
+								<div className="stOnboardingPlan" onClick={(e) => {
+									this.nextStep({plan: 'combo'})
+									e.preventDefault()
+								}}>
 									<button className="planInner combo">
 										<span>Both</span>
 									</button>
