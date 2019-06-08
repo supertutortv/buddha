@@ -1253,14 +1253,14 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   flex: 1;
   border-radius: 0.25em;
   width: 320px;
-  padding: 1.5em;
-  transition: all 100ms ease-in-out;
+  padding: 1em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner {
   width: 100%;
   color: white;
   background-color: rgba(16, 159, 218, 0.8);
+  transition: all 100ms ease-in-out;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover {
@@ -1271,7 +1271,6 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   font-size: .75rem;
   font-weight: 600;
   display: block;
-  margin-bottom: .5em;
   text-align: center;
   text-transform: uppercase;
 }
