@@ -39,15 +39,20 @@ const PlnOptions = ({nextStep, plan}) => {
 	)
 }
 
-const Shipping = ({nextStep}) => {
+const Shipping = ({nextStep,ship}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
 				<div>
 					<label for="locSelect">Select your country</label><br/>
 					<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
-						nextStep({step: 3, loc: e.target.value})
+						let val = e.target.value
+						if (val = 'US')
+							nextStep({shipping: true})
+						else
+							nextStep({step: 3, loc: e.target.value})
 					}} required />
+					{ship ? 'shipping address' : null}
 				</div>
 			</div>
 		</section>
@@ -75,6 +80,7 @@ export default class Onboarding extends React.Component{
 			step: 0,
 			option: false,
 			loc: false,
+			shipping: false,
 			...saved
         }
 
@@ -166,7 +172,7 @@ export default class Onboarding extends React.Component{
 					</div>
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option ? <Shipping nextStep={this.nextStep} /> : null}
+				{this.state.option ? <Shipping ship={this.state.shipping} nextStep={this.nextStep} /> : null}
 				{this.state.loc ? <Finalize /> : null}
 			</main>
         )
