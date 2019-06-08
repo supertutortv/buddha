@@ -18,7 +18,7 @@ export default class Onboarding extends React.Component{
 	}
 	
 	componentDidMount() {
-		console.log(this.props.plan)
+		console.log(this.state.plan)
 		_st.bodyClass = 'onboarding'
 	}
 
