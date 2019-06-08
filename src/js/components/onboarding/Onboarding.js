@@ -8,8 +8,8 @@ export default class Onboarding extends React.Component{
 		let saved = JSON.parse(localStorage.getItem('_stT-signup') || {})
 
         this.state = {
+			init: false,
 			step: 0,
-            active: props.plan || '',
 			option: false,
 			...saved
         }
@@ -18,6 +18,7 @@ export default class Onboarding extends React.Component{
 	}
 	
 	componentDidMount() {
+		console.log(this.props.plan)
 		_st.bodyClass = 'onboarding'
 	}
 
@@ -26,10 +27,11 @@ export default class Onboarding extends React.Component{
 	}
 
     render() {
-        let plans = _st.plans,
-			{ಠ_ಠ} = this.props,
-			{firstname} = this.state
-			console.log(this.state)
+		let {init, firstname} = this.state
+		if (!init) return null
+
+		let plans = _st.plans
+		console.log(this.state)
 
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
@@ -43,7 +45,7 @@ export default class Onboarding extends React.Component{
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, plan: plans['sat']})
+									this.nextStep({step: 1, option: false, plan: plans['sat']})
 									e.preventDefault()
 								}}>
 									<button className="planInner sat">
@@ -51,7 +53,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, plan: plans['act']})
+									this.nextStep({step: 1, option: false, plan: plans['act']})
 									e.preventDefault()
 								}}>
 									<button className="planInner act">
@@ -59,7 +61,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({step: 1, plan: plans['combo']})
+									this.nextStep({step: 1, option: false, plan: plans['combo']})
 									e.preventDefault()
 								}}>
 									<button className="planInner combo">
@@ -70,6 +72,8 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
+				{this.state.plan !== 'undefined' ? '' : null}
+				{this.state.option}
 			</main>
         )
     }
