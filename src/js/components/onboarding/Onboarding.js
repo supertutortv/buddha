@@ -54,6 +54,12 @@ export default class Onboarding extends React.Component{
 
 		let plans = _st.plans
 
+		let el = document.getElementById("step"+this.state.step)
+		console.log(el)
+		el.scrollIntoView({
+			behavior: 'smooth'
+		})
+
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
 				<section id="step0" className="step">
@@ -95,13 +101,6 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? null : null}
-				{() => {
-					let el = document.getElementById("step"+this.state.step)
-					console.log(el)
-					el.scrollIntoView({
-						behavior: 'smooth'
-					})
-				}}
 			</main>
         )
     }
