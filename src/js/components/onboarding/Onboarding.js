@@ -39,17 +39,25 @@ const Shipping = ({nextStep}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
-				<label for="locSelect">Select your country</label><br/>
-				<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
-					nextStep({step: 3, loc: e.target.value})
-				}} required />
+				<div>
+					<label for="locSelect">Select your country</label><br/>
+					<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
+						nextStep({step: 3, loc: e.target.value})
+					}} required />
+				</div>
 			</div>
 		</section>
 	)
 }
 
 const Finalize = () => {
-
+	return (
+		<section id="step2" className="step">
+			<div className="stStepContent">
+				<div>yada yada</div>
+			</div>
+		</section>
+	)
 }
 
 export default class Onboarding extends React.Component{
