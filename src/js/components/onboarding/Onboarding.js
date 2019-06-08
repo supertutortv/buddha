@@ -3,6 +3,8 @@ import TextureImg from './texture'
 
 const PlnOptions = (...props) => {
 	console.log(props)
+
+	return null
 }
 
 export default class Onboarding extends React.Component{
