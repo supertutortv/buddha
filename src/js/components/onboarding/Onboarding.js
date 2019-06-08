@@ -22,7 +22,7 @@ export default class Onboarding extends React.Component{
 	}
 
 	nextStep(data={}) {
-		this.setState(state => Object.assign(data,{step: ++state.step}))
+		this.setState(Object.assign({},data))
 	}
 
     render() {
@@ -30,9 +30,10 @@ export default class Onboarding extends React.Component{
 			{ಠ_ಠ} = this.props,
 			{firstname} = this.state
 			console.log(this.state)
+
         return (
 			<main id={'__'+_st.randKey()} className="stOnboardingWindow">
-				<section id="step1" className="step">
+				<section id="step0" className="step">
 					<div className="stOnboardBanner">
 						<TextureImg/>
 					</div>
@@ -42,7 +43,7 @@ export default class Onboarding extends React.Component{
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: plans['sat']})
+									this.nextStep({step: 1, plan: plans['sat']})
 									e.preventDefault()
 								}}>
 									<button className="planInner sat">
@@ -50,7 +51,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: plans['act']})
+									this.nextStep({step: 1, plan: plans['act']})
 									e.preventDefault()
 								}}>
 									<button className="planInner act">
@@ -58,7 +59,7 @@ export default class Onboarding extends React.Component{
 									</button>
 								</div>
 								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({plan: plans['combo']})
+									this.nextStep({step: 1, plan: plans['combo']})
 									e.preventDefault()
 								}}>
 									<button className="planInner combo">
