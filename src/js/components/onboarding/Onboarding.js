@@ -22,7 +22,7 @@ export default class Onboarding extends React.Component{
 	}
 
 	nextStep(data={}) {
-		this.setState(state => Object.assign({step: state.step++},data))
+		this.setState(state => Object.assign(data,{step: ++state.step}))
 	}
 
     render() {
