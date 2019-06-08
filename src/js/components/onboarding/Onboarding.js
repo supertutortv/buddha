@@ -48,6 +48,10 @@ const Shipping = ({nextStep}) => {
 	)
 }
 
+const Finalize = () => {
+
+}
+
 export default class Onboarding extends React.Component{
     constructor(props) {
 		super(props)
@@ -136,7 +140,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping nextStep={this.nextStep} /> : null}
-				{this.state.loc ? '' : null}
+				{this.state.loc ? <Finalize /> : null}
 			</main>
         )
     }
