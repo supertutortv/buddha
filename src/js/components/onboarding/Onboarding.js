@@ -1,5 +1,6 @@
 import React from 'react'
 import TextureImg from './texture'
+import CountryDD from '../checkout/pieces/CountryDD'
 
 const PlnOptions = ({nextStep, plan}) => {
 	return (
@@ -38,7 +39,8 @@ const Shipping = ({nextStep}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
-				<div>Shipping</div>
+				<label for="countryDD">Select your country</label>
+				<CountryDD name="countryDD" onChange={(e) => console.log(e.target.value)} required />
 			</div>
 		</section>
 	)
