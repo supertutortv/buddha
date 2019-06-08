@@ -1,7 +1,7 @@
 import React from 'react'
 import TextureImg from './texture'
 
-const Options = (...props) => {
+const PlnOptions = (...props) => {
 	console.log(props)
 }
 
@@ -82,8 +82,8 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
-				{this.state.plan !== 'undefined' ? <Options {...this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option === false ? null : ''}
+				{this.state.plan !== 'undefined' ? <PlnOptions {...this.state.plan} nextStep={this.nextStep} /> : null}
+				{this.state.option === false ? null : null}
 			</main>
         )
     }
