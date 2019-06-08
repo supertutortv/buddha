@@ -8,7 +8,7 @@ const PlnOptions = ({nextStep, plan}) => {
 			<div className="stStepContent">
 				<div>
 					<div className="stOnboardingOptions">
-						You chose: {plan.title}
+						<span>You chose: </span><strong className="planTitle">{plan.title}</strong>
 					</div>
 				</div>
 			</div>
@@ -55,7 +55,7 @@ export default class Onboarding extends React.Component{
 		let plans = _st.plans
 
 		let el = document.getElementById("step"+this.state.step)
-		console.log(el)
+
 		if (el !== null) el.scrollIntoView({
 			behavior: 'smooth'
 		})

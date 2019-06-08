@@ -9,23 +9,10 @@ body.onboarding
 			+animFadeIn
 
 			.step
-				height: 100%
 				display: flex
 				justify-content: center
 				align-items: center
-			
-			#step0
-				display: block
-
-				.stOnboardBanner
-					height: 350px
-					margin-bottom: -200px
-
-					img
-						opacity: .25
-						height: 100%
-						width: 100%
-						transform: rotateZ(180deg)
+				+animFadeIn
 
 				.stStepContent
 					position: relative
@@ -79,3 +66,22 @@ body.onboarding
 
 									&:hover
 										background-color: rgba(255, 0, 0, 1)
+			#step0
+				display: block
+
+				.stOnboardBanner
+					height: 350px
+					margin-bottom: -400px
+
+					img
+						opacity: .25
+						height: 100%
+						width: 100%
+						transform: rotateZ(180deg)
+						
+			#step1
+				padding: $huge
+
+				.stOnboardingOptions
+					width: 98%
+					max-width: 700px

@@ -1201,10 +1201,74 @@ body.onboarding st-app .stOnboardingWindow {
 }
 
 body.onboarding st-app .stOnboardingWindow .step {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent > div {
+  width: 98%;
+  max-width: 700px;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent h3 {
+  text-align: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .ctaColumn {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan {
+  position: relative;
+  flex: 1;
+  border-radius: 0.25em;
+  width: 320px;
+  padding: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner {
+  width: 100%;
+  color: white;
+  background-color: rgba(16, 159, 218, 0.8);
+  transition: all 100ms ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover {
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner span {
+  font-size: .75rem;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+body.onboarding st-app .stOnboardingWindow .step .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover {
+  background-color: red;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 {
@@ -1213,7 +1277,7 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner {
   height: 350px;
-  margin-bottom: -200px;
+  margin-bottom: -400px;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
@@ -1223,68 +1287,13 @@ body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
   transform: rotateZ(180deg);
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body.onboarding st-app .stOnboardingWindow #step1 {
+  padding: 2em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent > div {
+body.onboarding st-app .stOnboardingWindow #step1 .stOnboardingOptions {
   width: 98%;
   max-width: 700px;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent h3 {
-  text-align: center;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2em;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .ctaColumn {
-  flex: 1 1 100%;
-  display: flex;
-  justify-content: center;
-  padding: 1em;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan {
-  position: relative;
-  flex: 1;
-  border-radius: 0.25em;
-  width: 320px;
-  padding: 1em;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner {
-  width: 100%;
-  color: white;
-  background-color: rgba(16, 159, 218, 0.8);
-  transition: all 100ms ease-in-out;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover {
-  background-color: #109fda;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner span {
-  font-size: .75rem;
-  font-weight: 600;
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo {
-  background-color: rgba(255, 0, 0, 0.8);
-}
-
-body.onboarding st-app .stOnboardingWindow #step0 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover {
-  background-color: red;
 }
 
 .stSmallLoader {
