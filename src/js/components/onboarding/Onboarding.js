@@ -40,7 +40,9 @@ const Shipping = ({nextStep}) => {
 		<section id="step2" className="step">
 			<div className="stStepContent">
 				<label for="locSelect">Select your country</label><br/>
-				<CountryDD className="locSelect" name="locSelect" onChange={(e) => console.log(e.target.value)} required />
+				<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
+					nextStep({step: 3, loc: e.target.value})
+				}} required />
 			</div>
 		</section>
 	)
