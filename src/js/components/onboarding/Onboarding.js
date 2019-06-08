@@ -13,7 +13,7 @@ const PlnOptions = ({nextStep, plan}) => {
 						{plan.options.map((opt) => {
 							return (
 								<div className="stOnboardingOption">
-									<button>{opt.length+' months - $'+(opt.price/100).toFixed(0)}</button>
+									<button className="optionInner">{opt.length+' months - $'+(opt.price/100).toFixed(0)}</button>
 								</div>
 							)
 						})}
