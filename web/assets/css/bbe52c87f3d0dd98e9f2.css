@@ -1233,7 +1233,7 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stStepContent > div {
-  margin-top: 5%;
+  margin-top: 50%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner {
@@ -1257,7 +1257,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent {
 body.onboarding st-app .stOnboardingWindow .stStepContent > div {
   width: 98%;
   max-width: 700px;
-  margin-top: -5%;
+  margin-top: -50%;
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent h3 {
