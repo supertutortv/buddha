@@ -1218,7 +1218,7 @@ body.onboarding st-app .stOnboardingWindow #step2 label {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 select {
-  border-radius: 0.5em;
+  border-radius: 0.25em;
   cursor: pointer;
   padding: 1em;
 }

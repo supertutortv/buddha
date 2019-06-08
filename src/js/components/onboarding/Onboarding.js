@@ -44,7 +44,7 @@ const Shipping = ({nextStep,ship}) => {
 		<section id="step2" className="step">
 			<div className="stStepContent">
 				<div>
-					<label for="locSelect">Select your country</label><br/>
+					<label for="locSelect">Select your country</label>
 					<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
 						let val = e.target.value
 						if (val === 'US')
