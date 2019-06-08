@@ -1229,6 +1229,7 @@ body.onboarding st-app .stOnboardingWindow #step1 strong {
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 {
+  margin-top: 5%;
   display: block;
 }
 
