@@ -64,26 +64,19 @@ body.onboarding
 							position: relative
 							flex: 1
 							border-radius: $ittybitty
-							min-width: 300px
-							background-color: white
+							width: 320px
+							background-color: azure(.8)
 							cursor: pointer
 							padding-top: 30%
-							box-shadow: inset 0px 0px 2px 10px black(.25)
 							transition: all 100ms ease-in-out
 
 							&:hover
-								box-shadow: inset 0px 0px 6px 10px black(.25)
+								background-color: azure()
 
 							.planInner
-								position: absolute
-								top: 0
-								bottom: 0
 								width: 100%
-								display: flex
-								justify-content: center
-								align-items: center
-								flex-flow: column nowrap
-								padding: 1em
+								padding: 1.5em
+								color: white()
 
 								h2
 									font-size: 1rem
@@ -92,13 +85,3 @@ body.onboarding
 									margin-bottom: .5em
 									text-align: center
 									text-transform: uppercase
-
-								&.sat
-
-									i
-										color: azure()
-
-								&.act
-
-									i
-										color: goldenrod()
