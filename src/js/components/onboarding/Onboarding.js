@@ -16,7 +16,10 @@ const PlnOptions = ({nextStep, plan}) => {
 						{plan.options.map((opt) => {
 							return (
 								<div className="stOnboardingOption">
-									<button className="optionInner">
+									<button className="optionInner" onClick={(e) => {
+										e.preventDefault()
+										nextStep({step: 2, option: opt})
+									}}>
 										<span>
 											{opt.length+' months - $'+(opt.price/100).toFixed(0)}
 										</span>
@@ -26,6 +29,16 @@ const PlnOptions = ({nextStep, plan}) => {
 						})}
 					</div>
 				</div>
+			</div>
+		</section>
+	)
+}
+
+const Shipping = ({nextStep}) => {
+	return (
+		<section id="step2" className="step">
+			<div className="stStepContent">
+				<div>Shipping</div>
 			</div>
 		</section>
 	)
@@ -115,7 +128,7 @@ export default class Onboarding extends React.Component{
 					</div>
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option ? null : null}
+				{this.state.option ? <Shipping nextStep={this.nextStep} /> : null}
 			</main>
         )
     }
