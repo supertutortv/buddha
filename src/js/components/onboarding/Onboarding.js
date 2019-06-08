@@ -39,8 +39,8 @@ const Shipping = ({nextStep}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
-				<label for="countryDD">Select your country</label>
-				<CountryDD name="countryDD" onChange={(e) => console.log(e.target.value)} required />
+				<label for="locSelect">Select your country</label><br/>
+				<CountryDD className="locSelect" name="locSelect" onChange={(e) => console.log(e.target.value)} required />
 			</div>
 		</section>
 	)
@@ -56,6 +56,7 @@ export default class Onboarding extends React.Component{
 			init: false,
 			step: 0,
 			option: false,
+			loc: false,
 			...saved
         }
 
@@ -133,6 +134,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping nextStep={this.nextStep} /> : null}
+				{this.state.loc ? '' : null}
 			</main>
         )
     }
