@@ -1,7 +1,9 @@
 body.onboarding
 	overflow: auto
+	background-color: white()
 
 	st-app
+		background-color: white()
 
 		.stOnboardingWindow
 			height: 100%
@@ -13,6 +15,16 @@ body.onboarding
 				display: flex
 				justify-content: center
 				align-items: center
+
+			#step2
+
+				label
+					display: block
+					margin-bottom: 1em
+				select
+					border-radius: $tiny
+					cursor: pointer
+					padding: 1em
 			
 			#step1
 
@@ -41,6 +53,7 @@ body.onboarding
 				& > div
 					width: 98%
 					max-width: 700px
+					margin-top: -5%
 
 				h3
 					text-align: center
@@ -48,7 +61,6 @@ body.onboarding
 				.stOnboardingPlans, .stOnboardingOptions
 					display: flex
 					flex-wrap: wrap
-					margin-top: $huge
 
 					.ctaColumn
 						flex: 1 1 100%

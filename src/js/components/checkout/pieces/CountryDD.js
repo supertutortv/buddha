@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const CountryDD = (props) => {
     return (
         <select {...props}>
-            <option value selected>Country...</option>
+            <option disabled selected>Country...</option>
             <option value="US">United States</option>
             <option value="AF">Afghanistan</option>
             <option value="AX">Åland Islands</option>
