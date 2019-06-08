@@ -47,7 +47,7 @@ const Shipping = ({nextStep,ship}) => {
 					<label for="locSelect">Select your country</label><br/>
 					<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
 						let val = e.target.value
-						if (val = 'US')
+						if (val === 'US')
 							nextStep({shipping: true})
 						else
 							nextStep({step: 3, loc: e.target.value, shipping: false})
