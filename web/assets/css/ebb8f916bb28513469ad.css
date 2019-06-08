@@ -1265,20 +1265,19 @@ body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPl
   flex: 1;
   border-radius: 0.25em;
   width: 320px;
-  background-color: rgba(16, 159, 218, 0.8);
+  padding: 1.5em;
   cursor: pointer;
-  padding-top: 30%;
   transition: all 100ms ease-in-out;
-}
-
-body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan:hover {
-  background-color: #109fda;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner {
   width: 100%;
-  padding: 1.5em;
   color: white;
+  background-color: rgba(16, 159, 218, 0.8);
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover {
+  background-color: #109fda;
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner h2 {
