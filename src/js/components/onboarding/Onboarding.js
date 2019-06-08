@@ -50,7 +50,7 @@ const Shipping = ({nextStep,ship}) => {
 						if (val = 'US')
 							nextStep({shipping: true})
 						else
-							nextStep({step: 3, loc: e.target.value})
+							nextStep({step: 3, loc: e.target.value, shipping: false})
 					}} required />
 					{ship ? 'shipping address' : null}
 				</div>
