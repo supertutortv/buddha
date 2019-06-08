@@ -85,7 +85,7 @@ export default class Dashboard extends React.Component {
                             {data =>
                                 <React.Fragment>
                                     <Header refreshData={this.props.refreshData} hist={this.props.history}/>
-                                    {!hasCourses ? <Onboarding plan={auth.plan} /> : 
+                                    {!hasCourses ? <Onboarding /> : 
                                         <React.Fragment>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
                                                 <main className="stDashboard stComponentFade">
