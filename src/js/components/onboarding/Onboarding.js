@@ -8,7 +8,7 @@ const PlnOptions = ({nextStep, plan}) => {
 				<div>
 					<div className="stOnboardingOptions">
 						<div className="ctaColumn">
-							<span>You chose: </span><strong className="planTitle">{plan.title}</strong>
+							<span>You chose:</span><strong className="planTitle">{plan.title}</strong>
 						</div>
 						{plan.options.map((opt) => {
 							return (
