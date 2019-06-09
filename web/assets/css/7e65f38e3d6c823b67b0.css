@@ -1349,7 +1349,7 @@ body.onboarding st-app .stOnboardingWindow #step2 select + i {
   font-size: 1rem;
   right: 0.75em;
   top: 50%;
-  tranform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 strong {
