@@ -1,6 +1,7 @@
 import React from 'react'
 import TextureImg from './texture'
 import CountryDD from '../checkout/pieces/CountryDD'
+import StateDD from '../checkout/pieces/StateDD'
 
 const PlnOptions = ({nextStep, plan}) => {
 	return (
@@ -73,8 +74,7 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="city">City</label>
 						</div>
 						<div className="stIfR99 onet right">
-							<input required aria-label="State" validation="text" className="validate state" type="text" name="state"/>
-							<label aria-hidden="true" for="state">State</label>
+							<StateDD aria-label="State" validation="text" className="validate state" name="state" required/>
 						</div>
 						<div className="stIfR99 onet right">
 							<input required aria-label="Postal Code" validation="text" className="validate zip" type="text" name="zip"/>
