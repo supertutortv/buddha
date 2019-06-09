@@ -33,6 +33,13 @@ body.onboarding
 
 							.reviewTable
 
+								h3
+									text-align: left
+
+									i
+										margin-left: 1em
+										color: green
+
 								& > div
 									display: flex
 									align-items: center
@@ -43,6 +50,9 @@ body.onboarding
 										padding-bottom: $ittybitty
 										font-weight: 600
 										border-bottom: 1px solid black()
+
+										& > div:not(:first-child)
+											font-weight: 600
 
 									&:last-of-type
 										padding-bottom: 0

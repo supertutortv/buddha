@@ -121,7 +121,7 @@ const Finalize = ({nextStep, ...state}) => {
 					<aside className="stConfirmCard">
 						<div className="stConfirmCardInner">
 							<div className="reviewTable">
-								<h3>Review Your Order</h3>
+								<h3>Review Your Order<i class="fas fa-check-circle"></i></h3>
 								<div>
 									<div>Item</div>
 									<div>Price</div>

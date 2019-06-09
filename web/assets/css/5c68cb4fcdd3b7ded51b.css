@@ -1225,6 +1225,15 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
+  text-align: left;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 i {
+  margin-left: 1em;
+  color: green;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div {
   display: flex;
   align-items: center;
@@ -1236,6 +1245,10 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   padding-bottom: 0.25em;
   font-weight: 600;
   border-bottom: 1px solid black;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type > div:not(:first-child) {
+  font-weight: 600;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type {
