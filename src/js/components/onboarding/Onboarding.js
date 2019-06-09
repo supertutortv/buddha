@@ -52,7 +52,7 @@ const Shipping = ({nextStep,ship}) => {
 							if (val === 'US')
 								nextStep({step: 2, loc: false, shipping: true})
 							else
-								nextStep({step: 3, loc: e.target.value, shipping: false})
+								nextStep({step: 3, loc: val, shipping: false})
 						}} required ><i class="fas fa-caret-down"></i></CountryDD>
 					</div>
 					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
@@ -60,10 +60,9 @@ const Shipping = ({nextStep,ship}) => {
 						let obj = {
 							country: 'US'
 						},
-						form = e.target,
-						vals = form.querySelectorAll('input,select')
+						vals = e.target.querySelectorAll('input,select')
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
-						nextStep({step: 3, loc: e.target.value, shipping: obj})
+						nextStep({step: 3, loc: true, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
