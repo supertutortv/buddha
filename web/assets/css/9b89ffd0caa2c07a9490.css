@@ -1271,36 +1271,36 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   border: 1px solid rgba(16, 159, 218, 0.5);
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid,
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:valid {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea.validate:valid {
   border: 1px solid green;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus + label,
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:valid + label {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea.validate:valid + label {
   font-size: calc(1rem - 14px);
 }
 
+form.big body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
+  background-color: white;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
-  max-width: 25%;
+  max-width: 24%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
-  max-width: 50%;
+  max-width: 49%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
-  max-width: 75%;
-}
-
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.left {
-  margin-right: 0.5em;
+  max-width: 74%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
-  margin-left: 0.5em;
+  margin-left: 2%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
@@ -1980,16 +1980,20 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
   border: 1px solid rgba(16, 159, 218, 0.5);
 }
 
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid,
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid {
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea.validate:valid {
   border: 1px solid green;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):valid + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea.validate:valid + label {
   font-size: calc(1rem - 14px);
+}
+
+form.big body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
+  background-color: white;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons {

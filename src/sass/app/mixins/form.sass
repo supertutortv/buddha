@@ -73,10 +73,13 @@
             &:focus
                 border: 1px solid azure(.5)
             
-            &:valid
+            &.validate:valid
                 border: 1px solid green
 
-            &:focus, &:valid
+            &:focus, &.validate:valid
 
                 & + label
                     font-size: $tinytext
+
+    form.big &
+        background-color: white()
