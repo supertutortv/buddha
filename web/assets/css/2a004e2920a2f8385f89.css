@@ -1319,8 +1319,8 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.select:after {
-  font-family: "Font Awesome 5 Free";
-  content: "\F0AB";
+  font-family: 'Font Awesome 5 Free';
+  content: '\F0AB';
   display: inline-block;
 }
 
