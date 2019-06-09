@@ -1215,6 +1215,7 @@ body.onboarding st-app .stOnboardingWindow .step {
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
   padding: 0 !important;
   margin-top: 1em;
+  width: 100%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
@@ -1223,6 +1224,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
   display: inline-block;
+  width: 100%;
   position: relative;
   margin-bottom: 1em;
 }
@@ -1293,23 +1295,23 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
-  max-width: 24%;
+  width: 24%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.onet {
-  max-width: 32%;
+  width: 32%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
-  max-width: 49%;
+  width: 49%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twot {
-  max-width: 64%;
+  width: 64%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
-  max-width: 74%;
+  width: 74%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
@@ -1365,7 +1367,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent {
 
 body.onboarding st-app .stOnboardingWindow .stStepContent > div {
   width: 95%;
-  max-width: 800px;
+  max-width: 700px;
   margin-top: -50%;
 }
 
