@@ -104,7 +104,7 @@ const Finalize = ({nextStep, ...state}) => {
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
-				<div>yada yada</div>
+				<div>The End.</div>
 			</div>
 		</section>
 	)
