@@ -548,10 +548,14 @@ body.checkout .stCheckoutWindow {
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner {
-  width: 100%;
+  border-radius: 0.25em;
+  width: 98%;
+  max-width: 400px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   max-width: 350px;
   padding: 2em;
-  background-color: white;
 }
 
 .stDashboard {
