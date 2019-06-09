@@ -1218,6 +1218,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
+  display: inline-block;
   position: relative;
   margin-bottom: 1em;
 }
@@ -1274,8 +1275,16 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   font-size: calc(1rem - 14px);
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.half {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
+  max-width: 25%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
   max-width: 50%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
+  max-width: 75%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 label {
