@@ -58,14 +58,12 @@ const Shipping = ({nextStep,ship}) => {
 					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
 						e.preventDefault()
 						let obj = {
-							address: {
-								country: 'US'
-							}
+							country: 'US'
 						},
 						form = e.target,
 						vals = form.querySelectorAll('input,select')
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
-						console.log(obj)
+						nextStep({step: 3, loc: e.target.value, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
@@ -102,7 +100,8 @@ const Shipping = ({nextStep,ship}) => {
 	)
 }
 
-const Finalize = () => {
+const Finalize = ({nextStep, ...state}) => {
+	console.log(state)
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
@@ -196,7 +195,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping ship={this.state.shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize /> : null}
+				{this.state.loc ? <Finalize {...this.state} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }
