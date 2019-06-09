@@ -1322,6 +1322,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
   background-color: white;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state {
+  padding: 1em 0 0.25em 0.5em;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 label {
   display: block;
   margin-bottom: 1em;
