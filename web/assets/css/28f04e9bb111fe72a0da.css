@@ -1331,6 +1331,11 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state {
   font-size: 1rem;
   padding: 1em 0 0.25em 0.5em;
+  font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state option {
+  font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 label {
