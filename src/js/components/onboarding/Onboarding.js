@@ -53,11 +53,11 @@ const Shipping = ({nextStep,ship}) => {
 							nextStep({step: 3, loc: e.target.value, shipping: false})
 					}} required />
 					{!ship ? null : <form className="shippingForm">
-						<div className="stIfR99 twoq">
+						<div className="stIfR99 twoq right">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
 							<label aria-hidden="true" for="line1">Address Line 1</label>
 						</div>
-						<div className="stIfR99 twoq">
+						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 2" className="address" type="text" name="line2"/>
 							<label aria-hidden="true" for="line2">Address Line 2</label>
 						</div>

@@ -1213,6 +1213,7 @@ body.onboarding st-app .stOnboardingWindow .step {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
+  padding: 0;
   margin-top: 1em;
   padding: 0 1.5rem;
 }
@@ -1285,6 +1286,14 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
   max-width: 75%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.left {
+  margin-right: 0.5em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
+  margin-left: 0.5em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 label {
