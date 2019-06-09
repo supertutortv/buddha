@@ -1212,7 +1212,7 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .stepContent > div {
+body.onboarding st-app .stOnboardingWindow #step2 .stStepContent > div {
   margin-top: -20%;
 }
 
