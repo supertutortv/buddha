@@ -1,6 +1,7 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
 import methods from './checkout/methods'
+import LogoSVG from './LogoSVG'
 
 export default class Checkout extends React.Component {
     constructor(props) {
@@ -100,6 +101,9 @@ export default class Checkout extends React.Component {
                 <Elements>
                     <section className="stCheckoutWindow" onClick={(e) => this.props.closeCheckout()}>
                         <div className="stCheckoutInner" onClick={(e) => e.stopPropagation()}>
+                            <figure className="stCheckoutLogo">
+                                <LogoSVG/>
+                            </figure>
                             {children}
                         </div>
                     </section>

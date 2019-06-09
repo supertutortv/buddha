@@ -561,6 +561,14 @@ body.checkout .stCheckoutWindow .stCheckoutInner {
   border: 1px solid #109fda;
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo {
+  padding: 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo svg {
+  width: 100%;
+}
+
 .stDashboard {
   padding: 2em 0;
   font-size: calc(1rem - 7px);
