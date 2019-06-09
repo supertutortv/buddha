@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CountryDD = (props) => {
+const CountryDD = ({children, ...props}) => {
     return (
+        <React.Fragment>
         <select {...props}>
             <option disabled selected>Country...</option>
             <option value="US">United States</option>
@@ -250,6 +251,8 @@ const CountryDD = (props) => {
             <option value="ZM">Zambia</option>
             <option value="ZW">Zimbabwe</option>
         </select>
+        {children}
+        </React.Fragment>
     )
 }
 

@@ -67,9 +67,6 @@ body.onboarding
 							option
 								font-family: $font-stack
 
-							& + i
-								position: absolute
-
 				label
 					display: block
 					margin-bottom: 1em
@@ -79,6 +76,13 @@ body.onboarding
 					border-radius: .125em
 					cursor: pointer
 					padding: 1em
+
+					& + i
+						position: absolute
+						font-size: 1rem
+						right: $small
+						top: 50%
+						tranform: translate3d(0,-50%,0)
 			
 			#step1
 

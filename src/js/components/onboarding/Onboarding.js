@@ -52,7 +52,8 @@ const Shipping = ({nextStep,ship}) => {
 							nextStep({step: 2, loc: false, shipping: true})
 						else
 							nextStep({step: 3, loc: e.target.value, shipping: false})
-					}} required />
+					}} required ><i class="fas fa-caret-circle-down"></i></CountryDD>
+
 					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
 						e.preventDefault()
 						let obj = {

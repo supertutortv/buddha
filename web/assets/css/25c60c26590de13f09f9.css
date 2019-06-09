@@ -1332,10 +1332,6 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.
   font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state + i {
-  position: absolute;
-}
-
 body.onboarding st-app .stOnboardingWindow #step2 label {
   display: block;
   margin-bottom: 1em;
@@ -1346,6 +1342,14 @@ body.onboarding st-app .stOnboardingWindow #step2 select {
   border-radius: .125em;
   cursor: pointer;
   padding: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 select + i {
+  position: absolute;
+  font-size: 1rem;
+  right: 0.75em;
+  top: 50%;
+  tranform: translate3d(0, -50%, 0);
 }
 
 body.onboarding st-app .stOnboardingWindow #step1 strong {
