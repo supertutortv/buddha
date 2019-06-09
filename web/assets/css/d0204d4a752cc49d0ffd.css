@@ -1287,7 +1287,8 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   font-size: 1rem;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > input {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea {
   border: 1px solid rgba(16, 159, 218, 0.5);
 }
 
@@ -1317,6 +1318,7 @@ body.onboarding st-app .stOnboardingWindow #step2 label {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 select {
+  border: 1px solid rgba(16, 159, 218, 0.5);
   border-radius: 0.25em;
   cursor: pointer;
   padding: 1em;

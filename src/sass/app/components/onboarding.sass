@@ -33,7 +33,7 @@ body.onboarding
 							& > label
 								font-size: 1rem
 
-							& > input
+							input:not([type="checkbox"]), textarea
 								border: 1px solid azure(.5)
 
 						&.oneq
@@ -56,6 +56,7 @@ body.onboarding
 					margin-bottom: 1em
 
 				select
+					border: 1px solid azure(.5)
 					border-radius: $ittybitty
 					cursor: pointer
 					padding: 1em
