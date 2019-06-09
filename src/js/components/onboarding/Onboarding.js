@@ -61,6 +61,22 @@ const Shipping = ({nextStep,ship}) => {
 							<input aria-label="Address Line 2" className="address" type="text" name="line2"/>
 							<label aria-hidden="true" for="line2">Address Line 2</label>
 						</div>
+						<div className="stIfR99 onet">
+							<input required aria-label="City" validation="text" className="validate city" type="text" name="city"/>
+							<label aria-hidden="true" for="city">City</label>
+						</div>
+						<div className="stIfR99 onet right">
+							<input required aria-label="State" validation="text" className="validate state" type="text" name="state"/>
+							<label aria-hidden="true" for="state">State</label>
+						</div>
+						<div className="stIfR99 onet right">
+							<input required aria-label="Postal Code" validation="text" className="validate zip" type="text" name="zip"/>
+							<label aria-hidden="true" for="zip">Postal Code</label>
+						</div>
+						<div className="stIfR99">
+							<input required aria-label="Phone Number" className="validate phone" type="tel" name="phone"/>
+							<label aria-hidden="true" for="phone">Phone Number</label>
+						</div>
 					</form>}
 				</div>
 			</div>

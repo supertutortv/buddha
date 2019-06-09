@@ -1296,8 +1296,16 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
   max-width: 24%;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.onet {
+  max-width: 32%;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
   max-width: 49%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twot {
+  max-width: 64%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
