@@ -64,8 +64,8 @@ const Shipping = ({nextStep,ship}) => {
 						},
 						form = e.target,
 						vals = form.querySelectorAll('input,select')
-
-						console.log(vals)
+						for (let i = 0; i < vals.length; ++i) console.log(vals[i])
+						
 					}}>
 						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
