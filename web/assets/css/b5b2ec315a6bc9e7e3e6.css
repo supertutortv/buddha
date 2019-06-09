@@ -1428,6 +1428,7 @@ body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent {
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;

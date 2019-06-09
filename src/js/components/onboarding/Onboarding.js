@@ -105,7 +105,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, ...state}) => {
-	console.log(state.plan,state.option)
+	console.log(state)
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
