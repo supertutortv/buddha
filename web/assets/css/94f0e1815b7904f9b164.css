@@ -1400,18 +1400,28 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(16, 159, 218, 0.8);
+  color: rgba(16, 159, 218, 0.8);
+  background-color: white;
   transition: all 100ms ease-in-out;
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner:hover,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner:hover {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.active {
+  color: white;
   background-color: #109fda;
 }
 
@@ -1438,17 +1448,27 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo {
-  background-color: rgba(255, 0, 0, 0.8);
+  color: rgba(255, 0, 0, 0.8);
+  background-color: white;
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo:hover,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo:hover {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo.active {
+  color: white;
   background-color: red;
 }
 
