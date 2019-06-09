@@ -77,8 +77,9 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,submit: ಠ_ಠ} = this.props,
+        let {children,amt,action,submit: ಠ_ಠ} = this.props,
             {error, ...state} = this.state
+            disabled = {disabled: state.status === 'processing'}
 
         return(
             <StripeProvider stripe={state.stripe}>
@@ -89,29 +90,34 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <h3>Secure Payment Form</h3>
-                            <form action="/" onSubmit={(e) => {
+                            <form action={action} onSubmit={(e) => {
                                 e.preventDefault()
+                                this.setState({
+                                    status: 'processing'
+                                })
                                 console.log(state)
                             }}>
-                                <div className="stIfR99">
-                                    <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
-                                    <label aria-hidden="true" for="name">Name on card</label>
-                                </div>
-                                <div id="stPricingCardElement">
-                                    <CardElement/>
-                                </div>
-                                {(error.message)
-                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                                    : null
-                                }
-                                <div className="stSubmitBlock">
-                                    <button id="paySubmit" name="paySubmit" type="submit">
-                                        <span>Pay {amt}</span>
-                                        {state.status === 'active' ? 
-                                            <i class="fas fa-lock"></i> :
-                                            (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
-                                    </button>
-                                </div>
+                                <fieldset {...disabled}>
+                                    <div className="stIfR99">
+                                        <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
+                                        <label aria-hidden="true" for="name">Name on card</label>
+                                    </div>
+                                    <div id="stPricingCardElement">
+                                        <CardElement/>
+                                    </div>
+                                    {(error.message)
+                                        ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                        : null
+                                    }
+                                    <div className="stSubmitBlock">
+                                        <button id="paySubmit" name="paySubmit" type="submit">
+                                            <span>Pay {amt}</span>
+                                            {state.status === 'active' ? 
+                                                <i class="fas fa-lock"></i> :
+                                                (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
+                                        </button>
+                                    </div>
+                                </fieldset>
                             </form>
                             {children}
                         </div>
