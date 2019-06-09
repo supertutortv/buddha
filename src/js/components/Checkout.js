@@ -77,7 +77,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,action,submit: ಠ_ಠ} = this.props,
+        let {children,amt,action} = this.props,
             {error, ...state} = this.state,
             disabled = (state.status === 'processing')
 
