@@ -77,10 +77,11 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,submit: ಠ_ಠ} = this.props
+        let {children,amt,submit: ಠ_ಠ} = this.props,
+            {error, ...state} = this.state
 
         return(
-            <StripeProvider stripe={this.state.stripe}>
+            <StripeProvider stripe={state.stripe}>
                 <Elements>
                     <section className="stCheckoutWindow" onClick={(e) => this.props.closeCheckout()}>
                         <div className="stCheckoutInner" onClick={(e) => e.stopPropagation()}>
@@ -90,7 +91,7 @@ export default class Checkout extends React.Component {
                             <h3>Secure Payment Form</h3>
                             <form action="/" onSubmit={(e) => {
                                 e.preventDefault()
-                                console.log(this.state)
+                                console.log(state)
                             }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
@@ -99,12 +100,16 @@ export default class Checkout extends React.Component {
                                 <div id="stPricingCardElement">
                                     <CardElement/>
                                 </div>
+                                {(error.message)
+                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                    : null
+                                }
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit">
                                         <span>Pay {amt}</span>
-                                        {this.state.status === 'active' ? 
+                                        {state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
-                                            (this.state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
+                                            (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
                                     </button>
                                 </div>
                             </form>
