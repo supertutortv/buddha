@@ -104,7 +104,7 @@ export default class Checkout extends React.Component {
                                     <label aria-hidden="true" for="name">Name on card</label>
                                 </div>
                                 <div id="stPricingCardElement">
-                                    <CardElement onChange={(d) => {
+                                    <CardElement id="stripeInject" onChange={(d) => {
                                         if (typeof d !== 'undefined') {
                                             if (typeof d.error !== 'undefined') return this.setState({
                                                 card: null,
