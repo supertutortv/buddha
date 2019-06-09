@@ -109,7 +109,7 @@ export default class Checkout extends React.Component {
                                     : null
                                 }
                                 <div className="stSubmitBlock">
-                                    <button id="paySubmit" name="paySubmit" type="submit">
+                                    <button id="paySubmit" name="paySubmit" type="submit" className={disabled ? 'active' : ''}>
                                         <span>Pay {amt}</span>
                                         {state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
