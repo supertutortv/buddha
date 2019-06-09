@@ -97,6 +97,8 @@ export default class Checkout extends React.Component {
                                 let nameOnCard = e.target.querySelector('[name="name"').value,
                                     { token } = await state.stripe.createToken(state.card,{name: nameOnCard})
 
+                                console.log(token)
+
                                 //ಠ_ಠ(e,state,(d) => {})
                             }}>
                                 <div className="stIfR99">
