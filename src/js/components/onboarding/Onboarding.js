@@ -40,7 +40,7 @@ const PlnOptions = ({nextStep, plan}) => {
 	)
 }
 
-const Shipping = ({nextStep,ship}) => {
+const Shipping = ({nextStep,ship,plan}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
@@ -92,7 +92,7 @@ const Shipping = ({nextStep,ship}) => {
 						<div className="shipOptBtn">
 							<div>
 								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip"/>
-								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+$7.95)</label>
+								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+${(plan.shipping/100).toFixed(2)})</label>
 							</div>
 							<button className="btn" type="submit">Continue</button>
 						</div>
@@ -201,7 +201,7 @@ export default class Onboarding extends React.Component{
 					</div>
 				</section>
 				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option ? <Shipping ship={this.state.shipping} nextStep={this.nextStep} /> : null}
+				{this.state.option ? <Shipping plan={this.state.plan} ship={this.state.shipping} nextStep={this.nextStep} /> : null}
 				{this.state.loc ? <Finalize {...this.state} nextStep={this.nextStep} /> : null}
 			</main>
         )
