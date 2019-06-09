@@ -114,7 +114,7 @@ export default class Checkout extends React.Component {
                                     <CardElement/>
                                 </div>
                                 <div className="stSubmitBlock">
-                                    <button id="paySubmit" name="paySubmit" type="submit" disabled>
+                                    <button id="paySubmit" name="paySubmit" type="submit">
                                         <span>Pay {amt}</span>
                                         {this.state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
