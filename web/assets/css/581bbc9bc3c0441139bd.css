@@ -1233,9 +1233,9 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type {
-  padding-top: 0;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.25em;
   font-weight: 600;
+  border-bottom: 1px solid black;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type {
