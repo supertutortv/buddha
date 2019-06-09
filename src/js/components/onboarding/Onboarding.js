@@ -3,6 +3,8 @@ import TextureImg from './texture'
 import CountryDD from '../checkout/pieces/CountryDD'
 import StateDD from '../checkout/pieces/StateDD'
 
+const priceToString = (price) => '$'+(price/100).toFixed(2)
+
 const PlnOptions = ({nextStep, plan, option}) => {
 	return (
 		<section id="step1" className="step">
@@ -97,7 +99,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 						<div className="shipOptBtn">
 							<div>
 								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip" value="1"/>
-								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+${(plan.shipping/100).toFixed(2)})</label>
+								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+${priceToString(plan.shipping)})</label>
 							</div>
 							<button className="btn" type="submit">Continue</button>
 						</div>
@@ -124,15 +126,15 @@ const Finalize = ({nextStep, ...state}) => {
 								</div>
 								<div>
 									<div>{state.plan.title}</div>
-									<div>{(price/100).toFixed(2)}</div>
+									<div>{priceToString(price)}</div>
 								</div>
 								{!shipping ? null : <div>
 									<div>Priority Shipping (3-4 days)</div>
-									<div>{(shipping/100).toFixed(2)}</div>
+									<div>{priceToString(shipping)}</div>
 								</div>}
 								<div>
 									<div>Total: </div>
-									<div>{'$'+((price+shipping)/100).toFixed(2)}</div>
+									<div>{priceToString(price+shipping)}</div>
 								</div>
 							</div>
 						</div>
