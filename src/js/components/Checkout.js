@@ -105,12 +105,16 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <form action="/" onSubmit={(e) => e.preventDefault()}>
+                                <h3>Payment</h3>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
                                     <label aria-hidden="true" for="name">Name on card</label>
                                 </div>
                                 <div id="stPricingCardElement">
                                     <CardElement/>
+                                </div>
+                                <div className="stPaymentButton">
+                                    <button type="submit">Pay <i class="fas fa-lock"></i></button>
                                 </div>
                             </form>
                             {children}
