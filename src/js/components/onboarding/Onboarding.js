@@ -139,6 +139,9 @@ const Finalize = ({nextStep, ...state}) => {
 									<div>{priceToString(price+shipping)}</div>
 								</div>
 							</div>
+							<div className="initCheckout">
+								<button>Checkout</button>
+							</div>
 						</div>
 					</aside>
 				</div>

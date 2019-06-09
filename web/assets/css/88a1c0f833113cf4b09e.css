@@ -1251,7 +1251,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   border-bottom: 1px solid black;
 }
 
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type > div:not(:first-child) {
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type > div {
   font-weight: 600;
 }
 
