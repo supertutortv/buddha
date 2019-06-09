@@ -52,7 +52,14 @@ const Shipping = ({nextStep,ship}) => {
 						else
 							nextStep({step: 3, loc: e.target.value, shipping: false})
 					}} required />
-					{!ship ? null : <form className="shippingForm nopad big">
+					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
+						e.preventDefault()
+						let obj = {
+							address: {
+								country: 'US'
+							}
+						}
+					}}>
 						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
 							<label aria-hidden="true" for="line1">Address Line 1</label>
@@ -74,7 +81,7 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="zip">Postal Code</label>
 						</div>
 						<div className="stIfR99">
-							<input required aria-label="Phone Number" className="validate phone" type="tel" name="phone"/>
+							<input required aria-label="Phone Number" validation="tel" className="validate phone" type="tel" name="phone"/>
 							<label aria-hidden="true" for="phone">Phone Number</label>
 						</div>
 					</form>}
