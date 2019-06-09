@@ -13,11 +13,6 @@ export default class Checkout extends React.Component {
             status: 'active',
             step: 0,
             update: true,
-            loading: true,
-            plan: null,
-            item: null,
-            card: false,
-            valid: false,
             stripe: null,
             ...props.payload
         }
@@ -77,9 +72,9 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,action} = this.props,
+        let {children,amt,action,submit: ಠ_ಠ} = this.props,
             {error, ...state} = this.state,
-            disabled = (state.status === 'processing')
+            disabled = {disabled: (state.status === 'processing')}
 
         return(
             <StripeProvider stripe={state.stripe}>
@@ -90,14 +85,20 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <h3>Secure Payment Form</h3>
-                            <form action={action} onSubmit={(e) => {
+                            <form action={action} onSubmit={async (e) => {
                                 e.preventDefault()
                                 if (this.state.status === 'processing') return false
                                 
                                 this.setState({
                                     status: 'processing'
                                 })
-                                console.log(state)
+                                
+                                let nameOnCard = e.target.querySelector('[name="name"').value,
+                                    { token } = await state.stripe.createToken({name: nameOnCard})
+                                
+                                console.log(token)
+
+                                //ಠ_ಠ(e,state,(d) => {})
                             }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
