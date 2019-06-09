@@ -88,6 +88,9 @@ const Shipping = ({nextStep,ship}) => {
 							<input required aria-label="Phone Number" validation="tel" className="validate phone" type="tel" name="phone"/>
 							<label aria-hidden="true" for="phone">Phone Number</label>
 						</div>
+						<div className="stIfR99">
+							<button>Continue</button>
+						</div>
 					</form>}
 				</div>
 			</div>
