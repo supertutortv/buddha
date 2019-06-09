@@ -104,8 +104,8 @@ export default class Checkout extends React.Component {
                             <figure className="stCheckoutLogo">
                                 <LogoSVG/>
                             </figure>
+                            <h3>Payment</h3>
                             <form action="/" onSubmit={(e) => e.preventDefault()}>
-                                <h3>Payment</h3>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
                                     <label aria-hidden="true" for="name">Name on card</label>
@@ -113,8 +113,9 @@ export default class Checkout extends React.Component {
                                 <div id="stPricingCardElement">
                                     <CardElement/>
                                 </div>
-                                <div className="stPaymentButton">
-                                    <button type="submit">Pay <i class="fas fa-lock"></i></button>
+                                <div className="stSubmitBlock">
+
+                                    <button type="submit">{["Pay",amt,<i class="fas fa-lock"></i>].join(' ')}</button>
                                 </div>
                             </form>
                             {children}
