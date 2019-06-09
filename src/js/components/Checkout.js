@@ -83,8 +83,10 @@ export default class Checkout extends React.Component {
 
     componentWillUnmount() {
         document.body.classList.remove('checkout')
-        let els = document.querySelectorAll('[name*="__privateStripe"]')
+        let els = document.querySelectorAll('[name*="__privateStripe"]'),
+            el = document.getElementById('stStripeScript')
         for (let i = 0; i < els.length; i++) els[i].parentNode.removeChild(els[i])
+        el.parentNode.removeChild(el)
     }
 
     render() {
