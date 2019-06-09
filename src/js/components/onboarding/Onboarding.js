@@ -141,13 +141,13 @@ const Finalize = ({nextStep, toggleCheckout, ...state}) => {
 								</div>
 							</div>
 							<div className="initCheckoutFinal">
-								<button className="initCheckoutBtn"><span>Checkout</span></button>
+								<button className="initCheckoutBtn" onClick={toggleCheckout}><span>Checkout</span></button>
 							</div>
 						</div>
 					</aside>
 				</div>
 			</div>
-			{!state.checkout ? null : <Checkout closeCheckout={() => toggleCheckout()} {...state}>
+			{!state.checkout ? null : <Checkout closeCheckout={toggleCheckout} {...state}>
 				<div>Checkout test</div>
 			</Checkout>}
 		</section>
