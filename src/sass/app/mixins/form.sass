@@ -1,5 +1,6 @@
 @mixin stFormBody
-    padding: 0 1.5rem
+    &:not(.nopad)
+        padding: 0 1.5rem
 
 @mixin stFormErrors
     color: red
@@ -74,3 +75,8 @@
 
                 & + label
                     font-size: $tinytext
+
+    &.big
+        
+        & > label
+            font-size: 1rem

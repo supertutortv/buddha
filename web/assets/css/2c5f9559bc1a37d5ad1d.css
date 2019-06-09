@@ -1213,8 +1213,11 @@ body.onboarding st-app .stOnboardingWindow .step {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
-  padding: 0;
+  padding: 0 !important;
   margin-top: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
   padding: 0 1.5rem;
 }
 
@@ -1274,6 +1277,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus + label,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:valid + label {
   font-size: calc(1rem - 14px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.big > label {
+  font-size: 1rem;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
@@ -1898,7 +1905,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stC2A >
   font-size: inherit;
 }
 
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody {
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody:not(.nopad) {
   padding: 0 1.5rem;
 }
 
@@ -1957,6 +1964,10 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
   font-size: calc(1rem - 14px);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99.big > label {
+  font-size: 1rem;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons {
