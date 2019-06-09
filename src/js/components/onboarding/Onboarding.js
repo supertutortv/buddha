@@ -65,7 +65,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 						priShip = e.target.querySelector('[name="priShip"]').checked
 
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
-						
+
 						obj = Object.assign(obj,{priShip: priShip})
 						nextStep({step: 3, loc: true, shipping: obj})
 					}}>
@@ -111,7 +111,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 const Finalize = ({nextStep, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
 		price = state.option.price
-		console.log(state.shipping)
+
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
@@ -120,6 +120,14 @@ const Finalize = ({nextStep, ...state}) => {
 						<div className="stConfirmCardInner">
 							<div className="reviewTable">
 								<div>Review Your Order</div>
+								<div>
+									<div>{state.plan.title}</div>
+									<div>{(price/100).toFixed(2)}</div>
+								</div>
+								{!shipping ? null : <div>
+									<div>Priority Shipping (3-4 days)</div>
+									<div>{(shipping/100).toFixed(2)}</div>
+								</div>}
 								<div>
 									<div>Total: </div>
 									<div>{'$'+((price+shipping)/100).toFixed(2)}</div>
