@@ -105,13 +105,14 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, ...state}) => {
+	console.log(state.plan,state.option)
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
 				<div>
 					<aside className="stConfirmCard">
 						<div className="stConfirmCardInner">
-							{JSON.stringify(state)}
+							Does this look right?
 						</div>
 					</aside>
 				</div>
