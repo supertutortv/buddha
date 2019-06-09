@@ -1222,6 +1222,19 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
   padding: 0 1.5rem;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button span {
+  font-size: calc(1rem - 10px);
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
   display: inline-block;
   width: 100%;
