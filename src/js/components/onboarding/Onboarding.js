@@ -105,8 +105,9 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, ...state}) => {
-	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
+	let shipping = state.shipping && state.shipping.priShip === 'on' ? state.plan.shipping : 0,
 		price = state.option.price
+		console.log(state.shipping)
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
