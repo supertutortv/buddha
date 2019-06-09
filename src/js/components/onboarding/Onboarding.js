@@ -2,6 +2,7 @@ import React from 'react'
 import TextureImg from './texture'
 import CountryDD from '../checkout/pieces/CountryDD'
 import StateDD from '../checkout/pieces/StateDD'
+import Checkout from '../Checkout'
 
 const priceToString = (price) => '$'+(price/100).toFixed(2)
 

@@ -1,8 +1,6 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
-import Buttons from './checkout/Buttons'
 import methods from './checkout/methods'
-import * as steps from './checkout/steps'
 
 export default class Checkout extends React.Component {
     constructor(props) {
@@ -43,14 +41,6 @@ export default class Checkout extends React.Component {
             token: '',
             nameOnCard: ''
         }
-
-        this.steps = [
-            'Course',
-            'Details',
-            'Shipping',
-            'Payment',
-            'ThankYou'
-        ]
 
         Object.keys(methods).forEach((method) => {
             this[method] = methods[method].bind(this)
