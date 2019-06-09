@@ -32,14 +32,19 @@ body.checkout
                     border-radius: $ittybitty
                     padding: 1em
 
-                .stIfR99:not(.no-bg)
+                .stIfR99
                     +stFormInput
+
+                    &:not(.no-bg)
                     
-                    & > label
-                        font-size: 1rem
+                        & > label
+                            font-size: 1rem
 
                 .stSubmitBlock
                     padding-top: 1em
 
                     button
                         +stFormButton
+
+                        i
+                            margin-left: 1em
