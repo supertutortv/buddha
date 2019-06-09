@@ -74,22 +74,6 @@ function setChecker(el) {
     return true
 }
 
-// setOutcome
-function setOutcome( result ) {
-    if (typeof result !== 'undefined') {
-        if (typeof result.error !== 'undefined') return this.setState({
-            card: false,
-            error: {
-                id: 'stripeError',
-                message: result.error.message
-            }
-        })
-        this.state.card = !result.empty && result.complete
-    }
-
-    this.validate()
-}
-
 function setShipping(el) {
     let cus = Object.assign(this.state.customer.options,{priorityShip: el.target.checked})
     this.setState({

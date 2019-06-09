@@ -94,8 +94,8 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
                                 
-                                let nameOnCard = e.target.querySelector('[name="name"').value
-                                    //{ token } = await state.stripe.createToken({name: nameOnCard})
+                                let nameOnCard = e.target.querySelector('[name="name"').value,
+                                    { token } = await state.stripe.createToken(card,{name: nameOnCard})
 
                                 //ಠ_ಠ(e,state,(d) => {})
                             }}>
@@ -105,7 +105,23 @@ export default class Checkout extends React.Component {
                                 </div>
                                 <div id="stPricingCardElement">
                                     <CardElement onChange={(d) => {
-                                        console.log(d)
+                                        if (typeof d !== 'undefined') {
+                                            if (typeof d.error !== 'undefined') return this.setState({
+                                                card: null,
+                                                error: {
+                                                    id: 'stripeError',
+                                                    message: result.error.message
+                                                }
+                                            })
+
+                                            if (d.complete && !d.empty) this.setState({
+                                                card: d,
+                                                error: {
+                                                    id: '',
+                                                    message: ''
+                                                }
+                                            })
+                                        }
                                     }}/>
                                 </div>
                                 {(error.message)
