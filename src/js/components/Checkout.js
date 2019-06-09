@@ -91,6 +91,8 @@ export default class Checkout extends React.Component {
                             </figure>
                             <h3>Secure Payment Form</h3>
                             <form action={action} onSubmit={(e) => {
+                                
+                                if (this.state.status === 'processing') return false
                                 e.preventDefault()
                                 this.setState({
                                     status: 'processing'
@@ -110,7 +112,7 @@ export default class Checkout extends React.Component {
                                 }
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit" className={disabled ? 'active' : ''}>
-                                        <span>Pay {amt}</span>
+                                        <span>{disabled ? 'Processing...' : 'Pay '+amt}</span>
                                         {state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
                                             (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
