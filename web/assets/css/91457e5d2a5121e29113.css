@@ -568,7 +568,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo svg {
   width: 100%;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner form > div {
+body.checkout .stCheckoutWindow .stCheckoutInner form #stPricingCardElement {
   border-radius: 0.25em;
   padding: 1em;
 }
