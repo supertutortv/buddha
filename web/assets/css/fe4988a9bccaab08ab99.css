@@ -1226,6 +1226,14 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
   padding: 0 1.5rem;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn {
+  display: flex;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div {
+  flex: 1;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
   background-color: #109fda;
 }

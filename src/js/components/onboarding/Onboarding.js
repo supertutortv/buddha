@@ -89,7 +89,8 @@ const Shipping = ({nextStep,ship}) => {
 							<input required aria-label="Phone Number" validation="tel" className="validate phone" type="tel" name="phone"/>
 							<label aria-hidden="true" for="phone">Phone Number</label>
 						</div>
-						<div className="stIfR99">
+						<div className="shipOptBtn">
+							<div></div>
 							<button className="btn" type="submit">Continue</button>
 						</div>
 					</form>}
@@ -108,6 +109,10 @@ const Finalize = ({nextStep, ...state}) => {
 			</div>
 		</section>
 	)
+}
+
+const ThankYou = () => {
+	return null
 }
 
 export default class Onboarding extends React.Component{
