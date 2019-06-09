@@ -104,7 +104,7 @@ export default class Checkout extends React.Component {
                             <figure className="stCheckoutLogo">
                                 <LogoSVG/>
                             </figure>
-                            <div>
+                            <div id="stPricingCardElement">
                                 <CardElement/>
                             </div>
                             {children}
