@@ -1242,6 +1242,11 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   border-bottom: none;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type > div:first-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
   font-size: calc(1rem - 7px);
   padding: 0 0.5em;
@@ -1253,6 +1258,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:not(:first-child) {
   margin-left: 1em;
+  font-weight: 400;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
