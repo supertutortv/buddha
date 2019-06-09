@@ -18,30 +18,13 @@ export default class Checkout extends React.Component {
             item: null,
             card: false,
             valid: false,
-            stripe: null
+            stripe: null,
+            ...props.payload
         }
 
         this.state.error = {
             id: '',
             message: ''
-        }
-
-        this.state.customer = {
-            uid: '',
-            stripeid: '',
-            account: {
-                email: '',
-                firstname: '',
-                lastname: ''
-            },
-            shipping: {
-                phone: '',
-                name: '',
-                address: {}
-            },
-            options: {},
-            token: '',
-            nameOnCard: ''
         }
 
         Object.keys(methods).forEach((method) => {
@@ -94,7 +77,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {payload,children,amt,submit: ಠ_ಠ} = this.props
+        let {children,amt,submit: ಠ_ಠ} = this.props
 
         return(
             <StripeProvider stripe={this.state.stripe}>
@@ -104,10 +87,10 @@ export default class Checkout extends React.Component {
                             <figure className="stCheckoutLogo">
                                 <LogoSVG/>
                             </figure>
-                            <h3>Payment</h3>
+                            <h3>Secure Payment Form</h3>
                             <form action="/" onSubmit={(e) => {
                                 e.preventDefault()
-                                console.log(payload)
+                                console.log(this.state)
                             }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>

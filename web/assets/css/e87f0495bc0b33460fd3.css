@@ -568,6 +568,11 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo svg {
   width: 100%;
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner h3 {
+  text-transform: uppercase;
+  font-size: calc(1rem - 7px);
+}
+
 body.checkout .stCheckoutWindow .stCheckoutInner form {
   margin-top: 1em;
 }
@@ -649,6 +654,11 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock {
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button {
   background-color: #109fda;
+  width: 100%;
+  border: 1px solid rgba(16, 159, 218, 0.8);
+  color: rgba(16, 159, 218, 0.8);
+  background-color: white;
+  transition: all 100ms ease-in-out;
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button[disabled] {
@@ -658,6 +668,12 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button[disa
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button span {
   font-size: calc(1rem - 10px);
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button:hover,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.active {
+  color: white;
+  background-color: #109fda;
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i {
