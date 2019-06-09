@@ -96,6 +96,8 @@ export default class Checkout extends React.Component {
                                 
                                 let nameOnCard = e.target.querySelector('[name="name"').value
 
+                                return console.log(e.target.action)
+
                                 await state.stripe.createToken(state.card,{name: nameOnCard}).then(async ({token: t}) => {
                                     if (t.error) return this.setState({
                                         error: {
@@ -103,8 +105,6 @@ export default class Checkout extends React.Component {
                                             message: t.error.message
                                         }
                                     })
-
-                                    return console.log(e.target.action)
                             
                                     cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
                                     cus.token = t.id
