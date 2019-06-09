@@ -3,7 +3,7 @@ import TextureImg from './texture'
 import CountryDD from '../checkout/pieces/CountryDD'
 import StateDD from '../checkout/pieces/StateDD'
 
-const PlnOptions = ({nextStep, plan}) => {
+const PlnOptions = ({nextStep, plan, option}) => {
 	return (
 		<section id="step1" className="step">
 			<div className="stStepContent">
@@ -16,9 +16,10 @@ const PlnOptions = ({nextStep, plan}) => {
 							<span>Now, choose the subscription length you want:</span>
 						</div>
 						{plan.options.map((opt) => {
+							let active = (typeof option !== 'undefined' && option === opt) ? 'active' : null
 							return (
 								<div className="stOnboardingOption">
-									<button className="optionInner" onClick={(e) => {
+									<button className={["optionInner",active].join(' ')} onClick={(e) => {
 										e.preventDefault()
 										nextStep({
 											step: 2,
@@ -166,7 +167,7 @@ export default class Onboarding extends React.Component{
 	}
 
     render() {
-		let {init, firstname, plan} = this.state
+		let {init, firstname, plan, option, shipping} = this.state
 		if (!init) return null
 		let plans = _st.plans
 
@@ -205,8 +206,8 @@ export default class Onboarding extends React.Component{
 						</div>
 					</div>
 				</section>
-				{this.state.plan ? <PlnOptions plan={this.state.plan} nextStep={this.nextStep} /> : null}
-				{this.state.option ? <Shipping plan={this.state.plan} ship={this.state.shipping} nextStep={this.nextStep} /> : null}
+				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
+				{this.state.option ? <Shipping plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
 				{this.state.loc ? <Finalize {...this.state} nextStep={this.nextStep} /> : null}
 			</main>
         )
