@@ -531,7 +531,7 @@ body.allYourBase .stAppHeader {
 }
 
 body.checkout {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 body.checkout .stCheckoutWindow {
