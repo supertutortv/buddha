@@ -1236,11 +1236,11 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > di
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div input {
-  font-size: 1rem;
   margin-right: .5em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div label {
+  flex: 1;
   font-size: calc(1rem - 7px);
 }
 
