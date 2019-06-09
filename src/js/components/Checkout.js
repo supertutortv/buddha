@@ -75,7 +75,7 @@ export default class Checkout extends React.Component {
 
         let {children,amt,action} = this.props,
             {error, ...state} = this.state,
-            disabled = {disabled: (state.status === 'processing')}
+            disabled = (state.status === 'processing')
 
         return(
             <StripeProvider stripe={state.stripe}>
