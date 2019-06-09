@@ -1232,6 +1232,16 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn {
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div {
   flex: 1;
+  display: flex;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div input {
+  font-size: 1rem;
+  margin-right: .5em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div label {
+  font-size: calc(1rem - 7px);
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
