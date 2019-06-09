@@ -45,15 +45,16 @@ const Shipping = ({nextStep,ship}) => {
 		<section id="step2" className="step">
 			<div className="stStepContent">
 				<div>
-					<label for="locSelect">Select your country</label>
-					<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
-						let val = e.target.value
-						if (val === 'US')
-							nextStep({step: 2, loc: false, shipping: true})
-						else
-							nextStep({step: 3, loc: e.target.value, shipping: false})
-					}} required ><i class="fas fa-caret-down"></i></CountryDD>
-
+					<div>
+						<label for="locSelect">Select your country</label>
+						<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
+							let val = e.target.value
+							if (val === 'US')
+								nextStep({step: 2, loc: false, shipping: true})
+							else
+								nextStep({step: 3, loc: e.target.value, shipping: false})
+						}} required ><i class="fas fa-caret-down"></i></CountryDD>
+					</div>
 					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
 						e.preventDefault()
 						let obj = {
