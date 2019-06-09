@@ -12,6 +12,7 @@ export default class Checkout extends React.Component {
             completed: false,
             status: 'active',
             step: 0,
+            card: null,
             update: true,
             stripe: null,
             ...props.payload
@@ -72,7 +73,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,action,submit: ಠ_ಠ} = this.props,
+        let {children,amt,action} = this.props,
             {error, ...state} = this.state,
             disabled = {disabled: (state.status === 'processing')}
 
@@ -93,10 +94,8 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
                                 
-                                let nameOnCard = e.target.querySelector('[name="name"').value,
-                                    { token } = await state.stripe.createToken({name: nameOnCard})
-                                
-                                console.log(token)
+                                let nameOnCard = e.target.querySelector('[name="name"').value
+                                    //{ token } = await state.stripe.createToken({name: nameOnCard})
 
                                 //ಠ_ಠ(e,state,(d) => {})
                             }}>
@@ -105,7 +104,9 @@ export default class Checkout extends React.Component {
                                     <label aria-hidden="true" for="name">Name on card</label>
                                 </div>
                                 <div id="stPricingCardElement">
-                                    <CardElement/>
+                                    <CardElement onChange={(d) => {
+                                        console.log(d)
+                                    }}/>
                                 </div>
                                 {(error.message)
                                     ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
