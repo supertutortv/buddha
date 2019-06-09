@@ -1247,6 +1247,12 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   justify-content: flex-end;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type > div:not(:first-child) {
+  color: #109fda;
+  font-weight: 800;
+  font-size: calc(1rem - 4px);
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
   font-size: calc(1rem - 7px);
   padding: 0 0.5em;
