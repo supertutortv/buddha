@@ -1222,7 +1222,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm.big label {
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
@@ -1932,7 +1932,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody.big label {
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
