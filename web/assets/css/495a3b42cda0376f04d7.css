@@ -1308,7 +1308,8 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]),
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select {
   border: 1px solid rgba(16, 159, 218, 0.5);
 }
 
@@ -1341,6 +1342,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state {
+  border: 1px solid rgba(16, 159, 218, 0.5);
   font-size: 1rem;
   padding: 0.5em;
   font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
@@ -1356,7 +1358,6 @@ body.onboarding st-app .stOnboardingWindow #step2 label {
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 select {
-  border: 1px solid rgba(16, 159, 218, 0.5);
   border-radius: .125em;
   cursor: pointer;
   padding: 1em;
