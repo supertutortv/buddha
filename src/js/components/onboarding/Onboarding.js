@@ -52,7 +52,7 @@ const Shipping = ({nextStep,ship}) => {
 							nextStep({step: 2, loc: false, shipping: true})
 						else
 							nextStep({step: 3, loc: e.target.value, shipping: false})
-					}} required ><i class="fas fa-caret-circle-down"></i></CountryDD>
+					}} required ><i class="fas fa-caret-down"></i></CountryDD>
 
 					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
 						e.preventDefault()
@@ -75,8 +75,9 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="city">City</label>
 						</div>
 						<div className="stIfR99 onet right select">
-							<StateDD aria-label="State" validation="text" className="validate state" name="state" required/>
-							<i class="fas fa-caret-circle-down"></i>
+							<StateDD aria-label="State" validation="text" className="validate state" name="state" required>
+								<i class="fas fa-caret-down"></i>
+							</StateDD>
 						</div>
 						<div className="stIfR99 onet right">
 							<input required aria-label="Postal Code" validation="text" className="validate zip" type="text" name="zip"/>
