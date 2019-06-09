@@ -48,6 +48,7 @@ export default class Checkout extends React.Component {
     }
 
     componentDidMount() {
+        document.body.classList.add('checkout')
         const key = _st.stripe
         this.session = {
             id: Date.now(),
@@ -81,8 +82,9 @@ export default class Checkout extends React.Component {
     }
 
     componentWillUnmount() {
-        let el = document.getElementById('stStripeScript')
-        if (el) el.parentNode.removeChild(el)
+        document.body.classList.remove('checkout')
+        let els = document.querySelectorAll('[name*="__privateStripe"]')
+        for (let i = 0; i < els.length; i++) els.parentNode.removeChild(els)
     }
 
     render() {
@@ -95,7 +97,7 @@ export default class Checkout extends React.Component {
             <StripeProvider stripe={this.state.stripe}>
                 <Elements>
                     <section className="stCheckoutWindow" onClick={(e) => this.props.closeCheckout()}>
-                        <div className="checkSide" onClick={(e) => e.stopPropagation()}>
+                        <div className="stCheckoutInner" onClick={(e) => e.stopPropagation()}>
                             {children}
                         </div>
                     </section>

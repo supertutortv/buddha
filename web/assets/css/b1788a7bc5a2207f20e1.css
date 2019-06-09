@@ -530,7 +530,11 @@ body.allYourBase .stAppHeader {
   }
 }
 
-.stCheckoutWindow {
+body.checkout {
+  overflow: hidden;
+}
+
+body.checkout .stCheckoutWindow {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -543,10 +547,11 @@ body.allYourBase .stAppHeader {
   animation: fadein 100ms ease-in-out 0s both;
 }
 
-.stCheckoutWindow .checkSide {
+body.checkout .stCheckoutWindow .stCheckoutInner {
   width: 100%;
   max-width: 350px;
   padding: 2em;
+  background-color: white;
 }
 
 .stDashboard {
