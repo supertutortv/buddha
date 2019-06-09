@@ -543,11 +543,12 @@ body.checkout .stCheckoutWindow {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   animation: fadein 100ms ease-in-out 0s both;
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner {
+  overflow: hidden;
   border-radius: 0.25em;
   width: 98%;
   max-width: 400px;
@@ -556,6 +557,8 @@ body.checkout .stCheckoutWindow .stCheckoutInner {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   max-width: 350px;
   padding: 2em;
+  margin-bottom: 30%;
+  border: 1px solid #109fda;
 }
 
 .stDashboard {
@@ -1973,6 +1976,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner {
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm {
   margin-top: .5rem;
   font-size: calc(1rem - 7px);
+  overflow: hidden;
   border-radius: 0.25em;
   width: 98%;
   max-width: 400px;
@@ -2136,6 +2140,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .insteadLogin {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.5);
   transform: scale3d(1, 1.15, 1);
+  overflow: hidden;
   border-radius: 0.25em;
   width: 98%;
   max-width: 400px;
