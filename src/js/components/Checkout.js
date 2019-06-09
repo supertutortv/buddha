@@ -93,7 +93,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children} = this.props
+        let {children,amt} = this.props
             //ಠ_ಠ = this['step'+step]
 
         return(
