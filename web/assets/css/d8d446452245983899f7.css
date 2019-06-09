@@ -1212,6 +1212,10 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .stepContent > div {
+  margin-top: -20%;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
   padding: 0 !important;
   margin-top: 1em;
