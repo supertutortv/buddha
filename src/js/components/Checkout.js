@@ -122,7 +122,7 @@ export default class Checkout extends React.Component {
                                                 }
                                             })
                                         }
-                                    }}/>
+                                    }} onReady={(el) => console.log(el)}/>
                                 </div>
                                 {(error.message)
                                     ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
