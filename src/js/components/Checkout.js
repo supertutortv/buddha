@@ -10,6 +10,7 @@ export default class Checkout extends React.Component {
         this.state = {
             init: false,
             completed: false,
+            status: 'active',
             step: 0,
             update: true,
             loading: true,
@@ -93,8 +94,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt} = this.props
-            //ಠ_ಠ = this['step'+step]
+        let {children,amt,submit: ಠ_ಠ} = this.props
 
         return(
             <StripeProvider stripe={this.state.stripe}>
@@ -114,7 +114,12 @@ export default class Checkout extends React.Component {
                                     <CardElement/>
                                 </div>
                                 <div className="stSubmitBlock">
-                                    <button type="submit">Pay {amt} <i class="fas fa-lock"></i></button>
+                                    <button id="paySubmit" name="paySubmit" type="submit" disabled>
+                                        <span>Pay {amt}</span>
+                                        {this.state.status === 'active' ? 
+                                            <i class="fas fa-lock"></i> :
+                                            (this.state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
+                                    </button>
                                 </div>
                             </form>
                             {children}

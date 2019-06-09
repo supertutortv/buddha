@@ -147,7 +147,7 @@ const Finalize = ({nextStep, toggleCheckout, ...state}) => {
 					</aside>
 				</div>
 			</div>
-			{!state.checkout ? null : <Checkout amt={priceToString(price+shipping)} closeCheckout={toggleCheckout} {...state}/>}
+			{!state.checkout ? null : <Checkout submit={() => {}} amt={priceToString(price+shipping)} closeCheckout={toggleCheckout} {...state}/>}
 		</section>
 	)
 }

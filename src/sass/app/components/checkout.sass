@@ -32,8 +32,11 @@ body.checkout
                     border-radius: $ittybitty
                     padding: 1em
 
-                .stIfR99
+                .stIfR99:not(.no-bg)
                     +stFormInput
                     
                     & > label
                         font-size: 1rem
+
+                .stSubmitBlock
+                    padding-top: 1em
