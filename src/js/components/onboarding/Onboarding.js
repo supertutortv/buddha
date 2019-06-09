@@ -137,45 +137,26 @@ export default class Onboarding extends React.Component{
 							<h3>Welcome{firstname ? ', '+firstname : ''}! Let's get started.</h3>
 							<div className="stOnboardingPlans">
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
-								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({
-										step: 1,
-										loc: false,
-										option: false,
-										plan: plans['sat']
-									})
-									e.preventDefault()
-								}}>
-									<button className="planInner sat">
-										<span>SAT</span>
-									</button>
-								</div>
-								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({
-										step: 1,
-										loc: false,
-										option: false,
-										plan: plans['act']
-									})
-									e.preventDefault()
-								}}>
-									<button className="planInner act">
-										<span>ACT</span>
-									</button>
-								</div>
-								<div className="stOnboardingPlan" onClick={(e) => {
-									this.nextStep({
-										step: 1,
-										loc: false,
-										option: false,
-										plan: plans['combo']
-									})
-									e.preventDefault()
-								}}>
-									<button className="planInner combo">
-										<span>Both</span>
-									</button>
-								</div>
+								{['sat','act','combo'].map((val)=> {
+
+									let active = (this.state.plan === val) ? 'active' : null,
+										label = val === 'combo' ? 'both' : val
+									return (
+										<div className="stOnboardingPlan" onClick={(e) => {
+											this.nextStep({
+												step: 1,
+												loc: false,
+												option: false,
+												plan: plans[val]
+											})
+											e.preventDefault()
+										}}>
+											<button className={['planInner',val,active].join(' ')}>
+												<span>{label}</span>
+											</button>
+										</div>
+									)
+								})}
 							</div>
 						</div>
 					</div>
