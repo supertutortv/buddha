@@ -94,7 +94,7 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,submit: ಠ_ಠ} = this.props
+        let {payload,children,amt,submit: ಠ_ಠ} = this.props
 
         return(
             <StripeProvider stripe={this.state.stripe}>
@@ -105,7 +105,10 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <h3>Payment</h3>
-                            <form action="/" onSubmit={(e) => e.preventDefault()}>
+                            <form action="/" onSubmit={(e) => {
+                                e.preventDefault()
+                                console.log(payload)
+                            }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
                                     <label aria-hidden="true" for="name">Name on card</label>
