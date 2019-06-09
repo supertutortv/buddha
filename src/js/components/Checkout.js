@@ -110,19 +110,19 @@ export default class Checkout extends React.Component {
                                                 card: null,
                                                 error: {
                                                     id: 'stripeError',
-                                                    message: result.error.message
+                                                    message: d.error.message
                                                 }
                                             })
 
                                             if (d.complete && !d.empty) this.setState({
-                                                card: d,
+                                                card: state.card,
                                                 error: {
                                                     id: '',
                                                     message: ''
                                                 }
                                             })
                                         }
-                                    }} onReady={(el) => console.log(el)}/>
+                                    }} onReady={(el) => this.setState({card: el})}/>
                                 </div>
                                 {(error.message)
                                     ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
