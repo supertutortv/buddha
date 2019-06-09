@@ -90,7 +90,10 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="phone">Phone Number</label>
 						</div>
 						<div className="shipOptBtn">
-							<div></div>
+							<div>
+								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip"/>
+								<label aria-hidden="true" for="priShip">Send my books Priority Mail, please! (+$7.95)</label>
+							</div>
 							<button className="btn" type="submit">Continue</button>
 						</div>
 					</form>}
