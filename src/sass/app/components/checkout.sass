@@ -1,87 +1,16 @@
 .stCheckoutWindow
+    position: fixed
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
     display: flex
-    max-width: 100%
-    flex-flow: row nowrap
-    flex: 1
-
-    .stepSide
-        width: 30%
-        color: white
-        background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg")
-        background-size: cover
-        background-position: top center
-        display: flex
-        flex-flow: column nowrap
-        +z-depth-3
-
-        & > div
-            padding: 1em
-            flex: 1
-            background-color: azure(.5)
-
-        h1
-            font-size: $medtext
-            font-weight: 600
-            line-height: 0
-
-            i.far, i.fas, i.fa
-                font-size: $small
-                margin-right: $ittybitty
+    align-items: center
+    justify-content: center
+    background-color: black(.75)
+    +animFadeIn
 
     .checkSide
-        width: 70%
+        width: 100%
+        max-width: 350px
         padding: $huge
-
-        & > form
-            height: 100%
-            display: grid
-            grid-template-rows: 1fr auto
-            grid-gap: 1em
-            +animFadeIn
-
-            fieldset
-
-                .st-crsGrp
-                    display: inline-block
-                    border: 1px solid black(.25)
-                    border-radius: $ittybitty
-                    overflow: hidden
-                    margin: 1em 0
-
-                    button
-                        all: unset
-                        font-size: 1rem
-                        padding: $tiny 1em
-                        transition: all 50ms ease-in-out
-
-                        &.selected
-                            color: white()
-                            background-color: azure()
-
-                        &[disabled]
-                            background-color: gray
-                            color: white()
-
-                        &:not(:disabled):hover
-                            cursor: pointer
-                            color: white()
-                            background-color: azure(.75)
-
-            .st-btnGroup
-                display: flex
-                justify-content: space-around
-
-                button
-                    min-width: 200px
-                    +stFormButton
-
-+MQ($mq-mobile)
-    .stCheckoutWindow
-        flex-flow: column nowrap
-
-        .stepSide, .checkSide
-            width: 100%
-
-        .checkSide
-            padding: 1em
-            flex: 1

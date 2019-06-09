@@ -110,7 +110,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 	)
 }
 
-const Finalize = ({nextStep, ...state}) => {
+const Finalize = ({nextStep, toggleCheckout, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
 		price = state.option.price
 
@@ -146,6 +146,9 @@ const Finalize = ({nextStep, ...state}) => {
 					</aside>
 				</div>
 			</div>
+			{!state.checkout ? null : <Checkout closeCheckout={() => toggleCheckout()} {...state}>
+				<div>Checkout test</div>
+			</Checkout>}
 		</section>
 	)
 }
@@ -162,6 +165,7 @@ export default class Onboarding extends React.Component{
 
         this.state = {
 			complete: false,
+			checkout: false,
 			init: false,
 			step: 0,
 			option: false,
@@ -170,7 +174,8 @@ export default class Onboarding extends React.Component{
 			...saved
         }
 
-        this.nextStep = this.nextStep.bind(this)
+		this.nextStep = this.nextStep.bind(this)
+		this.toggleCheckout = this.toggleCheckout.bind(this)
 	}
 	
 	componentDidMount() {
@@ -190,6 +195,12 @@ export default class Onboarding extends React.Component{
 
 		if (el !== null) el.scrollIntoView({
 			behavior: 'smooth'
+		})
+	}
+
+	toggleCheckout() {
+		this.setState(state => {
+			return {checkout: !state.checkout}
 		})
 	}
 
@@ -239,7 +250,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize {...this.state} nextStep={this.nextStep} /> : null}
+				{this.state.loc ? <Finalize {...this.state} toggleCheckout={this.toggleCheckout} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }

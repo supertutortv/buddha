@@ -531,119 +531,22 @@ body.allYourBase .stAppHeader {
 }
 
 .stCheckoutWindow {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  max-width: 100%;
-  flex-flow: row nowrap;
-  flex: 1;
-}
-
-.stCheckoutWindow .stepSide {
-  width: 30%;
-  color: white;
-  background-image: url("https://www.trekkingguideteam.com/wp-content/uploads/2018/10/test-2.jpg");
-  background-size: cover;
-  background-position: top center;
-  display: flex;
-  flex-flow: column nowrap;
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
-}
-
-.stCheckoutWindow .stepSide > div {
-  padding: 1em;
-  flex: 1;
-  background-color: rgba(16, 159, 218, 0.5);
-}
-
-.stCheckoutWindow .stepSide h1 {
-  font-size: calc(1rem - 7px);
-  font-weight: 600;
-  line-height: 0;
-}
-
-.stCheckoutWindow .stepSide h1 i.far,
-.stCheckoutWindow .stepSide h1 i.fas,
-.stCheckoutWindow .stepSide h1 i.fa {
-  font-size: 0.75em;
-  margin-right: 0.25em;
-}
-
-.stCheckoutWindow .checkSide {
-  width: 70%;
-  padding: 2em;
-}
-
-.stCheckoutWindow .checkSide > form {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  grid-gap: 1em;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
   animation: fadein 100ms ease-in-out 0s both;
 }
 
-.stCheckoutWindow .checkSide > form fieldset .st-crsGrp {
-  display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 0.25em;
-  overflow: hidden;
-  margin: 1em 0;
-}
-
-.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button {
-  all: unset;
-  font-size: 1rem;
-  padding: 0.5em 1em;
-  transition: all 50ms ease-in-out;
-}
-
-.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button.selected {
-  color: white;
-  background-color: #109fda;
-}
-
-.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button[disabled] {
-  background-color: gray;
-  color: white;
-}
-
-.stCheckoutWindow .checkSide > form fieldset .st-crsGrp button:not(:disabled):hover {
-  cursor: pointer;
-  color: white;
-  background-color: rgba(16, 159, 218, 0.75);
-}
-
-.stCheckoutWindow .checkSide > form .st-btnGroup {
-  display: flex;
-  justify-content: space-around;
-}
-
-.stCheckoutWindow .checkSide > form .st-btnGroup button {
-  min-width: 200px;
-  background-color: #109fda;
-}
-
-.stCheckoutWindow .checkSide > form .st-btnGroup button[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.stCheckoutWindow .checkSide > form .st-btnGroup button span {
-  font-size: calc(1rem - 10px);
-}
-
-@media only screen and (max-width: 767px) {
-  .stCheckoutWindow {
-    flex-flow: column nowrap;
-  }
-
-  .stCheckoutWindow .stepSide,
-  .stCheckoutWindow .checkSide {
-    width: 100%;
-  }
-
-  .stCheckoutWindow .checkSide {
-    padding: 1em;
-    flex: 1;
-  }
+.stCheckoutWindow .checkSide {
+  width: 100%;
+  max-width: 350px;
+  padding: 2em;
 }
 
 .stDashboard {

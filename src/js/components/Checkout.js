@@ -74,26 +74,10 @@ export default class Checkout extends React.Component {
         }
 
         this.setState((state) => {
-            let obj = {
+            return {
                 init: true,
                 stripe: (window.Stripe) ? window.Stripe(key) : null
-            },
-            savedSU = JSON.parse(localStorage.getItem('_stT-signup'))
-
-            if (savedSU) {
-                obj.plan = savedSU.plan
-                obj.customer = Object.assign(state.customer,{
-                    uid: savedSU.id,
-                    stripeid: savedSU.customer.id,
-                    accoutn: Object.assign(state.customer.account,{
-                        email: savedSU.email,
-                        firstname: savedSU.firstname,
-                        lastname: savedSU.lastname
-                    })
-                })
             }
-
-            return obj
         }, () => {
             if (!window.Stripe) document.querySelector('#stStripeScript').addEventListener('load', () => {
                 this.setState({stripe: window.Stripe(key)})
@@ -114,21 +98,17 @@ export default class Checkout extends React.Component {
     render() {
         if (!this.state.init) return null
 
-        let {step, completed, plan} = this.state,
-            count = step + 1,
-            Step = steps[this.steps[step]],
-            ಠ_ಠ = this['step'+step]
+        let {children} = this.props
+            //ಠ_ಠ = this['step'+step]
 
         return(
             <StripeProvider stripe={this.state.stripe}>
                 <Elements>
-                        <section className="stCheckoutWindow">
-                            <div className="checkSide">
-                                <Step {...this.state} ಠ_ಠ={ಠ_ಠ}>
-                                    <Buttons back={this.prevStep} completed={completed} steps={this.steps.length} count={count} step={step}/>
-                                </Step>
-                            </div>
-                        </section>
+                    <section className="stCheckoutWindow" onClick={(e) => this.props.closeCheckout()}>
+                        <div className="checkSide" onClick={(e) => e.stopPropagation()}>
+                            {children}
+                        </div>
+                    </section>
                 </Elements>
             </StripeProvider>
         )
