@@ -114,8 +114,7 @@ export default class Checkout extends React.Component {
                                     <CardElement/>
                                 </div>
                                 <div className="stSubmitBlock">
-
-                                    <button type="submit">{["Pay",amt,<i class="fas fa-lock"></i>].join(' ')}</button>
+                                    <button type="submit">Pay {amt} <i class="fas fa-lock"></i></button>
                                 </div>
                             </form>
                             {children}

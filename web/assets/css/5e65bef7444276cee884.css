@@ -639,6 +639,10 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) selec
   font-size: calc(1rem - 14px);
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99 > label {
+  font-size: 1rem;
+}
+
 .stDashboard {
   padding: 2em 0;
   font-size: calc(1rem - 7px);
