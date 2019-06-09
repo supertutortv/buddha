@@ -1264,7 +1264,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus {
-  border: 1px solid rgba(16, 159, 218, 0.5);
+  border: 1px solid rgba(16, 159, 218, 0.75);
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
@@ -1285,6 +1285,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > label {
   font-size: 1rem;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > input {
+  border: 1px solid rgba(16, 159, 218, 0.5);
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
@@ -1973,7 +1977,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus {
-  border: 1px solid rgba(16, 159, 218, 0.5);
+  border: 1px solid rgba(16, 159, 218, 0.75);
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
