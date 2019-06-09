@@ -39,6 +39,18 @@ body.onboarding
 								display: flex
 								align-items: flex-end
 
+								.initCheckoutBtn
+									width: 100%
+									max-width: 400px
+									border: 1px solid azure(.8)
+									color: azure(.8)
+									background-color: white()
+									transition: all 100ms ease-in-out
+									
+									&:hover, &.active
+										color: white()
+										background-color: azure()
+
 							.reviewTable
 
 								h3
@@ -232,7 +244,7 @@ body.onboarding
 						padding: 1em
 						text-align: center
 
-						.planInner, .optionInner, .initCheckoutBtn
+						.planInner, .optionInner
 							width: 100%
 							max-width: 400px
 							border: 1px solid azure(.8)
