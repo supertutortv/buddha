@@ -1226,6 +1226,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div {
+  display: flex;
   padding: 1em 0;
   border-bottom: 1 px solid rgba(0, 0, 0, 0.5);
 }
