@@ -1400,6 +1400,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner {
   width: 100%;
   max-width: 400px;
+  border: 1px solid #109fda;
   color: rgba(16, 159, 218, 0.8);
   background-color: white;
   transition: all 100ms ease-in-out;
@@ -1448,6 +1449,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo {
+  border: 1px solid red;
   color: rgba(255, 0, 0, 0.8);
   background-color: white;
 }
