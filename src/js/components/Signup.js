@@ -91,19 +91,19 @@ export default class Signup extends React.Component {
                                 </section>
                                 <fieldset className="stAccountBody">
                                     <div className="stIfR99">
-                                        <input autocomplete="off" aria-label="Student First Name" type="text" name="firstname" required />
+                                        <input className="browser-default validate" aria-label="Student First Name" type="text" name="firstname" required />
                                         <label aria-hidden="true" for="firstname">Student First Name</label>
                                     </div>
                                     <div className="stIfR99">
-                                        <input autocomplete="off" aria-label="Student Last Name" className="browser-default validate" type="text" name="lastname" required/>
+                                        <input aria-label="Student Last Name" className="browser-default validate" type="text" name="lastname" required/>
                                         <label aria-hidden="true" for="lastname">Student Last Name</label>
                                     </div>
                                     <div className="stIfR99">
-                                        <input autocomplete="off" aria-label="Student Email" className="browser-default validate email" type="email" name="email" required validation="email"/>
+                                        <input aria-label="Student Email" className="browser-default validate email" type="email" name="email" required validation="email"/>
                                         <label aria-hidden="true" for="email">Student Email</label>
                                     </div>
                                     <div className="stIfR99">
-                                        <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                                        <input aria-label="Password" className="browser-default validate" type="password" name="password" required/>
                                         <label aria-hidden="true" for="password">Password</label>
                                     </div>
                                 </fieldset>
