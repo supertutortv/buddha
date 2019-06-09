@@ -52,21 +52,21 @@
 
 @keyframes spin {
   0% {
-    transform: rotate3d(0, 0, 0, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
   }
 
   100% {
-    transform: rotate3d(0, 0, 0, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
   }
 }
 
 @-webkit-keyframes spin {
   0% {
-    transform: rotate3d(0, 0, 0, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
   }
 
   100% {
-    transform: rotate3d(0, 0, 0, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
   }
 }
 
@@ -697,7 +697,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.acti
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i {
-  margin-left: 1em;
+  margin-left: 2em;
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i.fa-spinner {
