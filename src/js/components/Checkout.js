@@ -104,9 +104,15 @@ export default class Checkout extends React.Component {
                             <figure className="stCheckoutLogo">
                                 <LogoSVG/>
                             </figure>
-                            <div id="stPricingCardElement">
-                                <CardElement/>
-                            </div>
+                            <form action="/" onSubmit={(e) => e.preventDefault()}>
+                                <div className="stIfR99">
+                                    <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
+                                    <label aria-hidden="true" for="name">Name on card</label>
+                                </div>
+                                <div id="stPricingCardElement">
+                                    <CardElement/>
+                                </div>
+                            </form>
                             {children}
                         </div>
                     </section>
