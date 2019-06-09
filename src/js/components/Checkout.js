@@ -97,27 +97,25 @@ export default class Checkout extends React.Component {
                                 })
                                 console.log(state)
                             }}>
-                                <fieldset {...disabled}>
-                                    <div className="stIfR99">
-                                        <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
-                                        <label aria-hidden="true" for="name">Name on card</label>
-                                    </div>
-                                    <div id="stPricingCardElement">
-                                        <CardElement/>
-                                    </div>
-                                    {(error.message)
-                                        ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                                        : null
-                                    }
-                                    <div className="stSubmitBlock">
-                                        <button id="paySubmit" name="paySubmit" type="submit">
-                                            <span>Pay {amt}</span>
-                                            {state.status === 'active' ? 
-                                                <i class="fas fa-lock"></i> :
-                                                (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
-                                        </button>
-                                    </div>
-                                </fieldset>
+                                <div className="stIfR99">
+                                    <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
+                                    <label aria-hidden="true" for="name">Name on card</label>
+                                </div>
+                                <div id="stPricingCardElement">
+                                    <CardElement/>
+                                </div>
+                                {(error.message)
+                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                    : null
+                                }
+                                <div className="stSubmitBlock">
+                                    <button id="paySubmit" name="paySubmit" type="submit">
+                                        <span>Pay {amt}</span>
+                                        {state.status === 'active' ? 
+                                            <i class="fas fa-lock"></i> :
+                                            (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
+                                    </button>
+                                </div>
                             </form>
                             {children}
                         </div>

@@ -50,6 +50,15 @@
   }
 }
 
+@keyframes spin {
+  100% {
+    transform: rotate3d(0, 0, 0, 360);
+  }
+}
+
+@-webkit-keyframes growvert {
+}
+
 @font-face {
   font-family: "Texta";
   src: url("/assets/fonts/Texta/Norm/Texta-200.woff") format("woff"), url("/assets/fonts/Texta-200.ttf") format("truetype");
@@ -678,6 +687,11 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.acti
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i {
   margin-left: 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i.fa-spinner {
+  transform-origin: 50% 50%;
+  animation: 1000ms ease 0s normal both infinite anim;
 }
 
 .stDashboard {
