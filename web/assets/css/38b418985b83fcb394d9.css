@@ -1356,8 +1356,8 @@ body.onboarding st-app .stOnboardingWindow .stStepContent {
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent > div {
-  width: 98%;
-  max-width: 700px;
+  width: 95%;
+  max-width: 800px;
   margin-top: -50%;
 }
 
@@ -1389,9 +1389,9 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption {
   position: relative;
-  flex: 1;
+  flex: 1 1 auto;
   border-radius: 0.25em;
-  width: 320px;
+  width: 225px;
   padding: 1em;
   text-align: center;
 }
