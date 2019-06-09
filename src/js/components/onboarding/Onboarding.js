@@ -105,14 +105,21 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, ...state}) => {
-	console.log(state)
+	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
+		price = state.option.price
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
 				<div>
 					<aside className="stConfirmCard">
 						<div className="stConfirmCardInner">
-							Does this look right?
+							<div className="reviewTable">
+								<div>Review Your Order</div>
+								<div>
+									<div>Total: </div>
+									<div>{'$'+((price+shipping)/100).toFixed(2)}</div>
+								</div>
+							</div>
 						</div>
 					</aside>
 				</div>
@@ -132,6 +139,7 @@ export default class Onboarding extends React.Component{
 		let saved = JSON.parse(localStorage.getItem('_stT-signup') || {})
 
         this.state = {
+			complete: false,
 			init: false,
 			step: 0,
 			option: false,
