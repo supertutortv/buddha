@@ -1239,11 +1239,14 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > di
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div input {
   flex: 0;
   margin-right: .5em;
+  border: 1px solid rgba(16, 159, 218, 0.8);
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div label {
   flex: 1;
   font-size: calc(1rem - 7px);
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
