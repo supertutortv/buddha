@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 @keyframes fadein {
   from {
     opacity: 0;
@@ -1320,12 +1318,6 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
   margin-left: 2%;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.select:after {
-  font-family: 'Font Awesome 5 Free';
-  content: '\F0AB';
-  display: inline-block;
-}
-
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
   background-color: white;
 }
@@ -1338,6 +1330,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state option {
   font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state + i {
+  position: absolute;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 label {

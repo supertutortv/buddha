@@ -56,13 +56,6 @@ body.onboarding
 						&.right
 							margin-left: 2%
 
-						&.select
-
-							&:after
-								font-family: 'Font Awesome 5 Free'
-								content: ''
-								display: inline-block
-
 						input
 							background-color: white()
 						
@@ -73,6 +66,9 @@ body.onboarding
 
 							option
 								font-family: $font-stack
+
+							& + i
+								position: absolute
 
 				label
 					display: block
