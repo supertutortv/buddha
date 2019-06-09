@@ -1238,7 +1238,6 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn {
   width: 100%;
-  max-width: 400px;
   border: 1px solid rgba(16, 159, 218, 0.8);
   color: rgba(16, 159, 218, 0.8);
   background-color: white;
@@ -1249,6 +1248,13 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn.active {
   color: white;
   background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn span {
+  font-size: .75rem;
+  font-weight: 600;
+  display: block;
+  text-align: center;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {

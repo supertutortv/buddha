@@ -140,7 +140,7 @@ const Finalize = ({nextStep, ...state}) => {
 								</div>
 							</div>
 							<div className="initCheckoutFinal">
-								<button className="initCheckoutBtn">Checkout</button>
+								<button className="initCheckoutBtn"><span>Checkout</span></button>
 							</div>
 						</div>
 					</aside>
