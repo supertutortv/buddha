@@ -568,24 +568,24 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo svg {
   width: 100%;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner > div {
+body.checkout .stCheckoutWindow .stCheckoutInner form > div {
   border-radius: 0.25em;
   padding: 1em;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99 {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99 {
   position: relative;
   margin-bottom: 1em;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) {
   position: relative;
   background-color: white;
   overflow: hidden;
   border-radius: .125rem;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) > label {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) > label {
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -599,9 +599,9 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) > label {
   transition: all .1s ease-in-out;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) input:not([type="checkbox"]),
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) textarea,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) textarea,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) select {
   padding: 1em 0 0.25em .5em;
   display: block;
   position: relative;
@@ -614,24 +614,24 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select {
   transition: all .1s ease-in-out;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) textarea:focus,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select:focus {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) textarea:focus,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) select:focus {
   border: 1px solid rgba(16, 159, 218, 0.75);
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) textarea.validate:valid,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select.validate:valid {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) textarea.validate:valid,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) select.validate:valid {
   border: 1px solid green;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) textarea:focus + label,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) textarea.validate:valid + label,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select:focus + label,
-body.checkout .stCheckoutWindow .stCheckoutInner .stIfR99:not(.no-bg) select.validate:valid + label {
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) textarea:focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) textarea.validate:valid + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) select:focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) select.validate:valid + label {
   font-size: calc(1rem - 14px);
 }
 
