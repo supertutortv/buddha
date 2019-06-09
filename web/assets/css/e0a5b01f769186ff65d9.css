@@ -1212,6 +1212,10 @@ body.onboarding st-app .stOnboardingWindow .step {
   align-items: center;
 }
 
+body.onboarding st-app .stOnboardingWindow .step em {
+  font-style: italic;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard {
   width: 100%;
   padding: 2em;

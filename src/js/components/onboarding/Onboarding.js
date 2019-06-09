@@ -127,11 +127,11 @@ const Finalize = ({nextStep, ...state}) => {
 									<div>Price</div>
 								</div>
 								<div>
-									<div>{state.plan.title}</div>
+									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
 									<div>{priceToString(price)}</div>
 								</div>
 								{!shipping ? null : <div>
-									<div>Priority Shipping (3-4 days)</div>
+									<div>Priority Shipping <em>(3-4 days)</em></div>
 									<div>{priceToString(shipping)}</div>
 								</div>}
 								<div>
