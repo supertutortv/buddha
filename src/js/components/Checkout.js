@@ -94,12 +94,43 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
                                 
-                                let nameOnCard = e.target.querySelector('[name="name"').value,
-                                    { token } = await state.stripe.createToken(state.card,{name: nameOnCard})
+                                let nameOnCard = e.target.querySelector('[name="name"').value
 
-                                console.log(token)
+                                await state.stripe.createToken(state.card,{name: nameOnCard}).then(async ({token: t}) => {
+                                    if (t.error) return this.setState({
+                                        error: {
+                                            id: 'stripeError',
+                                            message: t.error.message
+                                        }
+                                    })
 
-                                //ಠ_ಠ(e,state,(d) => {})
+                                    return console.log(e.target.action)
+                            
+                                    cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
+                                    cus.token = t.id
+                            
+                                    return _st.http.post(action,this.state,(d) => {
+                                        
+                                        if (d.code === 'stripeError') {
+                                            var ecode = d.data.decline_code || d.data.code
+                                            return this.setState({
+                                                error: {
+                                                    id: ecode,
+                                                    message: d.data.message
+                                                }
+                                            },() => _st.loading = false)
+                                        }
+                            
+                                        let res = d.response
+                                        this.changeStep({
+                                            thankYou: {
+                                                id: res.id.replace('in_','')
+                                            }
+                                        })
+                                    })
+                                    
+                                })
+                                console.log('checkout complete')
                             }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>

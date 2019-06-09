@@ -91,38 +91,6 @@ function submitPayment(e,stripe) {
     _st.loading = true
 
     var cus = this.state.customer
-    stripe.createToken({name: cus.nameOnCard}).then(({token: t}) => {
-        if (t.error) return this.setState({
-            error: {
-                id: 'stripeError',
-                message: t.error.message
-            }
-        })
-
-        cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
-        cus.token = t.id
-
-        return _st.http.post('/signup/pay',this.state,(d) => {
-            
-            if (d.code === 'stripeError') {
-                var ecode = d.data.decline_code || d.data.code
-                return this.setState({
-                    error: {
-                        id: ecode,
-                        message: d.data.message
-                    }
-                },() => _st.loading = false)
-            }
-
-            let res = d.response
-            this.changeStep({
-                thankYou: {
-                    id: res.id.replace('in_','')
-                }
-            })
-        })
-        
-    })
 }
 
 // toPrice
