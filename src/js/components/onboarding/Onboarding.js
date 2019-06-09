@@ -61,8 +61,12 @@ const Shipping = ({nextStep,ship,plan}) => {
 						let obj = {
 							country: 'US'
 						},
-						vals = e.target.querySelectorAll('input,select')
+						vals = e.target.querySelectorAll('input:not([type="checkbox"]),select'),
+						priShip = e.target.querySelector('[name="priShip"]').checked
+
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
+						
+						obj = Object.assign(obj,{priShip: priShip})
 						nextStep({step: 3, loc: true, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
@@ -92,7 +96,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 						</div>
 						<div className="shipOptBtn">
 							<div>
-								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip"/>
+								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip" value="1"/>
 								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+${(plan.shipping/100).toFixed(2)})</label>
 							</div>
 							<button className="btn" type="submit">Continue</button>
@@ -105,7 +109,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, ...state}) => {
-	let shipping = state.shipping && state.shipping.priShip === 'on' ? state.plan.shipping : 0,
+	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
 		price = state.option.price
 		console.log(state.shipping)
 	return (
