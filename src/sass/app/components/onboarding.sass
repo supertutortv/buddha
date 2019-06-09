@@ -26,7 +26,13 @@ body.onboarding
 					.stIfR99
 						display: inline-block
 						+stFormInput
-						
+
+						&:not(.no-bg)
+							background-color: white()
+							
+							& > label
+								font-size: 1rem
+								
 						&.oneq
 							max-width: 24%
 

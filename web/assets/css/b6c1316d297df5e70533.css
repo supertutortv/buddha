@@ -1279,11 +1279,11 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   font-size: calc(1rem - 14px);
 }
 
-form.big body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) {
   background-color: white;
 }
 
-form.big body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 > label {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > label {
   font-size: 1rem;
 }
 
@@ -1986,14 +1986,6 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea.validate:valid + label {
   font-size: calc(1rem - 14px);
-}
-
-form.big body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
-  background-color: white;
-}
-
-form.big body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 > label {
-  font-size: 1rem;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons {
