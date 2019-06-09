@@ -1279,7 +1279,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   font-size: calc(1rem - 14px);
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.big > label {
+form body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.big > label {
   font-size: 1rem;
 }
 
@@ -1988,7 +1988,7 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
   font-size: calc(1rem - 14px);
 }
 
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99.big > label {
+form body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99.big > label {
   font-size: 1rem;
 }
 
