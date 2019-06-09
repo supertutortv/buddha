@@ -1229,6 +1229,12 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal {
+  padding-top: 1em;
+  display: flex;
+  align-items: flex-end;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
   text-align: left;
 }
@@ -1523,8 +1529,10 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn {
   position: relative;
   flex: 1 1 auto;
   border-radius: 0.25em;
@@ -1537,10 +1545,14 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner {
   width: 100%;
   max-width: 400px;
   border: 1px solid rgba(16, 159, 218, 0.8);
@@ -1557,6 +1569,10 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner:hover,
@@ -1564,7 +1580,11 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner:hover,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.active {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner.active {
   color: white;
   background-color: #109fda;
 }
@@ -1573,10 +1593,14 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner span,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner span,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner span,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner span,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner span,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner span,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner span {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner span {
   font-size: .75rem;
   font-weight: 600;
   display: block;
@@ -1588,10 +1612,14 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner.combo {
   border: 1px solid rgba(255, 0, 0, 0.8);
   color: rgba(255, 0, 0, 0.8);
   background-color: white;
@@ -1605,6 +1633,10 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .st
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .initCheckoutBtn .optionInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo:hover,
@@ -1612,7 +1644,11 @@ body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo:hover,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo.active,
 body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo:hover,
-body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo.active {
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .initCheckoutBtn .optionInner.combo.active {
   color: white;
   background-color: red;
 }
