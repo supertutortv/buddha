@@ -123,7 +123,6 @@ export default class Onboarding extends React.Component{
     render() {
 		let {init, firstname, plan} = this.state
 		if (!init) return null
-		console.log(plan)
 		let plans = _st.plans
 
         return (
@@ -139,7 +138,7 @@ export default class Onboarding extends React.Component{
 								<div className="ctaColumn"><span>Choose which course you'd like:</span></div>
 								{['sat','act','combo'].map((val)=> {
 
-									let active = (this.state.plan === val) ? 'active' : null,
+									let active = (typeof plan !== 'undefined' && plan.value === val) ? 'active' : null,
 										label = val === 'combo' ? 'both' : val
 									return (
 										<div className="stOnboardingPlan" onClick={(e) => {
