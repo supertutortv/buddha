@@ -576,7 +576,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner {
   margin-bottom: .5rem;
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   padding: 2em;
-  margin-bottom: 30%;
+  margin-bottom: 25%;
   border: 1px solid #109fda;
 }
 

@@ -91,9 +91,9 @@ export default class Checkout extends React.Component {
                             </figure>
                             <h3>Secure Payment Form</h3>
                             <form action={action} onSubmit={(e) => {
-                                
-                                if (this.state.status === 'processing') return false
                                 e.preventDefault()
+                                if (this.state.status === 'processing') return false
+                                
                                 this.setState({
                                     status: 'processing'
                                 })
