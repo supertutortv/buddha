@@ -2,11 +2,6 @@
     &:not(.nopad)
         padding: 0 1.5rem
 
-    &.big
-        
-        label
-            font-size: 1rem !important
-
 @mixin stFormErrors
     color: red
     font-weight: 600
@@ -83,3 +78,6 @@
 
     form.big &
         background-color: white()
+        
+        & > label
+            font-size: 1rem
