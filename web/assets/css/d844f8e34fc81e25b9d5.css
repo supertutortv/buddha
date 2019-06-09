@@ -1221,6 +1221,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
   padding: 0 1.5rem;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm.big label {
+  font-size: 1rem;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
   display: inline-block;
   position: relative;
@@ -1277,10 +1281,6 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus + label,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:valid + label {
   font-size: calc(1rem - 14px);
-}
-
-form.big body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 > label {
-  font-size: 1rem;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
@@ -1931,6 +1931,10 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
   padding: 0 1.5rem;
 }
 
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody.big label {
+  font-size: 1rem;
+}
+
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
   position: relative;
   margin-bottom: 1em;
@@ -1986,10 +1990,6 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:valid + label {
   font-size: calc(1rem - 14px);
-}
-
-form.big body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 > label {
-  font-size: 1rem;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons {
