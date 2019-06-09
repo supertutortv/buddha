@@ -1227,8 +1227,8 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div {
   display: flex;
-  padding: 1em 0;
-  border-bottom: 1 px solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type {
@@ -1236,7 +1236,20 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type {
+  padding-bottom: none;
   border-bottom: none;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
+  font-size: calc(1rem - 7px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:first-child {
+  flex: 1;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:not(:first-child) {
+  margin-left: 1em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {

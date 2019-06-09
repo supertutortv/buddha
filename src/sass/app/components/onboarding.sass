@@ -35,14 +35,24 @@ body.onboarding
 
 								& > div
 									display: flex
-									padding: 1em 0
-									border-bottom: 1 px solid black(.5)
+									padding-bottom: 1em
+									border-bottom: 1px solid black(.5)
 
 									&:first-of-type
 										font-weight: 600
 
 									&:last-of-type
+										padding-bottom: none
 										border-bottom: none
+
+									& > div
+										font-size: $medtext
+									
+									& > div:first-child
+										flex: 1
+									
+									& > div:not(:first-child)
+										margin-left: 1em
 
 			#step2
 
