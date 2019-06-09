@@ -697,7 +697,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.acti
 }
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i {
-  font-size: 1rem;
+  font-size: calc(1rem - 7px);
   margin-left: 1.25em;
   transition: all 100ms ease-in-out;
 }
