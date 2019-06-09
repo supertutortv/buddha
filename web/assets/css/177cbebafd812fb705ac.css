@@ -1273,17 +1273,13 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
+  font-weight: 400;
   font-size: calc(1rem - 7px);
   padding: 0 0.5em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:first-child {
   flex: 1;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:not(:first-child) {
-  margin-left: 1em;
-  font-weight: 400;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
