@@ -56,7 +56,10 @@
   }
 }
 
-@-webkit-keyframes growvert {
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate3d(0, 0, 0, 360);
+  }
 }
 
 @font-face {
@@ -691,7 +694,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i {
 
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i.fa-spinner {
   transform-origin: 50% 50%;
-  animation: 1000ms ease 0s normal both infinite anim;
+  animation: spin 1000ms ease-in-out 0s both infinite;
 }
 
 .stDashboard {
