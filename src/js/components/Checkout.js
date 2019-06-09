@@ -79,7 +79,7 @@ export default class Checkout extends React.Component {
 
         let {children,amt,action,submit: ಠ_ಠ} = this.props,
             {error, ...state} = this.state,
-            disabled = {disabled: (state.status === 'processing')}
+            disabled = (state.status === 'processing')
 
         return(
             <StripeProvider stripe={state.stripe}>
