@@ -1318,11 +1318,18 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
   margin-left: 2%;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.select:after {
+  font-family: "Font Awesome 5 Free";
+  content: "\F0AB";
+  display: inline-block;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
   background-color: white;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state {
+  font-size: 1rem;
   padding: 1em 0 0.25em 0.5em;
 }
 
@@ -1333,7 +1340,7 @@ body.onboarding st-app .stOnboardingWindow #step2 label {
 
 body.onboarding st-app .stOnboardingWindow #step2 select {
   border: 1px solid rgba(16, 159, 218, 0.5);
-  border-radius: 0.25em;
+  border-radius: .125em;
   cursor: pointer;
   padding: 1em;
 }
