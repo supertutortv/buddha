@@ -76,7 +76,7 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="city">City</label>
 						</div>
 						<div className="stIfR99 onet right select">
-							<StateDD aria-label="State" validation="text" className="validate state" name="state" required>
+							<StateDD aria-label="State" validation="text" className="validate required state" name="state" required>
 								<i class="fas fa-caret-down"></i>
 							</StateDD>
 						</div>
@@ -89,7 +89,7 @@ const Shipping = ({nextStep,ship}) => {
 							<label aria-hidden="true" for="phone">Phone Number</label>
 						</div>
 						<div className="stIfR99">
-							<button>Continue</button>
+							<button className="btn" type="submit">Continue</button>
 						</div>
 					</form>}
 				</div>
