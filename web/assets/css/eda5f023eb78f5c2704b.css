@@ -1222,10 +1222,6 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
   margin-bottom: 1em;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.half {
-  max-width: 50%;
-}
-
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) {
   position: relative;
   background-color: whitesmoke;
@@ -1276,6 +1272,10 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus + label,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:valid + label {
   font-size: calc(1rem - 14px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.half {
+  max-width: 50%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 label {
@@ -1883,10 +1883,6 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
   position: relative;
   margin-bottom: 1em;
-}
-
-body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99.half {
-  max-width: 50%;
 }
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) {
