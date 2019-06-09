@@ -1225,6 +1225,19 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div {
+  padding: 1em 0;
+  border-bottom: 1 px solid rgba(0, 0, 0, 0.5);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type {
+  font-weight: 600;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type {
+  border-bottom: none;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
   padding: 0 !important;
   margin-top: 1em;

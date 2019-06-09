@@ -119,7 +119,9 @@ const Finalize = ({nextStep, ...state}) => {
 					<aside className="stConfirmCard">
 						<div className="stConfirmCardInner">
 							<div className="reviewTable">
-								<div>Review Your Order</div>
+								<div>
+									<h3>Review Your Order</h3>
+								</div>
 								<div>
 									<div>{state.plan.title}</div>
 									<div>{(price/100).toFixed(2)}</div>
