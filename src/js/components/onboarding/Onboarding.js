@@ -121,9 +121,9 @@ export default class Onboarding extends React.Component{
 	}
 
     render() {
-		let {init, firstname} = this.state
+		let {init, firstname, plan} = this.state
 		if (!init) return null
-
+		console.log(plan)
 		let plans = _st.plans
 
         return (
