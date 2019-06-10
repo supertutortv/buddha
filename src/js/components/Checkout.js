@@ -108,7 +108,8 @@ export default class Checkout extends React.Component {
                                             ...state.option
                                         },
                                         loc: state.loc,
-                                        shipping: state.shipping
+                                        shipping: state.shipping,
+                                        session: this.session
                                     }
                             
                                     return await _st.http.post(action,obj,(d) => {
