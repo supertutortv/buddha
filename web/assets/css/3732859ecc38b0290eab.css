@@ -758,7 +758,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course {
-  width: 32%;
+  width: 49%;
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course:not(:first-child) {
@@ -778,7 +778,13 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
-.stDashboard .stDashboardCourses .stCoursesBody .course > a img {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a .heroImg {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.stDashboard .stDashboardCourses .stCoursesBody .course > a .heroImg img {
+  position: absolute;
   width: 100%;
   height: auto;
   display: block;

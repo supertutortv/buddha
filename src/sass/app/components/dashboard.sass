@@ -20,7 +20,7 @@
             align-items: center
 
             .course
-                width: 32%
+                width: 49%
 
                 &:not(:first-child)
                     margin-left: 2%
@@ -36,10 +36,15 @@
                     &:hover
                         +z-depth-3
 
-                    img
-                        width: 100%
-                        height: auto
-                        display: block
+                    .heroImg
+                        position: relative
+                        padding-top: 56.25%
+
+                        img
+                            position: absolute
+                            width: 100%
+                            height: auto
+                            display: block
                     
                     .title
                         padding: $tiny

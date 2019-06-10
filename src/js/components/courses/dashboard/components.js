@@ -32,7 +32,9 @@ export const DBCourses = ({courses}) => {
                     return (
                         <div className="course">
                             <Link to={'/'+course} >
-                                <img src={crs.thumb} />
+                                <div className="heroImg">
+                                    <img src={crs.thumb} />
+                                </div>
                                 <div className="title">
                                     <span>{crs.name}</span>
                                 </div>
