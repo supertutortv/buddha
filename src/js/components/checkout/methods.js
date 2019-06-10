@@ -74,15 +74,6 @@ function setChecker(el) {
     return true
 }
 
-function setShipping(el) {
-    let cus = Object.assign(this.state.customer.options,{priorityShip: el.target.checked})
-    this.setState({
-        pricing: Object.assign(this.state.pricing,{shipping: el.target.checked ? parseInt(this.state.item.metadata.priship) : 0}),
-        update: true,
-        customer: Object.assign(this.state.customer,cus)
-    })
-}
-
 // submitPayment
 function submitPayment(e,stripe) {
     e.preventDefault()
@@ -92,91 +83,3 @@ function submitPayment(e,stripe) {
 
     var cus = this.state.customer
 }
-
-// toPrice
-function toPrice(amt = 0) {
-    return (Math.round(amt)/100).toFixed(2)
-}
-
-// updateInp
-function updatePrice({target: el}) {
-    this.setState(prev => {
-        return Object.assign(prev,{plan: prev.item.plans[el.value]})
-    })
-}
-
-// validate
-function validate() {
-    var err = false,
-        inp = Array.from(document.querySelectorAll('input, select'))
-
-    inp.some((el) => {
-        if ((el.hasAttribute('required') && !el.value)) {
-            console.log(el.value)
-            el.classList.add('invalid')
-            return err = true
-        }
-        el.classList.remove('invalid')
-        return false
-    })
-
-    this.setState({
-        valid: this.state.card && this.state.customer.options.terms && !err
-    })
-}
-
-function nextStep() {
-    this.setState((state) => ({
-        update: true,
-        step: state.step + 1
-    }))
-}
-
-function prevStep() {
-    this.setState((state) => ({
-        update: true,
-        step: state.step - 1 || 0
-    }))
-}
-
-function updateVals(el) {
-    this.setState(prev => {
-        var params = el.name.split('|'),
-            newObj = {[params[0]] : {...prev[params[0]]}}
-
-            params.reduce((obj,key,i,arr) => {
-                if (i+1 === arr.length) obj[key] = (el.type === 'checkbox') ? el.checked : el.value
-                else return obj[key]
-            },newObj)
-        return Object.assign(prev,newObj,{update: false})
-    },() => this.state.update = true)
-}
-
-function step0(e) {
-    e.preventDefault()
-        let choices = e.target.querySelectorAll('button.selected')
-    
-    for (let i = 0; i < choices.length; i++) {
-        this.updateVals(choices[i])
-    }
-    this.nextStep()
-}
-
-function step1(e) {
-    e.preventDefault()
-    this.nextStep()
-}
-
-function step2(e) {
-    e.preventDefault()
-}
-
-function step3(e) {
-    e.preventDefault()
-}
-
-function step4(e) {
-    e.preventDefault()
-}
-
-export default {nextStep,prevStep,updateVals,step0,step1,step2,step3,step4}

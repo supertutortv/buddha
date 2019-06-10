@@ -1,6 +1,5 @@
 import React from 'react'
 import { StripeProvider, Elements, CardElement } from 'react-stripe-elements'
-import methods from './checkout/methods'
 import LogoSVG from './LogoSVG'
 
 export default class Checkout extends React.Component {
@@ -22,10 +21,6 @@ export default class Checkout extends React.Component {
             id: '',
             message: ''
         }
-
-        Object.keys(methods).forEach((method) => {
-            this[method] = methods[method].bind(this)
-        })
     }
 
     componentDidMount() {
