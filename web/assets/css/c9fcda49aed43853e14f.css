@@ -810,7 +810,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard .stNotesActions .stDashboardNotifications {
-  padding: 0 1em;
+  padding: 1em;
   flex: 1;
   width: 100%;
   max-width: 1000px;
