@@ -90,8 +90,8 @@ const Shipping = ({nextStep,ship,plan}) => {
 							</StateDD>
 						</div>
 						<div className="stIfR99 onet right">
-							<input required aria-label="Postal Code" validation="text" className="validate zip" type="text" name="zip"/>
-							<label aria-hidden="true" for="zip">Postal Code</label>
+							<input required aria-label="Postal Code" validation="text" className="validate postal_code" type="text" name="postal_code"/>
+							<label aria-hidden="true" for="postal_code">Postal Code</label>
 						</div>
 						<div className="stIfR99">
 							<input required aria-label="Phone Number" validation="tel" className="validate phone" type="tel" name="phone"/>
