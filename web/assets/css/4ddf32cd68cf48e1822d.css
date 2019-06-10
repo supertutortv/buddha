@@ -492,7 +492,7 @@ body.allYourBase .stAppHeader {
   justify-content: flex-end;
 }
 
-.stAppHeader > div img {
+.stAppHeader > div svg {
   height: calc(2.6em - 1em);
   width: auto;
 }

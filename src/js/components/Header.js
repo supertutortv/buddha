@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import LogoSVG from './LogoSVG'
 
 const Header = ({stripped, title, depth, hist, refreshData}) => {
     var strCls = stripped ? ' stripped' : '',
@@ -7,10 +8,10 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
     return(
         <header className={"stAppHeader z-depth-"+depth+strCls}>
             <div className="stHeaderLeft">
-                {stripped ? '' : <img src={_st.root+'/assets/img/sttv_logo.png'} />}
+                {stripped ? '' : <LogoSVG/>}
             </div>
             <div className="stHeaderMiddle">
-                {stripped ? <img src={_st.root+'/assets/img/sttv_logo.png'} /> : <h1>{title}</h1>}
+                {stripped ? <LogoSVG/> : <h1>{title}</h1>}
             </div>
             <div className="stHeaderRight">
                 <ul className="stNavContainer">
