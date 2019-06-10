@@ -758,7 +758,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course {
-  width: 49%;
+  width: 32%;
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course:not(:first-child) {
@@ -796,6 +796,10 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   padding: 1em;
   font-weight: 600;
   line-height: 1;
+}
+
+.stDashboard .stDashboardCourses .stCoursesBody .course > a .title span {
+  font-size: calc(1rem - 7px);
 }
 
 .stDashboard .stNotesActions {
