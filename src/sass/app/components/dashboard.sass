@@ -28,7 +28,7 @@
                 & > a
                     display: block
                     overflow: hidden
-                    border-radius: $ittybitty
+                    border-radius: $tiny
                     background-color: white()
                     transition: all 100ms ease-in-out
                     +z-depth-1
@@ -42,17 +42,16 @@
 
                         img
                             position: absolute
-                            width: 100%
-                            height: auto
+                            top: 0
+                            bottom: 0
+                            right: 0
+                            left: 0
                             display: block
                     
                     .title
                         padding: $tiny
                         font-weight: 600
                         line-height: 1
-
-                        span
-                            font-size: $small
 
     .stNotesActions
         width: 100%
