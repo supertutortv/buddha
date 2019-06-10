@@ -85,7 +85,7 @@ export default class Dashboard extends React.Component {
                         <DataState.Consumer>
                             {data =>
                                 <React.Fragment>
-                                    <Header refreshData={this.props.refreshData} hist={this.props.history}/>
+                                    <Header title="Home" refreshData={this.props.refreshData} hist={this.props.history}/>
                                     {!hasCourses ? <Onboarding refreshData={this.props.refreshData} /> : 
                                         <React.Fragment>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
