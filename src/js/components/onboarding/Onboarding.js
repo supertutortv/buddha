@@ -222,7 +222,9 @@ export default class Onboarding extends React.Component{
 	}
 
     render() {
-		let {init, firstname, plan, option, shipping} = this.state
+		let {init, firstname, plan, option, shipping} = this.state,
+			{refreshData} = this.props
+
 		if (!init) return null
 		let plans = _st.plans
 
@@ -263,7 +265,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize {...this.state} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} nextStep={this.nextStep} /> : null}
+				{this.state.loc ? <Finalize {...this.state} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }

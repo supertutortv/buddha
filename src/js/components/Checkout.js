@@ -8,7 +8,6 @@ export default class Checkout extends React.Component {
 
         this.state = {
             init: false,
-            completed: false,
             status: 'active',
             step: 0,
             card: null,
@@ -21,6 +20,8 @@ export default class Checkout extends React.Component {
             id: '',
             message: ''
         }
+
+        this.completed = this.completed.bind(this)
     }
 
     componentDidMount() {
@@ -65,12 +66,21 @@ export default class Checkout extends React.Component {
         if (el) el.parentNode.removeChild(el)
     }
 
+    completed(cb=()=>{}) {
+        this.setStatus(
+            {status: 'completed'},
+            () => setTimeout(cb,2000)
+        )
+    }
+
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,action} = this.props,
+        let {children,amt,action,refreshData} = this.props,
             {error, ...state} = this.state,
-            disabled = (state.status === 'processing')
+            disabled = (state.status === 'processing'),
+            completed = (state.status === 'completed'),
+            active = disabled ? 'active' : (completed) ? 'completed' : ''
 
         return(
             <StripeProvider stripe={state.stripe}>
@@ -124,7 +134,7 @@ export default class Checkout extends React.Component {
                                             },() => _st.loading = false)
                                         }
 
-                                        console.log(d)
+                                        this.completed(refreshData)
                                     })
                                     
                                 })
@@ -160,8 +170,8 @@ export default class Checkout extends React.Component {
                                     : null
                                 }
                                 <div className="stSubmitBlock">
-                                    <button id="paySubmit" name="paySubmit" type="submit" className={disabled ? 'active' : ''}>
-                                        <span>{disabled ? 'Processing...' : 'Pay '+amt}</span>
+                                    <button id="paySubmit" name="paySubmit" type="submit" className={active}>
+                                        <span>{disabled ? 'Processing...' : (completed) ? '' : 'Pay '+amt}</span>
                                         {state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
                                             (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}

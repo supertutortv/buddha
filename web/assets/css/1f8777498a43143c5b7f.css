@@ -690,6 +690,11 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button span
   font-size: calc(1rem - 10px);
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.completed {
+  color: white;
+  background-color: green;
+}
+
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button:hover,
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.active {
   color: white;
