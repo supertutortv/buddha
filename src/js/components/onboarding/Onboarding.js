@@ -111,7 +111,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 	)
 }
 
-const Finalize = ({nextStep, toggleCheckout, ...state}) => {
+const Finalize = ({nextStep, toggleCheckout, toggleTrial, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
 		price = state.option.price
 
@@ -139,7 +139,7 @@ const Finalize = ({nextStep, toggleCheckout, ...state}) => {
 									<div>
 										<div>
 											<input aria-label="I would like the free 5 day limited trial, please!" className="doTrial" type="checkbox" name="doTrial" onChange={(e) => {
-												console.log(e.target.checked)
+												toggleTrial(e.target.checked)
 											}}/>
 											<label aria-hidden="true" for="doTrial">I would like the free 5 day limited trial, please!</label>
 										</div>
@@ -178,11 +178,13 @@ export default class Onboarding extends React.Component{
 			option: false,
 			loc: false,
 			shipping: false,
+			doTrial: false,
 			...saved
         }
 
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
+		this.toggleTrial = this.toggleTrial.bind(this)
 	}
 	
 	componentDidMount() {
@@ -209,6 +211,10 @@ export default class Onboarding extends React.Component{
 		this.setState(state => {
 			return {checkout: !state.checkout}
 		})
+	}
+
+	toggleTrial(tr=false) {
+		this.setState({doTrial: tr})
 	}
 
 	nextStep(data={}) {
@@ -257,7 +263,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize {...this.state} toggleCheckout={this.toggleCheckout} nextStep={this.nextStep} /> : null}
+				{this.state.loc ? <Finalize {...this.state} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }
