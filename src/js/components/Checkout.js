@@ -105,7 +105,7 @@ export default class Checkout extends React.Component {
                                         }
                                     })
 
-                                    console.log(state)
+                                    console.log(state,t)
                             
                                     /* return _st.http.post(action,this.state,(d) => {
                                         
