@@ -67,7 +67,7 @@ export default class Checkout extends React.Component {
     }
 
     completed(cb=()=>{}) {
-        this.setStatus(
+        this.setState(
             {status: 'completed'},
             () => setTimeout(cb,2000)
         )
