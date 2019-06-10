@@ -165,7 +165,8 @@ export default class Onboarding extends React.Component{
     constructor(props) {
 		super(props)
 		
-		let saved = JSON.parse(localStorage.getItem('_stT-signup'))
+		let saved = JSON.parse(localStorage.getItem('stCourseData')),
+			user = saved.user.data
 
         this.state = {
 			complete: false,
@@ -176,14 +177,14 @@ export default class Onboarding extends React.Component{
 			loc: false,
 			shipping: false,
 			doTrial: false,
-			...saved
+			...user
         }
 
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
 		this.toggleTrial = this.toggleTrial.bind(this)
 
-		console.log(saved)
+		console.log(user)
 	}
 	
 	componentDidMount() {
