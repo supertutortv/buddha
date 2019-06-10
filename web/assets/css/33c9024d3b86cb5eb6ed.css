@@ -732,16 +732,16 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard {
-  padding: 2em 0;
+  padding: 0 0 2em;
   font-size: calc(1rem - 7px);
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
 }
 
 .stDashboard .stDashboardCourses {
   margin: 0 1em 1em;
   background-color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 

@@ -89,6 +89,9 @@ export default class Dashboard extends React.Component {
                                         <React.Fragment>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
                                                 <main className="stDashboard stComponentFade">
+                                                    <div className="stHomeBanner">
+                                                        <TextureImg/>
+                                                    </div>
                                                     <DBCourses courses={data.courses} />
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
