@@ -10,9 +10,19 @@ body.checkout
         display: flex
         align-items: center
         justify-content: center
-        background-color: black(.5)
+        background-color: white(.3)
         +animFadeIn
 
+        &:before
+            content: ' '
+            background: inherit
+            position: absolute
+            left: 0
+            right: 0
+            top: 0
+            bottom: 0
+            filter: blur(10px)
+            
         .stCheckoutInner
             +stcard
             padding: $huge
