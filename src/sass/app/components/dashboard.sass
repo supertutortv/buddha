@@ -3,7 +3,7 @@
     font-size: $medtext
 
     .stHomeBanner
-        margin-bottom: -5%
+        margin-bottom: -10%
 
         img
             width: 100%
@@ -11,12 +11,13 @@
     .stDashboardCourses
         margin: 0 1em 1em
         
-        .myCoursesBody
+        .stCoursesBody
             padding: 1em
             display: flex
             align-items: center
 
             .course
+                background-color: white()
                 padding: $tiny
                 width: $huge * 6
 
@@ -51,6 +52,7 @@
         .stDashboardNotifications
             margin: 0 1em
             flex: 1
+            +centerblock
 
             & > section
                 height: 100%

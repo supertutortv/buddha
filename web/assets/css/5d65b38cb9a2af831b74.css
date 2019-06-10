@@ -737,7 +737,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard .stHomeBanner {
-  margin-bottom: -5%;
+  margin-bottom: -10%;
 }
 
 .stDashboard .stHomeBanner img {
@@ -748,18 +748,19 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   margin: 0 1em 1em;
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody {
+.stDashboard .stDashboardCourses .stCoursesBody {
   padding: 1em;
   display: flex;
   align-items: center;
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course {
+.stDashboard .stDashboardCourses .stCoursesBody .course {
+  background-color: white;
   padding: 0.5em;
   width: 12em;
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course > a {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a {
   display: block;
   overflow: hidden;
   border-radius: 0.25em;
@@ -767,23 +768,23 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course > a:hover {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a:hover {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course > a img {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course > a .title {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a .title {
   padding: 0.5em;
   font-weight: 600;
   line-height: 1;
 }
 
-.stDashboard .stDashboardCourses .myCoursesBody .course > a .title span {
+.stDashboard .stDashboardCourses .stCoursesBody .course > a .title span {
   font-size: 0.75em;
 }
 
@@ -796,6 +797,9 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 .stDashboard .stNotesActions .stDashboardNotifications {
   margin: 0 1em;
   flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .stDashboard .stNotesActions .stDashboardNotifications > section {

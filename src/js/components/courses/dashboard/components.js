@@ -25,8 +25,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
 export const DBCourses = ({courses}) => {
     return (
         <div className="stDashboardCourses">
-            <div className="myCoursesHeader stBoxHeading">My Courses</div>
-            <div className="myCoursesBody">
+            <div className="stCoursesBody">
                 {courses.length === 0 ? null : 
                 Object.keys(courses).map((course) => {
                     let crs = courses[course]
