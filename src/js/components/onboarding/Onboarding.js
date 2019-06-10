@@ -185,7 +185,7 @@ export default class Onboarding extends React.Component{
 		this.toggleCheckout = this.toggleCheckout.bind(this)
 		this.toggleTrial = this.toggleTrial.bind(this)
 
-		console.log(typeof this.state.plan)
+		console.log(this.state.plan)
 	}
 	
 	componentDidMount() {
