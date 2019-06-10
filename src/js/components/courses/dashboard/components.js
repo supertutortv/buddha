@@ -8,7 +8,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
                 <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
                     {!fetched ? null : 
                         (notes.length === 0) ? 
-                            <div className="noNotes">No notifications currently available</div> : 
+                            <div className="noNotes">You have zero notifications</div> : 
                             <div className="stNotes">{
                                 notes.map((o) => 
                                     <div className="stNotification">
