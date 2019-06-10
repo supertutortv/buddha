@@ -111,12 +111,11 @@ export default class Checkout extends React.Component {
                                             id: state.plan.value,
                                             ...state.option
                                         },
+                                        loc: state.loc,
                                         shipping: state.shipping
                                     }
-
-                                    console.log(obj)
                             
-                                    /* return _st.http.post(action,this.state,(d) => {
+                                    return await _st.http.post(action,obj,(d) => {
                                         
                                         if (d.code === 'stripeError') {
                                             var ecode = d.data.decline_code || d.data.code
@@ -127,14 +126,9 @@ export default class Checkout extends React.Component {
                                                 }
                                             },() => _st.loading = false)
                                         }
-                            
-                                        let res = d.response
-                                        this.changeStep({
-                                            thankYou: {
-                                                id: res.id.replace('in_','')
-                                            }
-                                        })
-                                    }) */
+
+                                        console.log(d)
+                                    })
                                     
                                 })
                                 console.log('checkout complete')
