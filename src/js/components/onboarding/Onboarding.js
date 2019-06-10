@@ -100,7 +100,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 						<div className="shipOptBtn">
 							<div>
 								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip" value="1"/>
-								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+${priceToString(plan.shipping)})</label>
+								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+{priceToString(plan.shipping)})</label>
 							</div>
 							<button className="btn" type="submit">Continue</button>
 						</div>
@@ -165,7 +165,7 @@ export default class Onboarding extends React.Component{
     constructor(props) {
 		super(props)
 		
-		let saved = JSON.parse(localStorage.getItem('_stT-signup') || {})
+		let saved = JSON.parse(localStorage.getItem('_stT-signup') || '{}')
 
         this.state = {
 			complete: false,
