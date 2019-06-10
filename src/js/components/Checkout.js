@@ -103,6 +103,7 @@ export default class Checkout extends React.Component {
                                     let obj = {
                                         token: t.id,
                                         plan: {
+                                            doTrial: state.doTrial,
                                             id: state.plan.value,
                                             ...state.option
                                         },
