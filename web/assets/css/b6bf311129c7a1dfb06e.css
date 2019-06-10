@@ -799,15 +799,15 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 .stDashboard .stNotesActions {
   width: 100%;
   display: flex;
+  justify-content: center;
   margin: 0 0 1em;
 }
 
 .stDashboard .stNotesActions .stDashboardNotifications {
   margin: 0 1em;
   flex: 1;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 800px;
 }
 
 .stDashboard .stNotesActions .stDashboardNotifications > section {
