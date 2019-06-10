@@ -707,6 +707,18 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i.fa
   animation: spin 1000ms ease-in-out 0s both infinite;
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors {
+  color: red;
+  font-weight: 600;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 0 1rem 1rem;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
+  text-decoration: underline;
+}
+
 .stDashboard {
   padding: 2em 0;
   font-size: calc(1rem - 7px);
