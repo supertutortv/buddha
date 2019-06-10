@@ -105,7 +105,16 @@ export default class Checkout extends React.Component {
                                         }
                                     })
 
-                                    console.log(state,t)
+                                    let obj = {
+                                        token: t.id,
+                                        plan: {
+                                            id: state.plan.value,
+                                            ...state.option
+                                        },
+                                        shipping: state.shipping
+                                    }
+
+                                    console.log(obj)
                             
                                     /* return _st.http.post(action,this.state,(d) => {
                                         
