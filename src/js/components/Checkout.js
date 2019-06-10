@@ -124,10 +124,11 @@ export default class Checkout extends React.Component {
                                             },() => _st.loading = false)
                                         }
 
+                                        console.log(d)
                                     })
                                     
                                 })
-                                console.log('checkout complete')
+                                
                             }}>
                                 <div className="stIfR99">
                                     <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
