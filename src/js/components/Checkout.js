@@ -122,7 +122,6 @@ export default class Checkout extends React.Component {
                                             },() => _st.loading = false)
                                         }
 
-                                        console.log(d)
                                     })
                                     
                                 })

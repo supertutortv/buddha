@@ -136,7 +136,15 @@ const Finalize = ({nextStep, toggleCheckout, ...state}) => {
 									<div>{priceToString(shipping)}</div>
 								</div>}
 								<div>
-									<div>Total: </div>
+									<div>
+										<div>
+											<input aria-label="I would like the free 5 day limited trial, please!" className="doTrial" type="checkbox" name="doTrial" onChange={(e) => {
+												console.log(e.target)
+											}}/>
+											<label aria-hidden="true" for="doTrial">I would like the free 5 day limited trial, please!</label>
+										</div>
+										<span>Total:</span>
+									</div>
 									<div>{priceToString(price+shipping)}</div>
 								</div>
 							</div>
