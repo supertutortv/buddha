@@ -2,11 +2,14 @@
     padding: 0 0 $huge
     font-size: $medtext
 
+    .stHomeBanner
+        margin-bottom: -5%
+
+        img
+            width: 100%
+
     .stDashboardCourses
         margin: 0 1em 1em
-        background-color: white
-        +centerblock
-        +z-depth-2
         
         .myCoursesBody
             padding: 1em
@@ -21,6 +24,7 @@
                     display: block
                     overflow: hidden
                     border-radius: $ittybitty
+                    transition: all 100ms ease-in-out
                     +z-depth-1
 
                     &:hover

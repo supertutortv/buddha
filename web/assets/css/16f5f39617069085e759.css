@@ -736,13 +736,16 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   font-size: calc(1rem - 7px);
 }
 
+.stDashboard .stHomeBanner {
+  margin-bottom: -5%;
+}
+
+.stDashboard .stHomeBanner img {
+  width: 100%;
+}
+
 .stDashboard .stDashboardCourses {
   margin: 0 1em 1em;
-  background-color: white;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
 .stDashboard .stDashboardCourses .myCoursesBody {
@@ -760,6 +763,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   display: block;
   overflow: hidden;
   border-radius: 0.25em;
+  transition: all 100ms ease-in-out;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 }
 
