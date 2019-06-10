@@ -66,10 +66,10 @@ export default class Checkout extends React.Component {
         if (el) el.parentNode.removeChild(el)
     }
 
-    completed(cb=()=>{}) {
+    completed(cb) {
         this.setState(
             {status: 'completed'},
-            () => setTimeout(cb,2000)
+            () => setTimeout(cb(),2000)
         )
     }
 

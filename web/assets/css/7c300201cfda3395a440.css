@@ -693,9 +693,14 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button span
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.completed {
   color: white;
   background-color: green;
+  border: 1px solid green;
 }
 
-body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button:hover,
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.completed i {
+  margin-left: 0;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button:not(.completed):hover,
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button.active {
   color: white;
   background-color: #109fda;
