@@ -68,7 +68,7 @@ export default class Checkout extends React.Component {
 
     completed(cb) {
         this.setState({status: 'completed'})
-        setTimeout(cb(),3000)
+        setTimeout(() => cb(),3000)
     }
 
     render() {
@@ -102,6 +102,7 @@ export default class Checkout extends React.Component {
 
                                 await state.stripe.createToken(state.card,{name: nameOnCard}).then(async ({token: t}) => {
                                     if (t.error) return this.setState({
+                                        status: 'active',
                                         error: {
                                             id: 'stripeError',
                                             message: t.error.message
@@ -125,6 +126,7 @@ export default class Checkout extends React.Component {
                                         if (d.code === 'stripeError') {
                                             var ecode = d.data.decline_code || d.data.code
                                             return this.setState({
+                                                status: 'active',
                                                 error: {
                                                     id: ecode,
                                                     message: d.data.message
@@ -132,7 +134,7 @@ export default class Checkout extends React.Component {
                                             },() => _st.loading = false)
                                         }
 
-                                        this.completed(refreshData)
+                                        this.completed(() => refreshData())
                                     })
                                     
                                 })
