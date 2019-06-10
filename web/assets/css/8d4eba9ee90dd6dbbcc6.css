@@ -793,7 +793,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course > a .title {
-  padding: 0.5em;
+  padding: 1em;
   font-weight: 600;
   line-height: 1;
 }
