@@ -567,7 +567,7 @@ body.checkout .stCheckoutWindow {
   animation: fadein 100ms ease-in-out 0s both;
 }
 
-body.checkout .stCheckoutWindow:before {
+body.checkout .stCheckoutWindow::before {
   content: ' ';
   background: inherit;
   position: absolute;

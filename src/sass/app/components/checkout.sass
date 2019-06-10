@@ -13,7 +13,7 @@ body.checkout
         background-color: white(.3)
         +animFadeIn
 
-        &:before
+        &::before
             content: ' '
             background: inherit
             position: absolute
@@ -22,7 +22,7 @@ body.checkout
             top: 0
             bottom: 0
             filter: blur(10px)
-            
+
         .stCheckoutInner
             +stcard
             padding: $huge
