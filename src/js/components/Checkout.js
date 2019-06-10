@@ -66,15 +66,18 @@ export default class Checkout extends React.Component {
         if (el) el.parentNode.removeChild(el)
     }
 
-    completed(cb) {
-        setTimeout(() => cb(),3000)
-        this.setState({status: 'completed'})
+    completed() {
+        this.setState({status: 'completed'}, () => {setTimeout(() => {
+            localStorage.removeItem('stCourseData')
+            localStorage.removeItem('_stT-signup')
+            window.location.reload(true)
+        }, 3000)})
     }
 
     render() {
         if (!this.state.init) return null
 
-        let {children,amt,action,refreshData} = this.props,
+        let {children,amt,action} = this.props,
             {error, ...state} = this.state,
             disabled = (state.status === 'processing'),
             completed = (state.status === 'completed'),
@@ -134,7 +137,7 @@ export default class Checkout extends React.Component {
                                             },() => _st.loading = false)
                                         }
 
-                                        this.completed(() => refreshData())
+                                        this.completed()
                                     })
                                     
                                 })
