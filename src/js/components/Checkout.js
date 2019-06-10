@@ -96,7 +96,6 @@ export default class Checkout extends React.Component {
                                 
                                 let nameOnCard = e.target.querySelector('[name="name"').value
 
-                                return console.log(e.target.action)
 
                                 await state.stripe.createToken(state.card,{name: nameOnCard}).then(async ({token: t}) => {
                                     if (t.error) return this.setState({
@@ -105,11 +104,10 @@ export default class Checkout extends React.Component {
                                             message: t.error.message
                                         }
                                     })
+
+                                    console.log(state)
                             
-                                    cus.shipping.name = cus.account.firstname+' '+cus.account.lastname
-                                    cus.token = t.id
-                            
-                                    return _st.http.post(action,this.state,(d) => {
+                                    /* return _st.http.post(action,this.state,(d) => {
                                         
                                         if (d.code === 'stripeError') {
                                             var ecode = d.data.decline_code || d.data.code
@@ -127,7 +125,7 @@ export default class Checkout extends React.Component {
                                                 id: res.id.replace('in_','')
                                             }
                                         })
-                                    })
+                                    }) */
                                     
                                 })
                                 console.log('checkout complete')
