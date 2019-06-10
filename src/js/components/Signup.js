@@ -57,7 +57,9 @@ export default class Signup extends React.Component {
             })
 
             if (200 === d.data.status) return this.logIn() && this.setState({signed: true},
-                () => localStorage.setItem('_stT-signup',this.props.match.params.plan || null)
+                () => {
+                    if (this.props.match.params.plan) localStorage.setItem('_stT-signup',this.props.match.params.plan)
+                }
             )
         })
     }
