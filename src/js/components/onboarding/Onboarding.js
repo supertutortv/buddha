@@ -111,7 +111,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 	)
 }
 
-const Finalize = ({nextStep, toggleCheckout, toggleTrial, ...state}) => {
+const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
 		price = state.option.price
 
@@ -155,7 +155,7 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, ...state}) => {
 					</aside>
 				</div>
 			</div>
-			{!state.checkout ? null : <Checkout action="/signup/pay" amt={priceToString(price+shipping)} closeCheckout={toggleCheckout} payload={state} nextStep={nextStep}/>}
+			{!state.checkout ? null : <Checkout action="/signup/pay" amt={priceToString(price+shipping)} closeCheckout={toggleCheckout} payload={state} refreshData={refreshData} nextStep={nextStep}/>}
 		</section>
 	)
 }
