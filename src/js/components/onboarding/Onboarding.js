@@ -143,7 +143,6 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 											}}/>
 											<label aria-hidden="true" for="doTrial">I would like the free 5 day limited trial, please!</label>
 										</div>
-										<span>Total:</span>
 									</div>
 									<div>{priceToString(price+shipping)}</div>
 								</div>

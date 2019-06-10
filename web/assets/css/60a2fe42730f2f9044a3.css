@@ -1375,7 +1375,6 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type > div:first-child {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
 
