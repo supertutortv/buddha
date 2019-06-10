@@ -177,14 +177,13 @@ export default class Onboarding extends React.Component{
 			loc: false,
 			shipping: false,
 			doTrial: false,
+			plan: localStorage.getItem('_stT-signup'),
 			...user
         }
 
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
 		this.toggleTrial = this.toggleTrial.bind(this)
-
-		console.log(user)
 	}
 	
 	componentDidMount() {
