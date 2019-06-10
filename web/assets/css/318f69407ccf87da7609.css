@@ -750,13 +750,19 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 
 .stDashboard .stDashboardCourses .stCoursesBody {
   padding: 1em;
+  width: 100%;
+  max-width: 800px;
   display: flex;
   align-items: center;
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course {
   padding: 0.5em;
-  width: 12em;
+  width: 32%;
+}
+
+.stDashboard .stDashboardCourses .stCoursesBody .course:not(:first-child) {
+  margin-left: 2%;
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course > a {

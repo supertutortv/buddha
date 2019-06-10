@@ -13,12 +13,17 @@
         
         .stCoursesBody
             padding: 1em
+            width: 100%
+            max-width: 800px
             display: flex
             align-items: center
 
             .course
                 padding: $tiny
-                width: $huge * 6
+                width: 32%
+
+                &:not(:first-child)
+                    margin-left: 2%
 
                 & > a
                     display: block
