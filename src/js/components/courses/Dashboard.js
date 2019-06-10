@@ -4,6 +4,7 @@ import { AuthContext } from '../../context'
 import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
 import Onboarding from '../onboarding/Onboarding'
+import TextureImg from '../onboarding/texture'
 
 export default class Dashboard extends React.Component {
     constructor(props){
