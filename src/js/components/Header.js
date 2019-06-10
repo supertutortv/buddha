@@ -22,11 +22,11 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                             }}><i className="fas fa-home" ></i></li>
                             {/* <li title="Rate/Review"><i className="fas fa-star"></i></li>
                             <li title="Leave Feedback"><i className="fas fa-comment-alt"></i></li> */}
-                            <li title="Reload" onClick={(e) => {
-                                let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
+                            <li title="Reload"><i className="fas fa-sync-alt" onClick={(e) => {
+                                let result = window.confirm("Are you sure you want to reload all application data?")
 
                                 return result ? refreshData(true) : null
-                            }}><i className="fas fa-sync-alt" /></li>
+                            }}/></li>
                         </React.Fragment>
                     }
                     <li title="Help" onClick={(e) => {

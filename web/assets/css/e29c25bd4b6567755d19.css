@@ -1106,7 +1106,7 @@ body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWr
 }
 
 body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText .boxIcon i {
-  font-size: 2em;
+  font-size: 1.25em;
 }
 
 body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText .boxTitle {
