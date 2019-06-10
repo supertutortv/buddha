@@ -746,6 +746,8 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 
 .stDashboard .stDashboardCourses {
   margin: 0 1em 1em;
+  display: flex;
+  justify-content: center;
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody {
