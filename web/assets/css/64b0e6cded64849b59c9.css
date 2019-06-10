@@ -1628,7 +1628,7 @@ body.onboarding st-app .stOnboardingWindow #step0 {
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stStepContent > div {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
