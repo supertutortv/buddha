@@ -140,7 +140,7 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 										<input aria-label="I would like the free 5 day limited trial, please!" className="doTrial" type="checkbox" name="doTrial" onChange={(e) => {
 											toggleTrial(e.target.checked)
 										}}/>
-										<label aria-hidden="true" for="doTrial">I would like the free 5 day limited trial, please!</label>
+										<label aria-hidden="true" for="doTrial">I would like the FREE 5 day limited trial, please!</label>
 									</div>
 									<div>{priceToString(price+shipping)}</div>
 								</div>
