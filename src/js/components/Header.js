@@ -17,10 +17,10 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                 <ul className="stNavContainer">
                     {stripped ? '' :
                         <React.Fragment>
-                            <li title="Dashboard" onClick={(e) => {
+                            <li title="Dashboard"><i className="fas fa-home" onClick={(e) => {
                                 hist.push('/')
                                 return false
-                            }}><i className="fas fa-home" ></i></li>
+                            }}></i></li>
                             {/* <li title="Rate/Review"><i className="fas fa-star"></i></li>
                             <li title="Leave Feedback"><i className="fas fa-comment-alt"></i></li> */}
                             <li title="Reload"><i className="fas fa-sync-alt" onClick={(e) => {
@@ -34,10 +34,10 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                         e.preventDefault()
                         window.open("https://supertutortv.zendesk.com")
                     }}><i className="fas fa-question"></i></li>
-                    <li title={stripped ? "Log in" : "Log out"} onClick={(e) => {
+                    <li title={stripped ? "Log in" : "Log out"}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"} onClick={(e) => {
                         _st.loading = true
                         _st.http.post('/auth/logout',{},() => refreshData(true))
-                    }}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i></li>
+                    }}></i></li>
                 </ul>
             </div>
         </header>
