@@ -70,7 +70,6 @@ const Shipping = ({nextStep,ship,plan}) => {
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
 
 						obj = Object.assign(obj,{priShip: priShip})
-						return console.log(obj)
 						nextStep({step: 3, loc: true, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
