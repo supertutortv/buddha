@@ -30,10 +30,10 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
                             }}/></li>
                         </React.Fragment>
                     }
-                    <li title="Help" onClick={(e) => {
+                    <li title="Help"><i className="fas fa-question" onClick={(e) => {
                         e.preventDefault()
                         window.open("https://supertutortv.zendesk.com")
-                    }}><i className="fas fa-question"></i></li>
+                    }}></i></li>
                     <li title={stripped ? "Log in" : "Log out"}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"} onClick={(e) => {
                         _st.loading = true
                         _st.http.post('/auth/logout',{},() => refreshData(true))
