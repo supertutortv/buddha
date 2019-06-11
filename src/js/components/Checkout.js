@@ -92,7 +92,7 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <h3>Secure Payment Form</h3>
-                            <form action={action} onSubmit={async (e) => {
+                            <form action={action} onSubmit={(e) => {
                                 e.preventDefault()
                                 if (this.state.status === 'processing') return false
                                 
@@ -103,7 +103,7 @@ export default class Checkout extends React.Component {
                                 let nameOnCard = e.target.querySelector('[name="name"').value
 
 
-                                await state.stripe.createToken(state.card,{name: nameOnCard}).then(async ({token: t}) => {
+                                state.stripe.createToken(state.card,{name: nameOnCard}).then(({token: t}) => {
                                     if (t.error) return this.setState({
                                         status: 'active',
                                         error: {
@@ -124,7 +124,7 @@ export default class Checkout extends React.Component {
                                         session: this.session
                                     }
                             
-                                    return await _st.http.post(action,obj,(d) => {
+                                    return _st.http.post(action,obj,(d) => {
                                         
                                         if (d.code === 'stripeError') {
                                             var ecode = d.data.decline_code || d.data.code
