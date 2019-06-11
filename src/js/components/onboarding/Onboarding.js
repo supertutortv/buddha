@@ -67,6 +67,8 @@ const Shipping = ({nextStep,ship,plan}) => {
 						vals = e.target.querySelectorAll('input:not([type="checkbox"]),select'),
 						priShip = e.target.querySelector('[name="priShip"]').value
 
+						return console.log(priShip)
+
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
 
 						obj = Object.assign(obj,{priShip: priShip})
