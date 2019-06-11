@@ -65,7 +65,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 							country: 'US'
 						},
 						vals = e.target.querySelectorAll('input:not([type="checkbox"]),select'),
-						priShip = e.target.querySelector('[name="priShip"]').checked
+						priShip = e.target.querySelector('[name="priShip"]').value
 
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
 
@@ -99,8 +99,11 @@ const Shipping = ({nextStep,ship,plan}) => {
 						</div>
 						<div className="shipOptBtn">
 							<div>
-								<input aria-label="Send my books Priority Mail, please! (+$7.95)" className="priShip" type="checkbox" name="priShip" value="1"/>
-								<label aria-hidden="true" for="priShip">Send my book(s) Priority Mail, please! (+{priceToString(plan.shipping)})</label>
+								<span>Send my book(s) via</span>
+								<input id="priShipMedia" className="priShip" type="radio" name="priShip" value="false"/>
+								<label for="priShipMedia">Media Mail (2-3 weeks, +$0)</label>
+								<input id="priShipPriority" className="priShip" type="radio" name="priShip" value="true"/>
+								<label for="priShipPriority">Priority Mail (3-4 days, +{priceToString(plan.shipping)})</label>
 							</div>
 							<button className="btn" type="submit">Continue</button>
 						</div>

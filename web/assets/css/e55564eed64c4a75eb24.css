@@ -1634,7 +1634,7 @@ body.onboarding st-app .stOnboardingWindow .stStepContent {
 body.onboarding st-app .stOnboardingWindow .stStepContent > div {
   width: 95%;
   max-width: 700px;
-  margin-top: -20%;
+  margin-top: -10%;
 }
 
 body.onboarding st-app .stOnboardingWindow .stStepContent h3 {
