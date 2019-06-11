@@ -304,7 +304,7 @@ textarea {
   outline: none !important;
 }
 
-input:not([type="checkbox"]),
+input:not([type="checkbox"]):not([type="radio"]),
 select,
 #stPricingCardElement {
   width: 100%;
@@ -312,25 +312,25 @@ select,
   transition: all .1s linear;
 }
 
-input:not([type="checkbox"]).invalid,
+input:not([type="checkbox"]):not([type="radio"]).invalid,
 select.invalid,
 #stPricingCardElement.invalid {
   border: 1px solid red;
 }
 
-input:not([type="checkbox"]).valid,
+input:not([type="checkbox"]):not([type="radio"]).valid,
 select.valid,
 #stPricingCardElement.valid {
   border: 1px solid green;
 }
 
-input:not([type="checkbox"]):focus:not(.invalid),
+input:not([type="checkbox"]):not([type="radio"]):focus:not(.invalid),
 select:focus:not(.invalid),
 #stPricingCardElement:focus:not(.invalid) {
   border: 1px solid #109fda;
 }
 
-input:not([type="checkbox"])::placeholder,
+input:not([type="checkbox"]):not([type="radio"])::placeholder,
 select::placeholder,
 #stPricingCardElement::placeholder {
   opacity: 1;
@@ -1442,6 +1442,12 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > di
   flex: 1;
 }
 
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span {
+  font-size: calc(1rem - 7px);
+  font-weight: 600;
+  display: inline-block;
+}
+
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div input {
   border: 1px solid rgba(16, 159, 218, 0.8);
 }
@@ -1539,7 +1545,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no
   font-size: 1rem;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="radio"]),
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea,
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select {
   border: 1px solid rgba(16, 159, 218, 0.5);

@@ -64,7 +64,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 						let obj = {
 							country: 'US'
 						},
-						vals = e.target.querySelectorAll('input:not([type="checkbox"]),select'),
+						vals = e.target.querySelectorAll('input:not([type="radio"]),select'),
 						priShip = e.target.querySelector('[name="priShip"]').value
 
 						return console.log(priShip)
