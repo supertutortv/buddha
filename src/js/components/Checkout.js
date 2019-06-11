@@ -100,7 +100,7 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
                                 
-                                let nameOnCard = e.target.getElementById('nameOnCard').value
+                                let nameOnCard = e.target.querySelector('#nameOnCard').value
 
 
                                 state.stripe.createToken(state.card,{name: nameOnCard}).then(({token: t}) => {
