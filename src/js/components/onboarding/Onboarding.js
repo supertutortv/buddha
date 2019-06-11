@@ -64,12 +64,13 @@ const Shipping = ({nextStep,ship,plan}) => {
 						let obj = {
 							country: 'US'
 						},
-						vals = e.target.querySelectorAll('input,select')
+						vals = e.target.querySelectorAll('input:not([type=radio]),select'),
+						priShip = e.target.querySelector('[name=priShip]:checked').value
 
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
 
+						obj = Object.assign(obj,{priShip: priShip})
 						return console.log(obj)
-
 						nextStep({step: 3, loc: true, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
