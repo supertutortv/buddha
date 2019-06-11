@@ -6,4 +6,9 @@
 	animation: 250ms ease 0s normal forwards 1 growvert
 
 @mixin animSpin
-	animation: spin 1000ms ease-in-out 0s both infinite
+	-webkit-animation-name: spin
+	-webkit-animation-duration: 1000ms
+	-webkit-animation-timing-function: ease-in-out
+	-webkit-animation-fill-mode: both
+	-webkit-animation-iteration-count: infinite
+	animation: spin 1000ms ease-in-out both infinite
