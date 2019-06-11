@@ -102,7 +102,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 								<span>Send my book(s) via</span>
 								<span>
 									<input checked id="priShipMedia" className="priShip" type="radio" name="priShip" value="false"/>
-									<label for="priShipMedia">Media Mail (2-3 weeks, +$0)</label>
+									<label for="priShipMedia">Media Mail (2-3 weeks, FREE)</label>
 								</span>
 								<span>
 									<input id="priShipPriority" className="priShip" type="radio" name="priShip" value="true"/>
