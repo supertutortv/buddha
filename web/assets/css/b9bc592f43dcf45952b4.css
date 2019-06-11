@@ -1445,7 +1445,7 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > di
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span {
   font-size: calc(1rem - 10px);
   font-weight: 600;
-  margin-right: 0.5em;
+  margin-right: 0.75em;
   display: inline-block;
 }
 
