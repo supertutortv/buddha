@@ -101,6 +101,7 @@ export default class Checkout extends React.Component {
                                 })
                                 
                                 let nameOnCard = e.target.querySelector('[name="name"').value
+                                console.log(nameOnCard)
 
 
                                 state.stripe.createToken(state.card,{name: nameOnCard}).then(({token: t}) => {
