@@ -199,11 +199,10 @@ export default class Onboarding extends React.Component{
 	}
 
 	componentDidUpdate(prevProps,prevState) {
-		let el = document.getElementById("step"+this.state.step)
+		let el = document.getElementById("step"+this.state.step),
+			opt = navigator.vendor.includes('Apple') ? true : {behavior: 'smooth'}
 
-		if (el !== null) el.scrollIntoView({
-			behavior: 'smooth'
-		})
+		if (el !== null) el.scrollIntoView(opt)
 	}
 
 	toggleCheckout() {
