@@ -100,8 +100,7 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
                                 
-                                return console.log(e.target)
-                                let nameOnCard = e.target.querySelector('[name="name"').value
+                                let nameOnCard = e.target.getElementById('nameOnCard').value
 
 
                                 state.stripe.createToken(state.card,{name: nameOnCard}).then(({token: t}) => {
@@ -145,8 +144,8 @@ export default class Checkout extends React.Component {
                                 
                             }}>
                                 <div className="stIfR99">
-                                    <input aria-label="Name on card" className="validate" type="text" name="name" required validation="text"/>
-                                    <label aria-hidden="true" for="name">Name on card</label>
+                                    <input id="nameOnCard" aria-label="Name on card" className="validate" type="text" name="nameOnCard" required validation="text"/>
+                                    <label aria-hidden="true" for="nameOnCard">Name on card</label>
                                 </div>
                                 <div id="stPricingCardElement">
                                     <CardElement id="stripeInject" onChange={(d) => {
