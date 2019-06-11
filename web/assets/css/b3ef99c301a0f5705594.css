@@ -1449,15 +1449,12 @@ body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > di
   display: inline-block;
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div input {
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span input {
   border: 1px solid rgba(16, 159, 218, 0.8);
 }
 
-body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div label {
-  font-size: calc(1rem - 7px);
-  margin: 0 0.5em;
-  font-weight: 600;
-  display: inline-block;
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span label {
+  margin: 0 0 0 0.5em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
