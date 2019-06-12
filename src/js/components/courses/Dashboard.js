@@ -93,7 +93,7 @@ export default class Dashboard extends React.Component {
                                                     <div className="stHomeBanner">
                                                         <TextureImg/>
                                                     </div>
-                                                    <DBCourses courses={data.courses} />
+                                                    <DBCourses user={data.user} courses={data.courses} />
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
                                                         {/* <DBActions cancellation={this.cancellation} d={data.user} /> */}

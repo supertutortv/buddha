@@ -22,7 +22,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
         </section>
     </div>
 
-export const DBCourses = ({courses}) => {
+export const DBCourses = ({cancellation,courses,user}) => {
     return (
         <div className="stDashboardCourses">
             <div className="stCoursesBody">
@@ -39,6 +39,18 @@ export const DBCourses = ({courses}) => {
                                     <span>{crs.name}</span>
                                 </div>
                             </Link>
+                            {!course.trialing ? null : (
+                                <React.Fragment>
+                                    <button className="stCourseButton endTrial" onClick={() => cancellation({
+                                        action: 'trial',
+                                        ...user
+                                    })}>Unlock the course</button>
+                                    <button className="stCourseButton cancel" onClick={() => cancellation({
+                                        action: 'subscription',
+                                        ...user
+                                    })}>Cancel</button>
+                                </React.Fragment>
+                            )}
                         </div>
                     )}
                 )}
@@ -52,20 +64,7 @@ export const DBActions = ({d,cancellation}) => {
         <div className="stDashboardActions">
             <section>
                 <div className="stBoxHeading">Actions</div>
-                <div className="stDBActionsBody">
-                {!d.trialing ? <span>No actions currently available.</span> : (
-                    <React.Fragment>
-                        <button className="stTrialCancelButton" onClick={() => cancellation({
-                            action: 'trial',
-                            ...d
-                        })}>Unlock the course</button>
-                        <button className="stTrialCancelButton" onClick={() => cancellation({
-                            action: 'subscription',
-                            ...d
-                        })}>Cancel Subscription</button>
-                    </React.Fragment>
-                )}
-                </div>
+                <div className="stDBActionsBody"></div>
             </section>
         </div>
     )
