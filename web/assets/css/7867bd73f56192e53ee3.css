@@ -785,11 +785,11 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
   border-radius: 0.5em;
   background-color: white;
   transition: all 100ms ease-in-out;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course > a:hover {
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.05), 0 6px 30px 5px rgba(0, 0, 0, 0.05), 0 8px 10px -7px rgba(0, 0, 0, 0.05);
 }
 
 .stDashboard .stDashboardCourses .stCoursesBody .course > a .heroImg {
@@ -800,9 +800,7 @@ body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
 .stDashboard .stDashboardCourses .stCoursesBody .course > a .heroImg img {
   position: absolute;
   top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  width: 100%;
   display: block;
 }
 
