@@ -38,19 +38,20 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 <div className="title">
                                     <span>{crs.name}</span>
                                 </div>
+                                {!course.trialing ? 
+                                    <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
+                                    <React.Fragment>
+                                        <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
+                                            action: 'trial',
+                                            ...user
+                                        })}>Unlock the course</button>
+                                        <button className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                            action: 'subscription',
+                                            ...user
+                                        })}>Cancel</button>
+                                    </React.Fragment>
+                                )}
                             </Link>
-                            {!course.trialing ? <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
-                                <React.Fragment>
-                                    <button className="stCourseButton endTrial" onClick={() => cancellation({
-                                        action: 'trial',
-                                        ...user
-                                    })}>Unlock the course</button>
-                                    <button className="stCourseButton cancel" onClick={() => cancellation({
-                                        action: 'subscription',
-                                        ...user
-                                    })}>Cancel</button>
-                                </React.Fragment>
-                            )}
                         </div>
                     )}
                 )}
