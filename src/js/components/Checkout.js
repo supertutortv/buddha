@@ -167,7 +167,10 @@ export default class Checkout extends React.Component {
                                                 }
                                             })
                                         }
-                                    }} onReady={(el) => this.setState({card: el})}/>
+                                    }} onReady={(el) => {
+                                        console.log(el)
+                                        this.setState({card: el})
+                                    }}/>
                                 </div>
                                 
                                 <div className="stSubmitBlock">
