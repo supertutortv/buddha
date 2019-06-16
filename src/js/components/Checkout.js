@@ -128,18 +128,16 @@ export default class Checkout extends React.Component {
                                     }
                             
                                     return _st.http.post(action,obj,(d) => {
-                                        
                                         if (d.code === 'checkoutError') {
                                             var ecode = d.data.decline_code || d.data.code
                                             return this.setState({
                                                 status: 'active',
                                                 error: {
                                                     id: ecode,
-                                                    message: d.message
+                                                    message: d.data.message
                                                 }
                                             },() => _st.loading = false)
                                         }
-
                                         this.completed()
                                     })
                                     
