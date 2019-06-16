@@ -39,7 +39,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 <div className="title">
                                     <span>{crs.name}</span>
                                 </div>
-                                {!course.trialing ? 
+                                {!crs.trialing ? 
                                     <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
                                     <React.Fragment>
                                         <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
