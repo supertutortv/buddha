@@ -745,8 +745,8 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock button i.fa
 
 body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors {
   color: red;
-  font-weight: 600;
-  font-size: 0.75em;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
   text-align: center;
   padding: 0 1rem 1rem;
   padding-top: 1em;
@@ -2316,8 +2316,8 @@ body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccou
 
 body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountErrors {
   color: red;
-  font-weight: 600;
-  font-size: 0.75em;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
   text-align: center;
   padding: 0 1rem 1rem;
 }
