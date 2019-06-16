@@ -44,7 +44,7 @@ const PlnOptions = ({nextStep, plan, option}) => {
 	)
 }
 
-const Shipping = ({nextStep,ship,plan}) => {
+const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 	return (
 		<section id="step2" className="step">
 			<div className="stStepContent">
@@ -59,7 +59,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 								nextStep({step: 3, loc: val, shipping: false})
 						}} required ><i class="fas fa-caret-down"></i></CountryDD>
 					</div>
-					{!ship ? null : <form className="shippingForm nopad big" onSubmit={(e) => {
+					{!ship ? null : <form className="shippingForm nopad big" onChange={shipChanged} onSubmit={(e) => {
 						e.preventDefault()
 						let obj = {
 							country: 'US'
@@ -164,10 +164,6 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 	)
 }
 
-const ThankYou = () => {
-	return null
-}
-
 export default class Onboarding extends React.Component{
     constructor(props) {
 		super(props)
@@ -191,6 +187,7 @@ export default class Onboarding extends React.Component{
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
 		this.toggleTrial = this.toggleTrial.bind(this)
+		this.shipChanged = this.shipChanged.bind(this)
 	}
 	
 	componentDidMount() {
@@ -210,6 +207,13 @@ export default class Onboarding extends React.Component{
 			opt = navigator.vendor.includes('Apple') ? true : {behavior: 'smooth'}
 
 		if (el !== null) el.scrollIntoView(opt)
+	}
+
+	shipChanged() {
+		this.setState({
+			step: 2,
+			loc: false
+		})
 	}
 
 	toggleCheckout() {
@@ -269,7 +273,7 @@ export default class Onboarding extends React.Component{
 					</div>
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
-				{this.state.option ? <Shipping plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
+				{this.state.option ? <Shipping shipChanged={this.shipChanged} plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
 				{this.state.loc ? <Finalize {...this.state} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
 			</main>
         )
