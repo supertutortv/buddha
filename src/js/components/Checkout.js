@@ -110,7 +110,7 @@ export default class Checkout extends React.Component {
                                     if (t.error) return this.setState({
                                         status: 'active',
                                         error: {
-                                            id: 'stripeError',
+                                            id: 'checkoutError',
                                             message: t.error.message
                                         }
                                     })
@@ -129,7 +129,7 @@ export default class Checkout extends React.Component {
                             
                                     return _st.http.post(action,obj,(d) => {
                                         
-                                        if (d.code === 'stripeError') {
+                                        if (d.code === 'checkoutError') {
                                             var ecode = d.data.decline_code || d.data.code
                                             return this.setState({
                                                 status: 'active',
@@ -154,7 +154,7 @@ export default class Checkout extends React.Component {
                                         if (typeof d !== 'undefined') {
                                             if (typeof d.error !== 'undefined') return this.setState({
                                                 error: {
-                                                    id: 'stripeError',
+                                                    id: 'checkoutError',
                                                     message: d.error.message
                                                 }
                                             })
