@@ -134,6 +134,7 @@ export default class Checkout extends React.Component {
                                             var ecode = d.data.decline_code || d.data.code
                                             return this.setState({
                                                 status: 'active',
+                                                cardComplete: false,
                                                 error: {
                                                     id: ecode,
                                                     message: d.data.message
