@@ -135,7 +135,7 @@ export default class Checkout extends React.Component {
                                                 status: 'active',
                                                 error: {
                                                     id: ecode,
-                                                    message: d.data.message
+                                                    message: d.message
                                                 }
                                             },() => _st.loading = false)
                                         }
@@ -180,7 +180,7 @@ export default class Checkout extends React.Component {
                                             (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
                                     </button>
                                 </div>
-                                {(error.message)
+                                {(error.id)
                                     ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
                                     : null
                                 }
