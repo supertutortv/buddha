@@ -22,7 +22,6 @@ export default class Checkout extends React.Component {
         }
 
         this.completed = this.completed.bind(this)
-        console.log(props)
     }
 
     componentDidMount() {
@@ -72,7 +71,7 @@ export default class Checkout extends React.Component {
             localStorage.removeItem('stCourseData')
             localStorage.removeItem('_stT-signup')
             window.location.reload(true)
-        }, 3000)})
+        }, 2000)})
     }
 
     render() {
@@ -100,6 +99,8 @@ export default class Checkout extends React.Component {
                                 this.setState({
                                     status: 'processing'
                                 })
+
+                                return console.log(state.card)
                                 
                                 let nameOnCard = e.target.querySelector('#nameOnCard').value
 
@@ -168,10 +169,7 @@ export default class Checkout extends React.Component {
                                         }
                                     }} onReady={(el) => this.setState({card: el})}/>
                                 </div>
-                                {(error.message)
-                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
-                                    : null
-                                }
+                                
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit" className={active}>
                                         <span>{disabled ? 'Processing...' : (completed) ? '' : 'Pay '+amt}</span>
@@ -180,6 +178,10 @@ export default class Checkout extends React.Component {
                                             (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
                                     </button>
                                 </div>
+                                {(error.message)
+                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                    : null
+                                }
                             </form>
                             {children}
                         </div>
