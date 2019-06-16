@@ -104,7 +104,7 @@ export default class Checkout extends React.Component {
                                     status: 'processing'
                                 })
 
-                                return console.log(state.card)
+                                return console.log(this.state)
                                 
                                 let nameOnCard = e.target.querySelector('#nameOnCard').value
 
