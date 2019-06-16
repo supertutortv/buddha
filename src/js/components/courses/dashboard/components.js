@@ -23,7 +23,6 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
     </div>
 
 export const DBCourses = ({cancellation,courses,user}) => {
-    console.log(courses)
     return (
         <div className="stDashboardCourses">
             <div className="stCoursesBody">

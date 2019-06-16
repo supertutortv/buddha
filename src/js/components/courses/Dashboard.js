@@ -84,8 +84,9 @@ export default class Dashboard extends React.Component {
                 {auth => {
                     return (
                         <DataState.Consumer>
-                            {data =>
-                                <React.Fragment>
+                            {data => {
+                                console.log(data)
+                                return (<React.Fragment>
                                     <Header title="Home" refreshData={this.props.refreshData} hist={this.props.history}/>
                                     {!hasCourses ? <Onboarding refreshData={this.props.refreshData} /> : 
                                         <React.Fragment>
@@ -103,7 +104,8 @@ export default class Dashboard extends React.Component {
                                             }
                                         </React.Fragment>
                                     }
-                                </React.Fragment>
+                                </React.Fragment>)
+                                }
                             }
                         </DataState.Consumer>
                     )
