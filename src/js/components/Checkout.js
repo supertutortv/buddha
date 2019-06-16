@@ -4,6 +4,8 @@ import LogoSVG from './LogoSVG'
 
 const theDate = new Date()
 
+theDate.setDate(theDate.getDate() + 5)
+
 export default class Checkout extends React.Component {
     constructor(props) {
         super(props)
@@ -84,8 +86,6 @@ export default class Checkout extends React.Component {
             disabled = (state.status === 'processing'),
             completed = (state.status === 'completed'),
             active = disabled ? 'active' : (completed) ? 'completed' : ''
-        
-        theDate.setDate(theDate.getDate() + 5)
 
         return(
             <StripeProvider stripe={state.stripe}>
