@@ -119,7 +119,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 }
 
 const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
-	let shipping = state.shipping && state.shipping.priShip ? state.plan.shipping : 0,
+	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price
 
 	return (
