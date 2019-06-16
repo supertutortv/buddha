@@ -32,12 +32,18 @@ body.checkout
                 text-transform: uppercase
                 font-size: $medtext
 
-            form
+            form.stCheckoutForm
                 margin-top: 1em
+
+                &.checkoutError
+
+                    #stPricingCardElement
+                        border: 1px solid red
 
                 #stPricingCardElement
                     border-radius: $ittybitty
                     padding: $tiny 1em
+                    transition: all 100ms ease-in-out
 
                 .stIfR99
                     +stFormInput

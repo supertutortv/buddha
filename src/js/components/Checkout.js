@@ -97,7 +97,7 @@ export default class Checkout extends React.Component {
                                 <LogoSVG/>
                             </figure>
                             <h3>Secure Payment Form</h3>
-                            <form action={action} onSubmit={(e) => {
+                            <form className={['stCheckoutForm',error.id].join(' ')} action={action} onSubmit={(e) => {
                                 e.preventDefault()
                                 if (state.status === 'processing' || !state.cardComplete) return false
                                 
