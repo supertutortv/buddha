@@ -84,6 +84,8 @@ export default class Checkout extends React.Component {
             disabled = (state.status === 'processing'),
             completed = (state.status === 'completed'),
             active = disabled ? 'active' : (completed) ? 'completed' : ''
+        
+        theDate.setDate(theDate.getDate() + 5)
 
         return(
             <StripeProvider stripe={state.stripe}>
@@ -169,7 +171,7 @@ export default class Checkout extends React.Component {
                                         this.setState({card: el})
                                     }}/>
                                 </div>
-                                {!state.doTrial ? null : <div className="stTrialMsg">You elected the 5 day limited free trial. You card will not be charged until {theDate.setDate(theDate.getDate() + 5).toDateString()}. By clicking below, you agree to pay the full amount due to unlock your course subscription.</div>}
+                                {!state.doTrial ? null : <div className="stTrialMsg">You elected the 5 day limited free trial. You card will not be charged until {theDate.toDateString()}. By clicking below, you agree to pay the full amount due to unlock your course subscription.</div>}
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit" className={active}>
                                         <span>{disabled ? 'Processing...' : (completed) ? '' : 
