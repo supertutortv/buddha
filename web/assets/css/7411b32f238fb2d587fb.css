@@ -671,6 +671,18 @@ body.checkout .stCheckoutWindow .stCheckoutInner form .stIfR99:not(.no-bg) > lab
   font-size: 1rem;
 }
 
+body.checkout .stCheckoutWindow .stCheckoutInner form .stTrialMsg {
+  padding-top: 1em;
+  font-size: calc(1rem - 7px);
+  text-align: center;
+  font-weight: 400;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form .stTrialMsg em {
+  color: #109fda;
+  font-weight: 600;
+}
+
 body.checkout .stCheckoutWindow .stCheckoutInner form .stSubmitBlock {
   padding-top: 1em;
 }
