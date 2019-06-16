@@ -152,6 +152,7 @@ export default class Checkout extends React.Component {
                                     <CardElement id="stripeInject" onChange={(d) => {
                                         if (typeof d !== 'undefined') {
                                             if (typeof d.error !== 'undefined') return this.setState({
+                                                cardComplete: false,
                                                 error: {
                                                     id: 'checkoutError',
                                                     message: d.error.message
