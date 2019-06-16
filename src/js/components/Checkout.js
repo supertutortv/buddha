@@ -157,7 +157,6 @@ export default class Checkout extends React.Component {
                                         console.log(d)
                                         if (typeof d !== 'undefined') {
                                             if (typeof d.error !== 'undefined') return this.setState({
-                                                card: null,
                                                 error: {
                                                     id: 'stripeError',
                                                     message: d.error.message
@@ -165,7 +164,6 @@ export default class Checkout extends React.Component {
                                             })
 
                                             if (d.complete && !d.empty) this.setState({
-                                                card: this.state.card,
                                                 error: {
                                                     id: '',
                                                     message: ''
