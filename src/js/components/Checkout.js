@@ -164,7 +164,7 @@ export default class Checkout extends React.Component {
                                             })
 
                                             if (d.complete && !d.empty) this.setState({
-                                                card: state.card,
+                                                card: this.state.card,
                                                 error: {
                                                     id: '',
                                                     message: ''
