@@ -108,6 +108,7 @@ export default class Checkout extends React.Component {
                                 let nameOnCard = e.target.querySelector('#nameOnCard').value
 
                                 state.stripe.createToken(state.card,{name: nameOnCard}).then(({token: t}) => {
+                                    console.log(t)
                                     if (t.error) return this.setState({
                                         status: 'active',
                                         error: {
