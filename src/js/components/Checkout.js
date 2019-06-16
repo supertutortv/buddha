@@ -174,7 +174,7 @@ export default class Checkout extends React.Component {
                                 {!state.doTrial ? null : <div className="stTrialMsg">You elected the 5 day limited free trial. You card will not be charged until <wbr/><em>{theDate.toDateString()}</em>. By clicking below, you agree to pay the full amount due to unlock your course subscription.</div>}
                                 <div className="stSubmitBlock">
                                     <button onClick={(e) => {
-                                        console.log(e.target)
+                                        e.target.blur()
                                     }} id="paySubmit" name="paySubmit" type="submit" className={active}>
                                         <span>{disabled ? 'Processing...' : (completed) ? '' : 
                                         (state.doTrial) ? 'Agree to Pay '+amt : 'Pay '+amt}</span>
