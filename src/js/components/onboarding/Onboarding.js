@@ -101,7 +101,7 @@ const Shipping = ({nextStep,ship,plan}) => {
 							<div>
 								<span>Send my book(s) via</span>
 								<span>
-									<input checked id="priShipMedia" className="priShip" type="radio" name="priShip" value="false"/>
+									<input id="priShipMedia" className="priShip" type="radio" name="priShip" value="false"/>
 									<label for="priShipMedia">Media Mail (2-3 weeks, FREE)</label>
 								</span>
 								<span>
@@ -138,7 +138,7 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
 									<div>{priceToString(price)}</div>
 								</div>
-								{!shipping ? null : <div>
+								{"false" === shipping ? null : <div>
 									<div>Priority Shipping <em>(3-4 days)</em></div>
 									<div>{priceToString(shipping)}</div>
 								</div>}
