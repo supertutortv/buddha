@@ -58,6 +58,10 @@ export default class Checkout extends React.Component {
         return ns.update;
     }
 
+    componentDidUpdate() {
+        console.log(this.state)
+    }
+
     componentWillUnmount() {
         document.body.classList.remove('checkout')
         let els = document.querySelectorAll('[name*="__privateStripe"]'),
