@@ -138,7 +138,7 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
 									<div>{priceToString(price)}</div>
 								</div>
-								{"false" === shipping ? null : <div>
+								{!shipping ? null : <div>
 									<div>Priority Shipping <em>(3-4 days)</em></div>
 									<div>{priceToString(shipping)}</div>
 								</div>}
