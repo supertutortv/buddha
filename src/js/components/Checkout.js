@@ -170,7 +170,8 @@ export default class Checkout extends React.Component {
                                 {!state.doTrial ? null : <div>Trial</div>}
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit" className={active}>
-                                        <span>{disabled ? 'Processing...' : (completed) ? '' : 'Pay '+amt}</span>
+                                        <span>{disabled ? 'Processing...' : (completed) ? '' : 
+                                        (state.doTrial) ? 'Agree to Pay '+amt : 'Pay '+amt}</span>
                                         {state.status === 'active' ? 
                                             <i class="fas fa-lock"></i> :
                                             (state.status === 'processing' ? <i class="fas fa-spinner"></i> : <i class="fas fa-check-circle"></i>)}
