@@ -154,6 +154,7 @@ export default class Checkout extends React.Component {
                                 </div>
                                 <div id="stPricingCardElement">
                                     <CardElement id="stripeInject" onChange={(d) => {
+                                        console.log(d)
                                         if (typeof d !== 'undefined') {
                                             if (typeof d.error !== 'undefined') return this.setState({
                                                 card: null,
