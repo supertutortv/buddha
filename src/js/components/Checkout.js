@@ -22,6 +22,7 @@ export default class Checkout extends React.Component {
         }
 
         this.completed = this.completed.bind(this)
+        console.log(props)
     }
 
     componentDidMount() {
