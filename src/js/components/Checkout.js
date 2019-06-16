@@ -17,6 +17,7 @@ export default class Checkout extends React.Component {
             card: null,
             update: true,
             stripe: null,
+            cardComplete: false,
             ...props.payload
         }
 
@@ -98,7 +99,7 @@ export default class Checkout extends React.Component {
                             <h3>Secure Payment Form</h3>
                             <form action={action} onSubmit={(e) => {
                                 e.preventDefault()
-                                if (state.status === 'processing') return false
+                                if (state.status === 'processing' || !state.cardComplete) return false
                                 
                                 this.setState({
                                     status: 'processing'
@@ -158,6 +159,7 @@ export default class Checkout extends React.Component {
                                             })
 
                                             if (d.complete && !d.empty) this.setState({
+                                                cardComplete: true,
                                                 error: {
                                                     id: '',
                                                     message: ''
