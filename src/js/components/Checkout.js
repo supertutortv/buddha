@@ -58,10 +58,6 @@ export default class Checkout extends React.Component {
         return ns.update;
     }
 
-    componentDidUpdate() {
-        console.log(this.state)
-    }
-
     componentWillUnmount() {
         document.body.classList.remove('checkout')
         let els = document.querySelectorAll('[name*="__privateStripe"]'),
@@ -98,13 +94,11 @@ export default class Checkout extends React.Component {
                             <h3>Secure Payment Form</h3>
                             <form action={action} onSubmit={(e) => {
                                 e.preventDefault()
-                                if (this.state.status === 'processing') return false
+                                if (state.status === 'processing') return false
                                 
                                 this.setState({
                                     status: 'processing'
                                 })
-
-                                return console.log(this.state)
                                 
                                 let nameOnCard = e.target.querySelector('#nameOnCard').value
 
@@ -146,7 +140,6 @@ export default class Checkout extends React.Component {
                                     })
                                     
                                 })
-                                
                             }}>
                                 <div className="stIfR99">
                                     <input id="nameOnCard" aria-label="Name on card" className="validate" type="text" name="nameOnCard" required validation="text"/>
@@ -171,11 +164,10 @@ export default class Checkout extends React.Component {
                                             })
                                         }
                                     }} onReady={(el) => {
-                                        console.log(el)
                                         this.setState({card: el})
                                     }}/>
                                 </div>
-                                
+                                {!state.doTrial ? null : <div>Trial</div>}
                                 <div className="stSubmitBlock">
                                     <button id="paySubmit" name="paySubmit" type="submit" className={active}>
                                         <span>{disabled ? 'Processing...' : (completed) ? '' : 'Pay '+amt}</span>
