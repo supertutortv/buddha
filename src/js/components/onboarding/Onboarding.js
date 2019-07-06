@@ -259,16 +259,19 @@ export default class Onboarding extends React.Component{
 
 		this.waitForCoupon = setTimeout(async () => {
 			await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
-				console.log(d)
+
 				if (d.code === 'signupError') {
 					Object.assign(obj,{msg: d.message})
 					return false
 				}
 
-				
+				Object.assign(obj,{
+					id: d.update.id,
+					val: d.update.amount_off || price/d.update.percent_off
+				})
 			})
 	
-			this.setState({coupon: obj})
+			this.setState({coupon: obj}, () => console.log(this.state.coupon))
 		},500)
 	}
 
