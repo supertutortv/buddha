@@ -1432,6 +1432,15 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   border: 1px solid green;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable button {
+  background-color: rgba(16, 159, 218, 0.75);
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable button:hover {
+  background-color: #109fda;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
   text-align: left;
 }
