@@ -145,8 +145,8 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 								</div>}
 								<div>
 									<div className="stIfR99">
-										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={resetCoupon}/>
-										<label aria-hidden="true" for="coupon">Coupon</label>
+										<input id="coupon" placeholder="Coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={resetCoupon}/>
+										<label aria-hidden="true" for="coupon"></label>
 									</div>
 									<div>
 										<button className="couponChecker" onClick={checkCoupon}>
