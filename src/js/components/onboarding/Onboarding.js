@@ -169,9 +169,9 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									<label aria-hidden="true" for="doTrial">I would like the FREE 5 day limited trial, please!</label>
 								</div>
 								<button className="initCheckoutBtn" onClick={toggleCheckout}><span>Checkout</span></button>
-							</div>
-							<div>
-								{state.coupon.msg}
+								<div className="alert">
+									{state.coupon.msg}
+								</div>
 							</div>
 						</div>
 					</aside>

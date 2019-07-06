@@ -62,6 +62,11 @@ body.onboarding
 										font-weight: 600
 										display: block
 										text-align: center
+								
+								.alert
+									color: red
+									text-align: center
+									padding-top: 1em
 
 							.reviewTable
 
@@ -71,9 +76,19 @@ body.onboarding
 									overflow: hidden
 									border-radius: .125rem
 									margin-bottom: 0
+									transition: all .1s ease-in-out
 
 									input
 										padding: .75em
+
+										&:focus
+											border: 1px solid azure(.75)
+
+										&.valid
+											border: 1px solid green
+										
+										&.invalid
+											border: 1px solid green
 
 								h3
 									text-align: left
