@@ -249,11 +249,12 @@ export default class Onboarding extends React.Component{
 	}
 
 	checkCoupon(e) {
-
-		clearTimeout(this.waitForCoupon)
-
 		let val = e.target.value,
 			obj = this.state.coupon
+
+		console.log(val)
+
+		clearTimeout(this.waitForCoupon)
 
 		this.waitForCoupon = setTimeout(async () => {
 			await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
