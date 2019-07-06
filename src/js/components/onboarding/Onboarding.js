@@ -145,7 +145,15 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 								</div>}
 								<div>
 									<div className="stIfR99">
-										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon"/>
+										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={(e) => {
+											if (!e.target.value) this.setState({
+												coupon: {
+													id: null,
+													msg: '',
+													val: 0
+												}
+											})
+										}}/>
 										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
 									</div>
 									<div>
