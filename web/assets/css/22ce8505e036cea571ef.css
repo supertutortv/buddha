@@ -1367,9 +1367,12 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal {
   padding-top: 1em;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .trialToggle {
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  padding: 0 0.5em 1em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn {
