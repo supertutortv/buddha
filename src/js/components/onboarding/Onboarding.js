@@ -261,7 +261,7 @@ export default class Onboarding extends React.Component{
 			})
 	
 			this.setState({coupon: obj})
-		},50)
+		},100)
 	}
 
     render() {
