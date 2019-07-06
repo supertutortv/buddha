@@ -120,7 +120,8 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 
 const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
-		price = state.option.price
+		price = state.option.price,
+		couponClass = msg ? 'invalid' : 'valid'
 
 	return (
 		<section id="step3" className="step">
@@ -145,8 +146,8 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 								<div>
 									<div>
 									<div className="stIfR99">
-										<input onChange={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
-										<label aria-hidden="true" for="coupon">Coupon</label>
+										<input onChange={checkCoupon} aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon"/>
+										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
 									</div>
 									</div>
 									<div>{state.coupon.val}</div>
