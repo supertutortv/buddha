@@ -144,13 +144,15 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 									<div>{priceToString(shipping)}</div>
 								</div>}
 								<div>
-									<div>
 									<div className="stIfR99">
-										<input onChange={checkCoupon} aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon"/>
+										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon"/>
 										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
 									</div>
+									<div>
+										<button className="couponChecker" onClick={checkCoupon}>
+											<span>Apply</span>
+										</button>
 									</div>
-									<div>{priceToString(state.coupon.val)}</div>
 								</div>
 								<div>
 									<div>
@@ -199,8 +201,6 @@ export default class Onboarding extends React.Component{
 			signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
 			...user
 		}
-		
-		this.waitForCoupon = null
 
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
@@ -249,8 +249,10 @@ export default class Onboarding extends React.Component{
 		this.setState(Object.assign({},data))
 	}
 
-	checkCoupon(e) {
-		let val = e.target.value,
+	async checkCoupon(e) {
+		e.preventDefault()
+
+		let val = document.getElementById('coupon').value,
 			obj = {
 				id: null,
 				msg: '',
@@ -258,9 +260,6 @@ export default class Onboarding extends React.Component{
 			},
 			{ price } = this.state.option
 
-		clearTimeout(this.waitForCoupon)
-
-		this.waitForCoupon = setTimeout(async () => {
 			if (val) {
 				await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
 
@@ -277,7 +276,6 @@ export default class Onboarding extends React.Component{
 			}
 	
 			this.setState({coupon: obj}, () => console.log(this.state.coupon))
-		},500)
 	}
 
     render() {
