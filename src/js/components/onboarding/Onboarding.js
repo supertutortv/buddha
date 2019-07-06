@@ -121,7 +121,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price
-		console.log(state)
+
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
@@ -184,6 +184,10 @@ export default class Onboarding extends React.Component{
 			loc: false,
 			shipping: false,
 			doTrial: false,
+			coupon: {
+				id: null,
+				val: 0
+			},
 			plan: localStorage.getItem('_stT-signup'),
 			...user
         }
@@ -192,6 +196,7 @@ export default class Onboarding extends React.Component{
 		this.toggleCheckout = this.toggleCheckout.bind(this)
 		this.toggleTrial = this.toggleTrial.bind(this)
 		this.shipChanged = this.shipChanged.bind(this)
+		this.checkCoupon = this.checkCoupon.bind(this)
 	}
 	
 	componentDidMount() {
@@ -232,6 +237,13 @@ export default class Onboarding extends React.Component{
 
 	nextStep(data={}) {
 		this.setState(Object.assign({},data))
+	}
+
+	checkCoupon(e) {
+		let val = e.target.value
+		_st.http.get('/signup/check?coupon='+val, (d) => {
+			console.log(d)
+		})
 	}
 
     render() {
@@ -278,7 +290,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping shipChanged={this.shipChanged} plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize {...this.state} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
+				{this.state.loc ? <Finalize {...this.state} checkCoupon={this.checkCoupon} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }
