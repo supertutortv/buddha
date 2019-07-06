@@ -191,6 +191,7 @@ export default class Onboarding extends React.Component{
 			doTrial: false,
 			coupon: {
 				id: null,
+				msg: false,
 				val: 0
 			},
 			plan: localStorage.getItem('_stT-signup'),
@@ -245,11 +246,16 @@ export default class Onboarding extends React.Component{
 		this.setState(Object.assign({},data))
 	}
 
-	checkCoupon(e) {
-		let val = e.target.value
-		_st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
+	async checkCoupon(e) {
+		let val = e.target.value,
+			obj = this.state.coupon
+
+		await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
 			console.log(d)
+			if (d.code === 'signupError') return false
 		})
+
+		this.setState({coupon: obj})
 	}
 
     render() {
