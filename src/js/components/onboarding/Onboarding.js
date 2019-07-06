@@ -149,7 +149,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 										<label aria-hidden="true" for="coupon">Coupon</label>
 									</div>
 									</div>
-									<div>0</div>
+									<div>{state.coupon.val}</div>
 								</div>
 								<div>
 									<div>
@@ -158,7 +158,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 										}}/>
 										<label aria-hidden="true" for="doTrial">I would like the FREE 5 day limited trial, please!</label>
 									</div>
-									<div>{priceToString(price+shipping)}</div>
+									<div>{priceToString(price-state.coupon.val+shipping)}</div>
 								</div>
 							</div>
 							<div className="initCheckoutFinal">
