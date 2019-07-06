@@ -197,7 +197,9 @@ export default class Onboarding extends React.Component{
 			plan: localStorage.getItem('_stT-signup'),
 			signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
 			...user
-        }
+		}
+		
+		this.waitForCoupon = null
 
 		this.nextStep = this.nextStep.bind(this)
 		this.toggleCheckout = this.toggleCheckout.bind(this)
@@ -247,14 +249,13 @@ export default class Onboarding extends React.Component{
 	}
 
 	checkCoupon(e) {
-		var waitForCoupon = null
 
-		clearTimeout(waitForCoupon)
+		clearTimeout(this.waitForCoupon)
 
 		let val = e.target.value,
 			obj = this.state.coupon
 
-		waitForCoupon = setTimeout(async () => {
+		this.waitForCoupon = setTimeout(async () => {
 			await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
 				console.log(d)
 				if (d.code === 'signupError') return false
