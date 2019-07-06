@@ -145,7 +145,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 								<div>
 									<div>
 									<div className="stIfR99">
-										<input onBlur={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
+										<input onChange={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
 										<label aria-hidden="true" for="coupon">Coupon</label>
 									</div>
 									</div>
@@ -247,11 +247,14 @@ export default class Onboarding extends React.Component{
 	}
 
 	checkCoupon(e) {
+		var waitForCoupon = null
+
 		clearTimeout(waitForCoupon)
+
 		let val = e.target.value,
 			obj = this.state.coupon
 
-		window.waitForCoupon = setTimeout(async () => {
+		waitForCoupon = setTimeout(async () => {
 			await _st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
 				console.log(d)
 				if (d.code === 'signupError') return false
