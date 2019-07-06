@@ -1404,6 +1404,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 {
   position: relative;
   margin-bottom: 1em;
+  margin-bottom: 0;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) {
