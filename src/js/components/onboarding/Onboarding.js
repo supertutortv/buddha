@@ -146,7 +146,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 								<div>
 									<div className="stIfR99">
 										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={resetCoupon}/>
-										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
+										<label aria-hidden="true" for="coupon">Coupon</label>
 									</div>
 									<div>
 										<button className="couponChecker" onClick={checkCoupon}>
@@ -169,6 +169,9 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									<label aria-hidden="true" for="doTrial">I would like the FREE 5 day limited trial, please!</label>
 								</div>
 								<button className="initCheckoutBtn" onClick={toggleCheckout}><span>Checkout</span></button>
+							</div>
+							<div>
+								{state.coupon.msg}
 							</div>
 						</div>
 					</aside>
