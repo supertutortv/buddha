@@ -1464,6 +1464,10 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   font-size: calc(1rem - 14px);
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input {
+  padding: .5em;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
   text-align: left;
 }
