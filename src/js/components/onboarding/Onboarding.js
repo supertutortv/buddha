@@ -252,7 +252,7 @@ export default class Onboarding extends React.Component{
 		let val = e.target.value,
 			obj = this.state.coupon
 
-		console.log(val)
+		if (!val) return false
 
 		clearTimeout(this.waitForCoupon)
 
