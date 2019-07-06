@@ -150,7 +150,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
 									</div>
 									</div>
-									<div>{state.coupon.val}</div>
+									<div>{priceToString(state.coupon.val)}</div>
 								</div>
 								<div>
 									<div>
