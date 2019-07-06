@@ -1403,69 +1403,14 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 {
   position: relative;
-  margin-bottom: 1em;
-  margin-bottom: 0;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) {
-  position: relative;
   background-color: white;
   overflow: hidden;
   border-radius: .125rem;
+  margin-bottom: 0;
 }
 
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) > label {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-size: calc(1rem - 7px);
-  font-weight: 400;
-  padding: .75em 1em;
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  transition: all .1s ease-in-out;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) input:not([type="checkbox"]),
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) textarea,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) select {
-  padding: 1em 0 0.25em .5em;
-  display: block;
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  background-color: transparent;
-  transition: all .1s ease-in-out;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) textarea:focus,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) select:focus {
-  border: 1px solid rgba(16, 159, 218, 0.75);
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) textarea.validate:valid,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) select.validate:valid {
-  border: 1px solid green;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) textarea:focus + label,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) textarea.validate:valid + label,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) select:focus + label,
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99:not(.no-bg) select.validate:valid + label {
-  font-size: calc(1rem - 14px);
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable input {
-  padding: .75em !important;
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input {
+  padding: .75em;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
