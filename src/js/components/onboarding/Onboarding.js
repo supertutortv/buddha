@@ -118,7 +118,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 	)
 }
 
-const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
+const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price
 
@@ -143,8 +143,13 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 									<div>{priceToString(shipping)}</div>
 								</div>}
 								<div>
-									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
-									<div>{priceToString(price)}</div>
+									<div>
+									<div className="stIfR99">
+										<input onChange={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
+										<label aria-hidden="true" for="coupon">Coupon</label>
+									</div>
+									</div>
+									<div>0</div>
 								</div>
 								<div>
 									<div>
