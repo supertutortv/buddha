@@ -145,7 +145,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 								<div>
 									<div>
 									<div className="stIfR99">
-										<input onChange={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
+										<input onBlur={checkCoupon} aria-label="Coupon" className="validate coupon" type="text" name="coupon"/>
 										<label aria-hidden="true" for="coupon">Coupon</label>
 									</div>
 									</div>
