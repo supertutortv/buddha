@@ -121,7 +121,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price,
-		couponClass = msg ? 'invalid' : 'valid'
+		couponClass = state.coupon.msg ? 'invalid' : 'valid'
 
 	return (
 		<section id="step3" className="step">
