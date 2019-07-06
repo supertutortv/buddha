@@ -118,7 +118,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 	)
 }
 
-const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
+const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price,
 		couponClass = state.coupon.msg ? 'invalid' : state.coupon.id ? 'valid' : ''
@@ -145,15 +145,7 @@ const Finalize = ({checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshDa
 								</div>}
 								<div>
 									<div className="stIfR99">
-										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={(e) => {
-											if (!e.target.value) this.setState({
-												coupon: {
-													id: null,
-													msg: '',
-													val: 0
-												}
-											})
-										}}/>
+										<input id="coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={resetCoupon}/>
 										<label aria-hidden="true" for="coupon">{state.coupon.msg}</label>
 									</div>
 									<div>
@@ -215,6 +207,7 @@ export default class Onboarding extends React.Component{
 		this.toggleTrial = this.toggleTrial.bind(this)
 		this.shipChanged = this.shipChanged.bind(this)
 		this.checkCoupon = this.checkCoupon.bind(this)
+		this.resetCoupon = this.resetCoupon.bind(this)
 	}
 	
 	componentDidMount() {
@@ -286,6 +279,16 @@ export default class Onboarding extends React.Component{
 			this.setState({coupon: obj}, () => console.log(this.state.coupon))
 	}
 
+	resetCoupon(e) {
+		if (!e.target.value) this.setState({
+			coupon: {
+				id: null,
+				msg: '',
+				val: 0
+			}
+		})
+	}
+
     render() {
 		let {init, firstname, plan, option, shipping} = this.state,
 			{refreshData} = this.props
@@ -330,7 +333,7 @@ export default class Onboarding extends React.Component{
 				</section>
 				{this.state.plan ? <PlnOptions option={option} plan={plan} nextStep={this.nextStep} /> : null}
 				{this.state.option ? <Shipping shipChanged={this.shipChanged} plan={plan} ship={shipping} nextStep={this.nextStep} /> : null}
-				{this.state.loc ? <Finalize {...this.state} checkCoupon={this.checkCoupon} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
+				{this.state.loc ? <Finalize {...this.state} resetCoupon={this.resetCoupon} checkCoupon={this.checkCoupon} toggleTrial={this.toggleTrial} toggleCheckout={this.toggleCheckout} refreshData={refreshData} nextStep={this.nextStep} /> : null}
 			</main>
         )
     }
