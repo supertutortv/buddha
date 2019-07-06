@@ -1411,12 +1411,12 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   position: relative;
   background-color: white;
   overflow: hidden;
-  border-radius: .125rem;
   margin-bottom: 0;
   transition: all .1s ease-in-out;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input {
+  border-radius: .125rem;
   padding: .75em;
 }
 
