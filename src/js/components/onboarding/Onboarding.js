@@ -121,7 +121,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price
-
+		console.log(state)
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
@@ -142,6 +142,10 @@ const Finalize = ({nextStep, toggleCheckout, toggleTrial, refreshData, ...state}
 									<div>Priority Shipping <em>(3-4 days)</em></div>
 									<div>{priceToString(shipping)}</div>
 								</div>}
+								<div>
+									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
+									<div>{priceToString(price)}</div>
+								</div>
 								<div>
 									<div>
 										<input aria-label="I would like the free 5 day limited trial, please!" className="doTrial" type="checkbox" name="doTrial" onChange={(e) => {
