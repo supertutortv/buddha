@@ -160,6 +160,9 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 								</div>
 							</div>
 							<div className="initCheckoutFinal">
+								<div>
+									<span>Total</span>
+								</div>
 								<div className="trialToggle">
 									<input aria-label="I would like the free 5 day limited trial, please!" className="doTrial" type="checkbox" name="doTrial" onChange={(e) => {
 										toggleTrial(e.target.checked)
