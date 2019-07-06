@@ -171,7 +171,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 					</aside>
 				</div>
 			</div>
-			{!state.checkout ? null : <Checkout action="/signup/pay" amt={priceToString(price+shipping)} closeCheckout={toggleCheckout} payload={state} refreshData={refreshData} nextStep={nextStep}/>}
+			{!state.checkout ? null : <Checkout action="/signup/pay" amt={priceToString(price-state.coupon.val+shipping)} closeCheckout={toggleCheckout} payload={state} refreshData={refreshData} nextStep={nextStep}/>}
 		</section>
 	)
 }
