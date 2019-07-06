@@ -250,7 +250,11 @@ export default class Onboarding extends React.Component{
 
 	checkCoupon(e) {
 		let val = e.target.value,
-			obj = this.state.coupon,
+			obj = {
+				id: null,
+				msg: '',
+				val: 0
+			},
 			{ price } = this.state.option
 
 		if (!val) return false
