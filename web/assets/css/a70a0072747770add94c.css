@@ -1408,7 +1408,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   text-align: center;
   padding: 0 1rem 1rem;
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 0;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .alert a {
