@@ -1403,8 +1403,15 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .alert {
   color: red;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
   text-align: center;
+  padding: 0 1rem 1rem;
   padding-top: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .alert a {
+  text-decoration: underline;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 {
