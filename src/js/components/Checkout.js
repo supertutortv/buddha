@@ -88,6 +88,8 @@ export default class Checkout extends React.Component {
             completed = (state.status === 'completed'),
             active = disabled ? 'active' : (completed) ? 'completed' : ''
 
+            console.log(this.state)
+
         return(
             <StripeProvider stripe={state.stripe}>
                 <Elements>

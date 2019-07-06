@@ -276,7 +276,7 @@ export default class Onboarding extends React.Component{
 				})
 			}
 	
-			this.setState({coupon: obj}, () => console.log(this.state.coupon))
+			this.setState({coupon: obj})
 	}
 
 	resetCoupon(e) {
