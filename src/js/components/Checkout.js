@@ -34,7 +34,7 @@ export default class Checkout extends React.Component {
         const key = _st.stripe
         this.session = {
             id: Date.now(),
-            signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
+            signature: this.state.signature
         }
 
         if (!window.Stripe) {

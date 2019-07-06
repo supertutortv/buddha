@@ -194,6 +194,7 @@ export default class Onboarding extends React.Component{
 				val: 0
 			},
 			plan: localStorage.getItem('_stT-signup'),
+			signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,''),
 			...user
         }
 
@@ -246,7 +247,7 @@ export default class Onboarding extends React.Component{
 
 	checkCoupon(e) {
 		let val = e.target.value
-		_st.http.get('/signup/check?coupon='+val, (d) => {
+		_st.http.get('/signup/check?coupon='+val+'&sig='+this.state.signature, (d) => {
 			console.log(d)
 		})
 	}
