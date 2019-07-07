@@ -1490,6 +1490,18 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   flex: 1;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems {
+  display: block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div {
+  display: flex;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div > div:first-child {
+  flex: 1;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:last-of-type {
   color: green;
   font-weight: 800;
