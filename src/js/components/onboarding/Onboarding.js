@@ -121,9 +121,8 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTrial, refreshData, ...state}) => {
 	let shipping = state.shipping && state.shipping.priShip === "true" ? state.plan.shipping : 0,
 		price = state.option.price,
-		couponClass = state.coupon.msg ? 'invalid' : state.coupon.id ? 'valid' : ''
-
-		console.log(state)
+		couponClass = state.coupon.msg ? 'invalid' : state.coupon.id ? 'valid' : '',
+		loc = state.loc
 
 	return (
 		<section id="step3" className="step">
@@ -165,7 +164,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									null}
 									<div>
 										<div>
-											{shipping ? 'Priority Shipping' : ''} Shipping <em>{!shipping ? '(2-3 weeks)' : '(3-4 days)'}</em>
+											{shipping ? <span>Priority Shipping <em>(3-4 days)</em></span> : loc === 'US' ? <span>Standard Shipping <em>(2-3 weeks)</em></span> : <span>International eBook <em>(electronic delivery)</em></span>}
 										</div>
 										<div>{!shipping ? '\u2014' : priceToString(shipping)}</div>
 									</div>
