@@ -123,6 +123,8 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 		price = state.option.price,
 		couponClass = state.coupon.msg ? 'invalid' : state.coupon.id ? 'valid' : ''
 
+		console.log(state)
+
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">
@@ -155,8 +157,16 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 										<div>Subtotal</div>
 										<div>{priceToString(price)}</div>
 									</div>
+									{state.coupon.id ?
+										<div>
+											<div>Discount ()</div>
+											<div>{priceToString(state.coupon.val)}</div>
+										</div> : 
+									null}
 									<div>
-										<div>{!shipping ? 'Standard' : 'Priority'} Shipping <em>{!shipping ? '(2-3 weeks)' : '(3-4 days)'}</em></div>
+										<div>
+											{shipping ? 'Priority Shipping' : ''} Shipping <em>{!shipping ? '(2-3 weeks)' : '(3-4 days)'}</em>
+										</div>
 										<div>{!shipping ? '\u2014' : priceToString(shipping)}</div>
 									</div>
 								</div>
