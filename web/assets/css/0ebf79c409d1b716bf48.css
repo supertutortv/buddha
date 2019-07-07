@@ -1480,17 +1480,6 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   border-bottom: none;
 }
 
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type > div:first-child label {
-  margin-left: 1em;
-  display: inline-block;
-}
-
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type > div:not(:first-child) {
-  color: green;
-  font-weight: 800;
-  font-size: calc(1rem - 4px);
-}
-
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
   font-weight: 400;
   font-size: calc(1rem - 7px);
@@ -1499,6 +1488,12 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:first-child {
   flex: 1;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItemsTotal > div:not(:first-child) {
+  color: green;
+  font-weight: 800;
+  font-size: calc(1rem - 4px);
 }
 
 body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
