@@ -4,7 +4,7 @@ import CountryDD from '../checkout/pieces/CountryDD'
 import StateDD from '../checkout/pieces/StateDD'
 import Checkout from '../Checkout'
 
-const priceToString = (price) => '$'+(price/100).toFixed(2)
+const priceToString = (price) => '$'+(price/100).toFixed(2)+' USD'
 
 const PlnOptions = ({nextStep, plan, option}) => {
 	return (
@@ -161,7 +161,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									{state.coupon.id ?
 										<div>
 											<div>Discount ()</div>
-											<div>{priceToString(state.coupon.val)}</div>
+											<div>{'-'+priceToString(state.coupon.val)}</div>
 										</div> : 
 									null}
 									<div>
