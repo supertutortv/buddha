@@ -1506,6 +1506,11 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   padding-bottom: 1em;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:first-of-type {
+  font-weight: 800;
+  font-size: calc(1rem - 4px);
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:last-of-type {
   color: green;
   font-weight: 800;
