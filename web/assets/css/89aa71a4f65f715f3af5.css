@@ -1496,6 +1496,11 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div {
   display: flex;
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div:hover {
+  background-color: whitesmoke;
 }
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div > div:first-child {
