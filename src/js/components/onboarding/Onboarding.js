@@ -124,8 +124,6 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 		couponClass = state.coupon.msg ? 'invalid' : state.coupon.id ? 'valid' : '',
 		loc = state.loc
 
-		console.log(state)
-
 	return (
 		<section id="step3" className="step">
 			<div className="stStepContent">

@@ -118,12 +118,14 @@ export default class Checkout extends React.Component {
 
                                     let obj = {
                                         token: t.id,
+                                        coupon: state.coupon.id,
                                         plan: {
                                             doTrial: state.doTrial,
                                             id: state.plan.value,
                                             ...state.option
                                         },
                                         loc: state.loc,
+                                        name: state.fullname,
                                         shipping: state.shipping,
                                         session: this.session
                                     }
