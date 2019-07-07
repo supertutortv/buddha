@@ -130,12 +130,14 @@ body.onboarding
 									& > div:first-child
 										flex: 1
 
-								.lineItemsTotal
+									&.lineItems
 									
-									.total
-										color: green
-										font-weight: 800
-										font-size: $bodytext
+									&.total
+
+										& > div:last-of-type
+											color: green
+											font-weight: 800
+											font-size: $bodytext
 
 			#step2
 

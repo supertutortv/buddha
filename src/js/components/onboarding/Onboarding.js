@@ -150,17 +150,17 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 										</button>
 									</div>
 								</div>
-								<div className="lineItemsTotal">
+								<div className="lineItems">
 									{!shipping ? null : <div>
 										<div>Priority Shipping <em>(3-4 days)</em></div>
 										<div>{priceToString(shipping)}</div>
 									</div>}
-									<div className="total">
-										<div>
-											<span>Total</span>
-										</div>
-										<div>{priceToString(price-state.coupon.val+shipping)}</div>
+								</div>
+								<div className="total">
+									<div>
+										<span>Total</span>
 									</div>
+									<div>{priceToString(price-state.coupon.val+shipping)}</div>
 								</div>
 							</div>
 							<div className="initCheckoutFinal">

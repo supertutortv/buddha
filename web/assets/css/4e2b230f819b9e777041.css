@@ -1490,7 +1490,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   flex: 1;
 }
 
-body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .lineItemsTotal .total {
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:last-of-type {
   color: green;
   font-weight: 800;
   font-size: calc(1rem - 4px);
