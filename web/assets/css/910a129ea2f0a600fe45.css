@@ -1496,7 +1496,7 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
 
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div {
   display: flex;
-  padding: 0 0.5em;
+  padding: 0.5em;
   transition: all .1s ease-in-out;
 }
 
