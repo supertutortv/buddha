@@ -54,7 +54,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 						<CountryDD className="locSelect" name="locSelect" onChange={(e) => {
 							let val = e.target.value
 							if (val === 'US')
-								nextStep({step: 2, loc: false, shipping: true})
+								nextStep({step: 2, loc: val, shipping: true})
 							else
 								nextStep({step: 3, loc: val, shipping: false})
 						}} required ><i class="fas fa-caret-down"></i></CountryDD>
@@ -70,7 +70,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 						for (let i = 0; i < vals.length; ++i) Object.assign(obj,{[vals[i].name]: vals[i].value})
 
 						obj = Object.assign(obj,{priShip: priShip})
-						nextStep({step: 3, loc: true, shipping: obj})
+						nextStep({step: 3, loc: obj.country, shipping: obj})
 					}}>
 						<div className="stIfR99 twoq left">
 							<input aria-label="Address Line 1" className="validate address" type="text" name="line1" required validation="text"/>
