@@ -139,10 +139,6 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									<div>{state.plan.title} - <em>{state.option.length+' months'}</em></div>
 									<div>{priceToString(price)}</div>
 								</div>
-								{!shipping ? null : <div>
-									<div>Priority Shipping <em>(3-4 days)</em></div>
-									<div>{priceToString(shipping)}</div>
-								</div>}
 								<div>
 									<div className="stIfR99">
 										<input id="coupon" placeholder="Coupon" aria-label="Coupon" className={['validate','coupon',couponClass].join(' ')} type="text" name="coupon" onChange={resetCoupon}/>
@@ -154,6 +150,12 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 										</button>
 									</div>
 								</div>
+							</div>
+							<div className="lineItemsTotal">
+								{!shipping ? null : <div>
+									<div>Priority Shipping <em>(3-4 days)</em></div>
+									<div>{priceToString(shipping)}</div>
+								</div>}
 								<div>
 									<div>
 										<span>Total</span>
