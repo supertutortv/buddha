@@ -160,7 +160,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									</div>
 									{state.coupon.id ?
 										<div>
-											<div>Discount ()</div>
+											<div>Discount</div>
 											<div>{'-'+priceToString(state.coupon.val)}</div>
 										</div> : 
 									null}
