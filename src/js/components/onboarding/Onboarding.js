@@ -156,7 +156,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 										<div>{priceToString(price)}</div>
 									</div>
 									<div>
-										<div>{!shipping ? null : 'Priority '}Shipping <em>{!shipping ? '(2-3 weeks)' : '(3-4 days)'}</em></div>
+										<div>{!shipping ? 'Standard' : 'Priority'} Shipping <em>{!shipping ? '(2-3 weeks)' : '(3-4 days)'}</em></div>
 										<div>{!shipping ? '--' : priceToString(shipping)}</div>
 									</div>
 								</div>

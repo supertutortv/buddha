@@ -1502,6 +1502,10 @@ body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard 
   flex: 1;
 }
 
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div:not(:last-of-type) {
+  padding-bottom: 1em;
+}
+
 body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:last-of-type {
   color: green;
   font-weight: 800;
