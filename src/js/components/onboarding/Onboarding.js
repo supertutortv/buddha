@@ -166,7 +166,7 @@ const Finalize = ({resetCoupon, checkCoupon, nextStep, toggleCheckout, toggleTri
 									null}
 									<div>
 										<div>
-											{shipping ? <span>Priority Shipping <em>(3-4 days)</em></span> : loc === 'US' ? <span>Standard Shipping <em>(2-3 weeks)</em></span> : <span>International eBook <em>(electronic delivery)</em></span>}
+											{shipping ? <span>Priority Shipping <em>(3-4 days)</em></span> : loc !== 'US' ? <span>International eBook <em>(electronic delivery)</em></span> : <span>Standard Shipping <em>(2-3 weeks)</em></span> }
 										</div>
 										<div>{!shipping ? '\u2014' : priceToString(shipping)}</div>
 									</div>
