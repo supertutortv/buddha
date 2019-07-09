@@ -106,7 +106,6 @@ export default class Dashboard extends React.Component {
                                                         fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons',{
                                                             method: 'GET',
                                                             accept: 'application/json,application/vnd.sttv.app+json,application/octet-stream',
-                                                            credentials: 'same-origin',
                                                             mode: 'cors',
                                                             headers: {
                                                                 'Content-Type': 'application/json'
