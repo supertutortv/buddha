@@ -19,11 +19,6 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
                         )}</div>
                 }
             </div>
-            <div><button onClick={(e) => {
-                e.preventDefault()
-                fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons')
-                .then((res) => console.log(res.json()))
-            }}>Get Coupons</button></div>
         </section>
     </div>
 

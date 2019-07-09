@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component {
 
         this.state = {
             error: {},
+            coupons: null,
             hasCourses: true,
             notifications: {
                 active: false,
@@ -100,6 +101,21 @@ export default class Dashboard extends React.Component {
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
                                                         {/* <DBActions cancellation={this.cancellation} d={data.user} /> */}
                                                     </div>
+                                                    <div><button onClick={(e) => {
+                                                        e.preventDefault()
+                                                        fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons',{
+                                                            method: 'GET',
+                                                            accept: 'application/json,application/vnd.sttv.app+json,application/octet-stream',
+                                                            credentials: 'same-origin',
+                                                            mode: 'cors',
+                                                            headers: {
+                                                                'Content-Type': 'application/json'
+                                                            }
+                                                        })
+                                                        .then((res) => res.json())
+                                                        .then((rs) => this.setState({coupons: rs}))
+                                                    }}>Get Coupons</button></div>
+                                                    <div>{this.state.coupons}</div>
                                                 </main>
                                             }
                                         </React.Fragment>

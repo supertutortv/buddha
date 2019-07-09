@@ -6,6 +6,10 @@ const stripe = require('stripe')(functions.config().stripe.test.secret);
 //
 
 exports.getCoupons = functions.https.onRequest(async (request, response) => {
-  const coupons = await stripe.coupons.list((err,cpns) => cpns)
-  response.send(coupons);
+  try {
+    const coupons = await stripe.coupons.list({limit: 20});
+    response.send(coupons);
+  } catch (e) {
+    return e;
+  }
 });
