@@ -107,7 +107,6 @@ export default class Dashboard extends React.Component {
                                                             method: 'GET',
                                                             accept: 'application/json,application/vnd.sttv.app+json,application/octet-stream',
                                                             credentials: 'omit',
-                                                            mode: 'cors',
                                                             headers: {
                                                                 'Content-Type': 'application/json'
                                                             }
