@@ -5,20 +5,25 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
     <div className="stDashboardNotifications">
         <section>
             <div className="stBoxHeading">Notifications</div>
-                <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
-                    {!fetched ? null : 
-                        (notes.length === 0) ? 
-                            <div className="noNotes">You have zero notifications</div> : 
-                            <div className="stNotes">{
-                                notes.map((o) => 
-                                    <div className="stNotification">
-                                        <div className="stNoteDate">{o.date}</div>
-                                        <div className="stNoteTitle"><span onClick={() => openNote(o.id)}>{o.title}</span></div>
-                                        <div className="stNoteDismiss"><span onClick={() => dismissNote(o.id)}>x</span></div>
-                                    </div>
-                            )}</div>
-                    }
-                </div>
+            <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
+                {!fetched ? null : 
+                    (notes.length === 0) ? 
+                        <div className="noNotes">You have zero notifications</div> : 
+                        <div className="stNotes">{
+                            notes.map((o) => 
+                                <div className="stNotification">
+                                    <div className="stNoteDate">{o.date}</div>
+                                    <div className="stNoteTitle"><span onClick={() => openNote(o.id)}>{o.title}</span></div>
+                                    <div className="stNoteDismiss"><span onClick={() => dismissNote(o.id)}>x</span></div>
+                                </div>
+                        )}</div>
+                }
+            </div>
+            <div><button onClick={(e) => {
+                e.preventDefault()
+                fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons')
+                .then((res) => console.log(res.json()))
+            }}>Get Coupons</button></div>
         </section>
     </div>
 
