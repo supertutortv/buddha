@@ -108,7 +108,7 @@ export default class Dashboard extends React.Component {
                                                             headers: {
                                                                 'Content-Type': 'application/json'
                                                             },
-                                                            body: JSON.stringify({coupon:'helloworld'})
+                                                            body: JSON.stringify({coupon:'sttv20'})
                                                         })
                                                         .then((res) => res.json())
                                                         .then((rs) => console.log(rs))
