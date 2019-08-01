@@ -7,13 +7,11 @@ const functions = require('firebase-functions'),
 const app = express()
 
 const getCoupon = async (request, response) => {
-  response.send(request.body)
-  /* try {
-    const coupons = await stripe.coupons.list({limit: 20})
-    response.send(coupons);
-  } catch (e) {
-    return e
-  } */
+  let { coupon } = request.body || ''
+
+  const cp = await stripe.coupons.retrieve(coupon, (err,_cp) => {
+    (err) ? response.send(err) : response.send(_cp)
+  })
 }
 
 app.use(cors)
