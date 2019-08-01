@@ -103,7 +103,12 @@ export default class Dashboard extends React.Component {
                                                     </div>
                                                     <div><button onClick={(e) => {
                                                         e.preventDefault()
-                                                        fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons')
+                                                        fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons',{
+                                                            headers: {
+                                                                'Content-Type': 'application/json'
+                                                            },
+                                                            body: JSON.stringify({hello:'world'})
+                                                        })
                                                         .then((res) => res.json())
                                                         .then((rs) => this.setState({coupons: rs}))
                                                     }}>Get Coupons</button></div>
