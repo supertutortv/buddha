@@ -103,7 +103,7 @@ export default class Dashboard extends React.Component {
                                                     </div>
                                                     <div><button onClick={(e) => {
                                                         e.preventDefault()
-                                                        fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupons',{
+                                                        fetch('https://us-central1-supertutortv-1deda.cloudfunctions.net/getCoupon',{
                                                             method: 'POST',
                                                             headers: {
                                                                 'Content-Type': 'application/json'
