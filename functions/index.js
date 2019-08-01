@@ -19,4 +19,4 @@ const getCoupon = async (request, response) => {
 app.use(cors)
 app.use(getCoupon)
 
-exports.getCoupon = functions.https.onRequest(getCoupon)
+exports.getCoupon = functions.https.onRequest(app)
