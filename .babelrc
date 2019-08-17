@@ -4,6 +4,7 @@
 			"useBuiltIns": "usage",
 			"shippedProposals": true,
 			"targets": "> 1%, not dead",
+			"corejs": 3,
 			"debug": false
 		}],
 		["@babel/preset-react",{}]
