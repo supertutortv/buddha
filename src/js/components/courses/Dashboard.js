@@ -84,12 +84,11 @@ export default class Dashboard extends React.Component {
                 {auth => {
                     return (
                         <DataState.Consumer>
-                            {data => {
-                                console.log(data)
-                                return (<React.Fragment>
+                            {data => (
+                                <>
                                     <Header title="Home" refreshData={this.props.refreshData} hist={this.props.history}/>
                                     {!hasCourses ? <Onboarding refreshData={this.props.refreshData} /> : 
-                                        <React.Fragment>
+                                        <>
                                             {data.courses.length === 0 ? this.triggerPurchase() : 
                                                 <main className="stDashboard stComponentFade">
                                                     <div className="stHomeBanner">
@@ -98,15 +97,13 @@ export default class Dashboard extends React.Component {
                                                     <DBCourses user={data.user} courses={data.courses} />
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
-                                                        {/* <DBActions cancellation={this.cancellation} d={data.user} /> */}
                                                     </div>
                                                 </main>
                                             }
-                                        </React.Fragment>
+                                        </>
                                     }
-                                </React.Fragment>)
-                                }
-                            }
+                                </>
+                            )}
                         </DataState.Consumer>
                     )
                 }}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const DBNotifications = ({fetched, notes, openNote, dismissNote}) => 
     <div className="stDashboardNotifications">
@@ -30,14 +30,14 @@ export const DBCourses = ({cancellation,courses,user}) => {
                 Object.keys(courses).map((course) => {
                     let crs = courses[course]
                     return (
-                        <div className="course">
+                        <st-course-card>
                             <Link to={'/'+course} >
-                                <div className="heroImg">
+                                <st-course-card-img>
                                     <img src={crs.thumb} />
-                                </div>
-                                <div className="title">
+                                </st-course-card-img>
+                                <st-course-card-title>
                                     <span>{crs.name}</span>
-                                </div>
+                                </st-course-card-title>
                                 {!crs.trialing ? 
                                     <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
                                     <React.Fragment>
@@ -52,7 +52,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                     </React.Fragment>
                                 )}
                             </Link>
-                        </div>
+                        </st-course-card>
                     )}
                 )}
             </div>
