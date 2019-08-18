@@ -41,7 +41,6 @@ export default class Dashboard extends React.Component {
     }
 
     cancellation(e,d) {
-        e.stopPropagation()
         e.preventDefault()
         let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course. Are you sure you wish to proceed?")
 
@@ -95,7 +94,7 @@ export default class Dashboard extends React.Component {
                                                     <div className="stHomeBanner">
                                                         <TextureImg/>
                                                     </div>
-                                                    <DBCourses user={data.user} courses={data.courses} />
+                                                    <DBCourses cancellation={this.cancellation} user={data.user} courses={data.courses} />
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
                                                     </div>
