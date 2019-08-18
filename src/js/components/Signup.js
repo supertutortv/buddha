@@ -80,7 +80,7 @@ export default class Signup extends React.Component {
                         }}/>
                     )
                     else return (
-                        <React.Fragment>
+                        <>
                             <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
                                 <header className="heading">
                                     <h1>SupertutorTV</h1>
@@ -118,7 +118,7 @@ export default class Signup extends React.Component {
                                 </section>
                             </form>
                             <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>Log In</Link></code>
-                        </React.Fragment>
+                        </>
                     )
                 }}
             </AuthContext.Consumer>

@@ -57,14 +57,23 @@
                     st-course-status
                         padding: 0 1em 1em
 
+                        a.stCourseButton
+                            display: inline-block
+                            
+                            &:not(:last-of-type)
+                                margin-right: 1em
+
                         em
-                            font-weight: bold
+                            font-weight: 600
 
                         .active, .activate
                             color: green
 
                         .trialing
                             color: gold
+
+                        .cancel
+                            color: red
 
     .stNotesActions
         width: 100%

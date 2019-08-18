@@ -40,16 +40,16 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 </st-course-card-title>
                                 <st-course-status>
                                     {!crs.trialing ? 
-                                        <span>Status: <em class="active">Active</em></span> :
+                                        null :
                                         (<>
-                                            <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
+                                            <a className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
                                                 action: 'trial',
                                                 ...user
-                                            })}>Unlock the course</button>
-                                            <button className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                            })}><em>Activate full course</em></a>
+                                            <a className="stCourseButton cancel" onClick={(e) => cancellation(e,{
                                                 action: 'subscription',
                                                 ...user
-                                            })}>Cancel</button>
+                                            })}><em>Cancel</em></a>
                                         </>
                                     )}
                                 </st-course-status>
