@@ -25,7 +25,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
 export const DBCourses = ({cancellation,courses,user}) => {
     return (
         <div className="stDashboardCourses">
-            <div className="stCoursesBody">
+            <st-courses-body>
                 {courses.length === 0 ? null : 
                 Object.keys(courses).map((course) => {
                     let crs = courses[course]
@@ -38,24 +38,26 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 <st-course-card-title>
                                     <span>{crs.name}</span>
                                 </st-course-card-title>
-                                {!crs.trialing ? 
-                                    <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
-                                    <>
-                                        <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
-                                            action: 'trial',
-                                            ...user
-                                        })}>Unlock the course</button>
-                                        <button className="stCourseButton cancel" onClick={(e) => cancellation(e,{
-                                            action: 'subscription',
-                                            ...user
-                                        })}>Cancel</button>
-                                    </>
-                                )}
+                                <st-course-status>
+                                    {!crs.trialing ? 
+                                        <span>Status: <span class="active">Active</span></span> :
+                                        (<>
+                                            <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
+                                                action: 'trial',
+                                                ...user
+                                            })}>Unlock the course</button>
+                                            <button className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                                action: 'subscription',
+                                                ...user
+                                            })}>Cancel</button>
+                                        </>
+                                    )}
+                                </st-course-status>
                             </Link>
                         </st-course-card>
                     )}
                 )}
-            </div>
+            </st-courses-body>
         </div>
     )
 }
