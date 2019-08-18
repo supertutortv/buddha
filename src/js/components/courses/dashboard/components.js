@@ -38,22 +38,22 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 <st-course-card-title>
                                     <span>{crs.name}</span>
                                 </st-course-card-title>
-                                <st-course-status>
-                                    {!crs.trialing ? 
-                                        null :
-                                        (<>
-                                            <a className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
-                                                action: 'trial',
-                                                ...user
-                                            })}><em>Activate full course</em></a>
-                                            <a className="stCourseButton cancel" onClick={(e) => cancellation(e,{
-                                                action: 'subscription',
-                                                ...user
-                                            })}><em>Cancel</em></a>
-                                        </>
-                                    )}
-                                </st-course-status>
                             </Link>
+                            <st-course-status>
+                                {!crs.trialing ? 
+                                    null :
+                                    (<>
+                                        <a className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
+                                            action: 'trial',
+                                            ...user
+                                        })}><em>Activate full course</em></a>
+                                        <a className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                            action: 'subscription',
+                                            ...user
+                                        })}><em>Cancel</em></a>
+                                    </>
+                                )}
+                            </st-course-status>
                         </st-course-card>
                     )}
                 )}
