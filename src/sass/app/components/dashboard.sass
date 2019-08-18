@@ -59,6 +59,8 @@
 
                         a.stCourseButton
                             display: inline-block
+                            position: relative
+                            z-index: 400
                             
                             &:not(:last-of-type)
                                 margin-right: 1em
@@ -137,3 +139,14 @@
                 
                 button
                     background-color: azure()
+
++MQ($mq-tportrait)
+    .stDashboard
+
+        .stDashboardCourses
+            
+            st-courses-body
+                
+                st-course-card
+                    width: 100%
+                    margin-left: 0
