@@ -40,7 +40,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 </st-course-card-title>
                                 {!crs.trialing ? 
                                     <div className="stCourseStatus">Status: <span class="active">Active</span></div> : (
-                                    <React.Fragment>
+                                    <>
                                         <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
                                             action: 'trial',
                                             ...user
@@ -49,7 +49,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                             action: 'subscription',
                                             ...user
                                         })}>Cancel</button>
-                                    </React.Fragment>
+                                    </>
                                 )}
                             </Link>
                         </st-course-card>
