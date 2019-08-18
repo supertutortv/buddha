@@ -45,11 +45,11 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                         null :
                                         (<>
                                             <a href="javascript:void(0)" className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
-                                                action: 'trial',
+                                                action: 'activate',
                                                 ...user
                                             })}><em>Activate full course</em></a>
                                             <a href="javascript:void(0)" className="stCourseButton cancel" onClick={(e) => cancellation(e,{
-                                                action: 'subscription',
+                                                action: 'cancel',
                                                 ...user
                                             })}><em>Cancel</em></a>
                                         </>
