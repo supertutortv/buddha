@@ -40,7 +40,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                 </st-course-card-title>
                                 <st-course-status>
                                     {!crs.trialing ? 
-                                        <span>Status: <span class="active">Active</span></span> :
+                                        <span>Status: <em class="active">Active</em></span> :
                                         (<>
                                             <button className="stCourseButton endTrial" onClick={(e) => cancellation(e,{
                                                 action: 'trial',
