@@ -41,6 +41,7 @@ export default class Dashboard extends React.Component {
     }
 
     cancellation(e,d) {
+        e.preventDefault()
         e.stopPropagation()
         let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course. Are you sure you wish to proceed?")
 
