@@ -31,29 +31,31 @@ export const DBCourses = ({cancellation,courses,user}) => {
                     let crs = courses[course]
                     return (
                         <st-course-card>
-                            <Link to={'/'+course} >
-                                <st-course-card-img>
-                                    <img src={crs.thumb} />
-                                </st-course-card-img>
-                                <st-course-card-title>
-                                    <span>{crs.name}</span>
-                                </st-course-card-title>
-                            </Link>
-                            <st-course-status>
-                                {!crs.trialing ? 
-                                    null :
-                                    (<>
-                                        <a className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
-                                            action: 'trial',
-                                            ...user
-                                        })}><em>Activate full course</em></a>
-                                        <a className="stCourseButton cancel" onClick={(e) => cancellation(e,{
-                                            action: 'subscription',
-                                            ...user
-                                        })}><em>Cancel</em></a>
-                                    </>
-                                )}
-                            </st-course-status>
+                            <st-course-card-inner>
+                                <Link to={'/'+course} >
+                                    <st-course-card-img>
+                                        <img src={crs.thumb} />
+                                    </st-course-card-img>
+                                    <st-course-card-title>
+                                        <span>{crs.name}</span>
+                                    </st-course-card-title>
+                                </Link>
+                                <st-course-status>
+                                    {!crs.trialing ? 
+                                        null :
+                                        (<>
+                                            <a className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
+                                                action: 'trial',
+                                                ...user
+                                            })}><em>Activate full course</em></a>
+                                            <a className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                                action: 'subscription',
+                                                ...user
+                                            })}><em>Cancel</em></a>
+                                        </>
+                                    )}
+                                </st-course-status>
+                            </st-course-card-inner>
                         </st-course-card>
                     )}
                 )}

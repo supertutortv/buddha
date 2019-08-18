@@ -20,19 +20,20 @@
             align-items: center
 
             st-course-card
-                display: block
-                overflow: hidden
-                border-radius: $tiny
-                background-color: white()
                 width: 32%
-                transition: all 100ms ease-in-out
-                +z-depth-2
-
-                &:hover
-                    +z-depth-4
 
                 &:not(:first-child)
                     margin-left: 2%
+
+                st-course-card-inner
+                    overflow: hidden
+                    border-radius: $tiny
+                    background-color: white()
+                    transition: all 100ms ease-in-out
+                    +z-depth-2
+
+                    &:hover
+                        +z-depth-4
 
                     st-course-card-img
                         position: relative
