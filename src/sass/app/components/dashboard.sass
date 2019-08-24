@@ -56,6 +56,8 @@
                     st-course-status
                         display: flex
                         text-align: center
+                        align-items: center
+                        color: white
 
                         a.stCourseButton
                             display: block
@@ -63,9 +65,11 @@
                             z-index: 400
                             padding: 1em
                             flex: 1
-                            
-                            &:not(:last-of-type)
-                                margin-right: 1em
+                            opacity: .75
+                            transition: opacity 100ms ease-in-out
+
+                            &:hover
+                                opacity: 1
 
                         em
                             font-weight: 600
