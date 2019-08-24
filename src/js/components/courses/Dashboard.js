@@ -44,7 +44,7 @@ export default class Dashboard extends React.Component {
         e.preventDefault()
 
         if (d.action === 'cancel') {
-            return alert("To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ("+d.data.email+"). If your request is within 48 hours of the end of your trial period you may be still possibly be charged the full amount, but we will refund it to you when your request is processed.")
+            return alert("To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ("+d.data.email+"). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.")
         }
 
         console.log(d)

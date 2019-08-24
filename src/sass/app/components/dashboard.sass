@@ -54,12 +54,15 @@
                             font-size: $medtext
 
                     st-course-status
-                        padding: 0 1em 1em
+                        display: flex
+                        text-align: center
 
                         a.stCourseButton
-                            display: inline-block
+                            display: block
                             position: relative
                             z-index: 400
+                            padding: 1em
+                            flex: 1
                             
                             &:not(:last-of-type)
                                 margin-right: 1em
@@ -68,13 +71,13 @@
                             font-weight: 600
 
                         .active, .activate
-                            color: green
+                            background-color: green
 
                         .trialing
                             color: gold
 
                         .cancel
-                            color: red
+                            background-color: red
 
     .stNotesActions
         width: 100%
