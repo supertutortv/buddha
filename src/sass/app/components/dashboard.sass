@@ -32,6 +32,15 @@
                     transition: all 100ms ease-in-out
                     +z-depth-2
 
+                    a
+                        
+                        &:hover
+
+                            st-course-card-img
+
+                                img
+                                    opacity: 1
+
                     st-course-card-img
                         position: relative
                         padding-top: 56.25%
@@ -41,6 +50,8 @@
                             top: 0
                             width: 100%
                             display: block
+                            opacity: .8
+                            transition: opacity 100ms ease-in-out
                     
                     st-course-card-title
                         padding: 1em
