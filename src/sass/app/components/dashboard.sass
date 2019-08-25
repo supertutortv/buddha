@@ -33,13 +33,16 @@
                     +z-depth-2
 
                     a
-                        
+
                         &:hover
 
                             st-course-card-img
 
                                 img
                                     opacity: 1
+
+                            st-course-card-title
+                                background-color: whitesmoke
 
                     st-course-card-img
                         position: relative
@@ -50,17 +53,14 @@
                             top: 0
                             width: 100%
                             display: block
-                            opacity: .8
-                            transition: opacity 100ms ease-in-out
+                            opacity: .9
+                            transition: all 100ms ease-in-out
                     
                     st-course-card-title
                         padding: 1em
                         font-weight: 600
                         line-height: 1
                         transition: all 100ms ease-in-out
-
-                        &:hover
-                            background-color: whitesmoke
 
                         span
                             font-size: $medtext
