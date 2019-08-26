@@ -62,8 +62,9 @@ export default class MyStudyList extends React.Component {
                 </div>
                 <div className="stCourseSidebar">
                     <div className="stCourseResources">
-                        <span>Course Resources</span>
-                        <i className="fas fa-info-circle"></i>
+                        <a href="#">
+                        Course Resources&nbsp;<i className="fas fa-info-circle"></i>
+                        </a>
                     </div>
                     <div className="stCourseMSL">
                         <div className="stCourseStudyListHeading">My Study List</div>

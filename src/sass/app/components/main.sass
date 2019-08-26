@@ -28,22 +28,31 @@ body.main
                     .stCourseSidebar
                         flex: 1
                         margin-left: 1em
-                        overflow: hidden
                         display: flex
                         flex-flow: column nowrap
 
                         .stCourseResources, .stCourseMSL
+                            font-size: $small
                             background-color: white()
                             border-radius: $ittybitty
+                            overflow: hidden
                             +z-depth-3
 
                         .stCourseResources
                             padding: 1em
                             font-weight: 600
                             line-height: 1
+                            margin-bottom: 1em
+
+                            a
+                                white-space: nowrap
+                                text-decoration: none
+                                transition: all 100ms ease-in-out
+
+                                &:hover
+                                    text-decoration: underline
 
                         .stCourseMSL
-                            font-size: $small
                             height: 100%
                             display: flex
                             flex-flow: column nowrap
