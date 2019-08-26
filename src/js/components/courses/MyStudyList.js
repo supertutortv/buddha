@@ -65,7 +65,7 @@ export default class MyStudyList extends React.Component {
                     <div className="stCourseResources">
                         <a target="_blank" data-href={this.state.courseResc} href={this.state.courseResc} onClick={(e) => {
                             let el = e.currentTarget
-                            console.log(el)
+                            console.log(el.dataset.href)
                             e.preventDefault()
                         }}>
                         <i class="fas fa-link"></i>
