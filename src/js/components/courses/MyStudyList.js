@@ -62,9 +62,12 @@ export default class MyStudyList extends React.Component {
                 </div>
                 <div className="stCourseSidebar">
                     <div className="stCourseResources">
-                        <a target="_blank" href="#">
+                        <a target="_blank" href="#" onClick={(e) => {
+                            e.preventDefault()
+                            console.log(e)
+                        }}>
                         <span>Course Resources</span>
-                        <i class="fas fa-external-link-alt"></i>
+                        <i class="fas fa-link"></i>
                         </a>
                     </div>
                     <div className="stCourseMSL">
