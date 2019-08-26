@@ -66,8 +66,8 @@ export default class MyStudyList extends React.Component {
                             e.preventDefault()
                             console.log(e)
                         }}>
-                        <span>Course Resources</span>
                         <i class="fas fa-link"></i>
+                        <span>Course Resources</span>
                         </a>
                     </div>
                     <div className="stCourseMSL">
