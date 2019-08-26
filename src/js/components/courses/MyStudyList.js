@@ -60,8 +60,12 @@ export default class MyStudyList extends React.Component {
                 <div className="stCourseIntro">
                     <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={theVid} />
                 </div>
-                <div className="stCourseMSL">
-                    <div className="stCourseMSLInner">
+                <div className="stCourseSidebar">
+                    <div className="stCourseResources">
+                        <span>Course Resources</span>
+                        <i className="fas fa-info-circle"></i>
+                    </div>
+                    <div className="stCourseMSL">
                         <div className="stCourseStudyListHeading">My Study List</div>
                         <div className="stCourseStudyList">
                             <div className="stCourseStudyListInner">{list}</div>

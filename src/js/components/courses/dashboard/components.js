@@ -61,14 +61,3 @@ export const DBCourses = ({cancellation,courses,user}) => {
         </div>
     )
 }
-
-export const DBActions = ({d,cancellation}) => {
-    return (
-        <div className="stDashboardActions">
-            <section>
-                <div className="stBoxHeading">Actions</div>
-                <div className="stDBActionsBody"></div>
-            </section>
-        </div>
-    )
-}
