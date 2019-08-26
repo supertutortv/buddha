@@ -46,11 +46,16 @@ body.main
 
                             a
                                 white-space: nowrap
-                                text-decoration: none
+                                opacity: .75
                                 transition: all 100ms ease-in-out
+                                display: flex
+                                align-items: center
 
                                 &:hover
-                                    text-decoration: underline
+                                    opacity: 1
+
+                                & > span
+                                    margin-right: 1em
 
                         .stCourseMSL
                             height: 100%
