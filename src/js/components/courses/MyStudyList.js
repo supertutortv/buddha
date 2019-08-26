@@ -7,7 +7,7 @@ export default class MyStudyList extends React.Component {
         super(props)
 
         this.state = {
-            courseResc: null,
+            courseResc: '#',
             vindex : 0,
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
@@ -63,9 +63,9 @@ export default class MyStudyList extends React.Component {
                 </div>
                 <div className="stCourseSidebar">
                     <div className="stCourseResources">
-                        <a target="_blank" href={this.state.courseResc} onClick={(e) => {
+                        <a target="_blank" data-href={this.state.courseResc} href={this.state.courseResc} onClick={(e) => {
                             let el = e.currentTarget
-                            console.log(el.href)
+                            console.log(el['data-href'])
                             e.preventDefault()
                         }}>
                         <i class="fas fa-link"></i>
