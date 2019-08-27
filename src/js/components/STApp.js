@@ -30,6 +30,7 @@ export default class STApp extends React.Component {
     authCheck() {
         if (this.state.loggedIn === null) {
             _st.http.post('/auth/verify',{},(d) => {
+                if (d.data === false) this.refresh()
                 this.setState({
                     loggedIn: d.data
                 })
