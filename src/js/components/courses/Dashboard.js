@@ -47,7 +47,9 @@ export default class Dashboard extends React.Component {
             return alert("To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ("+d.data.email+"). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.")
         }
 
-        console.log(d)
+        _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
+            console.log(ddd)
+        })
         /* let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course. Are you sure you wish to proceed?")
 
         if (result) _st.http.post('/signup/cancel',d,(resp) => {
