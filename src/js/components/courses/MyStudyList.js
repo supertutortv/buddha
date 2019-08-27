@@ -64,7 +64,7 @@ export default class MyStudyList extends React.Component {
                 <div className="stCourseSidebar">
                     <div className="stCourseResources">
                         <a target="_blank" data-href={this.state.courseResc} href={this.state.courseResc} onClick={(e) => {
-                            if (e.currentTarget.dataset.href) e.preventDefault()
+                            if (e.currentTarget.dataset.href === '#') e.preventDefault()
                         }}>
                         <i class="fas fa-link"></i>
                         <span>Course Resources</span>
