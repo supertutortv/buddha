@@ -21,7 +21,7 @@ export default class Dashboard extends React.Component {
             },
             activation: {
                 active: false,
-                data: null
+                inner: null
             }
         }
 
@@ -52,10 +52,13 @@ export default class Dashboard extends React.Component {
             return Object.assign(state.activation,{active: true})
         })
 
-        let obj = {data: ''}
+        let obj = {inner: this.state.activation.inner}
 
         if (d.action === 'cancel') {
-            obj.data = "To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ("+d.data.email+"). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed."
+            obj.inner = <>
+            <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ({d.data.email}). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
+            <button className="btn">Close</button>
+            </>
         } else {
             await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
                 obj.data = JSON.stringify(ddd)
@@ -125,7 +128,9 @@ export default class Dashboard extends React.Component {
                                                 </main>
                                             }
                                             {!activation.active ? null : 
-                                            <STOverlay className="activation" data={activation.data}/>}
+                                            <STOverlay className="activation">
+                                                {activation.inner}
+                                            </STOverlay>}
                                         </>
                                     }
                                 </>
