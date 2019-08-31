@@ -119,8 +119,8 @@ export default class Dashboard extends React.Component {
                                                 </main>
                                             }
                                             {!this.state.activation.active ? null : 
-                                            <STOverlay>
-                                                {JSON.stringify(this.state.activation.data)}
+                                            <STOverlay data={JSON.stringify(this.state.activation.data)}>
+                                                <h1>poop</h1>
                                             </STOverlay>}
                                         </>
                                     }
