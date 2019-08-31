@@ -65,7 +65,7 @@ export default class Dashboard extends React.Component {
 
         if (d.action === 'cancel') {
             obj.inner = <>
-            <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ({d.data.email}). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
+            <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
             <div className="buttonContainer">
                 <button className="btn" onClick={this.closeOverlay}>Close</button>
             </div>
