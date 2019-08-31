@@ -5,6 +5,7 @@ import { DBCourses, DBNotifications, DBActions } from './dashboard/components'
 import Header from '../Header'
 import Onboarding from '../onboarding/Onboarding'
 import TextureImg from '../onboarding/texture'
+import STOverlay from '../modal/STOverlay'
 
 export default class Dashboard extends React.Component {
     constructor(props){
@@ -118,11 +119,9 @@ export default class Dashboard extends React.Component {
                                                 </main>
                                             }
                                             {!this.state.activation.active ? null : 
-                                            <st-overlay className="activation">
-                                                <div>
-                                                    {JSON.stringify(this.state.activation.data)}
-                                                </div>
-                                            </st-overlay>}
+                                            <STOverlay>
+                                                {JSON.stringify(this.state.activation.data)}
+                                            </STOverlay>}
                                         </>
                                     }
                                 </>
