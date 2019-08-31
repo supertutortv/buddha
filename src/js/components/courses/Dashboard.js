@@ -72,7 +72,7 @@ export default class Dashboard extends React.Component {
             </>
         } else {
             await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
-                obj.inner = <span>{JSON.stringify(ddd)}</span>
+                console.log(JSON.stringify(ddd))
             })
             
         }
