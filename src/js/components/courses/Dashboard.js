@@ -54,7 +54,7 @@ export default class Dashboard extends React.Component {
         }})
     }
 
-    async cancellation(e,d) {
+    cancellation(e,d) {
         e.preventDefault()
 
         this.setState((state) => {
@@ -71,9 +71,11 @@ export default class Dashboard extends React.Component {
             </div>
             </>
         } else {
-            await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
-                obj.data = JSON.stringify(ddd)
-            })
+            setTimeout(() => {
+                _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
+                    obj.inner = <span>{JSON.stringify(ddd)}</span>
+                })
+            }, 3000)
         }
 
         this.setState((state) => {
