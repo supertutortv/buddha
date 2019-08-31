@@ -140,7 +140,7 @@ export default class Dashboard extends React.Component {
                                                 </main>
                                             }
                                             {!activation.active ? null : 
-                                            <STOverlay className="activation">
+                                            <STOverlay close={this.closeOverlay} className="activation">
                                                 {activation.inner}
                                             </STOverlay>}
                                         </>
