@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+import STRings from '../../svg/STRings'
 
-export default ({data, children}) => {
-    const [state, setState] = useState()
+export default ({className, data}) => {
+    //const [loading, setLoading] = useState(true)
+
+    //setLoading = () => data === null ? true : false
+
+    let inner = data || <STRings/>
 
     return (
-        <st-overlay class="activation">
+        <st-overlay class={className}>
             <div>
-                {data}
+                {inner}
             </div>
         </st-overlay>
     )

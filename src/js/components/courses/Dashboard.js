@@ -45,19 +45,20 @@ export default class Dashboard extends React.Component {
         }) */
     }
 
-    cancellation(e,d) {
+    async cancellation(e,d) {
         e.preventDefault()
 
         if (d.action === 'cancel') {
             return alert("To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ("+d.data.email+"). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.")
         }
 
-        _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
-            this.setState({
-                activation: {
-                    active: true,
-                    data: ddd
-                }
+        this.setState((state) => {
+            return Object.assign(state.activation,{active: true})
+        })
+
+        await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
+            this.setState((state) => {
+                return Object.assign(state.activation,{data: JSON.stringify(ddd)})
             })
         })
         /* let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course. Are you sure you wish to proceed?")
@@ -95,7 +96,7 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        let {notifications,hasCourses} = this.state
+        let {notifications,hasCourses,activation} = this.state
         if (notifications.active) console.log(notifications.active)
         return(
             <AuthContext.Consumer>
@@ -118,10 +119,8 @@ export default class Dashboard extends React.Component {
                                                     </div>
                                                 </main>
                                             }
-                                            {!this.state.activation.active ? null : 
-                                            <STOverlay data={JSON.stringify(this.state.activation.data)}>
-                                                <h1>poop</h1>
-                                            </STOverlay>}
+                                            {!activation.active ? null : 
+                                            <STOverlay className="activation" data={activation.data}/>}
                                         </>
                                     }
                                 </>
