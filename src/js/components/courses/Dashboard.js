@@ -54,7 +54,7 @@ export default class Dashboard extends React.Component {
         }})
     }
 
-    cancellation(e,d) {
+    async cancellation(e,d) {
         e.preventDefault()
 
         this.setState((state) => {
@@ -65,17 +65,16 @@ export default class Dashboard extends React.Component {
 
         if (d.action === 'cancel') {
             obj.inner = <>
-            <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
-            <div className="buttonContainer">
-                <button className="btn" onClick={this.closeOverlay}>Close</button>
-            </div>
+                <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
+                <div className="buttonContainer">
+                    <button className="btn" onClick={this.closeOverlay}>Close</button>
+                </div>
             </>
         } else {
-            setTimeout(async () => {
-                await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
-                    obj.inner = <span>{JSON.stringify(ddd)}</span>
-                })
-            }, 3000)
+            await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
+                obj.inner = <span>{JSON.stringify(ddd)}</span>
+            })
+            
         }
 
         this.setState((state) => {
