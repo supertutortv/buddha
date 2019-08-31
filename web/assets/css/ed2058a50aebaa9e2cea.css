@@ -1,0 +1,2773 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes growvert {
+  0% {
+    margin-top: 100%;
+  }
+
+  50% {
+    margin-top: 100%;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@-webkit-keyframes growvert {
+  0% {
+    margin-top: 100%;
+  }
+
+  50% {
+    margin-top: 100%;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale3d(0, 0, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Norm/Texta-200.woff") format("woff"), url("/assets/fonts/Texta-200.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Ital/Texta-200-It.woff") format("woff"), url("/assets/fonts/Texta-200-It.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Norm/Texta-400.woff") format("woff"), url("/assets/fonts/Texta-400.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Ital/Texta-400-It.woff") format("woff"), url("/assets/fonts/Texta-400-It.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Norm/Texta-600.woff") format("woff"), url("/assets/fonts/Texta-600.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Ital/Texta-600-It.woff") format("woff"), url("/assets/fonts/Texta-600-It.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Norm/Texta-800.woff") format("woff"), url("/assets/fonts/Texta-800.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Texta";
+  src: url("/assets/fonts/Texta/Ital/Texta-800-It.woff") format("woff"), url("/assets/fonts/Texta-800-It.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* -------------------------------------------------- */
+
+html {
+  box-sizing: border-box;
+  line-height: 1;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  font-size: 24px;
+}
+
+html.dark {
+  mix-blend-mode: difference;
+}
+
+*,
+*:before,
+*:after {
+  mix-blend-mode: inherit;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+st-courses-body,
+st-course-card,
+st-course-card-inner,
+st-course-card-img,
+st-course-card-title,
+st-course-status,
+st-overlay {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  background: none;
+  color: inherit;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+st-courses-body,
+st-course-card,
+st-course-card-inner,
+st-course-card-img,
+st-course-card-title,
+st-course-status,
+st-overlay {
+  display: block;
+}
+
+body {
+  overflow: hidden;
+  position: relative;
+  font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: whitesmoke;
+  background-image: url("../img/loader.gif");
+  background-size: 16.66%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .1s ease-in-out;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select,
+textarea {
+  font-size: inherit;
+  outline: none !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+#stPricingCardElement {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  transition: all .1s linear;
+}
+
+input:not([type="checkbox"]):not([type="radio"]).invalid,
+select.invalid,
+#stPricingCardElement.invalid {
+  border: 1px solid red;
+}
+
+input:not([type="checkbox"]):not([type="radio"]).valid,
+select.valid,
+#stPricingCardElement.valid {
+  border: 1px solid green;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus:not(.invalid),
+select:focus:not(.invalid),
+#stPricingCardElement:focus:not(.invalid) {
+  border: 1px solid #109fda;
+}
+
+input:not([type="checkbox"]):not([type="radio"])::placeholder,
+select::placeholder,
+#stPricingCardElement::placeholder {
+  opacity: 1;
+  color: rgba(0, 0, 0, 0.25);
+  font-style: italic;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.selector,
+select option:selected {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+label strong {
+  font-weight: 600;
+}
+
+button {
+  opacity: .9;
+  color: white;
+  background-color: gray;
+  text-transform: uppercase;
+  padding: 1em;
+  border: 0;
+  border-radius: .25em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  transition: opacity .1s linear;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+[type="checkbox"] + span:not(.lever) {
+  line-height: 1em;
+  height: 1em;
+  padding-left: 2em;
+}
+
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+  height: 1em;
+  width: 1em;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):before {
+  top: -2px;
+  left: 0;
+  width: 6px;
+  height: 0.75em;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+  height: 1em;
+  width: 1em;
+  border: 2px solid #109fda;
+  background-color: #109fda;
+}
+
+h1,
+h2 {
+  font-size: 2em;
+}
+
+h3,
+h4 {
+  font-size: 1.25em;
+}
+
+h1 {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+h6 {
+  font-weight: 200;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+h4 {
+  margin: 0;
+}
+
+h5 {
+  margin: 0;
+}
+
+h6 {
+  margin: 0;
+}
+
+@media only screen and (max-width: 992px) {
+  body {
+    overflow: auto;
+    background-size: 40%;
+  }
+}
+
+st-app {
+  display: block;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
+  transition: all .1s ease-in-out;
+}
+
+st-app.loading {
+  visibility: hidden;
+  opacity: 0;
+}
+
+st-app .stComponentFade {
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.login .stAppHeader,
+body.allYourBase .stAppHeader {
+  display: none;
+}
+
+.stAppHeader {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 0 1em;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stAppHeader > div {
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.stAppHeader > div svg {
+  height: calc(2.6em - 1em);
+  width: auto;
+}
+
+.stAppHeader .stHeaderMiddle {
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.stAppHeader .stHeaderMiddle h1 {
+  padding-left: 1em;
+  font-size: 1em;
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+.stAppHeader .stHeaderRight .stNavContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: calc(1rem - 7px);
+}
+
+.stAppHeader .stHeaderRight .stNavContainer > li {
+  padding-left: 1.25em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stAppHeader .stHeaderRight .stNavContainer > li i {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity 100ms ease-in-out;
+}
+
+.stAppHeader .stHeaderRight .stNavContainer > li i:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 767px) {
+  .stAppHeader .stHeaderMiddle {
+    flex: 1 1 100%;
+    justify-content: center;
+    order: 1;
+  }
+
+  .stAppHeader .stHeaderMiddle h1 {
+    padding-left: 0;
+  }
+
+  .stAppHeader .stHeaderRight {
+    flex: 1;
+  }
+}
+
+body.checkout {
+  overflow: hidden !important;
+}
+
+body.checkout .stCheckoutWindow {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner {
+  overflow: hidden;
+  border-radius: 0.25em;
+  width: 98%;
+  max-width: 400px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 43;
+  padding: 2em;
+  margin-bottom: 25%;
+  border: 1px solid #109fda;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo {
+  padding: 0 1em 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stCheckoutLogo svg {
+  width: 100%;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner h3 {
+  text-transform: uppercase;
+  font-size: calc(1rem - 7px);
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm {
+  margin-top: 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm.checkoutError #stPricingCardElement {
+  border: 1px solid red;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm #stPricingCardElement {
+  border-radius: 0.25em;
+  padding: 0.5em 1em;
+  transition: all 100ms ease-in-out;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99 {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  border-radius: .125rem;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) > label {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: calc(1rem - 7px);
+  font-weight: 400;
+  padding: .75em 1em;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  transition: all .1s ease-in-out;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) textarea,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) select {
+  padding: 1em 0 0.25em .5em;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  background-color: transparent;
+  transition: all .1s ease-in-out;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) textarea:focus,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) select:focus {
+  border: 1px solid rgba(16, 159, 218, 0.75);
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) textarea.validate:valid,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) select.validate:valid {
+  border: 1px solid green;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) textarea:focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) textarea.validate:valid + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) select:focus + label,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) select.validate:valid + label {
+  font-size: calc(1rem - 14px);
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stIfR99:not(.no-bg) > label {
+  font-size: 1rem;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stTrialMsg {
+  padding-top: 1em;
+  font-size: calc(1rem - 7px);
+  text-align: center;
+  font-weight: 400;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stTrialMsg em {
+  color: #109fda;
+  font-weight: 600;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock {
+  padding-top: 1em;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button {
+  background-color: #109fda;
+  width: 100%;
+  border: 1px solid rgba(16, 159, 218, 0.8);
+  color: rgba(16, 159, 218, 0.8);
+  background-color: white;
+  transition: all 100ms ease-in-out;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button span {
+  font-size: calc(1rem - 10px);
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button.completed {
+  color: white;
+  background-color: green;
+  border: 1px solid green;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button.completed i {
+  margin-left: 0;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button:not(.completed):hover,
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button.active {
+  color: white;
+  background-color: #109fda;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button i {
+  font-size: calc(1rem - 7px);
+  margin-left: 1.25em;
+  transition: all 100ms ease-in-out;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner form.stCheckoutForm .stSubmitBlock button i.fa-spinner {
+  transform-origin: 50% 50%;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 10ms;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 10ms;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors {
+  color: red;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  text-align: center;
+  padding: 0 1rem 1rem;
+  padding-top: 1em;
+  padding-bottom: 0;
+}
+
+body.checkout .stCheckoutWindow .stCheckoutInner .stAccountErrors a {
+  text-decoration: underline;
+}
+
+.stDashboard {
+  padding: 0 0 2em;
+  font-size: calc(1rem - 7px);
+}
+
+.stDashboard .stHomeBanner {
+  margin-bottom: -7.5%;
+}
+
+.stDashboard .stHomeBanner img {
+  width: 100%;
+}
+
+.stDashboard .stDashboardCourses {
+  display: flex;
+  justify-content: center;
+}
+
+.stDashboard .stDashboardCourses st-courses-body {
+  padding: 1em;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card {
+  width: 32%;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card:not(:first-child) {
+  margin-left: 2%;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner {
+  overflow: hidden;
+  border-radius: 0.5em;
+  background-color: white;
+  transition: all 100ms ease-in-out;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner a:hover st-course-card-img img {
+  opacity: 1;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner a:hover st-course-card-title {
+  background-color: whitesmoke;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-card-img {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-card-img img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: block;
+  opacity: .95;
+  transition: opacity 100ms ease-in-out;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-card-title {
+  padding: 1em;
+  font-weight: 600;
+  line-height: 1;
+  transition: all 100ms ease-in-out;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-card-title span {
+  font-size: calc(1rem - 7px);
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  font-size: 75%;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status a.stCourseButton {
+  display: block;
+  position: relative;
+  z-index: 400;
+  padding: 1em .5em;
+  flex: 1 1 auto;
+  opacity: .75;
+  transition: opacity 100ms ease-in-out;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status a.stCourseButton:hover {
+  opacity: 1;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status em {
+  font-weight: 600;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status .active,
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status .activate {
+  background-color: green;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status .trialing {
+  color: gold;
+}
+
+.stDashboard .stDashboardCourses st-courses-body st-course-card st-course-card-inner st-course-status .cancel {
+  background-color: red;
+}
+
+.stDashboard .stNotesActions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1em;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications {
+  padding: 1em;
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications > section {
+  height: 100%;
+  background-color: white;
+  border-radius: .5em;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody {
+  padding: 1em;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .noNotes {
+  font-style: italic;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes {
+  width: 100%;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes .stNotification {
+  font-size: 0.75em;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes .stNotification > div {
+  padding: 1em;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes .stNotification > div span {
+  cursor: pointer;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes .stNotification .stNoteDate {
+  font-weight: 600;
+}
+
+.stDashboard .stNotesActions .stDashboardNotifications .stNotificationsBody .stNotes .stNotification .stNoteTitle {
+  flex: 1;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 767px) {
+  .stDashboard .stDashboardCourses st-courses-body st-course-card {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.stShadowBox {
+  border-radius: 0.25em;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stBoxHeading {
+  padding: 1em;
+  font-weight: 600;
+  line-height: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+body.gateway st-app .stForgotBlock {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  padding: .75em 1em;
+  display: flex;
+  align-items: center;
+}
+
+body.gateway st-app .stForgotBlock a {
+  font-weight: 600;
+  font-size: calc(1rem - 10px);
+  transition: all 250ms ease-in-out;
+  color: rgba(16, 159, 218, 0.75);
+}
+
+body.gateway st-app .stForgotBlock a:hover {
+  color: #109fda;
+}
+
+body.main st-app {
+  background-color: whitesmoke;
+}
+
+body.main st-app .stAppStage {
+  width: 100%;
+  height: calc(100% - 2.6em);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.main st-app .stAppStage .stAppStageInner {
+  line-height: 120%;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner > img {
+  width: 100%;
+  height: auto;
+}
+
+body.main st-app .stAppStage .stAppStageInner > div {
+  width: 100%;
+  margin-top: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar {
+  flex: 1;
+  margin-left: 1em;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseResources,
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL {
+  font-size: 0.75em;
+  background-color: white;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseResources {
+  padding: 1em;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseResources a {
+  white-space: nowrap;
+  color: rgba(16, 159, 218, 0.8);
+  transition: all 100ms ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseResources a:hover {
+  color: #109fda;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseResources a > span {
+  margin-left: .5em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyListHeading {
+  padding: 1em;
+  font-weight: 600;
+  line-height: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList {
+  overflow-y: auto;
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner {
+  position: absolute;
+  width: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem {
+  width: 100%;
+  height: 3em;
+  opacity: 1;
+  cursor: pointer;
+  display: flex;
+  transition: opacity .1s ease-in-out;
+  transition: height .1s ease-in-out;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem:hover .listRemoveItem {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem.highlight {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem.remove {
+  opacity: 0;
+  height: 0px;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem img {
+  height: 100%;
+  width: auto;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem .listItemTitle {
+  font-size: 0.75em;
+  line-height: 1em;
+  height: 100%;
+  padding: 0 1em;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyList .stCourseStudyListInner .stCourseStudyListItem .listRemoveItem {
+  line-height: 1;
+  font-weight: 600;
+  padding: 1em;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .1s ease-in-out;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseSidebar .stCourseMSL .stCourseStudyListFooter {
+  padding: 1em;
+  line-height: 1;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro {
+  flex: 3;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap {
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 0.25em;
+  overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap:hover .stVimTitle {
+  opacity: 1;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap iframe,
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap .stVimTitle {
+  position: absolute;
+  top: 0;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap .stVimTitle {
+  left: 1em;
+  line-height: 2;
+  opacity: 0;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: opacity 250ms ease-in-out;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap iframe {
+  height: 100%;
+  width: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection {
+  display: flex;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap {
+  flex: 1 1 20%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap:not(:last-of-type) {
+  margin-right: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox {
+  width: 100%;
+  height: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner {
+  border-radius: 0.25em;
+  cursor: pointer;
+  position: relative;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  opacity: .85;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  transition: all 100ms ease-in-out;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner:hover {
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer {
+  width: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer > div {
+  text-align: center;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxHeader {
+  font-size: 0.5em;
+  padding-top: 1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText {
+  padding: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText .boxIcon i {
+  font-size: 1.25em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText .boxTitle {
+  font-weight: 600;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap .stSectionBox .stSectionBoxInner .stSectionBoxContainer .boxText .boxDesc {
+  font-weight: 200;
+  font-size: 0.75em;
+  font-style: italic;
+  line-height: 1;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection {
+  margin-bottom: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection > div {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.25em;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .boxHeader {
+  width: 100%;
+  font-size: 0.5em;
+  padding-top: 1em;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner {
+  padding: 1em;
+  width: 100%;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div {
+  display: flex;
+  align-items: center;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div:last-of-type {
+  cursor: pointer;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div .boxIco {
+  padding-right: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div .boxTitle {
+  font-weight: 600;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div .stPracticeNote,
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeTop > div .boxPracTest {
+  font-size: 0.75em;
+  padding-left: 1em;
+  font-style: italic;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody > section {
+  flex: 1 1 auto;
+  padding: 1em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody > section .stPracticeBookName {
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody > section .stPracticeTests {
+  font-size: 0.75em;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody > section .stPracticeTests .stPracticeTest {
+  cursor: pointer;
+}
+
+body.main st-app .stAppStage .stAppStageInner .stPracticeSection .stPracticeSectionInner .stPracticeBody > section .stPracticeTests .stPracticeTest.inactive {
+  cursor: auto;
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+body.main st-app .stAppStage .stAppStageInner img {
+  display: block;
+}
+
+@media only screen and (max-width: 1200px) {
+  body.main st-app .stAppHeader {
+    padding: 0 0.5em;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner {
+    padding: 0 1em;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseActions .stActionTxt {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  body.main st-app .stAppStage .stAppStageInner {
+    padding: 0;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop > div {
+    flex: 1 1 100% !important;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseActions {
+    padding: 1em;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseIntro .stVimWrap {
+    border-radius: unset;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseMSL {
+    margin: 1em 1em 0;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stCourseTop .stCourseMSL .stCourseMSLInner .stCourseStudyList .stCourseStudyListInner {
+    position: relative;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stSectionsSection {
+    display: grid;
+    grid-gap: 1em;
+    padding: 0 1em;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap:not(:last-of-type) {
+    margin-right: 0;
+  }
+
+  body.main st-app .stAppStage .stAppStageInner .stPracticeSection {
+    padding: 1em;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  body.main st-app .stAppStage .stAppStageInner .stSectionsSection .stSectionBoxWrap:nth-of-type(odd):not(:last-of-type) {
+    padding-right: 0;
+  }
+}
+
+body.onboarding {
+  overflow: auto;
+  background-color: white;
+}
+
+body.onboarding st-app {
+  background-color: white;
+}
+
+body.onboarding st-app .stOnboardingWindow {
+  height: 100%;
+  min-height: calc(100% - 2.6em);
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.onboarding st-app .stOnboardingWindow .step {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .step em {
+  font-style: italic;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard {
+  width: 100%;
+  padding: 2em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner {
+  width: 100%;
+  border: 1px solid rgba(16, 159, 218, 0.8);
+  border-radius: 0.25em;
+  padding: 2em;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal {
+  padding-top: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .trialToggle {
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  padding: 0 0.5em 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .trialToggle label {
+  margin-left: 1em;
+  display: inline-block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn {
+  width: 100%;
+  border: 1px solid rgba(16, 159, 218, 0.8);
+  color: rgba(16, 159, 218, 0.8);
+  background-color: white;
+  transition: all 100ms ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn:hover,
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn.active {
+  color: white;
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .initCheckoutBtn span {
+  font-size: .75rem;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .alert {
+  color: red;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  text-align: center;
+  padding: 0 1rem 1rem;
+  padding-top: 1em;
+  padding-bottom: 0;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .initCheckoutFinal .alert a {
+  text-decoration: underline;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  margin-bottom: 0;
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input {
+  border-radius: .125rem;
+  padding: .75em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input:focus {
+  border: 1px solid rgba(16, 159, 218, 0.75);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input.valid {
+  border: 1px solid green;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable .stIfR99 input.invalid {
+  border: 1px solid red;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable button {
+  background-color: rgba(16, 159, 218, 0.75);
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable button:hover {
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 {
+  text-align: left;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable h3 i {
+  margin-left: 1em;
+  color: green;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type {
+  padding-bottom: 0.25em;
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:first-of-type > div {
+  font-weight: 600;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div {
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  padding: 0 0.5em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div > div:first-child {
+  flex: 1;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems {
+  display: block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div {
+  display: flex;
+  padding: 0.5em;
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div:hover {
+  background-color: whitesmoke;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.lineItems > div > div:first-child {
+  flex: 1;
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:first-of-type {
+  font-weight: 800;
+  font-size: calc(1rem - 4px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step3 .stStepContent .stConfirmCard .stConfirmCardInner .reviewTable > div.total > div:last-of-type {
+  color: green;
+  font-weight: 800;
+  font-size: calc(1rem - 4px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm {
+  padding: 0 !important;
+  margin-top: 1em;
+  width: 100%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm:not(.nopad) {
+  padding: 0 1.5rem;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn {
+  display: flex;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div {
+  flex: 1;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span {
+  font-size: calc(1rem - 10px);
+  font-weight: 600;
+  margin-right: 0.75em;
+  display: inline-block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span input {
+  border: 1px solid rgba(16, 159, 218, 0.8);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .shipOptBtn > div span label {
+  margin: 0 0 0 0.5em;
+  display: inline-block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button {
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm button span {
+  font-size: calc(1rem - 10px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  border-radius: .125rem;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > label {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: calc(1rem - 7px);
+  font-weight: 400;
+  padding: .75em 1em;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select {
+  padding: 1em 0 0.25em .5em;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  background-color: transparent;
+  transition: all .1s ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select:focus {
+  border: 1px solid rgba(16, 159, 218, 0.75);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea.validate:valid,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select.validate:valid {
+  border: 1px solid green;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea:focus + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea.validate:valid + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select:focus + label,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select.validate:valid + label {
+  font-size: calc(1rem - 14px);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) {
+  background-color: white;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) > label {
+  font-size: 1rem;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) input:not([type="radio"]),
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) textarea,
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99:not(.no-bg) select {
+  border: 1px solid rgba(16, 159, 218, 0.5);
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.oneq {
+  width: 24%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.onet {
+  width: 32%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twoq {
+  width: 49%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.twot {
+  width: 64%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.threeq {
+  width: 74%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99.right {
+  margin-left: 2%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 input {
+  background-color: white;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state {
+  border: 1px solid rgba(16, 159, 218, 0.5);
+  font-size: 1rem;
+  padding: 0.5em;
+  font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 .shippingForm .stIfR99 select.state option {
+  font-family: "Texta", "Helvetica Neue", Roboto, Helvetica, sans-serif;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 label {
+  display: block;
+  margin-bottom: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 select {
+  border-radius: .125em;
+  cursor: pointer;
+  padding: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow #step2 select + i {
+  position: absolute;
+  font-size: 1rem;
+  right: 0.75em;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+body.onboarding st-app .stOnboardingWindow #step1 strong {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+body.onboarding st-app .stOnboardingWindow #step0 {
+  display: block;
+}
+
+body.onboarding st-app .stOnboardingWindow #step0 .stStepContent > div {
+  margin-top: 5%;
+}
+
+body.onboarding st-app .stOnboardingWindow #step0 .stOnboardBanner img {
+  opacity: .75;
+  height: auto;
+  width: 100%;
+  transform: rotateZ(0deg);
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent > div {
+  width: 95%;
+  max-width: 700px;
+  margin-top: -10%;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent h3 {
+  text-align: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .ctaColumn,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .ctaColumn {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .ctaColumn span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .ctaColumn span {
+  margin-right: 1em;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption {
+  position: relative;
+  flex: 1 1 auto;
+  border-radius: 0.25em;
+  width: 225px;
+  padding: 1em;
+  text-align: center;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(16, 159, 218, 0.8);
+  color: rgba(16, 159, 218, 0.8);
+  background-color: white;
+  transition: all 100ms ease-in-out;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.active {
+  color: white;
+  background-color: #109fda;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner span,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner span {
+  font-size: .75rem;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo {
+  border: 1px solid rgba(255, 0, 0, 0.8);
+  color: rgba(255, 0, 0, 0.8);
+  background-color: white;
+}
+
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingPlan .optionInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingPlans .stOnboardingOption .optionInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingPlan .optionInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .planInner.combo.active,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo:hover,
+body.onboarding st-app .stOnboardingWindow .stStepContent .stOnboardingOptions .stOnboardingOption .optionInner.combo.active {
+  color: white;
+  background-color: red;
+}
+
+.stSmallLoader {
+  display: flex;
+}
+
+.stSwitch {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  width: 2em;
+  height: 1em;
+  border-radius: 1em;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 0.75em;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: background .1s ease-in-out;
+}
+
+.stToggle {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  width: 1em;
+  height: 1em;
+  top: -1px;
+  left: -1px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  transition: left .1s ease-in-out;
+}
+
+.stSwitch.on {
+  background: rgba(16, 159, 218, 0.75);
+}
+
+.stSwitch.on .stToggle {
+  left: 1em;
+}
+
+span.stToggleLabel {
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.stPlaylistRoot {
+  display: block;
+  position: relative;
+  color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner {
+  align-items: center;
+  display: flex;
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+.stPlaylistRoot .stPlaylistInner h1 {
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1;
+  text-transform: none;
+}
+
+.stPlaylistRoot .stPlaylistInner figure {
+  margin: 0;
+  position: relative;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA {
+  flex: 1;
+  text-align: center;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage {
+  display: inline-block;
+  padding: 1em;
+  max-width: 1025px;
+  width: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1em;
+  text-align: left;
+  line-height: 1;
+  position: relative;
+  z-index: 1000;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader .stPlaylistAction {
+  padding-left: 1em;
+  cursor: pointer;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader .stPlaylistAction.disabled {
+  color: rgba(0, 0, 0, 0.35) !important;
+  cursor: not-allowed;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader .stPlaylistAction.faved {
+  color: red;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader a {
+  color: rgba(0, 0, 0, 0.5);
+  transition: all .1s ease-in-out;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoHeader a:hover {
+  color: inherit;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.25em;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer {
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer .stVimWrap,
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer .stVimRoot,
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer img {
+  width: 100%;
+  height: auto;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer .stNoAccessOverlay {
+  position: absolute;
+  opacity: .9;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e6e4dc;
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: opacity 100ms ease-in-out;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer .stNoAccessOverlay:hover {
+  opacity: 1;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoContainer .stVideoPlayer .stVideoPlayerContainer .stNoAccessOverlay h2 {
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoCaption {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 1em;
+  text-align: left;
+  width: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoCaption .stVideoTitle {
+  margin-bottom: 0.5em !important;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoCaption .stVideoText {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  line-height: 1.25;
+  vertical-align: top;
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar {
+  display: flex;
+  height: 100vh;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner {
+  overflow: hidden;
+  width: 16em;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper {
+  font-size: 0.75em;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabsWrapper {
+  display: block;
+  padding-top: 1em;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabsWrapper .stCollectionTabs {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  width: 100%;
+  vertical-align: top;
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabsWrapper .stCollectionTabs .stCollectionTab {
+  cursor: pointer;
+  flex: 1 1 100%;
+  line-height: 1;
+  padding: 0.5em 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 200;
+  border-bottom: 4px solid transparent;
+  transition: all 100ms ease-in-out;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabsWrapper .stCollectionTabs .stCollectionTab.react-tabs__tab--selected {
+  color: black;
+  font-weight: 400;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.6);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabPanel {
+  height: calc(100vh - 3em);
+  overflow: auto;
+  position: absolute;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem {
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem.active {
+  color: white;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink {
+  display: block;
+  width: 100%;
+  padding: 0.75em 1em;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 100ms ease-in-out;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner {
+  background-clip: padding-box;
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner .stLinkImageWrapper,
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner figcaption {
+  float: left;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner .stLinkImageWrapper {
+  width: 8em;
+  background-clip: padding-box;
+  border-radius: 0.25em;
+  position: relative;
+  overflow: hidden;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner .stLinkImageWrapper:before {
+  display: block;
+  content: '';
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner .stLinkImageWrapper picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner .stLinkImageWrapper picture img {
+  display: block;
+  width: 100%;
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner figcaption {
+  padding-left: 1em;
+  width: calc(100% - 8em);
+}
+
+.stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionItem .stCollectionItemLink .stCollectionItemInner figcaption h3 {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+@media only screen and (max-width: 992px) {
+  .stPlaylistRoot .stPlaylistInner {
+    display: inherit;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColA {
+    font-size: 0.75em;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage {
+    padding: 0.75em;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColA .stVideoStage .stVideoCaption .stVideoText {
+    display: none;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar {
+    height: auto;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner {
+    width: 100%;
+  }
+
+  .stPlaylistRoot .stPlaylistInner .stPlaylistColB .stPlaylistSidebar .stPlaylistSidebarInner .stSidebarWrapper .stCollectionTabPanel {
+    height: calc(100% - 3em);
+  }
+}
+
+body.passwordReset st-app {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+body.passwordReset st-app #stPasswordWrapper .stResetSent {
+  padding: 4em 0;
+  font-style: italic;
+}
+
+body.passwordReset st-app #stPasswordWrapper .stPasswordCredentials {
+  padding-bottom: 1em;
+}
+
+body.gateway > st-app {
+  background: radial-gradient(circle at 50% 50%, whitesmoke, rgba(245, 245, 245, 0) 50%), radial-gradient(circle at 10% 10%, rgba(16, 159, 218, 0.05), rgba(16, 159, 218, 0) 50%), radial-gradient(circle at 90% 10%, rgba(237, 129, 46, 0.02), rgba(237, 129, 46, 0) 50%), radial-gradient(circle at 90% 90%, rgba(16, 159, 218, 0.05), rgba(16, 159, 218, 0) 50%), radial-gradient(circle at 10% 90%, rgba(237, 129, 46, 0.02), rgba(237, 129, 46, 0) 50%);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  background-color: whitesmoke;
+}
+
+body.gateway > st-app .stGatewayForm {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  flex: 1 0 auto;
+  order: 1;
+  width: 100%;
+  padding-bottom: 1em;
+  overflow: auto;
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm {
+  margin-top: .5rem;
+  font-size: calc(1rem - 7px);
+  overflow: hidden;
+  border-radius: 0.25em;
+  width: 98%;
+  max-width: 400px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .heading {
+  padding: 1rem 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .heading h1 {
+  text-indent: 110%;
+  overflow: hidden;
+  background-image: url("/assets/img/sttv_logo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stC2A {
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stC2A > h2 {
+  font-size: inherit;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody:not(.nopad) {
+  padding: 0 1.5rem;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99 {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) {
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  border-radius: .125rem;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) > label {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: calc(1rem - 7px);
+  font-weight: 400;
+  padding: .75em 1em;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  transition: all .1s ease-in-out;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]),
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) select {
+  padding: 1em 0 0.25em .5em;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  background-color: transparent;
+  transition: all .1s ease-in-out;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) select:focus {
+  border: 1px solid rgba(16, 159, 218, 0.75);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea.validate:valid,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) select.validate:valid {
+  border: 1px solid green;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]):focus + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) input:not([type="checkbox"]).validate:valid + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea:focus + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) textarea.validate:valid + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) select:focus + label,
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountBody .stIfR99:not(.no-bg) select.validate:valid + label {
+  font-size: calc(1rem - 14px);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons {
+  text-align: center;
+  padding: 0 1.5rem 1rem;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons .stAccountButton {
+  width: 100%;
+  background-color: #109fda;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons .stAccountButton[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountButtons .stAccountButton span {
+  font-size: calc(1rem - 10px);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountErrors {
+  color: red;
+  font-weight: 400;
+  font-size: calc(1rem - 7px);
+  text-align: center;
+  padding: 0 1rem 1rem;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stAccountErrors a {
+  text-decoration: underline;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer {
+  text-align: center;
+  padding: 0 1.5rem 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer span {
+  font-size: calc(1rem - 10px);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer span a {
+  font-weight: 600;
+  transition: all 250ms ease-in-out;
+  color: rgba(16, 159, 218, 0.75);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .stAccountForm .stDisclaimer span a:hover {
+  color: #109fda;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .insteadLogin {
+  text-align: center;
+  padding: 1rem;
+  font-size: calc(1rem - 4px);
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border-radius: 0.25em;
+  width: 98%;
+  max-width: 400px;
+  background-color: white;
+  margin-bottom: .5rem;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .insteadLogin a {
+  transition: all 250ms ease-in-out;
+  color: rgba(16, 159, 218, 0.75);
+}
+
+body.gateway > st-app .stGatewayForm .stGatewayFormInner .insteadLogin a:hover {
+  color: #109fda;
+}
+
+body.gateway > st-app footer {
+  font-size: calc(1rem - 10px);
+  order: 2;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+body.gateway > st-app footer > * {
+  min-height: 2rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.stModal {
+  background-color: rgba(245, 245, 245, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4%;
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+.stModal.checkout .stModalInner {
+  display: flex;
+  min-height: 20em;
+  overflow: hidden;
+  border-radius: 0.25em;
+  width: 95%;
+  max-width: 900px;
+  background-color: white;
+  margin-bottom: .5rem;
+}
+
+.stModal.centered:not(.checkout) {
+  padding: 5%;
+}
+
+.stModal.centered:not(.checkout) .stModalInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+  border: 0.5em solid transparent;
+}
+
+.stModal.bottom {
+  padding-top: 10%;
+}
+
+.stModal.bottom .stModalInner {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px -10px 45px 1px rgba(0, 0, 0, 0.4) !important;
+  -webkit-animation: 250ms ease 0s normal forwards 1 growvert;
+  animation: 250ms ease 0s normal forwards 1 growvert;
+}
+
+.stModal.top {
+  padding-top: 55%;
+}
+
+.stModal .stModalInner {
+  background-color: white;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stModal .stModalInner figure {
+  margin-bottom: 1em;
+}
+
+.stModal .stModalInner .stModalDownloads {
+  height: 100%;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks {
+  font-size: 0.75em;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  padding: 1em 0;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink {
+  float: left;
+  cursor: pointer;
+  width: 25%;
+  height: 5em;
+  padding: 0 1.5em;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink.dld {
+  background-color: rgba(0, 128, 0, 0.05);
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink.disabled {
+  cursor: not-allowed;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.disabled):hover .inner,
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink:not(.dld):hover .inner {
+  background-color: rgba(0, 0, 0, 0.025);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 1px 10px -2px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  transition: all .1s ease-in-out;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner img {
+  height: 100%;
+  width: auto;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner figcaption {
+  padding-left: 1em;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner figcaption > span {
+  display: block;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner figcaption .stDownloadName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner figcaption .stDownloadSize {
+  font-size: 0.75em;
+  font-style: italic;
+}
+
+.stModal .stModalInner .stModalDownloads .stDownloadLinks .stDownloadLink .inner figcaption .dld {
+  color: green;
+  padding-left: 1em;
+}
+
+st-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  animation: fadein 100ms ease-in-out 0s both;
+}
+
+st-overlay > div {
+  width: 25%;
+  background-color: white;
+  border-radius: 0.25em;
+  overflow: hidden;
+  padding: 2em;
+  animation: popIn 100ms ease-in-out 0s both;
+  transition: height 250ms ease-in-out, transform 100ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.05), 0 6px 30px 5px rgba(0, 0, 0, 0.05), 0 8px 10px -7px rgba(0, 0, 0, 0.05);
+}
+
+st-overlay > div svg.loader {
+  display: block;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path {
+  animation: fadeInOut 1000ms ease-in-out both infinite;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path:nth-child(4) {
+  animation-delay: 600ms;
+}
+
+st-overlay > div svg.loader.stRings g.ringGroup path:nth-child(5) {
+  animation-delay: 800ms;
+}
+
+@media only screen and (max-width: 767px) {
+  .stModal {
+    padding: 1em;
+  }
+
+  .stModal.checkout .stModalInner {
+    height: 100%;
+    width: 100%;
+  }
+}
