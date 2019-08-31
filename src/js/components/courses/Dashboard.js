@@ -25,6 +25,7 @@ export default class Dashboard extends React.Component {
             }
         }
 
+        this.closeOverlay = this.closeOverlay.bind(this)
         this.cancellation = this.cancellation.bind(this)
         this.openNote = this.openNote.bind(this)
         this.dismissNote = this.dismissNote.bind(this)
@@ -45,6 +46,14 @@ export default class Dashboard extends React.Component {
         }) */
     }
 
+    closeOverlay(e) {
+        e.preventDefault()
+        this.setState({activation: {
+            active: false,
+            inner: null
+        }})
+    }
+
     async cancellation(e,d) {
         e.preventDefault()
 
@@ -57,7 +66,9 @@ export default class Dashboard extends React.Component {
         if (d.action === 'cancel') {
             obj.inner = <>
             <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account ({d.data.email}). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
-            <button className="btn">Close</button>
+            <div className="buttonContainer">
+                <button className="btn" onClick={this.closeOverlay}>Close</button>
+            </div>
             </>
         } else {
             await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
