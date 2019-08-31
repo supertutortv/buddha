@@ -61,6 +61,8 @@ export default class Dashboard extends React.Component {
             return Object.assign(state.activation,{active: true})
         })
 
+        return console.log(d)
+
         let obj = {inner: this.state.activation.inner}
 
         if (d.action === 'cancel') {
