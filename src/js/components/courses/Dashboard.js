@@ -71,8 +71,8 @@ export default class Dashboard extends React.Component {
             </div>
             </>
         } else {
-            setTimeout(() => {
-                _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
+            setTimeout(async () => {
+                await _st.http.post('/signup/activate',{uuid: d.data.uuid},(ddd) => {
                     obj.inner = <span>{JSON.stringify(ddd)}</span>
                 })
             }, 3000)
