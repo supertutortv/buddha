@@ -4,7 +4,7 @@ export default ({children}) => {
     const [state, setState] = useState([])
 
     return (
-        <st-overlay className="activation">
+        <st-overlay class="activation">
             <div>
                 {children}
             </div>
