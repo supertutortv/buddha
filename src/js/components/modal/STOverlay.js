@@ -6,7 +6,6 @@ export default ({className, data}) => {
 
     if (data !== null) {
         // do stuff
-        inner = data
     }
 
     return (
