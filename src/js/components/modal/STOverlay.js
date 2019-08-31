@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export default ({data, children}) => {
     const [state, setState] = useState()
