@@ -23,7 +23,8 @@ export default class Dashboard extends React.Component {
             activation: {
                 active: false,
                 inner: null
-            }
+            },
+            card: null
         }
 
         this.closeOverlay = this.closeOverlay.bind(this)
