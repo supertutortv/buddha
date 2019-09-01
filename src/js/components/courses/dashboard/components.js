@@ -44,7 +44,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                     null :
                                     (<st-course-status>
                                         <a href="/#!/actionActivate" className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
-                                            action: 'activate',
+                                            action: 'initiate',
                                             sub: crs.subId || '',
                                             ...user
                                         })}><em>Activate full course</em></a>

@@ -25,8 +25,9 @@ export default class Dashboard extends React.Component {
             }
         }
 
+        this.sendActivation = this.sendActivation.bind(this)
         this.closeOverlay = this.closeOverlay.bind(this)
-        this.cancellation = this.cancellation.bind(this)
+        this.cancellActivate = this.cancellActivate.bind(this)
         this.openNote = this.openNote.bind(this)
         this.dismissNote = this.dismissNote.bind(this)
         this.triggerPurchase = this.triggerPurchase.bind(this)
@@ -54,7 +55,7 @@ export default class Dashboard extends React.Component {
         }})
     }
 
-    async cancellation(e,d) {
+    async cancellActivate(e,d) {
         e.preventDefault()
 
         this.setState((state) => {
@@ -63,21 +64,35 @@ export default class Dashboard extends React.Component {
 
         let obj = {inner: this.state.activation.inner}
 
-        if (d.action === 'cancel') {
-            obj.inner = <>
-                <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
-                <div className="buttonContainer">
-                    <button className="btn" onClick={this.closeOverlay}>Close</button>
-                </div>
-            </>
-        } else {
-            await _st.http.post('/signup/activate',{
-                uuid: d.data.uuid,
-                subId: d.sub
-            },(ddd) => {
-                console.log(ddd)
-            })
-            
+        switch (d.action) {
+            case 'cancel':
+                obj.inner = <>
+                    <span className="cancellationMessage">To cancel your trial and not be charged the full amount, please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>). If your request is within 48 hours of the end of your trial period you may still possibly be charged the full amount, but we will refund it to you when your request is processed.</span>
+                    <div className="buttonContainer">
+                        <button className="btn" onClick={this.closeOverlay}>Close</button>
+                    </div>
+                </>
+                break
+            case 'initiate':
+                await _st.http.post('/signup/activate',{
+                    uuid: d.data.uuid,
+                    subId: d.sub
+                },(ddd) => {
+                    console.log(ddd)
+                    obj.inner = <>
+                    <span className="cancellationMessage">This action will remove your trial status and charge your card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                    <div className="buttonContainer">
+                        <button className="btn" onClick={(e) => this.cancellActivate(e,{
+                            action: 'activate',
+                            subId: d.sub
+                        })}>Confirm</button>
+                    </div>
+                </>
+                })
+                break
+            case 'activate':
+                console.log(d)
+                break
         }
 
         this.setState((state) => {
@@ -136,7 +151,7 @@ export default class Dashboard extends React.Component {
                                                     <div className="stHomeBanner">
                                                         <TextureImg/>
                                                     </div>
-                                                    <DBCourses cancellation={this.cancellation} user={data.user} courses={data.courses} />
+                                                    <DBCourses cancellation={this.cancellActivate} user={data.user} courses={data.courses} />
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
                                                     </div>
