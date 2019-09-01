@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component {
         super(props)
 
         this.state = {
+            loading: false,
             error: {},
             hasCourses: true,
             notifications: {
@@ -57,8 +58,16 @@ export default class Dashboard extends React.Component {
     async cancellActivate(e,d) {
         e.preventDefault()
 
+        if (this.state.loading) return
+
         this.setState((state) => {
-            return Object.assign(state.activation,{active: true})
+            return {
+                loading: true,
+                activation: {
+                    ...state.activation,
+                    active: true
+                }
+            }
         })
 
         let obj = {inner: this.state.activation.inner}
@@ -79,7 +88,10 @@ export default class Dashboard extends React.Component {
                 },(ddd) => {
                     console.log(ddd)
                     obj.inner = <>
-                    <span className="cancellationMessage">This action will remove your trial status and charge your card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                    <span className="cancellationMessage">This action will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                    <st-cc-container>
+
+                    </st-cc-container>
                     <div className="buttonContainer">
                         <button className="btn" onClick={(e) => this.cancellActivate(e,{
                             action: 'activate',
@@ -95,19 +107,14 @@ export default class Dashboard extends React.Component {
         }
 
         this.setState((state) => {
-            return Object.assign(state.activation,obj)
-        })
-        
-        /* let result = d.action == 'trial' ? window.confirm("This action will remove your trial status and charge your card on file, giving you full access to the course. Are you sure you wish to proceed?") : window.confirm("This action will completely cancel your subscription. You will lose access to your course. Are you sure you wish to proceed?")
-
-        if (result) _st.http.post('/signup/cancel',d,(resp) => {
-            if (resp.code === 'signupError')
-                return this.setState({error: {...resp}}, () => console.log(this.state.error))
-            else {
-                alert(resp.message)
-                _st.http.post('/auth/logout',{},() => this.props.refreshData())
+            return {
+                loading: false,
+                activation: {
+                    ...state.activation,
+                    inner: obj.inner
+                }
             }
-        }) */
+        })
     }
 
     openNote(id) {
