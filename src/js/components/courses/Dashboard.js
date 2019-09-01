@@ -25,7 +25,6 @@ export default class Dashboard extends React.Component {
             }
         }
 
-        this.sendActivation = this.sendActivation.bind(this)
         this.closeOverlay = this.closeOverlay.bind(this)
         this.cancellActivate = this.cancellActivate.bind(this)
         this.openNote = this.openNote.bind(this)
