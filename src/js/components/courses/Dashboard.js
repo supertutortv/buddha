@@ -6,6 +6,7 @@ import Header from '../Header'
 import Onboarding from '../onboarding/Onboarding'
 import TextureImg from '../onboarding/texture'
 import STOverlay from '../modal/STOverlay'
+import StCCContainer from '../checkout/StCCContainer'
 
 export default class Dashboard extends React.Component {
     constructor(props){
@@ -87,12 +88,9 @@ export default class Dashboard extends React.Component {
                     uuid: d.data.uuid,
                     subId: d.sub
                 },(ddd) => {
-                    console.log(ddd)
                     obj.inner = <>
                         <span className="cancellationMessage">This action will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
-                        <st-cc-container>
-                        
-                        </st-cc-container>
+                        <StCCContainer card={ddd.card}/>
                         <div className="buttonContainer">
                             <button className="btn" onClick={(e) => this.cancellActivate(e,{
                                 action: 'activate',
