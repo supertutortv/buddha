@@ -89,17 +89,17 @@ export default class Dashboard extends React.Component {
                 },(ddd) => {
                     console.log(ddd)
                     obj.inner = <>
-                    <span className="cancellationMessage">This action will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
-                    <st-cc-container>
-
-                    </st-cc-container>
-                    <div className="buttonContainer">
-                        <button className="btn" onClick={(e) => this.cancellActivate(e,{
-                            action: 'activate',
-                            subId: d.sub
-                        })}>Confirm</button>
-                    </div>
-                </>
+                        <span className="cancellationMessage">This action will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                        <st-cc-container>
+                        
+                        </st-cc-container>
+                        <div className="buttonContainer">
+                            <button className="btn" onClick={(e) => this.cancellActivate(e,{
+                                action: 'activate',
+                                subId: d.sub
+                            })}>Confirm</button>
+                        </div>
+                    </>
                 })
                 break
             case 'activate':
