@@ -12,12 +12,10 @@ export default ({card}) => {
         'default': <i class="fas fa-credit-card"></i>
     }
 
-    let Icon = (card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']
-
     return (
         <st-cc-container>
             <div>
-                <p><Icon/></p>
+                <p>{(card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']}</p>
                 <p>
                     <span>{card.name}</span><br/>
                     <span>°°°° {card.last4}</span>
