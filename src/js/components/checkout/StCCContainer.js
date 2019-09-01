@@ -18,7 +18,7 @@ export default ({card}) => {
                 <p>{(card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']}</p>
                 <p>
                     <span>{card.name}</span><br/>
-                    <span>°°°° {card.last4}</span>
+                    <span>•••• {card.last4}</span>
                 </p>
             </div>
         </st-cc-container>

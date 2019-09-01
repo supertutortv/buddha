@@ -165,10 +165,14 @@ st-overlay
             & > div
                 display: flex
                 align-items: center
-                justify-content: center
+                border: 1px solid azure(.5)
+                border-radius: .5em
 
                 p
                     padding: .5em
+
+                    &:last-of-type
+                        flex: 1
 
 +MQ($mq-mobile)
     .stDashboard
