@@ -45,6 +45,7 @@ export const DBCourses = ({cancellation,courses,user}) => {
                                     (<st-course-status>
                                         <a href="/#!/actionActivate" className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
                                             action: 'activate',
+                                            course: course,
                                             ...user
                                         })}><em>Activate full course</em></a>
                                         <a href="/#!/actionCancel" className="stCourseButton cancel" onClick={(e) => cancellation(e,{
