@@ -14,8 +14,8 @@ export default ({card}) => {
     return (
         <st-cc-container>
             <div id="activCardEl">
-                <p>{(card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']}</p>
-                <p>
+                <p className="ccBrand">{(card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']}</p>
+                <p className="ccDetails">
                     <span>{card.name}</span><br/>
                     <span className="last4">•••• {card.last4}</span>
                 </p>
