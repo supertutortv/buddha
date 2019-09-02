@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {StripeProvider, Elements, CardElement} from 'react-stripe-elements'
 
 export default ({card}) => {
+    let [ stripeYuh, setStripeYuh ] = useState((window.Stripe) ? window.Stripe(key) : null)
+
     const cardIcons = {
         'Visa': <i class="fab fa-cc-visa"></i>,
         'MasterCard': <i class="fab fa-cc-mastercard"></i>,
@@ -10,23 +12,23 @@ export default ({card}) => {
         'Diners Club': <i class="fab fa-cc-diners-club"></i>,
         'default': <i class="fas fa-credit-card"></i>
     },
-    key = _st.stripe
-
-    /* if (!window.Stripe) {
-        const s = document.createElement('script')
-        s.type = 'text/javascript'
-        s.id = 'stStripeScript'
-        s.async = true
-        s.src = 'https://js.stripe.com/v3/'
-
-        s.addEventListener('load', () => {
-            this.setState({stripe: window.Stripe(key)})
-        })
-
-        document.body.appendChild(s)
-    } */
-
-    let stripeYuh = (window.Stripe) ? window.Stripe(key) : null
+    key = _st.stripe,
+    addNewCard = (e) => {
+        e.preventDefault()
+        if (stripeYuh === null && !window.Stripe) {
+            const s = document.createElement('script')
+            s.type = 'text/javascript'
+            s.id = 'stStripeScript'
+            s.async = true
+            s.src = 'https://js.stripe.com/v3/'
+    
+            s.addEventListener('load', () => {
+                setStripeYuh(window.Stripe(key))
+            })
+    
+            document.body.appendChild(s)
+        }
+    }
 
     return (
         <st-cc-container>
@@ -65,11 +67,11 @@ export default ({card}) => {
                     </div>
                 </Elements>
             </StripeProvider>
-            <div className="newCard">
-                <a onClick={(e) => e.preventDefault()}>
+            {(stripeYuh === null) ? <div className="newCard">
+                <a onClick={addNewCard}>
                     + add new card
                 </a>
-            </div>
+            </div> : null }
         </st-cc-container>
     )
 }
