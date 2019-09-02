@@ -89,7 +89,7 @@ export default class Dashboard extends React.Component {
                     subId: d.sub
                 },(ddd) => {
                     obj.inner = <>
-                        <span className="cancellationMessage">This action will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                        <span className="cancellationMessage">Doing this will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
                         <StCCContainer card={ddd.card}/>
                         <div className="buttonContainer">
                             <button className="btn" onClick={(e) => this.cancellActivate(e,{
