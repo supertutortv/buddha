@@ -48,6 +48,11 @@ export default ({card}) => {
                             this.setState({card: el})
                         }}/>}
                     </div>
+                    <div className="newCard">
+                        <a href="#" onClick={(e) => e.preventDefault()}>
+                            + add new card
+                        </a>
+                    </div>
                 </Elements>
             </StripeProvider>
         </st-cc-container>
