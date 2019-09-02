@@ -1,5 +1,5 @@
 import React from 'react'
-import {injectStripe, CardElement} from 'react-stripe-elements'
+import {StripeProvider, Elements, injectStripe, CardElement} from 'react-stripe-elements'
 
 const cardIcons = {
     'Visa': <i class="fab fa-cc-visa"></i>,
