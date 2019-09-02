@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default ({card}) => {
-    console.log(card)
 
     const cardIcons = {
         'Visa': <i class="fab fa-cc-visa"></i>,
@@ -14,7 +13,7 @@ export default ({card}) => {
 
     return (
         <st-cc-container>
-            <div>
+            <div id="activCardEl">
                 <p>{(card.brand in cardIcons) ? cardIcons[card.brand] : cardIcons['default']}</p>
                 <p>
                     <span>{card.name}</span><br/>
