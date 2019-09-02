@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default () =>
-<svg className="stRings loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203 34">
+<svg className="stRings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203 34">
     <defs>
         <style>{`.b63e213d-bbef-4dfc-8be3-c222aef958fe{fill:#93a842;}.beb8acfb-dcd7-4cb5-8899-e8ba2c509f54{fill:#2d9e6b;}.a606745c-ea95-45c2-b73b-a43bdb49575a{fill:#109fda;}.bb207a54-fc7c-48e8-9af2-ff59665921d7{fill:#e8c825;}.f7420977-2bb6-4e16-a857-6f818a3059ae{fill:#ed812e;}`}</style>
     </defs>
