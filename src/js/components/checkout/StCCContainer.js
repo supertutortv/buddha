@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {StripeProvider, Elements, CardElement} from 'react-stripe-elements'
 
 export default ({card}) => {
@@ -9,9 +9,24 @@ export default ({card}) => {
         'Discover': <i class="fab fa-cc-discover"></i>,
         'Diners Club': <i class="fab fa-cc-diners-club"></i>,
         'default': <i class="fas fa-credit-card"></i>
-    }
+    },
+    key = _st.stripe
 
-    let stripeYuh = null
+    /* if (!window.Stripe) {
+        const s = document.createElement('script')
+        s.type = 'text/javascript'
+        s.id = 'stStripeScript'
+        s.async = true
+        s.src = 'https://js.stripe.com/v3/'
+
+        s.addEventListener('load', () => {
+            this.setState({stripe: window.Stripe(key)})
+        })
+
+        document.body.appendChild(s)
+    } */
+
+    let stripeYuh = (window.Stripe) ? window.Stripe(key) : null
 
     return (
         <st-cc-container>
