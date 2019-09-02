@@ -51,7 +51,7 @@ export default ({card}) => {
                 </Elements>
             </StripeProvider>
             <div className="newCard">
-                <a href="#" onClick={(e) => e.preventDefault()}>
+                <a onClick={(e) => e.preventDefault()}>
                     + add new card
                 </a>
             </div>
