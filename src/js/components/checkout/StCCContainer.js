@@ -1,16 +1,16 @@
 import React from 'react'
-import {StripeProvider, Elements, injectStripe, CardElement} from 'react-stripe-elements'
+import {StripeProvider, Elements, CardElement} from 'react-stripe-elements'
 
-const cardIcons = {
-    'Visa': <i class="fab fa-cc-visa"></i>,
-    'MasterCard': <i class="fab fa-cc-mastercard"></i>,
-    'American Express': <i class="fab fa-cc-amex"></i>,
-    'Discover': <i class="fab fa-cc-discover"></i>,
-    'Diners Club': <i class="fab fa-cc-diners-club"></i>,
-    'default': <i class="fas fa-credit-card"></i>
-}
+export default ({card}) => {
+    const cardIcons = {
+        'Visa': <i class="fab fa-cc-visa"></i>,
+        'MasterCard': <i class="fab fa-cc-mastercard"></i>,
+        'American Express': <i class="fab fa-cc-amex"></i>,
+        'Discover': <i class="fab fa-cc-discover"></i>,
+        'Diners Club': <i class="fab fa-cc-diners-club"></i>,
+        'default': <i class="fas fa-credit-card"></i>
+    }
 
-const _stcont = ({card}) => {
     let stripeYuh = null
 
     return (
@@ -53,7 +53,3 @@ const _stcont = ({card}) => {
         </st-cc-container>
     )
 }
-
-const StCCContainer = injectStripe(_stcont)
-
-export default StCCContainer
