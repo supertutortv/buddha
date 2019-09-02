@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {StripeProvider, Elements, CardElement} from 'react-stripe-elements'
 
 export default ({card}) => {
-    let [ stripeYuh, setStripeYuh ] = useState((window.Stripe) ? window.Stripe(_st.stripe) : null)
+    let [ stripeYuh, setStripeYuh ] = useState(null)
 
     const cardIcons = {
         'Visa': <i class="fab fa-cc-visa"></i>,
@@ -26,6 +26,8 @@ export default ({card}) => {
             })
     
             document.body.appendChild(s)
+        } else {
+            setStripeYuh(window.Stripe(_st.stripe))
         }
     }
 
