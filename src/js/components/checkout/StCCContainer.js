@@ -27,7 +27,7 @@ export default ({card}) => {
     
             document.body.appendChild(s)
         } else {
-            setStripeYuh(window.Stripe)
+            setStripeYuh(window.Stripe(_st.stripe))
         }
     }
 
