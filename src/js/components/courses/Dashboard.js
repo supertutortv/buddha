@@ -84,21 +84,15 @@ export default class Dashboard extends React.Component {
                 </>
                 break
             case 'initiate':
-                await _st.http.post('/signup/activate',{
-                    uuid: d.data.uuid,
-                    subId: d.sub
-                },(ddd) => {
-                    obj.inner = <>
-                        <span className="cancellationMessage">Doing this will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
-                        <StCCContainer card={ddd.card}/>
-                        <div className="buttonContainer">
-                            <button className="btn" onClick={(e) => this.cancellActivate(e,{
-                                action: 'activate',
-                                subId: d.sub
-                            })}>Confirm</button>
-                        </div>
-                    </>
-                })
+                obj.inner = <>
+                    <span className="cancellationMessage">Doing this will remove your trial status and charge the full price, giving you full access to this course. Are you sure you wish to proceed?</span>
+                    <div className="buttonContainer">
+                        <button className="btn" onClick={(e) => this.cancellActivate(e,{
+                            action: 'activate',
+                            subId: d.sub
+                        })}>Confirm</button>
+                    </div>
+                </>
                 break
             case 'activate':
                 console.log(d)

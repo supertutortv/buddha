@@ -18,7 +18,6 @@ module.exports = (env) => {
             alias: {
                 "react": "preact-compat",
                 "react-dom": "preact-compat",
-
             }
         }, */
         /* optimization: {
