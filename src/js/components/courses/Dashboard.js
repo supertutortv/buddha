@@ -95,7 +95,9 @@ export default class Dashboard extends React.Component {
                 </>
                 break
             case 'activate':
-                console.log(d)
+                _st.http.post('/signup/activate',{subId: d.subId},(d) => {
+                    console.log(d)
+                })
                 break
         }
 
