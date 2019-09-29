@@ -25,6 +25,7 @@ export default class Dashboard extends React.Component {
                 active: false,
                 inner: null
             },
+            activating: false,
             card: null
         }
 
@@ -60,7 +61,7 @@ export default class Dashboard extends React.Component {
     async cancellActivate(e,d) {
         e.preventDefault()
 
-        if (this.state.loading) return
+        if (this.state.loading || this.state.activating) return
 
         this.setState((state) => {
             return {
@@ -95,7 +96,8 @@ export default class Dashboard extends React.Component {
                 </>
                 break
             case 'activate':
-                _st.http.post('/signup/activate',{subId: d.subId},(d) => {
+                this.setState({activating: true})
+                await _st.http.post('/signup/activate',{subId: d.subId},(d) => {
                     console.log(d)
                 })
                 break
