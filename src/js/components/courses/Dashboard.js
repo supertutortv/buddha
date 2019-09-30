@@ -103,6 +103,10 @@ export default class Dashboard extends React.Component {
                 break
         }
 
+        setTimeout(() => {
+            this.setState({activating: false})
+        },5000)
+
         this.setState((state) => {
             return {
                 loading: false,
