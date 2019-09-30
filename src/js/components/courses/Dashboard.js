@@ -101,7 +101,7 @@ export default class Dashboard extends React.Component {
                 case 'activate':
                     this.setState({activating: true})
                     await _st.http.post('/signup/activate',{
-                        subId: d.sub
+                        subId: d.subId
                     },(ddd) => {
                         console.log(ddd)
                     })
