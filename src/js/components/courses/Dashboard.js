@@ -100,7 +100,9 @@ export default class Dashboard extends React.Component {
                     break
                 case 'activate':
                     this.setState({activating: true})
-                    console.log(d)
+                    await _st.http.get('/signup/activate',(ddd) => {
+                        console.log(ddd)
+                    })
                 break
         }
 
