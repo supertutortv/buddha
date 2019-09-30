@@ -21,11 +21,11 @@ export default class Dashboard extends React.Component {
                 fetched: true,
                 notes: []
             },
+            activating: false,
             activation: {
                 active: false,
                 inner: null
             },
-            activating: false,
             card: null
         }
 
@@ -84,28 +84,29 @@ export default class Dashboard extends React.Component {
                     </div>
                 </>
                 break
-            case 'initiate':
-                obj.inner = <>
-                    <span className="cancellationMessage">Doing this will remove your trial status and charge the full price, giving you full access to this course. Are you sure you wish to proceed?</span>
-                    <div className="buttonContainer">
-                        <button className="btn" onClick={(e) => this.cancellActivate(e,{
-                            action: 'activate',
-                            subId: d.sub
-                        })}>Confirm</button>
-                    </div>
-                </>
-                break
-            case 'activate':
-                this.setState({activating: true})
-                await _st.http.post('/signup/activate',{subId: d.subId},(d) => {
+                case 'initiate':
+                    await _st.http.get('/signup/getcard',(ddd) => {
+                        obj.inner = <>
+                            <span className="cancellationMessage">Doing this will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
+                            <StCCContainer card={ddd.card}/>
+                            <div className="buttonContainer">
+                                <button className="btn" onClick={(e) => this.cancellActivate(e,{
+                                    action: 'activate',
+                                    subId: d.sub
+                                })}>Confirm</button>
+                            </div>
+                        </>
+                    })
+                    break
+                case 'activate':
+                    this.setState({activating: true})
                     console.log(d)
-                })
                 break
         }
 
         setTimeout(() => {
             this.setState({activating: false})
-        },5000)
+        },10000)
 
         this.setState((state) => {
             return {
