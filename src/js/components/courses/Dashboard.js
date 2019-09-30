@@ -103,7 +103,12 @@ export default class Dashboard extends React.Component {
                     await _st.http.post('/signup/activate',{
                         subId: d.subId
                     },(ddd) => {
-                        console.log(ddd)
+                        if (ddd.code === 'signupError') this.setState({
+                            error: {
+                                code: ddd.code,
+                                msg: ddd.data.message
+                            }
+                        })
                     })
                 break
         }
@@ -146,7 +151,7 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        let {notifications,hasCourses,activation} = this.state
+        let {notifications,hasCourses,activation,error} = this.state
         if (notifications.active) console.log(notifications.active)
         return(
             <AuthContext.Consumer>
@@ -172,6 +177,7 @@ export default class Dashboard extends React.Component {
                                             {!activation.active ? null : 
                                             <STOverlay close={this.closeOverlay} className="activation">
                                                 {activation.inner}
+                                                {error.msg ? <span>{error.msg}</span> : null}
                                             </STOverlay>}
                                         </>
                                     }
