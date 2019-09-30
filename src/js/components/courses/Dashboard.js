@@ -100,7 +100,9 @@ export default class Dashboard extends React.Component {
                     break
                 case 'activate':
                     this.setState({activating: true})
-                    await _st.http.get('/signup/activate',(ddd) => {
+                    await _st.http.post('/signup/activate',{
+                        subId: d.sub
+                    },(ddd) => {
                         console.log(ddd)
                     })
                 break
