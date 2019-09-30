@@ -111,7 +111,7 @@ export default class Checkout extends React.Component {
                                     if (t.error) return this.setState({
                                         status: 'active',
                                         error: {
-                                            id: 'checkoutError',
+                                            id: 'signupError',
                                             message: t.error.message
                                         }
                                     })
@@ -131,7 +131,7 @@ export default class Checkout extends React.Component {
                                     }
                             
                                     return _st.http.post(action,obj,(d) => {
-                                        if (d.code === 'checkoutError') {
+                                        if (d.code === 'signupError') {
                                             return this.setState({
                                                 status: 'active',
                                                 cardComplete: false,
@@ -156,7 +156,7 @@ export default class Checkout extends React.Component {
                                             if (typeof d.error !== 'undefined') return this.setState({
                                                 cardComplete: false,
                                                 error: {
-                                                    id: 'checkoutError',
+                                                    id: 'signupError',
                                                     message: d.error.message
                                                 }
                                             })

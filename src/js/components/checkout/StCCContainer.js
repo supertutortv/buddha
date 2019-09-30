@@ -49,7 +49,7 @@ export default ({card}) => {
                                 if (typeof d.error !== 'undefined') return this.setState({
                                     cardComplete: false,
                                     error: {
-                                        id: 'checkoutError',
+                                        id: 'signupError',
                                         message: d.error.message
                                     }
                                 })
