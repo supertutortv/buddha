@@ -95,6 +95,7 @@ export default class Dashboard extends React.Component {
                                     subId: d.sub
                                 })}>Confirm</button>
                             </div>
+                            {this.state.error.msg ? <span>{this.state.error.msg}</span> : null}
                         </>
                     })
                     break
