@@ -153,7 +153,6 @@ export default class Dashboard extends React.Component {
     render() {
         let {notifications,hasCourses,activation,error} = this.state
         if (notifications.active) console.log(notifications.active)
-        console.log(activation.inner)
         return(
             <AuthContext.Consumer>
                 {auth => {
@@ -176,9 +175,8 @@ export default class Dashboard extends React.Component {
                                                 </main>
                                             }
                                             {!activation.active ? null : 
-                                            <STOverlay close={this.closeOverlay} className="activation">
+                                            <STOverlay error={error} close={this.closeOverlay} className="activation">
                                                 {activation.inner}
-                                                {error.msg ? <span>{error.msg}</span> : null}
                                             </STOverlay>}
                                         </>
                                     }
