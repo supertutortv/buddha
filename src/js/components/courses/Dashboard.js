@@ -153,6 +153,7 @@ export default class Dashboard extends React.Component {
     render() {
         let {notifications,hasCourses,activation,error} = this.state
         if (notifications.active) console.log(notifications.active)
+        console.log(activation.inner)
         return(
             <AuthContext.Consumer>
                 {auth => {
