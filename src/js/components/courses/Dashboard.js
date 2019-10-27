@@ -163,7 +163,7 @@ export default class Dashboard extends React.Component {
         this.setState((state) => {
             return {
                 activation: {
-                    ...state.activation,
+                    active: true,
                     inner: <>
                         <span className="cancellationMessage">Your trial period has expired, but there was a problem with your payment. Please click "Activate full course" to continue.</span>
                         <div className="buttonContainer">
