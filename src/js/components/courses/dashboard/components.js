@@ -22,7 +22,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
         </section>
     </div>
 
-export const DBCourses = ({cancellation,courses,user}) => {
+export const DBCourses = ({cancellation,courses,user,failFlag}) => {
     return (
         <div className="stDashboardCourses">
             <st-courses-body>
@@ -32,7 +32,10 @@ export const DBCourses = ({cancellation,courses,user}) => {
                     return (
                         <st-course-card>
                             <st-course-card-inner>
-                                <Link to={'/'+course} >
+                                <Link to={'/'+course} onClick={!crs.failFlag ? null : (e) => {
+                                    e.preventDefault()
+                                    failFlag()
+                                }}>
                                     <st-course-card-img>
                                         <img src={crs.thumb} />
                                     </st-course-card-img>

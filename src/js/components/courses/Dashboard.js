@@ -34,6 +34,7 @@ export default class Dashboard extends React.Component {
         this.openNote = this.openNote.bind(this)
         this.dismissNote = this.dismissNote.bind(this)
         this.triggerPurchase = this.triggerPurchase.bind(this)
+        this.failFlag = this.failFlag.bind(this)
     }
 
     componentDidMount() {
@@ -157,6 +158,22 @@ export default class Dashboard extends React.Component {
         return null
     }
 
+    failFlag() {
+        this.setState((state) => {
+            return {
+                activation: {
+                    ...state.activation,
+                    inner: <>
+                        <span className="cancellationMessage">Your trial period has expired, but there was a problem with your payment. Please click "Activate full course" to continue.</span>
+                        <div className="buttonContainer">
+                            <button className="btn" onClick={this.closeOverlay}>Close</button>
+                        </div>
+                    </>
+                }
+            }
+        })
+    }
+
     render() {
         let {notifications,hasCourses,activation,error} = this.state
         if (notifications.active) console.log(notifications.active)
@@ -175,7 +192,7 @@ export default class Dashboard extends React.Component {
                                                     <div className="stHomeBanner">
                                                         <TextureImg/>
                                                     </div>
-                                                    <DBCourses cancellation={this.cancellActivate} user={data.user} courses={data.courses} />
+                                                    <DBCourses cancellation={this.cancellActivate} user={data.user} courses={data.courses} failFlag={this.failFlag}/>
                                                     <div className="stNotesActions">
                                                         <DBNotifications openNote={this.openNote} dismissNote={this.dismissNote} {...notifications} />
                                                     </div>
