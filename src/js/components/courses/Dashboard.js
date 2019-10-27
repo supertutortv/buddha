@@ -158,7 +158,8 @@ export default class Dashboard extends React.Component {
         return null
     }
 
-    failFlag() {
+    failFlag(e) {
+        e.preventDefault()
         this.setState((state) => {
             return {
                 activation: {

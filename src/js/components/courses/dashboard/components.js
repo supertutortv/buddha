@@ -32,10 +32,7 @@ export const DBCourses = ({cancellation,courses,user,failFlag}) => {
                     return (
                         <st-course-card>
                             <st-course-card-inner>
-                                <Link to={'/'+course} onClick={!crs.failFlag ? null : (e) => {
-                                    e.preventDefault()
-                                    failFlag()
-                                }}>
+                                <Link to={'/'+course} onClick={crs.failFlag ? failFlag : () => {}}>
                                     <st-course-card-img>
                                         <img src={crs.thumb} />
                                     </st-course-card-img>
