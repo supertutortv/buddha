@@ -85,7 +85,13 @@ export default class Dashboard extends React.Component {
                 </>
                 break
                 case 'initiate':
-                    await _st.http.get('/signup/getcard',(ddd) => {
+                    obj.inner = <>
+                        <span className="cancellationMessage">Please send an email to support@supertutortv.com from the email associated with this account (<strong>{d.data.email}</strong>) to process your payment and activate your full course access.</span>
+                        <div className="buttonContainer">
+                            <button className="btn" onClick={this.closeOverlay}>Close</button>
+                        </div>
+                    </>
+                    /* await _st.http.get('/signup/getcard',(ddd) => {
                         obj.inner = <>
                             <span className="cancellationMessage">Doing this will remove your trial status and charge the below card on file, giving you full access to this course. Are you sure you wish to proceed?</span>
                             <StCCContainer card={ddd.card}/>
@@ -97,7 +103,7 @@ export default class Dashboard extends React.Component {
                             </div>
                             {this.state.error.msg ? <span>{this.state.error.msg}</span> : null}
                         </>
-                    })
+                    }) */
                     break
                 case 'activate':
                     this.setState({activating: true})
