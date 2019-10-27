@@ -101,7 +101,7 @@ const Shipping = ({shipChanged,nextStep,ship,plan}) => {
 							<div>
 								<span>Send my book(s) via</span>
 								<span>
-									<input id="priShipMedia" className="priShip" type="radio" name="priShip" value="false" required/>
+									<input id="priShipMedia" className="priShip" type="radio" name="priShip" value="false" required checked/>
 									<label for="priShipMedia">Media Mail (2-3 weeks, FREE)</label>
 								</span>
 								<span>
