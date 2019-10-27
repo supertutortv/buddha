@@ -82,7 +82,7 @@ const Course = ({match, history: hist, location: loc, modalActive, setPlaylist, 
                                 <Header refreshData={refreshData} title={data.courses[params.courses].name} hist={hist} />
                                 <main className="stAppStage stComponentFade">
                                     <div className="stAppStageInner">
-                                        <MyStudyList test={params.courses} removePL={splicePlaylist} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} rescLink={data.courses[params.courses].resourceLink}/>
+                                        <MyStudyList test={params.courses} removePL={splicePlaylist} updateSettings={updateSettings} autoplay={data.user.settings.autoplay} data={data.courses[params.courses].playlist} rescLink={data.courses[params.courses].resourceLink || 'https://supertutortv.com/resources'}/>
                                         <div className="stSectionsSection">
                                             {sections}
                                         </div>
