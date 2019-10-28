@@ -39,15 +39,15 @@ export default class Main extends React.Component {
     }
 
     async componentDidMount() {
-        let time = Math.floor(Date.now() / 1000),
-        refresh = this.state.data.refresh || 0
-
-        if (refresh < time) return this.props.refresh(true)
         
         let obj = { loading: false },
-            upd = (this.state.data === true)
+            upd = (this.state.data === true),
+            time = Math.floor(Date.now() / 1000),
+            refresh = this.state.data.refresh || 0
 
         if (upd) obj.data = await this.getData()
+        if (refresh < time) return this.props.refresh(true)
+        
         this.setState(obj,() => this.dataSaveLocal())
         _st.loading = false
     }
