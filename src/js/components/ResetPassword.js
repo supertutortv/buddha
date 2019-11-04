@@ -1,61 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import STDialogCentered from './STDialogCentered'
-
-const SendForm = ({sent, sentMsg}) => {
-    if (sent) {
-        return (
-            <div className="stResetSent">
-                <strong>{sentMsg}</strong>
-            </div>
-        )
-    } else {
-        return (
-        <React.Fragment>
-            <div className="stPasswordHeader">
-                <h1>Forgot your password?</h1>
-            </div>
-            <div className="stPasswordCredentials">
-                <div className="input-field">
-                    <input className="browser-default validate email" type="email" name="email" placeholder="Email Address" required />
-                </div>
-            </div>
-            <div className="stFormButtons">
-                <button className="stFormButton btn waves-effect waves-light">Send reset link</button>
-            </div>
-        </React.Fragment>
-        )
-    }
-}
-
-const ResetForm = ({passMatch,sent,sentMsg}) => {
-    if (sent) {
-        return (
-            <div className="stResetSent">
-                <strong>{sentMsg}<Link to="/login">Sign In</Link>.</strong>
-            </div>
-        )
-    } else {
-        return (
-            <React.Fragment>
-                <div className="stPasswordHeader">
-                    <h1>Enter your new password</h1>
-                </div>
-                <div className="stPasswordCredentials">
-                    <div className="input-field">
-                        <input className="browser-default validate" id="password1" type="password" name="password1" placeholder="New Password" required />
-                    </div>
-                    <div className="input-field">
-                        <input className="browser-default validate" id="password2" type="password" name="password2" placeholder="Confirm Password" onBlur={passMatch} required />
-                    </div>
-                </div>
-                <div className="stFormButtons">
-                    <button className="stFormButton btn waves-effect waves-light">Change password</button>
-                </div>
-            </React.Fragment>
-        )
-    }
-}
 
 export default class ResetPassword extends React.Component {
     constructor(props) {
@@ -79,10 +23,14 @@ export default class ResetPassword extends React.Component {
 
     componentDidMount() {
         var obj = {}
-        _st.bodyClass = 'passwordReset'
+        _st.bodyClass = 'gateway passwordReset'
         if (this.state.key !== null) {
             _st.http.get('/auth/reset?key='+this.props.match.params.key,(d) => {
-                if (d.code === 'pwError') return this.props.history.replace('/password/reset')
+                if (d.code === 'pwError') {
+                    alert('The reset link is invalid. Please click "OK" and try again.')
+                    this.props.history.replace('/password/reset')
+                    return window.location.reload(true)
+                }
 
                 this.setState({
                     init: true,
@@ -144,13 +92,52 @@ export default class ResetPassword extends React.Component {
     }
 
     render() {
-        if (!this.state.init) return null
+        let {key, error, init, reset, sent, sentMsg} = this.state
+
+        if (!init) return null
+        
         return (
-            <STDialogCentered error={this.state.error}>
-                <form id="stPasswordWrapper" className="stFormWrapper" onSubmit={this.sendReset}>
-                    {this.state.key ? <ResetForm {...this.state} passMatch={this.passMatch}/> : <SendForm {...this.state} />}
+            <React.Fragment>
+                <form role="form" className="stAccountForm" onSubmit={this.sendReset}>
+                    <header className="heading">
+                        <h1>SupertutorTV</h1>
+                    </header>
+                    {sent ? 
+                        <section className="stC2A">
+                            <h2>{sentMsg} <Link to="/login">{key ? 'L' : '<< Back to l'}ogin</Link></h2>
+                        </section>
+                        : <React.Fragment>
+                            <section className="stC2A">
+                                <h2>{key ? 'Enter your new password' : 'Forgot your password?'}</h2>
+                            </section>
+                            <fieldset className="stAccountBody">
+                                {key ? <React.Fragment>
+                                        <div className="stIfR99">
+                                            <input autocomplete="off" aria-label="New Password" className="validate" type="password" id="password1" name="password1" required/>
+                                            <label aria-hidden="true" for="password1">New Password</label>
+                                        </div>
+                                        <div className="stIfR99">
+                                            <input autocomplete="off" aria-label="Confirm Password" className="validate" type="password" id="password2" name="password2" onBlur={this.passMatch} required/>
+                                            <label aria-hidden="true" for="password2">Confirm Password</label>
+                                        </div>
+                                    </React.Fragment>
+                                    : <div className="stIfR99">
+                                        <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="email" required validation="email"/>
+                                        <label aria-hidden="true" for="email">Email Address</label>
+                                    </div>
+                                }
+                            </fieldset>
+                            <div className="stAccountButtons">
+                                <button type="submit" className="stAccountButton btn" ><span>{key ? 'Change Password' : 'Send Reset Link'}</span></button>
+                            </div>
+                        </React.Fragment>
+                    }
+                    {(error.message)
+                        ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                        : null
+                    }
                 </form>
-            </STDialogCentered>
+            </React.Fragment>
         )
     }
 }

@@ -11,8 +11,6 @@ export default class Main extends React.Component {
 
         let sCD = localStorage.getItem('stCourseData') || false
 
-        this.vers = localStorage.getItem('stVersionHashes') || '[]'
-
         this.state = {
             data: !sCD || JSON.parse(sCD),
             loading: true,
@@ -23,35 +21,34 @@ export default class Main extends React.Component {
                 color: false,
                 mData: null,
                 refr: null,
-                test: ''
+                test: '',
+                xtraClass: ''
             }
         }
 
         this.dataSaveLocal = this.dataSaveLocal.bind(this)
-        this.hashSaveLocal = this.hashSaveLocal.bind(this)
         this.modalActive = this.modalActive.bind(this)
         this.setPlaylist = this.setPlaylist.bind(this)
         this.splicePlaylist = this.splicePlaylist.bind(this)
         this.addDl = this.addDl.bind(this)
         this.addHistory = this.addHistory.bind(this)
-        this.refreshData = this.refreshData.bind(this)
         this.updateSettings = this.updateSettings.bind(this)
+        this.getData = this.getData.bind(this)
 
         //document.addEventListener( "contextmenu", (e) => e.preventDefault())
     }
 
     async componentDidMount() {
-        let vers = JSON.parse(this.vers)
-
-        if (vers.indexOf(stVersionHash) < 0 ) return this.hashSaveLocal(vers).refreshData()
         
         let obj = { loading: false },
-            upd = (this.state.data === true)
+            upd = (this.state.data === true),
+            time = Math.floor(Date.now() / 1000)
 
-        if (upd) await _st.http.get('/courses/data',(h) => obj.data = h.data)
+        if (upd) obj.data = await this.getData()
 
-        this.setState(obj,() => this.dataSaveLocal().hashSaveLocal(vers))
-        _st.bodyClass = 'main'
+        if (this.state.data.refresh < time) return this.props.refresh(true)
+
+        this.setState(obj,() => this.dataSaveLocal())
         _st.loading = false
     }
 
@@ -59,10 +56,8 @@ export default class Main extends React.Component {
         _st.loading = false
     }
 
-    hashSaveLocal(hashes) {
-        if (hashes.indexOf(stVersionHash) < 0) hashes.push(stVersionHash)
-        localStorage.setItem('stVersionHashes',JSON.stringify(hashes))
-        return this
+    async getData() {
+        return await _st.http.get('/courses/data',(h) => (h.code === 'dataInvalid') ? setTimeout(this.getData(),h.retry) : h.data)
     }
 
     dataSaveLocal() {
@@ -111,21 +106,17 @@ export default class Main extends React.Component {
         })
     }
 
-    refreshData() {
-        localStorage.removeItem('stCourseData')
-        window.location.reload(true)
-    }
-
     render() {
         if (this.state.data === true) return null
-
         return(
             <DataState.Provider value={this.state.data}>
                 <Switch>
-                    <Route exact path='/dashboard' render={props => <Dashboard refreshData={this.refreshData}/>} />
-                    <Route exact path='/' render={() => <Redirect to="/dashboard" />} />
+                    <Redirect exact from='/dashboard' to='/' />
+                    <Route exact path='/' render={
+                        props => <Dashboard {...props} {...this.props.location.state} modalActive={this.modalActive} refreshData={this.props.refresh}/>
+                    } />
                     <Route exact path='/:courses/:collections?/:collection?/:tests?' render={props => <Course 
-                        refreshData={this.refreshData} 
+                        refreshData={this.props.refresh} 
                         addHistory={this.addHistory} 
                         setPlaylist={this.setPlaylist} 
                         splicePlaylist={this.splicePlaylist} 
@@ -134,8 +125,11 @@ export default class Main extends React.Component {
                         {...props} 
                     />} />
                     <Route exact path='/playlists/:playlist?' render={props => <Course modalActive={this.modalActive} {...props} />} />
+                    <Route path="*" component={null} />
                 </Switch>
-                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} />
+                <STModal {...this.state.modal} addDl={this.addDl} modalActive={this.modalActive} >
+                    {this.state.modal.mData}
+                </STModal>
             </DataState.Provider>
         )
     }

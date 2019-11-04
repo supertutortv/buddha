@@ -1,0 +1,169 @@
+@each $theWeight in $weights
+	+fontFace('Texta',$theWeight)
+
+/* -------------------------------------------------- */
+
+html
+    box-sizing: border-box
+    line-height: 1
+    -webkit-overflow-scrolling: touch
+    height: 100%
+    font-size: 24px
+
+    &.dark
+        mix-blend-mode: difference
+
+*, *:before, *:after
+    mix-blend-mode: inherit
+    box-sizing: inherit
+    margin: 0
+    padding: 0
+
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, st-courses-body, st-course-card, st-course-card-inner, st-course-card-img, st-course-card-title, st-course-status, st-overlay, st-cc-container
+    border: 0
+    font-size: 100%
+    font: inherit
+    vertical-align: baseline
+    background: none
+    color: inherit
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, st-courses-body, st-course-card, st-course-card-inner, st-course-card-img, st-course-card-title, st-course-status, st-overlay, st-cc-container
+    display: block
+
+body
+    overflow: hidden
+    position: relative
+    font-family: $font-stack
+    font-style: normal
+    font-weight: 200
+    font-size: $blockEM
+    color: black(.85)
+    background-color: whitesmoke()
+    background-image: url('../img/loader.gif')
+    background-size: 16.66%
+    background-position: center
+    background-repeat: no-repeat
+    width: 100%
+    height: 100%
+
+a
+    text-decoration: none
+    color: inherit
+    -webkit-tap-highlight-color: transparent
+    transition: color .1s ease-in-out
+
+ol, ul
+    list-style: none
+
+blockquote, q
+    quotes: none
+
+blockquote:before, blockquote:after, q:before, q:after
+    content: ''
+    content: none
+
+table
+    border-collapse: collapse
+    border-spacing: 0
+
+input, select, textarea
+    font-size: inherit
+    outline: none !important
+
+input:not([type="checkbox"]):not([type="radio"]), select, #stPricingCardElement
+    width: 100%
+    border: 1px solid black(.15)
+    transition: all .1s linear
+
+    &.invalid
+        border: 1px solid red
+    
+    &.valid
+        border: 1px solid green
+
+    &:focus:not(.invalid)
+        border: 1px solid azure()
+
+    &::placeholder
+        opacity: 1
+        color: black(.25)
+        font-style: italic
+
+select
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+    &.selector, option:selected
+        color: black(.6)
+
+label
+
+    strong
+        font-weight: 600
+
+button
+    opacity: .9
+    color: white()
+    background-color: gray
+    text-transform: uppercase
+    padding: 1em
+    border: 0
+    border-radius: .25em
+    font-weight: 600
+    cursor: pointer
+    +z-depth-1
+    transition: opacity .1s linear
+
+    &:hover
+        opacity: 1
+
+[type="checkbox"] + span:not(.lever)
+    line-height: 1em
+    height: 1em
+    padding-left: $huge
+
+[type="checkbox"].filled-in:not(:checked) + span:not(.lever)
+
+    &:after
+        height: 1em
+        width: 1em
+
+[type="checkbox"].filled-in:checked + span:not(.lever)
+
+    &:before
+        top: -2px
+        left: 0
+        width: 6px
+        height: $small
+
+    &:after
+        height: 1em
+        width: 1em
+        border: 2px solid azure()
+        background-color: azure()
+
+h1,h2
+    font-size: $huge
+
+h3,h4
+    font-size: $medium
+
+h1        
+    font-weight: 800
+    text-transform: uppercase
+
+h3
+    font-weight: 600
+
+h6
+    font-weight: 200
+
+@for $i from 1 through 6
+    h#{$i}
+        margin: 0
+
++MQ($mq-tportrait)
+    body
+        overflow: auto
+        background-size: 40%

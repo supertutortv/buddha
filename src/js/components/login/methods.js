@@ -40,7 +40,7 @@ export function submit(e) {
                     }
                 }, () => _st.loading = false)
             case 'loginSuccess':
-                return this.props.setLoggedIn()
+                return this.props.logIn()
         }
     })
 }

@@ -1,35 +1,46 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const globImporter = require('node-sass-glob-importer')
 
 module.exports = (env) => {
 
     return {
-        entry: ['@babel/polyfill','./src/js/stApp.js','./src/sass/stApp.sass'],
+        entry: ['./src/sass/stApp.sass','./src/js/index.js'],
         output: {
             path: path.resolve(__dirname, 'web'),
-            filename: 'assets/js/stApp.js',
+            filename: 'assets/js/[hash].js',
+            chunkFilename: 'assets/js/[hash].js',
             publicPath: '/'
         },
-        devServer: {
-            publicPath: '/',
-            port: 8888
-        },
-        externals: {
-            materialize: 'M'
-        },
+        /* resolve: {
+            alias: {
+                "react": "preact-compat",
+                "react-dom": "preact-compat",
+            }
+        }, */
+        /* optimization: {
+            splitChunks: {
+              chunks: 'async'
+            }
+        }, */
         module: {
             rules: [
                 {
                     test: /\.sass$/,
                     use: [
                         {
-                            loader: 'style-loader'
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {}
                         },
                         {
-                            loader: 'css-loader'
+                            loader: 'css-loader',
+                            options: {
+                                url: false,
+                                minimize: true,
+                                sourceMap: true
+                            }
                         },
                         {
                             loader: 'resolve-url-loader'
@@ -37,7 +48,8 @@ module.exports = (env) => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                sourceMap: true,
+                                sourceMap: false,
+                                minimize: true,
                                 importer: globImporter()
                             }
                         }
@@ -64,17 +76,15 @@ module.exports = (env) => {
             historyApiFallback: true,
         },
         plugins: [
-            new ExtractTextPlugin({
-                filename: 'assets/css/stApp.min.css',
-                disable: false,
-                allChunks: true
+            new MiniCssExtractPlugin({
+                filename: 'assets/css/[hash].css'
             }),
             new HtmlWebpackPlugin({
                 filename: 'app.html',
                 template: 'templates/app.html',
                 title: 'SupertutorTV Courses',
                 inject : true,
-                hash: true
+                minify: true
             }),
             new webpack.DefinePlugin({ 'process.env.APP_MODE': JSON.stringify(env.APP_MODE) })
         ]

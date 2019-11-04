@@ -1,6 +1,6 @@
 import React from 'react'
-import STDialogCentered from './STDialogCentered'
-import { LoginForm } from './login/Forms'
+import { AuthContext } from '../context'
+import { Link } from 'react-router-dom'
 import * as methods from './login/methods'
 
 export default class Login extends React.Component {
@@ -29,7 +29,7 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
-        _st.bodyClass = 'login'
+        _st.bodyClass = 'gateway login'
         _st.loading = false
     }
 
@@ -41,12 +41,40 @@ export default class Login extends React.Component {
     }
 
     render() {
+        let {error} = this.state,
+            {history: hist} = this.props
+
         return (
-            <STDialogCentered error={this.state.error}>
-            <form id="stLoginWrapper" className="stFormWrapper" onSubmit={this.submit}>
-                <LoginForm setLoginState={this.setLoginState} lostPwGo={this.lostPwGo} />
-            </form>
-            </STDialogCentered>
+            <AuthContext.Consumer>
+                {auth => (
+                    <React.Fragment>
+                        <form role="form" className="stAccountForm" onSubmit={this.submit}>
+                            <header className="heading">
+                                <h1>SupertutorTV</h1>
+                            </header>
+                            <fieldset className="stAccountBody">
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Email Address" className="validate email" type="email" name="username" required validation="email"/>
+                                    <label aria-hidden="true" for="username">Email Address</label>
+                                </div>
+                                <div className="stIfR99">
+                                    <input autocomplete="off" aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                                    <label aria-hidden="true" for="password">Password</label>
+                                    <section className="stForgotBlock"><Link to='/password/reset'>Forgot?</Link></section>
+                                </div>
+                            </fieldset>
+                            <div className="stAccountButtons">
+                                <button type="submit" className="stAccountButton btn" ><span>Log in</span></button>
+                            </div>
+                            {(error.message)
+                                ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                : null
+                            }
+                        </form>
+                        <code className="insteadLogin">Don't have an account? <Link to={'/signup'+(auth.plan ? '/'+auth.plan : '')+hist.location.search}>Sign Up</Link></code>
+                    </React.Fragment>
+                )}
+            </AuthContext.Consumer>
         )
     }
 }

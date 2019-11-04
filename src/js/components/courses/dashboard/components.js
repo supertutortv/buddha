@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const DBNotifications = ({fetched, notes, openNote, dismissNote}) => 
     <div className="stDashboardNotifications">
@@ -8,7 +8,7 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
                 <div className={["stNotificationsBody",fetched ? 'visible' : 'hidden'].join(' ')}>
                     {!fetched ? null : 
                         (notes.length === 0) ? 
-                            <div className="noNotes">No notifications currently available</div> : 
+                            <div className="noNotes">You have zero notifications</div> : 
                             <div className="stNotes">{
                                 notes.map((o) => 
                                     <div className="stNotification">
@@ -22,49 +22,43 @@ export const DBNotifications = ({fetched, notes, openNote, dismissNote}) =>
         </section>
     </div>
 
-export const DBCourses = ({courses}) => {
+export const DBCourses = ({cancellation,courses,user,failFlag}) => {
     return (
         <div className="stDashboardCourses">
-            <div className="myCoursesHeader stBoxHeading">My Courses</div>
-            <div className="myCoursesBody">
-                {Object.keys(courses).map((course) => {
+            <st-courses-body>
+                {courses.length === 0 ? null : 
+                Object.keys(courses).map((course) => {
                     let crs = courses[course]
                     return (
-                        <div className="course">
-                            <Link to={'/'+course} >
-                                <img src={crs.thumb} />
-                                <div className="title">
-                                    <span>{crs.name}</span>
-                                </div>
-                            </Link>
-                        </div>
+                        <st-course-card>
+                            <st-course-card-inner>
+                                <Link to={'/'+course} onClick={crs.failFlag ? failFlag : null}>
+                                    <st-course-card-img>
+                                        <img src={crs.thumb} />
+                                    </st-course-card-img>
+                                    <st-course-card-title>
+                                        <span>{crs.name}</span>
+                                    </st-course-card-title>
+                                </Link>
+                                {!crs.trialing ? 
+                                    null :
+                                    (<st-course-status>
+                                        <a href="/#!/actionActivate" className="stCourseButton endTrial activate" onClick={(e) => cancellation(e,{
+                                            action: 'initiate',
+                                            sub: crs.subId || '',
+                                            ...user
+                                        })}><em>Activate full course</em></a>
+                                        <a href="/#!/actionCancel" className="stCourseButton cancel" onClick={(e) => cancellation(e,{
+                                            action: 'cancel',
+                                            ...user
+                                        })}><em>Cancel</em></a>
+                                    </st-course-status>
+                                )}
+                            </st-course-card-inner>
+                        </st-course-card>
                     )}
                 )}
-            </div>
-        </div>
-    )
-}
-
-export const DBActions = ({d,cancellation}) => {
-    return (
-        <div className="stDashboardActions">
-            <section>
-                <div className="stBoxHeading">Actions</div>
-                <div className="stDBActionsBody">
-                {!d.trialing ? <span>No actions currently available.</span> : (
-                    <React.Fragment>
-                        <button className="stTrialCancelButton" onClick={() => cancellation({
-                            action: 'trial',
-                            ...d
-                        })}>Unlock the course</button>
-                        <button className="stTrialCancelButton" onClick={() => cancellation({
-                            action: 'subscription',
-                            ...d
-                        })}>Cancel Subscription</button>
-                    </React.Fragment>
-                )}
-                </div>
-            </section>
+            </st-courses-body>
         </div>
     )
 }

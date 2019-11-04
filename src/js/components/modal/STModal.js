@@ -1,30 +1,22 @@
 import React from 'react'
 import * as comps from './comps'
 
+const STModal = (props) => {
+    let { open } = props
+    if (!open) return null
 
-export default class STModal extends React.Component {
-    constructor(props) {
-        super(props)
-        
-    }
+    let { closer = null, xtraClass, mData, action, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = props
 
-    render() {
-        let { mData, open, action, orientation = 'bottom', addDl, refr, modalActive, color, test } = this.props
-
-        if (!open) return null
-
-        const ModalComp = comps[action] || ''
-
-        var style = color ? {borderColor: color} : {}
-        
-        return (
-            <div className={['stModal',orientation].join(' ')} onClick={(e) => {
-                if (e.target.classList.contains("stModal")) modalActive({open: false})
-            }}>
-                <div className="stModalInner" style={style}>
-                    <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />
-                </div>
+    const ModalComp = comps[action] || '',
+        style = color ? {borderColor: color} : {}
+    
+    return (
+        <aside className={['stModal',orientation, xtraClass].join(' ')} onClick={closer}>
+            <div className="stModalInner" style={style}>
+                {children || <ModalComp test={test} refDls={refr} reportDl={addDl} color={color} data={mData} />}
             </div>
-        )
-    }
+        </aside>
+    )
 }
+
+export default STModal

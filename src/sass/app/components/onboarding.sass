@@ -1,0 +1,332 @@
+body.onboarding
+	overflow: auto
+	background-color: white()
+
+	st-app
+		background-color: white()
+
+		.stOnboardingWindow
+			height: 100%
+			min-height: calc(100% - #{$headerh})
+			+animFadeIn
+
+			.step
+				height: 100%
+				display: flex
+				justify-content: center
+				align-items: center
+
+				em
+					font-style: italic
+
+			#step3
+
+				.stStepContent
+
+					.stConfirmCard
+						width: 100%
+						padding: $huge
+
+						.stConfirmCardInner
+							width: 100%
+							border: 1px solid azure(.8)
+							border-radius: $ittybitty
+							padding: $huge
+							+z-depth-3
+
+							.initCheckoutFinal
+								padding-top: 1em
+
+								.trialToggle
+									font-weight: 400
+									font-size: $medtext
+									padding: 0 $tiny 1em
+
+									label
+										margin-left: 1em
+										display: inline-block
+
+								.initCheckoutBtn
+									width: 100%
+									border: 1px solid azure(.8)
+									color: azure(.8)
+									background-color: white()
+									transition: all 100ms ease-in-out
+									
+									&:hover, &.active
+										color: white()
+										background-color: azure()
+
+									span
+										font-size: .75rem
+										font-weight: 600
+										display: block
+										text-align: center
+								
+								.alert
+									+stFormErrors
+									padding-top: 1em
+									padding-bottom: 0
+
+							.reviewTable
+
+								.stIfR99
+									position: relative
+									background-color: white()
+									overflow: hidden
+									margin-bottom: 0
+									transition: all .1s ease-in-out
+
+									input
+										border-radius: .125rem
+										padding: .75em
+
+										&:focus
+											border: 1px solid azure(.75)
+
+										&.valid
+											border: 1px solid green
+										
+										&.invalid
+											border: 1px solid red
+
+								button
+									background-color: azure(.75)
+									transition: all .1s ease-in-out
+
+									&:hover
+										background-color: azure()
+
+								h3
+									text-align: left
+
+									i
+										margin-left: 1em
+										color: green
+
+								& > div
+									display: flex
+									align-items: center
+									padding: 1em 0
+									border-bottom: 1px solid black(.25)
+
+									&:first-of-type
+										padding-bottom: $ittybitty
+										font-weight: 600
+										border-bottom: 1px solid black()
+
+										& > div
+											font-weight: 600
+
+									&:last-of-type
+										padding-bottom: 0
+										border-bottom: none
+
+									& > div
+										font-weight: 400
+										font-size: $medtext
+										padding: 0 $tiny
+									
+									& > div:first-child
+										flex: 1
+
+									&.lineItems
+										display: block
+
+										& > div
+											display: flex
+											padding: $tiny
+											transition: all .1s ease-in-out
+
+											&:hover
+												background-color: whitesmoke
+
+											& > div:first-child
+												flex: 1
+									
+									&.total
+
+										& > div:first-of-type
+											font-weight: 800
+											font-size: $bodytext
+
+										& > div:last-of-type
+											color: green
+											font-weight: 800
+											font-size: $bodytext
+
+			#step2
+
+				.shippingForm
+					padding: 0 !important
+					margin-top: 1em
+					width: 100%
+					+stFormBody
+
+					.shipOptBtn
+						display: flex
+
+						& > div
+							flex: 1
+
+							span
+								font-size: $smalltext
+								font-weight: 600
+								margin-right: $small
+								display: inline-block
+
+								input
+									border: 1px solid azure(.8)
+
+								label
+									margin: 0 0 0 $tiny
+									display: inline-block
+
+					button
+						+stFormButton
+
+					.stIfR99
+						display: inline-block
+						width: 100%
+						+stFormInput
+
+						&:not(.no-bg)
+							background-color: white()
+							
+							& > label
+								font-size: 1rem
+
+							input:not([type="radio"]), textarea, select
+								border: 1px solid azure(.5)
+
+						&.oneq
+							width: 24%
+
+						&.onet
+							width: 32%
+
+						&.twoq
+							width: 49%
+
+						&.twot
+							width: 64%
+
+						&.threeq
+							width: 74%
+
+						&.right
+							margin-left: 2%
+
+						input
+							background-color: white()
+						
+						select.state
+							border: 1px solid azure(.5)
+							font-size: 1rem
+							padding: $tiny
+							font-family: $font-stack
+
+							option
+								font-family: $font-stack
+
+				label
+					display: block
+					margin-bottom: 1em
+
+				select
+					border-radius: .125em
+					cursor: pointer
+					padding: 1em
+
+					& + i
+						position: absolute
+						font-size: 1rem
+						right: $small
+						top: 50%
+						transform: translate3d(0,-50%,0)
+			
+			#step1
+
+				strong
+					text-transform: uppercase
+					font-weight: 800
+			
+			#step0
+				display: block
+
+				.stStepContent
+
+					& > div
+						margin-top: 5%
+
+				.stOnboardBanner
+
+					img
+						opacity: .75
+						height: auto
+						width: 100%
+						transform: rotateZ(0deg)
+
+			.stStepContent
+				width: 100%
+				position: relative
+				display: flex
+				justify-content: center
+				align-items: center
+
+				& > div
+					width: 95%
+					max-width: 700px
+					margin-top: -10%
+
+				h3
+					text-align: center
+
+				.stOnboardingPlans, .stOnboardingOptions
+					display: flex
+					flex-wrap: wrap
+
+					.ctaColumn
+						flex: 1 1 100%
+						display: flex
+						justify-content: center
+						padding: 1em
+
+						span
+							margin-right: 1em
+
+					.stOnboardingPlan, .stOnboardingOption
+						position: relative
+						flex: 1 1 auto
+						border-radius: $ittybitty
+						width: 225px
+						padding: 1em
+						text-align: center
+
+						.planInner, .optionInner
+							width: 100%
+							max-width: 400px
+							border: 1px solid azure(.8)
+							color: azure(.8)
+							background-color: white()
+							transition: all 100ms ease-in-out
+							
+							&:hover, &.active
+								color: white()
+								background-color: azure()
+
+							span
+								font-size: .75rem
+								font-weight: 600
+								display: block
+								text-align: center
+								text-transform: uppercase
+
+							&.combo
+								border: 1px solid rgba(255, 0, 0, .8)
+								color: rgba(255, 0, 0, .8)
+								background-color: white()
+
+								&:hover, &.active
+									color: white()
+									background-color: rgba(255, 0, 0, 1)

@@ -1,0 +1,77 @@
+@mixin stFormBody
+    &:not(.nopad)
+        padding: 0 1.5rem
+
+@mixin stFormErrors
+    color: red
+    font-weight: 400
+    font-size: $medtext
+    text-align: center
+    padding: 0 1rem 1rem
+
+    a
+        text-decoration: underline
+
+@mixin stFormHeader
+    padding-bottom: 1em
+    line-height: $small
+
+@mixin stFormButtons
+    text-align: center
+    padding: 0 1.5rem 1rem
+
+@mixin stFormButton
+    background-color: azure()
+
+    &[disabled]
+        background-color: gray
+        cursor: not-allowed
+
+    span
+        font-size: $smalltext
+
+@mixin stFormInput
+    position: relative
+    margin-bottom: 1em
+
+    &:not(.no-bg)
+        position: relative
+        background-color: white()
+        overflow: hidden
+        border-radius: .125rem
+
+        & > label
+            transform: translateZ(0)
+            backface-visibility: hidden
+            -webkit-font-smoothing: subpixel-antialiased
+            font-size: $medtext
+            font-weight: 400
+            padding: .75em 1em
+            position: absolute
+            display: block
+            top: 0
+            left: 0
+            transition: all .1s ease-in-out
+
+        input:not([type="checkbox"]), textarea, select
+            padding: 1em 0 0.25em .5em
+            display: block
+            position: relative
+            box-sizing: border-box
+            overflow: hidden
+            border-radius: 3px
+            border: 1px solid black(.1)
+            z-index: 1
+            background-color: transparent
+            transition: all .1s ease-in-out
+
+            &:focus
+                border: 1px solid azure(.75)
+            
+            &.validate:valid
+                border: 1px solid green
+
+            &:focus, &.validate:valid
+
+                & + label
+                    font-size: $tinytext

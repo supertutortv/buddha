@@ -2,7 +2,6 @@ import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import VidPlayer from './VidPlayer'
-import FAIco from './FAIco'
 import AddFave from './courses/AddFave'
 
 export default class Playlist extends React.Component {
@@ -99,7 +98,7 @@ export default class Playlist extends React.Component {
                                             refr: refDls,
                                             test: match.params.courses
                                         })
-                                    }}><FAIco icon="cloud-download-alt"/></a>
+                                    }}><i className="fas fa-cloud-download-alt"/></a>
                                     {vid.id === 0 ? '' : <AddFave deleteUdata={this.deleteUdata} updateUdata={this.updateUdata} vid={vid} test={test} loc={loc} playlist={playlist} />}
                                 </div>
                             </header>
@@ -143,7 +142,7 @@ export default class Playlist extends React.Component {
                                                 let vidObj = obj.collection[col].videos[v],
                                                     stylOb = (ii === this.state.vid) ? {style: sbStyle} : {},
                                                     activeClass = ii === this.state.vid ? ' active' : '',
-                                                    watchd = watchHist.indexOf(vidObj.id) > -1 ? <FAIco title="watched" icon="clock"/> : ''
+                                                    watchd = watchHist.indexOf(vidObj.id) > -1 ? <i className="fas fa-clock"></i> : ''
                                                 return (
                                                     <article className={"stCollectionItem"+activeClass} {...stylOb}>
                                                         <div className="stCollectionItemLink" onClick={() => this.setState({vid: ii},() => this.updateUdata('history',vidObj,test,loc))}>

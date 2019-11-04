@@ -1,54 +1,119 @@
 .stDashboard
-    padding: $huge 0
-    +centerblock
+    padding: 0 0 $huge
+    font-size: $medtext
+
+    .stHomeBanner
+        min-height: 6em
+        margin-bottom: -7.5%
+
+        img
+            width: 100%
 
     .stDashboardCourses
-        margin: 0 1em 1em
-        @extend .stShadowBox
+        display: flex
+        justify-content: center
         
-        .myCoursesBody
+        st-courses-body
             padding: 1em
+            width: 100%
+            max-width: 1000px
             display: flex
-            align-items: center
 
-            .course
-                padding: $tiny
-                width: $huge * 6
+            st-course-card
+                width: 32%
 
-                & > a
-                    display: block
+                &:not(:first-child)
+                    margin-left: 2%
+
+                st-course-card-inner
                     overflow: hidden
-                    border-radius: $ittybitty
-                    @extend .z-depth-1
+                    border-radius: $tiny
+                    background-color: white()
+                    transition: all 100ms ease-in-out
+                    +z-depth-2
 
-                    &:hover
-                        @extend .z-depth-3
+                    a
 
-                    img
-                        width: 100%
-                        height: auto
-                        display: block
+                        &:hover
+
+                            st-course-card-img
+
+                                img
+                                    opacity: 1
+
+                            st-course-card-title
+                                background-color: whitesmoke
+
+                    st-course-card-img
+                        position: relative
+                        padding-top: 56.25%
+
+                        img
+                            position: absolute
+                            top: 0
+                            width: 100%
+                            display: block
+                            opacity: .95
+                            transition: opacity 100ms ease-in-out
                     
-                    .title
-                        padding: $tiny
+                    st-course-card-title
+                        padding: 1em
                         font-weight: 600
                         line-height: 1
+                        transition: all 100ms ease-in-out
 
                         span
-                            font-size: $small
+                            font-size: $medtext
+
+                    st-course-status
+                        display: flex
+                        text-align: center
+                        align-items: center
+                        color: white
+                        border-top: 1px solid black(.25)
+                        font-size: 75%
+
+                        a.stCourseButton
+                            display: block
+                            position: relative
+                            z-index: 400
+                            padding: 1em .5em
+                            flex: 1 1 auto
+                            opacity: .75
+                            transition: opacity 100ms ease-in-out
+
+                            &:hover
+                                opacity: 1
+
+                        em
+                            font-weight: 600
+
+                        .active, .activate
+                            background-color: green
+
+                        .trialing
+                            color: gold
+
+                        .cancel
+                            background-color: red
 
     .stNotesActions
         width: 100%
         display: flex
+        justify-content: center
         margin: 0 0 1em
 
         .stDashboardNotifications
-            margin: 0 1em
+            padding: 1em
             flex: 1
+            width: 100%
+            max-width: 1000px
 
             & > section
                 height: 100%
-                @extend .stShadowBox
+                background-color: white
+                border-radius: .5em
+                +z-depth-2
 
             .stNotificationsBody
                 padding: 1em
@@ -78,18 +143,80 @@
                             flex: 1
                             font-style: italic
 
-        .stDashboardActions
-            margin: 0 1em
-            flex: 1
+st-overlay
 
-            & > section
-                @extend .stShadowBox
-            
-            .stDBActionsBody
-                padding: 1em
+    & > div
 
-                span
-                    font-style: italic
+        strong
+            font-weight: 600
+
+        .cancellationMessage
+            font-size: .75em
+
+        .buttonContainer
+            padding-top: 1em
+            text-align: center
+
+            button
+                background-color: azure()
+
+        st-cc-container
+            padding-top: 1em
+
+            & > div
+                display: flex
+                align-items: center
+
+                &#activCardEl
+                    cursor: default
+                    border: 1px solid azure(.75)
+                    border-radius: .25em
+                    padding: .5em
+
+                    #stripeInject
+                        width: 100%
+                        padding: .25em
                 
-                button
-                    background-color: azure()
+                &.newCard
+                    justify-content: flex-end
+                    padding-top: .5em
+
+                    a
+                        font-size: .75em
+                        font-weight: 600
+                        color: azure(.75)
+                        transition: color 100ms ease-in-out
+                        cursor: pointer
+
+                        &:hover
+                            color: azure()
+
+                p
+                    padding: .25em
+
+                    &:last-of-type
+                        padding-left: .5em
+                        flex: 1
+                    
+                    &.ccBrand
+
+                        i
+                            font-size: 1.25em
+
+                    &.ccDetails
+                        font-size: .75em
+
+                        .last4
+                            font-weight: 600
+                            letter-spacing: .25em
+
++MQ($mq-mobile)
+    .stDashboard
+
+        .stDashboardCourses
+            
+            st-courses-body
+                
+                st-course-card
+                    width: 100%
+                    margin-left: 0

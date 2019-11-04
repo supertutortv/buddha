@@ -1,4 +1,4 @@
-body.login, body.allYourBase, body.muSignup
+body.login, body.allYourBase
 
     .stAppHeader
         display: none
@@ -8,6 +8,7 @@ body.login, body.allYourBase, body.muSignup
     flex-wrap: wrap
     background-color: white
     padding: 0 1em
+    +z-depth-3
 
     & > div
         padding: $tiny 0
@@ -15,7 +16,7 @@ body.login, body.allYourBase, body.muSignup
         align-items: center
         justify-content: flex-end
 
-        img
+        svg
             height: calc(#{$headerh} - 1em)
             width: auto
 
@@ -34,20 +35,19 @@ body.login, body.allYourBase, body.muSignup
 
         .stNavContainer
             display: flex
+            width: 100%
             height: 100%
             margin: 0
+            font-size: $medtext
 
             & > li
                 padding-left: 1.25em
                 height: 100%
-                flex: 0 1 auto
                 display: flex
                 justify-content: center
                 align-items: center
 
-                svg
-                    height: $small
-                    width: $small
+                i
                     cursor: pointer
                     opacity: .6
                     transition: opacity 100ms ease-in-out

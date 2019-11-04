@@ -1,91 +1,32 @@
 import React from 'react'
-import { StripeProvider, Elements } from 'react-stripe-elements'
-import Header from './Header'
-import * as methods from './signup/methods'
-import * as steps from './signup/steps'
+import { Link, Redirect } from 'react-router-dom'
+import { AuthContext } from '../context'
 
 export default class Signup extends React.Component {
     constructor(props) {
         super(props)
-    
+
         this.state = {
-            init: false,
-            step: 0,
-            update: true,
-            loading: true,
-            plan: null,
             error: {
                 id: '',
                 message: ''
             },
-            card: false,
-            valid: false,
-            customer: {
-                account: {
-                    email: '',
-                    firstname: '',
-                    lastname: '',
-                    password: ''
-                },
-                shipping: {
-                    phone: '',
-                    name: '',
-                    address: {}
-                },
-                options: {},
-                token: '',
-                nameOnCard: ''
-            },
-            pricing: {
-                total: 0,
-                shipping: 0,
-                coupon: {
-                    id: '',
-                    value: ''
-                }
-            },
-            item: null,
-            session: {
-                id: Date.now(),
-                signature: btoa(navigator.userAgent+'|'+navigator.platform+'|'+navigator.product).replace(/=/g,'')
-            }
+            signed: false
         }
-        this.plans = [
-            'sat',
-            'act',
-            'combo'
-        ]
 
-        this.steps = [
-            'Account',
-            'Payment',
-            'ThankYou'
-        ]
+        this.createAccount = this.createAccount.bind(this)
+        this.logIn = this.logIn.bind(this)
 
-        Object.keys(methods).forEach((method) => {
-            this[method] = methods[method].bind(this)
-        })
-
-        _st.bodyClass = 'signup'
+        _st.bodyClass = 'gateway signup'
     }
 
     componentDidMount() {
-        let {plan} = this.props.match.params
-        _st.http.get('/signup/'+plan,(d) => {
-            
-            this.setState({init: true, item: d.data}, () => {
-                _st.loading = false
-            })
-        })
+        this.props.setPlan(this.props.match.params.plan || null)
+        _st.loading = false
     }
 
     componentDidUpdate() {
         _st.loading = false
-    }
-
-    componentWillUnmount() {
-        let el = document.getElementById('stStripeScript')
-        el.parentNode.removeChild(el)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -93,46 +34,94 @@ export default class Signup extends React.Component {
         if (hist.action === 'POP') this.setState(this.props.location.state)
     }
 
-    shouldComponentUpdate() {
-        return this.state.update
+    logIn() {
+        return this.props.logIn()
+    }
+
+    createAccount(e) {
+        e.preventDefault()
+        
+        _st.loading = true
+        let form = Array.from(e.target.querySelectorAll('input')),
+            obj = {}
+    
+        for (let i = 0; form.length > i; i++)
+            obj[form[i].name] = form[i].value
+    
+        _st.http.post('/signup/account',obj,(d) => {
+            if (d.code === 'signupError') return this.setState({
+                error: {
+                    id: d.code,
+                    message: d.message
+                }
+            })
+
+            if (200 === d.data.status) return this.logIn() && this.setState({signed: true},
+                () => {
+                    if (this.props.match.params.plan) localStorage.setItem('_stT-signup',this.props.match.params.plan)
+                }
+            )
+        })
     }
 
     render() {
-        let {plan} = this.props.match.params
+        return (
+            <AuthContext.Consumer>
+                {auth => {
+                    let { error, signed } = this.state,
+                    { history: hist } = this.props,
+                    plan = auth.plan
 
-        if (typeof plan === 'undefined' || this.plans.indexOf(plan) < 0 ) {
-            this.props.history.replace('/login')
-            return null 
-        }
-
-        if (this.state.init === false) return null
-
-        const Checkout = steps[this.steps[this.state.step]]
-        return(
-            <StripeProvider apiKey={_st.stripe}>
-                <React.Fragment>
-                    <Header stripped={true} hist={this.props.history} />
-                    <Elements>
-                        <Checkout 
-                            hist={this.props.history}
-                            state={this.state} 
-                            error={this.state.error} 
-                            changeStep={this.changeStep} 
-                            createAccount={this.createAccount} 
-                            calculatePricing={this.calculatePricing} 
-                            updateInp={this.updateInp} 
-                            updatePrice={this.updatePrice} 
-                            setChecker={this.setChecker} 
-                            setOutcome={this.setOutcome} 
-                            setPlan={this.setPlan} 
-                            setShipping={this.setShipping} 
-                            toPrice={this.toPrice} 
-                            submitPayment={this.submitPayment} 
-                            validate={this.validate}
-                        />
-                    </Elements>
-                </React.Fragment>
-            </StripeProvider>
+                    if (signed) return (
+                        <Redirect to={{
+                            pathname: '/',
+                            search: hist.location.search,
+                            state: { plan: plan }
+                        }}/>
+                    )
+                    else return (
+                        <>
+                            <form role="form" className="stAccountForm" onSubmit={this.createAccount}>
+                                <header className="heading">
+                                    <h1>SupertutorTV</h1>
+                                </header>
+                                <section className="stC2A">
+                                    <h2>Sign up for free right now to get started on your test prep journey!</h2>
+                                </section>
+                                <fieldset className="stAccountBody">
+                                    <div className="stIfR99">
+                                        <input className="browser-default validate" aria-label="Student First Name" type="text" name="firstname" required />
+                                        <label aria-hidden="true" for="firstname">Student First Name</label>
+                                    </div>
+                                    <div className="stIfR99">
+                                        <input aria-label="Student Last Name" className="browser-default validate" type="text" name="lastname" required/>
+                                        <label aria-hidden="true" for="lastname">Student Last Name</label>
+                                    </div>
+                                    <div className="stIfR99">
+                                        <input aria-label="Student Email" className="browser-default validate email" type="email" name="email" required validation="email"/>
+                                        <label aria-hidden="true" for="email">Student Email</label>
+                                    </div>
+                                    <div className="stIfR99">
+                                        <input aria-label="Password" className="browser-default validate" type="password" name="password" required/>
+                                        <label aria-hidden="true" for="password">Password</label>
+                                    </div>
+                                </fieldset>
+                                <div className="stAccountButtons">
+                                    <button type="submit" className="stAccountButton btn" ><span>Create Your Account</span></button>
+                                </div>
+                                {(error.message)
+                                    ? <div className="stAccountErrors"><strong>{error.message}</strong></div>
+                                    : null
+                                }
+                                <section className="stDisclaimer">
+                                    <span>By creating an account, you agree to our <a href="https://supertutortv.com/terms-and-conditions" target="_blank">Terms</a> and our <a href="https://supertutortv.com/privacy-policy" target="_blank">Privacy Policy</a></span>
+                                </section>
+                            </form>
+                            <code className="insteadLogin">Already have an account? <Link to={'/login'+hist.location.search}>Log In</Link></code>
+                        </>
+                    )
+                }}
+            </AuthContext.Consumer>
         )
     }
 }

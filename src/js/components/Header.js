@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FAIco from './FAIco'
+import LogoSVG from './LogoSVG'
 
 const Header = ({stripped, title, depth, hist, refreshData}) => {
     var strCls = stripped ? ' stripped' : '',
@@ -8,36 +8,36 @@ const Header = ({stripped, title, depth, hist, refreshData}) => {
     return(
         <header className={"stAppHeader z-depth-"+depth+strCls}>
             <div className="stHeaderLeft">
-                {stripped ? '' : <img src={_st.root+'/assets/img/sttv_logo.png'} />}
+                {stripped ? '' : <LogoSVG/>}
             </div>
             <div className="stHeaderMiddle">
-                {stripped ? <img src={_st.root+'/assets/img/sttv_logo.png'} /> : <h1>{title}</h1>}
+                {stripped ? <LogoSVG/> : <h1>{title}</h1>}
             </div>
             <div className="stHeaderRight">
                 <ul className="stNavContainer">
                     {stripped ? '' :
                         <React.Fragment>
-                            <li><FAIco title="Dashboard" icon="user" onClick={(e) => {
-                                e.preventDefault()
-                                hist.push('/dashboard')
-                            }} /></li>
-                            {/* <li><FAIco title="Rate/Review" icon="star"/></li>
-                            <li><FAIco title="Leave Feedback" icon="comment-alt"/></li> */}
-                            <li onClick={(e) => {
-                                let result = window.confirm("Reloading the application could break your access to any courses you've purchased. Are you sure you want to reload the application?")
+                            <li title="Dashboard"><i className="fas fa-home" onClick={(e) => {
+                                hist.push('/')
+                                return false
+                            }}></i></li>
+                            {/* <li title="Rate/Review"><i className="fas fa-star"></i></li>
+                            <li title="Leave Feedback"><i className="fas fa-comment-alt"></i></li> */}
+                            <li title="Reload"><i className="fas fa-sync-alt" onClick={(e) => {
+                                let result = window.confirm("Are you sure you want to reload all application data?")
 
-                                return result ? refreshData() : null
-                            }}><FAIco title="Refresh course" icon="sync-alt" /></li>
+                                return result ? refreshData(true) : null
+                            }}/></li>
                         </React.Fragment>
                     }
-                    <li><FAIco title="Help" icon="question" onClick={(e) => {
+                    <li title="Help"><i className="fas fa-question" onClick={(e) => {
                         e.preventDefault()
                         window.open("https://supertutortv.zendesk.com")
-                    }}/></li>
-                    <li onClick={(e) => {
+                    }}></i></li>
+                    <li title={stripped ? "Log in" : "Log out"}><i className={stripped ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"} onClick={(e) => {
                         _st.loading = true
-                        _st.http.post('/auth/logout',{},() => refreshData())
-                    }}><FAIco title={stripped ? "Log in" : "Log out"} icon={stripped ?"sign-out-alt" : "sign-in-alt"} /></li>
+                        _st.http.post('/auth/logout',{},() => refreshData(true))
+                    }}></i></li>
                 </ul>
             </div>
         </header>

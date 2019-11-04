@@ -1,0 +1,101 @@
+body.checkout
+    overflow: hidden !important
+
+    .stCheckoutWindow
+        position: fixed
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
+        z-index: 42
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: black(.8)
+        +animFadeIn
+
+        .stCheckoutInner
+            +stcard
+            position: relative
+            z-index: 43
+            padding: $huge
+            margin-bottom: 10%
+            border: 1px solid azure()
+
+            .stCheckoutLogo
+                padding: 0 1em 1em
+
+                svg
+                    width: 100%
+
+            h3
+                text-transform: uppercase
+                font-size: $medtext
+
+            form.stCheckoutForm
+                margin-top: 1em
+
+                &.checkoutError
+
+                    #stPricingCardElement
+                        border: 1px solid red
+
+                #stPricingCardElement
+                    border-radius: $ittybitty
+                    padding: $tiny 1em
+                    transition: all 100ms ease-in-out
+
+                .stIfR99
+                    +stFormInput
+
+                    &:not(.no-bg)
+                    
+                        & > label
+                            font-size: 1rem
+
+                .stTrialMsg
+                    padding-top: 1em
+                    font-size: $medtext
+                    text-align: center
+                    font-weight: 400
+
+                    em
+                        color: azure()
+                        font-weight: 600
+
+                .stSubmitBlock
+                    padding-top: 1em
+
+                    button
+                        +stFormButton
+                        width: 100%
+                        border: 1px solid azure(.8)
+                        color: azure(.8)
+                        background-color: white()
+                        transition: all 100ms ease-in-out
+
+                        &.completed
+                            color: white()
+                            background-color: green
+                            border: 1px solid green
+
+                            i
+                                margin-left: 0
+                        
+                        &:not(.completed):hover, &.active
+                            color: white()
+                            background-color: azure()
+
+                        i
+                            font-size: $medtext
+                            margin-left: $medium
+                            transition: all 100ms ease-in-out
+
+                            &.fa-spinner
+                                transform-origin: 50% 50%
+                                +animSpin
+
+            .stAccountErrors
+                +stFormErrors
+                padding-top: 1em
+                padding-bottom: 0

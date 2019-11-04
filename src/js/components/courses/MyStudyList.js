@@ -1,5 +1,4 @@
 import React from 'react'
-import FAIco from '../FAIco'
 import VidPlayer from '../VidPlayer'
 import ToggleSwitch from '../pieces/toggleSwitch'
 
@@ -8,6 +7,7 @@ export default class MyStudyList extends React.Component {
         super(props)
 
         this.state = {
+            courseResc: this.props.rescLink || '#',
             vindex : 0,
             video : this.props.data[0].vidid,
             autoplay: this.props.autoplay,
@@ -61,8 +61,16 @@ export default class MyStudyList extends React.Component {
                 <div className="stCourseIntro">
                     <VidPlayer ind={(n) => this.setState({vindex: n})} autoplay={this.state.autoplay.msl} getNextVid={this.changeVid} video={theVid} />
                 </div>
-                <div className="stCourseMSL">
-                    <div className="stCourseMSLInner">
+                <div className="stCourseSidebar">
+                    <div className="stCourseResources">
+                        <a target="_blank" data-href={this.state.courseResc} href={this.state.courseResc} onClick={(e) => {
+                            if (e.currentTarget.dataset.href === '#') e.preventDefault()
+                        }}>
+                        <i class="fas fa-link"></i>
+                        <span>Course Resources</span>
+                        </a>
+                    </div>
+                    <div className="stCourseMSL">
                         <div className="stCourseStudyListHeading">My Study List</div>
                         <div className="stCourseStudyList">
                             <div className="stCourseStudyListInner">{list}</div>

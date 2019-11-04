@@ -1,8 +1,8 @@
 import config from './config'
 import * as form from './utilities/form'
 import Http from './utilities/http'
-import auth from './utilities/auth'
-import udata from './utilities/userActions'
+import plans from './data/static/plans'
+//import udata from './utilities/userActions'
 
 const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
   const [key, value] = pair.map(decodeURIComponent);
@@ -18,6 +18,7 @@ function STTV() {
 }
 
 STTV.prototype = {
+    plans: plans,
     stripe : config[env].stripe.publicKey,
     root : config[env].root,
     api : config[env].api,
@@ -38,10 +39,7 @@ STTV.prototype = {
         return this._state.bodyClass
     },
     set bodyClass(val) {
-        this._state.bodyClass = val
-        let bCls = document.body.className
-        if (bCls) document.body.classList.remove(...bCls.split(' '))
-        document.body.classList.add(this._state.bodyClass)
+        this._state.bodyClass = document.body.className = val
     },
     get loggedIn() {
         return this._state.loggedIn
@@ -50,10 +48,10 @@ STTV.prototype = {
         this._state.loggedIn = val
         return this._state.loggedIn
     },
+    randKey: () => Math.floor(Math.random()*1000000000000).toString(36),
     objectifyURLParams,
     form,
-    http: new Http(config[env].api),
-    udata
+    http: new Http(config[env].api)
 }
 
 export default new STTV
