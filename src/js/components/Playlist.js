@@ -93,7 +93,8 @@ export default class Playlist extends React.Component {
                                         modalActive({
                                             open: true,
                                             action: 'Downloads',
-                                            mData: dls,
+                                            actData: dls,
+                                            dismissable: true,
                                             color: obj.color,
                                             refr: refDls,
                                             test: match.params.courses
