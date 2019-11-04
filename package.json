@@ -1,6 +1,6 @@
 {
     "name": "buddha",
-    "version": "1.2.182",
+    "version": "1.2.183",
     "main": "src/js/stApp.js",
     "private": true,
     "description": "The repository for Supertutor Media, Inc. courses app (codenamed buddha)",
@@ -8,7 +8,7 @@
         "up:patch": "npm version patch --no-git-tag-version",
         "up:minor": "npm version minor --no-git-tag-version",
         "up:major": "npm version major --no-git-tag-version",
-        "version": "yarn build:prod",
+        "version": "yarn build:dev",
         "postversion": "git add -A && git commit -m \"pushing changes for merge\" && git push",
         "build:dev": "webpack --env.APP_MODE=development --mode=production",
         "build:prod": "webpack --env.APP_MODE=production --mode=production",
