@@ -92,12 +92,9 @@ export default class Playlist extends React.Component {
                                         if (dls.length === 0) return e.preventDefault()
                                         modalActive({
                                             open: true,
-                                            closer: modalActive({
-                                                open: false
-                                            }),
                                             action: 'Downloads',
                                             actData: dls,
-                                            dismissable: false,
+                                            dismissable: true,
                                             color: obj.color,
                                             refr: refDls,
                                             test: match.params.courses

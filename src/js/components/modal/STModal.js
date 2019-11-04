@@ -5,7 +5,10 @@ const STModal = (props) => {
     let { open } = props
     if (!open) return null
 
-    let { closer = null, xtraClass, mData, action, actData, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = props
+    let { dismissable, xtraClass, mData, action, actData, orientation = 'bottom', addDl, refr, modalActive, color, test, children } = props,
+    closer = dismissable ? modalActive({
+        open: false
+    }) : null
 
     const ModalComp = comps[action] || '',
         style = color ? {borderColor: color} : {}
