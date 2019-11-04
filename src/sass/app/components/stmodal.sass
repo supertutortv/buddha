@@ -54,15 +54,18 @@
                 font-size: $small
                 height: 100%
                 width: 100%
-                overflow: auto
+                overflow-x: hidden
+                overflow-y: auto
                 padding: 1em 0
+                display: flex
+                flex-flow: row wrap
 
                 .stDownloadLink
-                    float: left
                     cursor: pointer
-                    width: 25%
-                    height: 5em
+                    width: 100%
+                    height: 6em
                     padding: 0 $large
+                    flex-basis: 33%
 
                     &.dld
                         background-color: rgba(green,.05)
@@ -156,7 +159,7 @@ st-overlay
                                 animation-delay: 800ms
 
 
-+MQ($mq-mobile)
++MQ($mq-tportrait)
     .stModal
         padding: 1em
 
@@ -165,3 +168,10 @@ st-overlay
             .stModalInner
                 height: 100%
                 width: 100%
+
+                .stModalDownloads
+
+                    .stDownloadLinks
+
+                        .stDownloadLink
+                            flex-basis: 100%
