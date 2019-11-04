@@ -19,6 +19,7 @@ export default class Main extends React.Component {
                 action: 'downloads',
                 orientation: 'centered',
                 color: false,
+                dismissable: false,
                 mData: null,
                 refr: null,
                 test: '',
