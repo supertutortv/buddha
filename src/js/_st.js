@@ -1,7 +1,7 @@
 import config from './config'
 import * as form from './utilities/form'
 import Http from './utilities/http'
-import plans from './data/static/plans'
+import plans from './data/static/bfPlans'
 //import udata from './utilities/userActions'
 
 const objectifyURLParams = (params = '?void=0') => params.slice(1).split('&').map(p => p.split('=')).reduce((obj, pair) => {
